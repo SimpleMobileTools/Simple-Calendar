@@ -13,12 +13,10 @@
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para a data</string>
     <string name="upgraded_from_free">Ei,\n\nparece que você fez a atualização do aplicativo antigo. É necessário migrar manualmente os eventos armazenados localmente, exportando um arquivo .ics e o importando novamente. Encontre os botões de exportação e importação no menu da tela principal.\n\nEm seguida, desinstale a versão antiga, que apresenta o botão de atualização para a versão Pro na tela de configuração. Na sequência, será necessário redefinir as configurações do aplicativo.\n\nObrigado!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>
     <string name="widget_todays_date">Data de hoje</string>
-
     <!-- Event -->
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
@@ -32,18 +30,16 @@
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
     <string name="please_fill_location">Por favor, preencha um local para ser mostrado em um mapa</string>
     <string name="public_event_notification_text">Um evento está próximo</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
+    <string name="saving_filtered_out">Salvando… Mas o tipo de evento selecionado ficou em Menu - Filtrar</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
-
+    <string name="task">Tarefa</string>
+    <string name="tasks">Tarefas</string>
+    <string name="edit_task">Editar tarefa</string>
+    <string name="new_task">Nova tarefa</string>
+    <string name="create_new_task">Criar uma nova tarefa</string>
+    <string name="duplicate_task">Duplicar tarefa</string>
+    <string name="mark_completed">Marcar como concluída</string>
+    <string name="mark_incomplete">Marcar como incompleta</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
     <string name="no_repetition">Sem repetição</string>
@@ -83,9 +79,8 @@
     <string name="second_m">segundo</string>
     <string name="third_m">terceiro</string>
     <string name="fourth_m">quarto</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">quinto</string>
     <string name="last_m">último</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repita todos</string>
@@ -94,31 +89,27 @@
     <string name="second_f">segundo</string>
     <string name="third_f">terceiro</string>
     <string name="fourth_f">quarto</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">quinta</string>
     <string name="last_f">ultimo</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Aniversários</string>
     <string name="add_birthdays">Adicionar aniversários dos contatos</string>
     <string name="no_birthdays">Nenhum aniversário foi encontrado</string>
     <string name="no_new_birthdays">Nenhum novo aniversário foi encontrado</string>
     <string name="birthdays_added">Aniversários adicionados com sucesso</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">Adicionar novos aniversários automaticamente</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversários</string>
     <string name="add_anniversaries">Adicionar aniversários dos contatos</string>
     <string name="no_anniversaries">Nenhum aniversário foi encontrado</string>
     <string name="no_new_anniversaries">Nenhum novo aniversário foi encontrado</string>
     <string name="anniversaries_added">Aniversários adicionados com sucesso</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">Adicionar novos aniversários automaticamente</string>
     <!-- Event Reminders -->
     <string name="reminder">Lembrete</string>
     <string name="before">antes</string>
     <string name="add_another_reminder">Adicionar outro lembrete</string>
     <string name="event_reminders">Lembretes de eventos</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Adicionar outro participante</string>
     <string name="my_status">Meu status:</string>
@@ -126,10 +117,8 @@
     <string name="not_going">Não vou</string>
     <string name="maybe_going">Talvez eu vá</string>
     <string name="invited">Convidado</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Insira um país ou fuso horário</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
@@ -139,17 +128,14 @@
     <string name="export_past_events_too">Exportar eventos passados também</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do arquivo (sem .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
+    <string name="ignore_event_types">Ignorar os tipos de eventos no arquivo, usar sempre o padrão</string>
     <!-- Event details -->
     <string name="location">Localização</string>
     <string name="description">Descrição</string>
     <string name="all_day">O dia todo</string>
-
     <!-- Weekly view -->
     <string name="week">Semana</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">Começar a semana com o dia atual</string>
     <!-- Event types -->
     <string name="event_types">Tipos de evento</string>
     <string name="add_new_type">Adicionar um tipo</string>
@@ -162,7 +148,6 @@
     <string name="move_events_into_default">Mover eventos afetados para o tipo de evento padrão</string>
     <string name="remove_affected_events">Remover permanentemente eventos afetados</string>
     <string name="unsync_caldav_calendar">Para remover um calendário do CalDAV você deve desativar a sincronização</string>
-
     <!-- Holidays -->
     <string name="holidays">Feriados</string>
     <string name="add_holidays">Adicionar feriados</string>
@@ -171,7 +156,6 @@
     <string name="holidays_imported_successfully">Os feriados foram importados com sucesso para o tipo de evento \ "Feriados \"</string>
     <string name="importing_some_holidays_failed">A importação de alguns eventos falhou</string>
     <string name="importing_holidays_failed">A importação de feriados falhou</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Gerenciar tipos de eventos</string>
     <string name="start_day_at">Iniciar vista semanal em</string>
@@ -218,7 +202,6 @@
     <string name="allow_changing_time_zones">Permitir a alteração de fuso horário do evento</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <string name="allow_creating_tasks">Allow creating tasks</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione calendários para sincronizar</string>
@@ -236,7 +219,6 @@
     <string name="no_synchronized_calendars">Nenhum calendário encontrado para a sincronização</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Segunda</string>
@@ -246,7 +228,6 @@
     <string name="friday_alt">Sexta</string>
     <string name="saturday_alt">Sábado</string>
     <string name="sunday_alt">Domingo</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Ir ao ginásio</string>
     <string name="sample_description_1">Ir às compras</string>
@@ -256,7 +237,6 @@
     <string name="sample_title_4">Almoçar com a Maria</string>
     <string name="sample_description_4">Ir ao mercado</string>
     <string name="sample_title_5">Beber um café</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
@@ -274,10 +254,9 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \ "Adicionar feriados \"?</string>
-    <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \ "Feriados \". Você pode ir em Configurações -> Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
+    <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \ "Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
     <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
          Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
@@ -286,11 +265,10 @@
         selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>
     <string name="faq_4_title">O aplicativo oferece suporte para fuso horário?</string>
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_title">O aplicativo não mostra notificações, por que\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
@@ -340,7 +318,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Não encontrou todas as cadeias a traduzir? Existem mais algumas em:
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
