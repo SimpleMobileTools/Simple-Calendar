@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/day_monthly_event_id"
+    android:id="@+id/day_monthly_event_holder"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="1dp"
-    android:ellipsize="none"
-    android:gravity="start"
-    android:hyphenationFrequency="none"
-    android:maxLines="1"
-    android:paddingStart="@dimen/tiny_margin"
-    android:paddingEnd="@dimen/tiny_margin"
-    android:textSize="@dimen/day_monthly_text_size"
-    tools:targetApi="m"
-    tools:text="1" />
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/day_monthly_task_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:paddingStart="@dimen/one_dp"
+        android:paddingTop="@dimen/one_dp"
+        android:paddingBottom="@dimen/one_dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_task_vector"
+        app:layout_constraintBottom_toBottomOf="@id/day_monthly_event_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/day_monthly_event_id" />
+
+    <TextView
+        android:id="@+id/day_monthly_event_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_toEndOf="@+id/day_monthly_task_image"
+        android:ellipsize="none"
+        android:gravity="start"
+        android:hyphenationFrequency="none"
+        android:maxLines="1"
+        android:paddingStart="@dimen/tiny_margin"
+        android:paddingEnd="@dimen/tiny_margin"
+        android:textSize="@dimen/day_monthly_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/day_monthly_task_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="m"
+        tools:text="My event" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

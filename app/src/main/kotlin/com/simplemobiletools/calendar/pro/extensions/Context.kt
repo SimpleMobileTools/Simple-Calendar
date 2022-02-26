@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
@@ -40,6 +41,7 @@ import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
+import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
@@ -489,13 +491,22 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             textColor = textColor.adjustAlpha(0.25f)
         }
 
-        (View.inflate(applicationContext, R.layout.day_monthly_event_view, null) as TextView).apply {
-            setTextColor(textColor)
-            text = it.title.replace(" ", "\u00A0")  // allow word break by char
+        (View.inflate(applicationContext, R.layout.day_monthly_event_view, null) as ConstraintLayout).apply {
             background = backgroundDrawable
             layoutParams = eventLayoutParams
-            contentDescription = it.title
             linearLayout.addView(this)
+
+            day_monthly_event_id.apply {
+                setTextColor(textColor)
+                text = it.title.replace(" ", "\u00A0")  // allow word break by char
+                checkViewStrikeThrough(it.isTaskCompleted())
+                contentDescription = it.title
+            }
+
+            day_monthly_task_image.beVisibleIf(it.isTask())
+            if (it.isTask()) {
+                day_monthly_task_image.applyColorFilter(textColor)
+            }
         }
     }
 }
