@@ -159,6 +159,8 @@ class TaskActivity : SimpleActivity() {
         mEventTypeId = mTask.eventType
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
+        task_all_day.isChecked = mTask.getIsAllDay()
+        toggleAllDay(mTask.getIsAllDay())
         setupMarkCompleteButton()
     }
 

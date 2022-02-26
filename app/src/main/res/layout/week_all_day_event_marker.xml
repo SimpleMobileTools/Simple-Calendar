@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:ellipsize="end"
-    android:maxLines="2"
-    android:padding="@dimen/tiny_margin"
-    android:textColor="@android:color/white"
-    android:textSize="@dimen/small_text_size" />
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/week_event_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/week_event_task_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:paddingStart="@dimen/one_dp"
+        android:paddingTop="@dimen/one_dp"
+        android:paddingBottom="@dimen/one_dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_task_vector"
+        app:layout_constraintBottom_toBottomOf="@+id/week_event_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/week_event_label" />
+
+    <TextView
+        android:id="@+id/week_event_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingStart="@dimen/tiny_margin"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/week_event_task_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="My event" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

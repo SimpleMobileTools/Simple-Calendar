@@ -666,7 +666,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     @SuppressLint("NewApi")
     private fun addAllDayEvent(event: Event) {
-        (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as TextView).apply {
+        (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as ConstraintLayout).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
             if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
@@ -675,9 +675,18 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
             background = ColorDrawable(backgroundColor)
 
-            setTextColor(textColor)
-            text = event.title
-            contentDescription = text
+            week_event_label.apply {
+                setTextColor(textColor)
+                maxLines = if (event.isTask()) 1 else 2
+                text = event.title
+                checkViewStrikeThrough(event.isTaskCompleted())
+                contentDescription = text
+            }
+
+            week_event_task_image.beVisibleIf(event.isTask())
+            if (event.isTask()) {
+                week_event_task_image.applyColorFilter(textColor)
+            }
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
