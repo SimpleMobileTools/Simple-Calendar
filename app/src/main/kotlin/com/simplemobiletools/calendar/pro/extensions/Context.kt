@@ -145,7 +145,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
     if (showToasts) {
         if (config.displayEventTypes.contains(event.eventType.toString())) {
             val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
-            val msg = String.format(getString(R.string.reminder_triggers_in), formatSecondsToTimeString(secondsTillNotification.toInt()))
+            val msg = String.format(getString(R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
             toast(msg)
         } else {
             toast(R.string.saving_filtered_out, Toast.LENGTH_LONG)
