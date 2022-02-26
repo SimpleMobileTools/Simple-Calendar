@@ -467,7 +467,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 val eventWeekly = EventWeeklyView(range)
 
                 if (!eventTimeRanges.containsKey(currentDayCode)) {
-                    eventTimeRanges[currentDayCode] = LinkedHashMap<Long, EventWeeklyView>()
+                    eventTimeRanges[currentDayCode] = LinkedHashMap()
                 }
                 eventTimeRanges[currentDayCode]?.put(event.id!!, eventWeekly)
 
