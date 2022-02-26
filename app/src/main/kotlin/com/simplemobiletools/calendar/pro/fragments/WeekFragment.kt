@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.collection.LongSparseArray
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
@@ -31,6 +32,7 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyTextView
 import kotlinx.android.synthetic.main.fragment_week.*
 import kotlinx.android.synthetic.main.fragment_week.view.*
+import kotlinx.android.synthetic.main.week_event_marker.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
@@ -534,7 +536,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
 
                     val dayColumn = dayColumns[dayOfWeek]
-                    (inflater.inflate(R.layout.week_event_marker, null, false) as TextView).apply {
+                    (inflater.inflate(R.layout.week_event_marker, null, false) as ConstraintLayout).apply {
                         var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                         var textColor = backgroundColor.getContrastColor()
                         val currentEventWeeklyView = eventTimeRanges[currentDayCode]!!.get(event.id)
@@ -544,24 +546,34 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         }
 
                         background = ColorDrawable(backgroundColor)
-                        setTextColor(textColor)
-                        text = event.title
-                        checkViewStrikeThrough(event.isTaskCompleted())
-                        contentDescription = text
                         dayColumn.addView(this)
                         y = currentEventWeeklyView!!.range.lower * minuteHeight
+
+                        week_event_task_image.beVisibleIf(event.isTask())
+                        if (event.isTask()) {
+                            week_event_task_image.applyColorFilter(textColor)
+                        }
+
+                        week_event_label.apply {
+                            setTextColor(textColor)
+                            maxLines = if (event.isTask()) 1 else 3
+                            text = event.title
+                            checkViewStrikeThrough(event.isTaskCompleted())
+                            contentDescription = text
+
+                            minHeight = if (event.startTS == event.endTS) {
+                                minimalHeight
+                            } else {
+                                ((currentEventWeeklyView.range.upper - currentEventWeeklyView.range.lower) * minuteHeight).toInt() - 1
+                            }
+                        }
+
                         (layoutParams as RelativeLayout.LayoutParams).apply {
                             width = (dayColumn.width - 1) / currentEventWeeklyView.slot_max
                             x = (width * (currentEventWeeklyView.slot - 1)).toFloat()
                             if (currentEventWeeklyView.slot > 1) {
                                 x += density
                                 width -= density
-                            }
-
-                            minHeight = if (event.startTS == event.endTS) {
-                                minimalHeight
-                            } else {
-                                ((currentEventWeeklyView.range.upper - currentEventWeeklyView.range.lower) * minuteHeight).toInt() - 1
                             }
                         }
 
