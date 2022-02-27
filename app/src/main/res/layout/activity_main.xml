@@ -54,8 +54,8 @@
             android:src="@drawable/ic_task_vector"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/calendar_fab"
-            app:layout_constraintEnd_toEndOf="@id/calendar_fab"
-            app:layout_constraintStart_toStartOf="@id/calendar_fab" />
+            app:layout_constraintEnd_toEndOf="@+id/calendar_fab"
+            app:layout_constraintStart_toStartOf="@+id/calendar_fab" />
 
         <com.simplemobiletools.commons.views.MyTextView
             android:id="@+id/fab_task_label"

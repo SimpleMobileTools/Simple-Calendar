@@ -909,15 +909,46 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun showExtendedFab() {
+        animateFabIcon(false)
         arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
             it.fadeIn()
         }
     }
 
     private fun hideExtendedFab() {
+        animateFabIcon(true)
         arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
             it.fadeOut()
         }
+    }
+
+    private fun animateFabIcon(showPlus: Boolean) {
+        val newDrawableId = if (showPlus) {
+            R.drawable.ic_plus_vector
+        } else {
+            R.drawable.ic_today_vector
+        }
+        val newDrawable = resources.getColoredDrawableWithColor(newDrawableId, getAdjustedPrimaryColor())
+
+        val duration = 75L
+        var rotation = 90f
+        if (showPlus) {
+            rotation *= -1
+        }
+
+        calendar_fab.animate()
+            .rotationBy(rotation)
+            .setDuration(duration)
+            .withEndAction {
+                calendar_fab.rotation = -rotation
+                calendar_fab.setImageDrawable(newDrawable)
+
+                calendar_fab.animate()
+                    .rotationBy(rotation)
+                    .setDuration(duration)
+                    .start()
+            }
+            .start()
     }
 
     private fun openNewEvent() {
