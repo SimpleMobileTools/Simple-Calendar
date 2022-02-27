@@ -6,7 +6,6 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
@@ -387,27 +386,52 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun checkShortcuts() {
         val appIconColor = config.appIconColor
         if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
-            val newEvent = getString(R.string.new_event)
-            val manager = getSystemService(ShortcutManager::class.java)
-            val drawable = resources.getDrawable(R.drawable.shortcut_plus, theme)
-            (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
-            val bmp = drawable.convertToBitmap()
+            val newEvent = getNewEventShortcut(appIconColor)
+            val shortcuts = arrayListOf(newEvent)
 
-            val intent = Intent(this, SplashActivity::class.java)
-            intent.action = SHORTCUT_NEW_EVENT
-            val shortcut = ShortcutInfo.Builder(this, "new_event")
-                .setShortLabel(newEvent)
-                .setLongLabel(newEvent)
-                .setIcon(Icon.createWithBitmap(bmp))
-                .setIntent(intent)
-                .build()
+            if (config.allowCreatingTasks) {
+                shortcuts.add(getNewTaskShortcut(appIconColor))
+            }
 
             try {
-                manager.dynamicShortcuts = Arrays.asList(shortcut)
+                shortcutManager.dynamicShortcuts = shortcuts
                 config.lastHandledShortcutColor = appIconColor
             } catch (ignored: Exception) {
             }
         }
+    }
+
+    @SuppressLint("NewApi")
+    private fun getNewEventShortcut(appIconColor: Int): ShortcutInfo {
+        val newEvent = getString(R.string.new_event)
+        val newEventDrawable = resources.getDrawable(R.drawable.shortcut_event, theme)
+        (newEventDrawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_event_background).applyColorFilter(appIconColor)
+        val newEventBitmap = newEventDrawable.convertToBitmap()
+
+        val newEventIntent = Intent(this, SplashActivity::class.java)
+        newEventIntent.action = SHORTCUT_NEW_EVENT
+        return ShortcutInfo.Builder(this, "new_event")
+            .setShortLabel(newEvent)
+            .setLongLabel(newEvent)
+            .setIcon(Icon.createWithBitmap(newEventBitmap))
+            .setIntent(newEventIntent)
+            .build()
+    }
+
+    @SuppressLint("NewApi")
+    private fun getNewTaskShortcut(appIconColor: Int): ShortcutInfo {
+        val newTask = getString(R.string.new_task)
+        val newTaskDrawable = resources.getDrawable(R.drawable.shortcut_task, theme)
+        (newTaskDrawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_task_background).applyColorFilter(appIconColor)
+        val newTaskBitmap = newTaskDrawable.convertToBitmap()
+        val newTaskIntent = Intent(this, SplashActivity::class.java)
+        newTaskIntent.action = SHORTCUT_NEW_TASK
+        return ShortcutInfo.Builder(this, "new_task")
+            .setShortLabel(newTask)
+            .setLongLabel(newTask)
+            .setIcon(Icon.createWithBitmap(newTaskBitmap))
+            .setIntent(newTaskIntent)
+            .build()
     }
 
     private fun checkIsOpenIntent(): Boolean {

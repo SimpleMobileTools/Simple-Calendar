@@ -21,6 +21,7 @@ const val YEAR_TO_OPEN = "year_to_open"
 const val CALDAV = "Caldav"
 const val VIEW_TO_OPEN = "view_to_open"
 const val SHORTCUT_NEW_EVENT = "shortcut_new_event"
+const val SHORTCUT_NEW_TASK = "shortcut_new_task"
 const val REGULAR_EVENT_TYPE_ID = 1L
 const val TIME_ZONE = "time_zone"
 const val CURRENT_TIME_ZONE = "current_time_zone"

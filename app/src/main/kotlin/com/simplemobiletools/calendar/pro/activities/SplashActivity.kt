@@ -26,6 +26,13 @@ class SplashActivity : BaseSplashActivity() {
                     startActivity(this)
                 }
             }
+            intent.action == SHORTCUT_NEW_TASK -> {
+                val dayCode = Formatter.getDayCodeFromDateTime(DateTime())
+                Intent(this, TaskActivity::class.java).apply {
+                    putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode))
+                    startActivity(this)
+                }
+            }
             else -> startActivity(Intent(this, MainActivity::class.java))
         }
         finish()
