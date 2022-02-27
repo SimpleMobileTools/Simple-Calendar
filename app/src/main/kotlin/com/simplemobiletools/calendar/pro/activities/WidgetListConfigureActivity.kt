@@ -74,6 +74,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         window.decorView.setBackgroundColor(0)
+        updateTextColors(config_list_holder)
     }
 
     private fun initVariables() {
