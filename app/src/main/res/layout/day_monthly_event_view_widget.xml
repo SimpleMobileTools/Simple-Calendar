@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/day_monthly_event_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- widgets cannot contain ConstraintLayout and image scaling doesn't work well, so set its size -->
+    <ImageView
+        android:id="@+id/day_monthly_task_image"
+        android:layout_width="@dimen/activity_margin"
+        android:layout_height="@dimen/activity_margin"
+        android:layout_alignTop="@+id/day_monthly_event_id"
+        android:layout_alignBottom="@+id/day_monthly_event_id"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/task"
+        android:paddingStart="@dimen/one_dp"
+        android:paddingTop="@dimen/one_dp"
+        android:paddingBottom="@dimen/one_dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_task_vector" />
+
+    <TextView
+        android:id="@+id/day_monthly_event_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/day_monthly_task_image"
+        android:ellipsize="none"
+        android:gravity="start"
+        android:hyphenationFrequency="none"
+        android:maxLines="1"
+        android:paddingStart="@dimen/tiny_margin"
+        android:paddingEnd="@dimen/tiny_margin"
+        android:textSize="@dimen/day_monthly_text_size"
+        tools:targetApi="m"
+        tools:text="My event" />
+
+</RelativeLayout>
