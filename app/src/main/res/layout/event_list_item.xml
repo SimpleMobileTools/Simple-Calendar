@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/small_margin"
+            android:contentDescription="@string/task"
             android:paddingTop="@dimen/small_margin"
             android:paddingBottom="@dimen/small_margin"
             android:src="@drawable/ic_task_vector"
