@@ -149,9 +149,9 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                     setText(R.id.day_monthly_event_id, it.title.replace(" ", "\u00A0"))
                     setTextColor(R.id.day_monthly_event_id, eventTextColor)
                     setTextSize(R.id.day_monthly_event_id, smallerFontSize - 3f)
-                    setBackgroundColor(R.id.day_monthly_event_holder, backgroundColor)
                     setVisibleIf(R.id.day_monthly_task_image, it.isTask())
                     applyColorFilter(R.id.day_monthly_task_image, eventTextColor)
+                    setInt(R.id.day_monthly_event_background, "setColorFilter", backgroundColor)
 
                     if (it.isTaskCompleted()) {
                         setInt(R.id.day_monthly_event_id, "setPaintFlags", Paint.ANTI_ALIAS_FLAG or Paint.STRIKE_THRU_TEXT_FLAG)

@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/day_monthly_event_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/day_monthly_event_id"
+        android:layout_margin="@dimen/one_dp"
+        android:contentDescription="@null"
+        android:src="@drawable/day_monthly_event_background_widget" />
+
     <!-- widgets cannot contain ConstraintLayout and image scaling doesn't work well, so set its size -->
     <ImageView
         android:id="@+id/day_monthly_task_image"
