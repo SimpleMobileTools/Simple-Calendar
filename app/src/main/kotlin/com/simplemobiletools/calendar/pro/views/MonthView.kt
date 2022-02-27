@@ -10,14 +10,14 @@ import android.view.View
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
-import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
+import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
+import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.MonthViewEvent
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
-import com.simplemobiletools.commons.extensions.getContrastColor
-import com.simplemobiletools.commons.extensions.moveLastItemToFront
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
@@ -121,15 +121,18 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val daysCnt = getEventLastingDaysCount(event)
                 val validDayEvent = isDayValid(event, day.code)
                 if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) && !validDayEvent) {
-                    val monthViewEvent = MonthViewEvent(event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
-                        daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted())
+                    val monthViewEvent = MonthViewEvent(
+                        event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
+                        daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
+                    )
                     allEvents.add(monthViewEvent)
                 }
             }
         }
 
-        allEvents = allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title }))
-            .toMutableList() as ArrayList<MonthViewEvent>
+        allEvents =
+            allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title }))
+                .toMutableList() as ArrayList<MonthViewEvent>
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -172,7 +175,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     if (isMonthDayView && day.dayEvents.isNotEmpty()) {
                         getCirclePaint(day).getTextBounds(dayNumber, 0, dayNumber.length, dayTextRect)
                         val height = dayTextRect.height() * 1.25f
-                        canvas.drawCircle(xPosCenter, yPos + height + textPaint.textSize / 2, textPaint.textSize * 0.2f, getDayEventColor(day.dayEvents.first()))
+                        canvas.drawCircle(
+                            xPosCenter,
+                            yPos + height + textPaint.textSize / 2,
+                            textPaint.textSize * 0.2f,
+                            getDayEventColor(day.dayEvents.first())
+                        )
                     }
 
                     canvas.drawText(dayNumber, xPosCenter, yPos + textPaint.textSize, textPaint)
@@ -279,16 +287,26 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
-        drawEventTitle(event, canvas, xPos, yPos + verticalOffset, bgRight - bgLeft - smallPadding, startDayIndex, endDayIndex)
+        val specificEventTitlePaint = getEventTitlePaint(event, startDayIndex, endDayIndex)
+        var taskIconWidth = 0
+        if (event.isTask) {
+            val taskIcon = resources.getColoredDrawableWithColor(R.drawable.ic_task_vector, specificEventTitlePaint.color).mutate()
+            val taskIconY = yPos.toInt() + verticalOffset - eventTitleHeight + smallPadding * 2
+            taskIcon.setBounds(xPos.toInt() + smallPadding * 2, taskIconY, xPos.toInt() + eventTitleHeight + smallPadding * 2, taskIconY + eventTitleHeight)
+            taskIcon.draw(canvas)
+            taskIconWidth += eventTitleHeight + smallPadding
+        }
+
+        drawEventTitle(event, canvas, xPos + taskIconWidth, yPos + verticalOffset, bgRight - bgLeft - smallPadding - taskIconWidth, specificEventTitlePaint)
 
         for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
 
-    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float, startDay: DayMonthly, endDay: DayMonthly) {
+    private fun drawEventTitle(event: MonthViewEvent, canvas: Canvas, x: Float, y: Float, availableWidth: Float, paint: Paint) {
         val ellipsized = TextUtils.ellipsize(event.title, eventTitlePaint, availableWidth - smallPadding, TextUtils.TruncateAt.END)
-        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, getEventTitlePaint(event, startDay, endDay))
+        canvas.drawText(event.title, 0, ellipsized.length, x + smallPadding * 2, y, paint)
     }
 
     private fun getTextPaint(startDay: DayMonthly): Paint {
