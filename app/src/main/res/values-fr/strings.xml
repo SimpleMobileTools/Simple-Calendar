@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Un évènement est à venir</string>
     <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tâche</string>
+    <string name="tasks">Tâches</string>
+    <string name="edit_task">Modifier la tâche</string>
+    <string name="new_task">Nouvelle tâche</string>
+    <string name="create_new_task">Créer une nouvelle tâche</string>
+    <string name="duplicate_task">Dupliquer la tâche</string>
+    <string name="mark_completed">Marquer comme terminé</string>
+    <string name="mark_incomplete">Marquer comme non terminé</string>
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
     <string name="no_repetition">Aucune répétition</string>
