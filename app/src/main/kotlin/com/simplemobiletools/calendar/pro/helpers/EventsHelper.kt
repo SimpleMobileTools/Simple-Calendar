@@ -272,29 +272,34 @@ class EventsHelper(val context: Context) {
         val birthDayEventId = getBirthdaysEventTypeId(createIfNotExists = false)
         val anniversaryEventId = getAnniversariesEventTypeId(createIfNotExists = false)
 
-        var events = if (applyTypeFilter) {
+        var events = ArrayList<Event>()
+        if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isEmpty()) {
                 callback(ArrayList())
                 return
             } else {
                 try {
-                    eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                    val typesList = context.config.getDisplayEventTypessAsList()
+                    events.addAll(eventsDB.getTasksFromTo(fromTS, toTS, typesList))
+
+                    events.addAll(eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, typesList).toMutableList() as ArrayList<Event>)
                 } catch (e: Exception) {
-                    ArrayList()
                 }
             }
         } else {
-            if (eventId == -1L) {
-                eventsDB.getOneTimeEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
-            } else {
-                eventsDB.getOneTimeEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
-            }
+            events.addAll(eventsDB.getTasksFromTo(fromTS, toTS, ArrayList()))
+
+            events.addAll(
+                if (eventId == -1L) {
+                    eventsDB.getOneTimeEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
+                } else {
+                    eventsDB.getOneTimeEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
+                }
+            )
         }
 
         events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
-
-        events.addAll(eventsDB.getTasksFromTo(fromTS, toTS))
 
         events = events
             .asSequence()
