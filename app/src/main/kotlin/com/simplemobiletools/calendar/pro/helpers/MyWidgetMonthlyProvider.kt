@@ -170,10 +170,12 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             setTextSize(R.id.day_monthly_number_id, context.getWidgetFontSize() - 3f)
 
             if (day.isToday) {
-                setBackgroundColor(R.id.day_monthly_number_id, textColor)
                 setTextColor(R.id.day_monthly_number_id, textColor.getContrastColor())
+                setViewVisibility(R.id.day_monthly_number_background, View.VISIBLE)
+                setInt(R.id.day_monthly_number_background, "setColorFilter", textColor)
             } else {
                 setTextColor(R.id.day_monthly_number_id, textColor)
+                setViewVisibility(R.id.day_monthly_number_background, View.GONE)
             }
         }
         views.addView(id, newRemoteView)

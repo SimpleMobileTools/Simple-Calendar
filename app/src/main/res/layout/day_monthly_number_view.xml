@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/day_monthly_number_id"
+    android:id="@+id/day_monthly_number_holder"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/tiny_margin"
-    android:layout_marginEnd="@dimen/tiny_margin"
-    android:ellipsize="none"
-    android:gravity="center_horizontal"
-    android:maxLines="1"
-    android:paddingStart="@dimen/tiny_margin"
-    android:paddingEnd="@dimen/tiny_margin"
-    android:textSize="@dimen/normal_text_size"
-    tools:text="1" />
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/day_monthly_number_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/day_monthly_number_id"
+        android:layout_margin="@dimen/one_dp"
+        android:contentDescription="@null"
+        android:src="@drawable/day_monthly_event_background_widget"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/day_monthly_number_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tiny_margin"
+        android:layout_marginEnd="@dimen/tiny_margin"
+        android:ellipsize="none"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:paddingStart="@dimen/tiny_margin"
+        android:paddingEnd="@dimen/tiny_margin"
+        android:textSize="@dimen/normal_text_size"
+        tools:text="1" />
+
+</RelativeLayout>
