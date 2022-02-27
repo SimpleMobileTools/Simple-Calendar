@@ -12,7 +12,6 @@ import android.util.Range
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.collection.LongSparseArray
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -489,7 +488,15 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 eventsCollisionChecked.add(eventId)
                 val eventWeeklyViewsToCheck = eventDayList.filter { !eventsCollisionChecked.contains(it.key) }
                 eventWeeklyViewsToCheck.forEach { toCheckId, eventWeeklyViewToCheck ->
-                    if (eventWeeklyView.range.touch(eventWeeklyViewToCheck.range)) {
+                    val areTouching = eventWeeklyView.range.touch(eventWeeklyViewToCheck.range)
+                    val doHaveCommonMinutes = if (areTouching) {
+                        eventWeeklyView.range.upper > eventWeeklyViewToCheck.range.lower || (eventWeeklyView.range.lower == eventWeeklyView.range.upper &&
+                            eventWeeklyView.range.upper == eventWeeklyViewToCheck.range.lower)
+                    } else {
+                        false
+                    }
+
+                    if (areTouching && doHaveCommonMinutes) {
                         if (eventWeeklyViewToCheck.slot == 0) {
                             val nextSlot = eventWeeklyView.slot_max + 1
                             val slotRange = Array(eventWeeklyView.slot_max) { it + 1 }
