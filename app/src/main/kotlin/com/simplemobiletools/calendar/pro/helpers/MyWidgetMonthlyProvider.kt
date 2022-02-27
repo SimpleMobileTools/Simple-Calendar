@@ -151,6 +151,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                     setTextSize(R.id.day_monthly_event_id, smallerFontSize - 3f)
                     setBackgroundColor(R.id.day_monthly_event_holder, backgroundColor)
                     setVisibleIf(R.id.day_monthly_task_image, it.isTask())
+                    applyColorFilter(R.id.day_monthly_task_image, eventTextColor)
 
                     if (it.isTaskCompleted()) {
                         setInt(R.id.day_monthly_event_id, "setPaintFlags", Paint.ANTI_ALIAS_FLAG or Paint.STRIKE_THRU_TEXT_FLAG)

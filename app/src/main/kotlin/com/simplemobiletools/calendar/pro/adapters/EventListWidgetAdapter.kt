@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.pro.R
@@ -29,6 +30,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     private var replaceDescription = context.config.replaceDescription
     private var dimPastEvents = context.config.dimPastEvents
     private var mediumFontSize = context.getWidgetFontSize()
+    private var smallMargin = context.resources.getDimension(R.dimen.small_margin).toInt()
+    private var normalMargin = context.resources.getDimension(R.dimen.normal_margin).toInt()
 
     init {
         initConfigValues()
@@ -106,6 +109,21 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
 
             setTextSize(R.id.event_item_title, mediumFontSize)
             setTextSize(R.id.event_item_time, mediumFontSize)
+
+            setVisibleIf(R.id.event_item_task_image, item.isTask)
+            applyColorFilter(R.id.event_item_task_image, curTextColor)
+
+            if (item.isTask) {
+                setViewPadding(R.id.event_item_title, 0, 0, smallMargin, 0)
+            } else {
+                setViewPadding(R.id.event_item_title, normalMargin, 0, smallMargin, 0)
+            }
+
+            if (item.isTaskCompleted) {
+                setInt(R.id.event_item_title, "setPaintFlags", Paint.ANTI_ALIAS_FLAG or Paint.STRIKE_THRU_TEXT_FLAG)
+            } else {
+                setInt(R.id.event_item_title, "setPaintFlags", Paint.ANTI_ALIAS_FLAG)
+            }
 
             Intent().apply {
                 putExtra(EVENT_ID, item.id)

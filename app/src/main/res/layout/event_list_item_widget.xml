@@ -20,11 +20,21 @@
         android:paddingTop="@dimen/tiny_margin"
         android:scaleType="fitXY" />
 
+    <ImageView
+        android:id="@+id/event_item_task_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/event_item_title"
+        android:layout_alignBottom="@+id/event_item_title"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:contentDescription="@string/task"
+        android:src="@drawable/ic_task_vector" />
+
     <TextView
         android:id="@+id/event_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_toEndOf="@+id/event_item_task_image"
         android:ellipsize="end"
         android:includeFontPadding="false"
         android:maxLines="1"
@@ -37,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_item_title"
-        android:layout_alignStart="@+id/event_item_title"
+        android:layout_marginStart="@dimen/normal_margin"
         android:alpha="0.8"
         android:ellipsize="end"
         android:includeFontPadding="false"
