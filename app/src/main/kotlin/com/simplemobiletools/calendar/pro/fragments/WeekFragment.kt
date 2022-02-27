@@ -464,7 +464,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     true -> (endDateTime.minuteOfDay - startMinutes)
                     else -> 1440
                 }
-                val range = Range(startMinutes, startMinutes + duration)
+
+                var endMinutes = startMinutes + duration
+                if (endMinutes - startMinutes < minimalHeight) {
+                    endMinutes += Math.round(minimalHeight / minuteHeight)
+                }
+
+                val range = Range(startMinutes, endMinutes)
                 val eventWeekly = EventWeeklyView(range)
 
                 if (!eventTimeRanges.containsKey(currentDayCode)) {
