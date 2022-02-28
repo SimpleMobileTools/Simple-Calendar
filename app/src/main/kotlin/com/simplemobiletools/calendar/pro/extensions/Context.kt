@@ -437,26 +437,29 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
     if (!day.isThisMonth)
         textColor = textColor.adjustAlpha(LOWER_ALPHA)
 
-    (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as TextView).apply {
-        setTextColor(textColor)
-        text = day.value.toString()
-        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+    View.inflate(applicationContext, R.layout.day_monthly_number_view, null).apply {
         layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         linearLayout.addView(this)
 
-        if (day.isToday) {
-            val primaryColor = getAdjustedPrimaryColor()
-            setTextColor(primaryColor.getContrastColor())
-            if (dayLabelHeight == 0) {
-                onGlobalLayout {
-                    val height = this@apply.height
-                    if (height > 0) {
-                        callback(height)
-                        addTodaysBackground(this, resources, height, primaryColor)
+        findViewById<TextView>(R.id.day_monthly_number_id).apply {
+            setTextColor(textColor)
+            text = day.value.toString()
+            gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+
+            if (day.isToday) {
+                val primaryColor = getAdjustedPrimaryColor()
+                setTextColor(primaryColor.getContrastColor())
+                if (dayLabelHeight == 0) {
+                    onGlobalLayout {
+                        val height = this@apply.height
+                        if (height > 0) {
+                            callback(height)
+                            addTodaysBackground(this, resources, height, primaryColor)
+                        }
                     }
+                } else {
+                    addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
                 }
-            } else {
-                addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
             }
         }
     }
