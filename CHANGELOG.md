@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.17.3 *(2022-02-28)*
+----------------------------
+
+ * Added an initial implementation of Tasks, can be disabled in the app settings
+ * Improved some weekly view collision detection
+ * Added some monthly widget related UI improvements
+ * Added some stability, translation and UX improvements
+
 Version 6.17.2 *(2022-02-27)*
 ----------------------------
 
