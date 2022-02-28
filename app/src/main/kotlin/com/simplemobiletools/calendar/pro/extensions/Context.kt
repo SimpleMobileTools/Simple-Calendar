@@ -19,6 +19,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +43,7 @@ import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
+import kotlinx.android.synthetic.main.day_monthly_number_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
@@ -437,26 +439,29 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
     if (!day.isThisMonth)
         textColor = textColor.adjustAlpha(LOWER_ALPHA)
 
-    (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as TextView).apply {
-        setTextColor(textColor)
-        text = day.value.toString()
-        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+    (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as RelativeLayout).apply {
         layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         linearLayout.addView(this)
 
-        if (day.isToday) {
-            val primaryColor = getAdjustedPrimaryColor()
-            setTextColor(primaryColor.getContrastColor())
-            if (dayLabelHeight == 0) {
-                onGlobalLayout {
-                    val height = this@apply.height
-                    if (height > 0) {
-                        callback(height)
-                        addTodaysBackground(this, resources, height, primaryColor)
+        day_monthly_number_id.apply {
+            setTextColor(textColor)
+            text = day.value.toString()
+            gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+
+            if (day.isToday) {
+                val primaryColor = getAdjustedPrimaryColor()
+                setTextColor(primaryColor.getContrastColor())
+                if (dayLabelHeight == 0) {
+                    onGlobalLayout {
+                        val height = this@apply.height
+                        if (height > 0) {
+                            callback(height)
+                            addTodaysBackground(this, resources, height, primaryColor)
+                        }
                     }
+                } else {
+                    addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
                 }
-            } else {
-                addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
             }
         }
     }
