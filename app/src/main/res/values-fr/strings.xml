@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Couleur des fins de semaine en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des évènements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'évènement</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permettre la création de tâches</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>
@@ -261,7 +261,7 @@
         <item quantity="other">Au cours des %d prochains mois</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton "Ajouter des jours fériés" \?</string>
+    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton Ajouter des jours fériés \?</string>
     <string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type "Jours fériés". Vous pouvez aller dans "Paramètres" puis "Gestion des types d\'évènements", faire un appui long sur "Jours fériés" et les supprimer en appuyant sur la corbeille.</string>
     <string name="faq_2_title">Puis-je synchroniser mes évènements Google Agenda ou tout autre service proposant la synchronisation CalDAV \?</string>
     <string name="faq_2_text">Oui, il faut juste activer l\'option "Synchronisation CalDAV" dans les paramètres de l\'appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
@@ -279,48 +279,7 @@
     <string name="app_title">Simple Calendar Pro – Évènements et rappels</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Agenda mobile. Planification et rappel de RDV.</string>
-    <string name="app_long_description"> Simple Calendar Pro est un agenda entièrement personnalisable et hors-ligne conçu pour faire exactement ce qu\'un agenda devrait faire.
-\n<b>Aucune fonctionnalité compliquée, demande de permissions inutiles ou publicité !</b>
-\n
-\nQue vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets de l\'agenda et l\'apparence de l\'application.
-\n
-\nLes vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt qu\'agencés dans une grille, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-).</b>
-\n
-\n----------------------------------------------------------
-\n<b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b>
-\n----------------------------------------------------------
-\n
-\n✔️ Aucune publicité ou fenêtre de dialogue ennuyante
-\n✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité
-\n✔️ Seules les permissions minimum sont requises
-\n✔️ Une valeur : la simplicité - faire ce qu\'un agenda doit faire !
-\n✔️ Open source
-\n✔️ Thèmes et widgets entièrement personnalisables
-\n✔️ Traduit en 29 langues
-\n✔️ Exportation des paramètres en fichier .txt pour les importer sur un autre appareil
-\n✔️ Synchronisation de l\'agenda CalDAV supportée pour synchroniser entre appareils et services
-\n✔️ Vue quotidienne, hebdomadaire, mensuelle et annuelle des évènements sur l\'agenda
-\n✔️ Supporte l\'exportation et l\'importation des évènements via des fichiers .ics
-\n✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements
-\n✔️ Option de répétition pour les rappels
-\n✔️ Ajoutez facilement les anniversaires et les jours fériés
-\n✔️ Personnalise les évènements - début, durée, rappels, participants, etc.
-\n✔️ Note les présences sur chaque évènement
-\n✔️ Utilisable en tant que calendrier personnel ou professionnel
-\n✔️ Choisissez entre rappels et notifications par courriel pour vous alerter à propos d\'un évènement
-\nTÉLÉCHARGEZ SIMPLE CALENDAR PRO – L\'AGENDA HORS-LIGNE SIMPLE ET SANS PUBS !
-\n
-\n<b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b> 
-\nhttps://www.simplemobiletools.com
-\n
-\n<b>Site Internet de Simple Calendar Pro :</b> 
-\nhttps://www.simplemobiletools.com/calendar
-\n
-\n<b>Facebook :</b> 
-\nhttps://www.facebook.com/simplemobiletools 
-\n
-\n<b>Reddit :</b> 
-\nhttps://www.reddit.com/r/SimpleMobileTools </string>
+    <string name="app_long_description"> Simple Calendar Pro est un calendrier hors ligne entièrement personnalisable, conçu pour faire exactement ce qu\'un calendrier devrait faire. <b>Pas de fonctionnalités compliquées, d\'autorisations inutiles et pas de publicités !</b>Que vous organisiez des événements uniques ou récurrents, des anniversaires, des réunions professionnelles, des rendez-vous ou quoi que ce soit d\'autre, Simple Calendar Pro vous permet de <b>faciliter votre organisation</b>. Avec une incroyable variété d\'<b>options de personnalisation</b>, vous pouvez personnaliser les rappels d\'événements, les sons de notification, les widgets de calendrier et l\'apparence de l\'application. Les vues quotidiennes, hebdomadaires et mensuelles font de la vérification de vos évènements à venir et rendez-vous un jeu d\'enfant. Vous pouvez même tout afficher sous forme de simple liste d\'événements plutôt que sous forme de calendrier, afin de <b> savoir exactement ce qui se prépare dans votre vie et à quel moment. </b> ---------------------------------------------------------- <b>Simple Calendar Pro - Caractéristiques &amp; Avantages</b> ---------------------------------------------------------- ✔️ Pas de publicités ou de popups ennuyeux ✔️ Pas besoin d\'accès à Internet, vous donnant plus de et sécurité ✔️ Seulement le strict minimum de permissions requises ✔️ Accent sur la simplicité - fait ce qu\'un calendrier doit faire ! ✔️ Open source ✔️ Thèmes entièrement personnalisables &amp; widgets de calendrier / événements ✔️ Traduit en 29 langues ✔️ Exportation des paramètres vers des fichiers .txt pour les importer sur un autre appareil ✔️ Prise en charge de la synchronisation du calendrier CalDAV pour synchroniser les événements entre les appareils ✔️ Vues quotidiennes, hebdomadaires, mensuelles, annuelles &amp; des événements sur le calendrier ✔️ Prise en charge de l\'exportation et de l\'importation d\'événements via des fichiers .ics ✔️ Définit plusieurs rappels d\'événements, personnalise le son et la vibration des rappels d\'événements ✔️ Option de répétition pour les rappels ✔️ Ajoute facilement des vacances, des anniversaires &amp; rendez-vous ✔️ Personnalise les événements - heure de début, durée, rappels, etc. ✔️ Ajoutez des participants à chaque événement ✔️ Utilisez-le comme calendrier personnel ou professionnel ✔️ Choisissez entre les rappels &amp; notifications par e-mail pour vous avertir d\'un événement TELECHARGER SIMPLE CALENDRIER PRO - LE CALENDRIER SIMPLE OFFLINE SANS PUBLICITÉ ! <b>Voyez la suite complète de Simple Tools ici:</b> https://www.simplemobiletools.com <b>Site web standard de Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
