@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Un evento è imminente</string>
     <string name="saving_filtered_out">Salvataggio… Ma il tipo di evento selezionato viene filtrato in alto Menu - Filtro</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Compito</string>
+    <string name="tasks">Compiti</string>
+    <string name="edit_task">Modifica il compito</string>
+    <string name="new_task">Nuovo compito</string>
+    <string name="create_new_task">Crea un nuovo compito</string>
+    <string name="duplicate_task">Duplica il compito</string>
+    <string name="mark_completed">Segna come completato</string>
+    <string name="mark_incomplete">Segno come incompleto</string>
     <!-- Event Repetition -->
     <string name="repetition">Ripeti</string>
     <string name="no_repetition">Non ripetere</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Colore dei fine settimana evidenziati</string>
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
     <string name="manage_quick_filter_event_types">Gestisci i tipi di eventi con filtro rapido</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permetti la creazione di compiti</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>
