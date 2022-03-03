@@ -466,8 +466,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
 
                 var endMinutes = startMinutes + duration
-                if (endMinutes - startMinutes < minimalHeight) {
-                    endMinutes += Math.round(minimalHeight / minuteHeight)
+                if ((endMinutes - startMinutes) * minuteHeight < minimalHeight) {
+                    endMinutes = startMinutes + (minimalHeight / minuteHeight).toInt()
                 }
 
                 val range = Range(startMinutes, endMinutes)
