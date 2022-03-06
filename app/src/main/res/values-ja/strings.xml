@@ -30,7 +30,7 @@
     <string name="filter_events_by_type">種類によって予定をフィルタリング</string>
     <string name="please_fill_location">地図上に表示する場所を入力してください</string>
     <string name="public_event_notification_text">近日中の予定</string>
-    <string name="saving_filtered_out">保存していますが、選択した予定の種類は上部メニューのフィルタで除外されています</string>v
+    <string name="saving_filtered_out">保存していますが、選択した予定の種類は上部メニューのフィルターで除外されています</string>v
 
     <!-- Tasks -->
     <string name="task">タスク</string>
@@ -136,7 +136,7 @@
     <string name="all_day">終日</string>
     <!-- Weekly view -->
     <string name="week">週</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">現在の日付で週を始める</string>
     <!-- Event types -->
     <string name="event_types">予定の種類</string>
     <string name="add_new_type">新しい種類を追加</string>
@@ -159,10 +159,10 @@
     <string name="importing_holidays_failed">祝日のインポートに失敗しました</string>
     <!-- Settings -->
     <string name="manage_event_types">予定の種類を管理</string>
-    <string name="start_day_at">Start day at</string>
+    <string name="start_day_at">日の始まり</string>
     <string name="end_day_at">End day at</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">深夜0時をまたぐ予定を上部バーに表示する</string>
+    <string name="allow_customizing_day_count">日数のカスタマイズを許可する</string>
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>
@@ -172,12 +172,12 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">予定リスト</string>
     <string name="display_past_events">過去の予定を表示</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="replace_description_with_location">予定の説明を場所に置き換える</string>
+    <string name="display_description_or_location">説明や場所を表示する</string>
     <string name="delete_all_events">すべての予定を削除</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">グリッドを表示</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
     <string name="events">予定</string>
     <string name="reminder_stream">リマインダーで使用する音の種類</string>
@@ -185,24 +185,24 @@
     <string name="alarm_stream">アラーム</string>
     <string name="notification_stream">通知</string>
     <string name="ring_stream">着信音</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">デフォルトリマインダー1</string>
-    <string name="default_reminder_2">デフォルトリマインダー2</string>
-    <string name="default_reminder_3">デフォルトリマインダー3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="use_last_event_reminders">前回の予定のリマインダーを新しい予定の規定として使用する</string>
+    <string name="default_reminder_1">規定のリマインダー1</string>
+    <string name="default_reminder_2">規定のリマインダー2</string>
+    <string name="default_reminder_3">規定のリマインダー3</string>
+    <string name="view_to_open_from_widget">予定リストウィジェットを開いたときの表示</string>
     <string name="last_view">Last view</string>
     <string name="new_events">新しい予定</string>
-    <string name="default_start_time">Default start time</string>
+    <string name="default_start_time">規定の開始時間</string>
     <string name="next_full_hour">Next full hour</string>
     <string name="current_time">Current time</string>
-    <string name="default_duration">Default duration</string>
+    <string name="default_duration">規定の期間</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">一部の表示で週末を強調する</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_changing_time_zones">予定のタイムゾーンの変更を許可する</string>
+    <string name="manage_quick_filter_event_types">イベントの種類をクイックフィルターで管理</string>
+    <string name="allow_creating_tasks">タスクの作成を許可する</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">同期するカレンダーを選択</string>
