@@ -8,7 +8,7 @@
     <string name="monthly_view">Vue Mois</string>
     <string name="monthly_daily_view">Vue Mois + Journée</string>
     <string name="yearly_view">Vue Année</string>
-    <string name="simple_event_list">Simple liste d\'évènements</string>
+    <string name="simple_event_list">Liste simple d\'évènements</string>
     <string name="no_upcoming_events">Aucun évènement à venir.</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
@@ -159,7 +159,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\'évènement « Vacances »</string>
+    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\'évènement « Jours fériés »</string>
     <string name="importing_some_holidays_failed">Échec de l\'importation de certains évènements</string>
     <string name="importing_holidays_failed">Échec de l\'importation des jours fériés</string>
     <!-- Settings -->
