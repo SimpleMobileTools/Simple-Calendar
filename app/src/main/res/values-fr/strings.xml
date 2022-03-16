@@ -8,7 +8,7 @@
     <string name="monthly_view">Vue Mois</string>
     <string name="monthly_daily_view">Vue Mois + Journée</string>
     <string name="yearly_view">Vue Année</string>
-    <string name="simple_event_list">Liste simple d\'évènements</string>
+    <string name="simple_event_list">Liste d\'évènements simple</string>
     <string name="no_upcoming_events">Aucun évènement à venir.</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
