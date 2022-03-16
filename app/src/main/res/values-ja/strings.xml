@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">シンプル カレンダー</string>
     <string name="app_launcher_name">カレンダー</string>
@@ -6,19 +6,17 @@
     <string name="daily_view">日</string>
     <string name="weekly_view">週</string>
     <string name="monthly_view">月</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">月+日表示</string>
     <string name="yearly_view">年</string>
     <string name="simple_event_list">シンプル 予定 リスト</string>
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
     <string name="go_to_date">日付に移動</string>
     <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
-
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
     <string name="widget_list">カレンダー 予定 リスト</string>
     <string name="widget_todays_date">Calendar today\'s date</string>
-
     <!-- Event -->
     <string name="event">予定</string>
     <string name="edit_event">予定を編集</string>
@@ -32,18 +30,17 @@
     <string name="filter_events_by_type">種類によって予定をフィルタリング</string>
     <string name="please_fill_location">地図上に表示する場所を入力してください</string>
     <string name="public_event_notification_text">近日中の予定</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>v
+    <string name="saving_filtered_out">保存していますが、選択した予定の種類は上部メニューのフィルターで除外されています</string>v
 
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
-
+    <string name="task">タスク</string>
+    <string name="tasks">タスク</string>
+    <string name="edit_task">タスクの編集</string>
+    <string name="new_task">新しいタスク</string>
+    <string name="create_new_task">新しいタスクの作成</string>
+    <string name="duplicate_task">タスクのコピー</string>
+    <string name="mark_completed">完了にする</string>
+    <string name="mark_incomplete">未完了にする</string>
     <!-- Event Repetition -->
     <string name="repetition">繰り返し</string>
     <string name="no_repetition">繰り返さない</string>
@@ -85,7 +82,6 @@
     <string name="fourth_m">fourth</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">last</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repeat every</string>
@@ -96,7 +92,6 @@
     <string name="fourth_f">fourth</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">last</string>
-
     <!-- Birthdays -->
     <string name="birthdays">誕生日</string>
     <string name="add_birthdays">連絡先の誕生日を追加</string>
@@ -104,7 +99,6 @@
     <string name="no_new_birthdays">新しい誕生日は見つかりませんでした</string>
     <string name="birthdays_added">誕生日が正常に追加されました</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">記念日</string>
     <string name="add_anniversaries">連絡先の記念日を追加</string>
@@ -112,13 +106,11 @@
     <string name="no_new_anniversaries">新しい記念日は見つかりませんでした</string>
     <string name="anniversaries_added">記念日が正常に追加されました</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">リマインダー</string>
     <string name="before">前</string>
     <string name="add_another_reminder">別のリマインダーを追加</string>
     <string name="event_reminders">予定のリマインダー</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">別の出席者を追加する</string>
     <string name="my_status">My status:</string>
@@ -126,10 +118,8 @@
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
     <string name="invited">Invited</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
-
     <!-- Export / Import -->
     <string name="import_events">予定をインポート</string>
     <string name="export_events">予定をエクスポート</string>
@@ -140,16 +130,13 @@
     <string name="include_event_types">予定の種類を含める</string>
     <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">場所</string>
     <string name="description">説明</string>
     <string name="all_day">終日</string>
-
     <!-- Weekly view -->
     <string name="week">週</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">現在の日付で週を始める</string>
     <!-- Event types -->
     <string name="event_types">予定の種類</string>
     <string name="add_new_type">新しい種類を追加</string>
@@ -162,7 +149,6 @@
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
-
     <!-- Holidays -->
     <string name="holidays">祝日</string>
     <string name="add_holidays">祝日を追加</string>
@@ -171,13 +157,12 @@
     <string name="holidays_imported_successfully">祝日は \"祝日\" の予定タイプにインポートされました</string>
     <string name="importing_some_holidays_failed">一部の予定のインポートに失敗しました</string>
     <string name="importing_holidays_failed">祝日のインポートに失敗しました</string>
-
     <!-- Settings -->
     <string name="manage_event_types">予定の種類を管理</string>
-    <string name="start_day_at">Start day at</string>
+    <string name="start_day_at">日の始まり</string>
     <string name="end_day_at">End day at</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">深夜0時をまたぐ予定を上部バーに表示する</string>
+    <string name="allow_customizing_day_count">日数のカスタマイズを許可する</string>
     <string name="week_numbers">週番号を表示</string>
     <string name="vibrate">リマインダー通知で振動</string>
     <string name="reminder_sound">Reminder sound</string>
@@ -187,12 +172,12 @@
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">予定リスト</string>
     <string name="display_past_events">過去の予定を表示</string>
-    <string name="replace_description_with_location">Replace event description with location</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="replace_description_with_location">予定の説明を場所に置き換える</string>
+    <string name="display_description_or_location">説明や場所を表示する</string>
     <string name="delete_all_events">すべての予定を削除</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">グリッドを表示</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
     <string name="events">予定</string>
     <string name="reminder_stream">リマインダーで使用する音の種類</string>
@@ -200,25 +185,24 @@
     <string name="alarm_stream">アラーム</string>
     <string name="notification_stream">通知</string>
     <string name="ring_stream">着信音</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
-    <string name="default_reminder_1">Default reminder 1</string>
-    <string name="default_reminder_2">Default reminder 2</string>
-    <string name="default_reminder_3">Default reminder 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="use_last_event_reminders">前回の予定のリマインダーを新しい予定の規定として使用する</string>
+    <string name="default_reminder_1">規定のリマインダー1</string>
+    <string name="default_reminder_2">規定のリマインダー2</string>
+    <string name="default_reminder_3">規定のリマインダー3</string>
+    <string name="view_to_open_from_widget">予定リストウィジェットを開いたときの表示</string>
     <string name="last_view">Last view</string>
-    <string name="new_events">New events</string>
-    <string name="default_start_time">Default start time</string>
+    <string name="new_events">新しい予定</string>
+    <string name="default_start_time">規定の開始時間</string>
     <string name="next_full_hour">Next full hour</string>
     <string name="current_time">Current time</string>
-    <string name="default_duration">Default duration</string>
+    <string name="default_duration">規定の期間</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends">一部の表示で週末を強調する</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
-
+    <string name="allow_changing_time_zones">予定のタイムゾーンの変更を許可する</string>
+    <string name="manage_quick_filter_event_types">イベントの種類をクイックフィルターで管理</string>
+    <string name="allow_creating_tasks">タスクの作成を許可する</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">同期するカレンダーを選択</string>
@@ -236,7 +220,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">月曜日</string>
@@ -246,7 +229,6 @@
     <string name="friday_alt">金曜日</string>
     <string name="saturday_alt">土曜日</string>
     <string name="sunday_alt">日曜日</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Workout</string>
     <string name="sample_description_1">Leg day</string>
@@ -256,28 +238,23 @@
     <string name="sample_title_4">Lunch with Mary</string>
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Coffee time</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
     <string name="today_only">Today only</string>
     <string name="within_the_next">Within the next…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="other">Within the next %d day</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="other">Within the next %d week</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="other">Within the next %d month</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types,
         long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
@@ -292,7 +269,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
@@ -342,7 +318,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

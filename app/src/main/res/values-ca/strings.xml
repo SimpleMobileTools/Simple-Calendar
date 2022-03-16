@@ -201,7 +201,7 @@
     <string name="next_full_hour">Pròxima hora completa</string>
     <string name="current_time">Hora actual</string>
     <string name="default_duration">Durada predeterminada</string>
-    <string name="last_used_one">Última utilitzada</string>
+    <string name="last_used_one">Últim utilitzat</string>
     <string name="other_time">Una altra hora</string>
     <string name="highlight_weekends">Ressalta els caps de setmana en algunes vistes</string>
     <string name="highlight_weekends_color">Color dels caps de setmana ressaltats</string>

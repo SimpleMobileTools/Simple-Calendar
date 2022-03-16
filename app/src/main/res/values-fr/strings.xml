@@ -8,7 +8,7 @@
     <string name="monthly_view">Vue Mois</string>
     <string name="monthly_daily_view">Vue Mois + Journée</string>
     <string name="yearly_view">Vue Année</string>
-    <string name="simple_event_list">Simple liste d\'évènements</string>
+    <string name="simple_event_list">Liste simple d\'évènements</string>
     <string name="no_upcoming_events">Aucun évènement à venir.</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
@@ -34,18 +34,18 @@
     <string name="event_added">Évènement ajouté avec succès</string>
     <string name="event_updated">Évènement mis à jour avec succès</string>
     <string name="filter_events_by_type">Filtrer les évènements</string>
-    <string name="please_fill_location">Veuillez renseigner un lieu pour visualisation sur une carte</string>
+    <string name="please_fill_location">Veuillez renseigner un lieu pour le visualiser sur une carte</string>
     <string name="public_event_notification_text">Un évènement est à venir</string>
     <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tâche</string>
+    <string name="tasks">Tâches</string>
+    <string name="edit_task">Modifier la tâche</string>
+    <string name="new_task">Nouvelle tâche</string>
+    <string name="create_new_task">Créer une nouvelle tâche</string>
+    <string name="duplicate_task">Dupliquer la tâche</string>
+    <string name="mark_completed">Marquer comme terminé</string>
+    <string name="mark_incomplete">Marquer comme non terminé</string>
     <!-- Event Repetition -->
     <string name="repetition">Répétition</string>
     <string name="no_repetition">Aucune répétition</string>
@@ -134,7 +134,7 @@
     <string name="export_past_events_too">Exporter les évènements passés</string>
     <string name="include_event_types">Inclure les types d\'évènement</string>
     <string name="filename_without_ics">Nom du fichier (sans .ics)</string>
-    <string name="ignore_event_types">Ignorer les types d\'évènements dans le fichier et toujours utiliser celui par défaut</string>
+    <string name="ignore_event_types">Ignorer les types d\'évènement dans le fichier et toujours utiliser celui par défaut</string>
     <!-- Event details -->
     <string name="location">Lieu</string>
     <string name="description">Description</string>
@@ -143,7 +143,7 @@
     <string name="week">Semaine</string>
     <string name="start_week_with_current_day">Démarrer la semaine à la date d\'aujourd\'hui</string>
     <!-- Event types -->
-    <string name="event_types">Type d\'évènement</string>
+    <string name="event_types">Types d\'évènement</string>
     <string name="add_new_type">Ajouter un nouveau type</string>
     <string name="edit_type">Modifier le type</string>
     <string name="type_already_exists">Un type avec ce titre existe déjà</string>
@@ -159,9 +159,9 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\'évènement \"Vacances\"</string>
-    <string name="importing_some_holidays_failed">Échec de l\'import de certains évènements</string>
-    <string name="importing_holidays_failed">Échec de l\'import des jours fériés</string>
+    <string name="holidays_imported_successfully">Les jours ont été importés avec succès comme type d\'évènement « Jours fériés »</string>
+    <string name="importing_some_holidays_failed">Échec de l\'importation de certains évènements</string>
+    <string name="importing_holidays_failed">Échec de l\'importation des jours fériés</string>
     <!-- Settings -->
     <string name="manage_event_types">Gestion des types d\'évènements</string>
     <string name="start_day_at">Heure de début pour la vue Semaine</string>
@@ -207,22 +207,22 @@
     <string name="highlight_weekends_color">Couleur des fins de semaine en surbrillance</string>
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des évènements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'évènement</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Autoriser la création de tâches</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>
     <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker uniquement localement</string>
     <string name="refresh_caldav_calendars">Synchroniser les agendas CalDAV</string>
-    <string name="refreshing">Synchro en cours…</string>
-    <string name="refreshing_complete">La synchro est terminée</string>
+    <string name="refreshing">Actualisation en cours…</string>
+    <string name="refreshing_complete">L\'actualisation est terminée</string>
     <string name="editing_calendar_failed">Échec de mise à jour de l\'agenda</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">La synchronisation est terminée</string>
     <string name="select_a_different_caldav_color">Sélectionnez une couleur différente (peut être appliqué localement uniquement)</string>
     <string name="insufficient_permissions">Vous n\'êtes pas autorisé à écrire dans l\'agenda sélectionné</string>
-    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour ce calendrier dans les paramètres de l\'application.</string>
-    <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
+    <string name="caldav_event_not_found">Événement introuvable. Veuillez activer la synchronisation CalDAV pour cet agenda dans les paramètres de l\'application.</string>
+    <string name="no_synchronized_calendars">Aucun agenda synchronisable n\'a été trouvé</string>
     <string name="status_free">Disponible</string>
     <string name="status_busy">Occupé</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -261,8 +261,8 @@
         <item quantity="other">Au cours des %d prochains mois</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton "Ajouter des jours fériés" \?</string>
-    <string name="faq_1_text">Les jours fériés ajoutés de cette manière sont du type "Jours fériés". Vous pouvez aller dans "Paramètres" puis "Gestion des types d\'évènements", faire un appui long sur "Jours fériés" et les supprimer en appuyant sur la corbeille.</string>
+    <string name="faq_1_title">Comment supprimer les évènement importés avec le bouton « Ajouter des jours fériés » \?</string>
+    <string name="faq_1_text">Les jours ajoutés de cette manière sont de type « Jours fériés ». Pour les supprimer, allez dans Paramètres &gt; Gestion des types d\'évènements, faites un appui long sur « Jours fériés » puis appuyez sur la Corbeille.</string>
     <string name="faq_2_title">Puis-je synchroniser mes évènements Google Agenda ou tout autre service proposant la synchronisation CalDAV \?</string>
     <string name="faq_2_text">Oui, il faut juste activer l\'option "Synchronisation CalDAV" dans les paramètres de l\'appli, puis choisir les agendas à synchroniser. Une appli tierce pour gérer la synchronisation entre votre appareil et les serveurs sera par contre nécessaire. 
 		Dans le cas d\'un agenda Google, l\'appli officielle fera l\'affaire. Pour les autres agendas, il vous faudra une appli comme DAVx5 par exemple.</string>
@@ -271,56 +271,15 @@
     <string name="faq_4_title">L\'application prend-elle en charge les fuseaux horaires \?</string>
     <string name="faq_4_text">Oui. Par défaut, tous les évènements sont créés dans votre fuseau horaire courant. Si vous souhaitez modifier le fuseau horaire d\'un évènement, vous devez d\'abord activer le sélecteur de fuseau horaire dans les paramètres de l\'application, puis le modifier sur l\'écran Détails de l\'évènement. Il est désactivé par défaut car la plupart des utilisateurs n\'en ont pas besoin.</string>
     <string name="faq_5_title">L\'application n\'affiche aucune notification, pourquoi \?</string>
-    <string name="faq_5_text">Vérifiez dans les paramètres de la batterie et des notifications que rien ne bloque les rappels ou arrête l\'exécution de l\'application en arrière-plan. Vous pouvez aussi trouver des informations utiles sur <a>href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com</a>.</string>
-    <string name="faq_6_title">Comment je peut modifier ou supprimer un type d\'évènement existant \?</string>
-    <string name="faq_6_text">Vous pouvez faire les deux dans les paramètres de l\'application - Gérer les types d\'évènements. Vous avez simplement besoin d\'appuyer sur l\'évènement souhaité pour modifier son nom et sa couleur, ou selectionner le en restant appuyer dessus et appuyer sur la corbeille du menu haut pour le supprimer.</string>
+    <string name="faq_5_text">Vérifiez dans les paramètres de la Batterie et des Notifications que rien ne bloque l\'affichage des rappels ou n\'arrête l\'exécution de l\'application en arrière-plan. Vous pouvez aussi trouver des informations utiles sur &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;.</string>
+    <string name="faq_6_title">Comment puis-je modifier ou supprimer un type d\'évènement existant \?</string>
+    <string name="faq_6_text">Vous pouvez réaliser les deux opérations depuis les paramètres de l\'application &gt; Gérer les types d\'évènements : un appui bref sur l\'évènement permet de modifier son nom ou sa couleur ; un appui long puis la Corbeille permet de le supprimer.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro – Évènements et rappels</string>
+    <string name="app_title">Agenda simple Pro – Évènements et rappels</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Agenda mobile. Planification et rappel de RDV.</string>
-    <string name="app_long_description"> Simple Calendar Pro est un agenda entièrement personnalisable et hors-ligne conçu pour faire exactement ce qu\'un agenda devrait faire.
-\n<b>Aucune fonctionnalité compliquée, demande de permissions inutiles ou publicité !</b>
-\n
-\nQue vous souhaitiez organiser un évènement ponctuel ou récurrent, un anniversaire, un rendez-vous d\'affaires ou quoi que ce soit d\'autre, Simple Calendar Pro rend simple <b>votre organisation</b>. Avec une grande variété <b>d\'options de personnalisation</b>, vous pouvez personnaliser les rappels d\'évènements, les sons de notifications, les widgets de l\'agenda et l\'apparence de l\'application.
-\n
-\nLes vues quotidienne, hebdomadaire et mensuelle rendent la consultation des évènements et rendez-vous à venir aisée. Vous pouvez même voir tous les évènements dans une simple liste plutôt qu\'agencés dans une grille, afin de <b>savoir exactement ce qui va arriver dans votre vie et quand ;-).</b>
-\n
-\n----------------------------------------------------------
-\n<b>Simple Calendar Pro – Fonctionnalités &amp; avantages </b>
-\n----------------------------------------------------------
-\n
-\n✔️ Aucune publicité ou fenêtre de dialogue ennuyante
-\n✔️ Aucun accès à internet n\'est nécessaire, vous donnant un meilleur respect de la vie privée et de la sécurité
-\n✔️ Seules les permissions minimum sont requises
-\n✔️ Une valeur : la simplicité - faire ce qu\'un agenda doit faire !
-\n✔️ Open source
-\n✔️ Thèmes et widgets entièrement personnalisables
-\n✔️ Traduit en 29 langues
-\n✔️ Exportation des paramètres en fichier .txt pour les importer sur un autre appareil
-\n✔️ Synchronisation de l\'agenda CalDAV supportée pour synchroniser entre appareils et services
-\n✔️ Vue quotidienne, hebdomadaire, mensuelle et annuelle des évènements sur l\'agenda
-\n✔️ Supporte l\'exportation et l\'importation des évènements via des fichiers .ics
-\n✔️ Paramètre de multiples rappels d\'évènements, personnalise les effets sonores et la vibration des évènements
-\n✔️ Option de répétition pour les rappels
-\n✔️ Ajoutez facilement les anniversaires et les jours fériés
-\n✔️ Personnalise les évènements - début, durée, rappels, participants, etc.
-\n✔️ Note les présences sur chaque évènement
-\n✔️ Utilisable en tant que calendrier personnel ou professionnel
-\n✔️ Choisissez entre rappels et notifications par courriel pour vous alerter à propos d\'un évènement
-\nTÉLÉCHARGEZ SIMPLE CALENDAR PRO – L\'AGENDA HORS-LIGNE SIMPLE ET SANS PUBS !
-\n
-\n<b>Découvrez la suite complète des applications Simple Mobile Tools ici :</b> 
-\nhttps://www.simplemobiletools.com
-\n
-\n<b>Site Internet de Simple Calendar Pro :</b> 
-\nhttps://www.simplemobiletools.com/calendar
-\n
-\n<b>Facebook :</b> 
-\nhttps://www.facebook.com/simplemobiletools 
-\n
-\n<b>Reddit :</b> 
-\nhttps://www.reddit.com/r/SimpleMobileTools </string>
+    <string name="app_long_description"> Agenda simple Pro est un agenda hors ligne entièrement personnalisable, conçu pour faire exactement ce qu\'un agenda devrait faire. <b>Pas de fonctionnalités compliquées, d\'autorisations inutiles et pas de publicités !</b>Que vous organisiez des événements uniques ou récurrents, des anniversaires, des réunions professionnelles, des rendez-vous ou quoi que ce soit d\'autre, Agenda simple Pro vous permet de <b>faciliter votre organisation</b>. Avec une incroyable variété d\'<b>options de personnalisation</b>, vous pouvez personnaliser les rappels d\'événements, les sons de notification, les widgets de calendrier et l\'apparence de l\'application. Les vues quotidiennes, hebdomadaires et mensuelles font de la vérification de vos évènements à venir et rendez-vous un jeu d\'enfant. Vous pouvez même tout afficher sous la forme d\'une simple liste d\'événements plutôt que d\'une grille, afin de <b> savoir exactement ce qui se prépare dans votre vie et à quel moment. </b> ---------------------------------------------------------- <b>Agenda simple Pro - Caractéristiques &amp; Avantages</b> ---------------------------------------------------------- ✔️ Pas de publicités ou fenêtres contextuelles ennuyeuses ✔️ Pas besoin d\'accès à Internet, vous donnant plus de sécurité ✔️ Seulement le strict minimum de permissions requises ✔️ Accent sur la simplicité - fait ce qu\'un agenda doit faire ! ✔️ Open source ✔️ Thèmes entièrement personnalisables &amp; widgets d\'agenda / événements ✔️ Traduit en 29 langues ✔️ Exportation des paramètres vers des fichiers .txt pour les importer sur un autre appareil ✔️ Prise en charge de la synchronisation du calendrier CalDAV pour synchroniser les événements entre les appareils ✔️ Vues quotidiennes, hebdomadaires, mensuelles, annuelles &amp; des événements sur le calendrier ✔️ Prise en charge de l\'exportation et de l\'importation d\'événements via des fichiers .ics ✔️ Définit plusieurs rappels d\'événements, personnalise le son et la vibration des rappels d\'événements ✔️ Option de répétition pour les rappels ✔️ Ajoute facilement des vacances, des anniversaires &amp; rendez-vous ✔️ Personnalise les événements - heure de début, durée, rappels, etc. ✔️ Ajoutez des participants à chaque événement ✔️ Utilisez-le comme agenda personnel ou professionnel ✔️ Choisissez entre les rappels &amp; notifications par courriel pour vous avertir d\'un événement TELECHARGEZ AGENDA SIMPLE PRO - L\'AGENDA SIMPLE HORS-LIGNE SANS PUBLICITÉ ! <b>Voyez la suite complète de Simple Tools ici:</b> https://www.simplemobiletools.com <b>Site web indépendant d\'Agenda simple Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
