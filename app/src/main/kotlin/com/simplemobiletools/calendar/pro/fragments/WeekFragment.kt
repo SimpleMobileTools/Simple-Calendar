@@ -429,7 +429,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         addEvents(currEvents)
     }
 
-    @SuppressLint("NewApi")
     private fun addEvents(events: ArrayList<Event>) {
         initGrid()
         allDayHolders.clear()
@@ -483,9 +482,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } while (currentDayCode.toInt() <= endDayCode.toInt())
         }
 
-        eventTimeRanges.forEach { daycode, eventDayList ->
+        for ((_, eventDayList) in eventTimeRanges) {
             val eventsCollisionChecked = ArrayList<Long>()
-            eventDayList.forEach { eventId, eventWeeklyView ->
+            for ((eventId, eventWeeklyView) in eventDayList) {
                 if (eventWeeklyView.slot == 0) {
                     eventWeeklyView.slot = 1
                     eventWeeklyView.slot_max = 1
@@ -493,7 +492,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 eventsCollisionChecked.add(eventId)
                 val eventWeeklyViewsToCheck = eventDayList.filter { !eventsCollisionChecked.contains(it.key) }
-                eventWeeklyViewsToCheck.forEach { toCheckId, eventWeeklyViewToCheck ->
+                for ((toCheckId, eventWeeklyViewToCheck) in eventWeeklyViewsToCheck) {
                     val areTouching = eventWeeklyView.range.touch(eventWeeklyViewToCheck.range)
                     val doHaveCommonMinutes = if (areTouching) {
                         eventWeeklyView.range.upper > eventWeeklyViewToCheck.range.lower || (eventWeeklyView.range.lower == eventWeeklyView.range.upper &&
@@ -507,7 +506,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             val nextSlot = eventWeeklyView.slot_max + 1
                             val slotRange = Array(eventWeeklyView.slot_max) { it + 1 }
                             val collisionEventWeeklyViews = eventDayList.filter { eventWeeklyView.collisions.contains(it.key) }
-                            collisionEventWeeklyViews.forEach { collision_id, collisionEventWeeklyView ->
+                            for ((_, collisionEventWeeklyView) in collisionEventWeeklyViews) {
                                 if (collisionEventWeeklyView.range.touch(eventWeeklyViewToCheck.range)) {
                                     slotRange[collisionEventWeeklyView.slot - 1] = nextSlot
                                 }
@@ -518,7 +517,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             if (slot == nextSlot) {
                                 eventWeeklyViewToCheck.slot_max = nextSlot
                                 eventWeeklyView.slot_max = nextSlot
-                                collisionEventWeeklyViews.forEach { collision_id, collisionEventWeeklyView ->
+                                for ((_, collisionEventWeeklyView) in collisionEventWeeklyViews) {
                                     collisionEventWeeklyView.slot_max++
                                 }
                             } else {
