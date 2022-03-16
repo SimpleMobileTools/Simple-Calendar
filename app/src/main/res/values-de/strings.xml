@@ -36,16 +36,16 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-    <string name="saving_filtered_out">Speichern… Aber der ausgewählte Ereignistyp wird im oberen Menü - Filter herausgefiltert</string>
+    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü - Filter herausgefiltert</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Aufgabe</string>
+    <string name="tasks">Aufgaben</string>
+    <string name="edit_task">Aufgabe bearbeiten</string>
+    <string name="new_task">Neue Aufgabe</string>
+    <string name="create_new_task">Eine neue Aufgabe erstellen</string>
+    <string name="duplicate_task">Aufgabe duplizieren</string>
+    <string name="mark_completed">Als abgeschlossen markieren</string>
+    <string name="mark_incomplete">Als unvollständig markieren</string>
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
     <string name="no_repetition">Keine Wiederholung</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
-    <string name="selection_contains_repetition">Die Auswahl enthält Termine mit Wiederholungen</string>
+    <string name="selection_contains_repetition">Die Auswahl enthält wiederkehrende Termine</string>
     <string name="delete_one_only">Nur die ausgewählte Wiederholung löschen</string>
     <string name="delete_future_occurrences">Diese und zukünftige Wiederholungen löschen</string>
     <string name="delete_all_occurrences">Alle Wiederholungen löschen</string>
@@ -74,11 +74,11 @@
     <string name="repeat_on">Wiederholen</string>
     <string name="every_day">Täglich</string>
     <string name="selected_days">An ausgewählten Tagen</string>
-    <string name="the_same_day">Der gleiche Tag</string>
-    <string name="the_last_day">Der letzte Tag</string>
-    <string name="repeat_on_the_same_day_monthly">Am gleichen Tag jeden Monats wiederholen</string>
+    <string name="the_same_day">Am selben Tag</string>
+    <string name="the_last_day">Am letzten Tag</string>
+    <string name="repeat_on_the_same_day_monthly">Am gleichen Tag jedes Monats wiederholen</string>
     <string name="repeat_on_the_last_day_monthly">Am letzten Tag des Monats wiederholen</string>
-    <string name="repeat_on_the_same_day_yearly">Am selben Tag jeden Jahres wiederholen</string>
+    <string name="repeat_on_the_same_day_yearly">Am selben Tag jedes Jahres wiederholen</string>
     <string name="repeat_every_m">Wiederhole jeden</string>
     <string name="every_m">Jeden</string>
     <string name="first_m">ersten</string>
@@ -124,14 +124,14 @@
     <string name="maybe_going">Vielleicht</string>
     <string name="invited">Eingeladen</string>
     <!-- Time zones -->
-    <string name="enter_a_country">Region, Stadt oder Zeitversatz eingeben</string>
+    <string name="enter_a_country">Länder- oder Zeitzone eingeben</string>
     <!-- Export / Import -->
     <string name="import_events">Termine importieren</string>
     <string name="export_events">Termine exportieren</string>
     <string name="import_events_from_ics">Termine aus ics-Datei importieren</string>
     <string name="export_events_to_ics">Termine als ics-Datei exportieren</string>
     <string name="default_event_type">Standardtermintyp</string>
-    <string name="export_past_events_too">Vergangene Termine auch exportieren</string>
+    <string name="export_past_events_too">Auch vergangene Termine exportieren</string>
     <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
     <string name="ignore_event_types">Ereignistypen in der Datei ignorieren, immer den Standardtyp verwenden</string>
@@ -151,7 +151,7 @@
     <string name="regular_event">Regulärer Termin</string>
     <string name="cannot_delete_default_type">Standardtermintyp kann nicht gelöscht werden</string>
     <string name="select_event_type">Wähle einen Termintyp aus</string>
-    <string name="move_events_into_default">Betroffene Termine in den Standardtermintyp verschieben</string>
+    <string name="move_events_into_default">Betroffene Termine in den Standardtermintyp ändern</string>
     <string name="remove_affected_events">Betroffene Termine dauerhaft löschen</string>
     <string name="unsync_caldav_calendar">Um einen CalDAV-Kalender zu entfernen, musst du ihn desynchronisieren</string>
     <!-- Holidays -->
@@ -167,7 +167,7 @@
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
     <string name="midnight_spanning">Ereignisse, die sich über Mitternacht erstrecken, in der oberen Leiste anzeigen</string>
-    <string name="allow_customizing_day_count">Erlaube den Tageszähler anzupassen</string>
+    <string name="allow_customizing_day_count">Anpassen der Anzahl der Tage zulassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
@@ -177,8 +177,8 @@
     <string name="caldav_sync">CalDAV-Synchronisierung</string>
     <string name="event_lists">Terminlisten</string>
     <string name="display_past_events">Vergangene Termine anzeigen</string>
-    <string name="replace_description_with_location">Terminbeschreibung mit Ort ersetzen</string>
-    <string name="display_description_or_location">Beschreibung oder Standort anzeigen</string>
+    <string name="replace_description_with_location">Terminbeschreibung durch Ort ersetzen</string>
+    <string name="display_description_or_location">Beschreibung oder Ort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
     <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
@@ -205,9 +205,9 @@
     <string name="other_time">Andere Zeit</string>
     <string name="highlight_weekends">Wochenenden in einigen Ansichten hervorheben</string>
     <string name="highlight_weekends_color">Farbe der hervorgehobenen Wochenenden</string>
-    <string name="allow_changing_time_zones">Zeitzone kann geändert werden</string>
+    <string name="allow_changing_time_zones">Zeitzone des Termins kann geändert werden</string>
     <string name="manage_quick_filter_event_types">Termintypen zur schnellen Filterung verwalten</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Aufgabenerstellung zulassen</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>
@@ -263,12 +263,12 @@
     <!-- FAQ -->
     <string name="faq_1_title">Wie kann ich Feiertage löschen, die über „Feiertage hinzufügen“ importiert wurden\?</string>
     <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp „Feiertage“ deklariert. Du kannst in den Einstellungen -&gt; Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
-    <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV unterstützende Dienste synchronisieren?</string>
-    <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate App, die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google Kalender synchronisieren willst, kann die offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter, wie z. B. DAVx5.</string>
+    <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV-unterstützende Dienste synchronisieren\?</string>
+    <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate Anwendung, die die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google-Kalender synchronisieren willst, kann deren offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter wie z. B. DAVx5.</string>
     <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun?</string>
-    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen, die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
+    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android-) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
     <string name="faq_4_title">Unterstützt die Anwendung Zeitzonen\?</string>
-    <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
+    <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können, muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <string name="faq_5_title">Die Anwendung zeigt keine Benachrichtigungen an, woran liegt das\?</string>
     <string name="faq_5_text">Überprüfen Sie den Akku Ihres Geräts und die Einstellungen für Benachrichtigungen, um sicherzustellen, dass die Erinnerungen nicht blockiert werden oder die Anwendung im Hintergrund beendet wird. Vielleicht möchten Sie auch einen Blick auf &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; werfen, dort finden Sie einige nützliche Tipps.</string>
     <string name="faq_6_title">Wie kann ich einen bestehenden Ereignistyp ändern oder löschen\?</string>
@@ -278,50 +278,7 @@
     <string name="app_title">Schlichter Kalender Pro – Termine und Erinnerungen</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Der beste Kalender zum Organisieren der Ereignisse während des ganzen Tages</string>
-    <string name="app_long_description">
-        Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b>
-
-        Ob einzelne oder sich wiederholende Termine, ob Geburtstage, Jahrestage, Meetings oder andere Termine organisiert werden sollen, mit Simple Calendar Pro ist das <b>Organisieren von Terminen ein Kinderspiel</b>. Eine Vielzahl von  <b>Anpassungsmöglichkeiten</b> erlaubt es dir, Terminerinnerungen (Benachrichtigungen und Töne), Widgets und sogar das Aussehen der App farblich so zu gestalten, wie es dir gefällt.
-
-        Tages- Wochen- und Monatsansichten machen es leicht, anstehende Termine und Verabredungen im Auge zu behalten. Wer möchte, kann sich alle Termine auch einfach als Liste anzeigen lassen, anstatt in einer der Kalenderansichten. Auf diese Weise hast du alle Termine immer im Blick und <b>du weißt genau, was wann in deinem Leben passiert.</b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Funktionen &amp; Optionen</b>
-        ----------------------------------------------------------
-
-        ✔️ Keine Werbung, keine nervigen Popups
-        ✔️ Keine Internetverbindung nötig, dadurch mehr Privatsphäre &amp; erhöhte Sicherheit
-        ✔️ Nur absolut notwendige Berechtigungen erforderlich
-        ✔️ Schlichtheit wird groß geschrieben – der Kalender bietet, was man von einem Kalender erwartet!
-        ✔️ Open Source
-        ✔️ Vollständig anpassbar: Themes, Kalender und Widgets
-        ✔️ In 29 Sprachen
-        ✔️ Backup von geänderten Einstellungen in .txt-Dateien möglich, um sie auf anderen Geräten importieren zu können
-        ✔️ Unterstützung von CalDAV Calendar Sync, zur Synchronisation von Terminen zwischen verschiedenen Geräten
-        ✔️ Tages-, Wochen-, Monats-, Jahres- &amp; Detailansicht von Terminen im Kalender
-        ✔️ Import/Export-Unterstützung im .ics-Format
-        ✔️ Festlegen mehrerer Terminerinnerungen, Anpassung von Erinnerungston und -vibration
-        ✔️ Schlummeroption für Terminerinnerungen
-        ✔️ Unkompliziertes Hinzufügen von Feiertagen, Geburtstagen, Jahrestagen &amp; Terminen
-        ✔️ Anpassung von Terminen – Anfangszeit, Dauer, Erinnerungen usw.
-        ✔️ Einladung von Teilnehmern je Termin
-        ✔️ Kann als privater oder geschäftlicher Kalender genutzt werdeb
-        ✔️ Unterschiedliche Erinnerungsarten einschließlich E-Mail-Benachrichtigungen
-
-        INSTALLIERE SIMPLE CALENDAR PRO – DEN SCHLICHTEN OFFLINE KALENDER OHNE WERBUNG!
-
-        <b>Einen Überblick über die komplette Suite von Simple Tools gibt es hier:</b>
-        https://www.simplemobiletools.com
-
-        <b>Eigene Website von Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    <string name="app_long_description"> Simple Calendar Pro ist ein vollständig anpassbarer Offline-Kalender, der genau das bietet, was man von einem Kalender erwartet. <b>Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!</b> Ob einzelne oder sich wiederholende Termine, ob Geburtstage, Jahrestage, Meetings oder andere Termine organisiert werden sollen, mit Simple Calendar Pro ist das <b>Organisieren von Terminen ein Kinderspiel</b>. Eine Vielzahl von <b>Anpassungsmöglichkeiten</b> erlaubt es dir, Terminerinnerungen (Benachrichtigungen und Töne), Widgets und sogar das Aussehen der App farblich so zu gestalten, wie es dir gefällt. Tages-, Wochen- und Monatsansichten machen es leicht, anstehende Termine und Verabredungen im Auge zu behalten. Wer möchte, kann sich alle Termine auch einfach als Liste anzeigen lassen anstatt in einer der Kalenderansichten. Auf diese Weise hast du alle Termine immer im Blick und <b>du weißt genau, was wann in deinem Leben passiert.</b> ---------------------------------------------------------- <b>Simple Calendar Pro – Funktionen &amp; Optionen</b> ---------------------------------------------------------- ✔️ Keine Werbung, keine nervigen Popups ✔️ Keine Internetverbindung nötig, dadurch mehr Privatsphäre &amp; erhöhte Sicherheit ✔️ Nur absolut notwendige Berechtigungen erforderlich ✔️ Schlichtheit wird groß geschrieben – der Kalender bietet, was man von einem Kalender erwartet! ✔️ Open Source ✔️ Vollständig anpassbar: Themes, Kalender und Widgets ✔️ In 29 Sprachen ✔️ Backup von geänderten Einstellungen in .txt-Dateien möglich, um sie auf anderen Geräten importieren zu können ✔️ Unterstützung von CalDAV Calendar Sync, zur Synchronisation von Terminen zwischen verschiedenen Geräten ✔️ Tages-, Wochen-, Monats-, Jahres- &amp; Detailansicht von Terminen im Kalender ✔️ Import/Export-Unterstützung im .ics-Format ✔️ Festlegen mehrerer Terminerinnerungen, Anpassung von Erinnerungston und -vibration ✔️ Schlummeroption für Terminerinnerungen ✔️ Unkompliziertes Hinzufügen von Feiertagen, Geburtstagen, Jahrestagen &amp; Terminen ✔️ Anpassung von Terminen – Anfangszeit, Dauer, Erinnerungen usw. ✔️ Einladung von Teilnehmern je Termin ✔️ Kann als privater oder geschäftlicher Kalender genutzt werden ✔️ Unterschiedliche Erinnerungsarten einschließlich E-Mail-Benachrichtigungen INSTALLIERE SIMPLE CALENDAR PRO – DEN SCHLICHTEN OFFLINE KALENDER OHNE WERBUNG! <b>Einen Überblick über die komplette Suite von Simple Tools gibt es hier:</b> https://www.simplemobiletools.com <b>Eigene Website von Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

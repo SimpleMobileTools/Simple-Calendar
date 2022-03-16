@@ -130,11 +130,11 @@
     <string name="export_events">Etkinlikleri dışa aktar</string>
     <string name="import_events_from_ics">Etkinlikleri .ics dosyasından içe aktar</string>
     <string name="export_events_to_ics">Etkinlikleri .ics dosyasına aktar</string>
-    <string name="default_event_type">Varsayılan etkinlik türü</string>
+    <string name="default_event_type">Öntanımlı etkinlik türü</string>
     <string name="export_past_events_too">Geçmiş etkinlikleri de dışa aktar</string>
     <string name="include_event_types">Etkinlik türlerini ekle</string>
     <string name="filename_without_ics">Dosya adı (.ics olmadan)</string>
-    <string name="ignore_event_types">Dosyadaki etkinlik türlerini yoksay, her zaman varsayılanı kullan</string>
+    <string name="ignore_event_types">Dosyadaki etkinlik türlerini yoksay, her zaman öntanımlıyı kullan</string>
     <!-- Event details -->
     <string name="location">Konum</string>
     <string name="description">Açıklama</string>
@@ -149,11 +149,11 @@
     <string name="type_already_exists">Bu başlığı taşıyan bir tür zaten var</string>
     <string name="color">Renk</string>
     <string name="regular_event">Düzenli etkinlik</string>
-    <string name="cannot_delete_default_type">Varsayılan etkinlik türü silinemez</string>
+    <string name="cannot_delete_default_type">Öntanımlı etkinlik türü silinemez</string>
     <string name="select_event_type">Bir etkinlik türü seçin</string>
-    <string name="move_events_into_default">Etkilenen etkinlikleri varsayılan etkinlik türüne taşı</string>
+    <string name="move_events_into_default">Etkilenen etkinlikleri öntanımlı etkinlik türüne taşı</string>
     <string name="remove_affected_events">Etkilenen etkinlikleri kalıcı olarak kaldır</string>
-    <string name="unsync_caldav_calendar">CalDAV takvimini kaldırmak için, senkronizasyonu kaldırmalısınız</string>
+    <string name="unsync_caldav_calendar">CalDAV takvimini kaldırmak için, eşzamanlamasını kaldırmalısınız</string>
     <!-- Holidays -->
     <string name="holidays">Tatiller</string>
     <string name="add_holidays">Tatil ekle</string>
@@ -174,7 +174,7 @@
     <string name="no_ringtone_picker">Zil sesi ayarlayabilen uygulama yok</string>
     <string name="no_ringtone_selected">Hiçbiri</string>
     <string name="day_end_before_start">Gün başladığından daha erken bitemez</string>
-    <string name="caldav_sync">CalDAV senkronizasyonu</string>
+    <string name="caldav_sync">CalDAV eşzamanlaması</string>
     <string name="event_lists">Etkinlik listeleri</string>
     <string name="display_past_events">Geçmişten gelen etkinlikleri görüntüle</string>
     <string name="replace_description_with_location">Etkinlik açıklamasını konumla değiştir</string>
@@ -190,17 +190,17 @@
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">Bildirim</string>
     <string name="ring_stream">Zil sesi</string>
-    <string name="use_last_event_reminders">Yeni etkinlik için son etkinlikler\' hatırlatıcılarını varsayılan olarak kullan</string>
-    <string name="default_reminder_1">Varsayılan hatırlatıcı 1</string>
-    <string name="default_reminder_2">Varsayılan hatırlatıcı 2</string>
-    <string name="default_reminder_3">Varsayılan hatırlatıcı 3</string>
+    <string name="use_last_event_reminders">Yeni etkinlik için son etkinliklerin hatırlatıcılarını öntanımlı olarak kullan</string>
+    <string name="default_reminder_1">Öntanımlı hatırlatıcı 1</string>
+    <string name="default_reminder_2">Öntanımlı hatırlatıcı 2</string>
+    <string name="default_reminder_3">Öntanımlı hatırlatıcı 3</string>
     <string name="view_to_open_from_widget">Etkinlik listesi widget\'ından açılacak görünüm</string>
     <string name="last_view">Son görünüm</string>
     <string name="new_events">Yeni etkinlikler</string>
-    <string name="default_start_time">Varsayılan başlangıç zamanı</string>
+    <string name="default_start_time">Öntanımlı başlangıç zamanı</string>
     <string name="next_full_hour">Gelecek tam saat</string>
     <string name="current_time">Geçerli saat</string>
-    <string name="default_duration">Varsayılan süre</string>
+    <string name="default_duration">Öntanımlı süre</string>
     <string name="last_used_one">Son kullanılan</string>
     <string name="other_time">Başka zaman</string>
     <string name="highlight_weekends">Bazı görünümlerde hafta sonlarını vurgula</string>
@@ -210,19 +210,19 @@
     <string name="allow_creating_tasks">Görev oluşturmaya izin ver</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Senkronize edilecek takvimleri seç</string>
-    <string name="manage_synced_calendars">Senkronize edilmiş takvimleri yönet</string>
+    <string name="select_caldav_calendars">Eşzamanlanacak takvimleri seç</string>
+    <string name="manage_synced_calendars">Eşzamanlanan takvimleri yönet</string>
     <string name="store_locally_only">Yalnızca yerel olarak depola</string>
     <string name="refresh_caldav_calendars">CalDAV takvimlerini yenile</string>
     <string name="refreshing">Yenileniyor…</string>
     <string name="refreshing_complete">Yenileme tamamlandı</string>
     <string name="editing_calendar_failed">Takvim düzenlenme başarısız</string>
-    <string name="syncing">Senkronize ediliyor…</string>
-    <string name="synchronization_completed">Senkronizasyon tamamlandı</string>
+    <string name="syncing">Eşzamanlanıyor…</string>
+    <string name="synchronization_completed">Eşzamanlama tamamlandı</string>
     <string name="select_a_different_caldav_color">Farklı bir renk seçin (yalnızca yerel olarak uygulanabilir)</string>
     <string name="insufficient_permissions">Seçili takvime yazmanıza izin verilmiyor</string>
-    <string name="caldav_event_not_found">Etkinlik bulunamadı. Lütfen uygulama ayarlarından uygun takvim için CalDAV senkronizasyonunu etkinleştirin.</string>
-    <string name="no_synchronized_calendars">Senkronize edilebilir takvim bulunamadı</string>
+    <string name="caldav_event_not_found">Etkinlik bulunamadı. Lütfen uygulama ayarlarından uygun takvim için CalDAV eşzamanlamasını etkinleştirin.</string>
+    <string name="no_synchronized_calendars">Eşzamanlanabilir takvim bulunamadı</string>
     <string name="status_free">Serbest</string>
     <string name="status_busy">Meşgul</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
@@ -263,14 +263,12 @@
     <!-- FAQ -->
     <string name="faq_1_title">\"Tatil ekle\" düğmesiyle içe aktarılan tatilleri nasıl kaldırabilirim?</string>
     <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -&gt; Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
-    <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle senkronize edebilir miyim?</string>
-    <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV senkronizasyonu\" seçeneğini işaretleyin ve senkronize etmek istediğiniz takvimleri seçin. Bununla birlikte, cihaz ve sunucular arasındaki senkronizasyonu ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır.
-        Bu durumda bir Google takvimini senkronize etmek istiyorsanız, resmi Takvim uygulaması işi yapar. Diğer takvimler için, DAVx5 gibi üçüncü taraf senkronizasyon adaptörüne ihtiyacınız olacaktır.</string>
+    <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle eşzamanlayabilir miyim\?</string>
+    <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV eşzamanlaması\" seçeneğini işaretleyin ve eşzamanlamak istediğiniz takvimleri seçin. Bununla birlikte, aygıt ve sunucular arasındaki eşzamanlamayı ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır. Bu durumda bir Google takvimini eşzamanlamak istiyorsanız, resmi Takvim uygulaması bunu yapacaktır. Diğer takvimler için, DAVx5 gibi üçüncü taraf eşzamanlama uygulamasına ihtiyacınız olacaktır.</string>
     <string name="faq_3_title">Görsel hatırlatıcıları görüyorum ama ses duymuyorum. Ne yapabilirim?</string>
-    <string name="faq_3_text">Sadece gerçek hatırlatıcıyı görüntülemekle kalmaz, aynı zamanda ses çalmak da sistemden büyük ölçüde etkilenir. Herhangi bir ses duyamıyorsanız, uygulama ayarlarına girmeyi,
-        \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı kontrol edin.</string>
+    <string name="faq_3_text">Yalnızca gerçek hatırlatıcıyı görüntülemekle kalmaz, aynı zamanda ses çalmak da sistemden büyük ölçüde etkilenir. Herhangi bir ses duyamıyorsanız, uygulama ayarlarına girmeyi, \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı gözden geçirin.</string>
     <string name="faq_4_title">Uygulama saat dilimlerini destekliyor mu?</string>
-    <string name="faq_4_text">Evet, destekliyor. Varsayılan olarak tüm etkinlikler geçerli saat diliminizde oluşturulur. Etkinliklerin saat dilimini değiştirmek istiyorsanız, önce uygulama ayarlarından saat dilimi seçiciyi etkinleştirmeniz, ardından Etkinlik Ayrıntıları ekranından değiştirmeniz gerekir. Çoğu insanın ihtiyacı olmayacağı için varsayılan olarak devre dışıdır.</string>
+    <string name="faq_4_text">Evet, destekliyor. Öntanımlı olarak tüm etkinlikler geçerli saat diliminizde oluşturulur. Etkinliklerin saat dilimini değiştirmek istiyorsanız, önce uygulama ayarlarından saat dilimi seçiciyi etkinleştirmeniz, ardından Etkinlik Ayrıntıları ekranından değiştirmeniz gerekir. Çoğu insanın ihtiyacı olmayacağı için öntanımlı olarak devre dışıdır.</string>
     <string name="faq_5_title">Uygulama hiçbir bildirim göstermiyor, bunun nedeni ne\?</string>
     <string name="faq_5_text">Hatırlatıcıları engelleyen veya arka planda uygulamayı kapatan bir şey yoksa aygıtınızın pilini ve bildirim ayarlarını denetleyin. Ayrıca yararlı ipuçları bulabileceğiniz &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; adresine de göz atmak isteyebilirsiniz.</string>
     <string name="faq_6_title">Mevcut bir etkinlik türünü nasıl değiştirebilir veya silebilirim\?</string>
@@ -280,50 +278,7 @@
     <string name="app_title">Basit Takvim Pro - Etkinlikler ve Hatırlatıcılar</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">2020 takvimi. Herhangi bir gün için planlayıcı/randevu hatırlatıcı programlayın</string>
-    <string name="app_long_description">
-        Basit Takvim Pro, bir takvimin tam olarak yapması gerekeni yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrimdışı bir takvimdir. <b>Karmaşık özellikler, gereksiz izinler ve reklam içermez!</b>
-
-        İster tekli ister tekrarlayan etkinlikler, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka bir şey organize ediyor olun, Basit Takvim Pro <b>düzenli kalmanızı kolaylaştırır</b>. İnanılmaz çeşitli <b>özelleştirme seçenekleri</b> ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget\'larını ve uygulamanın görünümünü özelleştirebilirsiniz.
-
-        Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi &amp; randevularınızı kontrol etmeyi kolaylaştırır. Her şeyi takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece <b> hayatınızda neyin ne zaman geldiğini tam olarak bilirsiniz.</b>
-
-        ----------------------------------------------------------
-        <b>Basit Takvim Pro – Özellikleri &amp; Avantajları</b>
-        ----------------------------------------------------------
-
-        ✔️ Reklam veya rahatsız edici pop-up\'lar yoktur
-        ✔️ İnternet erişimi gerekmez, size daha fazla gizlilik &amp; güvenlik sağlar
-        ✔️ Minimum izin gerekir
-        ✔️ Sadeliğe vurgu - bir takvimin yapması gerekeni yapar!
-        ✔️ Açık kaynak
-        ✔️ Tamamen özelleştirilebilir temalar &amp; takvim / etkinlik widget\'ları
-        ✔️ 29 dile çevrilmiş
-        ✔️ Başka bir cihazda içe aktarmak için ayarları .txt dosyalarına aktarma
-        ✔️ Cihazlar arasında etkinlikleri senkronize etmek için CalDAV takvim senkronizasyonu desteği
-        ✔️ Takvimde günlük, haftalık, aylık, yıllık &amp; etkinlik görünümleri
-        ✔️ Etkinlikleri .ics dosyaları üzerinden dışa &amp; içe aktarma desteği
-        ✔️ Birden çok etkinlik hatırlatıcısı ayarlama, etkinlik hatırlatıcı sesini ve titreşimini özelleştirme
-        ✔️ Hatırlatıcılar için erteleme seçeneği
-        ✔️ Tatilleri, doğum günlerini, yıldönümlerini &amp; randevuları kolayca ekleme
-        ✔️ Etkinlikleri özelleştirme - başlangıç zamanı, süre, hatırlatıcılar vb.
-        ✔️ Her etkinliğe etkinlik katılımcıları ekleme
-        ✔️ Kişisel takvim veya iş takvimi olarak kullanma
-        ✔️ Bir etkinlik hakkında sizi uyarmak için hatırlatıcılar &amp; e-posta bildirimleri arasından seçim yapma
-
-        BASİT TAKVİM PRO\'YU İNDİRİN - REKLAMSIZ BASİT ÇEVRİMDIŞI TAKVİM!
-
-        <b>Basit Araçlar paketinin tamamını buradan inceleyin:</b>
-        https://www.simplemobiletools.com
-
-        <b>Basit Takvim Pro\'nun bağımsız web sitesi:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    <string name="app_long_description"> Basit Takvim Pro, bir takvimin tam olarak yapması gerekeni yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrim dışı bir takvimdir. <b>Karmaşık özellikler, gereksiz izinler ve reklam içermez!</b> İster tek seferlik ister yinelenen etkinlikler, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka bir şey organize ediyor olun, Basit Takvim Pro <b>düzenli kalmanızı kolaylaştırır</b>. İnanılmaz çeşitli <b>özelleştirme seçenekleri</b> ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget\'larını ve uygulamanın görünümünü özelleştirebilirsiniz. Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi &amp; randevularınızı denetlemeyi kolaylaştırır. Her şeyi takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece <b> hayatınızda neyin ne zaman geldiğini tam olarak bilirsiniz.</b> ---------------------------------------------------------- <b>Basit Takvim Pro – Özellikleri &amp; Artıları</b> ---------------------------------------------------------- ✔️ Reklam veya rahatsız edici açılır mesajlar yoktur ✔️ İnternet erişimi gerekmez, size daha fazla gizlilik &amp; güvenlik sağlar ✔️ Yalnızca gerekli asgari izinler gerekir ✔️ Sadeliğe vurgu - bir takvimin yapması gerekeni yapar! ✔️ Açık kaynak ✔️ Tamamen özelleştirilebilir temalar &amp; takvim / etkinlik widget\'ları ✔️ 29 dile çevrilmiş ✔️ Başka bir aygıtta içe aktarmak için ayarları .txt dosyalarına aktarma ✔️ Aygıtlar arasında etkinlikleri eşzamanlamak için CalDAV takvim eşzamanlaması desteği ✔️ Takvimde günlük, haftalık, aylık, yıllık &amp; etkinlik görünümleri ✔️ Etkinlikleri .ics dosyaları üzerinden dışa &amp; içe aktarma desteği ✔️ Birden çok etkinlik hatırlatıcısı ayarlama, etkinlik hatırlatıcı sesini ve titreşimini özelleştirme ✔️ Hatırlatıcılar için erteleme seçeneği ✔️ Tatilleri, doğum günlerini, yıldönümlerini &amp; randevuları kolayca ekleme ✔️ Etkinlikleri özelleştirme - başlangıç zamanı, süre, hatırlatıcılar vb. ✔️ Her etkinliğe etkinlik katılımcıları ekleme ✔️ Kişisel takvim veya iş takvimi olarak kullanma ✔️ Bir etkinlik hakkında sizi uyarmak için hatırlatıcılar &amp; e-posta bildirimleri arasından seçim yapma BASİT TAKVİM PRO\'YU İNDİRİN - REKLAMSIZ BASİT ÇEVRİM DIŞI TAKVİM! <b>Basit Araçlar paketinin tamamını buradan inceleyin:</b> https://www.simplemobiletools.com <b>Basit Takvim Pro\'nun bağımsız web sitesi:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

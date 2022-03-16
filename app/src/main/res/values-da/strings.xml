@@ -32,14 +32,14 @@
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Opgave</string>
+    <string name="tasks">Opgaver</string>
+    <string name="edit_task">Rediger opgave</string>
+    <string name="new_task">Ny opgave</string>
+    <string name="create_new_task">Opret en ny opgave</string>
+    <string name="duplicate_task">Kopier opgave</string>
+    <string name="mark_completed">Marker som afsluttet</string>
+    <string name="mark_incomplete">Marker som uafsluttet</string>
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>
     <string name="no_repetition">Gentages ikke</string>
@@ -168,7 +168,7 @@
     <string name="no_ringtone_picker">Der blev ikke fundet en app til indstilling af ringetone</string>
     <string name="no_ringtone_selected">Ingen</string>
     <string name="day_end_before_start">Dagen skal starte inden den slutter!</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">CalDAV-synk</string>
     <string name="event_lists">Begivenhedsliste</string>
     <string name="display_past_events">Vis overståede begivenheder</string>
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
@@ -204,7 +204,7 @@
     <string name="allow_creating_tasks">Tillad oprettelse af opgaver</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Vælg kalendere til sync</string>
+    <string name="select_caldav_calendars">Vælg kalendere til synk</string>
     <string name="manage_synced_calendars">Håndter synkronisering af kalendere</string>
     <string name="store_locally_only">Gem kun lokalt</string>
     <string name="refresh_caldav_calendars">Opdater CalDAV-kalendere</string>
@@ -258,7 +258,7 @@
     <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -&gt; Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
-    <string name="faq_2_text">Ja, klik på \"CalDAV sync\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
+    <string name="faq_2_text">Ja, klik på \"CalDAV synk\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
         Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
     <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
@@ -272,7 +272,7 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender Pro - Begivenheder &amp; påmindelser</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simpel mobil 2020-kalender. Planlægningsværktøj &amp; aftalepåmindelser for hver dag.</string>
+    <string name="app_short_description">Simpel mobil-kalender. Planlægningsværktøj &amp; aftalepåmindelser for hver dag.</string>
     <string name="app_long_description">
         Simpel kalender Pro kan tilpasses helt efter din smag, offline kalender er designet til at gøre præcis hvad en kalender skal kunne. <b>Ingen indviklede funktioner, ingen overflødige tilladelser og ingen reklamer!</b>
 
@@ -292,7 +292,7 @@
         ✔️ Fuldt tilpasningsmulige layouts &amp; kalender/begivenheds-widgets
         ✔️ Oversat til 29 sprog
         ✔️ Eksporter indstillinger til en txt-fil og importer den til en anden enhed
-        ✔️ CalDAV kalender-sync understøttes til synkronisering af begivenheder mellem enheder
+        ✔️ CalDAV kalender-synk understøttes til synkronisering af begivenheder mellem enheder
         ✔️ Daglig, ugentlig, månedlig, årlig &amp; begivenhedsvisning i kalenderen
         ✔️ Understøtter eksport &amp; import af begivenheder via ics-filer
         ✔️ Opsæt flere påmindelser, tilpas påmindelsers lyd og vibration
