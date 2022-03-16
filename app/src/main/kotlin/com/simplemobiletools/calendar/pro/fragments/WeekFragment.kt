@@ -568,7 +568,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                         week_event_label.apply {
                             setTextColor(textColor)
-                            maxLines = if (event.isTask()) 1 else 3
+                            maxLines = if (event.isTask() || event.startTS == event.endTS) {
+                                1
+                            } else {
+                                3
+                            }
+
                             text = event.title
                             checkViewStrikeThrough(event.isTaskCompleted())
                             contentDescription = text
