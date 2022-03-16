@@ -75,6 +75,8 @@ class EventsHelper(val context: Context) {
 
     fun getEventTypeIdWithTitle(title: String) = eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
 
+    private fun getLocalEventTypeIdWithTitle(title: String) = eventTypesDB.getLocalEventTypeIdWithTitle(title) ?: -1L
+
     fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
 
     fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean) {
@@ -269,7 +271,7 @@ class EventsHelper(val context: Context) {
     }
 
     fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
-        val birthDayEventId = getBirthdaysEventTypeId(createIfNotExists = false)
+        val birthDayEventId = getLocalBirthdaysEventTypeId(createIfNotExists = false)
         val anniversaryEventId = getAnniversariesEventTypeId(createIfNotExists = false)
 
         var events = ArrayList<Event>()
@@ -334,9 +336,9 @@ class EventsHelper(val context: Context) {
         callback(events)
     }
 
-    fun getBirthdaysEventTypeId(createIfNotExists: Boolean = true): Long {
+    fun getLocalBirthdaysEventTypeId(createIfNotExists: Boolean = true): Long {
         val birthdays = context.getString(R.string.birthdays)
-        var eventTypeId = getEventTypeIdWithTitle(birthdays)
+        var eventTypeId = getLocalEventTypeIdWithTitle(birthdays)
         if (eventTypeId == -1L && createIfNotExists) {
             val eventType = EventType(null, birthdays, context.resources.getColor(R.color.default_birthdays_color))
             eventTypeId = insertOrUpdateEventTypeSync(eventType)
@@ -346,7 +348,7 @@ class EventsHelper(val context: Context) {
 
     fun getAnniversariesEventTypeId(createIfNotExists: Boolean = true): Long {
         val anniversaries = context.getString(R.string.anniversaries)
-        var eventTypeId = getEventTypeIdWithTitle(anniversaries)
+        var eventTypeId = getLocalEventTypeIdWithTitle(anniversaries)
         if (eventTypeId == -1L && createIfNotExists) {
             val eventType = EventType(null, anniversaries, context.resources.getColor(R.color.default_anniversaries_color))
             eventTypeId = insertOrUpdateEventTypeSync(eventType)

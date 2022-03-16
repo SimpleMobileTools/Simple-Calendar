@@ -727,7 +727,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             importIDs[it.importId] = it.startTS
         }
 
-        val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
+        val eventTypeId = if (birthdays) eventsHelper.getLocalBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
         val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
         queryCursor(uri, projection, selection, selectionArgs, showErrors = true) { cursor ->
@@ -798,7 +798,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         try {
-            val eventTypeId = if (birthdays) eventsHelper.getBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
+            val eventTypeId = if (birthdays) eventsHelper.getLocalBirthdaysEventTypeId() else eventsHelper.getAnniversariesEventTypeId()
             val source = if (birthdays) SOURCE_CONTACT_BIRTHDAY else SOURCE_CONTACT_ANNIVERSARY
 
             val existingEvents = if (birthdays) eventsDB.getBirthdays() else eventsDB.getAnniversaries()
