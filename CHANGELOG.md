@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 6.17.4 *(2022-03-16)*
+----------------------------
+
+ * Added some weekly view related improvements
+ * Added a Privacy policy
+ * Fixed some UK holidays
+ * Fixed a glitch with some duplicate events
+ * Added some translation, stability and UX improvements
+
 Version 6.17.3 *(2022-02-28)*
 ----------------------------
 

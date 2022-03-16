@@ -1,0 +1,5 @@
+ * Added some weekly view related improvements
+ * Added a Privacy policy
+ * Fixed some UK holidays
+ * Fixed a glitch with some duplicate events
+ * Added some translation, stability and UX improvements
