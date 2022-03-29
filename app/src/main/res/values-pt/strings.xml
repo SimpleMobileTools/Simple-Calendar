@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Calendário Anturio</string>
     <string name="app_launcher_name">Calendário</string>
     <string name="change_view">Mudar vista</string>
     <string name="daily_view">Vista diária</string>
@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Está para breve um evento</string>
     <string name="saving_filtered_out">A guardar… Mas o tipo de evento seleccionado ficou retido no filtro em Menu - Filtrar</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tarefa</string>
+    <string name="tasks">Tarefas</string>
+    <string name="edit_task">Edit tarefas</string>
+    <string name="new_task">Nova tarefa</string>
+    <string name="create_new_task">Criar uma nova tarefa </string>
+    <string name="duplicate_task">Duplicar Tarefa</string>
+    <string name="mark_completed">Marca concluída</string>
+    <string name="mark_incomplete">Marca Incompleta</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
     <string name="no_repetition">Sem repetição</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Cor de destaque dos fins de semana</string>
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permitir criação de tarefas</string>
     <!-- CalDAV sync -->
     <string name="caldav">\'CalDAV\'</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
