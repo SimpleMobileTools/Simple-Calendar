@@ -38,8 +38,8 @@
     <string name="new_task">Nový úkol</string>
     <string name="create_new_task">Vytvořit nový úkol</string>
     <string name="duplicate_task">Zkopírovat úkol</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="mark_completed">Označit jako dokončený</string>
+    <string name="mark_incomplete">Označit jako nedokončený</string>
     <!-- Event Repetition -->
     <string name="repetition">Opakování</string>
     <string name="no_repetition">Neopakuje se</string>
@@ -160,7 +160,7 @@
     <string name="manage_event_types">Správa typů událostí</string>
     <string name="start_day_at">Počátek dne</string>
     <string name="end_day_at">Konec dne</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Události, které probíhají přes půlnoc, zobrazit na horním panelu</string>
     <string name="allow_customizing_day_count">Umožnit přizpůsobení počtu dnů</string>
     <string name="week_numbers">Zobrazovat čísla týdnů</string>
     <string name="vibrate">Vibrovat při připomínce</string>
@@ -239,20 +239,23 @@
     <string name="sample_title_5">Čas na kávu</string>
     <!-- List widget config -->
     <string name="show_events_happening">Zobrazit události, které se konají:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="within_the_next_one_year">v průběhu 1 roku</string>
+    <string name="today_only">pouze dnes</string>
+    <string name="within_the_next">v průběhu…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">v průběhu %d dne</item>
+        <item quantity="few">v průběhu %d dnů</item>
+        <item quantity="other">v průběhu %d dnů</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">v průběhu %d týdne</item>
+        <item quantity="few">v průběhu %d týdnů</item>
+        <item quantity="other">v průběhu %d týdnů</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">v průběhu %d měsíce</item>
+        <item quantity="few">v průběhu %d měsíců</item>
+        <item quantity="other">v průběhu %d měsíců</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Jak mohu odstranit svátky importované přes tlačítko \"Přidat svátky\"?</string>
@@ -267,10 +270,10 @@
     <string name="faq_4_title">Podporuje aplikace časová pásma?</string>
     <string name="faq_4_text">Ano, podporuje. Ve výchozím stavu jsou všechny události vytvářeny ve vašem současném časovém pásmu. Pokud chcete změnit časové pásmo některé události,
         musíte nejdříve povolit úpravy časových pásem v nastavení aplikace, poté jej změníte na obrazovce s detaily události. Ve výchozím nastavení je úprava vypnuta, neboť většina lidí ji nebude potřebovat.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_title">Aplikace nezobrazuje žádná oznámení, proč tomu tak je\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_title">Jak mohu upravit nebo odstranit existující typ události\?</string>
+    <string name="faq_6_text">Obojí lze udělat v Nastavení aplikace - Správa typů událostí. Po klepnutí na zvolený typ události můžete upravit název a barvu. Dlouhým podržením a poté použitím odpadkového koše v horním menu typ události odstraníte.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Jednoduchý kalendář Pro - Události a připomínky</string>
