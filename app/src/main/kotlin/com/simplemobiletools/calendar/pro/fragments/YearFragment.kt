@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.calendar.pro.views.SmallMonthView
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
+import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.fragment_year.view.*
 import org.joda.time.DateTime
@@ -77,7 +78,7 @@ class YearFragment : Fragment(), YearlyCalendar {
             val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", requireContext().packageName))
             val curTextColor = when {
                 isPrintVersion -> resources.getColor(R.color.theme_light_text_color)
-                else -> requireContext().config.textColor
+                else -> requireContext().getProperTextColor()
             }
 
             monthLabel.setTextColor(curTextColor)

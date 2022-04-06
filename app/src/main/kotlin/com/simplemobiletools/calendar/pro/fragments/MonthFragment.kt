@@ -23,6 +23,7 @@ import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisible
+import com.simplemobiletools.commons.extensions.getProperTextColor
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
@@ -100,14 +101,14 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             mHolder.top_value.apply {
                 text = month
                 contentDescription = text
-                setTextColor(mConfig.textColor)
+                setTextColor(requireContext().getProperTextColor())
             }
             updateDays(days)
         }
     }
 
     private fun setupButtons() {
-        mTextColor = mConfig.textColor
+        mTextColor = requireContext().getProperTextColor()
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)
@@ -134,7 +135,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
         }
 
         mHolder.top_value.apply {
-            setTextColor(mConfig.textColor)
+            setTextColor(requireContext().getProperTextColor())
             setOnClickListener {
                 (activity as MainActivity).showGoToDateDialog()
             }
@@ -158,7 +159,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
             top_left_arrow.beVisible()
             top_right_arrow.beVisible()
-            top_value.setTextColor(mConfig.textColor)
+            top_value.setTextColor(requireContext().getProperTextColor())
             month_view_wrapper.togglePrintMode()
         }
     }

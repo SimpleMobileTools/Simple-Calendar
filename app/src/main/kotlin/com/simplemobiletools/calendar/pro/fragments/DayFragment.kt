@@ -20,10 +20,7 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.areSystemAnimationsEnabled
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.beVisible
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
 import java.util.*
@@ -51,7 +48,7 @@ class DayFragment : Fragment() {
     }
 
     private fun setupButtons() {
-        mTextColor = requireContext().config.textColor
+        mTextColor = requireContext().getProperTextColor()
 
         mHolder.top_left_arrow.apply {
             applyColorFilter(mTextColor)
@@ -84,7 +81,7 @@ class DayFragment : Fragment() {
             setOnClickListener {
                 (activity as MainActivity).showGoToDateDialog()
             }
-            setTextColor(context.config.textColor)
+            setTextColor(context.getProperTextColor())
         }
     }
 
@@ -149,7 +146,7 @@ class DayFragment : Fragment() {
                 Handler().postDelayed({
                     top_left_arrow.beVisible()
                     top_right_arrow.beVisible()
-                    top_value.setTextColor(requireContext().config.textColor)
+                    top_value.setTextColor(requireContext().getProperTextColor())
                     (day_events.adapter as? DayEventsAdapter)?.togglePrintMode()
                 }, 1000)
             }, 1000)

@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.views.MyViewPager
@@ -43,7 +44,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_days_holder, container, false)
-        view.background = ColorDrawable(requireContext().config.backgroundColor)
+        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
         viewPager = view.fragment_days_viewpager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()

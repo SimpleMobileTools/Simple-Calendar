@@ -46,7 +46,6 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.util.*
 import java.util.regex.Pattern
-import kotlin.collections.ArrayList
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
@@ -875,13 +874,13 @@ class EventActivity : SimpleActivity() {
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
         val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_mail_vector
-        val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
+        val icon = resources.getColoredDrawableWithColor(drawable, getProperTextColor())
         view.setImageDrawable(icon)
     }
 
     private fun updateAvailabilityImage() {
         val drawable = if (mAvailability == Attendees.AVAILABILITY_FREE) R.drawable.ic_event_available_vector else R.drawable.ic_event_busy_vector
-        val icon = resources.getColoredDrawableWithColor(drawable, config.textColor)
+        val icon = resources.getColoredDrawableWithColor(drawable, getProperTextColor())
         event_availability_image.setImageDrawable(icon)
     }
 
@@ -899,7 +898,7 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                    event_type_color.setFillWithStroke(eventType.color, getProperBackgroundColor())
                 }
             }
         }
@@ -967,7 +966,7 @@ class EventActivity : SimpleActivity() {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, config.backgroundColor)
+                    event_caldav_calendar_color.setFillWithStroke(calendarColor, getProperBackgroundColor())
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
@@ -1276,7 +1275,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun checkStartEndValidity() {
-        val textColor = if (mEventStartDateTime.isAfter(mEventEndDateTime)) resources.getColor(R.color.red_text) else config.textColor
+        val textColor = if (mEventStartDateTime.isAfter(mEventEndDateTime)) resources.getColor(R.color.red_text) else getProperTextColor()
         event_end_date.setTextColor(textColor)
         event_end_time.setTextColor(textColor)
     }
@@ -1523,7 +1522,8 @@ class EventActivity : SimpleActivity() {
             beVisible()
 
             val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
-            (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background).applyColorFilter(config.backgroundColor)
+            (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background)
+                .applyColorFilter(getProperBackgroundColor())
             event_contact_status_image.apply {
                 background = attendeeStatusBackground
                 setImageDrawable(getAttendeeStatusImage(attendee))
@@ -1687,7 +1687,7 @@ class EventActivity : SimpleActivity() {
 
     private fun updateIconColors() {
         event_show_on_map.applyColorFilter(getProperPrimaryColor())
-        val textColor = config.textColor
+        val textColor = getProperTextColor()
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
             event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image

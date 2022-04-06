@@ -12,16 +12,12 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyMonthDayPagerAdapter
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getMonthCode
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.MONTHLY_DAILY_VIEW
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateActionBarTitle
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_months_days_holder.view.*
 import org.joda.time.DateTime
@@ -45,7 +41,7 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_months_days_holder, container, false)
-        view.background = ColorDrawable(requireContext().config.backgroundColor)
+        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
         viewPager = view.fragment_months_days_viewpager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()

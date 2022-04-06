@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.adjustAlpha
+import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.quick_filter_event_type_view.view.*
 import java.util.*
@@ -23,7 +24,7 @@ class QuickFilterEventTypeAdapter(
     private val quickFilterEventTypes = ArrayList<EventType>()
     private val displayEventTypes = activity.config.displayEventTypes
 
-    private val textColorActive = activity.config.textColor
+    private val textColorActive = activity.getProperTextColor()
     private val textColorInactive = textColorActive.adjustAlpha(LOWER_ALPHA)
 
     private val minItemWidth = activity.resources.getDimensionPixelSize(R.dimen.quick_filter_min_width)

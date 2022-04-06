@@ -51,7 +51,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
-        weekHolder!!.background = ColorDrawable(requireContext().config.backgroundColor)
+        weekHolder!!.background = ColorDrawable(requireContext().getProperBackgroundColor())
 
         val itemHeight = requireContext().getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
@@ -128,7 +128,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         })
     }
 
-    private fun addHours(textColor: Int = requireContext().config.textColor) {
+    private fun addHours(textColor: Int = requireContext().getProperTextColor()) {
         val itemHeight = requireContext().getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.removeAllViews()
         val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
@@ -306,7 +306,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                     week_view_seekbar.beVisible()
                     week_view_days_count.beVisible()
                     addHours()
-                    background = ColorDrawable(requireContext().config.backgroundColor)
+                    background = ColorDrawable(requireContext().getProperBackgroundColor())
                     (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
                 }, 1000)
             }, 1000)

@@ -154,7 +154,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onResume() {
         super.onResume()
-        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != getProperPrimaryColor()
+        if (mStoredTextColor != getProperTextColor() || mStoredBackgroundColor != getProperBackgroundColor() || mStoredPrimaryColor != getProperPrimaryColor()
             || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
             || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
         ) {
@@ -179,14 +179,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         storeStateVariables()
         updateWidgets()
         updateTextColors(calendar_coordinator)
-        fab_extended_overlay.background = ColorDrawable(config.backgroundColor.adjustAlpha(0.8f))
-        fab_event_label.setTextColor(config.textColor)
-        fab_task_label.setTextColor(config.textColor)
+        fab_extended_overlay.background = ColorDrawable(getProperBackgroundColor().adjustAlpha(0.8f))
+        fab_event_label.setTextColor(getProperTextColor())
+        fab_task_label.setTextColor(getProperTextColor())
 
         fab_task_icon.drawable.applyColorFilter(mStoredPrimaryColor.getContrastColor())
         fab_task_icon.background.applyColorFilter(mStoredPrimaryColor)
 
-        search_holder.background = ColorDrawable(config.backgroundColor)
+        search_holder.background = ColorDrawable(getProperBackgroundColor())
         checkSwipeRefreshAvailability()
         checkShortcuts()
 
@@ -292,10 +292,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun storeStateVariables() {
+        mStoredTextColor = getProperTextColor()
+        mStoredPrimaryColor = getProperPrimaryColor()
+        mStoredBackgroundColor = getProperBackgroundColor()
         config.apply {
             mStoredIsSundayFirst = isSundayFirst
-            mStoredTextColor = textColor
-            mStoredBackgroundColor = backgroundColor
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
             mStoredHighlightWeekends = highlightWeekends
@@ -303,7 +304,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredMidnightSpan = showMidnightSpanningEventsAtTop
             mStoredStartWeekWithCurrentDay = startWeekWithCurrentDay
         }
-        mStoredPrimaryColor = getProperPrimaryColor()
         mStoredDayCode = Formatter.getTodayCode()
     }
 

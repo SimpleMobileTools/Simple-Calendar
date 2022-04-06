@@ -224,7 +224,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } else if (highlightWeekends && isWeekend(curDay.dayOfWeek, true)) {
                 config.highlightWeekendsColor
             } else {
-                config.textColor
+                requireContext().getProperTextColor()
             }
 
             val label = inflater.inflate(R.layout.weekly_view_day_letter, mView.week_letters_holder, false) as MyTextView

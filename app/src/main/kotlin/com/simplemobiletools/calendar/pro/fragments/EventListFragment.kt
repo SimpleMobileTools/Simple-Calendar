@@ -26,7 +26,6 @@ import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
-import java.util.*
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     private val NOT_UPDATING = 0
@@ -51,7 +50,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_event_list, container, false)
-        mView.background = ColorDrawable(requireContext().config.backgroundColor)
+        mView.background = ColorDrawable(requireContext().getProperBackgroundColor())
         mView.calendar_events_list_holder?.id = (System.currentTimeMillis() % 100000).toInt()
         mView.calendar_empty_list_placeholder_2.apply {
             setTextColor(context.getProperPrimaryColor())
@@ -171,7 +170,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView.calendar_empty_list_placeholder_2.beVisibleIf(mEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
         if (activity != null)
-            mView.calendar_empty_list_placeholder.setTextColor(requireActivity().config.textColor)
+            mView.calendar_empty_list_placeholder.setTextColor(requireActivity().getProperTextColor())
     }
 
     private fun fetchPreviousPeriod() {

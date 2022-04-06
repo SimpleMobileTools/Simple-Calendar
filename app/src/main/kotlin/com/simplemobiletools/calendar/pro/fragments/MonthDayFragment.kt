@@ -25,6 +25,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.commons.extensions.areSystemAnimationsEnabled
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_month_day.*
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
@@ -166,7 +167,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
     }
 
     private fun setupButtons() {
-        val textColor = mConfig.textColor
+        val textColor = requireContext().getProperTextColor()
         mHolder.apply {
             month_day_selected_day_label.setTextColor(textColor)
             month_day_no_events_placeholder.setTextColor(textColor)

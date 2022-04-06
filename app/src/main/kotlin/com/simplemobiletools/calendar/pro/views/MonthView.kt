@@ -419,7 +419,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         textColor = if (isPrintVersion) {
             resources.getColor(R.color.theme_light_text_color)
         } else {
-            config.textColor
+            context.getProperTextColor()
         }
 
         textPaint.color = textColor

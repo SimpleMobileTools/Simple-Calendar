@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.helpers.MyWidgetDateProvider
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.widget_config_date.*
@@ -113,7 +114,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
-        mPrimaryColor = config.primaryColor
+        mPrimaryColor = getProperPrimaryColor()
 
         config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
         config_save.setTextColor(mTextColor)

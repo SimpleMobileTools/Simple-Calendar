@@ -11,6 +11,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -60,7 +61,7 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
         }
 
         if (typeId != STORED_LOCALLY_ONLY) {
-            view.dialog_radio_color.setFillWithStroke(color, activity.config.backgroundColor)
+            view.dialog_radio_color.setFillWithStroke(color, activity.getProperBackgroundColor())
         }
 
         view.setOnClickListener { viewClicked(typeId) }

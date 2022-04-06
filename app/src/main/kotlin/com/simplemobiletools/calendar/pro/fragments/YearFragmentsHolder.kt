@@ -12,17 +12,14 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.YEARLY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.YEAR_TO_OPEN
-import com.simplemobiletools.commons.extensions.beGone
-import com.simplemobiletools.commons.extensions.getDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateActionBarTitle
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
+import kotlin.text.toInt
 
 class YearFragmentsHolder : MyFragmentHolder() {
     private val PREFILLED_YEARS = 61
@@ -44,7 +41,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_years_holder, container, false)
-        view.background = ColorDrawable(requireContext().config.backgroundColor)
+        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
         viewPager = view.fragment_years_viewpager
         viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()

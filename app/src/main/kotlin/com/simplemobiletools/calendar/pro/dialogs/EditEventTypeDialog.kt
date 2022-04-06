@@ -17,7 +17,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
 
     init {
         if (eventType == null) {
-            eventType = EventType(null, "", activity.config.primaryColor)
+            eventType = EventType(null, "", activity.getProperPrimaryColor())
         }
 
         val view = activity.layoutInflater.inflate(R.layout.dialog_event_type, null).apply {
@@ -56,7 +56,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     }
 
     private fun setupColor(view: ImageView) {
-        view.setFillWithStroke(eventType!!.color, activity.config.backgroundColor)
+        view.setFillWithStroke(eventType!!.color, activity.getProperBackgroundColor())
     }
 
     private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {

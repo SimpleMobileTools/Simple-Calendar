@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.models.RadioItem
@@ -70,7 +71,7 @@ class ManageEventTypesAdapter(
         view.apply {
             event_item_frame.isSelected = selectedKeys.contains(eventType.id?.toInt())
             event_type_title.text = eventType.getDisplayTitle()
-            event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
+            event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
             event_type_title.setTextColor(textColor)
         }
     }

@@ -18,12 +18,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.activity_task.*
-import kotlinx.android.synthetic.main.activity_task.event_type
-import kotlinx.android.synthetic.main.activity_task.event_type_color
-import kotlinx.android.synthetic.main.activity_task.event_type_holder
-import kotlinx.android.synthetic.main.activity_task.event_type_image
 import org.joda.time.DateTime
 import java.util.*
 
@@ -282,7 +277,7 @@ class TaskActivity : SimpleActivity() {
         if (mTask.isTaskCompleted()) {
             toggle_mark_complete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
             toggle_mark_complete.setText(R.string.mark_incomplete)
-            toggle_mark_complete.setTextColor(config.textColor)
+            toggle_mark_complete.setTextColor(getProperTextColor())
         } else {
             val markCompleteBgColor = if (isWhiteTheme()) {
                 Color.WHITE
@@ -321,7 +316,7 @@ class TaskActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, config.backgroundColor)
+                    event_type_color.setFillWithStroke(eventType.color, getProperBackgroundColor())
                 }
             }
         }
@@ -329,7 +324,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateColors() {
         updateTextColors(task_scrollview)
-        task_time_image.applyColorFilter(config.textColor)
-        event_type_image.applyColorFilter(config.textColor)
+        task_time_image.applyColorFilter(getProperTextColor())
+        event_type_image.applyColorFilter(getProperTextColor())
     }
 }

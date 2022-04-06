@@ -9,10 +9,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
-import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.setFillWithStroke
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyCompatRadioButton
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
@@ -68,7 +65,7 @@ class SelectEventTypeDialog(
         }
 
         if (eventType.color != Color.TRANSPARENT) {
-            view.dialog_radio_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
+            view.dialog_radio_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
         }
 
         view.setOnClickListener { viewClicked(eventType) }

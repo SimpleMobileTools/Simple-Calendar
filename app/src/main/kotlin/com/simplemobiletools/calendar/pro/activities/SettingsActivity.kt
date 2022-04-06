@@ -119,7 +119,7 @@ class SettingsActivity : SimpleActivity() {
             settings_events_holder,
             settings_migrating_holder
         ).forEach {
-            it.background.applyColorFilter(baseConfig.backgroundColor.getContrastColor())
+            it.background.applyColorFilter(getProperBackgroundColor().getContrastColor())
         }
     }
 
@@ -373,12 +373,12 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupHighlightWeekendsColor() {
-        settings_highlight_weekends_color.setFillWithStroke(config.highlightWeekendsColor, config.backgroundColor)
+        settings_highlight_weekends_color.setFillWithStroke(config.highlightWeekendsColor, getProperBackgroundColor())
         settings_highlight_weekends_color_holder.setOnClickListener {
             ColorPickerDialog(this, config.highlightWeekendsColor) { wasPositivePressed, color ->
                 if (wasPositivePressed) {
                     config.highlightWeekendsColor = color
-                    settings_highlight_weekends_color.setFillWithStroke(color, config.backgroundColor)
+                    settings_highlight_weekends_color.setFillWithStroke(color, getProperBackgroundColor())
                 }
             }
         }

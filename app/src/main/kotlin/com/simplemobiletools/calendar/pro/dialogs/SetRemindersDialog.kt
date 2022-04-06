@@ -20,7 +20,7 @@ class SetRemindersDialog(val activity: Activity, val eventType: Int, val callbac
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_set_reminders, null).apply {
-            set_reminders_image.applyColorFilter(context.config.textColor)
+            set_reminders_image.applyColorFilter(context.getProperTextColor())
             set_reminders_1.text = activity.getFormattedMinutes(mReminder1Minutes)
             set_reminders_2.text = activity.getFormattedMinutes(mReminder1Minutes)
             set_reminders_3.text = activity.getFormattedMinutes(mReminder1Minutes)

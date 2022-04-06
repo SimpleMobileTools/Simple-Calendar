@@ -13,6 +13,7 @@ import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPOR
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_OK
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_PARTIAL
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
@@ -93,7 +94,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             val eventType = activity.eventTypesDB.getEventTypeWithId(currEventTypeId)
             activity.runOnUiThread {
                 view.import_event_type_title.text = eventType!!.getDisplayTitle()
-                view.import_event_type_color.setFillWithStroke(eventType.color, activity.config.backgroundColor)
+                view.import_event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
             }
         }
     }

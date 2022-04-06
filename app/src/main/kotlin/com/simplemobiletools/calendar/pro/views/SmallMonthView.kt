@@ -12,8 +12,8 @@ import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
+import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
-import java.util.*
 
 // used for displaying months at Yearly view
 class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -57,7 +57,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             attributes.recycle()
         }
 
-        val baseColor = context.config.textColor
+        val baseColor = context.getProperTextColor()
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
         weekendsTextColor = context.config.highlightWeekendsColor.adjustAlpha(MEDIUM_ALPHA)
         highlightWeekends = context.config.highlightWeekends
@@ -121,7 +121,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         textColor = if (isPrintVersion) {
             resources.getColor(R.color.theme_light_text_color)
         } else {
-            context.config.textColor.adjustAlpha(MEDIUM_ALPHA)
+            context.getProperTextColor().adjustAlpha(MEDIUM_ALPHA)
         }
 
         paint.color = textColor

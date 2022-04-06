@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
@@ -239,7 +240,7 @@ class EventsHelper(val context: Context) {
 
             filteredEvents.forEach {
                 it.updateIsPastEvent()
-                it.color = eventTypeColors.get(it.eventType) ?: config.primaryColor
+                it.color = eventTypeColors.get(it.eventType) ?: context.getProperPrimaryColor()
             }
 
             activity.runOnUiThread {
@@ -330,7 +331,7 @@ class EventsHelper(val context: Context) {
                     }
                 }
             }
-            it.color = eventTypeColors.get(it.eventType) ?: config.primaryColor
+            it.color = eventTypeColors.get(it.eventType) ?: context.getProperPrimaryColor()
         }
 
         callback(events)

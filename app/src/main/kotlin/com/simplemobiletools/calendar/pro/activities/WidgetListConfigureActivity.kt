@@ -13,8 +13,10 @@ import com.simplemobiletools.calendar.pro.dialogs.CustomPeriodPickerDialog
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.extensions.widgetsDB
-import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_CUSTOM
+import com.simplemobiletools.calendar.pro.helpers.EVENT_PERIOD_TODAY
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.MyWidgetListProvider
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
@@ -56,7 +58,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
             config_events_list.adapter = this
         }
 
-        period_picker_holder.background = ColorDrawable(config.backgroundColor)
+        period_picker_holder.background = ColorDrawable(getProperBackgroundColor())
         period_picker_value.setOnClickListener { showPeriodSelector() }
 
         config_save.setOnClickListener { saveConfig() }
@@ -65,7 +67,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         period_picker_holder.beGoneIf(isCustomizingColors)
 
-        val primaryColor = config.primaryColor
+        val primaryColor = getProperPrimaryColor()
         config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
 
         updateSelectedPeriod(config.lastUsedEventSpan)
@@ -230,7 +232,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 getString(R.string.sample_title_1),
                 getString(R.string.sample_description_1),
                 false,
-                config.primaryColor,
+                getProperPrimaryColor(),
                 "",
                 false,
                 false,
@@ -247,7 +249,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 getString(R.string.sample_title_2),
                 getString(R.string.sample_description_2),
                 false,
-                config.primaryColor,
+                getProperPrimaryColor(),
                 "",
                 false,
                 false,
@@ -270,7 +272,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 getString(R.string.sample_title_3),
                 "",
                 false,
-                config.primaryColor,
+                getProperPrimaryColor(),
                 "",
                 false,
                 false,
@@ -287,7 +289,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 getString(R.string.sample_title_4),
                 getString(R.string.sample_description_4),
                 false,
-                config.primaryColor,
+                getProperPrimaryColor(),
                 "",
                 false,
                 false,
@@ -304,7 +306,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
                 getString(R.string.sample_title_5),
                 "",
                 false,
-                config.primaryColor,
+                getProperPrimaryColor(),
                 "",
                 false,
                 false,

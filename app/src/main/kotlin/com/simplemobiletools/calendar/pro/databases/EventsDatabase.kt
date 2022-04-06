@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Widget
+import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import java.util.concurrent.Executors
 
 @Database(entities = [Event::class, EventType::class, Widget::class], version = 6)
@@ -63,7 +64,7 @@ abstract class EventsDatabase : RoomDatabase() {
         private fun insertRegularEventType(context: Context) {
             Executors.newSingleThreadScheduledExecutor().execute {
                 val regularEvent = context.resources.getString(R.string.regular_event)
-                val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.config.primaryColor)
+                val eventType = EventType(REGULAR_EVENT_TYPE_ID, regularEvent, context.getProperPrimaryColor())
                 db!!.EventTypesDao().insertOrUpdate(eventType)
                 context.config.addDisplayEventType(REGULAR_EVENT_TYPE_ID.toString())
             }
