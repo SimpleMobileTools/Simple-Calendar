@@ -54,7 +54,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView.background = ColorDrawable(requireContext().config.backgroundColor)
         mView.calendar_events_list_holder?.id = (System.currentTimeMillis() % 100000).toInt()
         mView.calendar_empty_list_placeholder_2.apply {
-            setTextColor(context.getAdjustedPrimaryColor())
+            setTextColor(context.getProperPrimaryColor())
             underlineText()
             setOnClickListener {
                 activity?.hideKeyboard()

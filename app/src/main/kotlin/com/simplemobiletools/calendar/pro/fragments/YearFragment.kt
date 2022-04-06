@@ -17,11 +17,10 @@ import com.simplemobiletools.calendar.pro.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.calendar.pro.views.SmallMonthView
-import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
+import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.fragment_year.view.*
 import org.joda.time.DateTime
-import java.util.*
 
 class YearFragment : Fragment(), YearlyCalendar {
     private var mYear = 0
@@ -97,7 +96,7 @@ class YearFragment : Fragment(), YearlyCalendar {
     private fun markCurrentMonth(now: DateTime) {
         if (now.year == mYear) {
             val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", requireContext().packageName))
-            monthLabel.setTextColor(requireContext().getAdjustedPrimaryColor())
+            monthLabel.setTextColor(requireContext().getProperPrimaryColor())
 
             val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_${now.monthOfYear}", "id", requireContext().packageName))
             monthView.todaysId = now.dayOfMonth

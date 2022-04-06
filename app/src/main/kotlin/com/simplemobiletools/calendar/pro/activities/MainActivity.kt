@@ -73,7 +73,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
-    private var mStoredAdjustedPrimaryColor = 0
+    private var mStoredPrimaryColor = 0
     private var mStoredDayCode = ""
     private var mStoredIsSundayFirst = false
     private var mStoredMidnightSpan = true
@@ -154,7 +154,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     override fun onResume() {
         super.onResume()
-        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredAdjustedPrimaryColor != getAdjustedPrimaryColor()
+        if (mStoredTextColor != config.textColor || mStoredBackgroundColor != config.backgroundColor || mStoredPrimaryColor != getProperPrimaryColor()
             || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
             || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
         ) {
@@ -183,8 +183,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         fab_event_label.setTextColor(config.textColor)
         fab_task_label.setTextColor(config.textColor)
 
-        fab_task_icon.drawable.applyColorFilter(mStoredAdjustedPrimaryColor.getContrastColor())
-        fab_task_icon.background.applyColorFilter(mStoredAdjustedPrimaryColor)
+        fab_task_icon.drawable.applyColorFilter(mStoredPrimaryColor.getContrastColor())
+        fab_task_icon.background.applyColorFilter(mStoredPrimaryColor)
 
         search_holder.background = ColorDrawable(config.backgroundColor)
         checkSwipeRefreshAvailability()
@@ -303,7 +303,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredMidnightSpan = showMidnightSpanningEventsAtTop
             mStoredStartWeekWithCurrentDay = startWeekWithCurrentDay
         }
-        mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
+        mStoredPrimaryColor = getProperPrimaryColor()
         mStoredDayCode = Formatter.getTodayCode()
     }
 
@@ -951,7 +951,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         } else {
             R.drawable.ic_today_vector
         }
-        val newDrawable = resources.getColoredDrawableWithColor(newDrawableId, getAdjustedPrimaryColor())
+        val newDrawable = resources.getColoredDrawableWithColor(newDrawableId, getProperPrimaryColor())
 
         val duration = 75L
         var rotation = 90f

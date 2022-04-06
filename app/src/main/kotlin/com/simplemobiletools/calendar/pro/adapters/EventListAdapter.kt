@@ -154,14 +154,14 @@ class EventListAdapter(
             var newTextColor = textColor
             if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
                 if (listEvent.isAllDay && Formatter.getDayCodeFromTS(listEvent.startTS) == Formatter.getDayCodeFromTS(now) && !isPrintVersion) {
-                    newTextColor = adjustedPrimaryColor
+                    newTextColor = properPrimaryColor
                 }
 
                 if (dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
                     newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
                 }
             } else if (listEvent.startTS <= now && listEvent.endTS >= now && !isPrintVersion) {
-                newTextColor = adjustedPrimaryColor
+                newTextColor = properPrimaryColor
             }
 
             event_item_time.setTextColor(newTextColor)
@@ -182,7 +182,7 @@ class EventListAdapter(
     private fun setupListSectionDay(view: View, listSectionDay: ListSectionDay) {
         view.event_section_title.apply {
             text = listSectionDay.title
-            val dayColor = if (listSectionDay.isToday) adjustedPrimaryColor else textColor
+            val dayColor = if (listSectionDay.isToday) properPrimaryColor else textColor
             setTextColor(dayColor)
         }
     }
@@ -190,7 +190,7 @@ class EventListAdapter(
     private fun setupListSectionMonth(view: View, listSectionMonth: ListSectionMonth) {
         view.event_section_title.apply {
             text = listSectionMonth.title
-            setTextColor(adjustedPrimaryColor)
+            setTextColor(properPrimaryColor)
         }
     }
 

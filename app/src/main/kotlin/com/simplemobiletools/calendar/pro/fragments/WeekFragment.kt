@@ -92,7 +92,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         weekTimestamp = requireArguments().getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
         highlightWeekends = config.highlightWeekends
-        primaryColor = requireContext().getAdjustedPrimaryColor()
+        primaryColor = requireContext().getProperPrimaryColor()
         allDayRows.add(HashSet())
     }
 

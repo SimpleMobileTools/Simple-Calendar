@@ -287,7 +287,7 @@ class TaskActivity : SimpleActivity() {
             val markCompleteBgColor = if (isWhiteTheme()) {
                 Color.WHITE
             } else {
-                getAdjustedPrimaryColor()
+                getProperPrimaryColor()
             }
             toggle_mark_complete.setTextColor(markCompleteBgColor.getContrastColor())
         }

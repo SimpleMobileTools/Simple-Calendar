@@ -1488,10 +1488,10 @@ class EventActivity : SimpleActivity() {
 
         event_attendees_holder.addView(attendeeHolder)
 
-        val textColor = config.textColor
-        autoCompleteView.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
-        selectedAttendeeHolder.event_contact_name.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
-        selectedAttendeeHolder.event_contact_me_status.setColors(textColor, getAdjustedPrimaryColor(), config.backgroundColor)
+        val textColor = getProperTextColor()
+        autoCompleteView.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
+        selectedAttendeeHolder.event_contact_name.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
+        selectedAttendeeHolder.event_contact_me_status.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
         selectedAttendeeDismiss.applyColorFilter(textColor)
 
         selectedAttendeeDismiss.setOnClickListener {
@@ -1686,7 +1686,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateIconColors() {
-        event_show_on_map.applyColorFilter(getAdjustedPrimaryColor())
+        event_show_on_map.applyColorFilter(getProperPrimaryColor())
         val textColor = config.textColor
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,

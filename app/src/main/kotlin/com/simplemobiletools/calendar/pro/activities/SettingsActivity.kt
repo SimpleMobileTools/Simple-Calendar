@@ -20,7 +20,6 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.dialog_event_type.view.*
 import org.joda.time.DateTime
 import java.io.File
 import java.io.InputStream
@@ -30,12 +29,12 @@ class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
     private val PICK_IMPORT_SOURCE_INTENT = 2
 
-    private var mStoredAdjustedPrimaryColor = 0
+    private var mStoredPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
+        mStoredPrimaryColor = getProperPrimaryColor()
     }
 
     override fun onResume() {
@@ -104,7 +103,7 @@ class SettingsActivity : SimpleActivity() {
             settings_events_label,
             settings_migrating_label
         ).forEach {
-            it.setTextColor(getAdjustedPrimaryColor())
+            it.setTextColor(getProperPrimaryColor())
         }
 
         arrayOf(
@@ -126,7 +125,7 @@ class SettingsActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-        mStoredAdjustedPrimaryColor = getAdjustedPrimaryColor()
+        mStoredPrimaryColor = getProperPrimaryColor()
     }
 
     override fun onStop() {
@@ -154,12 +153,12 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun checkPrimaryColor() {
-        if (getAdjustedPrimaryColor() != mStoredAdjustedPrimaryColor) {
+        if (getProperPrimaryColor() != mStoredPrimaryColor) {
             ensureBackgroundThread {
                 val eventTypes = eventsHelper.getEventTypesSync()
                 if (eventTypes.filter { it.caldavCalendarId == 0 }.size == 1) {
                     val eventType = eventTypes.first { it.caldavCalendarId == 0 }
-                    eventType.color = getAdjustedPrimaryColor()
+                    eventType.color = getProperPrimaryColor()
                     eventsHelper.insertOrUpdateEventTypeSync(eventType)
                 }
             }

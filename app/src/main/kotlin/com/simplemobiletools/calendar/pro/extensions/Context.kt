@@ -454,7 +454,7 @@ fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: Linea
             gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
 
             if (day.isToday) {
-                val primaryColor = getAdjustedPrimaryColor()
+                val primaryColor = getProperPrimaryColor()
                 setTextColor(primaryColor.getContrastColor())
                 if (dayLabelHeight == 0) {
                     onGlobalLayout {

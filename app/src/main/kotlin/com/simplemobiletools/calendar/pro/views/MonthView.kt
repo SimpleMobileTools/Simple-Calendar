@@ -60,8 +60,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
-        primaryColor = context.getAdjustedPrimaryColor()
-        textColor = config.textColor
+        primaryColor = context.getProperPrimaryColor()
+        textColor = context.getProperTextColor()
         weekendsTextColor = config.highlightWeekendsColor
         showWeekNumbers = config.showWeekNumbers
         dimPastEvents = config.dimPastEvents

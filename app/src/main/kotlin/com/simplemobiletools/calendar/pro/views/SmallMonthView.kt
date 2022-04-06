@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
+import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import java.util.*
 
@@ -48,7 +48,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         val attributes = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.SmallMonthView,
-            0, 0)
+            0, 0
+        )
 
         try {
             days = attributes.getInt(R.styleable.SmallMonthView_days, 31)
@@ -69,7 +70,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         }
 
         todayCirclePaint = Paint(paint)
-        todayCirclePaint.color = context.getAdjustedPrimaryColor().adjustAlpha(MEDIUM_ALPHA)
+        todayCirclePaint.color = context.getProperPrimaryColor().adjustAlpha(MEDIUM_ALPHA)
         isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     }
 
