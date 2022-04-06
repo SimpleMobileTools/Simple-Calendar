@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Tapahtuma tulossa</string>
     <string name="saving_filtered_out">Tallennetaan… mutta valittu tapahtumatyyppi on suodatettu pois näkyvistä Menu - Suodata-valikosta</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tehtävä</string>
+    <string name="tasks">Tehtävät</string>
+    <string name="edit_task">Muokkaa tehtävää</string>
+    <string name="new_task">Uusi tehtävä</string>
+    <string name="create_new_task">Luo uusi tehtävä</string>
+    <string name="duplicate_task">Monista tehtävä</string>
+    <string name="mark_completed">Merkkaa valmiiksi</string>
+    <string name="mark_incomplete">Merkkaa keskeneräiseksi</string>
     <!-- Event Repetition -->
     <string name="repetition">Toisto</string>
     <string name="no_repetition">Ei toistoa</string>
@@ -207,7 +207,7 @@
     <string name="highlight_weekends_color">Korostettujen viikonloppujen väri</string>
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Salli tehtävien luonti</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Valitse synkronoitavat kalenterit</string>
@@ -281,51 +281,8 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Tapahtumat, muistutukset</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Aikataulujen suunnittelu ja muistutukset.</string>
-    <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
-
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
-
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
-        ----------------------------------------------------------
-
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
-
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
-
-        <b>Check out the full suite of Simple Tools here:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
+    <string name="app_short_description">Simple mobile 2020 calendar. Aikataulujen suunnittelu ja muistutukset</string>
+    <string name="app_long_description"> Simple Calendar Pro on täysin mukautettava offlinekalenteri suunniteltu tekemään juuri sitä, mitä kalenterin pitääkin tehdä. <b>Ei monimutkaisia ominaisuuksia, tarpeettomia käyttöoikeuksia eikä mainoksia!</b> Olitpa sitten organisoimassa yksittäisiä tai toistuvia tapahtumia, syntymäpäiviä, juhlapäiviä, bisnestapaamisia, ajanvarauksia tai mitä vaan muuta, Simple Calendar Pro <b>tekee sen helpoksi</b>. Uskomattomalla valikoimalla <b>mukautettavia asetuksia</b> voit mukauttaa tapahtumien muistutuksia, ilmoitusten ääniä, kalenteripiensovelluksia sekä sovelluksen ulkonäköä. Päivittäis-, viikottais- ja kuukausinäkymät nopeuttavat tulevien tapahtumien ja ajanvarausten tarkastamista. Voit myös näyttää kaikki tapahtumat yksinkertaisena listana kalenterinäkymän sijasta, jolloin <b>tiedät tarkalleen, mitä ja milloin elämässäsi on tulossa. </b> ---------------------------------------------------------- <b>Simple Calendar Pro – Ominaisuudet &amp; edut</b> ---------------------------------------------------------- ✔️ Ei mainoksia tai ärsyttäviä popuppeja ✔️ Internet-yhteyttä ei vaadita, joten yksityisyytesi &amp; turvallisuutesi on taattu ✔️ Vain vähimmät mahdolliset käyttöoikeudet pyydetään ✔️ Yksinkertaisuutta korostetaan - tekee, mitä kalenterin täytyykin! ✔️ Avointa lähdekoodia ✔️ Täysin mukautettavat teemat &amp; kalenteri- sekä tapahtumapiensovellukset ✔️ Käännetty 29 kielelle ✔️ Vie asetukset .txt-tiedostoihin viedäksesi toiselle laitteelle ✔️ Synkronointiin laitteiden välillä löytyy tuki CalDAV:lle ✔️ Päivä-, viikko-, kuukausi ja vuosinäkymät sekä tapahtumanäkymät kalenterissa ✔️ Tukee tapahtumien tuontia ja vientiä .ics-tiedostoin ✔️ Aseta useita tapahtuman muistutuksia, mukauta muistutusääniä ja värinää ✔️ Torkutusominaisuus muistutuksissa ✔️ Lisää helposti lomia, syntymäpäiviä, juhlapäiviä &amp; ajanvarauksia ✔️ Mukauta tapahtumia – aloitusaika, pituus, muistutukset jne. ✔️ Lisää tapahtumiin osallistujia ✔️ Käytä henkilökohtaista kalenteria tai bisneskalenteria ✔️ Valitse muistutuksia &amp; sähköposti-ilmoituksia muistuttaaksesi tapahtumista LATAA SIMPLE CALENDAR PRO – YKSINKERTAINEN OFFLINEKALENTERI ILMAN MAINOKSIA! <b>Katso koko Simple Tools-sovellusvalikoima täältä:</b> https://www.simplemobiletools.com <b>Simple Calendar Pro:n verkkosivut:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
