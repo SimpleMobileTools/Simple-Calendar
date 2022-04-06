@@ -31,6 +31,7 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_launcher_name"
         android:roundIcon="@mipmap/ic_launcher"
@@ -119,8 +120,8 @@
 
         <activity
             android:name=".activities.EventActivity"
-            android:launchMode="singleTask"
             android:label="@string/new_event"
+            android:launchMode="singleTask"
             android:parentActivityName=".activities.MainActivity">
 
             <intent-filter>
