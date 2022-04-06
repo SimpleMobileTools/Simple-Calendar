@@ -63,7 +63,8 @@ class MyWidgetListProvider : AppWidgetProvider() {
                 }
 
                 val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
-                val startActivityPendingIntent = PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+                val startActivityPendingIntent =
+                    PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
                 views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
                 views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
 
@@ -78,7 +79,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
     private fun setupIntent(context: Context, views: RemoteViews, action: String, id: Int) {
         Intent(context, MyWidgetListProvider::class.java).apply {
             this.action = action
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, this, 0)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, this, PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(id, pendingIntent)
         }
     }

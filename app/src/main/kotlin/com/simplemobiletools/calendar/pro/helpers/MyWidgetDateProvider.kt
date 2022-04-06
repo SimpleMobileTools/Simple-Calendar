@@ -39,7 +39,7 @@ class MyWidgetDateProvider : AppWidgetProvider() {
 
     private fun setupAppOpenIntent(context: Context, views: RemoteViews) {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
-            val pendingIntent = PendingIntent.getActivity(context, OPEN_APP_INTENT_ID, this, PendingIntent.FLAG_UPDATE_CURRENT)
+            val pendingIntent = PendingIntent.getActivity(context, OPEN_APP_INTENT_ID, this, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(R.id.widget_date_holder, pendingIntent)
         }
     }

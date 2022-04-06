@@ -174,12 +174,12 @@ fun Context.getNotificationIntent(event: Event): PendingIntent {
     val intent = Intent(this, NotificationReceiver::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getBroadcast(this, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getBroadcast(this, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 }
 
 fun Context.cancelPendingIntent(id: Long) {
     val intent = Intent(this, NotificationReceiver::class.java)
-    PendingIntent.getBroadcast(this, id.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT).cancel()
+    PendingIntent.getBroadcast(this, id.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE).cancel()
 }
 
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
@@ -340,7 +340,7 @@ private fun getPendingIntent(context: Context, event: Event): PendingIntent {
     val intent = Intent(context, EventActivity::class.java)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
-    return PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    return PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 }
 
 private fun getSnoozePendingIntent(context: Context, event: Event): PendingIntent {
@@ -348,9 +348,9 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     val intent = Intent(context, snoozeClass).setAction("Snooze")
     intent.putExtra(EVENT_ID, event.id)
     return if (context.config.useSameSnooze) {
-        PendingIntent.getService(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getService(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     } else {
-        PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
 }
 
@@ -421,7 +421,12 @@ fun Context.recheckCalDAVCalendars(scheduleNextCalDAVSync: Boolean, callback: ()
 
 fun Context.scheduleCalDAVSync(activate: Boolean) {
     val syncIntent = Intent(applicationContext, CalDAVSyncReceiver::class.java)
-    val pendingIntent = PendingIntent.getBroadcast(applicationContext, SCHEDULE_CALDAV_REQUEST_CODE, syncIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+    val pendingIntent = PendingIntent.getBroadcast(
+        applicationContext,
+        SCHEDULE_CALDAV_REQUEST_CODE,
+        syncIntent,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+    )
     val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
     alarm.cancel(pendingIntent)
 

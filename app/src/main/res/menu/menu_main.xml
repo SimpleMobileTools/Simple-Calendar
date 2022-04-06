@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_search_vector"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always"/>
+        app:showAsAction="collapseActionView|always" />
     <item
         android:id="@+id/go_to_today"
         android:icon="@drawable/ic_today_vector"
         android:title="@string/go_to_today"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/change_view"
         android:icon="@drawable/ic_change_view_vector"
         android:title="@string/change_view"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter_vector"
         android:title="@string/filter_events_by_type"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/refresh_caldav_calendars"
         android:icon="@drawable/ic_repeat_vector"
         android:title="@string/refresh_caldav_calendars"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/go_to_date"
+        android:showAsAction="never"
         android:title="@string/go_to_date"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/print"
+        android:showAsAction="never"
         android:title="@string/print"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/add_holidays"
+        android:showAsAction="never"
         android:title="@string/add_holidays"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/add_birthdays"
+        android:showAsAction="never"
         android:title="@string/add_birthdays"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/add_anniversaries"
+        android:showAsAction="never"
         android:title="@string/add_anniversaries"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/import_events"
+        android:showAsAction="never"
         android:title="@string/import_events_from_ics"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/export_events"
+        android:showAsAction="never"
         android:title="@string/export_events_to_ics"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_cog_vector"

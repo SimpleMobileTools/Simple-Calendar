@@ -45,7 +45,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private fun setupIntent(context: Context, views: RemoteViews, action: String, id: Int) {
         Intent(context, MyWidgetMonthlyProvider::class.java).apply {
             this.action = action
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, this, 0)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, this, PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(id, pendingIntent)
         }
     }
@@ -54,7 +54,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, dayCode)
             putExtra(VIEW_TO_OPEN, MONTHLY_VIEW)
-            val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode.substring(0, 6)), this, 0)
+            val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode.substring(0, 6)), this, PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(id, pendingIntent)
         }
     }
@@ -63,7 +63,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         (context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)).apply {
             putExtra(DAY_CODE, dayCode)
             putExtra(VIEW_TO_OPEN, DAILY_VIEW)
-            val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode), this, 0)
+            val pendingIntent = PendingIntent.getActivity(context, Integer.parseInt(dayCode), this, PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(id, pendingIntent)
         }
     }
