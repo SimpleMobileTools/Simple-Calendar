@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Calendário Simples</string>
     <string name="app_launcher_name">Calendário</string>
     <string name="change_view">Mudar vista</string>
     <string name="daily_view">Vista diária</string>
@@ -92,12 +92,12 @@
     <string name="fifth_f">quinta</string>
     <string name="last_f">ultimo</string>
     <!-- Birthdays -->
-    <string name="birthdays">Aniversários</string>
-    <string name="add_birthdays">Adicionar aniversários dos contatos</string>
-    <string name="no_birthdays">Nenhum aniversário foi encontrado</string>
-    <string name="no_new_birthdays">Nenhum novo aniversário foi encontrado</string>
-    <string name="birthdays_added">Aniversários adicionados com sucesso</string>
-    <string name="add_birthdays_automatically">Adicionar novos aniversários automaticamente</string>
+    <string name="birthdays">Datas de Nascimento</string>
+    <string name="add_birthdays">Adicionar a data de nascimento dos contatos</string>
+    <string name="no_birthdays">Nenhuma data de nascimento foi encontrada</string>
+    <string name="no_new_birthdays">Nenhuma data de nascimento nova foi encontrada</string>
+    <string name="birthdays_added">Datas de nascimento adicionadas com sucesso</string>
+    <string name="add_birthdays_automatically">Adicionar novas datas de nascimento automaticamente</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversários</string>
     <string name="add_anniversaries">Adicionar aniversários dos contatos</string>
@@ -198,10 +198,10 @@
     <string name="last_used_one">Último usado</string>
     <string name="other_time">Outro horário</string>
     <string name="highlight_weekends">Destacar os finais de semana em algumas vistas</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Cor de fins de semana destacados</string>
     <string name="allow_changing_time_zones">Permitir a alteração de fuso horário do evento</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">Gerenciar filtro rápido de tipos de evento</string>
+    <string name="allow_creating_tasks">Permitir a criação de tarefas</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione calendários para sincronizar</string>
@@ -217,8 +217,8 @@
     <string name="insufficient_permissions">Você não tem permissão para escrever no calendário selecionado</string>
     <string name="caldav_event_not_found">Evento não encontrado. Habilite a sincronização CalDAV do calendário adequado nas configurações do aplicativo.</string>
     <string name="no_synchronized_calendars">Nenhum calendário encontrado para a sincronização</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_free">Livre</string>
+    <string name="status_busy">Ocupado</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Segunda</string>
@@ -229,7 +229,7 @@
     <string name="saturday_alt">Sábado</string>
     <string name="sunday_alt">Domingo</string>
     <!-- List widget config example events -->
-    <string name="sample_title_1">Ir ao ginásio</string>
+    <string name="sample_title_1">Ir à academia</string>
     <string name="sample_description_1">Ir às compras</string>
     <string name="sample_title_2">Reunião com o João</string>
     <string name="sample_description_2">Passear no jardim</string>
@@ -238,21 +238,21 @@
     <string name="sample_description_4">Ir ao mercado</string>
     <string name="sample_title_5">Beber um café</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Mostrar eventos ocorrendo:</string>
+    <string name="within_the_next_one_year">Dentro do próximo ano</string>
+    <string name="today_only">Apenas hoje</string>
+    <string name="within_the_next">Dentro de…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Dentro do próximo %d dia</item>
+        <item quantity="other">Dentro dos próximos %d dias</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Dentro de %d semana</item>
+        <item quantity="other">Dentro das próximas %d semanas</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Dentro do próximo %d mês</item>
+        <item quantity="other">Dentro dos próximos %d meses</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \ "Adicionar feriados \"?</string>
@@ -267,11 +267,11 @@
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
     <string name="faq_5_title">O aplicativo não mostra notificações, por que\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_title">Como posso modificar ou excluir um tipo de evento já existente?</string>
+    <string name="faq_6_text">Você pode modificar ou excluir um tipo de evento através das Configurações - Gerenciar tipos de evento. Clique no evento desejado para editar o texto ou cor, ou toque e segure o evento desejado e arraste-o até a lixeira para excluí-lo.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
+    <string name="app_title">Calendário Simples Pro - Eventos &amp; Lembretes</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Calendário com agenda e lembretes de eventos</string>
     <string name="app_long_description"> Um calendário local, criado para fazer o que um calendário deve fazer. <b>Descomplicado, apenas as permissões estritamente necessárias e sem anúncios!</b> Seja para criar um evento único ou recorrente, aniversários e reuniões, este calendário <b>permite-lhe andar sempre organizado</b>. Com <b>diversas opções de personalização</b>, pode ajustar os lembretes, os sons das notificações, o widget e o aspeto da aplicação. Confira os próximos eventos facilmente alternando as vistas diária, semanal e mensal para que <b>saiba exatamente o que tem planeado.</b> ---------------------------------------------------------- <b>Simple Calendar Pro – Funcionalidades</b> ---------------------------------------------------------- ✔️ Sem anúncios ✔️ Não requer acesso à Internet ✔️ Sem permissões desnecessárias ✔️ Open source ✔️ Simples – funciona apenas como calendário! ✔️ Personalize os temas e widgets ✔️ Crie em simultâneo múltiplos eventos com ou sem lembretes, e defina a data e hora iniciais, a duração e especifique a cor para os distinguir ✔️ Acrescente feriados, aniversários e reuniões ✔️ Adicione convidados aos eventos ✔️ Vista diária, semanal, mensal e lista de eventos ✔️ Escolha entre lembretes e notificações por e-mail ✔️ Personalize os sons e a vibração dos lembretes ✔️ Opção Snooze ✔️ Exportação de definições para ficheiros .txt ✔️ Importação e exportação de eventos através de ficheiros .ics ✔️ Sincronização CalDAV para poder usar os eventos em todos os seus dispositivos (opcional) ✔️ Passível de ser utilizado como calendário pessoal mas também empresarial ✔️ Traduzido em mais de 29 idiomas SIMPLE CALENDAR PRO – O CALENDÁRIO LOCAL E SIMPLES SEM ANÚNCIOS! <b>Consulte a gama completa de aplicações Simple Tools aqui:</b> https://www.simplemobiletools.com <b>Site da aplicação Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
