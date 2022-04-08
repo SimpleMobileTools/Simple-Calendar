@@ -184,7 +184,7 @@
     <string name="show_a_grid">Izgara göster</string>
     <string name="loop_reminders">Kapatılana kadar hatırlatıcıları tekrarla</string>
     <string name="dim_past_events">Geçmiş etkinlikleri karart</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Tamamlanan görevleri karart</string>
     <string name="events">Etkinlikler</string>
     <string name="reminder_stream">Hatırlatıcılar tarafından kullanılan ses akışı</string>
     <string name="system_stream">Sistem</string>
