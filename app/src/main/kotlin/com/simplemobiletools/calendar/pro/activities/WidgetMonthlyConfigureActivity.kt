@@ -6,12 +6,15 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.addDayEvents
-import com.simplemobiletools.calendar.pro.extensions.addDayNumber
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetMonthlyProvider
@@ -21,6 +24,7 @@ import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
+import kotlinx.android.synthetic.main.day_monthly_number_view.view.*
 import kotlinx.android.synthetic.main.first_row.*
 import kotlinx.android.synthetic.main.top_navigation.*
 import kotlinx.android.synthetic.main.widget_config_monthly.*
@@ -175,8 +179,32 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                     mTextColor
                 }
 
-                context.addDayNumber(dayTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
+                addDayNumber(dayTextColor, day, this, dayLabelHeight) { dayLabelHeight = it }
                 context.addDayEvents(day, this, resources, dividerMargin)
+            }
+        }
+    }
+
+    private fun addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
+        var textColor = rawTextColor
+        if (!day.isThisMonth) {
+            textColor = textColor.adjustAlpha(LOWER_ALPHA)
+        }
+
+        (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as RelativeLayout).apply {
+            layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            linearLayout.addView(this)
+
+            day_monthly_number_background.beVisibleIf(day.isToday)
+            day_monthly_number_id.apply {
+                setTextColor(textColor)
+                text = day.value.toString()
+                gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+            }
+
+            if (day.isToday) {
+                day_monthly_number_background.setColorFilter(getProperPrimaryColor())
+                day_monthly_number_id.setTextColor(getProperPrimaryColor().getContrastColor())
             }
         }
     }

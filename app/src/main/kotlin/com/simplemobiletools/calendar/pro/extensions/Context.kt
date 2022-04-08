@@ -15,12 +15,9 @@ import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.AlarmManagerCompat
@@ -43,7 +40,6 @@ import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
-import kotlinx.android.synthetic.main.day_monthly_number_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
@@ -438,42 +434,6 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
         }
     }
 }
-
-fun Context.addDayNumber(rawTextColor: Int, day: DayMonthly, linearLayout: LinearLayout, dayLabelHeight: Int, callback: (Int) -> Unit) {
-    var textColor = rawTextColor
-    if (!day.isThisMonth)
-        textColor = textColor.adjustAlpha(LOWER_ALPHA)
-
-    (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as RelativeLayout).apply {
-        layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        linearLayout.addView(this)
-
-        day_monthly_number_id.apply {
-            setTextColor(textColor)
-            text = day.value.toString()
-            gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
-
-            if (day.isToday) {
-                val primaryColor = getProperPrimaryColor()
-                setTextColor(primaryColor.getContrastColor())
-                if (dayLabelHeight == 0) {
-                    onGlobalLayout {
-                        val height = this@apply.height
-                        if (height > 0) {
-                            callback(height)
-                            addTodaysBackground(this, resources, height, primaryColor)
-                        }
-                    }
-                } else {
-                    addTodaysBackground(this, resources, dayLabelHeight, primaryColor)
-                }
-            }
-        }
-    }
-}
-
-private fun addTodaysBackground(textView: TextView, res: Resources, dayLabelHeight: Int, primaryColor: Int) =
-    textView.addResizedBackgroundDrawable(res, dayLabelHeight, primaryColor, R.drawable.ic_circle_vector)
 
 fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resources, dividerMargin: Int) {
     val eventLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
