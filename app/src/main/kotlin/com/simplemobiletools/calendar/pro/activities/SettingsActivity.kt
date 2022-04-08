@@ -2,11 +2,13 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
 import android.app.TimePickerDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.media.AudioManager
 import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
@@ -893,7 +895,14 @@ class SettingsActivity : SimpleActivity() {
                 Intent(Intent.ACTION_GET_CONTENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
                     type = "text/plain"
-                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+
+                    try {
+                        startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                    } catch (e: ActivityNotFoundException) {
+                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
                 }
             } else {
                 handlePermission(PERMISSION_READ_STORAGE) {

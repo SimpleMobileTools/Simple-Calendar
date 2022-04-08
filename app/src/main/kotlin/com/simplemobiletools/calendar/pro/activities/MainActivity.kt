@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.SearchManager
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ShortcutInfo
@@ -1056,7 +1057,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             Intent(Intent.ACTION_GET_CONTENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "text/calendar"
-                startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+
+                try {
+                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                } catch (e: ActivityNotFoundException) {
+                    toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                } catch (e: Exception) {
+                    showErrorToast(e)
+                }
             }
         } else {
             handlePermission(PERMISSION_READ_STORAGE) {
@@ -1118,7 +1126,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     putExtra(Intent.EXTRA_TITLE, file.name)
                     addCategory(Intent.CATEGORY_OPENABLE)
 
-                    startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
+                    try {
+                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
+                    } catch (e: ActivityNotFoundException) {
+                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
                 }
             }
         } else {
