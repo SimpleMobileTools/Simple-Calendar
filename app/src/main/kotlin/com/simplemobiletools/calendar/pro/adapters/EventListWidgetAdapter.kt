@@ -8,14 +8,15 @@ import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.R.id.event_item_holder
 import com.simplemobiletools.calendar.pro.R.id.event_section_title
-import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
+import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
-import java.util.*
 
 class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteViewsService.RemoteViewsFactory {
     private val ITEM_EVENT = 0

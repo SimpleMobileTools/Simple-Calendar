@@ -64,7 +64,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
                 val startActivityIntent = context.getLaunchIntent() ?: Intent(context, SplashActivity::class.java)
                 val startActivityPendingIntent =
-                    PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                    PendingIntent.getActivity(context, 0, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
                 views.setPendingIntentTemplate(R.id.widget_event_list, startActivityPendingIntent)
                 views.setEmptyView(R.id.widget_event_list, R.id.widget_event_list_empty)
 
