@@ -194,6 +194,7 @@
     <string name="show_a_grid">Mostrar unha cuadrícula</string>
     <string name="loop_reminders">Repetir recordatorios ata que se descarten</string>
     <string name="dim_past_events">Atenuar eventos pasados</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Eventos</string>
     <string name="reminder_stream">Canle de audio usado polos recordatorios</string>
     <string name="system_stream">Sistema</string>

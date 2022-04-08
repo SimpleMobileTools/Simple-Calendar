@@ -184,6 +184,7 @@
     <string name="show_a_grid">إظهار شبكة</string>
     <string name="loop_reminders">كرر التنبيهات حتى إلغاءها</string>
     <string name="dim_past_events">إخفات الأحداث السابقة</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">أحداث</string>
     <string name="reminder_stream">صوت يستخدم مع التنبيه</string>
     <string name="system_stream">النظام</string>

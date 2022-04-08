@@ -184,6 +184,7 @@
     <string name="show_a_grid">Näytä ruudukko</string>
     <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>
     <string name="dim_past_events">Himmennä menneet tapahtumat</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Tapahtumat</string>
     <string name="reminder_stream">Muistutuksien käyttämä äänen toisto</string>
     <string name="system_stream">Järjestelmä</string>

@@ -194,6 +194,7 @@
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>
     <string name="loop_reminders">Συνεχής επανάληψη μέχρι να απορριφθεί</string>
     <string name="dim_past_events">Μείωση των προηγούμενων</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Εκδηλώσεις</string>
     <string name="reminder_stream">Ροή ήχου για χρήση των υπενθυμίσεων</string>
     <string name="system_stream">Σύστημα</string>

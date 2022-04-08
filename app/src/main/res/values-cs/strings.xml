@@ -178,6 +178,7 @@
     <string name="show_a_grid">Zobrazovat mřížku</string>
     <string name="loop_reminders">Opakovat připomínky až do zamítnutí</string>
     <string name="dim_past_events">Utlumit minulé události</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Události</string>
     <string name="reminder_stream">Zvukový kanál používaný připomínkami</string>
     <string name="system_stream">Systém</string>

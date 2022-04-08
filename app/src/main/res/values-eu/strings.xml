@@ -194,6 +194,7 @@
     <string name="show_a_grid">Erakutsi sareta</string>
     <string name="loop_reminders">Errepikatu abisuak baztertu arte</string>
     <string name="dim_past_events">Lausotu iraganeko gertaerak</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Gertaerak</string>
     <string name="reminder_stream">Abisuek erabilitako audio-transmisioa</string>
     <string name="system_stream">Sistema</string>

@@ -194,6 +194,7 @@
     <string name="show_a_grid">Show a grid</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
     <string name="dim_past_events">Dim past events</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Events</string>
     <string name="reminder_stream">Audio stream used by reminders</string>
     <string name="system_stream">System</string>

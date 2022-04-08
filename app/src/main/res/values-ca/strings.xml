@@ -184,6 +184,7 @@
     <string name="show_a_grid">Mostra una quadrícula</string>
     <string name="loop_reminders">Recordatoris en bucle fins que es descartin</string>
     <string name="dim_past_events">Atenua els esdeveniments passats</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Esdeveniments</string>
     <string name="reminder_stream">Flux d\'àudio utilitzat pels recordatoris</string>
     <string name="system_stream">Sistema</string>

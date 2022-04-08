@@ -184,6 +184,7 @@
     <string name="show_a_grid">显示网络</string>
     <string name="loop_reminders">不断重复提醒直到解除</string>
     <string name="dim_past_events">淡化过去的活动</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">活动</string>
     <string name="reminder_stream">用于提醒的音频流</string>
     <string name="system_stream">系统</string>

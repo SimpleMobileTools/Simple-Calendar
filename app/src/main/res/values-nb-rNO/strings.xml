@@ -178,6 +178,7 @@
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>
     <string name="dim_past_events">Dim tidligere hendelser</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Hendelser</string>
     <string name="reminder_stream">Lydtype brukt for påminnelser</string>
     <string name="system_stream">System</string>

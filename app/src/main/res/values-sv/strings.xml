@@ -184,6 +184,7 @@
     <string name="show_a_grid">Visa ett rutnät</string>
     <string name="loop_reminders">Upprepa påminnelser tills de tas bort</string>
     <string name="dim_past_events">Tona ned tidigare händelser</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Händelser</string>
     <string name="reminder_stream">Ljudström för påminnelser</string>
     <string name="system_stream">System</string>

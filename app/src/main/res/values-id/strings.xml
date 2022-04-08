@@ -194,6 +194,7 @@
     <string name="show_a_grid">Tampilkan grid</string>
     <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
     <string name="dim_past_events">Redupkan acara yang sudah lewat</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Acara</string>
     <string name="reminder_stream">Audio yang digunakan pengingat</string>
     <string name="system_stream">Sistem</string>

@@ -179,6 +179,7 @@
     <string name="show_a_grid">グリッドを表示</string>
     <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">予定</string>
     <string name="reminder_stream">リマインダーで使用する音の種類</string>
     <string name="system_stream">システム</string>

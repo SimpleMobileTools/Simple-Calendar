@@ -184,6 +184,7 @@
     <string name="show_a_grid">Mostrar grelha</string>
     <string name="loop_reminders">Mostrar lembretes até serem descartados</string>
     <string name="dim_past_events">Desvanecer eventos passados</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Eventos</string>
     <string name="reminder_stream">Fluxo áudio a utilizar nos lembretes</string>
     <string name="system_stream">Sistema</string>

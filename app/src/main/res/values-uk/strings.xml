@@ -178,6 +178,7 @@
     <string name="show_a_grid">Показувати решітку</string>
     <string name="loop_reminders">Повторювати нагадування циклічно до відключення</string>
     <string name="dim_past_events">Показувати події, що відбулися, менш виразно</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Події</string>
     <string name="reminder_stream">Аудіопотік для нагадувань</string>
     <string name="system_stream">Система</string>

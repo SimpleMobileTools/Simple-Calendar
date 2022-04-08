@@ -194,6 +194,7 @@
     <string name="show_a_grid">Zobraziť mriežku</string>
     <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
     <string name="dim_past_events">Stlmiť minulé udalosti</string>
+    <string name="dim_completed_tasks">Stlmiť dokončené úlohy</string>
     <string name="events">Udalosti</string>
     <string name="reminder_stream">Zvukový kanál používaný pripomienkami</string>
     <string name="system_stream">Systémový</string>

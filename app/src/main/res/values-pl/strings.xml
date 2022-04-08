@@ -184,6 +184,7 @@
     <string name="show_a_grid">Pokazuj siatkę</string>
     <string name="loop_reminders">Powtarzaj przypomnienia aż do ich wyłączenia</string>
     <string name="dim_past_events">Przyciemniaj przeszłe wydarzenia</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Wydarzenia</string>
     <string name="reminder_stream">Strumień audio używany przez przypomnienia</string>
     <string name="system_stream">System</string>

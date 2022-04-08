@@ -194,6 +194,7 @@
     <string name="show_a_grid">격자 표시</string>
     <string name="loop_reminders">끌때까지 알림 반복</string>
     <string name="dim_past_events">지난 일정 희미하게 표시</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">일정</string>
     <string name="reminder_stream">알림음 출력 방식</string>
     <string name="system_stream">시스템</string>

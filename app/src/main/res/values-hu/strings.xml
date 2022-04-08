@@ -184,6 +184,7 @@
     <string name="show_a_grid">Rács megjelenítése</string>
     <string name="loop_reminders">Emlékeztetők ismétlése, amíg el nem veti őket</string>
     <string name="dim_past_events">Múltbeli események elhalványítása</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Események</string>
     <string name="reminder_stream">Emlékeztetők által használt hangcsatorna</string>
     <string name="system_stream">Rendszer</string>

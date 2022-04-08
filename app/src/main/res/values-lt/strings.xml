@@ -184,6 +184,7 @@
     <string name="show_a_grid">Rodyti tinklelį</string>
     <string name="loop_reminders">Kartoti priminimus tol, kol jie nebus atmesti</string>
     <string name="dim_past_events">Pritemdyti praeities įvykius</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Įvykiai</string>
     <string name="reminder_stream">Garso srautas, kurį naudos priminimai</string>
     <string name="system_stream">Sistema</string>

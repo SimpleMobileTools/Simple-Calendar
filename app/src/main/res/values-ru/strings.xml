@@ -178,6 +178,7 @@
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Циклические напоминания до отключения</string>
     <string name="dim_past_events">Показывать прошедшие события тусклыми</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">События</string>
     <string name="reminder_stream">Аудиопоток, используемый напоминаниями</string>
     <string name="system_stream">Система</string>

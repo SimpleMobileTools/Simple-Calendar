@@ -178,6 +178,7 @@
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>
     <string name="dim_past_events">淡化過去的活動</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">活動</string>
     <string name="reminder_stream">用於提醒的音源串流</string>
     <string name="system_stream">系統</string>

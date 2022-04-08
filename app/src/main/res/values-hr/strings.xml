@@ -178,6 +178,7 @@
     <string name="show_a_grid">Prikaži mrežu</string>
     <string name="loop_reminders">Ponavljaj podsjetnike sve dok ih ne odbacim</string>
     <string name="dim_past_events">Zatamni događaje koji su završili</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Događaji</string>
     <string name="reminder_stream">Audio izlazni kanal za podsjetnike</string>
     <string name="system_stream">Sustav</string>

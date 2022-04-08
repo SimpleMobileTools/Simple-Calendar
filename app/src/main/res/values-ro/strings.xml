@@ -194,6 +194,7 @@
     <string name="show_a_grid">Afișează o grilă</string>
     <string name="loop_reminders">Repetă reamintirile până când sunt închise</string>
     <string name="dim_past_events">Ascunde evenimentele din trecut</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Evenimente</string>
     <string name="reminder_stream">Flux audio folosit de reamintiri</string>
     <string name="system_stream">Sistem</string>

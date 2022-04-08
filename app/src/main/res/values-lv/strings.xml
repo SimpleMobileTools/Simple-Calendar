@@ -178,6 +178,7 @@
     <string name="show_a_grid">Rādīt režģi</string>
     <string name="loop_reminders">Cikliski atgādinājumi, līdz tiek noņemti</string>
     <string name="dim_past_events">Pagājušos notikumus rādīt blāvus</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Notikumi</string>
     <string name="reminder_stream">Audio straume, kuru izmanto atgādinājumi</string>
     <string name="system_stream">Sistēma</string>

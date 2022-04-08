@@ -198,6 +198,7 @@
     <string name="show_a_grid">একটি গ্রিড দেখান</string>
     <string name="loop_reminders">ডিসমিস না হওয়া পর্যন্ত রিমাইন্ডারগুলো লুপে চালান</string>
     <string name="dim_past_events">পূর্ববর্তী ইভেন্টগুলি অস্পষ্ট করুন</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">ইভেন্টস</string>
     <string name="reminder_stream">রিমাইন্ডার ব্যবহৃত অডিও স্ট্রিম</string>
     <string name="system_stream">সিস্টেম</string>
