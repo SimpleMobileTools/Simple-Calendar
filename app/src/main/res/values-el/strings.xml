@@ -174,8 +174,8 @@
 
     <!-- Settings -->
     <string name="manage_event_types">Διαχείριση τύπων εκδηλώσεων</string>
-    <string name="start_day_at">Ημέρα έναρξης την</string>
-    <string name="end_day_at">Ημέρα λήξης την</string>
+    <string name="start_day_at">Ημέρα έναρξης στις</string>
+    <string name="end_day_at">Ημέρα λήξης στις</string>
     <string name="midnight_spanning">Εμφάνιση συμβάντων μετά τα μεσάνυχτα στην επάνω γραμμή</string>
     <string name="allow_customizing_day_count">Αποδοχή προσαρμογής του αριθμού ημερών</string>
     <string name="week_numbers">Εμφάνιση αριθμών εβδομάδων</string>
@@ -194,14 +194,14 @@
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>
     <string name="loop_reminders">Συνεχής επανάληψη μέχρι να απορριφθεί</string>
     <string name="dim_past_events">Μείωση των προηγούμενων</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Μείωση των ολοκληρωμένων</string>
     <string name="events">Εκδηλώσεις</string>
     <string name="reminder_stream">Ροή ήχου για χρήση των υπενθυμίσεων</string>
     <string name="system_stream">Σύστημα</string>
     <string name="alarm_stream">Αφύπνιση</string>
     <string name="notification_stream">Ειδοποίηση</string>
     <string name="ring_stream">Κουδούνισμα</string>
-    <string name="use_last_event_reminders">Χρήση τελευταίων συμβάντων υπενθυμίσεις ως προεπιλογή για νέο συμβάν</string>
+    <string name="use_last_event_reminders">Χρήση υπενθυμίσεων τελευταίων συμβάντων ως προεπιλογή για νέο</string>
     <string name="default_reminder_1">Προεπιλογή υπενθύμισης 1</string>
     <string name="default_reminder_2">Προεπιλογή υπενθύμισης 2</string>
     <string name="default_reminder_3">Προεπιλογή υπενθύμισης 3</string>
@@ -214,8 +214,8 @@
     <string name="default_duration">Προεπιλεγμένη διάρκεια</string>
     <string name="last_used_one">Τελευταία χρήση</string>
     <string name="other_time">Άλλη ώρα</string>
-    <string name="highlight_weekends">Επισήμανση Σαββατοκύριακων σε ορισμένες προβολές</string>
-    <string name="highlight_weekends_color">Χρώμα επισημασμένων Σαββατοκύριακων</string>
+    <string name="highlight_weekends">Επισήμανση Σ/Κ σε ορισμένες προβολές</string>
+    <string name="highlight_weekends_color">Χρώμα επισημασμένων Σ/Κ</string>
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
     <string name="allow_creating_tasks">Αποδοχή δημιουργίας εργασιών</string>
@@ -235,8 +235,8 @@
     <string name="insufficient_permissions">Δεν επιτρέπεται η εγγραφή στο επιλεγμένο ημερολόγιο</string>
     <string name="caldav_event_not_found">Δεν βρέθηκε Εκδήλωση. Παρακαλώ ενεργοποιήστε το συγχρονισμό CalDAV του Ημερολογίου από τις ρυθμίσεις της εφαρμογής.</string>
     <string name="no_synchronized_calendars">Δεν μπόρεσαν να βρεθούν συγχρονισμένα Ημερολόγια</string>
-    <string name="status_free">Ελεύθερο</string>
-    <string name="status_busy">Κατειλημμένο</string>
+    <string name="status_free">Ελεύθερα</string>
+    <string name="status_busy">Κατειλημμένα</string>
 
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
