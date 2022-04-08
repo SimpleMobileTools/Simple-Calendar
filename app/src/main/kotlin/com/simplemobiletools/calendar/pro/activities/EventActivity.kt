@@ -1170,13 +1170,14 @@ class EventActivity : SimpleActivity() {
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == null || mEvent.id == null) {
             eventsHelper.insertEvent(mEvent, true, true) {
+                hideKeyboard()
+
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
                     if (mEvent.repeatInterval == 0 && mEvent.getReminders().any { it.type == REMINDER_NOTIFICATION }) {
                         notifyEvent(mEvent)
                     }
                 }
 
-                hideKeyboard()
                 finish()
             }
         } else {

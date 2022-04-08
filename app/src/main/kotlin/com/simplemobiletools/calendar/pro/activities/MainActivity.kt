@@ -1206,6 +1206,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     search_placeholder.beVisibleIf(events.isEmpty())
                     val listItems = getEventListItems(events)
                     val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                        hideKeyboard()
                         if (it is ListEvent) {
                             Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
                                 putExtra(EVENT_ID, it.id)
