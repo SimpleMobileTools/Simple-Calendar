@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.18.0 *(2022-04-08)*
+----------------------------
+
+ * Added Material You theme support on Android 12+
+ * Open the proper view at clicking on the event list widget
+ * Added some stability, translation and UX improvements
+
 Version 6.17.4 *(2022-03-16)*
 ----------------------------
 

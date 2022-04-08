@@ -1,0 +1,3 @@
+ * Added Material You theme support on Android 12+
+ * Open the proper view at clicking on the event list widget
+ * Added some stability, translation and UX improvements
