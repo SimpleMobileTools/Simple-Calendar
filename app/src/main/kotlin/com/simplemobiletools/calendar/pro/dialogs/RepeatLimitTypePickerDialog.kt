@@ -9,7 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.getNowSeconds
-import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.getDatePickerDialogTheme
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.value
 import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
@@ -39,13 +39,13 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
         updateRepeatLimitText()
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmRepetition() }
-                .setNegativeButton(R.string.cancel, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this) {
-                        activity.currentFocus?.clearFocus()
-                    }
+            .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmRepetition() }
+            .setNegativeButton(R.string.cancel, null)
+            .create().apply {
+                activity.setupDialogStuff(view, this) {
+                    activity.currentFocus?.clearFocus()
                 }
+            }
     }
 
     private fun getCheckedItem() = when {
@@ -84,8 +84,10 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
 
     private fun showRepetitionLimitDialog() {
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0L) repeatLimit else getNowSeconds())
-        val datepicker = DatePickerDialog(activity, activity.getDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
-                repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth)
+        val datepicker = DatePickerDialog(
+            activity, activity.getDatePickerDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
+            repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth
+        )
 
         datepicker.datePicker.firstDayOfWeek = if (activity.config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
         datepicker.show()

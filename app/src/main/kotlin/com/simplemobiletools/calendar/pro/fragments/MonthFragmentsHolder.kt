@@ -106,7 +106,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun showGoToDateDialog() {
-        requireActivity().setTheme(requireContext().getDialogTheme())
+        requireActivity().setTheme(requireContext().getDatePickerDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()

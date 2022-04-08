@@ -11,19 +11,17 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyDayPagerAdapter
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.DAILY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
-import com.simplemobiletools.commons.extensions.getDialogTheme
+import com.simplemobiletools.commons.extensions.getDatePickerDialogTheme
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.updateActionBarTitle
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
-import java.util.*
 
 class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_DAYS = 251
@@ -108,7 +106,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun showGoToDateDialog() {
-        requireActivity().setTheme(requireContext().getDialogTheme())
+        requireActivity().setTheme(requireContext().getDatePickerDialogTheme())
         val view = layoutInflater.inflate(R.layout.date_picker, null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 

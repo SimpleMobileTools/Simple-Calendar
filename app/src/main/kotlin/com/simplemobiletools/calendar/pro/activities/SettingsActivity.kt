@@ -763,7 +763,7 @@ class SettingsActivity : SimpleActivity() {
                     val currentDateTime = DateTime.now()
                     TimePickerDialog(
                         this,
-                        getDialogTheme(),
+                        getTimePickerDialogTheme(),
                         timeListener,
                         currentDateTime.hourOfDay,
                         currentDateTime.minuteOfHour,

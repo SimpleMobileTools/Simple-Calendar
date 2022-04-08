@@ -23,7 +23,6 @@ import org.joda.time.DateTime
 import java.util.*
 
 class TaskActivity : SimpleActivity() {
-    private var mDialogTheme = 0
     private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private lateinit var mTaskDateTime: DateTime
     private lateinit var mTask: Event
@@ -37,7 +36,6 @@ class TaskActivity : SimpleActivity() {
         }
 
         val intent = intent ?: return
-        mDialogTheme = getDialogTheme()
         updateColors()
         val taskId = intent.getLongExtra(EVENT_ID, 0L)
         ensureBackgroundThread {
@@ -226,7 +224,7 @@ class TaskActivity : SimpleActivity() {
     private fun setupDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(
-            this, mDialogTheme, dateSetListener, mTaskDateTime.year, mTaskDateTime.monthOfYear - 1, mTaskDateTime.dayOfMonth
+            this, getDatePickerDialogTheme(), dateSetListener, mTaskDateTime.year, mTaskDateTime.monthOfYear - 1, mTaskDateTime.dayOfMonth
         )
 
         datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
@@ -236,7 +234,7 @@ class TaskActivity : SimpleActivity() {
     private fun setupTime() {
         hideKeyboard()
         TimePickerDialog(
-            this, mDialogTheme, timeSetListener, mTaskDateTime.hourOfDay, mTaskDateTime.minuteOfHour, config.use24HourFormat
+            this, getTimePickerDialogTheme(), timeSetListener, mTaskDateTime.hourOfDay, mTaskDateTime.minuteOfHour, config.use24HourFormat
         ).show()
     }
 

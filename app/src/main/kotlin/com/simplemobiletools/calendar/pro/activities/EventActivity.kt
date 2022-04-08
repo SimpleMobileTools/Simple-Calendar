@@ -62,7 +62,6 @@ class EventActivity : SimpleActivity() {
     private var mRepeatLimit = 0L
     private var mRepeatRule = 0
     private var mEventTypeId = REGULAR_EVENT_TYPE_ID
-    private var mDialogTheme = 0
     private var mEventOccurrenceTS = 0L
     private var mLastSavePromptTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
@@ -92,7 +91,6 @@ class EventActivity : SimpleActivity() {
         }
 
         val intent = intent ?: return
-        mDialogTheme = getDialogTheme()
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
 
         val eventId = intent.getLongExtra(EVENT_ID, 0L)
@@ -1306,7 +1304,7 @@ class EventActivity : SimpleActivity() {
     private fun setupStartDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(
-            this, mDialogTheme, startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
+            this, getDatePickerDialogTheme(), startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
             mEventStartDateTime.dayOfMonth
         )
 
@@ -1318,7 +1316,7 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         TimePickerDialog(
             this,
-            mDialogTheme,
+            getTimePickerDialogTheme(),
             startTimeSetListener,
             mEventStartDateTime.hourOfDay,
             mEventStartDateTime.minuteOfHour,
@@ -1329,7 +1327,7 @@ class EventActivity : SimpleActivity() {
     private fun setupEndDate() {
         hideKeyboard()
         val datepicker = DatePickerDialog(
-            this, mDialogTheme, endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
+            this, getDatePickerDialogTheme(), endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
             mEventEndDateTime.dayOfMonth
         )
 
@@ -1339,7 +1337,14 @@ class EventActivity : SimpleActivity() {
 
     private fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(this, mDialogTheme, endTimeSetListener, mEventEndDateTime.hourOfDay, mEventEndDateTime.minuteOfHour, config.use24HourFormat).show()
+        TimePickerDialog(
+            this,
+            getTimePickerDialogTheme(),
+            endTimeSetListener,
+            mEventEndDateTime.hourOfDay,
+            mEventEndDateTime.minuteOfHour,
+            config.use24HourFormat
+        ).show()
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
