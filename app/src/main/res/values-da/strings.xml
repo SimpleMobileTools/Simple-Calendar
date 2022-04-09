@@ -178,7 +178,7 @@
     <string name="show_a_grid">Vis gitter</string>
     <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>
     <string name="dim_past_events">Nedton gamle begivenheder</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Nedton afsluttede opgaver</string>
     <string name="events">Begivenheder</string>
     <string name="reminder_stream">Audio stream anvendt af påmindelser</string>
     <string name="system_stream">System</string>
