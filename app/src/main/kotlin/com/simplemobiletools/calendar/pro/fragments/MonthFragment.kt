@@ -101,7 +101,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
             mHolder.top_value.apply {
                 text = month
                 contentDescription = text
-                setTextColor(requireContext().getProperTextColor())
+
+                if (activity != null) {
+                    setTextColor(activity!!.getProperTextColor())
+                }
             }
             updateDays(days)
         }
