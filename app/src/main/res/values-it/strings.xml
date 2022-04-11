@@ -184,7 +184,7 @@
     <string name="show_a_grid">Mostra una griglia</string>
     <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
     <string name="dim_past_events">Rimuovi gli eventi passati</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Sfuma le attività completate</string>
     <string name="events">Eventi</string>
     <string name="reminder_stream">Canale audio utilizzato per i promomemoria</string>
     <string name="system_stream">Sistema</string>
