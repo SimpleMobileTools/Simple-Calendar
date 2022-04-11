@@ -184,7 +184,7 @@
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Erledigte Aufgaben abblenden</string>
     <string name="events">Termine</string>
     <string name="reminder_stream">Audioausgabekanal für Erinnerungen</string>
     <string name="system_stream">Medien</string>
