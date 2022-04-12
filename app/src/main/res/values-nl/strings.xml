@@ -178,7 +178,7 @@
     <string name="show_a_grid">Rasterlijnen tonen</string>
     <string name="loop_reminders">Herinneringen blijven herhalen totdat ze zijn uitgezet</string>
     <string name="dim_past_events">Afgelopen afspraken dimmen</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Voltooide taken dimmen</string>
     <string name="events">Afspraken</string>
     <string name="reminder_stream">Type geluiden voor herinneringen gebruiken</string>
     <string name="system_stream">Systeem</string>
