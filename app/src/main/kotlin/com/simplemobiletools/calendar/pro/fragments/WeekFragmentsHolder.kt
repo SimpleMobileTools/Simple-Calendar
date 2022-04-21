@@ -114,7 +114,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                         isGoToTodayVisible = shouldGoToTodayBeVisible
                     }
 
-                    setupWeeklyActionbarTitle(weekTSs[position])
+//                    setupWeeklyActionbarTitle(weekTSs[position])
                 }
             })
             currentItem = defaultWeeklyPage
@@ -159,16 +159,17 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
         val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
         val startMonthName = Formatter.getMonthName(requireContext(), startDateTime.monthOfYear)
-        if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
-            var newTitle = startMonthName
-            if (startDateTime.year != DateTime().year) {
-                newTitle += " - ${startDateTime.year}"
-            }
-            (activity as AppCompatActivity).updateActionBarTitle(newTitle)
-        } else {
-            val endMonthName = Formatter.getMonthName(requireContext(), endDateTime.monthOfYear)
-            (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
-        }
+//        if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
+//            var newTitle = startMonthName
+//            if (startDateTime.year != DateTime().year) {
+//                newTitle += " - ${startDateTime.year}"
+//            }
+//            (activity as AppCompatActivity).updateActionBarTitle(newTitle)
+//        } else {
+//            val endMonthName = Formatter.getMonthName(requireContext(), endDateTime.monthOfYear)
+//            (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
+//        }
+        (activity as AppCompatActivity).updateActionBarTitle(getString(R.string.app_launcher_name))
         (activity as AppCompatActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
     }
 
@@ -246,7 +247,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
 
     override fun updateActionBarTitle() {
-        setupWeeklyActionbarTitle(currentWeekTS)
+//        setupWeeklyActionbarTitle(currentWeekTS)
     }
 
     override fun getNewEventDayCode(): String {
