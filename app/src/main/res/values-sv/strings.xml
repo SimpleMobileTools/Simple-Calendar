@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
     <string name="public_event_notification_text">Du har en kommande händelse</string>
-    <string name="saving_filtered_out">Spara... Men den valda händelsetypen filtreras bort i den översta menyn - Filter.</string>
+    <string name="saving_filtered_out">Spara... Men den valda händelsetypen filtreras bort i den översta menyn - Filter</string>
     <!-- Tasks -->
     <string name="task">Uppgift</string>
     <string name="tasks">Uppgifter</string>
@@ -95,7 +95,7 @@
     <string name="second_f">andra</string>
     <string name="third_f">tredje</string>
     <string name="fourth_f">fjärde</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">femte</string>
     <string name="last_f">sista</string>
     <!-- Birthdays -->
     <string name="birthdays">Födelsedagar</string>
@@ -124,7 +124,7 @@
     <string name="maybe_going">Kommer kanske</string>
     <string name="invited">Inbjuden</string>
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">Lägg till ett land eller en tidszon</string>
     <!-- Export / Import -->
     <string name="import_events">Importera händelser</string>
     <string name="export_events">Exportera händelser</string>
@@ -134,7 +134,7 @@
     <string name="export_past_events_too">Exportera även tidigare händelser</string>
     <string name="include_event_types">Inkludera händelsetyper</string>
     <string name="filename_without_ics">Filnamn (utan .ics)</string>
-    <string name="ignore_event_types">Ignorera händelsetyper i filen, använd alltid standardtypen.</string>
+    <string name="ignore_event_types">Ignorera händelsetyper i filen, använd alltid standardtypen</string>
     <!-- Event details -->
     <string name="location">Plats</string>
     <string name="description">Beskrivning</string>
@@ -184,7 +184,7 @@
     <string name="show_a_grid">Visa ett rutnät</string>
     <string name="loop_reminders">Upprepa påminnelser tills de tas bort</string>
     <string name="dim_past_events">Tona ned tidigare händelser</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Dämpa färdiga uppgifter</string>
     <string name="events">Händelser</string>
     <string name="reminder_stream">Ljudström för påminnelser</string>
     <string name="system_stream">System</string>
@@ -278,8 +278,8 @@
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simpel kalender pro - händelser och påminnelser</string>
     <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simpel mobil 2020 kalender. Schemaläggningsplanerare och mötespåminnare för alla dagar.</string>
-    <string name="app_long_description">" Simple Calendar Pro är en helt anpassningsbar offline-kalender som är utformad för att göra exakt vad en kalender ska göra. &lt;b&gt;Inga komplicerade funktioner, onödiga behörigheter och inga annonser!&lt;/b&gt; Oavsett om du organiserar enstaka eller återkommande händelser, födelsedagar, årsdagar, affärsmöten, möten, möten eller något annat, gör Simpel kalendar pro det &lt;b&gt;enkelt att hålla sig organiserad&lt;/b&gt;. Med en otrolig mängd &lt;b&gt;anpassningsalternativ&lt;/b&gt; kan du anpassa händelsepåminnelser, notifieringsljud, kalenderwidgetar och hur appen ser ut. Dagliga, veckovisa och månatliga vyer gör det enkelt att kontrollera dina kommande händelser &amp;; möten. Du kan till och med visa allt som en enkel lista över händelser istället för i kalendervyn, så att du &lt;b&gt;vet exakt vad som är på gång i ditt liv och när. &lt;/b&gt; ---------------------------------------------------------- &lt;b&gt;Simple Calendar Pro - Funktioner &amp; fördelar&lt;/b&gt; ---------------------------------------------------------- ✔️ Inga annonser eller irriterande popups ✔️ Ingen internetuppkoppling behövs, vilket ger dig mer integritet &amp;amp; säkerhet ✔️ Endast ett minimum av behörigheter krävs ✔️ Betoning på enkelhet - gör det som en kalender behöver göra! ✔️ Öppen källkod ✔️ Fullt anpassningsbara teman &amp;amp; kalender / händelse widgets ✔️ Översatt till 29 språk ✔️ Exportera inställningar till .txt-filer för att importera till en annan enhet ✔️ CalDAV-kalendarsynkronisering stöds för att synkronisera händelser på olika enheter ✔️ Daglig, veckovis, månadsvis, årlig &amp;amp; händelsevisningar i kalendern ✔️ Stödjer export &amp;amp; import av händelser via . ics-filer ✔️ Ställ in flera händelsepåminnelser, anpassa ljud och vibrationer för händelsepåminnelser ✔️ Snooze-alternativ för påminnelser ✔️ Lägg enkelt till helgdagar, födelsedagar, årsdagar &amp;amp; ✔️ Anpassa händelser - starttid, varaktighet, påminnelser etc ✔️ Lägg till deltagare till varje händelse ✔️ Använd som en personlig kalender eller en företagskalender ✔️ Välj mellan påminnelser &amp;amp; e-postmeddelanden för att varna dig om en händelse LADDA NED SIMPEL KALENDAR PRO - DEN SIMPLA OFFLINE KALENDERN UTAN ANNONSER! &lt;b&gt;Kolla in hela sviten av enkla verktyg här:&lt;/b&gt; https://www.simplemobiletools.com &lt;b&gt;Standalone webbplats för Simple Calendar Pro:&lt;/b&gt; https://www.simplemobiletools.com/calendar &lt;b&gt;Facebook:&lt;/b&gt; https://www.facebook.com/simplemobiletools &lt;b&gt;Reddit:&lt;/b&gt; https://www.reddit.com/r/SimpleMobileTools "</string>
+    <string name="app_short_description">Simpel mobil 2020 kalender. Schemaläggningsplanerare och mötespåminnare för alla dagar</string>
+    <string name="app_long_description">" Simpel kalendar Pro är en helt anpassningsbar offline-kalender som är utformad för att göra exakt vad en kalender ska göra. &lt;b&gt;Inga komplicerade funktioner, onödiga behörigheter och inga annonser!&lt;/b&gt; Oavsett om du organiserar enstaka eller återkommande händelser, födelsedagar, årsdagar, affärsmöten, möten, möten eller något annat, gör Simpel kalendar pro det &lt;b&gt;enkelt att hålla sig organiserad&lt;/b&gt;. Med en otrolig mängd &lt;b&gt;anpassningsalternativ&lt;/b&gt; kan du anpassa händelsepåminnelser, notifieringsljud, kalenderwidgetar och hur appen ser ut. Dagliga, veckovisa och månatliga vyer gör det enkelt att kontrollera dina kommande händelser &amp;; möten. Du kan till och med visa allt som en enkel lista över händelser istället för i kalendervyn, så att du &lt;b&gt;vet exakt vad som är på gång i ditt liv och när. &lt;/b&gt; ---------------------------------------------------------- &lt;b&gt;Simple Calendar Pro - Funktioner &amp; fördelar&lt;/b&gt; ---------------------------------------------------------- ✔️ Inga annonser eller irriterande popups ✔️ Ingen internetuppkoppling behövs, vilket ger dig mer integritet &amp;amp; säkerhet ✔️ Endast ett minimum av behörigheter krävs ✔️ Betoning på enkelhet - gör det som en kalender behöver göra! ✔️ Öppen källkod ✔️ Fullt anpassningsbara teman &amp;amp; kalender / händelse widgets ✔️ Översatt till 29 språk ✔️ Exportera inställningar till .txt-filer för att importera till en annan enhet ✔️ CalDAV-kalendarsynkronisering stöds för att synkronisera händelser på olika enheter ✔️ Daglig, veckovis, månadsvis, årlig &amp;amp; händelsevisningar i kalendern ✔️ Stödjer export &amp;amp; import av händelser via . ics-filer ✔️ Ställ in flera händelsepåminnelser, anpassa ljud och vibrationer för händelsepåminnelser ✔️ Snooze-alternativ för påminnelser ✔️ Lägg enkelt till helgdagar, födelsedagar, årsdagar &amp;amp; ✔️ Anpassa händelser - starttid, varaktighet, påminnelser etc ✔️ Lägg till deltagare till varje händelse ✔️ Använd som en personlig kalender eller en företagskalender ✔️ Välj mellan påminnelser &amp;amp; e-postmeddelanden för att varna dig om en händelse LADDA NED SIMPEL KALENDAR PRO - DEN SIMPLA OFFLINE KALENDERN UTAN ANNONSER! &lt;b&gt;Kolla in hela samlingen av simpla verktyg här:&lt;/b&gt; https://www.simplemobiletools.com &lt;b&gt;Standalone webbplats för Simple Calendar Pro:&lt;/b&gt; https://www.simplemobiletools.com/calendar &lt;b&gt;Facebook:&lt;/b&gt; https://www.facebook.com/simplemobiletools &lt;b&gt;Reddit:&lt;/b&gt; https://www.reddit.com/r/SimpleMobileTools "</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
