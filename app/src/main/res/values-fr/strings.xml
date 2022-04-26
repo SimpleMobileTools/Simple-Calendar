@@ -72,7 +72,7 @@
     <string name="times">fois</string>
     <string name="repeat">Répéter</string>
     <string name="repeat_on">Répéter le</string>
-    <string name="every_day">Chaque jour</string>
+    <string name="every_day">Tous les jours</string>
     <string name="selected_days">Les jours sélectionnés</string>
     <string name="the_same_day">Le même jour</string>
     <string name="the_last_day">Le dernier jour</string>
@@ -184,7 +184,7 @@
     <string name="show_a_grid">Affichage en grille</string>
     <string name="loop_reminders">Répéter les rappels jusqu\'à ce qu\'ils soient rejetés</string>
     <string name="dim_past_events">Estomper les évènements passés</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Estomper les tâches terminées</string>
     <string name="events">Évènements</string>
     <string name="reminder_stream">Flux audio utilisé pour les rappels</string>
     <string name="system_stream">Système</string>
