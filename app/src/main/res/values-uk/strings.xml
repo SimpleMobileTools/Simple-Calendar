@@ -30,7 +30,7 @@
     <string name="filter_events_by_type">Фільтрувати події за типом</string>
     <string name="please_fill_location">Будь ласка, вкажіть місце, що буде показано на карті</string>
     <string name="public_event_notification_text">Наближається подія</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Збереження… Але вибраний тип події відфільтровується у верхньому Меню - Фільтр</string>
     <!-- Tasks -->
     <string name="task">Завдання</string>
     <string name="tasks">Завдання</string>
@@ -178,7 +178,7 @@
     <string name="show_a_grid">Показувати решітку</string>
     <string name="loop_reminders">Повторювати нагадування циклічно до відключення</string>
     <string name="dim_past_events">Показувати події, що відбулися, менш виразно</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Показувати виконані завдання тьмяними</string>
     <string name="events">Події</string>
     <string name="reminder_stream">Аудіопотік для нагадувань</string>
     <string name="system_stream">Система</string>
