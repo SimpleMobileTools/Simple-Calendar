@@ -116,7 +116,7 @@ class EventsHelper(val context: Context) {
         context.updateWidgets()
         context.scheduleNextEventReminder(event, showToasts)
 
-        if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
+        if (addToCalDAV && config.caldavSync && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS) {
             context.calDAVHelper.insertCalDAVEvent(event)
         }
 
