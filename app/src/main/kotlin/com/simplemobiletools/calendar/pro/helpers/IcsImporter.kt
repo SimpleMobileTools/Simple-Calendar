@@ -322,7 +322,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                     Parser().parseDateTimeValue(value)
                 }
-                fullString.startsWith(":") -> Parser().parseDateTimeValue(fullString.substring(1))
+                fullString.startsWith(":") -> Parser().parseDateTimeValue(fullString.substring(1).trim())
                 else -> Parser().parseDateTimeValue(fullString)
             }
         } catch (e: Exception) {
