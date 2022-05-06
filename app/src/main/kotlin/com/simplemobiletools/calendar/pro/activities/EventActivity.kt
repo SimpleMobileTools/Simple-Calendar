@@ -257,8 +257,8 @@ class EventActivity : SimpleActivity() {
             (DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(millis) - DateTimeZone.forID(original).getOffset(millis)) / 1000L
         }
 
-        val newStartTS = mEventStartDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset
-        val newEndTS = mEventEndDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds() - offset
+        val newStartTS = mEventStartDateTime.seconds() - offset
+        val newEndTS = mEventEndDateTime.seconds() - offset
         return Pair(newStartTS, newEndTS)
     }
 
