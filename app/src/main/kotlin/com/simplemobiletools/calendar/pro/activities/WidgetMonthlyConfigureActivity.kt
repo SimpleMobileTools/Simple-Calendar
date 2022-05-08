@@ -139,16 +139,14 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         top_left_arrow.applyColorFilter(mTextColor)
         top_right_arrow.applyColorFilter(mTextColor)
         top_value.setTextColor(mTextColor)
-        config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
-        config_save.setTextColor(mTextColor)
+        config_text_color.setFillWithStroke(mTextColor, mTextColor)
         updateLabels()
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_calendar.background.applyColorFilter(mBgColor)
-        config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
-        config_save.setBackgroundColor(mBgColor)
+        config_bg_color.setFillWithStroke(mBgColor, mBgColor)
     }
 
     private fun updateDays() {

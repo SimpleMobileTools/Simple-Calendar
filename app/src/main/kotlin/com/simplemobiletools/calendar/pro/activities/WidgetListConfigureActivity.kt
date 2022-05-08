@@ -205,15 +205,13 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private fun updateColors() {
         mTextColor = mTextColorWithoutTransparency
         (config_events_list.adapter as? EventListAdapter)?.updateTextColor(mTextColor)
-        config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
-        config_save.setTextColor(mTextColor)
+        config_text_color.setFillWithStroke(mTextColor, mTextColor)
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_events_list.background.applyColorFilter(mBgColor)
-        config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
-        config_save.setBackgroundColor(mBgColor)
+        config_bg_color.setFillWithStroke(mBgColor, mBgColor)
     }
 
     private fun getListItems(): ArrayList<ListItem> {

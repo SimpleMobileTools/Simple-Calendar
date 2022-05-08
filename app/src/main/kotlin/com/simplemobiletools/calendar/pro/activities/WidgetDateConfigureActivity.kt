@@ -116,8 +116,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
         mPrimaryColor = getProperPrimaryColor()
 
-        config_text_color.setFillWithStroke(mTextColor, Color.BLACK)
-        config_save.setTextColor(mTextColor)
+        config_text_color.setFillWithStroke(mTextColor, mTextColor)
         widget_date_label.setTextColor(mTextColor)
         widget_month_label.setTextColor(mTextColor)
     }
@@ -125,8 +124,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_date_time_wrapper.background.applyColorFilter(mBgColor)
-        config_bg_color.setFillWithStroke(mBgColor, Color.BLACK)
-        config_save.setBackgroundColor(mBgColor)
+        config_bg_color.setFillWithStroke(mBgColor, mBgColor)
     }
 
     private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
