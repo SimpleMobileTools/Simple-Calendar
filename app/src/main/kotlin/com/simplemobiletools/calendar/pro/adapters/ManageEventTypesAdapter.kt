@@ -1,11 +1,9 @@
 package com.simplemobiletools.calendar.pro.adapters
 
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
@@ -13,13 +11,10 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.getProperBackgroundColor
-import com.simplemobiletools.commons.extensions.setFillWithStroke
-import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_event_type.view.*
-import java.util.*
 
 class ManageEventTypesAdapter(
     activity: SimpleActivity, val eventTypes: ArrayList<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
@@ -31,10 +26,19 @@ class ManageEventTypesAdapter(
 
     override fun getActionMenuId() = R.menu.cab_event_type
 
-    override fun prepareActionMode(menu: Menu) {}
+    override fun prepareActionMode(menu: Menu) {
+        menu.apply {
+            findItem(R.id.cab_edit).isVisible = isOneItemSelected()
+        }
+    }
 
     override fun actionItemPressed(id: Int) {
+        if (selectedKeys.isEmpty()) {
+            return
+        }
+
         when (id) {
+            R.id.cab_edit -> itemClick.invoke(getSelectedItems().first())
             R.id.cab_delete -> askConfirmDelete()
         }
     }
@@ -73,7 +77,48 @@ class ManageEventTypesAdapter(
             event_type_title.text = eventType.getDisplayTitle()
             event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
             event_type_title.setTextColor(textColor)
+
+            overflow_menu_icon.drawable.apply {
+                mutate()
+                setTint(activity.getProperTextColor())
+            }
+
+            overflow_menu_icon.setOnClickListener {
+                showPopupMenu(overflow_menu_anchor, eventType)
+            }
         }
+    }
+
+    private fun showPopupMenu(view: View, eventType: EventType) {
+        val theme = activity.getPopupMenuTheme()
+        val contextTheme = ContextThemeWrapper(activity, theme)
+
+        PopupMenu(contextTheme, view, Gravity.END).apply {
+            inflate(getActionMenuId())
+            setOnMenuItemClickListener { item ->
+                val eventTypeId = eventType.id!!.toInt()
+                when (item.itemId) {
+                    R.id.cab_edit -> {
+                        executeItemMenuOperation(eventTypeId) {
+                            itemClick(eventType)
+                        }
+                    }
+                    R.id.cab_delete -> {
+                        executeItemMenuOperation(eventTypeId) {
+                            askConfirmDelete()
+                        }
+                    }
+                }
+                true
+            }
+            show()
+        }
+    }
+
+    private fun executeItemMenuOperation(eventTypeId: Int, callback: () -> Unit) {
+        finishActMode()
+        selectedKeys.add(eventTypeId)
+        callback()
     }
 
     private fun askConfirmDelete() {
