@@ -38,7 +38,7 @@ class ManageEventTypesAdapter(
         }
 
         when (id) {
-            R.id.cab_edit -> itemClick.invoke(getSelectedItems().first())
+            R.id.cab_edit -> editEventType()
             R.id.cab_delete -> askConfirmDelete()
         }
     }
@@ -90,6 +90,7 @@ class ManageEventTypesAdapter(
     }
 
     private fun showPopupMenu(view: View, eventType: EventType) {
+        finishActMode()
         val theme = activity.getPopupMenuTheme()
         val contextTheme = ContextThemeWrapper(activity, theme)
 
@@ -116,9 +117,14 @@ class ManageEventTypesAdapter(
     }
 
     private fun executeItemMenuOperation(eventTypeId: Int, callback: () -> Unit) {
-        finishActMode()
+        selectedKeys.clear()
         selectedKeys.add(eventTypeId)
         callback()
+    }
+
+    private fun editEventType() {
+        itemClick.invoke(getSelectedItems().first())
+        finishActMode()
     }
 
     private fun askConfirmDelete() {
