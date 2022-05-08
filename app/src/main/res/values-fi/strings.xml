@@ -184,7 +184,7 @@
     <string name="show_a_grid">Näytä ruudukko</string>
     <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>
     <string name="dim_past_events">Himmennä menneet tapahtumat</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Himmennä valmiit tehtävät</string>
     <string name="events">Tapahtumat</string>
     <string name="reminder_stream">Muistutuksien käyttämä äänen toisto</string>
     <string name="system_stream">Järjestelmä</string>
@@ -274,7 +274,7 @@
     <string name="faq_4_title">Tukeeko sovellus aikavyöhykkeitä?</string>
     <string name="faq_4_text">Kyllä. Oletuksena kaikki tapahtumat luodaan nykyiselle aikavyöhykkeellesi. Jos haluat muuttaa tapahtuman aikavyöhykettä,
          sinun on ensin otettava käyttöön aikavyöhykkeen valitsin sovelluksen asetuksissa ja muutettava se sitten Tapahtuman tiedot-näytössä. Se on oletusarvoisesti pois käytöstä, koska useimmat ihmiset eivät tarvitse sitä.</string>
-    <string name="faq_5_title">Miksi sovellus ei näytä enää ilmoituksia\?</string>
+    <string name="faq_5_title">Miksi sovellus ei näytä ilmoituksia\?</string>
     <string name="faq_5_text">Tarkista laitteesi akku- ja ilmoitusasetukset siltä varalta että jokin asetus estää ilmoitukset tai sulkee sovelluksen taustalla. Katso myös vinkit sivustolta &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;.</string>
     <string name="faq_6_title">Kuinka voin muokata tai poistaa tapahtumatyypin\?</string>
     <string name="faq_6_text">Voit muokata tai poistaa tapahtumatyyppejä sovelluksen asetuksissa kohdasta Hallitse taphtumatyyppejä. Klikkaa haluamaasi tyyppiä vaihtaaksesi otsikkoa tai väriä. Tapahtumatyypin voit poistaa painamalla sitä listssa pitkään ja klikkamaalla yläpalkkiin ilmestyvää roskakorikuvaketta.</string>
