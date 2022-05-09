@@ -1,4 +1,5 @@
 # Simple Calendar
+
 <img alt="Logo" src="fastlane/metadata/android/en-US/images/icon.png" width="120" />
 
 A simple calendar with events and a customizable widget.
@@ -7,7 +8,7 @@ A simple calendar with optional CalDAV synchronization. You can easily create re
 
 Contains a monthly view and an event list widget where you can customize the color of the text, as well as the alpha and the color of the background.
 
-Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+Contains no ads or unnecessary permissions. It is fully open-source, provides customizable colors.
 
 The Storage permission is needed only for exporting or importing events from .ics files.
 
