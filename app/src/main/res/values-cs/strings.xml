@@ -30,7 +30,7 @@
     <string name="filter_events_by_type">Filtrovat události podle typu</string>
     <string name="please_fill_location">Prosím zadejte polohu, která má být zobrazena na mapě</string>
     <string name="public_event_notification_text">Blíží se událost</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Ukládání... Ale vybraný typ události je odfiltrován v horním Menu - Filtr</string>
     <!-- Tasks -->
     <string name="task">Úkol</string>
     <string name="tasks">Úkoly</string>
@@ -217,9 +217,9 @@
     <string name="select_a_different_caldav_color">Zvolit jinou barvu (možná bude nastavena pouze lokálně)</string>
     <string name="insufficient_permissions">Nemáte oprávnění pro zápis do zvoleného kalendáře</string>
     <string name="caldav_event_not_found">Událost nenalezena. Prosím, povolte CalDAV synchronizaci příslušného kalendáře v nastavení aplikace.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Nebyly nalezeny žádné synchronizovatelné kalendáře</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_busy">Vytížený</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">pondělí</string>
