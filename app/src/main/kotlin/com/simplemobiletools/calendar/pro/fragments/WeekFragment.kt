@@ -35,8 +35,6 @@ import kotlinx.android.synthetic.main.week_event_marker.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.LinkedHashMap
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
@@ -268,7 +266,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
                                 val startHour = (dragEvent.y / rowHeight).toInt()
                                 ensureBackgroundThread {
-                                    val event = context?.eventsDB?.getEventWithId(eventId)
+                                    val event = context?.eventsDB?.getEventOrTaskWithId(eventId)
                                     event?.let {
                                         val currentStartTime = Formatter.getDateTimeFromTS(it.startTS)
                                         val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
