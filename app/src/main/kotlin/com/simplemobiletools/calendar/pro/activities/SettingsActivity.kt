@@ -103,6 +103,7 @@ class SettingsActivity : SimpleActivity() {
             settings_event_lists_label,
             settings_widgets_label,
             settings_events_label,
+            settings_tasks_label,
             settings_migrating_label
         ).forEach {
             it.setTextColor(getProperPrimaryColor())
@@ -119,6 +120,7 @@ class SettingsActivity : SimpleActivity() {
             settings_event_lists_holder,
             settings_widgets_holder,
             settings_events_holder,
+            settings_tasks_holder,
             settings_migrating_holder
         ).forEach {
             it.background.applyColorFilter(getProperBackgroundColor().getContrastColor())
