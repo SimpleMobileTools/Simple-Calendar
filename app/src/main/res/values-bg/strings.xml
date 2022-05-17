@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="duplicate_task">Дублиране на задача</string>
-    <string name="no_repetition">Без повторение</string>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календар</string>
     <string name="change_view">Промени изгледа</string>
@@ -11,11 +9,15 @@
     <string name="monthly_daily_view">Месечен и дневен изглед</string>
     <string name="yearly_view">Годишен изглед</string>
     <string name="simple_event_list">Списък със събития</string>
+    <string name="no_upcoming_events">Изглежда нямате предстоящи събития.</string>
     <string name="go_to_today">Днес</string>
     <string name="go_to_date">Идете на дата</string>
+    <string name="upgraded_from_free">Здравейте,\n\nизглежда сте ъгрейднали от старото безплатно приложение. Трябва ръчно да преместите съхранените локално събития чрез експортирането им в .ics файл, с последващо импортиране. Бутоните за експортиране и импортиране можете да намерите в главното меню.\n\nСлед това можете да деинсталирате старата версия, която има бутон \"Ъпгрейд до Pro\" отгоре на настройките. След това само се налага да нулирате настройките на приложението.\n\nБлагодаря!</string>
+    <!-- Widget titles -->
     <string name="widget_monthly">Месечен календар</string>
     <string name="widget_list">Списък с календарни събития</string>
     <string name="widget_todays_date">Днешна дата на календара</string>
+    <!-- Event -->
     <string name="event">Събитие</string>
     <string name="edit_event">Редактирайте събитието</string>
     <string name="new_event">Ново събитие</string>
@@ -26,11 +28,21 @@
     <string name="event_added">Успешно добавено събитие</string>
     <string name="event_updated">Успешно редактирано събитие</string>
     <string name="filter_events_by_type">Филтриране на събитията по тип</string>
+    <string name="please_fill_location">Моля попълнете местоположение за показване на картата</string>
     <string name="public_event_notification_text">Предстоящо събитие</string>
-    <string name="saving_filtered_out">Запазване...Но избраният тип събитие се филтрира от Главно Меню - Филтриране</string>
+    <string name="saving_filtered_out">Запазване…Но избраният тип събитие се филтрира от Главно Меню - Филтриране</string>
+    <!-- Tasks -->
+    <string name="task">Задача</string>
     <string name="tasks">Задачи</string>
     <string name="edit_task">Редактиране на задача</string>
     <string name="new_task">Нова задача</string>
+    <string name="create_new_task">Създайте нова задача</string>
+    <string name="duplicate_task">Дублиране на задача</string>
+    <string name="mark_completed">Означете като завършено</string>
+    <string name="mark_incomplete">Означете като незавършено</string>
+    <!-- Event Repetition -->
+    <string name="repetition">Повторение</string>
+    <string name="no_repetition">Без повторение</string>
     <string name="daily">Всекидневно</string>
     <string name="weekly">Ежеседмично</string>
     <string name="monthly">Ежемесечно</string>
@@ -38,12 +50,16 @@
     <string name="weeks_raw">седмици</string>
     <string name="months_raw">месеци</string>
     <string name="years_raw">години</string>
+    <string name="repeat_till">Повтаряй до</string>
     <string name="forever">Завинаги</string>
     <string name="event_is_repeatable">Събитието се повтаря</string>
+    <string name="selection_contains_repetition">Изборът съдържа само повтарящи се събития</string>
     <string name="delete_one_only">Изтрийте само избраното събитие</string>
     <string name="delete_future_occurrences">Изтрийте това събитие и всички бъдещи събития</string>
     <string name="delete_all_occurrences">Изтрийте всички свързани събития</string>
+    <string name="update_one_only">Ъпдейт само на избраното събитие</string>
     <string name="update_this_and_future_occurrences">Ъпдейт на това събитие и всички бъдещи събития</string>
+    <string name="update_all_occurrences">Ъпдейт на всички свързани събития</string>
     <string name="repeat_till_date">Повтаряне до дата</string>
     <string name="stop_repeating_after_x">Повтаряне X пъти</string>
     <string name="repeat_forever">Повтаряне завинаги</string>
@@ -52,46 +68,77 @@
     <string name="repeat_on">Повтаряне на</string>
     <string name="every_day">Всеки ден</string>
     <string name="selected_days">На избраните дни</string>
+    <string name="the_same_day">Същия ден</string>
     <string name="the_last_day">Последен ден</string>
     <string name="repeat_on_the_same_day_monthly">Повтаряне на същия ден всеки месец</string>
+    <string name="repeat_on_the_last_day_monthly">Повтаряне на последния ден от месеца</string>
     <string name="repeat_on_the_same_day_yearly">Повтаряне на същия ден всяка година</string>
     <string name="repeat_every_m">Повтаряне всеки</string>
     <string name="every_m">Всеки</string>
     <string name="first_m">първи</string>
     <string name="second_m">втори</string>
+    <string name="third_m">трети</string>
     <string name="fourth_m">четвърти</string>
     <string name="fifth_m">пети</string>
     <string name="last_m">последен</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Повтаряне всеки</string>
     <string name="every_f">Всеки</string>
     <string name="first_f">първи</string>
     <string name="second_f">втори</string>
+    <string name="third_f">трети</string>
+    <string name="fourth_f">четвърти</string>
+    <string name="fifth_f">пети</string>
     <string name="last_f">последен</string>
+    <!-- Birthdays -->
     <string name="birthdays">рождени дни</string>
     <string name="add_birthdays">Добавете рождени дни на контактите</string>
+    <string name="no_birthdays">Не са открити рождени дни</string>
     <string name="no_new_birthdays">Не са открити нови рождени дни</string>
     <string name="birthdays_added">Успешно добавени рождени дни</string>
+    <string name="add_birthdays_automatically">Автоматично добавяне на рождени дни</string>
+    <!-- Anniversaries -->
     <string name="anniversaries">Годишнини</string>
     <string name="add_anniversaries">Добавяне на годишнини на контактите</string>
     <string name="no_anniversaries">Не са открити годишнини</string>
     <string name="no_new_anniversaries">Не са открити нови годишнини</string>
+    <string name="anniversaries_added">Успешно добавени годишнини</string>
     <string name="add_anniversaries_automatically">Автоматично добавяне на годишнини</string>
+    <!-- Event Reminders -->
     <string name="reminder">Напомняне</string>
+    <string name="before">преди</string>
     <string name="add_another_reminder">Добавете друго напомняне</string>
     <string name="event_reminders">Напомняния за събития</string>
+    <!-- Event attendees -->
     <string name="add_another_attendee">Добавете друг участник</string>
     <string name="my_status">Моят статус:</string>
+    <string name="going">Отивам</string>
+    <string name="not_going">Не отивам</string>
+    <string name="maybe_going">Може би отивам</string>
+    <string name="invited">Поканен</string>
+    <!-- Time zones -->
+    <string name="enter_a_country">Въведете страна или часова зона</string>
+    <!-- Export / Import -->
+    <string name="import_events">Импортиране на събития</string>
+    <string name="export_events">Експортиране на събития</string>
+    <string name="import_events_from_ics">Импортиране от .ics файл</string>
+    <string name="export_events_to_ics">Експортиране към .ics файл</string>
     <string name="default_event_type">Тип събитие по подразбиране</string>
     <string name="export_past_events_too">Експортиране и на минали събития</string>
     <string name="include_event_types">Включване на типа събития</string>
     <string name="filename_without_ics">Име на файла (без .ics)</string>
     <string name="ignore_event_types">Игнориране на типансъботие във файла, винаги използване на типа събитие по подразбиране</string>
+    <!-- Event details -->
     <string name="location">Местоположение</string>
     <string name="description">Описание</string>
     <string name="all_day">Цял ден</string>
+    <!-- Weekly view -->
     <string name="week">Седмица</string>
     <string name="start_week_with_current_day">Започване на седмицата с днешния ден</string>
-    <string name="add_new_type">Добавяне на нов вид</string>
+    <!-- Event types -->
     <string name="event_types">Видове събития</string>
+    <string name="add_new_type">Добавяне на нов вид</string>
     <string name="edit_type">Редактиране на вида</string>
     <string name="type_already_exists">Вид с такова име вече съществува</string>
     <string name="color">Цвят</string>
@@ -101,23 +148,33 @@
     <string name="move_events_into_default">Преобразуване на засегнатите събития в основен вид събитие</string>
     <string name="remove_affected_events">Премахване на засегнатите събития</string>
     <string name="unsync_caldav_calendar">За премахване на събитие от вид CalDAV трябва да го разсинхронизирате</string>
+    <!-- Holidays -->
     <string name="holidays">Празници</string>
     <string name="add_holidays">Добавяне на празници</string>
+    <string name="national_holidays">Национални празници</string>
+    <string name="religious_holidays">Религиозни празници</string>
+    <string name="holidays_imported_successfully">Празниците бяха успешно импортирани във вид събитие \"Празници\"</string>
     <string name="importing_some_holidays_failed">Неуспешно импортиране на някои събития</string>
     <string name="importing_holidays_failed">Неуспешно импортиране на празници</string>
+    <!-- Settings -->
     <string name="manage_event_types">Управление на видовете събития</string>
     <string name="start_day_at">Започване на деня на</string>
     <string name="end_day_at">Завършване на деня на</string>
+    <string name="midnight_spanning">Показване отгоре на събития, които преминават полунощ</string>
     <string name="allow_customizing_day_count">Разрешаване на промяна на броя дни</string>
+    <string name="week_numbers">Показване на номерата на седмиците</string>
     <string name="vibrate">Вибрация при известие за напомняне</string>
     <string name="reminder_sound">Звук на напомнянето</string>
     <string name="no_ringtone_picker">Не е открито приложение способно да зададе мелодия</string>
     <string name="no_ringtone_selected">Няма</string>
     <string name="day_end_before_start">Денят не може да завърши преди да е започнал</string>
     <string name="caldav_sync">CalDAV синхронизация</string>
+    <string name="event_lists">Списъци със събития</string>
     <string name="display_past_events">Показване на минали събития</string>
+    <string name="replace_description_with_location">Смяна на описанието на събитието с местоположение</string>
     <string name="display_description_or_location">Показване на описание или местоположение</string>
     <string name="delete_all_events">Изтриване на всички събития</string>
+    <string name="delete_all_events_confirmation">Сигурни ли сте, че искате да изтриете всички събития\? Това няма да промени вашите видове събития нито другите ви настройки.</string>
     <string name="show_a_grid">Показване на решетка</string>
     <string name="loop_reminders">Циклично напомняне до отхвърляне</string>
     <string name="dim_past_events">Затъмняване на минали събития</string>
@@ -125,8 +182,10 @@
     <string name="events">Събития</string>
     <string name="reminder_stream">Аудио поток използван от напомнянията</string>
     <string name="system_stream">Система</string>
+    <string name="alarm_stream">Аларма</string>
     <string name="notification_stream">Известие</string>
     <string name="ring_stream">Звън</string>
+    <string name="use_last_event_reminders">Използване на напомнянето за предишни събития също и за нови събития</string>
     <string name="default_reminder_1">Основно напомняне 1</string>
     <string name="default_reminder_2">Основно напомняне 2</string>
     <string name="default_reminder_3">Основно напомняне 3</string>
@@ -134,23 +193,35 @@
     <string name="last_view">Последен изглед</string>
     <string name="new_events">Нови събития</string>
     <string name="default_start_time">Основно време за започване</string>
+    <string name="next_full_hour">Началото на следващия час</string>
+    <string name="current_time">Сега</string>
     <string name="default_duration">Основна продължителност</string>
     <string name="last_used_one">Последната използвана</string>
     <string name="other_time">Друго време</string>
     <string name="highlight_weekends">Подчертаване на уикендите в някои изгледи</string>
+    <string name="highlight_weekends_color">Цвят на подчертаване на уикендите</string>
     <string name="allow_changing_time_zones">Позволете смяната на часови зони за събитията</string>
     <string name="manage_quick_filter_event_types">Управление на бързия филтър за вид събитие</string>
+    <string name="allow_creating_tasks">Позволете създаването на задачи</string>
+    <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Изберете календари за синхронизация</string>
     <string name="manage_synced_calendars">Управление на синхронизираните календари</string>
     <string name="store_locally_only">Само локално съхранение</string>
+    <string name="refresh_caldav_calendars">Обновяване на календарите CalDAV</string>
     <string name="refreshing">Обновяване…</string>
     <string name="refreshing_complete">Обновяването завърши</string>
     <string name="editing_calendar_failed">Неуспешно редактиране на календара</string>
     <string name="syncing">Синхронизиране…</string>
+    <string name="synchronization_completed">Синхронизирането завърши</string>
     <string name="select_a_different_caldav_color">Изберете друг цвят (може да се приложи само локално)</string>
+    <string name="insufficient_permissions">Нямате разрешение за писане в избрания календар</string>
+    <string name="caldav_event_not_found">Събитието не е намерено. Моля включете CalDAV синхронизацията за правилния календар в настройките на приложението.</string>
     <string name="no_synchronized_calendars">Не са намерени календари, които да могат да се синхронизират</string>
     <string name="status_free">Свободно</string>
     <string name="status_busy">Заето</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Понеделник</string>
     <string name="tuesday_alt">Вторник</string>
     <string name="wednesday_alt">Сряда</string>
@@ -158,15 +229,19 @@
     <string name="friday_alt">Петък</string>
     <string name="saturday_alt">Събота</string>
     <string name="sunday_alt">Неделя</string>
+    <!-- List widget config example events -->
     <string name="sample_title_1">Тренировка</string>
     <string name="sample_description_1">Ден за крака</string>
     <string name="sample_title_2">Среща с Джон</string>
+    <string name="sample_description_2">В градината Рокстоун</string>
+    <string name="sample_title_3">Библиотека</string>
     <string name="sample_title_4">Обяд с Мери</string>
     <string name="sample_description_4">В супермаркета</string>
     <string name="sample_title_5">Време за кафе</string>
+    <!-- List widget config -->
     <string name="show_events_happening">Показване на събитията случващи се:</string>
-    <string name="today_only">Само днес</string>
     <string name="within_the_next_one_year">В рамките на 1 година</string>
+    <string name="today_only">Само днес</string>
     <string name="within_the_next">В рамките на следващите…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">В следващия %d ден</item>
@@ -176,82 +251,33 @@
         <item quantity="one">В следващия %d месец</item>
         <item quantity="other">В следващите %d месеци</item>
     </plurals>
-    <string name="faq_1_title">Как мога да премахна празниците импортирани с бутона \"Добавяне на празници\"\?</string>
-    <string name="faq_2_title">Мога ли да си синхронизирам своите събития с Google Calendar или друга услуга, поддържаща CalDAV\?</string>
-    <string name="faq_3_title">Виждам напомняния но не чувам звук. Какво мога да направя\?</string>
-    <string name="faq_3_text">Изпълнението на звук заедно с показването на напомнянето силно се влияе от системата. Ако не можете да чуете звук, опитайте, в настройките на приложението, да натиснете \"Аудио поток използван от приложенията\" и да изберете друга стойност. Ако все още няма звук, проверете във вашите настройки за звука дали този аудио поток не е заглушен.</string>
-    <string name="faq_4_title">Приложението поддържа ли часови зони\?</string>
-    <string name="faq_5_title">Защо приложението не показва известия\?</string>
-    <string name="faq_5_text">Проверете батерията на устройството си както и настройките за известия за неща блокиращи напомнянията или спиращи програмата. Може също да погледнете &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, има полезни съвети.</string>
-    <string name="faq_6_title">Как мога да променя или изтрия съществуващ тип събитие\?</string>
-    <string name="app_title">Simple Calendar Pro - Събития &amp; Напомняния</string>
-    <string name="app_short_description">Просто мобилен 2020 календар. Планиране &amp; напомняния за всеки ден</string>
-    <string name="no_upcoming_events">Изглежда нямате предстоящи събития.</string>
-    <string name="upgraded_from_free">Здравейте,
-\n
-\nизглежда сте ъгрейднали от старото безплатно приложение. Трябва ръчно да преместите съхранените локално събития чрез експортирането им в .ics файл, с последващо импортиране. Бутоните за експортиране и импортиране можете да намерите в главното меню.
-\n
-\nСлед това можете да деинсталирате старата версия, която има бутон \"Ъпгрейд до Pro\" отгоре на настройките. След това само се налага да нулирате настройките на приложението.
-\n
-\nБлагодаря!</string>
-    <string name="task">Задача</string>
-    <string name="create_new_task">Създайте нова задача</string>
-    <string name="mark_completed">Означете като завършено</string>
-    <string name="mark_incomplete">Означете като незавършено</string>
-    <string name="repeat_till">Повтаряй до</string>
-    <string name="repetition">Повторение</string>
-    <string name="please_fill_location">Моля попълнете местоположение за показване на картата</string>
-    <string name="selection_contains_repetition">Изборът съдържа само повтарящи се събития</string>
-    <string name="update_one_only">Ъпдейт само на избраното събитие</string>
-    <string name="update_all_occurrences">Ъпдейт на всички свързани събития</string>
-    <string name="the_same_day">Същия ден</string>
-    <string name="fourth_f">четвърти</string>
-    <string name="not_going">Не отивам</string>
-    <string name="export_events">Експортиране на събития</string>
-    <string name="repeat_on_the_last_day_monthly">Повтаряне на последния ден от месеца</string>
-    <string name="repeat_every_f">Повтаряне всеки</string>
-    <string name="third_f">трети</string>
-    <string name="fifth_f">пети</string>
-    <string name="no_birthdays">Не са открити рождени дни</string>
-    <string name="anniversaries_added">Успешно добавени годишнини</string>
-    <string name="going">Отивам</string>
-    <string name="maybe_going">Може би отивам</string>
-    <string name="third_m">трети</string>
-    <string name="add_birthdays_automatically">Автоматично добавяне на рождени дни</string>
-    <string name="before">преди</string>
-    <string name="invited">Поканен</string>
-    <string name="enter_a_country">Въведете страна или часова зона</string>
-    <string name="export_events_to_ics">Експортиране към .ics файл</string>
-    <string name="import_events_from_ics">Импортиране от .ics файл</string>
-    <string name="import_events">Импортиране на събития</string>
-    <string name="religious_holidays">Религиозни празници</string>
-    <string name="national_holidays">Национални празници</string>
-    <string name="week_numbers">Показване на номерата на седмиците</string>
-    <string name="holidays_imported_successfully">Празниците бяха успешно импортирани във вид събитие \"Празници\"</string>
-    <string name="midnight_spanning">Показване отгоре на събития, които преминават полунощ</string>
-    <string name="event_lists">Списъци със събития</string>
-    <string name="replace_description_with_location">Смяна на описанието на събитието с местоположение</string>
-    <string name="delete_all_events_confirmation">Сигурни ли сте, че искате да изтриете всички събития\? Това няма да промени вашите видове събития нито другите ви настройки.</string>
-    <string name="current_time">Сега</string>
-    <string name="alarm_stream">Аларма</string>
-    <string name="use_last_event_reminders">Използване на напомнянето за предишни събития също и за нови събития</string>
-    <string name="next_full_hour">Началото на следващия час</string>
-    <string name="allow_creating_tasks">Позволете създаването на задачи</string>
-    <string name="highlight_weekends_color">Цвят на подчертаване на уикендите</string>
-    <string name="refresh_caldav_calendars">Обновяване на календарите CalDAV</string>
-    <string name="synchronization_completed">Синхронизирането завърши</string>
-    <string name="select_caldav_calendars">Изберете календари за синхронизация</string>
-    <string name="insufficient_permissions">Нямате разрешение за писане в избрания календар</string>
-    <string name="caldav_event_not_found">Събитието не е намерено. Моля включете CalDAV синхронизацията за правилния календар в настройките на приложението.</string>
-    <string name="sample_description_2">В градината Рокстоун</string>
-    <string name="sample_title_3">Библиотека</string>
     <plurals name="within_the_next_weeks">
         <item quantity="one">В следващата %d седмица</item>
         <item quantity="other">В следващите %d седмици</item>
     </plurals>
+    <!-- FAQ -->
+    <string name="faq_1_title">Как мога да премахна празниците импортирани с бутона \"Добавяне на празници\"\?</string>
     <string name="faq_1_text">Празниците, създадени по този начин, са вкарани в нов вид събитие наречен \"Празници\". Можете да изберете Управление на видовете събития в настройките, да натиснете дълго избрания тип събитие и да го изтриете избизране на кошчето.</string>
+    <string name="faq_2_title">Мога ли да си синхронизирам своите събития с Google Calendar или друга услуга, поддържаща CalDAV\?</string>
     <string name="faq_2_text">Да, само превключете \"CalDAV синхронизация\" в настройките и изберете календарите за синхронизиране. Въпреки това, вие ще имате нужда от друга програм, която да синхронизира между вашето устройство и сървърите. Ако искате да синхронизирате с Google Calendar, тяхното официално приложение Calendar ще ви свърши работа. За други календари ще имате нужда от приложение-адаптер за синхронизация, например DAVx5.</string>
-    <string name="faq_6_text">Можете да направите и двете от настройките на приложението, в \"Управление на вида събития\". Просто кликнете на желаното, за да промените етикета и цвета, или изберете желаното чрез дълго натискане и използвайте кошчето в горното меню за изтриване.</string>
+    <string name="faq_3_title">Виждам напомняния но не чувам звук. Какво мога да направя\?</string>
+    <string name="faq_3_text">Изпълнението на звук заедно с показването на напомнянето силно се влияе от системата. Ако не можете да чуете звук, опитайте, в настройките на приложението, да натиснете \"Аудио поток използван от приложенията\" и да изберете друга стойност. Ако все още няма звук, проверете във вашите настройки за звука дали този аудио поток не е заглушен.</string>
     <string name="faq_4_text">Да, поддържа. По принцип всичко събития се създават във вашата текуща часова зона. Ако искате да промените часовата зона за някои събития, първо трябва да включите избирането на часова зона в настройките на приложението, а след това да промените зоната в екрана за Подробности На Събитието. По принцип това е изключено, тъй като повечето хора не го използват.</string>
-    <string name="app_long_description"> Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b> Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks. Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b> ---------------------------------------------------------- <b>Simple Calendar Pro – Features &amp; Benefits</b> ---------------------------------------------------------- ✔️ No ads or annoying popups ✔️ No internet access needed, giving you more privacy &amp; security ✔️ Only the bare minimum permissions required ✔️ Emphasis on simplicity – does what a calendar needs to do! ✔️ Open source ✔️ Fully customizable themes &amp; calendar / event widgets ✔️ Translated into 29 languages ✔️ Export settings to .txt files to import to another device ✔️ CalDAV calendar sync supported to sync events across devices ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar ✔️ Supports exporting &amp; importing events via .ics files ✔️ Set multiple event reminders, customize event reminder sound and vibration ✔️ Snooze option for reminders ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments ✔️ Customize events – start time, duration, reminders etc ✔️ Add event attendees to each event ✔️ Use as a personal calendar or a business calendar ✔️ Choose between reminders &amp; email notifications to alert you about an event DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS! <b>Check out the full suite of Simple Tools here:</b> https://www.simplemobiletools.com <b>Standalone website of Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
+    <string name="faq_4_title">Приложението поддържа ли часови зони\?</string>
+    <string name="faq_5_title">Защо приложението не показва известия\?</string>
+    <string name="faq_5_text">Проверете батерията на устройството си както и настройките за известия за неща блокиращи напомнянията или спиращи програмата. Може също да погледнете &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, има полезни съвети.</string>
+    <string name="faq_6_title">Как мога да променя или изтрия съществуващ тип събитие\?</string>
+    <string name="faq_6_text">Можете да направите и двете от настройките на приложението, в \"Управление на вида събития\". Просто кликнете на желаното, за да промените етикета и цвета, или изберете желаното чрез дълго натискане и използвайте кошчето в горното меню за изтриване.</string>
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Calendar Pro - Събития &amp; Напомняния</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">Просто мобилен 2020 календар. Планиране &amp; напомняния за всеки ден</string>
+    <string name="app_long_description">
+        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b> Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks. Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b> ---------------------------------------------------------- <b>Simple Calendar Pro – Features &amp; Benefits</b> ---------------------------------------------------------- ✔️ No ads or annoying popups ✔️ No internet access needed, giving you more privacy &amp; security ✔️ Only the bare minimum permissions required ✔️ Emphasis on simplicity – does what a calendar needs to do! ✔️ Open source ✔️ Fully customizable themes &amp; calendar / event widgets ✔️ Translated into 29 languages ✔️ Export settings to .txt files to import to another device ✔️ CalDAV calendar sync supported to sync events across devices ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar ✔️ Supports exporting &amp; importing events via .ics files ✔️ Set multiple event reminders, customize event reminder sound and vibration ✔️ Snooze option for reminders ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments ✔️ Customize events – start time, duration, reminders etc ✔️ Add event attendees to each event ✔️ Use as a personal calendar or a business calendar ✔️ Choose between reminders &amp; email notifications to alert you about an event DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS! <b>Check out the full suite of Simple Tools here:</b> https://www.simplemobiletools.com <b>Standalone website of Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools
+    </string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
 </resources>
