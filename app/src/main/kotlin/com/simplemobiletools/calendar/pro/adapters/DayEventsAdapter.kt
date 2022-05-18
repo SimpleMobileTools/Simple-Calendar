@@ -77,6 +77,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         } else {
             activity.getProperTextColor()
         }
+        
         notifyDataSetChanged()
     }
 
@@ -102,6 +103,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             } else {
                 dimPastEvents && event.isPastEvent && !isPrintVersion
             }
+            
             if (adjustAlpha) {
                 newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
             }
@@ -117,6 +119,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             } else {
                 mediumMargin
             }
+            
             (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
