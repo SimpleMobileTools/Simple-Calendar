@@ -946,7 +946,7 @@
                 style="@style/SettingsHolderCheckboxStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_all_corners">
+                android:background="@drawable/ripple_top_corners">
 
                 <com.simplemobiletools.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_allow_creating_tasks"
@@ -957,6 +957,21 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/settings_dim_completed_tasks_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_bottom_corners">
+
+                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_dim_completed_tasks"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dim_completed_tasks" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <TextView

@@ -34,6 +34,7 @@ class EventListAdapter(
     private val displayDescription = activity.config.displayDescription
     private val replaceDescription = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
+    private val dimCompletedTasks = activity.config.dimCompletedTasks
     private val now = getNowSeconds()
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
@@ -156,7 +157,12 @@ class EventListAdapter(
                     newTextColor = properPrimaryColor
                 }
 
-                if (dimPastEvents && listEvent.isPastEvent && !isPrintVersion) {
+                val adjustAlpha = if (listEvent.isTask) {
+                    dimCompletedTasks && listEvent.isTaskCompleted
+                } else {
+                    dimPastEvents && listEvent.isPastEvent && !isPrintVersion
+                }
+                if (adjustAlpha) {
                     newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
                 }
             } else if (listEvent.startTS <= now && listEvent.endTS >= now && !isPrintVersion) {
