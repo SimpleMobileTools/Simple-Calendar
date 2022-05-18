@@ -97,6 +97,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         val displayWeekNumbers = context.config.showWeekNumbers
         val textColor = context.config.widgetTextColor
         val dimPastEvents = context.config.dimPastEvents
+        val dimCompletedTasks = context.config.dimCompletedTasks
         val smallerFontSize = context.getWidgetFontSize() - 3f
         val res = context.resources
         val len = days.size
@@ -140,7 +141,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 var backgroundColor = it.color
                 var eventTextColor = backgroundColor.getContrastColor()
 
-                if (!day.isThisMonth || (dimPastEvents && it.isPastEvent)) {
+                if (it.isTask() && it.isTaskCompleted() && dimCompletedTasks || !day.isThisMonth || (dimPastEvents && it.isPastEvent)) {
                     eventTextColor = eventTextColor.adjustAlpha(MEDIUM_ALPHA)
                     backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                 }

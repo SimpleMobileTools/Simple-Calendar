@@ -80,6 +80,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredMidnightSpan = true
     private var mStoredUse24HourFormat = false
     private var mStoredDimPastEvents = true
+    private var mStoredDimCompletedTasks = true
     private var mStoredHighlightWeekends = false
     private var mStoredStartWeekWithCurrentDay = false
     private var mStoredHighlightWeekendsColor = 0
@@ -156,8 +157,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != getProperTextColor() || mStoredBackgroundColor != getProperBackgroundColor() || mStoredPrimaryColor != getProperPrimaryColor()
-            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredHighlightWeekends != config.highlightWeekends
-            || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
+            || mStoredDayCode != Formatter.getTodayCode() || mStoredDimPastEvents != config.dimPastEvents || mStoredDimCompletedTasks != config.dimCompletedTasks
+            || mStoredHighlightWeekends != config.highlightWeekends || mStoredHighlightWeekendsColor != config.highlightWeekendsColor
         ) {
             updateViewPager()
         }
@@ -300,6 +301,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredIsSundayFirst = isSundayFirst
             mStoredUse24HourFormat = use24HourFormat
             mStoredDimPastEvents = dimPastEvents
+            mStoredDimCompletedTasks = dimCompletedTasks
             mStoredHighlightWeekends = highlightWeekends
             mStoredHighlightWeekendsColor = highlightWeekendsColor
             mStoredMidnightSpan = showMidnightSpanningEventsAtTop

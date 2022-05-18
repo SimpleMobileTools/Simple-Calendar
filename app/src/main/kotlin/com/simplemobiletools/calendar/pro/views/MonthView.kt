@@ -46,6 +46,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private var horizontalOffset = 0
     private var showWeekNumbers = false
     private var dimPastEvents = true
+    private var dimCompletedTasks = true
     private var highlightWeekends = false
     private var isPrintVersion = false
     private var isMonthDayView = false
@@ -65,6 +66,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         weekendsTextColor = config.highlightWeekendsColor
         showWeekNumbers = config.showWeekNumbers
         dimPastEvents = config.dimPastEvents
+        dimCompletedTasks = config.dimCompletedTasks
         highlightWeekends = config.highlightWeekends
 
         smallPadding = resources.displayMetrics.density.toInt()
@@ -334,7 +336,13 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun getEventBackgroundColor(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color
-        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent && !isPrintVersion)) {
+
+        val adjustAlpha = when {
+            event.isTask -> dimCompletedTasks && event.isTaskCompleted
+            !startDay.isThisMonth && !endDay.isThisMonth -> true
+            else -> dimPastEvents && event.isPastEvent && !isPrintVersion
+        }
+        if (adjustAlpha) {
             paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
 
@@ -343,7 +351,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun getEventTitlePaint(event: MonthViewEvent, startDay: DayMonthly, endDay: DayMonthly): Paint {
         var paintColor = event.color.getContrastColor()
-        if ((!startDay.isThisMonth && !endDay.isThisMonth) || (dimPastEvents && event.isPastEvent && !isPrintVersion)) {
+        val adjustAlpha = when {
+            event.isTask -> dimCompletedTasks && event.isTaskCompleted
+            !startDay.isThisMonth && !endDay.isThisMonth -> true
+            else -> dimPastEvents && event.isPastEvent && !isPrintVersion
+        }
+        if (adjustAlpha) {
             paintColor = paintColor.adjustAlpha(HIGHER_ALPHA)
         }
 

@@ -27,6 +27,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val displayDescription = activity.config.displayDescription
     private val replaceDescriptionWithLocation = activity.config.replaceDescription
     private val dimPastEvents = activity.config.dimPastEvents
+    private val dimCompletedTasks = activity.config.dimCompletedTasks
     private var isPrintVersion = false
     private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
 
@@ -95,7 +96,13 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             event_item_color_bar.background.applyColorFilter(event.color)
 
             var newTextColor = textColor
-            if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
+
+            val adjustAlpha = if (event.isTask()) {
+                dimCompletedTasks && event.isTaskCompleted()
+            } else {
+                dimPastEvents && event.isPastEvent && !isPrintVersion
+            }
+            if (adjustAlpha) {
                 newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
             }
 

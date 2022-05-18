@@ -61,6 +61,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var wasFragmentInit = false
     private var wasExtraHeightAdded = false
     private var dimPastEvents = true
+    private var dimCompletedTasks = true
     private var highlightWeekends = false
     private var wasScaled = false
     private var isPrintVersion = false
@@ -89,6 +90,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         defaultRowHeight = res.getDimension(R.dimen.weekly_view_row_height)
         weekTimestamp = requireArguments().getLong(WEEK_START_TIMESTAMP)
         dimPastEvents = config.dimPastEvents
+        dimCompletedTasks = config.dimCompletedTasks
         highlightWeekends = config.highlightWeekends
         primaryColor = requireContext().getProperPrimaryColor()
         allDayRows.add(HashSet())
@@ -550,7 +552,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
                         var textColor = backgroundColor.getContrastColor()
                         val currentEventWeeklyView = eventTimeRanges[currentDayCode]!!.get(event.id)
-                        if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
+
+                        val adjustAlpha = if (event.isTask()) {
+                            dimCompletedTasks && event.isTaskCompleted()
+                        } else {
+                            dimPastEvents && event.isPastEvent && !isPrintVersion
+                        }
+                        if (adjustAlpha) {
                             backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                             textColor = textColor.adjustAlpha(HIGHER_ALPHA)
                         }
@@ -684,7 +692,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as ConstraintLayout).apply {
             var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
             var textColor = backgroundColor.getContrastColor()
-            if (dimPastEvents && event.isPastEvent && !isPrintVersion) {
+
+            val adjustAlpha = if (event.isTask()) {
+                dimCompletedTasks && event.isTaskCompleted()
+            } else {
+                dimPastEvents && event.isPastEvent && !isPrintVersion
+            }
+            if (adjustAlpha) {
                 backgroundColor = backgroundColor.adjustAlpha(LOWER_ALPHA)
                 textColor = textColor.adjustAlpha(HIGHER_ALPHA)
             }

@@ -30,6 +30,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     private var displayDescription = context.config.displayDescription
     private var replaceDescription = context.config.replaceDescription
     private var dimPastEvents = context.config.dimPastEvents
+    private var dimCompletedTasks = context.config.dimCompletedTasks
     private var mediumFontSize = context.getWidgetFontSize()
     private var smallMargin = context.resources.getDimension(R.dimen.small_margin).toInt()
     private var normalMargin = context.resources.getDimension(R.dimen.normal_margin).toInt()
@@ -44,6 +45,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         displayDescription = context.config.displayDescription
         replaceDescription = context.config.replaceDescription
         dimPastEvents = context.config.dimPastEvents
+        dimCompletedTasks = context.config.dimCompletedTasks
         mediumFontSize = context.getWidgetFontSize()
     }
 
@@ -101,7 +103,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 setText(R.id.event_item_time, "$timeText\n$descriptionText")
             }
 
-            if (dimPastEvents && item.isPastEvent) {
+            if (item.isTask && item.isTaskCompleted && dimCompletedTasks || dimPastEvents && item.isPastEvent) {
                 curTextColor = weakTextColor
             }
 
