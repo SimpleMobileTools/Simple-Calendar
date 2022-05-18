@@ -558,6 +558,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         } else {
                             dimPastEvents && event.isPastEvent && !isPrintVersion
                         }
+
                         if (adjustAlpha) {
                             backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                             textColor = textColor.adjustAlpha(HIGHER_ALPHA)
@@ -698,10 +699,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             } else {
                 dimPastEvents && event.isPastEvent && !isPrintVersion
             }
+
             if (adjustAlpha) {
                 backgroundColor = backgroundColor.adjustAlpha(LOWER_ALPHA)
                 textColor = textColor.adjustAlpha(HIGHER_ALPHA)
             }
+
             background = ColorDrawable(backgroundColor)
 
             week_event_label.apply {
