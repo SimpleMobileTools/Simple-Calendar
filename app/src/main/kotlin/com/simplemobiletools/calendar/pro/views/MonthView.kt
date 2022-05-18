@@ -342,6 +342,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             !startDay.isThisMonth && !endDay.isThisMonth -> true
             else -> dimPastEvents && event.isPastEvent && !isPrintVersion
         }
+
         if (adjustAlpha) {
             paintColor = paintColor.adjustAlpha(MEDIUM_ALPHA)
         }
@@ -356,6 +357,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             !startDay.isThisMonth && !endDay.isThisMonth -> true
             else -> dimPastEvents && event.isPastEvent && !isPrintVersion
         }
+
         if (adjustAlpha) {
             paintColor = paintColor.adjustAlpha(HIGHER_ALPHA)
         }
