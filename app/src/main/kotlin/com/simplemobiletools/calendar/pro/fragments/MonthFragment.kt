@@ -103,7 +103,7 @@ class MonthFragment : Fragment(), MonthlyCalendar {
                 contentDescription = text
 
                 if (activity != null) {
-                    setTextColor(activity!!.getProperTextColor())
+                    setTextColor(requireActivity().getProperTextColor())
                 }
             }
             updateDays(days)
