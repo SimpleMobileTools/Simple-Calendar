@@ -35,6 +35,9 @@ import kotlinx.android.synthetic.main.week_event_marker.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 
 class WeekFragment : Fragment(), WeeklyCalendar {
     private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
@@ -132,7 +135,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             val initialScrollY = (rowHeight * config.startWeeklyAt).toInt()
-            updateScrollY(Math.max(listener?.getCurrScrollY() ?: 0, initialScrollY))
+            updateScrollY(max(listener?.getCurrScrollY() ?: 0, initialScrollY))
         }
 
         wasFragmentInit = true
@@ -361,7 +364,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 prevScaleSpanY = detector.currentSpanY
 
                 val wantedFactor = config.weeklyViewItemHeightMultiplier - (SCALE_RANGE * percent)
-                var newFactor = Math.max(Math.min(wantedFactor, MAX_SCALE_FACTOR), MIN_SCALE_FACTOR)
+                var newFactor = max(min(wantedFactor, MAX_SCALE_FACTOR), MIN_SCALE_FACTOR)
                 if (scrollView.height > defaultRowHeight * newFactor * 24) {
                     newFactor = scrollView.height / 24f / defaultRowHeight
                 }
@@ -422,7 +425,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         rowHeight = context?.getWeeklyViewItemHeight() ?: return
 
         val oneDp = res.getDimension(R.dimen.one_dp).toInt()
-        val fullHeight = Math.max(rowHeight.toInt() * 24, scrollView.height + oneDp)
+        val fullHeight = max(rowHeight.toInt() * 24, scrollView.height + oneDp)
         scrollView.layoutParams.height = fullHeight - oneDp
         mView.week_horizontal_grid_holder.layoutParams.height = fullHeight
         mView.week_events_columns_holder.layoutParams.height = fullHeight
@@ -440,7 +443,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         val minuteHeight = rowHeight / 60
         val minimalHeight = res.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
-        val density = Math.round(res.displayMetrics.density)
+        val density = res.displayMetrics.density.roundToInt()
 
         for (event in events) {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
@@ -493,7 +496,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 eventsCollisionChecked.add(eventId)
                 val eventWeeklyViewsToCheck = eventDayList.filter { !eventsCollisionChecked.contains(it.key) }
                 for ((toCheckId, eventWeeklyViewToCheck) in eventWeeklyViewsToCheck) {
-                    val areTouching = eventWeeklyView.range.touch(eventWeeklyViewToCheck.range)
+                    val areTouching = eventWeeklyView.range.intersects(eventWeeklyViewToCheck.range)
                     val doHaveCommonMinutes = if (areTouching) {
                         eventWeeklyView.range.upper > eventWeeklyViewToCheck.range.lower || (eventWeeklyView.range.lower == eventWeeklyView.range.upper &&
                             eventWeeklyView.range.upper == eventWeeklyViewToCheck.range.lower)
@@ -507,7 +510,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             val slotRange = Array(eventWeeklyView.slot_max) { it + 1 }
                             val collisionEventWeeklyViews = eventDayList.filter { eventWeeklyView.collisions.contains(it.key) }
                             for ((_, collisionEventWeeklyView) in collisionEventWeeklyViews) {
-                                if (collisionEventWeeklyView.range.touch(eventWeeklyViewToCheck.range)) {
+                                if (collisionEventWeeklyView.range.intersects(eventWeeklyViewToCheck.range)) {
                                     slotRange[collisionEventWeeklyView.slot - 1] = nextSlot
                                 }
                             }
@@ -723,8 +726,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
 
-            val minTS = Math.max(startDateTime.seconds(), weekTimestamp)
-            val maxTS = Math.min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
+            val minTS = max(startDateTime.seconds(), weekTimestamp)
+            val maxTS = min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
 
             // fix a visual glitch with all-day events or events lasting multiple days starting at midnight on monday, being shown the previous week too
             if (minTS == maxTS && (minTS - weekTimestamp == WEEK_SECONDS.toLong())) {

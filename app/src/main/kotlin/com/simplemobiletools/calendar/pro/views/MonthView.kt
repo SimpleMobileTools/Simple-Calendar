@@ -23,6 +23,8 @@ import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
 import org.joda.time.Days
+import kotlin.math.max
+import kotlin.math.min
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -255,8 +257,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
         var verticalOffset = 0
-        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
-            verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
+        for (i in 0 until min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+            verticalOffset = max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
         }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
