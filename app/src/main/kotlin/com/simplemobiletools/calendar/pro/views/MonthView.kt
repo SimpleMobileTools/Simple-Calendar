@@ -23,6 +23,8 @@ import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
 import org.joda.time.Days
+import kotlin.math.max
+import kotlin.math.min
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
@@ -113,16 +115,15 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun groupAllEvents() {
-        days.forEach {
-            val day = it
-            day.dayEvents.forEach {
-                val event = it
+        days.forEach { day ->
 
+            day.dayEvents.forEach { event ->
                 // make sure we properly handle events lasting multiple days and repeating ones
                 val lastEvent = allEvents.lastOrNull { it.id == event.id }
                 val daysCnt = getEventLastingDaysCount(event)
                 val validDayEvent = isDayValid(event, day.code)
-                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= day.indexOnMonthView) && !validDayEvent) {
+
+                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= findLastDay(event).indexOnMonthView) && !validDayEvent) {
                     val monthViewEvent = MonthViewEvent(
                         event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
                         daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
@@ -133,8 +134,9 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         allEvents =
-            allEvents.asSequence().sortedWith(compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title }))
-                .toMutableList() as ArrayList<MonthViewEvent>
+            allEvents.asSequence().sortedWith(
+                compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title })
+            ).toMutableList() as ArrayList<MonthViewEvent>
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -255,8 +257,8 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun drawEvent(event: MonthViewEvent, canvas: Canvas) {
         var verticalOffset = 0
-        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
-            verticalOffset = Math.max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
+        for (i in 0 until min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+            verticalOffset = max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
         }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
         val yPos = (event.startDayIndex / 7) * dayHeight
@@ -285,7 +287,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         val startDayIndex = days[event.originalStartDayIndex]
-        val endDayIndex = days[Math.min(event.startDayIndex + event.daysCnt - 1, 41)]
+        val endDayIndex = days[min(event.startDayIndex + event.daysCnt - 1, 41)]
         bgRectF.set(bgLeft, bgTop, bgRight, bgBottom)
         canvas.drawRoundRect(bgRectF, BG_CORNER_RADIUS, BG_CORNER_RADIUS, getEventBackgroundColor(event, startDayIndex, endDayIndex))
 
@@ -301,7 +303,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         drawEventTitle(event, canvas, xPos + taskIconWidth, yPos + verticalOffset, bgRight - bgLeft - smallPadding - taskIconWidth, specificEventTitlePaint)
 
-        for (i in 0 until Math.min(event.daysCnt, 7 - event.startDayIndex % 7)) {
+        for (i in 0 until min(event.daysCnt, 7 - event.startDayIndex % 7)) {
             dayVerticalOffsets.put(event.startDayIndex + i, verticalOffset + eventTitleHeight + smallPadding * 2)
         }
     }
@@ -427,6 +429,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun isDayValid(event: Event, code: String): Boolean {
         val date = Formatter.getDateTimeFromCode(code)
         return event.startTS != event.endTS && Formatter.getDateTimeFromTS(event.endTS) == Formatter.getDateTimeFromTS(date.seconds()).withTimeAtStartOfDay()
+    }
+
+    private fun findLastDay(event: Event): DayMonthly {
+        return days.last { day ->
+            day.dayEvents.find { it.id == event.id } != null
+        }
     }
 
     fun togglePrintMode() {

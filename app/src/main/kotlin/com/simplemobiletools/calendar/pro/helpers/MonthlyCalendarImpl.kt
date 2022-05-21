@@ -8,8 +8,7 @@ import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import org.joda.time.DateTime
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.math.min
 
 class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
     private val DAYS_CNT = 42
@@ -83,25 +82,25 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
         }
     }
 
-    // it works more often than not, dont touch
+    // it works more often than not, don't touch
     private fun markDaysWithEvents(days: ArrayList<DayMonthly>) {
         val dayEvents = HashMap<String, ArrayList<Event>>()
-        mEvents.forEach {
-            val startDateTime = Formatter.getDateTimeFromTS(it.startTS)
-            val endDateTime = Formatter.getDateTimeFromTS(it.endTS)
+        mEvents.forEach { event ->
+            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val endCode = Formatter.getDayCodeFromDateTime(endDateTime)
 
             var currDay = startDateTime
             var dayCode = Formatter.getDayCodeFromDateTime(currDay)
             var currDayEvents = dayEvents[dayCode] ?: ArrayList()
-            currDayEvents.add(it)
+            currDayEvents.add(event)
             dayEvents[dayCode] = currDayEvents
 
             while (Formatter.getDayCodeFromDateTime(currDay) != endCode) {
                 currDay = currDay.plusDays(1)
                 dayCode = Formatter.getDayCodeFromDateTime(currDay)
                 currDayEvents = dayEvents[dayCode] ?: ArrayList()
-                currDayEvents.add(it)
+                currDayEvents.add(event)
                 dayEvents[dayCode] = currDayEvents
             }
         }
@@ -114,7 +113,7 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
 
     private fun isToday(targetDate: DateTime, curDayInMonth: Int): Boolean {
         val targetMonthDays = targetDate.dayOfMonth().maximumValue
-        return targetDate.withDayOfMonth(Math.min(curDayInMonth, targetMonthDays)).toString(Formatter.DAYCODE_PATTERN) == mToday
+        return targetDate.withDayOfMonth(min(curDayInMonth, targetMonthDays)).toString(Formatter.DAYCODE_PATTERN) == mToday
     }
 
     private val monthName: String
