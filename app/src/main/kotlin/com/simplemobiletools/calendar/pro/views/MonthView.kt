@@ -123,9 +123,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                 val daysCnt = getEventLastingDaysCount(event)
                 val validDayEvent = isDayValid(event, day.code)
 
-                val lastDay = { findLastDay(event) ?: day }
-
-                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= lastDay().indexOnMonthView) && !validDayEvent) {
+                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= findLastDay(event).indexOnMonthView) && !validDayEvent) {
                     val monthViewEvent = MonthViewEvent(
                         event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
                         daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
@@ -433,10 +431,11 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         return event.startTS != event.endTS && Formatter.getDateTimeFromTS(event.endTS) == Formatter.getDateTimeFromTS(date.seconds()).withTimeAtStartOfDay()
     }
 
-    private fun findLastDay(event: Event) =
-        days.lastOrNull { day ->
+    private fun findLastDay(event: Event): DayMonthly {
+        return days.last { day ->
             day.dayEvents.find { it.id == event.id } != null
         }
+    }
 
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
