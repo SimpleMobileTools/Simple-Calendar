@@ -59,7 +59,10 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
                 continue
             }
 
-            child.measure(MeasureSpec.makeMeasureSpec(dayWidth.toInt(), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(dayHeight.toInt(), MeasureSpec.EXACTLY))
+            child.measure(
+                MeasureSpec.makeMeasureSpec(dayWidth.toInt(), MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(dayHeight.toInt(), MeasureSpec.EXACTLY)
+            )
 
             val childLeft = x * dayWidth + horizontalOffset - child.translationX
             val childTop = y * dayHeight + weekDaysLetterHeight - child.translationY
