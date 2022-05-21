@@ -116,7 +116,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun groupAllEvents() {
         days.forEach { day ->
-
             day.dayEvents.forEach { event ->
                 // make sure we properly handle events lasting multiple days and repeating ones
                 val lastEvent = allEvents.lastOrNull { it.id == event.id }
@@ -133,10 +132,9 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             }
         }
 
-        allEvents =
-            allEvents.asSequence().sortedWith(
-                compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title })
-            ).toMutableList() as ArrayList<MonthViewEvent>
+        allEvents = allEvents.asSequence().sortedWith(
+            compareBy({ -it.daysCnt }, { !it.isAllDay }, { it.startTS }, { it.endTS }, { it.startDayIndex }, { it.title })
+        ).toMutableList() as ArrayList<MonthViewEvent>
     }
 
     override fun onDraw(canvas: Canvas) {
