@@ -741,6 +741,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val firstDayIndex = startDateTimeInWeek.dayOfMonth // indices must be unique for the visible range (2 weeks)
             val lastDayIndex = firstDayIndex + daysCnt
             val dayIndices = firstDayIndex..lastDayIndex
+            val isSameDayEvent = firstDayIndex == lastDayIndex
 
             var doesEventFit: Boolean
             var wasEventHandled = false
@@ -753,18 +754,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                 doesEventFit = dayIndices.all { !row.contains(it) }
 
-                for (dayIndex in dayIndices) {
-                    if (doesEventFit) {
-                        row.add(dayIndex)
-                        wasEventHandled = true
-                    } else if (index == allDayRows.lastIndex) {
-                        allDayRows.add(HashSet())
-                        addNewLine()
-                        drawAtLine++
-                        wasEventHandled = true
-                        allDayRows.last().add(dayIndex)
+                if (doesEventFit && isSameDayEvent) {
+                    row.add(firstDayIndex)
+                    wasEventHandled = true
+                } else {
+                    // handle events spanning midnight
+                    for (dayIndex in dayIndices) {
+                        if (index == allDayRows.lastIndex) {
+                            allDayRows.add(HashSet())
+                            addNewLine()
+                            drawAtLine++
+                            wasEventHandled = true
+                            allDayRows.last().add(dayIndex)
+                        }
                     }
                 }
+
 
                 if (wasEventHandled) {
                     break
