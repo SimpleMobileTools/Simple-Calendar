@@ -145,8 +145,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     override fun onResume() {
         super.onResume()
         requireContext().eventsHelper.getEventTypes(requireActivity(), false) {
-            it.map {
-                eventTypeColors.put(it.id!!, it.color)
+            it.map { eventType ->
+                eventTypeColors.put(eventType.id!!, eventType.color)
             }
         }
 
@@ -494,7 +494,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 }
 
                 eventsCollisionChecked.add(eventId)
-                val eventWeeklyViewsToCheck = eventDayList.filter { !eventsCollisionChecked.contains(it.key) }
+                val eventWeeklyViewsToCheck = eventDayList.filterNot { eventsCollisionChecked.contains(it.key) }
                 for ((toCheckId, eventWeeklyViewToCheck) in eventWeeklyViewsToCheck) {
                     val areTouching = eventWeeklyView.range.intersects(eventWeeklyViewToCheck.range)
                     val doHaveCommonMinutes = if (areTouching) {
@@ -738,33 +738,30 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val numDays = Days.daysBetween(Formatter.getDateTimeFromTS(minTS).toLocalDate(), Formatter.getDateTimeFromTS(maxTS).toLocalDate()).days
             val daysCnt = if (numDays == 1 && isStartTimeDay) 0 else numDays
             val startDateTimeInWeek = Formatter.getDateTimeFromTS(minTS)
-            val firstDayIndex = (startDateTimeInWeek.dayOfWeek - if (config.isSundayFirst) 0 else 1) % 7
+            val firstDayIndex = startDateTimeInWeek.dayOfMonth // indices must be unique for the visible range (2 weeks)
+            val lastDayIndex = firstDayIndex + daysCnt
+            val dayIndices = firstDayIndex..lastDayIndex
 
             var doesEventFit: Boolean
-            val cnt = allDayRows.size - 1
             var wasEventHandled = false
             var drawAtLine = 0
-            for (index in 0..cnt) {
-                doesEventFit = true
-                drawAtLine = index
-                val row = allDayRows[index]
-                for (i in firstDayIndex..firstDayIndex + daysCnt) {
-                    if (row.contains(i)) {
-                        doesEventFit = false
-                    }
-                }
 
-                for (dayIndex in firstDayIndex..firstDayIndex + daysCnt) {
+            for (index in allDayRows.indices) {
+                drawAtLine = index
+
+                val row = allDayRows[index]
+
+                doesEventFit = dayIndices.all { !row.contains(it) }
+
+                for (dayIndex in dayIndices) {
                     if (doesEventFit) {
                         row.add(dayIndex)
                         wasEventHandled = true
-                    } else if (index == cnt) {
-                        if (allDayRows.size == index + 1) {
-                            allDayRows.add(HashSet())
-                            addNewLine()
-                            drawAtLine++
-                            wasEventHandled = true
-                        }
+                    } else if (index == allDayRows.lastIndex) {
+                        allDayRows.add(HashSet())
+                        addNewLine()
+                        drawAtLine++
+                        wasEventHandled = true
                         allDayRows.last().add(dayIndex)
                     }
                 }
@@ -776,7 +773,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val dayCodeStart = Formatter.getDayCodeFromDateTime(startDateTime).toInt()
             val dayCodeEnd = Formatter.getDayCodeFromDateTime(endDateTime).toInt()
-            val dayOfWeek = dayColumns.indexOfFirst { it.tag.toInt() == dayCodeStart || (it.tag.toInt() > dayCodeStart && it.tag.toInt() <= dayCodeEnd) }
+            val dayOfWeek = dayColumns.indexOfFirst { it.tag.toInt() == dayCodeStart || it.tag.toInt() in (dayCodeStart + 1)..dayCodeEnd }
             if (dayOfWeek == -1) {
                 return
             }
