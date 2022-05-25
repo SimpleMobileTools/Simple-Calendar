@@ -70,7 +70,6 @@
     <string name="times">번</string>
     <string name="repeat">반복</string>
     <string name="repeat_on">특정요일 반복</string>
-    <string name="every_day">매일</string>
     <string name="selected_days">선택한 요일에</string>
     <string name="the_same_day">같은 날</string>
     <string name="the_last_day">마지막 날</string>

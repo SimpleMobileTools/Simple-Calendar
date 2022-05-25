@@ -72,7 +72,6 @@
     <string name="times">alkalommal</string>
     <string name="repeat">Ismétlés</string>
     <string name="repeat_on">Ismétlés ekkor:</string>
-    <string name="every_day">Naponta</string>
     <string name="selected_days">Kiválasztott napokon</string>
     <string name="the_same_day">Ugyanazon a napon</string>
     <string name="the_last_day">Az utolsó napon</string>
