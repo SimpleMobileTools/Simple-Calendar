@@ -115,7 +115,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(lastUsedLocalEventTypeId) = prefs.edit().putLong(LAST_USED_LOCAL_EVENT_TYPE_ID, lastUsedLocalEventTypeId).apply()
 
     var reminderAudioStream: Int
-        get() = prefs.getInt(REMINDER_AUDIO_STREAM, AudioManager.STREAM_ALARM)
+        get() = prefs.getInt(REMINDER_AUDIO_STREAM, AudioManager.STREAM_NOTIFICATION)
         set(reminderAudioStream) = prefs.edit().putInt(REMINDER_AUDIO_STREAM, reminderAudioStream).apply()
 
     var replaceDescription: Boolean
