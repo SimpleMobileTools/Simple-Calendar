@@ -16,7 +16,10 @@ import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
 import com.simplemobiletools.calendar.pro.extensions.widgetsDB
 import com.simplemobiletools.calendar.pro.services.WidgetService
 import com.simplemobiletools.calendar.pro.services.WidgetServiceEmpty
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.applyColorFilter
+import com.simplemobiletools.commons.extensions.getColoredBitmap
+import com.simplemobiletools.commons.extensions.getLaunchIntent
+import com.simplemobiletools.commons.extensions.setTextSize
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import org.joda.time.DateTime
 
@@ -45,9 +48,6 @@ class MyWidgetListProvider : AppWidgetProvider() {
                     setTextColor(R.id.widget_event_list_today, textColor)
                     setTextSize(R.id.widget_event_list_today, fontSize)
                 }
-
-                val todayText = Formatter.getLongestDate(getNowSeconds())
-                views.setText(R.id.widget_event_list_today, todayText)
 
                 views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
                 setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
