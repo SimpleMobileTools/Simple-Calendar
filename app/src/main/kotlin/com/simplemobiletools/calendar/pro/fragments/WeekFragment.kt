@@ -770,7 +770,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
 
-
                 if (wasEventHandled) {
                     break
                 }
