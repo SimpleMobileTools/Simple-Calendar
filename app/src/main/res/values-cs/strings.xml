@@ -207,9 +207,9 @@
     <string name="select_caldav_calendars">Vybrat kalendáře k synchronizaci</string>
     <string name="manage_synced_calendars">Správa synchronizovaných kalendářů</string>
     <string name="store_locally_only">Uložit pouze lokálně</string>
-    <string name="refresh_caldav_calendars">Obnovit CalDAV kalendáře</string>
-    <string name="refreshing">Obnovuji…</string>
-    <string name="refreshing_complete">Obnovování dokončeno</string>
+    <string name="refresh_caldav_calendars">Aktualizovat CalDAV kalendáře</string>
+    <string name="refreshing">Aktualizuji…</string>
+    <string name="refreshing_complete">Aktualizace dokončena</string>
     <string name="editing_calendar_failed">Úprava kalendáře se nezdařila</string>
     <string name="syncing">Synchronizuji…</string>
     <string name="synchronization_completed">Synchronizace dokončena</string>
