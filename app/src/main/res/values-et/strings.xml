@@ -28,14 +28,14 @@
     <string name="event_added">Sündmuse lisamine õnnestus</string>
     <string name="event_updated">Sündmuse muutmine õnnestus</string>
     <string name="filter_events_by_type">Filter events by type</string>
-    <string name="please_fill_location">Please fill in a location to be shown on a map</string>
+    <string name="please_fill_location">Palun kirjelda kaardil näidatav asukoht</string>
     <string name="public_event_notification_text">Sündmus on algamas</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
+    <string name="task">Ülesanne</string>
+    <string name="tasks">Ülesanded</string>
+    <string name="edit_task">Muuda ülesannet</string>
+    <string name="new_task">Uus ülesanne</string>
     <string name="create_new_task">Create a new task</string>
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
@@ -256,7 +256,7 @@
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types,
         long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
@@ -320,9 +320,8 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
-    -->    
+    -->
 </resources>
