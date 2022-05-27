@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+Version 6.18.2 *(2022-05-27)*
+----------------------------
+
+ * Added some widget reliability improvements
+ * Allow dimming completed tasks
+ * Fixed some event duplication related issues
+ * Added some weekly and monthly view related collsion improvements
+ * Fixed Indonesian translation
+ * Added some stability, UX and translation improvements
+
 Version 6.18.1 *(2022-04-09)*
 ----------------------------
 
