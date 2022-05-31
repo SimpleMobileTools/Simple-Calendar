@@ -177,7 +177,7 @@
     <string name="show_a_grid">Mostrar uma grid</string>
     <string name="loop_reminders">Lembretes de loop até que seja dispensado</string>
     <string name="dim_past_events">Escurecer eventos passados</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Apagar tarefas concluídas</string>
     <string name="events">Eventos</string>
     <string name="reminder_stream">Fonte de áudio usada pelos lembretes</string>
     <string name="system_stream">Sistema</string>
@@ -255,8 +255,8 @@
         <item quantity="other">Dentro dos próximos %d meses</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \ "Adicionar feriados \"?</string>
-    <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \ "Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
+    <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \"Adicionar feriados\"\?</string>
+    <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \"Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
     <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
          Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
@@ -266,7 +266,7 @@
     <string name="faq_4_title">O aplicativo oferece suporte para fuso horário?</string>
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
     <string name="faq_5_title">O aplicativo não mostra notificações, por que\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
+    <string name="faq_5_text">Verifique a bateria do seu dispositivo e as configurações de notificações para ver se algo está bloqueando os lembretes ou desligando aplicativos de fundo. Você também pode dar uma olhada em &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, pode ajudar com algumas dicas úteis.</string>
     <string name="faq_6_title">Como posso modificar ou excluir um tipo de evento já existente?</string>
     <string name="faq_6_text">Você pode modificar ou excluir um tipo de evento através das Configurações - Gerenciar tipos de evento. Clique no evento desejado para editar o texto ou cor, ou toque e segure o evento desejado e arraste-o até a lixeira para excluí-lo.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
