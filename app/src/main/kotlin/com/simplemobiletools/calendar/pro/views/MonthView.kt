@@ -116,16 +116,24 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
     private fun groupAllEvents() {
         days.forEach { day ->
+            val dayIndexOnMonthView = day.indexOnMonthView
+
             day.dayEvents.forEach { event ->
                 // make sure we properly handle events lasting multiple days and repeating ones
-                val lastEvent = allEvents.lastOrNull { it.id == event.id }
-                val daysCnt = getEventLastingDaysCount(event)
                 val validDayEvent = isDayValid(event, day.code)
+                val lastEvent = allEvents.lastOrNull { it.id == event.id }
+                val notYetAddedOrIsRepeatingEvent = lastEvent == null || lastEvent.endTS <= event.startTS
 
-                if ((lastEvent == null || lastEvent.startDayIndex + daysCnt <= findLastDay(event).indexOnMonthView) && !validDayEvent) {
+                // handle overlapping repeating events e.g. an event that lasts 3 days, but repeats every 2 days has a one day overlap
+                val canOverlap = event.endTS - event.startTS > event.repeatInterval
+                val shouldAddEvent = notYetAddedOrIsRepeatingEvent || canOverlap && (lastEvent!!.startTS < event.startTS)
+
+                if (shouldAddEvent && !validDayEvent) {
+                    val daysCnt = getEventLastingDaysCount(event)
+
                     val monthViewEvent = MonthViewEvent(
-                        event.id!!, event.title, event.startTS, event.endTS, event.color, day.indexOnMonthView,
-                        daysCnt, day.indexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
+                        event.id!!, event.title, event.startTS, event.endTS, event.color, dayIndexOnMonthView,
+                        daysCnt, dayIndexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
                     )
                     allEvents.add(monthViewEvent)
                 }
@@ -427,12 +435,6 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     private fun isDayValid(event: Event, code: String): Boolean {
         val date = Formatter.getDateTimeFromCode(code)
         return event.startTS != event.endTS && Formatter.getDateTimeFromTS(event.endTS) == Formatter.getDateTimeFromTS(date.seconds()).withTimeAtStartOfDay()
-    }
-
-    private fun findLastDay(event: Event): DayMonthly {
-        return days.last { day ->
-            day.dayEvents.find { it.id == event.id } != null
-        }
     }
 
     fun togglePrintMode() {
