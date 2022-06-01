@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.18.3 *(2022-06-01)*
+----------------------------
+
+ * Fixed a monthly view repetition related glitch
+ * Added some translation improvements
+
 Version 6.18.2 *(2022-05-27)*
 ----------------------------
 
