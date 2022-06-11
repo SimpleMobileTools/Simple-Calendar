@@ -107,6 +107,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 openNewEvent()
             }
         }
+        fab_event_label.setOnClickListener { openNewEvent() }
+        fab_task_label.setOnClickListener { openNewTask() }
 
         fab_extended_overlay.setOnClickListener {
             hideExtendedFab()
