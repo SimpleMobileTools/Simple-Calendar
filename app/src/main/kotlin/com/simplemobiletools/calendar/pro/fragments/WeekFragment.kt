@@ -73,6 +73,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private var fadeOutHandler = Handler()
     private var allDayHolders = ArrayList<RelativeLayout>()
     private var allDayRows = ArrayList<HashSet<Int>>()
+    private var allDayEventToRow = LinkedHashMap<Event, Int>()
     private var currEvents = ArrayList<Event>()
     private var dayColumns = ArrayList<RelativeLayout>()
     private var eventTypeColors = LongSparseArray<Int>()
@@ -440,6 +441,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         allDayRows.add(HashSet())
         week_all_day_holder?.removeAllViews()
         addNewLine()
+        allDayEventToRow.clear()
 
         val minuteHeight = rowHeight / 60
         val minimalHeight = res.getDimension(R.dimen.weekly_view_minimal_event_height).toInt()
@@ -725,6 +727,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
             val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
+            val eventStartDayStartTime = startDateTime.withTimeAtStartOfDay().seconds()
+            val eventEndDayStartTime = endDateTime.withTimeAtStartOfDay().seconds()
 
             val minTS = max(startDateTime.seconds(), weekTimestamp)
             val maxTS = min(endDateTime.seconds(), weekTimestamp + 2 * WEEK_SECONDS)
@@ -741,7 +745,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val firstDayIndex = startDateTimeInWeek.dayOfMonth // indices must be unique for the visible range (2 weeks)
             val lastDayIndex = firstDayIndex + daysCnt
             val dayIndices = firstDayIndex..lastDayIndex
-            val isSameDayEvent = firstDayIndex == lastDayIndex
+            val isAllDayEvent = firstDayIndex == lastDayIndex
+            val isRepeatingOverlappingEvent = eventEndDayStartTime - eventStartDayStartTime >= event.repeatInterval
 
             var doesEventFit: Boolean
             var wasEventHandled = false
@@ -751,22 +756,34 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 drawAtLine = index
 
                 val row = allDayRows[index]
-
                 doesEventFit = dayIndices.all { !row.contains(it) }
 
-                if (doesEventFit && isSameDayEvent) {
-                    row.add(firstDayIndex)
+                val firstEvent = allDayEventToRow.keys.firstOrNull { it.id == event.id }
+                val lastEvent = allDayEventToRow.keys.lastOrNull { it.id == event.id }
+                val firstEventRowIdx = allDayEventToRow[firstEvent]
+                val lastEventRowIdx = allDayEventToRow[lastEvent]
+                val adjacentEvents = currEvents.filter { event.id == it.id }
+                val repeatingEventIndex = adjacentEvents.indexOf(event)
+                val isRowValidForEvent = lastEvent == null || firstEventRowIdx!! + repeatingEventIndex == index && lastEventRowIdx!! < index
+
+                if (doesEventFit && (!isRepeatingOverlappingEvent || isAllDayEvent || isRowValidForEvent)) {
+                    dayIndices.forEach {
+                        row.add(it)
+                    }
+                    allDayEventToRow[event] = index
                     wasEventHandled = true
                 } else {
-                    // handle events spanning midnight
-                    for (dayIndex in dayIndices) {
-                        if (index == allDayRows.lastIndex) {
-                            allDayRows.add(HashSet())
-                            addNewLine()
-                            drawAtLine++
-                            wasEventHandled = true
-                            allDayRows.last().add(dayIndex)
+                    // create new row
+                    if (index == allDayRows.lastIndex) {
+                        allDayRows.add(HashSet())
+                        addNewLine()
+                        drawAtLine++
+                        val lastRow = allDayRows.last()
+                        dayIndices.forEach {
+                            lastRow.add(it)
                         }
+                        allDayEventToRow[event] = allDayRows.lastIndex
+                        wasEventHandled = true
                     }
                 }
 
