@@ -128,6 +128,7 @@
     <string name="import_events">Importa esdeveniments</string>
     <string name="export_events">Exporta esdeveniments</string>
     <string name="import_events_from_ics">Importa esdeveniments des d\'un fitxer .ics</string>
+    <string name="import_events_from_ics_pro">Importa esdeveniments des d\'un fitxer .ics (Pro)</string>
     <string name="export_events_to_ics">Exporta esdeveniments a un fitxer .ics</string>
     <string name="default_event_type">Tipus d\'esdeveniment predeterminat</string>
     <string name="export_past_events_too">Exporta també els esdeveniments passats</string>

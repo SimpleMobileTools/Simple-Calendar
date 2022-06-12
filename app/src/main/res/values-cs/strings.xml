@@ -122,6 +122,7 @@
     <string name="import_events">Import událostí</string>
     <string name="export_events">Export událostí</string>
     <string name="import_events_from_ics">Importovat události ze souboru .ics</string>
+    <string name="import_events_from_ics_pro">Importovat události ze souboru .ics (Pro)</string>
     <string name="export_events_to_ics">Exportovat události do souboru .ics</string>
     <string name="default_event_type">Přednastavený typ události</string>
     <string name="export_past_events_too">Exportovat i dřívější události</string>

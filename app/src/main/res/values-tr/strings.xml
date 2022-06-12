@@ -128,6 +128,7 @@
     <string name="import_events">Etkinlikleri içe aktar</string>
     <string name="export_events">Etkinlikleri dışa aktar</string>
     <string name="import_events_from_ics">Etkinlikleri .ics dosyasından içe aktar</string>
+    <string name="import_events_from_ics_pro">Etkinlikleri .ics dosyasından içe aktar (Pro)</string>
     <string name="export_events_to_ics">Etkinlikleri .ics dosyasına aktar</string>
     <string name="default_event_type">Öntanımlı etkinlik türü</string>
     <string name="export_past_events_too">Geçmiş etkinlikleri de dışa aktar</string>

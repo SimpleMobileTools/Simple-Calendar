@@ -122,6 +122,7 @@
     <string name="import_events">Importer begivenheder</string>
     <string name="export_events">Eksporter begivenheder</string>
     <string name="import_events_from_ics">Importer begivenheder fra en ics-fil</string>
+    <string name="import_events_from_ics_pro">Importer begivenheder fra en ics-fil (Pro)</string>
     <string name="export_events_to_ics">Eksporter begivenheder til en ics-fil</string>
     <string name="default_event_type">Standard type begivenhed</string>
     <string name="export_past_events_too">Eksporter også tidligere begivenheder</string>

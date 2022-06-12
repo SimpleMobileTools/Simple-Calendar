@@ -133,6 +133,7 @@
     <string name="import_events">匯入活動</string>
     <string name="export_events">匯出活動</string>
     <string name="import_events_from_ics">從.ics檔案匯入活動</string>
+    <string name="import_events_from_ics_pro">從.ics檔案匯入活動 (Pro)</string>
     <string name="export_events_to_ics">匯出活動成.ics檔案</string>
     <string name="default_event_type">預設活動類型</string>
     <string name="export_past_events_too">也匯出過去的活動</string>

@@ -133,6 +133,7 @@
     <string name="import_events">Inportatu gertaerak</string>
     <string name="export_events">Esportatu gertaerak</string>
     <string name="import_events_from_ics">Inportatu gertaerak .ics fitxategi batetik</string>
+    <string name="import_events_from_ics_pro">Inportatu gertaerak .ics fitxategi batetik (Pro)</string>
     <string name="export_events_to_ics">Esportatu gertaerak .ics fitxategi batetik</string>
     <string name="default_event_type">Lehenetsitako gertaera mota</string>
     <string name="export_past_events_too">Esportatu iraganeko gertaerak ere bai</string>

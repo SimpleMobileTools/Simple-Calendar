@@ -128,6 +128,7 @@
     <string name="import_events">Importuj wydarzenia</string>
     <string name="export_events">Eksportuj wydarzenia</string>
     <string name="import_events_from_ics">Importuj wydarzenia z pliku .ics</string>
+    <string name="import_events_from_ics_pro">Importuj wydarzenia z pliku .ics (Pro)</string>
     <string name="export_events_to_ics">Eksportuj wydarzenia do pliku .ics</string>
     <string name="default_event_type">Domyślny typ wydarzeń</string>
     <string name="export_past_events_too">Eksportuj także wydarzenia z przeszłości</string>

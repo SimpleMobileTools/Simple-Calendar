@@ -133,6 +133,7 @@
     <string name="import_events">Impor acara</string>
     <string name="export_events">Ekspor acara</string>
     <string name="import_events_from_ics">Impor acara dari berkas .ics</string>
+    <string name="import_events_from_ics_pro">Impor acara dari berkas .ics (Pro)</string>
     <string name="export_events_to_ics">Ekspor acara ke berkas .ics</string>
     <string name="default_event_type">Kategori acara default</string>
     <string name="export_past_events_too">Ekspor juga acara yang sudah lewat</string>

@@ -133,6 +133,7 @@
     <string name="import_events">Hadisələri daxil et</string>
     <string name="export_events">Hadisələri xaric et</string>
     <string name="import_events_from_ics">.ics faylından hadisələri daxil et</string>
+    <string name="import_events_from_ics_pro">.ics faylından hadisələri daxil et (Pro)</string>
     <string name="export_events_to_ics">.ics faylından hadisələri xaric et</string>
     <string name="default_event_type">Standart hadisə tipi</string>
     <string name="export_past_events_too">Keçmiş hadisələri də xaric et</string>

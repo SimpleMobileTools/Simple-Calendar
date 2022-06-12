@@ -128,6 +128,7 @@
     <string name="import_events">Termine importieren</string>
     <string name="export_events">Termine exportieren</string>
     <string name="import_events_from_ics">Termine aus ics-Datei importieren</string>
+    <string name="import_events_from_ics_pro">Termine aus ics-Datei importieren (Pro)</string>
     <string name="export_events_to_ics">Termine als ics-Datei exportieren</string>
     <string name="default_event_type">Standardtermintyp</string>
     <string name="export_past_events_too">Auch vergangene Termine exportieren</string>

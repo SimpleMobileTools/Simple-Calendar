@@ -122,6 +122,7 @@
     <string name="import_events">Afspraken importeren</string>
     <string name="export_events">Afspraken exporteren</string>
     <string name="import_events_from_ics">Afspraken uit .ics-bestand importeren</string>
+    <string name="import_events_from_ics_pro">Afspraken uit .ics-bestand importeren (Pro)</string>
     <string name="export_events_to_ics">Afspraken naar .ics-bestand exporteren</string>
     <string name="default_event_type">Standaardtype afspraken</string>
     <string name="export_past_events_too">Afspraken uit verleden ook exporteren</string>

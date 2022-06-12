@@ -137,6 +137,7 @@
     <string name="import_events">ইভেন্ট ইমপোর্ট করুন</string>
     <string name="export_events">ইভেন্ট এক্সপোর্ট করুন</string>
     <string name="import_events_from_ics">একটি .ics ফাইল হতে ইভেন্ট ইমপোর্ট করুন</string>
+    <string name="import_events_from_ics_pro">একটি .ics ফাইল হতে ইভেন্ট ইমপোর্ট করুন (Pro)</string>
     <string name="export_events_to_ics">একটি .ics ফাইলে ইভেন্ট এক্সপোর্ট করুন</string>
     <string name="default_event_type">ডিফল্ট ইভেন্ট টাইপ</string>
     <string name="export_past_events_too">আগের ইভেন্টগুলোও এক্সপোর্ট করুন</string>

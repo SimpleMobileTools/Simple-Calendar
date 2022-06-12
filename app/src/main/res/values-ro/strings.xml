@@ -133,6 +133,7 @@
     <string name="import_events">Importă evenimente</string>
     <string name="export_events">Exportă evenimente</string>
     <string name="import_events_from_ics">Importă evenimente dintr-un fișier .ics</string>
+    <string name="import_events_from_ics_pro">Importă evenimente dintr-un fișier .ics (Pro)</string>
     <string name="export_events_to_ics">Exportă evenimente dintr-un fișier .ics</string>
     <string name="default_event_type">Tipul evenimentului implicit</string>
     <string name="export_past_events_too">Exportă și evenimentele din trecut</string>

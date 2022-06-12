@@ -133,6 +133,7 @@
     <string name="import_events">일정들 가져오기</string>
     <string name="export_events">일정들 내보내기</string>
     <string name="import_events_from_ics">.ics 파일에서 일정들 가져오기</string>
+    <string name="import_events_from_ics_pro">.ics 파일에서 일정들 가져오기 (Pro)</string>
     <string name="export_events_to_ics">.ics 파일로 일정들 내보내기</string>
     <string name="default_event_type">기본 일정 유형</string>
     <string name="export_past_events_too">과거 일정들 내보내기</string>

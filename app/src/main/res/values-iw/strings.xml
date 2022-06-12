@@ -133,6 +133,7 @@
     <string name="import_events">ייבוא אירועים</string>
     <string name="export_events">ייצוא אירועים</string>
     <string name="import_events_from_ics">ייבוא אירועים מקובץ .ics</string>
+    <string name="import_events_from_ics_pro">ייבוא אירועים מקובץ .ics (Pro)</string>
     <string name="export_events_to_ics">ייצוא אירועים אל קובץ .ics</string>
     <string name="default_event_type">סוג אירוע ברירת מחדל</string>
     <string name="export_past_events_too">ייצוא אירועי עבר בנוסף</string>

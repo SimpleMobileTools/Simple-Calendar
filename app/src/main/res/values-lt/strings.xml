@@ -128,6 +128,7 @@
     <string name="import_events">Importuoti įvykius</string>
     <string name="export_events">Eksportuoti įvykius</string>
     <string name="import_events_from_ics">Importuoti įvykius iš .ics failo</string>
+    <string name="import_events_from_ics_pro">Importuoti įvykius iš .ics failo (Pro)</string>
     <string name="export_events_to_ics">Eksportuoti įvykius į .ics failą</string>
     <string name="default_event_type">Numatytasis įvykio tipas</string>
     <string name="export_past_events_too">Taip pat eksportuoti praėjusius įvykius</string>

@@ -133,6 +133,7 @@
     <string name="import_events">Enporzhiañ darvoudoù</string>
     <string name="export_events">Ezporzhiañ darvoudoù</string>
     <string name="import_events_from_ics">Enporzhiañ darvoudoù adalek ur restr .ics</string>
+    <string name="import_events_from_ics_pro">Enporzhiañ darvoudoù adalek ur restr .ics (Pro)</string>
     <string name="export_events_to_ics">Ezporzhiañ darvoudoù betek ur restr .ics</string>
     <string name="default_event_type">Doare darvoud dre ziouer</string>
     <string name="export_past_events_too">Ezporzhiañ an darvoudoù tremenet ivez</string>

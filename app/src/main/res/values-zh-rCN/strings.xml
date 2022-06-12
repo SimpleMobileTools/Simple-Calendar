@@ -128,6 +128,7 @@
     <string name="import_events">导入活动</string>
     <string name="export_events">导出活动</string>
     <string name="import_events_from_ics">从.ics文件导入活动</string>
+    <string name="import_events_from_ics_pro">从.ics文件导入活动 (Pro)</string>
     <string name="export_events_to_ics">导出活动成.ics文件</string>
     <string name="default_event_type">预设活动类型</string>
     <string name="export_past_events_too">也导出过去的活动</string>

@@ -123,6 +123,7 @@
     <string name="import_events">予定をインポート</string>
     <string name="export_events">予定をエクスポート</string>
     <string name="import_events_from_ics">.ics ファイルから予定をインポートする</string>
+    <string name="import_events_from_ics_pro">.ics ファイルから予定をインポートする (Pro)</string>
     <string name="export_events_to_ics">.ics ファイルに予定をエクスポートする</string>
     <string name="default_event_type">既定の予定の種類</string>
     <string name="export_past_events_too">過去の予定もエクスポートする</string>

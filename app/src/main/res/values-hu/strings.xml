@@ -128,6 +128,7 @@
     <string name="import_events">Események importálása</string>
     <string name="export_events">Események exportálása</string>
     <string name="import_events_from_ics">Események importálás .ics fájlból</string>
+    <string name="import_events_from_ics_pro">Események importálás .ics fájlból (Pro)</string>
     <string name="export_events_to_ics">Események exportálása .ics fájlba</string>
     <string name="default_event_type">Alapértelmezett eseménytípus</string>
     <string name="export_past_events_too">Múltbeli események exportálása</string>
