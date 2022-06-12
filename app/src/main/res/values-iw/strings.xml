@@ -6,22 +6,26 @@
     <string name="daily_view">תצוגה יומית</string>
     <string name="weekly_view">תצוגה שבועית</string>
     <string name="monthly_view">תצוגה חודשית</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">צפייה חודשית + יומית</string>
     <string name="yearly_view">תצוגה שנתית</string>
     <string name="simple_event_list">רשימת אירועים פשוטה</string>
     <string name="no_upcoming_events">נראה שאין לך אירועים עתידיים.</string>
     <string name="go_to_today">עבור להיום</string>
     <string name="go_to_date">עבור לתאריך</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
-
+    <string name="upgraded_from_free">היי,
+\n
+\nנראה כאילו שדרגת מהאפליקציה הישנה החינמית. עליך להעביר אירועים המאוחסנים מקומית באופן ידני באמצעות ייצוא בקובץ .ics ולאחר מכן ייבוא. אתה יכול למצוא את שני לחצני הייצוא/ייבוא בתפריט המסך הראשי.
+\n
+\nלאחר מכן תוכל להסיר את ההתקנה של הגרסה הישנה, שיש לה כפתור \'שדרג למקצוען\' בחלק העליון של הגדרות האפליקציה. לאחר מכן תצטרך רק לאפס את הגדרות האפליקציה שלך.
+\n
+\nתודה!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">יומן חודשי</string>
     <string name="widget_list">רשימת אירועי יומן</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
-
+    <string name="widget_todays_date">לוח שנה התאריך של היום</string>
     <!-- Event -->
     <string name="event">אירוע</string>
-    <string name="edit_event">ערוך</string>
+    <string name="edit_event">ערוך אירוע</string>
     <string name="new_event">אירוע חדש</string>
     <string name="create_new_event">צור אירוע חדש</string>
     <string name="duplicate_event">שכפל אירוע</string>
@@ -32,18 +36,16 @@
     <string name="filter_events_by_type">סנן אירועים לפי סוג</string>
     <string name="please_fill_location">אנא הזן מיקום להצגה במפה</string>
     <string name="public_event_notification_text">יש אירוע בקרוב</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
+    <string name="saving_filtered_out">שומר... אבל סוג האירוע שנבחר מסונן בתפריט העליון - מסנן</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
-
+    <string name="task">משימה</string>
+    <string name="tasks">משימות</string>
+    <string name="edit_task">ערוך משימה</string>
+    <string name="new_task">משימה חדשה</string>
+    <string name="create_new_task">צור משימה חדשה</string>
+    <string name="duplicate_task">משימה כפולה</string>
+    <string name="mark_completed">סימן הושלם</string>
+    <string name="mark_incomplete">סמן כלא שלם</string>
     <!-- Event Repetition -->
     <string name="repetition">אירוע חוזר</string>
     <string name="no_repetition">אין חזרה</string>
@@ -62,7 +64,7 @@
     <string name="delete_future_occurrences">מחיקת כל האירועים העתידיים בסדרה</string>
     <string name="delete_all_occurrences">מחיקת כל האירועים בסדרה</string>
     <string name="update_one_only">עדכון האירוע הנוכחי בלבד</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">עדכן את זה ואת כל ההתרחשויות העתידיות</string>
     <string name="update_all_occurrences">עדכון כל האירועים בסדרה</string>
     <string name="repeat_till_date">חזרה עד לתאריך</string>
     <string name="stop_repeating_after_x">‏להפסיק חזרה אחרי x פעמים</string>
@@ -82,9 +84,8 @@
     <string name="second_m">שני</string>
     <string name="third_m">שלישי</string>
     <string name="fourth_m">רביעי</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">חמישי</string>
     <string name="last_m">אחרון</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">חזרה כל</string>
@@ -93,31 +94,27 @@
     <string name="second_f">שניה</string>
     <string name="third_f">שלישית</string>
     <string name="fourth_f">רביעית</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">חמישי</string>
     <string name="last_f">אחרונה</string>
-
     <!-- Birthdays -->
     <string name="birthdays">ימי הולדת</string>
     <string name="add_birthdays">הוסף ימי הולדת מאנשי קשר</string>
     <string name="no_birthdays">לא נמצאו ימי הולדת</string>
     <string name="no_new_birthdays">לא נמצאו ימי הולדת חדשים</string>
     <string name="birthdays_added">ימי הולדת הוספו בהצלחה</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
+    <string name="add_birthdays_automatically">הוסף ימי הולדת חדשים באופן אוטומטי</string>
     <!-- Anniversaries -->
     <string name="anniversaries">ימי שנה</string>
     <string name="add_anniversaries">הוסף ימי שנה מאנשי קשר</string>
     <string name="no_anniversaries">לא נמצאו ימי שנה</string>
     <string name="no_new_anniversaries">לא נמצאו ימי שנה חדשים</string>
     <string name="anniversaries_added">ימי שנה הוספו בהצלחה</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
+    <string name="add_anniversaries_automatically">הוסף ימי נישואין חדשים באופן אוטומטי</string>
     <!-- Event Reminders -->
     <string name="reminder">תזכורת</string>
     <string name="before">לפני</string>
     <string name="add_another_reminder">הוסף תזכורת נוספת</string>
     <string name="event_reminders">תזכורות לאירוע</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">הוסף משתתף נוסף</string>
     <string name="my_status">הסטטוס שלי:</string>
@@ -125,10 +122,8 @@
     <string name="not_going">לא מגיע</string>
     <string name="maybe_going">אולי מגיע</string>
     <string name="invited">מוזמן</string>
-
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
-
+    <string name="enter_a_country">הזן מדינה או אזור זמן</string>
     <!-- Export / Import -->
     <string name="import_events">ייבוא אירועים</string>
     <string name="export_events">ייצוא אירועים</string>
@@ -139,17 +134,14 @@
     <string name="export_past_events_too">ייצוא אירועי עבר בנוסף</string>
     <string name="include_event_types">כלול סוגי אירוע</string>
     <string name="filename_without_ics">שם הקובץ (ללא סיומת .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
+    <string name="ignore_event_types">התעלם מסוגי אירועים בקובץ, השתמש תמיד בברירת המחדל</string>
     <!-- Event details -->
     <string name="location">מיקום</string>
     <string name="description">תיאור</string>
     <string name="all_day">כל היום</string>
-
     <!-- Weekly view -->
     <string name="week">שבוע</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
-
+    <string name="start_week_with_current_day">התחל את השבוע עם היום הנוכחי</string>
     <!-- Event types -->
     <string name="event_types">סוגי אירוע</string>
     <string name="add_new_type">הוסף סוג חדש</string>
@@ -162,7 +154,6 @@
     <string name="move_events_into_default">העבר אירועים אלו לסוג אירוע ברירת המחדל</string>
     <string name="remove_affected_events">מחק אירועים אלו לצמיתות</string>
     <string name="unsync_caldav_calendar">כדי להסיר יומן CalDAV צריך להוציא אותו מסנכרון</string>
-
     <!-- Holidays -->
     <string name="holidays">חגים</string>
     <string name="add_holidays">הוסף חגים</string>
@@ -171,13 +162,12 @@
     <string name="holidays_imported_successfully">חגים הוספו בהצלחה לתוך סוג אירוע \"חגים\"</string>
     <string name="importing_some_holidays_failed">חלק מהאירועים נכשלו בייבוא</string>
     <string name="importing_holidays_failed">ייבוא החגים נכשל</string>
-
     <!-- Settings -->
     <string name="manage_event_types">נהל סוגי אירועים</string>
     <string name="start_day_at">שעת התחלה היום</string>
     <string name="end_day_at">שעת סיום היום</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">Show e‫‫‪vents spanning across midnight at the top bar</string>
+    <string name="allow_customizing_day_count">‫אפשר התאמה אישית של ספירת הימים</string>
     <string name="week_numbers">הצגת מספרי שבועות</string>
     <string name="vibrate">רטט בהתרעת תזכורת</string>
     <string name="reminder_sound">צליל תזכורת</string>
@@ -188,38 +178,37 @@
     <string name="event_lists">רשימות אירועים</string>
     <string name="display_past_events">הצגת אירועים מהעבר</string>
     <string name="replace_description_with_location">החלפת תיאור האירוע עם מיקום</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">הצג תיאור או מיקום</string>
     <string name="delete_all_events">מחיקת כל האירועים</string>
     <string name="delete_all_events_confirmation">למחוק את כל האירועים? סוגי האירועים והגדרות נוספות יישמרו.</string>
     <string name="show_a_grid">תצוגת רשת</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="loop_reminders">תזכורות לולאה עד להדחה</string>
     <string name="dim_past_events">עמעם אירועי עבר</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">עמום השלים משימות</string>
     <string name="events">אירועים</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="reminder_stream">זרם אודיו בשימוש על ידי תזכורות</string>
     <string name="system_stream">מערכת</string>
     <string name="alarm_stream">Alarm</string>
     <string name="notification_stream">התרעה</string>
     <string name="ring_stream">צלצול</string>
-    <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
+    <string name="use_last_event_reminders">השתמש בתזכורות של האירועים האחרונים כברירת מחדל עבור אירועים חדשים</string>
     <string name="default_reminder_1">תזכורת ברירת מחדל 1</string>
     <string name="default_reminder_2">תזכורת ברירת מחדל 2</string>
     <string name="default_reminder_3">תזכורת ברירת מחדל 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
+    <string name="view_to_open_from_widget">הצג לפתיחה מהווידג\'ט של רשימת האירועים</string>
     <string name="last_view">תצוגה אחרונה</string>
     <string name="new_events">אירועים חדשים</string>
     <string name="default_start_time">ברירת מחדל של זמן התחלה</string>
     <string name="next_full_hour">שעה מלאה הבאה</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">זמן נוכחי</string>
     <string name="default_duration">ברירת מחדל של משך הזמן</string>
     <string name="last_used_one">שימוש אחרון</string>
     <string name="other_time">‏להפסיק חזרה אחרי x פעמים.‏</string>
     <string name="highlight_weekends">הדגש סופי שבוע בחלק מהתצוגות</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
-
+    <string name="highlight_weekends_color">צבע של סופי שבוע מודגשים</string>
+    <string name="allow_changing_time_zones">אפשר לשנות אזורי זמן של אירועים</string>
+    <string name="manage_quick_filter_event_types">נהל סוגי אירועי סינון מהירים</string>
+    <string name="allow_creating_tasks">אפשר יצירת משימות</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">בחר יומנים לסנכרון</string>
@@ -233,11 +222,10 @@
     <string name="synchronization_completed">הסנכרון הסתיים</string>
     <string name="select_a_different_caldav_color">בחירת צבע שונה (ייתכן שיישמר מקומית בלבד)</string>
     <string name="insufficient_permissions">לא קיימת הרשאת כתיבה ליומנים הנבחרים</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="caldav_event_not_found">האירוע לא נמצא. אנא הפעל את סנכרון CalDAV עבור היומן המתאים בהגדרות האפליקציה.</string>
+    <string name="no_synchronized_calendars">לא נמצאו לוחות שנה הניתנים לסנכרון</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-
+    <string name="status_busy">עסוק</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">שני</string>
@@ -247,7 +235,6 @@
     <string name="friday_alt">שישי</string>
     <string name="saturday_alt">שבת</string>
     <string name="sunday_alt">ראשון</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">אימון</string>
     <string name="sample_description_1">ראש השנה</string>
@@ -257,10 +244,9 @@
     <string name="sample_title_4">ארוחת צהריים עם מרים</string>
     <string name="sample_description_4">במלון</string>
     <string name="sample_title_5">הפסקת קפה</string>
-
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="show_events_happening">הצג אירועים שקורים:</string>
+    <string name="within_the_next_one_year">Within the next 1 year‬</string>
     <string name="today_only">Today only</string>
     <string name="within_the_next">Within the next…</string>
     <plurals name="within_the_next_days">
@@ -275,10 +261,9 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types,
         long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
@@ -293,7 +278,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - יומן פשוט</string>
@@ -343,7 +327,6 @@
         <b>Reddit:</b>
         https://www.reddit.com/r/SimpleMobileTools
     </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
