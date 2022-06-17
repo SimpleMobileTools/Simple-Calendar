@@ -280,7 +280,7 @@
     <string name="faq_6_text">Вы можете сделать и то, и другое в настройках приложения разделе \"Управление типами событий\". Просто нажмите на нужный тип, чтобы изменить его название и цвет, или выберите долгим нажатием и используйте значок корзины в верхнем меню для удаления.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - события и напоминания</string>
+    <string name="app_title">Simple Calendar Pro - События и напоминания</string>
     <!-- Short description has to have less than 80 chars -->
     <string name="app_short_description">Простой мобильный календарь: планировщик и напоминание о встрече на любой день</string>
     <string name="app_long_description">
