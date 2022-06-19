@@ -194,6 +194,11 @@
             android:exported="false"
             android:theme="@style/Theme.Transparent" />
 
+        <activity
+            android:name=".activities.EventTypePickerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Transparent" />
+
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
             android:exported="true"
