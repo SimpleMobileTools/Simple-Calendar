@@ -1,3 +1,0 @@
-Fixed a glitch at events repeating every X weeks
-Added an extra check to avoid showing reminders of deleted event repetition instances
-Some stability and translation improvements

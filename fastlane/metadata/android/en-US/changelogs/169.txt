@@ -1,2 +1,0 @@
- * Improved some holidays
- * Added a few stability and translation improvements

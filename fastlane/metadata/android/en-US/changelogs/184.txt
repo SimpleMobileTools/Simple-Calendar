@@ -1,2 +1,0 @@
- * Fixed some glitches at importing events from .ics files
- * Added a few UX improvements here and there

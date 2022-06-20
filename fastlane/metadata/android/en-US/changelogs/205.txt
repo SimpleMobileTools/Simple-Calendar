@@ -1,2 +1,0 @@
- * Allow dragging events at the weekly view for quick editing
- * Remember the last used colors at the color picker

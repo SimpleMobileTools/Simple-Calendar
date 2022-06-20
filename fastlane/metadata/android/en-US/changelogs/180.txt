@@ -1,2 +1,0 @@
- * Fixed some weekly view related glitches
- * Added some stability and translation improvements

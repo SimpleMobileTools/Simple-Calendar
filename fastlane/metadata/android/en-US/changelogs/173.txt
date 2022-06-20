@@ -1,2 +1,0 @@
- * Remember the last used folder at ics exporting
- * Do not request the Storage permission on Android 10+, use Scoped Storage

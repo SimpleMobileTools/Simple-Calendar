@@ -1,2 +1,0 @@
- * Fixed a monthly view repetition related glitch
- * Added some translation improvements

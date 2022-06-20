@@ -1,3 +1,0 @@
- * Allow changing the amount of days shown at the weekly view
- * Show a Save / Discard prompt at leaving an edited event (by fnrngg)
- * Some translation and stability improvements

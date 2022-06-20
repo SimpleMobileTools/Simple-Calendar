@@ -1,3 +1,0 @@
- * Fixed some .ics file importing related glitches
- * Corrected and added some UK holidays
- * Added many UI and translation improvements

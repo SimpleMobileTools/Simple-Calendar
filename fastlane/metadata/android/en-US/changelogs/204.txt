@@ -1,4 +1,0 @@
- * Calculate ages at birthdays and anniversaries, if a year is available
- * Add a new Busy/Free field at CalDAV synced calendars
- * Allow hiding the weekly view day customizing slider
- * Some bottom quick event type filter improvements

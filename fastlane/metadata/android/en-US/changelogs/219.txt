@@ -1,6 +1,0 @@
- * Added some widget reliability improvements
- * Allow dimming completed tasks
- * Fixed some event duplication related issues
- * Added some weekly and monthly view related collsion improvements
- * Fixed Indonesian translation
- * Added some stability, UX and translation improvements

@@ -1,1 +1,0 @@
- * Fixing a glitch with zoomed out weekly view

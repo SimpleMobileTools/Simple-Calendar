@@ -1,3 +1,0 @@
- * Allow repeating events every fifth weekday
- * Properly highlight weekends on widgets, if selected so
- * Fixed some CalDAV syncing and .ics file importing issues
