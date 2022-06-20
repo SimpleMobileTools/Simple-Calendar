@@ -377,7 +377,7 @@ fun Context.launchNewTaskIntent(dayCode: String = Formatter.getTodayCode(), allo
     }
 }
 
-fun Context.launchNewEventActivity() {
+fun Context.launchNewEventOrTaskActivity() {
     if (config.allowCreatingTasks) {
         Intent(this, EventTypePickerActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
