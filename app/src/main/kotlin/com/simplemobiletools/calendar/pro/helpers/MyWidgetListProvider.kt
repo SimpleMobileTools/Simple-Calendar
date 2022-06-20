@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
+import com.simplemobiletools.calendar.pro.extensions.launchNewEventOrTaskActivity
 import com.simplemobiletools.calendar.pro.extensions.widgetsDB
 import com.simplemobiletools.calendar.pro.services.WidgetService
 import com.simplemobiletools.calendar.pro.services.WidgetServiceEmpty
@@ -86,7 +86,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            NEW_EVENT -> context.launchNewEventIntent()
+            NEW_EVENT -> context.launchNewEventOrTaskActivity()
             LAUNCH_CAL -> launchCalenderInDefaultView(context)
             GO_TO_TODAY -> goToToday(context)
             else -> super.onReceive(context, intent)

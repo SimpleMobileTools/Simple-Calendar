@@ -14,7 +14,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
+import com.simplemobiletools.calendar.pro.extensions.launchNewEventOrTaskActivity
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
@@ -73,7 +73,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             PREV -> getPrevMonth(context)
             NEXT -> getNextMonth(context)
             GO_TO_TODAY -> goToToday(context)
-            NEW_EVENT -> context.launchNewEventIntent()
+            NEW_EVENT -> context.launchNewEventOrTaskActivity()
             else -> super.onReceive(context, intent)
         }
     }
