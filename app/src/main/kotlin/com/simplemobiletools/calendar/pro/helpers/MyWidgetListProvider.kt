@@ -9,11 +9,10 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.EventTypePickerActivity
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.launchNewEventIntent
+import com.simplemobiletools.calendar.pro.extensions.launchNewEventActivity
 import com.simplemobiletools.calendar.pro.extensions.widgetsDB
 import com.simplemobiletools.calendar.pro.services.WidgetService
 import com.simplemobiletools.calendar.pro.services.WidgetServiceEmpty
@@ -87,7 +86,7 @@ class MyWidgetListProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            NEW_EVENT -> launchNewEventActivity(context)
+            NEW_EVENT -> context.launchNewEventActivity()
             LAUNCH_CAL -> launchCalenderInDefaultView(context)
             GO_TO_TODAY -> goToToday(context)
             else -> super.onReceive(context, intent)
@@ -100,17 +99,6 @@ class MyWidgetListProvider : AppWidgetProvider() {
             appWidgetIds?.forEach {
                 context?.widgetsDB?.deleteWidgetId(it)
             }
-        }
-    }
-
-    private fun launchNewEventActivity(context: Context) {
-        if (context.config.allowCreatingTasks) {
-            Intent(context, EventTypePickerActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(this)
-            }
-        } else {
-            context.launchNewEventIntent()
         }
     }
 

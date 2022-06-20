@@ -25,6 +25,7 @@ import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
+import com.simplemobiletools.calendar.pro.activities.EventTypePickerActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
@@ -373,6 +374,17 @@ fun Context.launchNewTaskIntent(dayCode: String = Formatter.getTodayCode(), allo
         putExtra(NEW_EVENT_START_TS, getNewEventTimestampFromCode(dayCode, allowChangingDay))
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(this)
+    }
+}
+
+fun Context.launchNewEventActivity() {
+    if (config.allowCreatingTasks) {
+        Intent(this, EventTypePickerActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(this)
+        }
+    } else {
+        launchNewEventIntent()
     }
 }
 
