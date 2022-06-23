@@ -121,6 +121,7 @@
     <string name="before">আগে</string>
     <string name="add_another_reminder">আরেকটি রিমাইন্ডার যোগ করুন</string>
     <string name="event_reminders">ইভেন্ট রিমাইন্ডার</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">অন্য একজন অংশগ্রহণকারী যুক্ত করুন</string>

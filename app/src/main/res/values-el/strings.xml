@@ -117,6 +117,7 @@
     <string name="before">πρίν</string>
     <string name="add_another_reminder">Προσθέστε μια άλλη υπενθύμιση</string>
     <string name="event_reminders">Υπενθυμίσεις εκδηλώσεων</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>

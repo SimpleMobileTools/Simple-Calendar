@@ -109,6 +109,7 @@
     <string name="before">před</string>
     <string name="add_another_reminder">Přidat další připomínku</string>
     <string name="event_reminders">Připomínky událostí</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Přidat dalšího účastníka</string>
     <string name="my_status">Můj stav:</string>

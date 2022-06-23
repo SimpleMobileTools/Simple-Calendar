@@ -117,6 +117,7 @@
     <string name="before">전</string>
     <string name="add_another_reminder">다른 알림 추가</string>
     <string name="event_reminders">일정 알림들</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">다른 참석자 추가</string>

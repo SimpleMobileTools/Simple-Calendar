@@ -117,6 +117,7 @@
     <string name="before">înainte de</string>
     <string name="add_another_reminder">Adaugă o altă reamintire</string>
     <string name="event_reminders">Reamintiri eveniment</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Adaugă o altă participare</string>

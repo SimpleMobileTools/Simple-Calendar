@@ -115,6 +115,7 @@
     <string name="before">قبل</string>
     <string name="add_another_reminder">إضافة تذكير آخر</string>
     <string name="event_reminders">تذكيرات الحدث</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">اضف مشترك اخر</string>
     <string name="my_status">حالتي:</string>

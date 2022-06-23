@@ -109,6 +109,7 @@
     <string name="before">prije</string>
     <string name="add_another_reminder">Dodaj još jedan podsjetnik</string>
     <string name="event_reminders">Podsjetnici na događaj</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
     <string name="my_status">My status:</string>

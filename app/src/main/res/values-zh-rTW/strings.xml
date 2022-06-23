@@ -109,6 +109,7 @@
     <string name="before">前</string>
     <string name="add_another_reminder">新增另一個提醒</string>
     <string name="event_reminders">活動提醒</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">新增另一位出席者</string>
     <string name="my_status">我的狀態:</string>

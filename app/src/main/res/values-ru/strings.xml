@@ -109,6 +109,7 @@
     <string name="before">до события</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
     <string name="event_reminders">Напоминания о событиях</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Добавить участника</string>
     <string name="my_status">Мой статус:</string>

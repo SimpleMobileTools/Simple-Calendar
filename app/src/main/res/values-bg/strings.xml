@@ -109,6 +109,7 @@
     <string name="before">преди</string>
     <string name="add_another_reminder">Добавете друго напомняне</string>
     <string name="event_reminders">Напомняния за събития</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Добавете друг участник</string>
     <string name="my_status">Моят статус:</string>

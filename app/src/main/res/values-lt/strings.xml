@@ -115,6 +115,7 @@
     <string name="before">prieš</string>
     <string name="add_another_reminder">Pridėti kitą priminimą</string>
     <string name="event_reminders">Priminimai apie įvykius</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Pridėti kitą kviestinį</string>
     <string name="my_status">Mano būsena:</string>

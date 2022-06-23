@@ -115,6 +115,7 @@
     <string name="before">avant</string>
     <string name="add_another_reminder">Ajouter un autre rappel</string>
     <string name="event_reminders">Rappels d\'évènements</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Ajouter un autre participant</string>
     <string name="my_status">Mon statut :</string>

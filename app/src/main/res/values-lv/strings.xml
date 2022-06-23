@@ -109,6 +109,7 @@
     <string name="before">pirms notikuma</string>
     <string name="add_another_reminder">Pievienot vēl vienu atgādinājumu</string>
     <string name="event_reminders">Notikumu atgādinājumi</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Pievienot dalībnieku</string>
     <string name="my_status">Mans statuss:</string>

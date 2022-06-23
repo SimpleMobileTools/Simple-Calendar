@@ -117,6 +117,7 @@
     <string name="before">a-raok</string>
     <string name="add_another_reminder">Ouzhpennañ un adc\'halv all</string>
     <string name="event_reminders">Event reminders</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>

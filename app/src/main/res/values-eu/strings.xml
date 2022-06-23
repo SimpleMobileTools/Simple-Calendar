@@ -117,6 +117,7 @@
     <string name="before">hau baino lehen:</string>
     <string name="add_another_reminder">Gehitu beste abisu bat</string>
     <string name="event_reminders">Gertaera-abisua</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Gehitu beste parte-hartzaile bat</string>

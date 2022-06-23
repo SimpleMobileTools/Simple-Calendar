@@ -109,6 +109,7 @@
     <string name="before">før</string>
     <string name="add_another_reminder">Legg til en annen påminnelse</string>
     <string name="event_reminders">Hendelsespåminnelser</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Add another attendee</string>
     <string name="my_status">My status:</string>

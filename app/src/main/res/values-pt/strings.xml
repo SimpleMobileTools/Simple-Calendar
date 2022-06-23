@@ -115,6 +115,7 @@
     <string name="before">antes</string>
     <string name="add_another_reminder">Adicionar outro lembrete</string>
     <string name="event_reminders">Lembretes de eventos</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Adicionar participante</string>
     <string name="my_status">Meu estado:</string>

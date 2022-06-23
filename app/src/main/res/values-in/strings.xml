@@ -117,6 +117,7 @@
     <string name="before">sebelum</string>
     <string name="add_another_reminder">Tambah pengingat lainnya</string>
     <string name="event_reminders">Pengingat acara</string>
+    <string name="reminders">Reminders</string>
 
     <!-- Event attendees -->
     <string name="add_another_attendee">Tambah tamu lainnya</string>

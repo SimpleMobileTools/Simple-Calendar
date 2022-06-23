@@ -109,6 +109,7 @@
     <string name="before">van tevoren</string>
     <string name="add_another_reminder">Herinnering toevoegen</string>
     <string name="event_reminders">Herinneringen</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Persoon uitnodigen</string>
     <string name="my_status">Mijn status:</string>

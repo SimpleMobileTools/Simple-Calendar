@@ -115,6 +115,7 @@
     <string name="before">ennen</string>
     <string name="add_another_reminder">Lisää toinen muistutus</string>
     <string name="event_reminders">Tapahtumamuistutukset</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Lisää toinen osallistuja</string>
     <string name="my_status">Tilani:</string>

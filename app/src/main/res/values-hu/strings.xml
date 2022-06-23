@@ -115,6 +115,7 @@
     <string name="before">korábban</string>
     <string name="add_another_reminder">További emlékeztető hozzáadása</string>
     <string name="event_reminders">Eseményemlékeztetők</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">További résztvevő hozzáadása</string>
     <string name="my_status">Saját állapot:</string>

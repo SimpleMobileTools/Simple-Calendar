@@ -110,6 +110,7 @@
     <string name="before">前</string>
     <string name="add_another_reminder">別のリマインダーを追加</string>
     <string name="event_reminders">予定のリマインダー</string>
+    <string name="reminders">Reminders</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">別の出席者を追加する</string>
     <string name="my_status">My status:</string>
