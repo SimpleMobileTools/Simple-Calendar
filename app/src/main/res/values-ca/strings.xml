@@ -115,7 +115,7 @@
     <string name="before">abans</string>
     <string name="add_another_reminder">Afegeix un altre recordatori</string>
     <string name="event_reminders">Recordatoris d\'esdeveniments</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Recordatoris</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Afegeix un altre assistent</string>
     <string name="my_status">El meu estat:</string>
