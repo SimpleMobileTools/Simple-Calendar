@@ -266,11 +266,11 @@ class TaskActivity : SimpleActivity() {
             type = TYPE_TASK
 
             reminder1Minutes = mReminder1Minutes
-            reminder1Type = reminder1Minutes
+            reminder1Type = mReminder1Type
             reminder2Minutes = mReminder2Minutes
-            reminder2Type = reminder2Minutes
+            reminder2Type = mReminder2Type
             reminder3Minutes = mReminder3Minutes
-            reminder3Type = reminder3Minutes
+            reminder3Type = mReminder3Type
         }
 
         ensureBackgroundThread {
