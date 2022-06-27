@@ -203,7 +203,7 @@
             style="@style/SettingsSectionLabelStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/event_reminders" />
+            android:text="@string/reminders" />
 
         <LinearLayout
             android:id="@+id/settings_reminders_holder"
