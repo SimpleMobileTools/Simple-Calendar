@@ -72,6 +72,7 @@
             android:layout_marginStart="@dimen/small_margin"
             android:layout_toEndOf="@+id/task_time_image"
             android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/zero"
             android:paddingTop="@dimen/normal_margin"
             android:paddingEnd="@dimen/normal_margin"
             android:paddingBottom="@dimen/normal_margin">
@@ -113,10 +114,88 @@
             tools:text="00:00" />
 
         <ImageView
-            android:id="@+id/event_caldav_calendar_divider"
+            android:id="@+id/event_date_time_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/task_date"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/event_reminder_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/event_date_time_divider"
+            android:layout_alignTop="@+id/event_reminder_1"
+            android:layout_alignBottom="@+id/event_reminder_1"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_bell_vector" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_date_time_divider"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_toEndOf="@+id/event_reminder_image"
+            android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingStart="@dimen/zero"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:textSize="@dimen/day_text_size"
+            tools:text="@string/add_another_reminder" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder_1"
+            android:layout_alignStart="@+id/event_reminder_1"
+            android:alpha="0.4"
+            android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingStart="@dimen/zero"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:text="@string/add_another_reminder"
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"
+            tools:text="@string/add_another_reminder" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/event_reminder_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_reminder_2"
+            android:layout_alignStart="@+id/event_reminder_1"
+            android:alpha="0.4"
+            android:background="?attr/selectableItemBackground"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingStart="@dimen/zero"
+            android:paddingTop="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingBottom="@dimen/activity_margin"
+            android:text="@string/add_another_reminder"
+            android:textSize="@dimen/day_text_size"
+            android:visibility="gone"
+            tools:text="@string/add_another_reminder" />
+
+        <ImageView
+            android:id="@+id/event_caldav_calendar_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/event_reminder_3"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no" />
 

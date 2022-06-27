@@ -95,7 +95,7 @@ fun Context.updateDateWidget() {
 }
 
 fun Context.scheduleAllEvents() {
-    val events = eventsDB.getEventsAtReboot(getNowSeconds())
+    val events = eventsDB.getEventsOrTasksAtReboot(getNowSeconds())
     events.forEach {
         scheduleNextEventReminder(it, false)
     }
@@ -116,9 +116,9 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
 
     val now = getNowSeconds()
     val reminderSeconds = validReminders.reversed().map { it.minutes * 60 }
-    eventsHelper.getEvents(now, now + YEAR, event.id!!, false) {
-        if (it.isNotEmpty()) {
-            for (curEvent in it) {
+    eventsHelper.getEvents(now, now + YEAR, event.id!!, false) { events ->
+        if (events.isNotEmpty()) {
+            for (curEvent in events) {
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
                         scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, showToasts)
@@ -196,9 +196,11 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
 }
 
 fun Context.notifyRunningEvents() {
-    eventsHelper.getRunningEvents().filter { it.getReminders().any { it.type == REMINDER_NOTIFICATION } }.forEach {
-        notifyEvent(it)
-    }
+    eventsHelper.getRunningEventsOrTasks()
+        .filter { it.getReminders().any { reminder -> reminder.type == REMINDER_NOTIFICATION } }
+        .forEach {
+            notifyEvent(it)
+        }
 }
 
 fun Context.notifyEvent(originalEvent: Event) {

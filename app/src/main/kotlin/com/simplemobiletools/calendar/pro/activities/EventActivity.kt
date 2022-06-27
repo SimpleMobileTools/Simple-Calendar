@@ -1169,7 +1169,7 @@ class EventActivity : SimpleActivity() {
 
     private fun storeEvent(wasRepeatable: Boolean) {
         if (mEvent.id == null || mEvent.id == null) {
-            eventsHelper.insertEvent(mEvent, true, true) {
+            eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
                 hideKeyboard()
 
                 if (DateTime.now().isAfter(mEventStartDateTime.millis)) {
@@ -1187,7 +1187,7 @@ class EventActivity : SimpleActivity() {
                 }
             } else {
                 hideKeyboard()
-                eventsHelper.updateEvent(mEvent, true, true) {
+                eventsHelper.updateEvent(mEvent, updateAtCalDAV = true, showToasts = true) {
                     finish()
                 }
             }
@@ -1221,7 +1221,7 @@ class EventActivity : SimpleActivity() {
                             id = null
                         }
 
-                        eventsHelper.insertEvent(mEvent, true, true) {
+                        eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
                             finish()
                         }
                     }
@@ -1230,7 +1230,7 @@ class EventActivity : SimpleActivity() {
                 2 -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
-                        eventsHelper.updateEvent(mEvent, true, true) {
+                        eventsHelper.updateEvent(mEvent, updateAtCalDAV = true, showToasts = true) {
                             finish()
                         }
                     }
