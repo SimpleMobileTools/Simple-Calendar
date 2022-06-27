@@ -16,7 +16,7 @@ class SnoozeReminderActivity : AppCompatActivity() {
         showPickSecondsDialogHelper(config.snoozeTime, true, cancelCallback = { dialogCancelled() }) {
             ensureBackgroundThread {
                 val eventId = intent.getLongExtra(EVENT_ID, 0L)
-                val event = eventsDB.getEventWithId(eventId)
+                val event = eventsDB.getEventOrTaskWithId(eventId)
                 config.snoozeTime = it / 60
                 rescheduleReminder(event, it / 60)
                 runOnUiThread {
