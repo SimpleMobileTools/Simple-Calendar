@@ -274,7 +274,7 @@
     <string name="faq_5_title">L\'aplicació no mostra cap notificació, per què és això\?</string>
     <string name="faq_5_text">Comproveu la bateria del dispositiu i la configuració de notificacions, si no hi ha res que bloquegi els recordatoris o que mati l\'aplicació en segon pla. També us recomanem que doneu una ullada a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, té alguns consells útils.</string>
     <string name="faq_6_title">Com puc modificar o suprimir un tipus d\'esdeveniment existent\?</string>
-    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el que vulgueu per canviar l\'etiqueta o el color, o seleccioneu el desitjat prement-lo llargament i utilitzeu la paperera del menú superior per suprimir-lo.</string>
+    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el desitjat per canviar l\'etiqueta o el color, o el podeu seleccionar prement-lo llargament i utilitzeu la paperera del menú superior per suprimir-lo.</string>
     <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
     <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
     <string name="app_title">Simple Calendar Pro - Esdeveniments i recordatoris</string>
