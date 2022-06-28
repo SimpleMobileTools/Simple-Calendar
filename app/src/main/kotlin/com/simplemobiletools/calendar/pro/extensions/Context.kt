@@ -336,7 +336,8 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
 private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime \u2013 $endTime"
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, EventActivity::class.java)
+    val activityClass = if (event.isTask()) TaskActivity::class.java else EventActivity::class.java
+    val intent = Intent(context, activityClass)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
