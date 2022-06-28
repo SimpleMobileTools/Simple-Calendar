@@ -16,9 +16,9 @@ Widoki dzienny, tygodniowy i miesięczny ułatwiają sprawdzanie nadchodzących 
 ✔️ W pełni konfigurowalne motywy i widżety kalendarza/wydarzeń
 ✔️ Przetłumaczony na 29 języków
 ✔️ Eksportuj ustawienia do plików .txt, aby zaimportować je na inne urządzenie
-✔️ Wsparcie synchronizacji kalendarza CalDAV dla synchronizowania wydarzeń między urządzeniami
+✔️ Synchronizacja wydarzeń między urządzeniami za pomocą kalendarza CalDAV
 ✔️ Widoki kalendarza: dzienny, tygodniowy, miesięczny, roczny i wydarzeń
-✔️ Obsługuje eksport i import wydarzeń za pomocą plików .ics
+✔️ Obsługuje eksport i import wydarzeń przy użyciu plików .ics
 ✔️ Ustawiaj wiele przypomnień o wydarzeniach, dostosuj dźwięk i wibracje powiadomienia 
 ✔️ Opcja drzemki dla przypomnień
 ✔️ Łatwo dodawaj święta, urodziny, rocznice i spotkania
