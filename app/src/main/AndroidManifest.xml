@@ -252,6 +252,7 @@
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <service android:name=".services.SnoozeService" />
+        <service android:name=".services.MarkCompleteService" />
 
         <service
             android:name=".jobs.CalDAVUpdateListener"
