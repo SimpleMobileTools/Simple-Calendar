@@ -191,6 +191,7 @@
 
         <activity
             android:name=".activities.SnoozeReminderActivity"
+            android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/Theme.Transparent" />
 
