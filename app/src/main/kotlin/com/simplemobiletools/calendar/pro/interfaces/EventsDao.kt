@@ -21,22 +21,22 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id = :id AND type = $TYPE_TASK")
     fun getTaskWithId(id: Long): Event?
 
-    @Query("SELECT * FROM events WHERE id = :id AND type = $TYPE_EVENT OR type = $TYPE_TASK")
+    @Query("SELECT * FROM events WHERE id = :id AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun getEventOrTaskWithId(id: Long): Event?
 
     @Query("SELECT * FROM events WHERE import_id = :importId AND type = $TYPE_EVENT")
     fun getEventWithImportId(importId: String): Event?
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0 AND type = $TYPE_EVENT")
-    fun getOneTimeEventsFromTo(toTS: Long, fromTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0 AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
+    fun getOneTimeEventsOrTasksFromTo(toTS: Long, fromTS: Long): List<Event>
 
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND start_ts >= :fromTS AND event_type IN (:eventTypeIds) AND type = $TYPE_TASK")
     fun getTasksFromTo(fromTS: Long, toTS: Long, eventTypeIds: List<Long>): List<Event>
 
-    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0 AND type = $TYPE_EVENT")
+    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND end_ts >= :fromTS AND repeat_interval = 0 AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun getOneTimeEventFromToWithId(id: Long, toTS: Long, fromTS: Long): List<Event>
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun getOneTimeEventsFromToWithTypes(toTS: Long, fromTS: Long, eventTypeIds: List<Long>): List<Event>
 
     @Query("SELECT * FROM events WHERE end_ts > :toTS AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
@@ -76,8 +76,8 @@ interface EventsDao {
     fun getEventsWithIds(ids: List<Long>): List<Event>
 
     //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
-    @Query("SELECT * FROM events WHERE reminder_1_minutes != -1 AND (start_ts > :currentTS OR repeat_interval != 0) AND start_ts != 0 AND type = $TYPE_EVENT")
-    fun getEventsAtReboot(currentTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE reminder_1_minutes != -1 AND (start_ts > :currentTS OR repeat_interval != 0) AND start_ts != 0 AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
+    fun getEventsOrTasksAtReboot(currentTS: Long): List<Event>
 
     @Query("SELECT id FROM events")
     fun getEventIds(): List<Long>

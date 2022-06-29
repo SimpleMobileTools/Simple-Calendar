@@ -123,9 +123,10 @@ class EventsHelper(val context: Context) {
         callback?.invoke(event.id!!)
     }
 
-    fun insertTask(task: Event, callback: () -> Unit) {
-        eventsDB.insertOrUpdate(task)
+    fun insertTask(task: Event, showToasts: Boolean, callback: () -> Unit) {
+        task.id = eventsDB.insertOrUpdate(task)
         context.updateWidgets()
+        context.scheduleNextEventReminder(task, showToasts)
         callback()
     }
 
@@ -295,7 +296,7 @@ class EventsHelper(val context: Context) {
 
             events.addAll(
                 if (eventId == -1L) {
-                    eventsDB.getOneTimeEventsFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
+                    eventsDB.getOneTimeEventsOrTasksFromTo(toTS, fromTS).toMutableList() as ArrayList<Event>
                 } else {
                     eventsDB.getOneTimeEventFromToWithId(eventId, toTS, fromTS).toMutableList() as ArrayList<Event>
                 }
@@ -481,9 +482,9 @@ class EventsHelper(val context: Context) {
         return events
     }
 
-    fun getRunningEvents(): List<Event> {
+    fun getRunningEventsOrTasks(): List<Event> {
         val ts = getNowSeconds()
-        val events = eventsDB.getOneTimeEventsFromTo(ts, ts).toMutableList() as ArrayList<Event>
+        val events = eventsDB.getOneTimeEventsOrTasksFromTo(ts, ts).toMutableList() as ArrayList<Event>
         events.addAll(getRepeatableEventsFor(ts, ts))
         return events
     }

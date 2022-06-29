@@ -8,13 +8,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.dialogs.ReminderWarningDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
@@ -26,6 +29,14 @@ class TaskActivity : SimpleActivity() {
     private var mEventTypeId = REGULAR_EVENT_TYPE_ID
     private lateinit var mTaskDateTime: DateTime
     private lateinit var mTask: Event
+    private var mIsAllDayEvent = false
+
+    private var mReminder1Minutes = REMINDER_OFF
+    private var mReminder2Minutes = REMINDER_OFF
+    private var mReminder3Minutes = REMINDER_OFF
+    private var mReminder1Type = REMINDER_NOTIFICATION
+    private var mReminder2Type = REMINDER_NOTIFICATION
+    private var mReminder3Type = REMINDER_NOTIFICATION
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +96,10 @@ class TaskActivity : SimpleActivity() {
             putSerializable(TASK, mTask)
             putLong(START_TS, mTaskDateTime.seconds())
             putLong(EVENT_TYPE_ID, mEventTypeId)
+
+            putInt(REMINDER_1_MINUTES, mReminder1Minutes)
+            putInt(REMINDER_2_MINUTES, mReminder2Minutes)
+            putInt(REMINDER_3_MINUTES, mReminder3Minutes)
         }
     }
 
@@ -100,6 +115,10 @@ class TaskActivity : SimpleActivity() {
             mTask = getSerializable(TASK) as Event
             mTaskDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
             mEventTypeId = getLong(EVENT_TYPE_ID)
+
+            mReminder1Minutes = getInt(REMINDER_1_MINUTES)
+            mReminder2Minutes = getInt(REMINDER_2_MINUTES)
+            mReminder3Minutes = getInt(REMINDER_3_MINUTES)
         }
 
         updateEventType()
@@ -123,12 +142,18 @@ class TaskActivity : SimpleActivity() {
             }
         } else {
             mTask = Event(null)
+            config.apply {
+                mReminder1Minutes = if (usePreviousEventReminders && lastEventReminderMinutes1 >= -1) lastEventReminderMinutes1 else defaultReminder1
+                mReminder2Minutes = if (usePreviousEventReminders && lastEventReminderMinutes2 >= -1) lastEventReminderMinutes2 else defaultReminder2
+                mReminder3Minutes = if (usePreviousEventReminders && lastEventReminderMinutes3 >= -1) lastEventReminderMinutes3 else defaultReminder3
+            }
+
             if (savedInstanceState == null) {
                 setupNewTask()
             }
         }
 
-        task_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
+        task_all_day.setOnCheckedChangeListener { _, isChecked -> toggleAllDay(isChecked) }
         task_all_day_holder.setOnClickListener {
             task_all_day.toggle()
         }
@@ -137,10 +162,27 @@ class TaskActivity : SimpleActivity() {
         task_time.setOnClickListener { setupTime() }
         event_type_holder.setOnClickListener { showEventTypeDialog() }
 
+        event_reminder_1.setOnClickListener {
+            handleNotificationAvailability {
+                if (config.wasAlarmWarningShown) {
+                    showReminder1Dialog()
+                } else {
+                    ReminderWarningDialog(this) {
+                        config.wasAlarmWarningShown = true
+                        showReminder1Dialog()
+                    }
+                }
+            }
+        }
+
+        event_reminder_2.setOnClickListener { showReminder2Dialog() }
+        event_reminder_3.setOnClickListener { showReminder3Dialog() }
+
         if (savedInstanceState == null) {
             updateEventType()
             updateDateText()
             updateTimeText()
+            updateReminderTexts()
         }
     }
 
@@ -150,6 +192,13 @@ class TaskActivity : SimpleActivity() {
         updateActionBarTitle(getString(R.string.edit_task))
 
         mEventTypeId = mTask.eventType
+        mReminder1Minutes = mTask.reminder1Minutes
+        mReminder2Minutes = mTask.reminder2Minutes
+        mReminder3Minutes = mTask.reminder3Minutes
+        mReminder1Type = mTask.reminder1Type
+        mReminder2Type = mTask.reminder2Type
+        mReminder3Type = mTask.reminder3Type
+
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
         task_all_day.isChecked = mTask.getIsAllDay()
@@ -177,6 +226,34 @@ class TaskActivity : SimpleActivity() {
             return
         }
 
+
+        val reminders = getReminders()
+        if (!task_all_day.isChecked) {
+            if ((reminders.getOrNull(2)?.minutes ?: 0) < -1) {
+                reminders.removeAt(2)
+            }
+
+            if ((reminders.getOrNull(1)?.minutes ?: 0) < -1) {
+                reminders.removeAt(1)
+            }
+
+            if ((reminders.getOrNull(0)?.minutes ?: 0) < -1) {
+                reminders.removeAt(0)
+            }
+        }
+
+        val reminder1 = reminders.getOrNull(0) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder2 = reminders.getOrNull(1) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+        val reminder3 = reminders.getOrNull(2) ?: Reminder(REMINDER_OFF, REMINDER_NOTIFICATION)
+
+        config.apply {
+            if (usePreviousEventReminders) {
+                lastEventReminderMinutes1 = reminder1.minutes
+                lastEventReminderMinutes2 = reminder2.minutes
+                lastEventReminderMinutes3 = reminder3.minutes
+            }
+        }
+
         config.lastUsedLocalEventTypeId = mEventTypeId
         mTask.apply {
             startTS = mTaskDateTime.withSecondOfMinute(0).withMillisOfSecond(0).seconds()
@@ -187,11 +264,25 @@ class TaskActivity : SimpleActivity() {
             lastUpdated = System.currentTimeMillis()
             eventType = mEventTypeId
             type = TYPE_TASK
+
+            reminder1Minutes = mReminder1Minutes
+            reminder1Type = mReminder1Type
+            reminder2Minutes = mReminder2Minutes
+            reminder2Type = mReminder2Type
+            reminder3Minutes = mReminder3Minutes
+            reminder3Type = mReminder3Type
         }
 
         ensureBackgroundThread {
-            EventsHelper(this).insertTask(mTask) {
+            EventsHelper(this).insertTask(mTask, true) {
                 hideKeyboard()
+
+                if (DateTime.now().isAfter(mTaskDateTime.millis)) {
+                    if (mTask.repeatInterval == 0 && mTask.getReminders().any { it.type == REMINDER_NOTIFICATION }) {
+                        notifyEvent(mTask)
+                    }
+                }
+
                 finish()
             }
         }
@@ -223,12 +314,12 @@ class TaskActivity : SimpleActivity() {
 
     private fun setupDate() {
         hideKeyboard()
-        val datepicker = DatePickerDialog(
+        val datePicker = DatePickerDialog(
             this, getDatePickerDialogTheme(), dateSetListener, mTaskDateTime.year, mTaskDateTime.monthOfYear - 1, mTaskDateTime.dayOfMonth
         )
 
-        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        datepicker.show()
+        datePicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
+        datePicker.show()
     }
 
     private fun setupTime() {
@@ -238,11 +329,11 @@ class TaskActivity : SimpleActivity() {
         ).show()
     }
 
-    private val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+    private val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
         dateSet(year, monthOfYear, dayOfMonth)
     }
 
-    private val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+    private val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
         timeSet(hourOfDay, minute)
     }
 
@@ -300,9 +391,93 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
+    private fun updateReminderTexts() {
+        updateReminder1Text()
+        updateReminder2Text()
+        updateReminder3Text()
+    }
+
+    private fun updateReminder1Text() {
+        event_reminder_1.text = getFormattedMinutes(mReminder1Minutes)
+    }
+
+    private fun updateReminder2Text() {
+        event_reminder_2.apply {
+            beGoneIf(event_reminder_2.isGone() && mReminder1Minutes == REMINDER_OFF)
+            if (mReminder2Minutes == REMINDER_OFF) {
+                text = resources.getString(R.string.add_another_reminder)
+                alpha = 0.4f
+            } else {
+                text = getFormattedMinutes(mReminder2Minutes)
+                alpha = 1f
+            }
+        }
+    }
+
+    private fun updateReminder3Text() {
+        event_reminder_3.apply {
+            beGoneIf(event_reminder_3.isGone() && (mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF))
+            if (mReminder3Minutes == REMINDER_OFF) {
+                text = resources.getString(R.string.add_another_reminder)
+                alpha = 0.4f
+            } else {
+                text = getFormattedMinutes(mReminder3Minutes)
+                alpha = 1f
+            }
+        }
+    }
+
+    private fun handleNotificationAvailability(callback: () -> Unit) {
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            callback()
+        } else {
+            ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                callback()
+            }
+        }
+    }
+
+    private fun showReminder1Dialog() {
+        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
+            updateReminderTexts()
+        }
+    }
+
+    private fun showReminder2Dialog() {
+        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
+            updateReminderTexts()
+        }
+    }
+
+    private fun showReminder3Dialog() {
+        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent) {
+            mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
+            updateReminderTexts()
+        }
+    }
+
+    private fun getReminders(): ArrayList<Reminder> {
+        var reminders = arrayListOf(
+            Reminder(mReminder1Minutes, mReminder1Type),
+            Reminder(mReminder2Minutes, mReminder2Type),
+            Reminder(mReminder3Minutes, mReminder3Type)
+        )
+        reminders = reminders.filter { it.minutes != REMINDER_OFF }.sortedBy { it.minutes }.toMutableList() as ArrayList<Reminder>
+        return reminders
+    }
+
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId, false, true, false, true) {
+        SelectEventTypeDialog(
+            activity = this,
+            currEventType = mEventTypeId,
+            showCalDAVCalendars = false,
+            showNewEventTypeOption = true,
+            addLastUsedOneAsFirstOption = false,
+            showOnlyWritable = true
+        ) {
             mEventTypeId = it.id!!
             updateEventType()
         }
@@ -322,7 +497,11 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateColors() {
         updateTextColors(task_scrollview)
-        task_time_image.applyColorFilter(getProperTextColor())
-        event_type_image.applyColorFilter(getProperTextColor())
+        val textColor = getProperTextColor()
+        arrayOf(
+            task_time_image, event_reminder_image, event_type_image
+        ).forEach {
+            it.applyColorFilter(textColor)
+        }
     }
 }

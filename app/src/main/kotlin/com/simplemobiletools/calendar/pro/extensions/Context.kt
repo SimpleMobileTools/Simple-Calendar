@@ -37,6 +37,7 @@ import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
+import com.simplemobiletools.calendar.pro.services.MarkCompletedService
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -95,7 +96,7 @@ fun Context.updateDateWidget() {
 }
 
 fun Context.scheduleAllEvents() {
-    val events = eventsDB.getEventsAtReboot(getNowSeconds())
+    val events = eventsDB.getEventsOrTasksAtReboot(getNowSeconds())
     events.forEach {
         scheduleNextEventReminder(it, false)
     }
@@ -116,9 +117,9 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
 
     val now = getNowSeconds()
     val reminderSeconds = validReminders.reversed().map { it.minutes * 60 }
-    eventsHelper.getEvents(now, now + YEAR, event.id!!, false) {
-        if (it.isNotEmpty()) {
-            for (curEvent in it) {
+    eventsHelper.getEvents(now, now + YEAR, event.id!!, false) { events ->
+        if (events.isNotEmpty()) {
+            for (curEvent in events) {
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
                         scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, showToasts)
@@ -196,9 +197,11 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
 }
 
 fun Context.notifyRunningEvents() {
-    eventsHelper.getRunningEvents().filter { it.getReminders().any { it.type == REMINDER_NOTIFICATION } }.forEach {
-        notifyEvent(it)
-    }
+    eventsHelper.getRunningEventsOrTasks()
+        .filter { it.getReminders().any { reminder -> reminder.type == REMINDER_NOTIFICATION } }
+        .forEach {
+            notifyEvent(it)
+        }
 }
 
 fun Context.notifyEvent(originalEvent: Event) {
@@ -310,7 +313,12 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         .setAutoCancel(true)
         .setSound(Uri.parse(soundUri), config.reminderAudioStream)
         .setChannelId(channelId)
-        .addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this, event))
+        .apply {
+            if (event.isTask() && !event.isTaskCompleted()) {
+                addAction(R.drawable.ic_task_vector, getString(R.string.mark_completed), getMarkCompletedPendingIntent(this@getNotification, event))
+            }
+            addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this@getNotification, event))
+        }
 
     if (config.vibrateOnReminder) {
         val vibrateArray = LongArray(2) { 500 }
@@ -334,7 +342,8 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
 private fun getFormattedEventTime(startTime: String, endTime: String) = if (startTime == endTime) startTime else "$startTime \u2013 $endTime"
 
 private fun getPendingIntent(context: Context, event: Event): PendingIntent {
-    val intent = Intent(context, EventActivity::class.java)
+    val activityClass = getActivityToOpen(event.isTask())
+    val intent = Intent(context, activityClass)
     intent.putExtra(EVENT_ID, event.id)
     intent.putExtra(EVENT_OCCURRENCE_TS, event.startTS)
     return PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
@@ -349,6 +358,12 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     } else {
         PendingIntent.getActivity(context, event.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
+}
+
+private fun getMarkCompletedPendingIntent(context: Context, task: Event): PendingIntent {
+    val intent = Intent(context, MarkCompletedService::class.java).setAction(ACTION_MARK_COMPLETED)
+    intent.putExtra(EVENT_ID, task.id)
+    return PendingIntent.getService(context, task.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 }
 
 fun Context.rescheduleReminder(event: Event?, minutes: Int) {
