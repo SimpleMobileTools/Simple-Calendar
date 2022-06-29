@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Обикновен календар</string>
+    <string name="app_name">Обикновен Календар</string>
     <string name="app_launcher_name">Календар</string>
     <string name="change_view">Промени изгледа</string>
     <string name="daily_view">Дневен изглед</string>
@@ -109,7 +109,7 @@
     <string name="before">преди</string>
     <string name="add_another_reminder">Добавете друго напомняне</string>
     <string name="event_reminders">Напомняния за събития</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Напомняния</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Добавете друг участник</string>
     <string name="my_status">Моят статус:</string>
@@ -190,7 +190,7 @@
     <string name="default_reminder_1">Основно напомняне 1</string>
     <string name="default_reminder_2">Основно напомняне 2</string>
     <string name="default_reminder_3">Основно напомняне 3</string>
-    <string name="view_to_open_from_widget">Режим на показване от widget-a за събития</string>
+    <string name="view_to_open_from_widget">Режим на показване от приспособлението за събития</string>
     <string name="last_view">Последен изглед</string>
     <string name="new_events">Нови събития</string>
     <string name="default_start_time">Основно време за започване</string>
