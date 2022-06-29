@@ -5,14 +5,15 @@ import android.content.Intent
 import com.simplemobiletools.calendar.pro.extensions.cancelNotification
 import com.simplemobiletools.calendar.pro.extensions.cancelPendingIntent
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
+import com.simplemobiletools.calendar.pro.helpers.ACTION_MARK_COMPLETED
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
 import com.simplemobiletools.calendar.pro.helpers.FLAG_TASK_COMPLETED
 
-class MarkCompleteService : IntentService("MarkComplete") {
+class MarkCompletedService : IntentService("MarkCompleted") {
 
     @Deprecated("Deprecated in Java")
     override fun onHandleIntent(intent: Intent?) {
-        if (intent != null && intent.action == ACTION_MARK_COMPLETE) {
+        if (intent != null && intent.action == ACTION_MARK_COMPLETED) {
             val taskId = intent.getLongExtra(EVENT_ID, 0L)
             val task = eventsDB.getTaskWithId(taskId)
             if (task != null) {
@@ -22,9 +23,5 @@ class MarkCompleteService : IntentService("MarkComplete") {
                 cancelNotification(task.id!!)
             }
         }
-    }
-
-    companion object {
-        const val ACTION_MARK_COMPLETE = "ACTION_MARK_COMPLETE"
     }
 }

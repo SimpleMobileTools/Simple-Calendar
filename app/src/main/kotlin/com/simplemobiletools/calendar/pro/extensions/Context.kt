@@ -37,8 +37,7 @@ import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
-import com.simplemobiletools.calendar.pro.services.MarkCompleteService
-import com.simplemobiletools.calendar.pro.services.MarkCompleteService.Companion.ACTION_MARK_COMPLETE
+import com.simplemobiletools.calendar.pro.services.MarkCompletedService
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -316,7 +315,7 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
         .setChannelId(channelId)
         .apply {
             if (event.isTask() && !event.isTaskCompleted()) {
-                addAction(R.drawable.ic_task_vector, getString(R.string.mark_completed), getMarkCompletePendingIntent(this@getNotification, event))
+                addAction(R.drawable.ic_task_vector, getString(R.string.mark_completed), getMarkCompletedPendingIntent(this@getNotification, event))
             }
             addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this@getNotification, event))
         }
@@ -361,8 +360,8 @@ private fun getSnoozePendingIntent(context: Context, event: Event): PendingInten
     }
 }
 
-private fun getMarkCompletePendingIntent(context: Context, task: Event): PendingIntent {
-    val intent = Intent(context, MarkCompleteService::class.java).setAction(ACTION_MARK_COMPLETE)
+private fun getMarkCompletedPendingIntent(context: Context, task: Event): PendingIntent {
+    val intent = Intent(context, MarkCompletedService::class.java).setAction(ACTION_MARK_COMPLETED)
     intent.putExtra(EVENT_ID, task.id)
     return PendingIntent.getService(context, task.id!!.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 }

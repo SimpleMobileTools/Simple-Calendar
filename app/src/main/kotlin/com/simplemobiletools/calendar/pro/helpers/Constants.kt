@@ -220,6 +220,9 @@ const val AVAILABILITY = "AVAILABILITY"
 const val EVENT_TYPE_ID = "EVENT_TYPE_ID"
 const val EVENT_CALENDAR_ID = "EVENT_CALENDAR_ID"
 
+// actions
+const val ACTION_MARK_COMPLETED = "ACTION_MARK_COMPLETED"
+
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
 fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
