@@ -115,7 +115,7 @@
     <string name="before">innan</string>
     <string name="add_another_reminder">Lägg till en annan påminnelse</string>
     <string name="event_reminders">Händelsepåminnelser</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Påminnelser</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Lägg till en annan deltagare</string>
     <string name="my_status">Min status:</string>
@@ -225,7 +225,7 @@
     <string name="insufficient_permissions">Du har inte behörighet att redigera den valda kalendern</string>
     <string name="caldav_event_not_found">Händelsen hittades inte. Aktivera CalDAV-synkronisering för den aktuella kalendern i appens inställningar.</string>
     <string name="no_synchronized_calendars">Inga synkroniserbara kalendrar har hittats</string>
-    <string name="status_free">Gratis</string>
+    <string name="status_free">Ledig</string>
     <string name="status_busy">Upptagen</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
