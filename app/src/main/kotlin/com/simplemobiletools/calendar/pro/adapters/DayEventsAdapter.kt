@@ -4,10 +4,12 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
+import com.simplemobiletools.calendar.pro.fragments.DayFragment
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
@@ -20,7 +22,7 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit) :
+class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode:String, itemClick: (Any) -> Unit) :
     MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
@@ -89,7 +91,16 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             event_item_title.checkViewStrikeThrough(event.isTaskCompleted())
             event_item_time.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
             if (event.startTS != event.endTS && !event.getIsAllDay()) {
-                event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, event.endTS)}"
+                val startDayCode = Formatter.getDayCodeFromTS(event.startTS)
+                val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
+                val startTimePostFix = if (startDayCode != dayCode) Formatter.getDayTitle(activity, startDayCode,false) else null
+                val endTimePostFix = if (endDayCode != dayCode) Formatter.getDayTitle(activity, endDayCode,false) else null
+                val timeString = "${event_item_time.text}" +
+                    (if ( !startTimePostFix.isNullOrEmpty()) "(${startTimePostFix})" else "")  +
+                    " - ${Formatter.getTimeFromTS(context, event.endTS)}"+
+                    (if ( !endTimePostFix.isNullOrEmpty()) "(${endTimePostFix})" else "")
+
+                event_item_time.text = timeString
             }
 
             event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description.replace("\n", " ")
