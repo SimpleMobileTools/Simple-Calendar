@@ -115,7 +115,7 @@
     <string name="before">prima</string>
     <string name="add_another_reminder">Aggiungi un altro promemoria</string>
     <string name="event_reminders">Promemoria eventi</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Promemoria</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Aggiungi un partecipante</string>
     <string name="my_status">Il mio stato:</string>

@@ -115,7 +115,7 @@
     <string name="before">önce</string>
     <string name="add_another_reminder">Başka hatırlatma ekle</string>
     <string name="event_reminders">Etkinlik hatırlatıcılar</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Hatırlatıcılar</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Başka bir katılımcı ekle</string>
     <string name="my_status">Durumum:</string>
