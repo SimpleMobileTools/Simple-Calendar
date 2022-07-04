@@ -294,57 +294,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Calendar Simplu Pro - Evenimente și Reamintiri</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Calendar simplu 2021. Planificare și reamintire întâlnire pentru orice zi</string>
-    <string name="app_long_description">
-        Calendarul Simplu Pro poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. <b>Fără caracteristici complicate, permisiuni inutile și fără reclame!</b>
-
-        Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Simple Calendar Pro face <b>ușor să rămâneți organizat</b>. Cu o varietate incredibilă de <b>opțiuni de personalizare</b>, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
-
-        Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentelor viitoare și a programărilor să fie o briză. Puteți vedea chiar totul ca pe o simplă listă de evenimente, mai degrabă decât în vizualizarea calendarului, astfel încât <b>să știți exact ce se întâmplă în viața dvs. și când. </b>
-
-        ----------------------------------------------------------
-        <b>Calendar Simplu Pro – Caracteristici și Benefici</b>
-        ----------------------------------------------------------
-
-        ✔️ Fără reclame sau pop-up-uri enervante
-        ✔️ Nu este nevoie de acces la internet, oferindu-vă mai multă confidențialitate și securitate
-        ✔️ Doar permisiunile minime necesare
-        ✔️ Accent pe simplitate - face ceea ce un calendar trebuie să facă!
-        ✔️ Open source
-        ✔️ Teme complet personalizabile și widgeturi de calendar / eveniment
-        ✔️ Tradus în 29 de limbi
-        ✔️ Exportați setările în fișiere .txt pentru a le importa pe un alt dispozitiv
-        ✔️ Sincronizare cu calendar CalDAV este suportată, pentru a sincroniza evenimente pe dispozitive multiple
-        ✔️ Vizualizări zilnice, săptămânale, lunare, anuale și ale evenimentelor din calendar
-        ✔️ Acceptă exportarea și importarea evenimentelor prin fișiere .ics
-        ✔️ Setați multiple reamintiri pentru evenimente, personalizați sunetul și vibrațiile pentru acestea
-        ✔️ Opțiune de amânare a reamintirilor
-        ✔️ Puteți adăuga ușor sărbători, zile de naștere, aniversări și programări
-        ✔️ Personalizați evenimentele - ora de pornire, durata, reamintiri etc.
-        ✔️ Puteți seta opțiune de participare pentru fiecare eveniment
-        ✔️ Utilizați ca un calendar personal sau calendar de afaceri
-        ✔️ Alegeți dintre reamintiri și notificări prin e-mail pentru a vă avertiza despre evenimente
-
-        DESCARCĂ SIMPLE CALENDAR PRO – CALENDARUL SIMPLU OFFLINE FĂRĂ RECLAME!
-
-        <b>Verificați aici pachetul complet al Uneltelor Simple (Simple Tools) aici:</b>
-        https://www.simplemobiletools.com
-
-        <b>Site propriu pentru Calendarul Simplu Pro (Simple Calendar Pro):</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

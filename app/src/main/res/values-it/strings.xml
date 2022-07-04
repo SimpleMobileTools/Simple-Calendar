@@ -275,55 +275,6 @@
     <string name="faq_5_text">Controlla la batteria del tuo dispositivo e le impostazioni di notifica, se non c\'è nulla che blocchi i promemoria, o che uccida l\'app in sfondo. Si potrebbe anche dare un\'occhiata a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, ha alcuni suggerimenti utili.</string>
     <string name="faq_6_title">Come posso modificare o eliminare un tipo di evento esistente\?</string>
     <string name="faq_6_text">Puoi fare entrambe le cose in Impostazioni dell\'app – Gestisci tipi di eventi. Basta cliccare su quello desiderato per cambiare l\'etichetta e il colore, o selezionare quello desiderato premendolo a lungo e usare il cestino nel menù in alto per eliminarlo.</string>
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Semplice Calendario Pro - Eventi &amp; Promemoria</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Semplice calendario mobile 2020. Pianificatore e promemoria degli appuntamenti</string>
-    <string name="app_long_description">
-        Semplice Calendario Pro è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario dovrebbe fare. <b>Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità!</b>
-
-        Se stai organizzando eventi singoli o ricorrenti, compleanni, anniversari, riunioni di lavoro, appuntamento o qualsiasi altra cosa, Semplice Calendario Pro ti permette di <b>rimanere organizzato</b>. Con un\'incredbile varietà di <b>opzioni di personalizzazione</b>, puoi personalizzare i promemoria degli eventi, i suoni delle notifiche, il widget del calendario e lo stile dell\'app.
-
-        Le vista giornaliera, settimanale o mensile permette di controllare gli eventi e appuntamenti imminenti. Puoi visualizzare tutto come una semplice lista di eventi invece che in una vista a calendario, così puoi <b>sapere esattamente cosa sta per succedere nella tua vita e quando.</b>
-
-        ----------------------------------------------------------
-        <b>Semplice Calendario Pro - Funzionalità e benefici</b>
-        ----------------------------------------------------------
-
-        ✔️ Nessuna pubblicità o popup fastidiosi
-        ✔️ Nessun accesso internet richiesto, così da darti più privacy e sicurezza
-        ✔️ Sono richieste solamente i permessi minimi indispensabili
-        ✔️ Enfatizza la semplicità - quello che un calendario deve fare!
-        ✔️ Open source
-        ✔️ Temi, calendario e widget degli eventi completamente personalizzable
-        ✔️ Localizzato in più di 29 lingue
-        ✔️ Esporta le impostazioni in un file .txt da importare in un altro disposibito
-        ✔️ Sincronizzazione CalDav supportata per sincronizzare gli eventi su più dispositivi
-        ✔️ Con viste giornaliere, settimanali, mensili, annuali e lista di eventi
-        ✔️ Supporta l\'importazione e l\'esportazione di eventi tramite file .ics
-        ✔️ Imposta più promemoria per gli eventi, personalizzali con la vibrazione e la suoneria
-        ✔️ Opzione per posporre i promemoria
-        ✔️ Aggiungi facilmente festività, compleanni, anniversari e appuntamenti
-        ✔️ Personalizza gli eventi - inizio, durata, promemoria e molto altro
-        ✔️ Aggiunti i partecipanti per ogni evento
-        ✔️ Usalo come calendario personale o per lavoro
-        ✔️ Scegli fra promemoria e email di notifica per avvisarti riguardo un evento
-        
-        SCARICA SEMPLICE CALENDARIO PRO – IL CALENDARIO SEMPLICE, OFFLINE E SENZA PUBBLICITÀ!
-
-        <b>Dai uno sguardo alla suite completa di Simple Tools:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

@@ -294,57 +294,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Gertaerak eta abisuak</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Egutegi sinplea. Edozein egunetarako agenda antolatzailea eta hitzordu-abisuak</string>
-    <string name="app_long_description">
-        Simple Calendar Pro guztiz pertsonalizatu daitekeen lineaz kanpoko egutegia da, egutegi batek egin beharko lukeena egiteko diseinatua. <b>Eginbide korapilatsurik, beharrezkoa ez den baimenik eta iragarkirik ez!</b>
-
-        Gertaerak, urtebetetzeak, urteurrenak, negozio-bilerak, hitzorduak edo dena delakoa antolatu behar baduzu ere, Simple Calendar Pro-rekin <b>erraza da antolatzea</b>. Eskaintzen dituen <b>pertsonalizazio-aukera</b> guztiekin gertaera-abisuak, jakinarazpen soinuak, egutegi-widgetak eta aplikazioaren estiloa pertsonalizatu dezakezu.
-
-        Eguneko, asteko eta hilabeteko ikuspegiek erraz egiten dute hurrengo gertaerak eta hitzorduak begiratzea. Gertaeren zerrenda sinplean ere bistaratu dezakezu guztia, egutegi-ikuspegian bistaratu ordez, <b>zure bizitzan zer eta noiz gertatuko den</b> jakin dezazun.
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Eginbideak eta abantailak</b>
-        ----------------------------------------------------------
-
-        ✔️ Iragarkirik edo laster-leiho nekagarririk ez
-        ✔️ Internet sarbiderik ez da behar, pribatutasun eta segurtasun handiagoa emanez
-        ✔️ Gutxieneko baimenak soilik eskatzen ditu
-        ✔️ Enfasia sinplizitatean: egutegi batek egin behar duena egiten du!
-        ✔️ Kode irekia
-        ✔️ Guztiz pertsonalizatu daitezkeen gaiak eta egutegi- edota gertaera-widgetak
-        ✔️ 29 hizkuntzatara itzulita
-        ✔️ Esportatu ezarpenak .txt fitxategietara beste gailu batean inportatzeko
-        ✔️ CalDAV egutegi-sinkronizazioa onartzen du, gertaerak gailu artean sinkronizatzeko
-        ✔️ Eguneko, asteko, hilabeteko, urteko eta gertaera-ikuspegiak egutegian
-        ✔️ Gertaerak .ics fitxategien bidez esportatzea eta inportatzea onartzen du
-        ✔️ Ezarri hainbat gertaera-abisu, pertsonalizatu gertaera-abisuaren soinua eta dardara
-        ✔️ Atzeratzeko aukera abisuetan
-        ✔️ Gehitu oporrak, urtebetetzeak, urteurrenak eta hitzortuak errazki
-        ✔️ Pertsonalizatu gertaerak: hasiera-ordua, iraupena, abisuak eta abar
-        ✔️ Gehitu parte-hartzaileak gertaera bakoitzean
-        ✔️ Egutegi pertsonala edo lanerako egutegi gisa erabili dezakezu
-        ✔️ Hautatu abisu eta eposta jakinarazpenen artean gertaera baten berri izateko
-
-        DESKARGATU SIMPLE CALENDAR PRO – LINEAZ KANPO ERABILI DAITEKEEN IRAGARKIRIK GABEKO EGUTEGI SINPLEA!
-
-        <b>Ikusi Simple Tools-en sorta osoa hemen:</b>
-        https://www.simplemobiletools.com
-
-        <b>Simple Calendar Pro-ren webgune autonomoa:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

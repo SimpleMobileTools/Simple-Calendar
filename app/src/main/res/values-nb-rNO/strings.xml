@@ -273,55 +273,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="app_long_description">
-        Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b>
-
-        Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks.
-
-        Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Features &amp; Benefits</b>
-        ----------------------------------------------------------
-
-        ✔️ No ads or annoying popups
-        ✔️ No internet access needed, giving you more privacy &amp; security
-        ✔️ Only the bare minimum permissions required
-        ✔️ Emphasis on simplicity – does what a calendar needs to do!
-        ✔️ Open source
-        ✔️ Fully customizable themes &amp; calendar / event widgets
-        ✔️ Translated into 29 languages
-        ✔️ Export settings to .txt files to import to another device
-        ✔️ CalDAV calendar sync supported to sync events across devices
-        ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar
-        ✔️ Supports exporting &amp; importing events via .ics files
-        ✔️ Set multiple event reminders, customize event reminder sound and vibration
-        ✔️ Snooze option for reminders
-        ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments
-        ✔️ Customize events – start time, duration, reminders etc
-        ✔️ Add event attendees to each event
-        ✔️ Use as a personal calendar or a business calendar
-        ✔️ Choose between reminders &amp; email notifications to alert you about an event
-
-        DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS!
-
-        <b>Check out the full suite of Simple Tools here:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

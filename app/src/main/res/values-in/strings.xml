@@ -294,57 +294,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Simple Calendar Pro - Acara &amp; Pengingat</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="app_long_description">
-        Simple Calendar Pro adalah kalender luring sederhana yang mudah digunakan dan dibuat sesuai dengan fungsi-fungsi dasar sebuah kalender. <b>Tanpa fitur yang terlalu rumit, perizinan yang tidak diperlukan dan sama sekali tanpa iklan!</b>
-
-        Anda bisa mengelola acara tunggal atau berulang, ulang tahun, hari jadi, bisnis, janjian atau yang lainnya, Simple Calendar Pro membuatnya <b>mudah untuk tetap terorganisir</b>. Dengan banyaknya <b>opsi personalisasi</b> anda bisa menyesuaikan pengingat acara, suara notifikasi, widget kalender dan gaya tampilan aplikasi.
-
-        Tampilan harian, mingguan dan bulanan sangat mempermudah anda memeriksa acara &amp; janji pertemuan yang akan datang. Anda bahkan bisa menampilkan semuanya menggunakan daftar tampilan sederhana daripada tampilan tahun atau bulan, jadi anda tahu persis <b>apa yang akan terjadi dalam hidup anda dan kapan.</b>
-
-        ----------------------------------------------------------
-        <b>Simple Calendar Pro – Fitur &amp; Keunggulan</b>
-        ----------------------------------------------------------
-
-        ✔️ Sama sekali tanpa iklan dan popup yang mengganggu
-        ✔️ Tidak membutuhkan akses internet, memberi anda privasi &amp; keamanan lebih
-        ✔️ Membutuhkan perizinan yang sangat minim
-        ✔️ Fokus pada kesederhanaan – mengerjakan apa yang seharusnya kelender kerjakan!
-        ✔️ Sumber terbuka
-        ✔️ Tema &amp; widget kalender / acara yang sepenuhnya bisa disesuaikan
-        ✔️ Diterjemahkan ke dalam 29 bahasa
-        ✔️ Ekspor pengaturan ke berkas .txt dan impor di perangkat lainnya
-        ✔️ Sinkronisasi kalender CalDAV mendukung sinkronisasi di banyak perangkat
-        ✔️ Tampilan harian, mingguan, bulanan, tahunan &amp; daftar
-        ✔️ Mendukung ekspor &amp; impor acara via berkas .ics
-        ✔️ Atur beberapa pengingat acara, sesuaikan suara dan getar pengingat acara
-        ✔️ Opsi tunda untuk pengingat
-        ✔️ Dengan mudah menambahkan hari libur, ulang tahun, hari jadi &amp; janji pertemuan
-        ✔️ Sesuaikan acara – waktu mulai, durasi, pengingat, dll
-        ✔️ Tambah tamu untuk setiap acara
-        ✔️ Gunakan sebagai kelender pribadi atau kalender bisnis
-        ✔️ Pilih antara notifikasi pengingat &amp; email untuk memberitahu anda tentang sebuah acara
-
-        UNDUH SIMPLE CALENDAR PRO – KALENDER LURING SEDERHANA DAN TANPA IKLAN!
-
-        <b>Periksa semua aplikasi Simple Tools di sini:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

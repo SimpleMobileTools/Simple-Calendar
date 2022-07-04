@@ -297,57 +297,6 @@
     <string name="faq_5_text">Pozrite sa do nastavení batérie a upozornení vášho zariadenia, či nič neblokuje upozornenia, alebo nevypína na pozadí apku. Mohli by ste sa pozrieť aj na  &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, je tam veľa užitočných tipov.</string>
     <string name="faq_6_title">Ako môžem upraviť alebo odstrániť existujúci typ udalosti?</string>
     <string name="faq_6_text">Oboje viete spraviť v nastaveniach apky - Spravovať typy udalostí. Kliknutím viete upraviť názov a farbu, odstrániť ich viete dlhým podržaním a použitím odpadkového koša na hornom menu.</string>
-
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Jednoduchý kalendár Pro - Udalosti a pripomienky</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Mobilný kalendár 2020. Efektívny plánovač a manažér stretnutí počas celého dňa.</string>
-    <string name="app_long_description">
-        Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
-
-        Či organizujete jednoduchú, alebo opakujúcu sa udalosť, narodeniny, výročia, pracovné stretnutia, alebo hocičo iné, Jednoduchý kalendár Pro vám <b>uľahčí prácu</b>. S veľkou mierou <b>prispôsobiteľnosti</b> viete meniť pripomienky udalostí, zvuky pripomienok, widgety kalendára a celkový vzhľad apky.
-
-        Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho prezrieť nasledujúce udalosti a stretnutia. Všetky udalosti si viete pozrieť aj v jednoduchom chronologickom zozname udalostí. Vďaka tomu viete <b>presne čo a kedy sa blíži.</b>
-
-        ----------------------------------------------------------
-        <b>Jednoduchý kalendár Pro - funkcie a benefity</b>
-        ----------------------------------------------------------
-
-        ✔️ Žiadne reklamy a otravné vyskakovacie okná
-        ✔️ Nie je potrebný prístup na internet, vďaka čomu budete mať maximálne súkromie a bezpečie
-        ✔️ Obsahuje iba nevyhnutne potrebné oprávnenia
-        ✔️ Prízvuk na jednoduchosť - robí presne to, čo sa od kalendára očakáva!
-        ✔️ Otvorený zdrojový kód
-        ✔️ Plne prispôsobiteľné témy, pohľady a widgety
-        ✔️ Preložený do 29 jazykov
-        ✔️ Jednoducho exportujte nastavenia do .txt súboru a importujte ich do iného zariadenia
-        ✔️ Obsahuje CalDAV sychronizáciu na zdieľanie kalendárov medzi zariadeniami
-        ✔️ Obsahuje denný, týždenný, mesačný, ročný pohľad na kalendár, ako aj jednoduchý zoznam udalostí
-        ✔️ Podporuje exportovanie a importovanie udalostí pomocou .ics súborov
-        ✔️ Možnosť nastaviť viacero pripomienok na udalosti, alebo zmeniť ich zvučku a vibrovanie
-        ✔️ Možnosť odloženia pripomienok na neskôr
-        ✔️ Jednoduché pridávanie prázdnin, narodenín, výročí a stretnutí
-        ✔️ Nastaviteľné udalosti - začiatok, trvanie, pripomienky atď
-        ✔️ Možnosť pridávania zúčastnených na udalosti
-        ✔️ Možné použitie ako súkromný, aj business kalendár
-        ✔️ Zvoľte si buď pripomienku, alebo email na synchronizované udalosti
-
-        STIAHNITE SI JEDNODUCHÝ KALENDÁR PRO - JEDNODUCHÝ OFFLINE KALENDÁR BEZ REKLÁM!
-
-        <b>Pozrite si celú sadu aplikácií na:</b>
-        https://www.simplemobiletools.com
-
-        <b>Vlastná stránka Jednoduchého Kalendára Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

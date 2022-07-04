@@ -273,55 +273,6 @@
     <string name="faq_5_text">Controleer bij Meldingen via App-info of er geen notificaties geblokkeerd worden. Probeer anders bij de geavanceerde instellingen in App-info de batterijoptimalisatie voor deze app uit te schakelen. Kijk op &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; voor verdere tips.</string>
     <string name="faq_6_title">Hoe kan ik een bestaand afspraaktype aanpassen of verwijderen\?</string>
     <string name="faq_6_text">Dit kan via Instellingen -&gt; Afspraaktypes beheren. Klik op het item om de naam en kleur te veranderen, of druk lang op een item om het te verwijderen met de knop bovenin.</string>
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">Eenvoudige Agenda Pro - Afspraken &amp; Herinneringen</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Eenvoudige mobiele agenda. Plannen &amp; afspraken maken voor iedere dag</string>
-    <string name="app_long_description">
-        Eenvoudige Agenda Pro is een volledig aan te passen offline agenda, ontwikkeld om precies te doen waar een agenda voor bedoeld is. <b>Geen ingewikkelde poespas of onnodige machtigingen, en zonder advertenties!</b>
-
-        Of het nu gaat om enkele of herhaalde afspraken, verjaardagen, jubilea, vergaderingen of wat dan ook, Eenvoudige Agenda Pro maakt het <b>eenvoudig om georganiseerd te blijven</b>. Met een grote <b>verscheidenheid aan instellingen</b> kunnen herinneringen, geluiden, widgets en het uiterlijk van de app worden aangepast naar wens.
-
-        Dag-, week-, maand- en jaaroverzichten maken het zeer eenvoudig om inzicht te krijgen in aankomende afspraken. Zelfs het inzien van de afspraken in lijstvorm is mogelijk, zodat <b>niets aan de aandacht ontsnapt</b>.
-
-        ----------------------------------------------------------
-        <b>Eenvoudige Agenda Pro – Functies &amp; Voordelen</b>
-        ----------------------------------------------------------
-
-        ✔️ Geen advertenties of vervelende pop-ups
-        ✔️ Geen internettoegang benodigd, voor meer privacy &amp; veiligheid
-        ✔️ Geen onnodige machtigingen vereist
-        ✔️ Met de nadruk op eenvoud: doet precies wat een agenda moet doen!
-        ✔️ Open-source
-        ✔️ Pas het uiterlijk van agenda en widgets aan met eigen thema’s
-        ✔️ Beschikbaar in 29 talen
-        ✔️ Exporteer de instellingen naar een .txt-bestand om te migreren naar andere apparaten
-        ✔️ Ondersteuning voor het synchroniseren van agenda’s via CalDAV
-        ✔️ Dag-, week-, maand- en jaaroverzichten
-        ✔️ Ondersteuning voor het importeren &amp; exporteren van afspraken via .ics-bestanden
-        ✔️ Stel meerdere herinneringen per afspraak in, inclusief geluid en/of trillen
-        ✔️ Snooze-optie voor herinneringen
-        ✔️ Voeg snel en gemakkelijk feestdagen, verjaardagen, jubilea &amp; afspraken toe
-        ✔️ Bewerk afspraakdetails: starttijd, duur, herinneringen etc.
-        ✔️ Nodig personen uit voor een afspraak
-        ✔️ Gebruik een persoonlijke of een zakelijke agenda
-        ✔️ Kies voor e-mailnotificaties als herinnering voor afspraken
-
-        DOWNLOAD EENVOUDIGE AGENDA PRO – DE AGENDA ZONDER ADVERTENTIES!
-
-        <b>Probeer ook eens de andere apps van Simple Tools:</b>
-        https://www.simplemobiletools.com
-
-        <b>Website voor Eenvoudige Agenda Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

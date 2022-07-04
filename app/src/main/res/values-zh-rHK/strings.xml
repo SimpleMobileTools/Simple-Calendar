@@ -294,57 +294,6 @@
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">How can I modify or delete an existing event type?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
-
-    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
-    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
-    <string name="app_title">簡易行事曆 Pro - 活動&amp;約會</string>
-    <!-- Short description has to have less than 80 chars -->
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="app_long_description">
-        簡易行事曆Pro是一個高度自訂化，完全旨在於行事曆應該做什麼的離線行事曆。 <b>沒有複雜的功能、非必要的權限和廣告!</b>
-
-        無論您是要安排單一還是反復的活動、生日、紀念日、業務會議、約會或任何其他活動，簡易行事曆Pro都能讓您<b>輕鬆維持安排</b>。透過多樣化的<b>自訂選項</b>，您可以自訂活動提醒、通知音效、行事曆小工具和應用程式外觀。
-
-        每日、每週、每月的檢視模式使您輕易就確認即將到來的活動&amp;約會。您甚至能夠以簡單的活動列表來瀏覽全部，而不是行事曆畫面，所以您<b>完全知道生活中何時會發生什麼事。</b>
-
-        ----------------------------------------------------------
-        <b>簡易行事曆Pro – 特色 &amp; 優點</b>
-        ----------------------------------------------------------
-
-        ✔️ 沒有廣告和討厭的彈出畫面
-        ✔️ 不需要網路連線，給您更多隱私及安全
-        ✔️ 只需要最低限度的權限
-        ✔️ 著重於簡單 – 做行事曆該做的!
-        ✔️ 開放原始碼
-        ✔️ 完整自訂化主題&amp;行事曆/活動小工具
-        ✔️ 翻譯成29種語言
-        ✔️ 將設定匯出成.txt檔案，以匯入到別的裝置
-        ✔️ 支援CalDAV行事曆同步，來跨裝置同步活動
-        ✔️ 在行事曆上有每日、每週、每月、每年及活動瀏覽的檢視方式
-        ✔️ 支援透過.ics檔案來匯出&amp;匯入活動
-        ✔️ 設置多個活動提醒，自訂活動提醒音效和震動
-        ✔️ 提醒有延遲選項
-        ✔️ 輕鬆添加假日、生日、紀念日和約會
-        ✔️ 自訂活動 – 開始時間、持續時間、提醒…之類的
-        ✔️ 為每個活動添加活動出席者
-        ✔️ 用做於個人行事曆或業務行事曆
-        ✔️ 在提醒和電子信箱通知之間選擇，以提醒您關於活動的訊息
-
-        <u>下載簡易行事曆PRO – 沒有廣告的簡易離線行事曆!</u>
-
-        <b>於此查看簡易工具系列全套:</b>
-        https://www.simplemobiletools.com
-
-        <b>Standalone website of Simple Calendar Pro:</b>
-        https://www.simplemobiletools.com/calendar
-
-        <b>Facebook:</b>
-        https://www.facebook.com/simplemobiletools
-
-        <b>Reddit:</b>
-        https://www.reddit.com/r/SimpleMobileTools
-    </string>
-
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
