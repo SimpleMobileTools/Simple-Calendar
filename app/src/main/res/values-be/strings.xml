@@ -1,38 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Каляндар</string>
-    <string name="edit_event">Рэдагаваць падзею</string>
-    <string name="new_event">Новая падзея</string>
-    <string name="weekly">Штотыдзень</string>
-    <string name="invited">Invited</string>
-    <string name="holidays_imported_successfully">Святы паспяхова імпартаваны ў падзеі з тыпам \"Святы\"</string>
-    <string name="importing_some_holidays_failed">Не атрымалася імпартаваць некаторыя падзеі</string>
-    <string name="importing_holidays_failed">Не атрымалася імпартаваць святы</string>
-    <string name="manage_event_types">Кіраванне тыпамі падзей</string>
-    <string name="start_day_at">Start day at</string>
-    <string name="highlight_weekends">Highlight weekends on some views</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
-    <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Select calendars to sync</string>
-    <string name="manage_synced_calendars">Manage synced calendars</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <string name="app_name">Simple Calendar</string>
+    <string name="app_launcher_name">Каляндар</string>
+    <string name="change_view">Change view</string>
+    <string name="daily_view">Дзень</string>
     <string name="weekly_view">Тыдзень</string>
     <string name="monthly_view">Месяц</string>
-    <string name="change_view">Change view</string>
     <string name="monthly_daily_view">Месяц і дзень</string>
-    <string name="daily_view">Дзень</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Спіс падзей</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="go_to_today">Сёння</string>
     <string name="go_to_date">Go to date</string>
-    <string name="widget_monthly">Каляндар на месяц</string>
-    <string name="widget_list">Каляндар падзей</string>
-    <string name="widget_todays_date">Каляндар на сёння</string>
     <string name="upgraded_from_free">Hey,
 \n
 \nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.
@@ -40,17 +19,25 @@
 \nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.
 \n
 \nThanks!</string>
+    <!-- Widget titles -->
+    <string name="widget_monthly">Каляндар на месяц</string>
+    <string name="widget_list">Каляндар падзей</string>
+    <string name="widget_todays_date">Каляндар на сёння</string>
+    <!-- Event -->
     <string name="event">Падзея</string>
+    <string name="edit_event">Рэдагаваць падзею</string>
+    <string name="new_event">Новая падзея</string>
     <string name="create_new_event">Стварыць новую падзею</string>
     <string name="duplicate_event">Дубляваць падзею</string>
     <string name="title_empty">Загаловак не можа быць пустым</string>
     <string name="end_before_start">The event cannot end earlier than it starts</string>
+    <string name="event_added">Падзея паспяхова дададзена</string>
+    <string name="event_updated">Падзея паспяхова абнаўлена</string>
     <string name="filter_events_by_type">Filter events by type</string>
     <string name="please_fill_location">Please fill in a location to be shown on a map</string>
     <string name="public_event_notification_text">An event is upcoming</string>
-    <string name="event_added">Падзея паспяхова дададзена</string>
-    <string name="event_updated">Падзея паспяхова абнаўлена</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <!-- Tasks -->
     <string name="task">Заданне</string>
     <string name="tasks">Заданні</string>
     <string name="edit_task">Рэдагаваць заданне</string>
@@ -59,9 +46,11 @@
     <string name="duplicate_task">Дубляваць заданне</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
+    <!-- Event Repetition -->
     <string name="repetition">Repetition</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">Штодня</string>
+    <string name="weekly">Штотыдзень</string>
     <string name="monthly">Штомесяц</string>
     <string name="yearly">Штогод</string>
     <string name="weeks_raw">weeks</string>
@@ -73,9 +62,9 @@
     <string name="selection_contains_repetition">The selection contains repeating events</string>
     <string name="delete_one_only">Delete the selected occurrence only</string>
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>
+    <string name="delete_all_occurrences">Delete all occurrences</string>
     <string name="update_one_only">Update the selected occurrence only</string>
     <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
     <string name="update_all_occurrences">Update all occurrences</string>
     <string name="repeat_till_date">Repeat till a date</string>
     <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
@@ -87,9 +76,6 @@
     <string name="the_same_day">The same day</string>
     <string name="the_last_day">The last day</string>
     <string name="repeat_on_the_same_day_monthly">Repeat on the same day each month</string>
-    <string name="birthdays_added">Дні нараджэння паспяхова дададзены</string>
-    <string name="add_birthdays_automatically">Дадаваць новыя дні нараджэння аўтаматычна</string>
-    <string name="anniversaries">Гадавіны</string>
     <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
     <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
     <string name="repeat_every_m">Repeat every</string>
@@ -100,6 +86,8 @@
     <string name="fourth_m">чацвёрты</string>
     <string name="fifth_m">пяты</string>
     <string name="last_m">апошні</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repeat every</string>
     <string name="every_f">Кожную</string>
     <string name="first_f">першую</string>
@@ -108,29 +96,36 @@
     <string name="fourth_f">чацвёртую</string>
     <string name="fifth_f">пятую</string>
     <string name="last_f">апошнюю</string>
+    <!-- Birthdays -->
     <string name="birthdays">Дні нараджэння</string>
     <string name="add_birthdays">Дадаць дні нараджэння кантактаў</string>
     <string name="no_birthdays">Дні нараджэння не знойдзены</string>
     <string name="no_new_birthdays">Новыя дні нараджэння не знойдзены</string>
+    <string name="birthdays_added">Дні нараджэння паспяхова дададзены</string>
+    <string name="add_birthdays_automatically">Дадаваць новыя дні нараджэння аўтаматычна</string>
+    <!-- Anniversaries -->
+    <string name="anniversaries">Гадавіны</string>
     <string name="add_anniversaries">Дадаць гадавіны кантактаў</string>
     <string name="no_anniversaries">Гадавіны не знойдзены</string>
-    <string name="reminder">Напамін</string>
-    <string name="before">да падзеі</string>
     <string name="no_new_anniversaries">Новыя гадавіны не знойдзены</string>
     <string name="anniversaries_added">Гадавіны паспяхова дададзены</string>
     <string name="add_anniversaries_automatically">Дадаваць новыя гадавіны аўтаматычна</string>
+    <!-- Event Reminders -->
+    <string name="reminder">Напамін</string>
+    <string name="before">да падзеі</string>
     <string name="add_another_reminder">Дадаць іншы напамін</string>
-    <string name="location">Месца</string>
-    <string name="description">Апісанне</string>
-    <string name="all_day">All-day</string>
     <string name="event_reminders">Event reminders</string>
     <string name="reminders">Reminders</string>
+    <!-- Event attendees -->
     <string name="add_another_attendee">Дадаць іншага удзельніка</string>
     <string name="my_status">My status:</string>
-    <string name="maybe_going">Maybe going</string>
     <string name="going">Going</string>
-    <string name="enter_a_country">Увядзіце краіну альбо гадзінны пояс</string>
     <string name="not_going">Not going</string>
+    <string name="maybe_going">Maybe going</string>
+    <string name="invited">Invited</string>
+    <!-- Time zones -->
+    <string name="enter_a_country">Увядзіце краіну альбо гадзінны пояс</string>
+    <!-- Export / Import -->
     <string name="import_events">Імпартаваць падзеі</string>
     <string name="export_events">Экспартаваць падзеі</string>
     <string name="import_events_from_ics">Імпартаваць падзеі з ics-файла</string>
@@ -141,12 +136,16 @@
     <string name="include_event_types">Include event types</string>
     <string name="filename_without_ics">Назва файла (без .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <!-- Event details -->
+    <string name="location">Месца</string>
+    <string name="description">Апісанне</string>
+    <string name="all_day">All-day</string>
+    <!-- Weekly view -->
     <string name="week">Тыдзень</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
+    <!-- Event types -->
     <string name="event_types">Тыпы падзей</string>
     <string name="add_new_type">Дадаць новы тып</string>
-    <string name="holidays">Святы</string>
-    <string name="add_holidays">Дадаць святы</string>
     <string name="edit_type">Рэдагаваць тып</string>
     <string name="type_already_exists">Тып з такой назвай ужо існуе</string>
     <string name="color">Колер</string>
@@ -156,28 +155,29 @@
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
+    <!-- Holidays -->
+    <string name="holidays">Святы</string>
+    <string name="add_holidays">Дадаць святы</string>
     <string name="national_holidays">Нацыянальныя святы</string>
     <string name="religious_holidays">Рэлігійныя святы</string>
+    <string name="holidays_imported_successfully">Святы паспяхова імпартаваны ў падзеі з тыпам \"Святы\"</string>
+    <string name="importing_some_holidays_failed">Не атрымалася імпартаваць некаторыя падзеі</string>
+    <string name="importing_holidays_failed">Не атрымалася імпартаваць святы</string>
+    <!-- Settings -->
+    <string name="manage_event_types">Кіраванне тыпамі падзей</string>
+    <string name="start_day_at">Start day at</string>
     <string name="end_day_at">End day at</string>
     <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
     <string name="allow_customizing_day_count">Allow customizing day count</string>
     <string name="week_numbers">Паказваць нумары тыдняў</string>
-    <string name="no_ringtone_selected">None</string>
     <string name="vibrate">Vibrate on reminder notification</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="reminder_sound">Мелодыя напаміна</string>
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
+    <string name="no_ringtone_selected">None</string>
+    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
     <string name="caldav_sync">CalDAV sync</string>
     <string name="event_lists">Спісы падзей</string>
     <string name="display_past_events">Display events from the past</string>
-    <string name="default_reminder_1">Прадвызначаны напамін 1</string>
-    <string name="default_reminder_2">Прадвызначаны напамін 2</string>
-    <string name="default_reminder_3">Прадвызначаны напамін 3</string>
-    <string name="view_to_open_from_widget">View to open from the event list widget</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
-    <string name="events">Падзеі</string>
-    <string name="reminder_stream">Audio stream used by reminders</string>
-    <string name="system_stream">Сістэма</string>
     <string name="replace_description_with_location">Replace event description with location</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Выдаліць усе падзеі</string>
@@ -185,10 +185,18 @@
     <string name="show_a_grid">Show a grid</string>
     <string name="loop_reminders">Loop reminders until dismissed</string>
     <string name="dim_past_events">Dim past events</string>
+    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="events">Падзеі</string>
+    <string name="reminder_stream">Audio stream used by reminders</string>
+    <string name="system_stream">Сістэма</string>
     <string name="alarm_stream">Будзільнік</string>
     <string name="notification_stream">Апавяшчэнне</string>
     <string name="ring_stream">Ring</string>
     <string name="use_last_event_reminders">Use the last events\' reminders as the default for new events</string>
+    <string name="default_reminder_1">Прадвызначаны напамін 1</string>
+    <string name="default_reminder_2">Прадвызначаны напамін 2</string>
+    <string name="default_reminder_3">Прадвызначаны напамін 3</string>
+    <string name="view_to_open_from_widget">View to open from the event list widget</string>
     <string name="last_view">Last view</string>
     <string name="new_events">Новыя падзеі</string>
     <string name="default_start_time">Default start time</string>
@@ -197,34 +205,49 @@
     <string name="default_duration">Default duration</string>
     <string name="last_used_one">Last used one</string>
     <string name="other_time">Other time</string>
+    <string name="highlight_weekends">Highlight weekends on some views</string>
+    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="allow_changing_time_zones">Allow changing event time zones</string>
+    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
+    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Select calendars to sync</string>
+    <string name="manage_synced_calendars">Manage synced calendars</string>
     <string name="store_locally_only">Store locally only</string>
-    <string name="editing_calendar_failed">Editing calendar failed</string>
-    <string name="syncing">Сінхранізацыя…</string>
     <string name="refresh_caldav_calendars">Refresh CalDAV calendars</string>
     <string name="refreshing">Refreshing…</string>
     <string name="refreshing_complete">Refreshing complete</string>
+    <string name="editing_calendar_failed">Editing calendar failed</string>
+    <string name="syncing">Сінхранізацыя…</string>
     <string name="synchronization_completed">Сінхранізацыя завершана</string>
     <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
     <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
     <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
-    <string name="sunday_alt">нядзелю</string>
     <string name="status_free">Free</string>
-    <string name="sample_title_1">Трэніроўка</string>
-    <string name="sample_description_1">Дзень ног</string>
-    <string name="sample_title_2">Сустрэча з Янам</string>
     <string name="status_busy">Заняты</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">панядзелак</string>
     <string name="tuesday_alt">аўторак</string>
     <string name="wednesday_alt">сераду</string>
     <string name="thursday_alt">чацвер</string>
     <string name="friday_alt">пятніцу</string>
     <string name="saturday_alt">суботу</string>
+    <string name="sunday_alt">нядзелю</string>
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Трэніроўка</string>
+    <string name="sample_description_1">Дзень ног</string>
+    <string name="sample_title_2">Сустрэча з Янам</string>
     <string name="sample_description_2">На плошчы Незалежнасці</string>
     <string name="sample_title_3">Бібліятэка</string>
     <string name="sample_title_4">Вячэра з Марысей</string>
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Час для кавы</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Show events happening:</string>
+    <string name="within_the_next_one_year">Within the next 1 year</string>
     <string name="today_only">Толькі сёння</string>
     <string name="within_the_next">На працягу…</string>
     <plurals name="within_the_next_days">
@@ -233,17 +256,6 @@
         <item quantity="many">На працягу наступных %d дзён</item>
         <item quantity="other">На працягу наступных %d дзён</item>
     </plurals>
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV\?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers. In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do\?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones\?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <plurals name="within_the_next_weeks">
         <item quantity="one">На працягу наступнага %d тыдня</item>
         <item quantity="few">На працягу наступных %d тыдняў</item>
@@ -256,9 +268,18 @@
         <item quantity="many">На працягу наступных %d месяцаў</item>
         <item quantity="other">На працягу наступных %d месяцаў</item>
     </plurals>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
+    <!-- FAQ -->
+    
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV\?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers. In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do\?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones\?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="app_title">Simple Calendar Pro - Events &amp; Reminders</string>
-    <string name="app_short_description">Simple mobile 2020 calendar. Schedule planner &amp; appointment reminder for any day</string>
-    <string name="app_long_description"> Simple Calendar Pro is a fully customizable, offline calendar designed to do exactly what a calendar should do. <b>No complicated features, unnecessary permissions and no ads!</b> Whether you’re organizing single or recurring events, birthdays, anniversaries, business meetings, appointments or anything else, Simple Calendar Pro makes it <b>easy to stay organized</b>. With an incredible variety of <b>customization options</b> you can customize event reminders, notification sounds, calendar widgets and how the app looks. Daily, weekly and monthly views make checking your upcoming events &amp; appointments a breeze. You can even view everything as a simple list of events rather than in calendar view, so you <b>know exactly what’s coming up in your life and when. </b> ---------------------------------------------------------- <b>Simple Calendar Pro – Features &amp; Benefits</b> ---------------------------------------------------------- ✔️ No ads or annoying popups ✔️ No internet access needed, giving you more privacy &amp; security ✔️ Only the bare minimum permissions required ✔️ Emphasis on simplicity – does what a calendar needs to do! ✔️ Open source ✔️ Fully customizable themes &amp; calendar / event widgets ✔️ Translated into 29 languages ✔️ Export settings to .txt files to import to another device ✔️ CalDAV calendar sync supported to sync events across devices ✔️ Daily, weekly, monthly, yearly &amp; event views on the calendar ✔️ Supports exporting &amp; importing events via .ics files ✔️ Set multiple event reminders, customize event reminder sound and vibration ✔️ Snooze option for reminders ✔️ Easily add holidays, birthdays, anniversaries &amp; appointments ✔️ Customize events – start time, duration, reminders etc ✔️ Add event attendees to each event ✔️ Use as a personal calendar or a business calendar ✔️ Choose between reminders &amp; email notifications to alert you about an event DOWNLOAD SIMPLE CALENDAR PRO – THE SIMPLE OFFLINE CALENDAR WITH NO ADS! <b>Check out the full suite of Simple Tools here:</b> https://www.simplemobiletools.com <b>Standalone website of Simple Calendar Pro:</b> https://www.simplemobiletools.com/calendar <b>Facebook:</b> https://www.facebook.com/simplemobiletools <b>Reddit:</b> https://www.reddit.com/r/SimpleMobileTools </string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
+    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
 </resources>
