@@ -57,7 +57,7 @@ class EventListAdapter(
 
     override fun actionItemPressed(id: Int) {
         when (id) {
-            R.id.cab_share -> shareEvents()
+            R.id.cab_share  -> shareEvents()
             R.id.cab_delete -> askConfirmDelete()
         }
     }
