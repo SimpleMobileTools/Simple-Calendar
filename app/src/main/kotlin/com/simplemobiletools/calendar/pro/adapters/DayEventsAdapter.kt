@@ -22,7 +22,7 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode:String, itemClick: (Any) -> Unit) :
+class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode: String, itemClick: (Any) -> Unit) :
     MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
@@ -43,7 +43,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun actionItemPressed(id: Int) {
         when (id) {
-            R.id.cab_share -> shareEvents()
+            R.id.cab_share  -> shareEvents()
             R.id.cab_delete -> askConfirmDelete()
         }
     }
@@ -79,7 +79,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
         } else {
             activity.getProperTextColor()
         }
-        
+
         notifyDataSetChanged()
     }
 
@@ -93,8 +93,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             if (event.startTS != event.endTS && !event.getIsAllDay()) {
                 val startDayCode = Formatter.getDayCodeFromTS(event.startTS)
                 val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
-                val startDate = Formatter.getDayTitle(activity, startDayCode,false)
-                val endDate = Formatter.getDayTitle(activity, endDayCode,false)
+                val startDate = Formatter.getDayTitle(activity, startDayCode, false)
+                val endDate = Formatter.getDayTitle(activity, endDayCode, false)
                 val startTimeString = event_item_time.text
                 val endTimeString = Formatter.getTimeFromTS(context, event.endTS)
                 val startDayString = if (startDayCode != dayCode) "($startDate)" else ""
@@ -113,7 +113,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             } else {
                 dimPastEvents && event.isPastEvent && !isPrintVersion
             }
-            
+
             if (adjustAlpha) {
                 newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
             }
@@ -129,7 +129,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             } else {
                 mediumMargin
             }
-            
+
             (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
