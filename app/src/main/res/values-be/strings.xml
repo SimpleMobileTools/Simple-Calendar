@@ -114,15 +114,15 @@
     <string name="reminder">Напамін</string>
     <string name="before">да падзеі</string>
     <string name="add_another_reminder">Дадаць іншы напамін</string>
-    <string name="event_reminders">Event reminders</string>
-    <string name="reminders">Reminders</string>
+    <string name="event_reminders">Напаміны аб падзеях</string>
+    <string name="reminders">Напаміны</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Дадаць іншага удзельніка</string>
-    <string name="my_status">My status:</string>
-    <string name="going">Going</string>
-    <string name="not_going">Not going</string>
-    <string name="maybe_going">Maybe going</string>
-    <string name="invited">Invited</string>
+    <string name="my_status">Мой статус:</string>
+    <string name="going">Прыйду</string>
+    <string name="not_going">Не прыйду</string>
+    <string name="maybe_going">Магчыма прыйду</string>
+    <string name="invited">Запрошаны</string>
     <!-- Time zones -->
     <string name="enter_a_country">Увядзіце краіну альбо гадзінны пояс</string>
     <!-- Export / Import -->
@@ -151,7 +151,7 @@
     <string name="color">Колер</string>
     <string name="regular_event">Звычайная падзея</string>
     <string name="cannot_delete_default_type">Немагчыма выдаліць прадвызначаны тып падзей</string>
-    <string name="select_event_type">Select an event type</string>
+    <string name="select_event_type">Выбраць тып падзей</string>
     <string name="move_events_into_default">Move affected events into the default event type</string>
     <string name="remove_affected_events">Permanently remove affected events</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
@@ -269,7 +269,6 @@
         <item quantity="other">На працягу наступных %d месяцаў</item>
     </plurals>
     <!-- FAQ -->
-    
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
     <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV\?</string>

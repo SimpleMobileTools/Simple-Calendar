@@ -1,11 +1,11 @@
-Basit Takvim Pro, bir takvimin tam olarak yapması gerekenleri yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrim dışı bir takvimdir. <b>Karmaşık özellikler, gereksiz izinler ve reklamlar yok!</b>
+Basit Takvim Pro, bir takvimin tam olarak yapması gerekenleri yapmak için tasarlanmış, tamamen özelleştirilebilir, çevrim dışı bir takvimdir. Karmaşık özellikler, gereksiz izinler ve reklamlar yok!
 
-İster tekli ister yinelenen etkinlikleri, doğum günlerini, yıl dönümlerini, iş toplantılarını, randevuları veya başka herhangi bir şeyi düzenliyor olun, Basit Takvim Pro <b>düzenli kalmanızı kolaylaştırır</b>. İnanılmaz çeşitlilikteki <b>özelleştirme seçenekleri</b> ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget'larını ve uygulamanın nasıl göründüğünü özelleştirebilirsiniz.
+İster tekli ister yinelenen etkinlikleri, doğum günlerini, yıl dönümlerini, iş toplantılarını, randevuları veya başka herhangi bir şeyi düzenliyor olun, Basit Takvim Pro düzenli kalmanızı kolaylaştırır. İnanılmaz çeşitlilikteki özelleştirme seçenekleri ile etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget'larını ve uygulamanın nasıl göründüğünü özelleştirebilirsiniz.
 
-Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi ve randevularınızı denetlemeyi çocuk oyuncağı haline getirir. Her şeyi takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece <b>hayatınızda neyin ne zaman gerçekleşeceğini tam olarak bilirsiniz.</b>
+Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi ve randevularınızı denetlemeyi çocuk oyuncağı haline getirir. Her şeyi takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece hayatınızda neyin ne zaman gerçekleşeceğini tam olarak bilirsiniz.
 
 ----------------------------------------------------------
-<b>Basit Takvim Pro - Özellikler & Faydalar</b>
+Basit Takvim Pro - Özellikler & Faydalar
 ----------------------------------------------------------
 
 ✔️ Reklam veya rahatsız edici açılır pencere yok
@@ -29,7 +29,7 @@ Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi ve rande
 
 BASİT TAKVİM PRO'YU İNDİRİN - REKLAMSIZ BASİT ÇEVRIM DIŞI TAKVİM!
 
-<b>Basit Araçlar paketinin tamamını buradan inceleyin:</b>
+Basit Araçlar paketinin tamamını buradan inceleyin:
 https://www.simplemobiletools.com
 
 Facebook:
@@ -37,3 +37,6 @@ https://www.facebook.com/simplemobiletools
 
 Reddit:
 https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools
