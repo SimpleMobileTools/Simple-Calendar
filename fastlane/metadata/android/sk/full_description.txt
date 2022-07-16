@@ -1,11 +1,11 @@
-Jednoduchý kalendár Pro je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.<b>Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!</b>
+Jednoduchý kalendár je prispôsobiteľný offline kalendár vytvorený presne na to, čo by kalendáre mali zvládať.Nenachádzajú sa tu žiadne nepotrebné funkcie, nepotrebné oprávnenia, ani reklamy!
 
-Či organizujete jednoduchú, alebo opakujúcu sa udalosť, narodeniny, výročia, pracovné stretnutia, alebo hocičo iné, Jednoduchý kalendár Pro vám <b>uľahčí prácu</b>. S veľkou mierou <b>prispôsobiteľnosti</b> viete meniť pripomienky udalostí, zvuky pripomienok, widgety kalendára a celkový vzhľad apky.
+Či organizujete jednoduchú, alebo opakujúcu sa udalosť, narodeniny, výročia, pracovné stretnutia, alebo hocičo iné, Jednoduchý kalendár vám uľahčí prácu. S veľkou mierou prispôsobiteľnosti viete meniť pripomienky udalostí, zvuky pripomienok, widgety kalendára a celkový vzhľad apky.
 
-Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho prezrieť nasledujúce udalosti a stretnutia. Všetky udalosti si viete pozrieť aj v jednoduchom chronologickom zozname udalostí. Vďaka tomu viete <b>presne čo a kedy sa blíži.</b>
+Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho prezrieť nasledujúce udalosti a stretnutia. Všetky udalosti si viete pozrieť aj v jednoduchom chronologickom zozname udalostí. Vďaka tomu viete presne čo a kedy sa blíži.
 
 ----------------------------------------------------------
-<b>Jednoduchý kalendár Pro - funkcie a benefity</b>
+Jednoduchý kalendár - funkcie a benefity
 ----------------------------------------------------------
 
 ✔️ Žiadne reklamy a otravné vyskakovacie okná
@@ -14,7 +14,7 @@ Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho
 ✔️ Prízvuk na jednoduchosť - robí presne to, čo sa od kalendára očakáva!
 ✔️ Otvorený zdrojový kód
 ✔️ Plne prispôsobiteľné témy, pohľady a widgety
-✔️ Preložený do 29 jazykov
+✔️ Preložený do 40 jazykov
 ✔️ Jednoducho exportujte nastavenia do .txt súboru a importujte ich do iného zariadenia
 ✔️ Obsahuje CalDAV sychronizáciu na zdieľanie kalendárov medzi zariadeniami
 ✔️ Obsahuje denný, týždenný, mesačný, ročný pohľad na kalendár, ako aj jednoduchý zoznam udalostí
@@ -27,13 +27,19 @@ Vďaka dennému, týždennému a mesačnému pohľadu si viete veľmi jednoducho
 ✔️ Možné použitie ako súkromný, aj business kalendár
 ✔️ Zvoľte si buď pripomienku, alebo email na synchronizované udalosti
 
-STIAHNITE SI JEDNODUCHÝ KALENDÁR PRO - JEDNODUCHÝ OFFLINE KALENDÁR BEZ REKLÁM!
+STIAHNITE SI JEDNODUCHÝ KALENDÁR - JEDNODUCHÝ OFFLINE KALENDÁR BEZ REKLÁM!
 
-<b>Pozrite si celú sadu aplikácií na:</b>
+Pozrite si celú sadu aplikácií na:
 https://www.simplemobiletools.com
 
-<b>Facebook:</b>
+Vlastná stránka Jednoduchého Kalendára Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
 https://www.facebook.com/simplemobiletools
 
-<b>Reddit:</b>
+Reddit:
 https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

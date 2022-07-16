@@ -1,0 +1,24 @@
+Jednostavan kalendar s dodatnom CalDAV sinkronizacijom. Možete jednostavno stvoriti ponavljajuće događaje i postaviti podsjetnike, također je moguće prikazati tjedne brojeve.
+
+Sadrži mjesečni prikaz i widget s popisom događaja gdje možete prilagoditi boju teksta, kao i transparentnost te boju pozadine.
+
+Ne sadrži oglase ili nepotrebne dozvole. Aplikacije je otvorenog koda, pruža prilagodljive boje.
+
+Dopuštenje za pohranu podataka potrebna je samo za izvoz ili uvoz događaja iz .ics datoteka.
+
+Dopuštenje za kontakte upotrebljava se samo pri uvozu rođendana i obljetnica kontakata.
+
+Check out the full suite of Simple Tools here:
+https://www.simplemobiletools.com
+
+Standalone website of Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

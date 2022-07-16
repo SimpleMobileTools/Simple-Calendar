@@ -1,11 +1,11 @@
-Simple Calendar Pro poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. <b>Fără caracteristici complicate, permisiuni inutile și fără reclame!</b>
+Calendar simplu poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. Fără caracteristici complicate, permisiuni inutile și fără reclame!
 
-Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Simple Calendar Pro face <b>ușor să rămâneți organizat</b>. Cu o varietate incredibilă de <b>opțiuni de personalizare</b>, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
+Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Calendar simplu face ușor să rămâneți organizat. Cu o varietate incredibilă de opțiuni de personalizare, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
 
-Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentelor viitoare și a programărilor să fie o briză. Puteți vedea chiar totul ca pe o simplă listă de evenimente, mai degrabă decât în vizualizarea calendarului, astfel încât <b>să știți exact ce se întâmplă în viața dvs. și când. </b>
+Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentelor viitoare și a programărilor să fie o briză. Puteți vedea chiar totul ca pe o simplă listă de evenimente, mai degrabă decât în vizualizarea calendarului, astfel încât să știți exact ce se întâmplă în viața dvs. și când. 
 
 ----------------------------------------------------------
-<b>Simple Calendar Pro – Caracteristici și Benefici</b>
+Calendar simplu – Caracteristici și Benefici
 ----------------------------------------------------------
 
 ✔️ Fără reclame sau pop-up-uri enervante
@@ -14,7 +14,7 @@ Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentel
 ✔️ Accent pe simplitate - face ceea ce un calendar trebuie să facă!
 ✔️ Open source
 ✔️ Teme complet personalizabile și widgeturi de calendar / eveniment
-✔️ Tradus în 29 de limbi
+✔️ Tradus în 40 de limbi
 ✔️ Exportați setările în fișiere .txt pentru a le importa pe un alt dispozitiv
 ✔️ Sincronizare calendar CalDAV este suportată, pentru a sincroniza evenimente pe dispozitive multiple
 ✔️ Vizualizări zilnice, săptămânale, lunare, anuale și evenimente din calendar
@@ -27,16 +27,19 @@ Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentel
 ✔️ Utilizați ca calendar personal sau calendar de afaceri
 ✔️ Alegeți dintre reamintiri și notificări prin e-mail pentru a vă avertiza despre un eveniment
 
-DESCARCĂ SIMPLE CALENDAR PRO – CALENDARUL SIMPLU OFFLINE FĂRĂ RECLAME!
+DESCARCĂ CALENDAR SIMPLU – CALENDARUL SIMPLU OFFLINE FĂRĂ RECLAME!
 
-<b>Verificați aici pachetul complet al Simple Tools aici:</b>
+Verificați aici pachetul complet al Simple Tools aici:
 https://www.simplemobiletools.com
 
-<b>Site propriu pentru Simple Calendar Pro:</b>
+Site propriu pentru Simple Calendar Pro:
 https://www.simplemobiletools.com/calendar
 
-<b>Facebook:</b>
+Facebook:
 https://www.facebook.com/simplemobiletools
 
-<b>Reddit:</b>
+Reddit:
 https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

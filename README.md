@@ -1,5 +1,5 @@
 # Simple Calendar
-<img alt="Logo" src="fastlane/metadata/android/en-US/images/icon.png" width="120" />
+<img alt="Logo" src="graphics/icon.png" width="120" />
 
 Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!  
 ***Supports syncing events via Google Calendar
@@ -67,7 +67,7 @@ https://t.me/SimpleMobileTools
 <a href='https://f-droid.org/packages/com.simplemobiletools.calendar.pro'><img src='https://simplemobiletools.com/images/button-f-droid.png' alt='Get it on F-Droid' height='45' /></a>
 
 <div style="display:flex;">
-<img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" width="30%">
-<img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width="30%">
-<img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg" width="30%">
+<img alt="App image" src="fastlane/metadata/android/en-GB/images/phoneScreenshots/1_en-GB.jpeg" width="30%">
+<img alt="App image" src="fastlane/metadata/android/en-GB/images/phoneScreenshots/2_en-GB.jpeg" width="30%">
+<img alt="App image" src="fastlane/metadata/android/en-GB/images/phoneScreenshots/4_en-GB.jpeg" width="30%">
 </div>

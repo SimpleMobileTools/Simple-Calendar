@@ -1,0 +1,45 @@
+Basit Takvim, tam olarak bir takvimin yapması gerekeni yapmak üzere tasarlanmış, tamamen özelleştirilebilir bir kişisel günlüğü çevrimdışı takvimdir günlük defteri.  Karmaşık özellikler, gereksiz izinler ve reklam yok! 
+
+İster tek ister yinelenen etkinlikler içinde günlüğüm, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka herhangi bir şey düzenliyor olun, Basit Takvim kişisel günlüğü günlük defteri düzenli kalmanızı kolaylaştırır. İnanılmaz çeşitlilikteki  özelleştirme seçenekleriyle , etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget'larını ve uygulama görünümünü özelleştirebilirsiniz.
+
+Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi ve randevularınızı kontrol etmenizi kolaylaştırır ile kişisel günlüğü. Her şeyi bir takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece hayatınızda neler olacağını tam olarak bilirsiniz içinde günlüğüm.
+
+-------------------------------------------------- --------
+ Basit Takvim - Özellikler ve Avantajlar 
+-------------------------------------------------- --------
+
+✔️ Reklam veya sinir bozucu pop-up yok
+✔️ İnternet erişimi gerekmez içinde günlüğüm, size daha fazla gizlilik ve güvenlik sağlar
+✔️ Minimum izin gerekli bunda günlük defteri
+✔️ Basitliğe vurgu - bir takvimin yapması gerekeni yapar!
+✔️ Açık kaynak
+✔️ Tamamen özelleştirilebilir temalar ve takvim / etkinlik widget'ları
+✔️ 40 dile çevrildi
+✔️ Ayarları başka bir cihaza aktarmak için .txt dosyalarına aktarın
+✔️ Olayları cihazlar arasında senkronize etmek için CalDAV takvim senkronizasyonu desteği
+✔️ Takvimde günlük, haftalık, aylık, yıllık ve etkinlik görünümleri
+✔️ Olayları .ics dosyaları aracılığıyla dışa ve içe aktarma desteği
+✔️ Birden fazla etkinlik hatırlatıcısı ayarlayın, etkinlik hatırlatma sesini ve titreşimi özelleştirin
+✔️ Hatırlatıcılar için erteleme seçeneği bunda günlük defteri
+✔️ Tatilleri, doğum günlerini, yıl dönümlerini ve randevuları kolayca ekleyin
+✔️ Etkinlikleri özelleştirin - başlangıç ​​zamanı, süresi, hatırlatıcılar vb.
+✔️ Her etkinliğe etkinlik katılımcıları ekleyin
+✔️ Kişisel veya iş takvimi olarak kullanın
+✔️ Bir etkinlik hakkında sizi uyarmak için hatırlatıcılar ve e-posta bildirimleri arasından seçim yapın
+
+Basit Takvim'YU İNDİRİN - REKLAMLAR OLMADAN BASİT ÇEVRİMDIŞI TAKVİM!
+
+ Basit Araçlar paketinin tamamına buradan göz atın: 
+https://www.simplemobiletools.com
+
+ Basit Takvim'nun bağımsız web sitesi: 
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

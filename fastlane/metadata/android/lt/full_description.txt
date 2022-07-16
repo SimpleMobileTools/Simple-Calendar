@@ -1,0 +1,24 @@
+Paprastas kalendorius su CalDAV sinchronizacija. Galite lengvai kurti pasikartojančius įvykius ir nustatyti priminimus, kalendorius gali rodyti savaitės numerius.
+
+Palaiko mėnesio peržiūrą ir įvykių sąrašo valdiklį, kuriame Jūs galite tinkinti teksto, pagrindinę ir fono spalvas.
+
+Neturi reklamų ar nereikalingų leidimų. Programėlė visiškai atviro kodo, yra galimybė keisti spalvas.
+
+Saugyklos leidimas reikalingas tik eksportuoti ir importuoti įvykius iš .ics bylų.
+
+Kontaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
+
+Check out the full suite of Simple Tools here:
+https://www.simplemobiletools.com
+
+Standalone website of Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

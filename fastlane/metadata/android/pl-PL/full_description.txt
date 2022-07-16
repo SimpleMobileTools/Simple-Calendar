@@ -1,0 +1,45 @@
+Prosty kalendarz to w dużym stopniu konfigurowany kalendarz offline zadań prosty dla telefonów komórkowych z systemem Android, zaprojektowany tak, aby zapewniać wszystkie funkcje, które aplikacja osobistego kalendarza dla zadań prosty systemu Android powinna posiadać w roku 2022. Nie znajdziemy tu jednak skomplikowanych funkcji, niepotrzebnych uprawnień i reklam!
+
+Niezależnie od tego, czy poszukuje się mobilnego narzędzia do prostego przypominania o spotkaniach zadań prosty, organizowania jednorazowych lub powtarzających się wydarzeń, przypominania o urodzinach i rocznicach, planowania spotkań biznesowych, wizyt lekarskich lub dowolnych innych zdarzeń, prosty kalendarz to doskonały program do planowania dla telefonów komórkowych z Androidem - zdecydowanie ułatwiający organizację życia. Dzięki niesamowitej różnorodności możliwych do dostosowania opcji  zapewnia łatwość różnicowania przypomnień o zdarzeniach, wyglądu powiadomień i wyglądu prostego przypomnienia mobilnego.
+
+----------------------------------------------------------
+Prosty kalendarz – Funkcje i zalety
+----------------------------------------------------------
+
+✔   Nie zawiera reklam oraz irytujących wyskakujących okienek przy pełnym dostępie do kalendarza!
+✔   Nie wymaga dostępu do Internetu, co zapewnia większą prywatność, bezpieczeństwo i stabilność.
+✔   Kładzie nacisk na piękno i prostotę – działa dokładnie tak, jak powinien działać osobisty program do planowania dnia!
+✔   Stanowi oprogramowanie open source codziennego użytku, przetłumaczone na 40 języków
+✔   Daje możliwość szybkiego przełączania pomiędzy widokami dziennymi, tygodniowymi, miesięcznymi, rocznymi oraz zdarzeń w organizatorze życia rodziny
+✔   Obsługuje darmowe eksportowanie i importowanie wydarzeń za pośrednictwem plików .ics
+✔   Posiada poręczną opcję wyłączania przypomnień  
+✔   Umożliwia elastyczne tworzenie zdarzeń – z godziną, czasem trwania, przypomnieniem oraz ważnymi regułami powtarzania
+✔   Umożliwia wykorzystywanie jako kalendarza osobistego lub biznesowego udostępnionego zespołom w pracy
+✔   Zapewnia obsługę CalDAV do synchronizacji wydarzeń za pośrednictwem Kalendarza Google, programu Microsoft Outlook, Nextcloud, Exchange itp.
+✔   Umożliwia łatwy import świąt lub kontaktów wraz z zapisanymi urodzinami i rocznicami
+✔   Przyspiesza filtrowanie wydarzeń osobistych według typu wydarzenia
+✔   Oferuje wiele sposobów wstępnego definiowania zdarzeń domyślnych (przypomnienia, powtórzenia, czas trwania)
+✔   Prawidłowo obsługuje strumienie powiadomień z Android Oreo
+✔   Obsługuje codzienne lokalizowanie wydarzeń pokazanych na mapie
+✔   Umożliwia szybkie udostępnianie wydarzeń w mediach społecznościowych, wiadomościach e-mail, itp.
+✔   Pozwala na bezproblemowe powielanie wydarzeń i planowanych zdarzeń rodzinnych
+✔   Pozwala na eksportowanie ustawień do plików .txt, aby importować je do innego urządzenia
+
+POBIERZ PROSTY KALENDARZ MOBILNY - PROSTE DARMOWE NARZĘDZIE DO PLANOWANIA HARMONOGRAMÓW OFFLINE BEZ REKLAM! Z ŁATWOŚCIĄ PLANUJ SWOJE DZIAŁANIA W 2020 ROKU!
+
+Nie zawiera reklam, nie wymaga niepotrzebnych uprawnień. Jest oprogramowaniem w 100% open-source, umożliwiającym konfigurowanie kolorów.
+
+Już dziś poznaj pełen zestaw prostych narzędzi pod tym adresem:
+https://www.simplemobiletools.com
+
+Strona internetowa Prosty Kalendarz Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools
