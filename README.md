@@ -1,7 +1,7 @@
 # Simple Calendar
 <img alt="Logo" src="fastlane/metadata/android/en-US/images/icon.png" width="120" />
 
-Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!
+Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!  
 ***Supports syncing events via Google Calendar
 
 Download now!
