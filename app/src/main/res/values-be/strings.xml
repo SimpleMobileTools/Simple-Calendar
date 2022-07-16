@@ -53,9 +53,9 @@
     <string name="weekly">Штотыдзень</string>
     <string name="monthly">Штомесяц</string>
     <string name="yearly">Штогод</string>
-    <string name="weeks_raw">weeks</string>
-    <string name="months_raw">months</string>
-    <string name="years_raw">years</string>
+    <string name="weeks_raw">тыдняў</string>
+    <string name="months_raw">месяцаў</string>
+    <string name="years_raw">гадоў</string>
     <string name="repeat_till">Repeat till</string>
     <string name="forever">Forever</string>
     <string name="event_is_repeatable">The event is repeatable</string>
@@ -246,8 +246,8 @@
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Час для кавы</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
+    <string name="show_events_happening">Паказваць падзеі, якія адбываюцца:</string>
+    <string name="within_the_next_one_year">На працягу наступнага года</string>
     <string name="today_only">Толькі сёння</string>
     <string name="within_the_next">На працягу…</string>
     <plurals name="within_the_next_days">

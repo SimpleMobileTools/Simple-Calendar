@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Φαίνεται πως δεν έχετε επερχόμενες εκδηλώσεις.</string>
     <string name="go_to_today">Μετάβαση στο σήμερα</string>
     <string name="go_to_date">Μετάβαση σε ημερ/νία</string>
-    <string name="upgraded_from_free">Γειά σας,\n\nΦαίνεται πως αναβαθμίσατε από την παλιά δωρεάν εφαρμογή. Πρέπει να μεταφέρετε τα αποθηκευμένα τοπικά συμβάντα χειροκίνητα, μέσω Εξαγωγής σε αρχείο .ics και στη συνέχεια Εισαγωγή. Μπορείτε να βρείτε τις επιλογές Εξαγωγής/Εισαγωγής, στο μενού της κύριας οθόνης.\n\nΑπεγκαταστήστε ύστερα την παλιά έκδοση, επιλέγοντας \'Αναβάθμιση στην Pro\' στο μενού Ρυθμίσεις. Θα χρειαστεί μόνο να επαναφέρετε τις ρυθμίσεις της εφαρμογής.\n\nΕυχαριστώ!</string>
-
+    <string name="upgraded_from_free">Γεια σας,
+\n
+\nΦαίνεται πως αναβαθμίσατε από την παλιά δωρεάν εφαρμογή. Πρέπει να μεταφέρετε τα αποθηκευμένα τοπικά συμβάντα χειροκίνητα, μέσω Εξαγωγής σε αρχείο .ics και στη συνέχεια Εισαγωγή. Μπορείτε να βρείτε τις επιλογές Εξαγωγής/Εισαγωγής, στο μενού της κύριας οθόνης.
+\n
+\nΑπεγκαταστήστε ύστερα την παλιά έκδοση, επιλέγοντας \'Αναβάθμιση στην Pro\' στο μενού Ρυθμίσεις. Θα χρειαστεί μόνο να επαναφέρετε τις ρυθμίσεις της εφαρμογής.
+\n
+\nΕυχαριστώ!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Μηνιαίο ημερολόγιο</string>
     <string name="widget_list">Λίστα εκδηλώσεων ημερολογίου</string>
     <string name="widget_todays_date">Σημερινό ημερολόγιο</string>
-
     <!-- Event -->
     <string name="event">Εκδηλώσεις</string>
     <string name="edit_event">Επεξεργασία εκδηλώσεων</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">Συμπληρώστε μια τοποθεσία που θα εμφανίζεται στο χάρτη</string>
     <string name="public_event_notification_text">Μια εκδήλωση είναι επερχόμενη</string>
     <string name="saving_filtered_out">Αποθήκευση… Αλλά ο επιλεγμένος τύπος συμβάντος φιλτράρεται στο πάνω μενού - Φίλτρο</string>
-
     <!-- Tasks -->
     <string name="task">Εργασία</string>
     <string name="tasks">Εργασίες</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Διπλή εργασία</string>
     <string name="mark_completed">Σήμανση ολοκλ/μένη</string>
     <string name="mark_incomplete">Σήμανση μη ολοκλ/μένη</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Επανάληψη</string>
     <string name="no_repetition">Χωρίς Επανάληψη</string>
@@ -84,7 +86,6 @@
     <string name="fourth_m">τέταρτη</string>
     <string name="fifth_m">πέμπτη</string>
     <string name="last_m">τελευταία</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Επανάληψη κάθε</string>
@@ -95,7 +96,6 @@
     <string name="fourth_f">τέταρτη</string>
     <string name="fifth_f">πέμπτη</string>
     <string name="last_f">τελευταία</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Γενέθλια</string>
     <string name="add_birthdays">Προσθήκη γενεθλίων επαφής</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">Δεν έχουν βρεθεί νέα γενέθλια</string>
     <string name="birthdays_added">Τα γενέθλια προστέθηκαν με επιτυχία</string>
     <string name="add_birthdays_automatically">Προσθήκη νέων γενεθλίων αυτόματα</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Επέτειοι</string>
     <string name="add_anniversaries">Προσθέστε επετείους επαφής</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">Δεν έχουν βρεθεί νέοι επέτειοι</string>
     <string name="anniversaries_added">Οι επέτειοι προστέθηκαν με επιτυχία</string>
     <string name="add_anniversaries_automatically">Προσθήκη νέων επετείων αυτόματα</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Υπενθύμιση</string>
     <string name="before">πρίν</string>
     <string name="add_another_reminder">Προσθέστε μια άλλη υπενθύμιση</string>
     <string name="event_reminders">Υπενθυμίσεις εκδηλώσεων</string>
     <string name="reminders">Υπενθυμίσεις</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Προσθήκη άλλης συμμετοχής</string>
     <string name="my_status">Η κατάσταση μου:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">Δεν συμμετέχω</string>
     <string name="maybe_going">Ίσως συμμετέχω</string>
     <string name="invited">Καλεσμένος</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Εισαγωγή χώρας ή ζώνης ώρας</string>
-
     <!-- Export / Import -->
     <string name="import_events">Εισαγωγή εκδηλώσεων</string>
     <string name="export_events">Εξαγωγή εκδηλώσεων</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">Συμπερίληψη τύπων εκδηλώσεων</string>
     <string name="filename_without_ics">Όνομα αρχείου (χωρίς .ics)</string>
     <string name="ignore_event_types">Αγνόηση τύπων εκδηλώσεων στο αρχείο, χρήση πάντα του προεπιλεγμένου τύπου.</string>
-
     <!-- Event details -->
     <string name="location">Τοποθεσία</string>
     <string name="description">Περιγραφή</string>
     <string name="all_day">Ημερήσια</string>
-
     <!-- Weekly view -->
     <string name="week">Εβδομάδα</string>
     <string name="start_week_with_current_day">Αρχή εβδομάδας με την τρέχουσα ημέρα</string>
-
     <!-- Event types -->
     <string name="event_types">Τύποι εκδηλώσεων</string>
     <string name="add_new_type">Προσθέστε νέο τύπο</string>
@@ -163,7 +155,6 @@
     <string name="move_events_into_default">Μετακινήστε τις επηρεαζόμενες εκδηλώσεις στον προεπιλεγμένο τύπο</string>
     <string name="remove_affected_events">Αφαιρέστε μόνιμα τις επηρεαζόμενες εκδηλώσεις </string>
     <string name="unsync_caldav_calendar">Για να καταργήσετε ένα ημερολόγιο CalDAV, πρέπει να το αποσυγχρονίσετε</string>
-
     <!-- Holidays -->
     <string name="holidays">Αργίες</string>
     <string name="add_holidays">Προσθήκη αργιών</string>
@@ -172,7 +163,6 @@
     <string name="holidays_imported_successfully">Οι αργίες έχουν εισαχθεί επιτυχώς στον τύπο εκδήλωσης  \"Αργίες\" </string>
     <string name="importing_some_holidays_failed">Η εισαγωγή κάποιων εκδηλώσεων απέτυχε</string>
     <string name="importing_holidays_failed">Η εισαγωγή αργιών απέτυχε</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Διαχείριση τύπων εκδηλώσεων</string>
     <string name="start_day_at">Ημέρα έναρξης στις</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
     <string name="allow_creating_tasks">Αποδοχή δημιουργίας εργασιών</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Επιλέξτε ημερολόγια για συγχρονισμό</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">Δεν μπόρεσαν να βρεθούν συγχρονισμένα Ημερολόγια</string>
     <string name="status_free">Ελεύθερα</string>
     <string name="status_busy">Κατειλημμένα</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Δευτέρα</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">Παρασκευή</string>
     <string name="saturday_alt">Σαββάτο</string>
     <string name="sunday_alt">Κυριακή</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Άσκηση</string>
     <string name="sample_description_1">Ημέρα ποδιών</string>
@@ -258,28 +245,26 @@
     <string name="sample_title_4">Μεσημεριανό με την Μαίρη</string>
     <string name="sample_description_4">Στην πλατεία</string>
     <string name="sample_title_5">Ωρα για καφέ</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Εμφάνιση εκδηλώσεων:</string>
     <string name="within_the_next_one_year">Εντός του επόμενου 1 έτους</string>
     <string name="today_only">Σήμερα μόνο</string>
     <string name="within_the_next">Εντός στο επόμενο…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Εντός στην επόμενη %d ημ.</item>
-        <item quantity="other">Εντός στις επόμενες %d ημ.</item>
+        <item quantity="one">Εντός της επόμενης ημέρας</item>
+        <item quantity="other">Εντός των επόμενων %d ημερών</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Εντός στην επόμενη %d εβδ.</item>
-        <item quantity="other">Εντός στις επόμενες %d εβδ.</item>
+        <item quantity="one">Εντός της επόμενης εβδομάδας</item>
+        <item quantity="other">Εντός των επόμενων %d εβδομάδων</item>
     </plurals>
     <plurals name="within_the_next_months">
         <item quantity="one">Εντός στον επόμενο %d μήνα</item>
         <item quantity="other">Εντός στις επόμενες %d μήνες</item>
     </plurals>
-
     <!-- FAQ -->
     <string name="faq_1_title">Πώς μπορώ να αφαιρέσω τις αργίες που εισήχθησαν μέσω του κουμπιού \"Προσθήκη αργιών\" ;</string>
-    <string name="faq_1_text">Οι αργίες που δημιουργήθηκαν με τον τρόπο αυτό εισάγονται σε ένα νέο τύπο εκδήλωσης που ονομάζεται \"Αργίες \". Μπορείτε να μεταβείτε στις Ρυθμίσεις -> Διαχείριση τύπων εκδηλώσεων,
+    <string name="faq_1_text">Οι αργίες που δημιουργήθηκαν με τον τρόπο αυτό εισάγονται σε ένα νέο τύπο εκδήλωσης που ονομάζεται \"Αργίες \". Μπορείτε να μεταβείτε στις Ρυθμίσεις -&gt; Διαχείριση τύπων εκδηλώσεων,
         πατώντας παρατεταμένα τον συγκεκριμένο τύπο εκδήλωσης και διαγράψτε το επιλέγοντας τον Κάδο.</string>
     <string name="faq_2_title">Μπορώ να συγχρονίσω τα συμβάντα μου μέσω του Ημερολογίου Google ή άλλης υπηρεσίας που υποστηρίζει το CalDAV;</string>
     <string name="faq_2_text">Ναι, απλά εναλλαγή \"CalDAV sync\" στις ρυθμίσεις της εφαρμογής και επιλέξτε τα ημερολόγια που θέλετε να συγχρονίσετε. Ωστόσο, θα χρειαστείτε κάποια εφαρμογή τρίτου μέρους που να χειρίζεται το συγχρονισμό μεταξύ της συσκευής και των διακομιστών.
