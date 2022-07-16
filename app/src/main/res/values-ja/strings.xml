@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
     <string name="go_to_date">日付に移動</string>
-    <string name="upgraded_from_free">Hey,\n\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.\n\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.\n\nThanks!</string>
+    <string name="upgraded_from_free">Hey,
+\n
+\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.
+\n
+\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.
+\n
+\nThanks!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー月</string>
     <string name="widget_list">カレンダー 予定 リスト</string>
@@ -176,7 +182,7 @@
     <string name="replace_description_with_location">予定の説明を場所に置き換える</string>
     <string name="display_description_or_location">説明や場所を表示する</string>
     <string name="delete_all_events">すべての予定を削除</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events? This will leave your event types and other settings intact.</string>
+    <string name="delete_all_events_confirmation">Are you sure you want to delete all events\? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">グリッドを表示</string>
     <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
@@ -255,21 +261,17 @@
         <item quantity="other">Within the next %d month</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types,
-        long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
-        In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings,
-        pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
+    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV\?</string>
+    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers. In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
+    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do\?</string>
+    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_4_title">Does the app support time zones\?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at
