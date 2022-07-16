@@ -271,9 +271,9 @@
     <string name="faq_3_text">Nem csak az emlékeztető megjelenítése, hanem a hanglejátszás is nagy mértékben függ a rendszerétől. Ha nem hall hangokat, akkor menjen az alkalmazásbeállításokba, nyomja meg az „Emlékeztetők által használt hangcsatorna” lehetőséget, és állítsa másik értékre. Ha továbbra sem működik, akkor ellenőrizze a hangbeállításokat, hogy nem lett-e lenémítva az a hangcsatorna.</string>
     <string name="faq_4_title">Az alkalmazás támogatja az időzónákat\?</string>
     <string name="faq_4_text">Igen. Alapértelmezés szerint minden esemény a jelenlegi időzónájában kerül létrehozásra. Ha módosítani akarja egy esemény időzónáját, akkor előbb engedélyeznie kell az időzóna-választót az alkalmazásbeállításokban, majd módosítania az Esemény részletei képernyőn. Alapértelmezetten le van tiltva, mert a legtöbb embernek nincs rá szüksége.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at
