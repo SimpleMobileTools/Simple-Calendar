@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
     <string name="go_to_today">Ir ao día de hoxe</string>
     <string name="go_to_date">Ir a unha data</string>
-    <string name="upgraded_from_free">Ola,\n\nsemella que actualizaches desde a antiga versión gratuíta. Tes que migrar os eventos gardados localmente exportándoos manualmente a un ficheiro .ics e despois importándoos. Podes atopar o botón exportar/importar no menú da pantalla principal.\n\nDespois, podes desinstalar a versión antiga, que ten o botón \'Mellorar a Pro\' arriba nos axustes do app. Finalmente só terás que restablecer os axustes do app.\n\nGrazas!</string>
-
+    <string name="upgraded_from_free">Ola,
+\n
+\nsemella que actualizaches desde a antiga versión gratuíta. Tes que migrar os eventos gardados localmente exportándoos manualmente a un ficheiro .ics e despois importándoos. Podes atopar o botón exportar/importar no menú da pantalla principal.
+\n
+\nDespois, podes desinstalar a versión antiga, que ten o botón \'Mellorar a Pro\' arriba nos axustes do app. Finalmente só terás que restablecer os axustes do app.
+\n
+\nGrazas!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>
     <string name="widget_list">Lista de eventos do calendario</string>
     <string name="widget_todays_date">Calendario no día actual</string>
-
     <!-- Event -->
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">Escribe a localización para que se mostre nun mapa</string>
     <string name="public_event_notification_text">Hai un evento próximo</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
     <string name="no_repetition">Sen repetición</string>
@@ -84,7 +86,6 @@
     <string name="fourth_m">cuarto</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">último</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repetir cada</string>
@@ -95,7 +96,6 @@
     <string name="fourth_f">cuarto</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">último</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Aniversario</string>
     <string name="add_birthdays">Engadir aniversario dos contactos</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">Non se atoparon novos aniversarios</string>
     <string name="birthdays_added">Engadíronse correctamente os aniversarios</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Celebracións</string>
     <string name="add_anniversaries">Engadir celebracións de contactos</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">Non se atoparon novas celebracións</string>
     <string name="anniversaries_added">Engadíronse correctamente as celebracións</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
     <string name="before">antes</string>
     <string name="add_another_reminder">Engadir outro recordatorio</string>
     <string name="event_reminders">Recordatorios de eventos</string>
     <string name="reminders">Reminders</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Engadir participante</string>
     <string name="my_status">O meu estado:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">Non vou</string>
     <string name="maybe_going">Pode que vaia</string>
     <string name="invited">Convidado</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Inserir franxa horaria</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importar eventos</string>
     <string name="export_events">Exportar eventos</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">Incluír tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sen .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">Localización</string>
     <string name="description">Descrición</string>
     <string name="all_day">Todo o día</string>
-
     <!-- Weekly view -->
     <string name="week">Semana</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
-
     <!-- Event types -->
     <string name="event_types">Tipos de eventos</string>
     <string name="add_new_type">Engadir un novo tipo de evento</string>
@@ -163,7 +155,6 @@
     <string name="move_events_into_default">Mover os eventos afectados ao tipo de evento por defecto</string>
     <string name="remove_affected_events">Eliminar permanentemente os eventos afectados</string>
     <string name="unsync_caldav_calendar">Para eliminar un calendario CalDAV antes debes deixar de sincronizalo</string>
-
     <!-- Holidays -->
     <string name="holidays">Festivo</string>
     <string name="add_holidays">Engadir días festivos</string>
@@ -172,7 +163,6 @@
     <string name="holidays_imported_successfully">Os festivos importáronse correctamente no tipo de evento \"Festivo\"</string>
     <string name="importing_some_holidays_failed">Fallou a importación dalgúns eventos</string>
     <string name="importing_holidays_failed">Fallou a importación de días festivos</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Xestionar tipos de eventos</string>
     <string name="start_day_at">Na vista xeral o día comeza as</string>
@@ -191,7 +181,7 @@
     <string name="replace_description_with_location">Substituír a descrición coa localización</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Borrar todos os eventos</string>
-    <string name="delete_all_events_confirmation">Tes a certeza de querer borrar tódolos eventos? Esto deixará intactos os tipos de evento e outros axustes.</string>
+    <string name="delete_all_events_confirmation">Tes a certeza de querer borrar tódolos eventos\? Esto deixará intactos os tipos de evento e outros axustes.</string>
     <string name="show_a_grid">Mostrar unha cuadrícula</string>
     <string name="loop_reminders">Repetir recordatorios ata que se descarten</string>
     <string name="dim_past_events">Atenuar eventos pasados</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">Permitir cambiar as zonas horarias do evento</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <string name="allow_creating_tasks">Allow creating tasks</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Escolle calendarios a sincronizar</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">Non se atoparon calendarios sincronizados</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">luns</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">venres</string>
     <string name="saturday_alt">sábado</string>
     <string name="sunday_alt">domingo</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Exercicio</string>
     <string name="sample_description_1">Correr un pouco</string>
@@ -258,7 +245,6 @@
     <string name="sample_title_4">Xantar con Aira</string>
     <string name="sample_description_4">Na praza</string>
     <string name="sample_title_5">Hora do café</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
@@ -276,22 +262,18 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
-    <string name="faq_1_title">Como podo eliminar os días festivos engadidos vía o botón \"Engadir días festivos\"?</string>
-    <string name="faq_1_text">Os días festivos creados dese xeito insértanse nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -> Xestionar tipo de eventos,
-        manter preso o tipo de evento desexado e eliminalo escollendo a Papeleira do lixo.</string>
-    <string name="faq_2_title">Podo sincronizar os meus eventos vía Google Calendar, ou outro servizo que use CalDAV?</string>
-    <string name="faq_2_text">Si, activa \"CalDAV sincr.\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores.
-        Se desexas sincronizar un calendario de Google, o seu app oficial Calendar fará o traballo. Para outros calendario precisas un app de sincronización, como DAVx5.</string>
-    <string name="faq_3_title">Vexo os recordatorios visualmente, pero non escoito audio. Que podo facer?</string>
+    <string name="faq_1_title">Como podo eliminar os días festivos engadidos vía o botón \"Engadir días festivos\"\?</string>
+    <string name="faq_1_text">Os días festivos creados dese xeito insértanse nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -&gt; Xestionar tipo de eventos, manter preso o tipo de evento desexado e eliminalo escollendo a Papeleira do lixo.</string>
+    <string name="faq_2_title">Podo sincronizar os meus eventos vía Google Calendar, ou outro servizo que use CalDAV\?</string>
+    <string name="faq_2_text">Si, activa \"CalDAV sincr.\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores. Se desexas sincronizar un calendario de Google, o seu app oficial Calendar fará o traballo. Para outros calendario precisas un app de sincronización, como DAVx5.</string>
+    <string name="faq_3_title">Vexo os recordatorios visualmente, pero non escoito audio. Que podo facer\?</string>
     <string name="faq_3_text">Non só mostrar o recordatorio propiamente dito, se non que a reprodución do son depende en gran medida do sistema tamén. Se non podes escoitar ningún son, intenta ir aos axustes do app e premer en \"Canle de audio usado polos recordatorios\" e cambialo a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non estea acalado.</string>
-    <string name="faq_4_title">O app soporta zonas horarias?</string>
-    <string name="faq_4_text">Si. Por defecto todos os eventos créanse na túa zona horaria actual. Se desexas cambiar a zona horaria dos eventos,
-        primeiro tes que activar o selector de zona horaria nos axustes do app, e despois cambialo na pantalla de Detalles do Evento. Está desactivado de inicio porque a maioría da xente non o necesita.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_4_title">O app soporta zonas horarias\?</string>
+    <string name="faq_4_text">Si. Por defecto todos os eventos créanse na túa zona horaria actual. Se desexas cambiar a zona horaria dos eventos, primeiro tes que activar o selector de zona horaria nos axustes do app, e despois cambialo na pantalla de Detalles do Evento. Está desactivado de inicio porque a maioría da xente non o necesita.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at
