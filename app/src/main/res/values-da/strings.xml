@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Du ser ikke ud til at have nogen forestående begivenheder.</string>
     <string name="go_to_today">Gå til i dag</string>
     <string name="go_to_date">Gå til dato</string>
-    <string name="upgraded_from_free">Hej!\n\nDet ser ud til at du har opgraderet fra den gamle, gratis app. Du skal flytte lokalt gemte begivenheder manuelt til en ics-fil via eksportfunktionen og bagefter importere. Både import og eksport finder du i hovedmenuen.\n\nDu kan nu afinstallere den gamle version, som har en \'Upgrade to Pro\'-knap øverst i app-indstillingerne. Du skal til sidst bare nulstille dine app-indstillinger.\n\nTak!</string>
+    <string name="upgraded_from_free">Hej!
+\n
+\nDet ser ud til at du har opgraderet fra den gamle, gratis app. Du skal flytte lokalt gemte begivenheder manuelt til en ics-fil via eksportfunktionen og bagefter importere. Både import og eksport finder du i hovedmenuen.
+\n
+\nDu kan nu afinstallere den gamle version, som har en \'Upgrade to Pro\'-knap øverst i app-indstillingerne. Du skal til sidst bare nulstille dine app-indstillinger.
+\n
+\nTak!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Månedlig kalender</string>
     <string name="widget_list">Begivenhedsliste</string>
@@ -161,7 +167,7 @@
     <string name="manage_event_types">Håndter begivenhedstyper</string>
     <string name="start_day_at">Start dagen kl.</string>
     <string name="end_day_at">Slut dagen kl.</string>
-    <string name="midnight_spanning">Vis begivenheder, der strækker sig hen over midnat, i toplinjen </string>
+    <string name="midnight_spanning">Vis begivenheder, der strækker sig hen over midnat, i toplinjen</string>
     <string name="allow_customizing_day_count">Tillad tilpasning af antal dage</string>
     <string name="week_numbers">Vis ugenumre</string>
     <string name="vibrate">Vibrer under påmindelser</string>
@@ -175,7 +181,7 @@
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="display_description_or_location">Vis beskrivelse eller lokation</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
-    <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
+    <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder\? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
     <string name="show_a_grid">Vis gitter</string>
     <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>
     <string name="dim_past_events">Nedton gamle begivenheder</string>
@@ -257,17 +263,16 @@
         <item quantity="other">I løbet af de næste %d måneder</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"?</string>
+    <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"\?</string>
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -&gt; Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
-    <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV?</string>
-    <string name="faq_2_text">Ja, klik på \"CalDAV synk\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere.
-        Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
-    <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det?</string>
-    <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\"  og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
-    <string name="faq_4_title">Understøtter appen tidszoner?</string>
+    <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV\?</string>
+    <string name="faq_2_text">Ja, klik på \"CalDAV synk\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere. Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
+    <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det\?</string>
+    <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\" og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
+    <string name="faq_4_title">Understøtter appen tidszoner\?</string>
     <string name="faq_4_text">Ja, det gør den. Som standard oprettes alle begivenheder i din aktuelle tidszone. Vil du ændre det for en given begivenhed, skal du først aktivere tidszonevælgeren i appens indstillinger og derefter ændre tidszone under selve begivenheden. Funktionen er fra starten deaktiveret da de færreste brugere behøver den.</string>
-    <string name="faq_5_title">Appen viser ingen meddelelser, hvordan kan det være?</string>
-    <string name="faq_5_text">Tjek batteriet på din enhed og indstillingerne for meddelelser, om der er noget, der blokerer påmindelserne, eller om appen er slået fra i baggrunden. Du kan også tage et kig på  &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, den har nogle gode tips.</string>
+    <string name="faq_5_title">Appen viser ingen meddelelser, hvordan kan det være\?</string>
+    <string name="faq_5_text">Tjek batteriet på din enhed og indstillingerne for meddelelser, om der er noget, der blokerer påmindelserne, eller om appen er slået fra i baggrunden. Du kan også tage et kig på &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, den har nogle gode tips.</string>
     <string name="faq_6_title">Hvordan kan jeg ændre eller slette en eksisterende begivenhedstype?</string>
     <string name="faq_6_text">Du kan gøre begge dele i Indstillinger - Administrer begivenhedstyper. Du skal blot klikke på den ønskede begivenhed for at ændre etiketten og farven, eller du kan vælge den ønskede begivenhed ved at trykke længe på den og bruge papirkurven i topmenuen til at slette den.</string>
     <!--
