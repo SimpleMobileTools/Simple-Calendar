@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
-    <string name="upgraded_from_free">嘿\n\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出 .ics 檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。\n\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。\n\n感謝!</string>
+    <string name="upgraded_from_free">嘿
+\n
+\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出 .ics 檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。
+\n
+\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。
+\n
+\n感謝!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
     <string name="widget_list">行事曆活動列表</string>
@@ -175,7 +181,7 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="display_description_or_location">顯示說明或地點</string>
     <string name="delete_all_events">刪除全部活動</string>
-    <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>
+    <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎\?會完整留下你的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>
     <string name="dim_past_events">淡化過去的活動</string>
@@ -245,33 +251,26 @@
     <string name="today_only">Today only</string>
     <string name="within_the_next">Within the next…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="other">Within the next %d day</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="other">Within the next %d week</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="other">Within the next %d month</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日?</string>
-    <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。
-        你可以到[設定] -&gt; [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
-    <string name="faq_2_title">我可以透過 Google 日曆或其它支援 CalDAV 的服務來同步我的活動嗎?</string>
-    <string name="faq_2_text">行的，只要打開程式設定內的「CalDAV 同步」，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。
-        如果你要同步 Google 日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是 DAVx5。</string>
-    <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦?</string>
-    <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定，
-        按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
-    <string name="faq_4_title">這程式支援時區嗎?</string>
-    <string name="faq_4_text">是的，辦得到。預設全部的活動建立於你目前的時區。如果你要改變活動的時區，
-        首先必須在程式設定中啟用時區選擇，然後到「活動詳細資訊」畫面去改變。由於大部分的人不需要，預設是停用的。</string>
+    <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日\?</string>
+    <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。 你可以到[設定] -&gt; [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
+    <string name="faq_2_title">我可以透過 Google 日曆或其它支援 CalDAV 的服務來同步我的活動嗎\?</string>
+    <string name="faq_2_text">行的，只要打開程式設定內的「CalDAV 同步」，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。 如果你要同步 Google 日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是 DAVx5。</string>
+    <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦\?</string>
+    <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定， 按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
+    <string name="faq_4_title">這程式支援時區嗎\?</string>
+    <string name="faq_4_text">是的，辦得到。預設全部的活動建立於你目前的時區。如果你要改變活動的時區， 首先必須在程式設定中啟用時區選擇，然後到「活動詳細資訊」畫面去改變。由於大部分的人不需要，預設是停用的。</string>
     <string name="faq_5_title">這個 app 都不會跳通知欸，為什麼啊？</string>
     <string name="faq_5_text">請檢查裝置的電池設定與通知設定，確定沒有封鎖提醒、或是阻止本 app 在背景執行。您也可以看看 &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;，上面有一些實用的小秘訣。</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at
