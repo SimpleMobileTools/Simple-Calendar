@@ -266,24 +266,14 @@
     <string name="faq_1_title">كيف يمكنني حذف العطلات المنقولة عن طريق زر \"أضف عطلات\"؟</string>
     <string name="faq_1_text">العطلات المضافة بهذه الطريقة تدخل تحت نوع جديد يسمى \"العطلات\". يمكنك الذهاب الى الإعدادات -&gt; إدارة أنواع الأحداث، ثم اضغط مطولا على نوع الحدث واحذفه عن طريق اختيار سلة المهملات.</string>
     <string name="faq_2_title">هل يمكنني مزامنة أحداثي عن طريق تقويم جوجل، أو أى خدمة أخرى تدعم CalDAV؟</string>
-    <string name="faq_2_text">
-        نعم، فقط اعكس حالة \"CalDAV مزامنة\" في إعدادات التطبيق واختر التقويمات التي تريد مزامنتها
-        ولكن، ستحتاج الى برنامج آخر لتنظيم المزامنة بين الجهاز والخادم.
-        إذا كنت تريد مزامنة تقويم جوجل، فبرنامج التقويم الرسمي لديهم سيقوم بالمهمة.
-        للتقويمات الأخرى ستحتاج الى بنامج منظم خارجي مثل DAVdroid.
-    </string>
+    <string name="faq_2_text">نعم، فقط اعكس حالة \"CalDAV مزامنة\" في إعدادات التطبيق واختر التقويمات التي تريد مزامنتها ولكن، ستحتاج الى برنامج آخر لتنظيم المزامنة بين الجهاز والخادم. إذا كنت تريد مزامنة تقويم جوجل، فبرنامج التقويم الرسمي لديهم سيقوم بالمهمة. للتقويمات الأخرى ستحتاج الى بنامج منظم خارجي مثل DAVdroid.</string>
     <string name="faq_3_title">أرى التنبيه البصرى، ولكن لا أسمع صوتا. ماذا يمكنني أن أفعل؟</string>
-    <string name="faq_3_text">
-        ليس فقط عرض التنبيه الفعلي ما يتأثر بشدة بالنظام، ولكن تشغيل الصوت يتأثر بشدة أيضا.
-        إن كنت لا تستطيع سماع أى صوت، جرب الذهاب لإعدادات الهاتف، واضغط على خيار \"الصوت المستخدم في التنبيهات\" وبدّلة لأى اختيار آخر.
-        إن ظل الصوت لا يعمل، تأكد في إعدادات الصوت الخاصة بك، إن لم يكن هذا الصوت تحديدا قد تم كتمه.
-    </string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_3_text">ليس فقط عرض التنبيه الفعلي ما يتأثر بشدة بالنظام، ولكن تشغيل الصوت يتأثر بشدة أيضا. إن كنت لا تستطيع سماع أى صوت، جرب الذهاب لإعدادات الهاتف، واضغط على خيار \"الصوت المستخدم في التنبيهات\" وبدّلة لأى اختيار آخر. إن ظل الصوت لا يعمل، تأكد في إعدادات الصوت الخاصة بك، إن لم يكن هذا الصوت تحديدا قد تم كتمه.</string>
+    <string name="faq_4_title">Does the app support time zones\?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at

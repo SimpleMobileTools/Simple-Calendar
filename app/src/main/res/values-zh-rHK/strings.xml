@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">你近期似乎沒有任何活動。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
-    <string name="upgraded_from_free">嘿\n\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出.ics檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。\n\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。\n\n感謝!</string>
-
+    <string name="upgraded_from_free">嘿
+\n
+\n你似乎從舊版免費應用程式升級了。你必須手動搬移儲存在本機端的活動，透過匯出.ics檔案再接著匯入。你可以在主畫面選單中，找到 匯出/匯入 兩個按鈕。
+\n
+\n然後你能解除安裝舊版了，在應用程式設定的頂端有個\'升級至專業版\'按鈕。你只需要重置你的應用程式設定。
+\n
+\n感謝!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">月曆</string>
     <string name="widget_list">行事曆活動列表</string>
     <string name="widget_todays_date">Calendar today\'s date</string>
-
     <!-- Event -->
     <string name="event">活動</string>
     <string name="edit_event">編輯活動</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
     <string name="public_event_notification_text">一個活動即將到來</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
-
     <!-- Event Repetition -->
     <string name="repetition">重複</string>
     <string name="no_repetition">不重複</string>
@@ -84,7 +86,6 @@
     <string name="fourth_m">第四個</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">最後的</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">重複每個</string>
@@ -95,7 +96,6 @@
     <string name="fourth_f">第四個</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">最後的</string>
-
     <!-- Birthdays -->
     <string name="birthdays">生日</string>
     <string name="add_birthdays">添加聯絡人生日</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">No new birthdays have been found</string>
     <string name="birthdays_added">生日添加成功</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">紀念日</string>
     <string name="add_anniversaries">添加聯絡人紀念日</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">No new anniversaries have been found</string>
     <string name="anniversaries_added">紀念日添加成功</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>
     <string name="before">前</string>
     <string name="add_another_reminder">新增另一個提醒</string>
     <string name="event_reminders">活動提醒</string>
     <string name="reminders">Reminders</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">新增另一位出席者</string>
     <string name="my_status">我的狀態:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">不前去</string>
     <string name="maybe_going">或許前去</string>
     <string name="invited">被邀請</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
-
     <!-- Export / Import -->
     <string name="import_events">匯入活動</string>
     <string name="export_events">匯出活動</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">包含活動類型</string>
     <string name="filename_without_ics">檔案名稱 (不含.ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">地點</string>
     <string name="description">描述</string>
     <string name="all_day">全天</string>
-
     <!-- Weekly view -->
     <string name="week">週數</string>
     <string name="start_week_with_current_day">Start week with the current day</string>
-
     <!-- Event types -->
     <string name="event_types">活動類型</string>
     <string name="add_new_type">添加新類型</string>
@@ -163,16 +155,14 @@
     <string name="move_events_into_default">受影響的活動移到預設活動類型</string>
     <string name="remove_affected_events">受影響的活動永久移除</string>
     <string name="unsync_caldav_calendar">想移除CalDAV行事曆，你必須取消同步</string>
-
     <!-- Holidays -->
     <string name="holidays">節日</string>
     <string name="add_holidays">添加節日</string>
     <string name="national_holidays">國定節日</string>
     <string name="religious_holidays">宗教節日</string>
-    <string name="holidays_imported_successfully">節日已成功匯入"節日"活動類型</string>
+    <string name="holidays_imported_successfully">節日已成功匯入節日活動類型</string>
     <string name="importing_some_holidays_failed">匯入一些活動失敗</string>
     <string name="importing_holidays_failed">匯入節日失敗</string>
-
     <!-- Settings -->
     <string name="manage_event_types">管理活動類型</string>
     <string name="start_day_at">每日開始於</string>
@@ -191,7 +181,7 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">刪除全部活動</string>
-    <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎?會完整留下你的活動類型和其他設定。</string>
+    <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎\?會完整留下你的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>
     <string name="dim_past_events">淡化過去的活動</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">Allow changing event time zones</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <string name="allow_creating_tasks">Allow creating tasks</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">選擇行事曆來同步</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">空閒</string>
     <string name="status_busy">繁忙</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">星期一</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">星期五</string>
     <string name="saturday_alt">星期六</string>
     <string name="sunday_alt">星期日</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">訓練</string>
     <string name="sample_description_1">腿部訓練日</string>
@@ -258,41 +245,32 @@
     <string name="sample_title_4">跟瑪麗共進午餐</string>
     <string name="sample_description_4">在購物商場</string>
     <string name="sample_title_5">休息時間</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
     <string name="today_only">Today only</string>
     <string name="within_the_next">Within the next…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="other">Within the next %d day</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="other">Within the next %d week</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="other">Within the next %d month</item>
     </plurals>
-
     <!-- FAQ -->
-    <string name="faq_1_title">我如何移除用[添加節日]按鈕所匯入的節日?</string>
-    <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。
-        你可以到[設定] -> [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
-    <string name="faq_2_title">我可以透過Google日曆或其它支援CalDAV的服務來同步我的活動嗎?</string>
-    <string name="faq_2_text">行的，只要打開程式設定內的[CalDAV同步]，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。
-        如果你要同步Google日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是DAVx5。</string>
-    <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦?</string>
-    <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定，
-        按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_1_title">我如何移除用[添加節日]按鈕所匯入的節日\?</string>
+    <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。 你可以到[設定] -&gt; [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
+    <string name="faq_2_title">我可以透過Google日曆或其它支援CalDAV的服務來同步我的活動嗎\?</string>
+    <string name="faq_2_text">行的，只要打開程式設定內的[CalDAV同步]，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。 如果你要同步Google日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是DAVx5。</string>
+    <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦\?</string>
+    <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定， 按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
+    <string name="faq_4_title">Does the app support time zones\?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at

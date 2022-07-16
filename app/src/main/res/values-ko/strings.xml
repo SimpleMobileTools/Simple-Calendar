@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">심플 캘린더</string>
     <string name="app_launcher_name">캘린더</string>
@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">등록된 일정이 없습니다.</string>
     <string name="go_to_today">오늘로 이동</string>
     <string name="go_to_date">해당일로 이동</string>
-    <string name="upgraded_from_free">안녕하세요\n\n해당 앱이 오래전 무료 앱에서 업그레이드된 것 같습니다. 이전에 등록된 일정들을 가져오기 위해 수동으로 .ics 파일로 내보내기 후 다시 가져오기를 통해 적용해야합니다. 메인화면 오른쪽 상단 메뉴버튼을 눌러 내보내기 / 가져오기를 할 수 있습니다.\n\n앱 설정화면 최상단에 Pro 버전으로 업그레이드(Upgrade to Pro) 버튼을 눌러 이전 버전을 제거할 수 있습니다. 그 다음 앱 설정으로 들어가 리셋하면 됩니다.\n\n감사합니다!</string>
-
+    <string name="upgraded_from_free">안녕하세요
+\n
+\n해당 앱이 오래전 무료 앱에서 업그레이드된 것 같습니다. 이전에 등록된 일정들을 가져오기 위해 수동으로 .ics 파일로 내보내기 후 다시 가져오기를 통해 적용해야합니다. 메인화면 오른쪽 상단 메뉴버튼을 눌러 내보내기 / 가져오기를 할 수 있습니다.
+\n
+\n앱 설정화면 최상단에 Pro 버전으로 업그레이드(Upgrade to Pro) 버튼을 눌러 이전 버전을 제거할 수 있습니다. 그 다음 앱 설정으로 들어가 리셋하면 됩니다.
+\n
+\n감사합니다!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
     <string name="widget_list">일정 목록 달력</string>
     <string name="widget_todays_date">Calendar today\'s date</string>
-
     <!-- Event -->
     <string name="event">일정</string>
     <string name="edit_event">일정 수정</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">지도에 표시할 검색명을 입력해주세요</string>
     <string name="public_event_notification_text">다가오는 일정이 있습니다.</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
-
     <!-- Event Repetition -->
     <string name="repetition">반복</string>
     <string name="no_repetition">반복 없음</string>
@@ -84,18 +86,16 @@
     <string name="fourth_m">네 번째</string>
     <string name="fifth_m">fifth</string>
     <string name="last_m">마지막</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">매일 반복</string>
-    <string name="every_f">매일 </string>
+    <string name="every_f">매일</string>
     <string name="first_f">첫 번째</string>
     <string name="second_f">두 번째</string>
     <string name="third_f">세 번째</string>
     <string name="fourth_f">네 번째</string>
     <string name="fifth_f">fifth</string>
     <string name="last_f">마지막</string>
-
     <!-- Birthdays -->
     <string name="birthdays">생일</string>
     <string name="add_birthdays">연락처의 생일 추가</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">조회된 새로운 생일이 없음</string>
     <string name="birthdays_added">생일 추가 완료</string>
     <string name="add_birthdays_automatically">Add new birthdays automatically</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">기념일</string>
     <string name="add_anniversaries">연락처의 기념일 추가</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">조회된 새로운 기념일 없음</string>
     <string name="anniversaries_added">기념일 추가 완료</string>
     <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
-
     <!-- Event Reminders -->
     <string name="reminder">알림</string>
     <string name="before">전</string>
     <string name="add_another_reminder">다른 알림 추가</string>
     <string name="event_reminders">일정 알림들</string>
     <string name="reminders">Reminders</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">다른 참석자 추가</string>
     <string name="my_status">내 상태:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">불참석</string>
     <string name="maybe_going">참석 예정</string>
     <string name="invited">초대됨</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Enter a country or time zone</string>
-
     <!-- Export / Import -->
     <string name="import_events">일정들 가져오기</string>
     <string name="export_events">일정들 내보내기</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">일정 유형 포함</string>
     <string name="filename_without_ics">파일이름 (.ics 없이)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
-
     <!-- Event details -->
     <string name="location">위치</string>
     <string name="description">내용</string>
     <string name="all_day">종일</string>
-
     <!-- Weekly view -->
     <string name="week">주</string>
     <string name="start_week_with_current_day">오늘 날짜로 표시</string>
-
     <!-- Event types -->
     <string name="event_types">일정 유형</string>
     <string name="add_new_type">새로운 일정 추가</string>
@@ -163,7 +155,6 @@
     <string name="move_events_into_default">해당 유형 일정들 기본 유형으로 변경</string>
     <string name="remove_affected_events">해당 유형 일정들 모두 제거</string>
     <string name="unsync_caldav_calendar">CalDAV 캘린더를 제거하려면 동기화를 해제해야합니다.</string>
-
     <!-- Holidays -->
     <string name="holidays">공휴일</string>
     <string name="add_holidays">공휴일 추가</string>
@@ -172,7 +163,6 @@
     <string name="holidays_imported_successfully">공휴일을 새 일정 유형으로 가져왔습니다.</string>
     <string name="importing_some_holidays_failed">일부 일정을 가져오지 못했습니다</string>
     <string name="importing_holidays_failed">공휴일을 가져오는데 실패했습니다</string>
-
     <!-- Settings -->
     <string name="manage_event_types">일정 유형 관리</string>
     <string name="start_day_at">시작 시간</string>
@@ -191,7 +181,7 @@
     <string name="replace_description_with_location">일정 내용대신 위치로 표시</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">모든 일정 삭제</string>
-    <string name="delete_all_events_confirmation">모든 일정들을 삭제하시겠습니까? 일정 유형 및 기타 설정은 그대로 유지됩니다.</string>
+    <string name="delete_all_events_confirmation">모든 일정들을 삭제하시겠습니까\? 일정 유형 및 기타 설정은 그대로 유지됩니다.</string>
     <string name="show_a_grid">격자 표시</string>
     <string name="loop_reminders">끌때까지 알림 반복</string>
     <string name="dim_past_events">지난 일정 희미하게 표시</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">이벤트 시간대 변경 허용</string>
     <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
     <string name="allow_creating_tasks">Allow creating tasks</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">동기화 할 캘린더 선택</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">월요일</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">금요일</string>
     <string name="saturday_alt">토요일</string>
     <string name="sunday_alt">일요일</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">운동</string>
     <string name="sample_description_1">다리 운동</string>
@@ -258,7 +245,6 @@
     <string name="sample_title_4">영희랑 점심</string>
     <string name="sample_description_4">논현동 먹자골목</string>
     <string name="sample_title_5">휴식시간</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
@@ -276,22 +262,18 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
-    <string name="faq_1_title">공휴일 추가 버튼을 통해 불러온 공휴일을 제거하기 위해선 어떻게 해야하나요?</string>
-    <string name="faq_1_text">공휴일 추가 버튼을 통해 만든 공휴일은 \"공휴일\"이라는 새 일정 유형에 삽입됩니다. 설정 -> 일정 유형 관리로 이동하여 해당 일정 유형을 길게누르고 휴지통을 선택하여 삭제할 수 있습니다.</string>
-    <string name="faq_2_title">Google 캘린더 또는 calDAV를 지원하는 다른 서비스와 제 일정을 동기화할 수 있나요?</string>
-    <string name="faq_2_text">네 가능합니다. 앱 설정에서 \"CalDAV 동기화\"를 켜고 동기화하려는 캘린더를 선택할 수 있습니다. 그러나 핸드폰과 서버간의 동기화를 처리하는 타사 앱이 필요합니다.
-        Google 캘린더를 동기화하려는 경우 공식 캘린더 앱이 작업을 수행합니다. 만약 다른 캘린더를 동기화하려면 동기화를 도와주는 타사 앱(ex : DAVx5)이 필요합니다.</string>
-    <string name="faq_3_title">일정에 대한 알림이 화면에 뜨지만 알림음이 들리지 않습니다. 어떻게 해야하나요?</string>
-    <string name="faq_3_text">알림을 화면에 표시하는 것 뿐만 아니라 알림음도 시스템의 영향을 크게 받습니다. 소리가 들리지 않는다면 앱 설정으로 이동하여 \"알림음 출력 방식\" 옵션을 누르고 다른 방식으로 변경해보세요.
-        그래도 알림음이 들리지 않는다면 특정 출력 방식이 음소거되어 있을 가능성이 있습니다. 핸드폰의 사운드 설정을 확인해주세요.</string>
-    <string name="faq_4_title">Does the app support time zones?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone,
-        you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_1_title">공휴일 추가 버튼을 통해 불러온 공휴일을 제거하기 위해선 어떻게 해야하나요\?</string>
+    <string name="faq_1_text">공휴일 추가 버튼을 통해 만든 공휴일은 \"공휴일\"이라는 새 일정 유형에 삽입됩니다. 설정 -&gt; 일정 유형 관리로 이동하여 해당 일정 유형을 길게누르고 휴지통을 선택하여 삭제할 수 있습니다.</string>
+    <string name="faq_2_title">Google 캘린더 또는 calDAV를 지원하는 다른 서비스와 제 일정을 동기화할 수 있나요\?</string>
+    <string name="faq_2_text">네 가능합니다. 앱 설정에서 \"CalDAV 동기화\"를 켜고 동기화하려는 캘린더를 선택할 수 있습니다. 그러나 핸드폰과 서버간의 동기화를 처리하는 타사 앱이 필요합니다. Google 캘린더를 동기화하려는 경우 공식 캘린더 앱이 작업을 수행합니다. 만약 다른 캘린더를 동기화하려면 동기화를 도와주는 타사 앱(ex : DAVx5)이 필요합니다.</string>
+    <string name="faq_3_title">일정에 대한 알림이 화면에 뜨지만 알림음이 들리지 않습니다. 어떻게 해야하나요\?</string>
+    <string name="faq_3_text">알림을 화면에 표시하는 것 뿐만 아니라 알림음도 시스템의 영향을 크게 받습니다. 소리가 들리지 않는다면 앱 설정으로 이동하여 \"알림음 출력 방식\" 옵션을 누르고 다른 방식으로 변경해보세요. 그래도 알림음이 들리지 않는다면 특정 출력 방식이 음소거되어 있을 가능성이 있습니다. 핸드폰의 사운드 설정을 확인해주세요.</string>
+    <string name="faq_4_title">Does the app support time zones\?</string>
+    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at

@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Se pare că nu aveți evenimente viitoare.</string>
     <string name="go_to_today">Sari la ziua de azi</string>
     <string name="go_to_date">Sari la o dată</string>
-    <string name="upgraded_from_free">Hei,\n\nse pare că a-ți avansat de la vechea aplicație gratuită. Trebuie să migrați manual evenimentele stocate local prin exportarea într-un fișier .ics, apoi importarea. Puteți găsi ambele butoane de export / import în meniul ecranului principal.\n\nPuteți apoi să dezinstalați versiunea veche, care are un buton \'Upgrade to Pro\' în partea de sus a setărilor aplicației. Atunci va trebui doar să resetați setările aplicației.\n\nMulțumesc!</string>
-
+    <string name="upgraded_from_free">Hei,
+\n
+\nse pare că a-ți avansat de la vechea aplicație gratuită. Trebuie să migrați manual evenimentele stocate local prin exportarea într-un fișier .ics, apoi importarea. Puteți găsi ambele butoane de export / import în meniul ecranului principal.
+\n
+\nPuteți apoi să dezinstalați versiunea veche, care are un buton \'Upgrade to Pro\' în partea de sus a setărilor aplicației. Atunci va trebui doar să resetați setările aplicației.
+\n
+\nMulțumesc!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar lunar</string>
     <string name="widget_list">Calendar listă evenimente</string>
     <string name="widget_todays_date">Calendar data de azi</string>
-
     <!-- Event -->
     <string name="event">Eveniment</string>
     <string name="edit_event">Modifică evenimentul</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">Completează o locație ca să apară pe o hartă</string>
     <string name="public_event_notification_text">Se apropie un eveniment</string>
     <string name="saving_filtered_out">Se salveaza… Dar tipul de eveniment selectat este omis in Meniu - Filtru de sus</string>
-
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>
     <string name="no_repetition">Fără repetiție</string>
@@ -84,7 +86,6 @@
     <string name="fourth_m">a patra</string>
     <string name="fifth_m">a cincea</string>
     <string name="last_m">ultima</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repetă în fiecare</string>
@@ -95,7 +96,6 @@
     <string name="fourth_f">a patra</string>
     <string name="fifth_f">a cincea</string>
     <string name="last_f">ultima</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Zile de naștere</string>
     <string name="add_birthdays">Adaugă Zile de naștere din contacte</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">Nu s-au găsit zile de naștere noi</string>
     <string name="birthdays_added">Zile de naștere adăugate cu succes</string>
     <string name="add_birthdays_automatically">Adaugă zile de naștere automat</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Aniversări</string>
     <string name="add_anniversaries">Adăugă aniversări din contacte</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">Nu s-au găsit aniversări noi</string>
     <string name="anniversaries_added">Aniversări adăugate cu succes</string>
     <string name="add_anniversaries_automatically">Adaugă zile de aniversare automat</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Reamintire</string>
     <string name="before">înainte de</string>
     <string name="add_another_reminder">Adaugă o altă reamintire</string>
     <string name="event_reminders">Reamintiri eveniment</string>
     <string name="reminders">Reminders</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Adaugă o altă participare</string>
     <string name="my_status">Starea meu:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">Nu particip</string>
     <string name="maybe_going">Poate particip</string>
     <string name="invited">Invitat</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Introduce o țară sau un fus orar</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importă evenimente</string>
     <string name="export_events">Exportă evenimente</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">Include tipurile de eveniment</string>
     <string name="filename_without_ics">Numefisier (fără .ics)</string>
     <string name="ignore_event_types">Ignoră tipurile de eveniment din fișier, folosește întotdeauna cel implicit</string>
-
     <!-- Event details -->
     <string name="location">Locație</string>
     <string name="description">Descripție</string>
     <string name="all_day">Toată ziua</string>
-
     <!-- Weekly view -->
     <string name="week">Săptămână</string>
     <string name="start_week_with_current_day">Începe săptămâna cu ziua curentă</string>
-
     <!-- Event types -->
     <string name="event_types">Tipuri de evenimente</string>
     <string name="add_new_type">Adaugă un tip nou</string>
@@ -163,7 +155,6 @@
     <string name="move_events_into_default">Mută evenimentele afectate în tipul implicit de eveniment</string>
     <string name="remove_affected_events">Înlătură definitiv evenimentele afectate</string>
     <string name="unsync_caldav_calendar">Pentru a elimina un calendar CalDAV, trebuie să îl desincronizați</string>
-
     <!-- Holidays -->
     <string name="holidays">Sărbătoare</string>
     <string name="add_holidays">Adaugă sărbători</string>
@@ -172,7 +163,6 @@
     <string name="holidays_imported_successfully">Sărbătorile au fost importate cu succes în tipul de eveniment \"Sărbători\"</string>
     <string name="importing_some_holidays_failed">Importarea unor evenimente a eșuat</string>
     <string name="importing_holidays_failed">Importarea sărbătorilor a eșuat</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Gestionează tipurile de evenimente</string>
     <string name="start_day_at">Ziua începe la</string>
@@ -191,7 +181,7 @@
     <string name="replace_description_with_location">Înlocuiește descrierea evenimentului cu locația</string>
     <string name="display_description_or_location">Afișează descripție sau locație</string>
     <string name="delete_all_events">Șterge toate evenimentele</string>
-    <string name="delete_all_events_confirmation">Sigur doriți să ștergeți toate evenimentele? Acest lucru va lăsa tipurile de evenimente și alte setări intacte.</string>
+    <string name="delete_all_events_confirmation">Sigur doriți să ștergeți toate evenimentele\? Acest lucru va lăsa tipurile de evenimente și alte setări intacte.</string>
     <string name="show_a_grid">Afișează o grilă</string>
     <string name="loop_reminders">Repetă reamintirile până când sunt închise</string>
     <string name="dim_past_events">Ascunde evenimentele din trecut</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
     <string name="manage_quick_filter_event_types">Gestionează filtrul rapid al tipurilor de eveniment</string>
     <string name="allow_creating_tasks">Allow creating tasks</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selectează calendarele pentru sincronizare</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">Nu au fost găsite calendare care pot fi sincronizate</string>
     <string name="status_free">Liber</string>
     <string name="status_busy">Ocupat</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Luni</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">Vineri</string>
     <string name="saturday_alt">Sâmbătă</string>
     <string name="sunday_alt">Duminică</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Antrenament</string>
     <string name="sample_description_1">Zi antrenament pentru picioare</string>
@@ -258,7 +245,6 @@
     <string name="sample_title_4">Prânz cu Maria</string>
     <string name="sample_description_4">În Plaza</string>
     <string name="sample_title_5">Timp pentru cafea</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Show events happening:</string>
     <string name="within_the_next_one_year">Within the next 1 year</string>
@@ -276,23 +262,18 @@
         <item quantity="one">Within the next %d month</item>
         <item quantity="other">Within the next %d months</item>
     </plurals>
-
     <!-- FAQ -->
-    <string name="faq_1_title">Cum pot elimina sărbătorile importate prin intermediul butonului \"Adaugă sărbători\"?</string>
-    <string name="faq_1_text">Sărbătorile create îm felul acela sunt introduse într-un tip de event nou numit \"Sărbători\". Puteți să vă duceți în Setări -> Gestionează tipurile de evenimente,
-        apăsați lung tipul de eveniment dat și ștergeți-l selectând coșul de gunoi.</string>
-    <string name="faq_2_title">Pot sincroniza evenimentele mele prin Google Calendar sau alt serviciu care acceptă CalDAV?</string>
-    <string name="faq_2_text">Da, trebuie doar să comutați \"sincronizarea CalDAV\" în setările aplicației și să selectați calendarele pe care doriți să le sincronizați. Cu toate acestea, veți avea nevoie de o aplicație terță care se ocupă de sincronizarea dintre dispozitiv și servere.
-         În cazul în care doriți să sincronizați un calendar Google, aplicația lor oficială Calendar va face sincronizarea. Pentru alte calendare, veți avea nevoie de un adaptor de sincronizare de la terți, de exemplu DAVx5.</string>
-    <string name="faq_3_title">Văd reamintirile vizuale, dar nu aud niciun audio. Ce pot sa fac?</string>
-    <string name="faq_3_text">Nu doar afișarea reamintirilor propriu-zise, dar și redarea audio este extrem de afectată de sistem. Dacă nu auziți niciun sunet, încercați să accesați setările aplicației,
-         apăsând opțiunea \"Flux audio folosit de reamintiri\" și schimbați-o la o altă valoare. Dacă tot nu funcționează, verificați setările de sunet, dacă fluxul special nu este dezactivat.</string>
-    <string name="faq_4_title">Aplicația acceptă fusuri orare?</string>
-    <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor,
-         mai întâi va trebui să activați selectorul de fus orar in setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_1_title">Cum pot elimina sărbătorile importate prin intermediul butonului \"Adaugă sărbători\"\?</string>
+    <string name="faq_1_text">Sărbătorile create îm felul acela sunt introduse într-un tip de event nou numit \"Sărbători\". Puteți să vă duceți în Setări -&gt; Gestionează tipurile de evenimente, apăsați lung tipul de eveniment dat și ștergeți-l selectând coșul de gunoi.</string>
+    <string name="faq_2_title">Pot sincroniza evenimentele mele prin Google Calendar sau alt serviciu care acceptă CalDAV\?</string>
+    <string name="faq_2_text">Da, trebuie doar să comutați \"sincronizarea CalDAV\" în setările aplicației și să selectați calendarele pe care doriți să le sincronizați. Cu toate acestea, veți avea nevoie de o aplicație terță care se ocupă de sincronizarea dintre dispozitiv și servere. În cazul în care doriți să sincronizați un calendar Google, aplicația lor oficială Calendar va face sincronizarea. Pentru alte calendare, veți avea nevoie de un adaptor de sincronizare de la terți, de exemplu DAVx5.</string>
+    <string name="faq_3_title">Văd reamintirile vizuale, dar nu aud niciun audio. Ce pot sa fac\?</string>
+    <string name="faq_3_text">Nu doar afișarea reamintirilor propriu-zise, dar și redarea audio este extrem de afectată de sistem. Dacă nu auziți niciun sunet, încercați să accesați setările aplicației, apăsând opțiunea \"Flux audio folosit de reamintiri\" și schimbați-o la o altă valoare. Dacă tot nu funcționează, verificați setările de sunet, dacă fluxul special nu este dezactivat.</string>
+    <string name="faq_4_title">Aplicația acceptă fusuri orare\?</string>
+    <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor, mai întâi va trebui să activați selectorul de fus orar in setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at

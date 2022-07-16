@@ -75,7 +75,7 @@
     <string name="selected_days">Nei giorni selezionati</string>
     <string name="the_same_day">Lo stesso giorno</string>
     <string name="the_last_day">L\'ultimo giorno</string>
-    <string name="repeat_on_the_same_day_monthly">Ripeti lo stesso giorno ogni mese </string>
+    <string name="repeat_on_the_same_day_monthly">Ripeti lo stesso giorno ogni mese</string>
     <string name="repeat_on_the_last_day_monthly">Ripeti l\'ultimo giorno del mese</string>
     <string name="repeat_on_the_same_day_yearly">Ripeti lo stesso giorno ogni anno</string>
     <string name="repeat_every_m">Ripeti ogni</string>
@@ -181,7 +181,7 @@
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
     <string name="display_description_or_location">Visualizza la descrizione o la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
-    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi? Questo lascerà i tuoi tipi di evento e le altre impostazioni invariate.</string>
+    <string name="delete_all_events_confirmation">Vuoi cancellare tutti gli eventi\? Questo lascerà i tuoi tipi di evento e le altre impostazioni invariate.</string>
     <string name="show_a_grid">Mostra una griglia</string>
     <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
     <string name="dim_past_events">Rimuovi gli eventi passati</string>
@@ -265,11 +265,11 @@
     <!-- FAQ -->
     <string name="faq_1_title">Come posso rimuovere le festività importate tramite il pulsante «Aggiungi festività»\?</string>
     <string name="faq_1_text">Le festività create in questo modo sono inseriti in eventi di tipo «Festività». Andare in Impostazioni → Gestisci tipi di eventi, tenere premuto sul tipo desiderato ed eliminarlo selezionando il cestino.</string>
-    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, o altri servizi che supportano CalDAV?</string>
+    <string name="faq_2_title">Posso sincronizzare i miei eventi tramite Google Calendar, o altri servizi che supportano CalDAV\?</string>
     <string name="faq_2_text">Sì, basta attivare l\'opzione «Sincronizzazione CalDAV» nelle impostazioni dell\'applicazione e selezionare i calendari da sincronizzare. Comunque è necessaria un\'applicazione di terze parti per gestire la sincronizzazione tra dispositivo e server. In caso si voglia sincronizzare con Google Calendar, la loro applicazione ufficiale effettua questo lavoro. Per altri calendari sono necessarie applicazioni di terze parti, per esempio DAVx5.</string>
-    <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare?</string>
+    <string name="faq_3_title">Visualizzo i promemoria, ma non sento l\'audio. Cosa posso fare\?</string>
     <string name="faq_3_text">Non solo visualizzare l\'attuale promemoria, ma anche riprodurre l\'audio è un lavoro prettamente del sistema. Se non si sente alcun suono, provare ad andare nelle impostazioni dell\'applicazione, premere l\'opzione «Canale audio utilizzato per il promemoria» e cambia il canale. Se ancora non funziona, controllare le impostazioni dell\'audio, in particolare se il canale è stato mutato.</string>
-    <string name="faq_4_title">L\'app supporta diversi fusi orari?</string>
+    <string name="faq_4_title">L\'app supporta diversi fusi orari\?</string>
     <string name="faq_4_text">Sì. Solitamente tutti gli eventi vengono create nel tuo fuso orario. Se vuoi cambiare il fuso orario di un specifico evento, devi abilitare la funzionalitá nelle impostazioni dell\'app, successivamente potrai cambiare il fuso nella schermata di dettaglio dell\'evento. La funzionalitá é disabilitata inizialmente siccome la maggior parte degli utenti non ne hanno bisogno.</string>
     <string name="faq_5_title">L\'app non mostra notifiche, perché\?</string>
     <string name="faq_5_text">Controlla la batteria del tuo dispositivo e le impostazioni di notifica, se non c\'è nulla che blocchi i promemoria, o che uccida l\'app in sfondo. Si potrebbe anche dare un\'occhiata a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, ha alcuni suggerimenti utili.</string>

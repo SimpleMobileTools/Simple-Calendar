@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Parece que você não tem próximos eventos.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para a data</string>
-    <string name="upgraded_from_free">Ei,\n\nparece que você fez a atualização do aplicativo antigo. É necessário migrar manualmente os eventos armazenados localmente, exportando um arquivo .ics e o importando novamente. Encontre os botões de exportação e importação no menu da tela principal.\n\nEm seguida, desinstale a versão antiga, que apresenta o botão de atualização para a versão Pro na tela de configuração. Na sequência, será necessário redefinir as configurações do aplicativo.\n\nObrigado!</string>
+    <string name="upgraded_from_free">Ei,
+\n
+\nparece que você fez a atualização do aplicativo antigo. É necessário migrar manualmente os eventos armazenados localmente, exportando um arquivo .ics e o importando novamente. Encontre os botões de exportação e importação no menu da tela principal.
+\n
+\nEm seguida, desinstale a versão antiga, que apresenta o botão de atualização para a versão Pro na tela de configuração. Na sequência, será necessário redefinir as configurações do aplicativo.
+\n
+\nObrigado!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>
@@ -58,7 +64,7 @@
     <string name="delete_future_occurrences">Exclua essa e todas as ocorrências futuras</string>
     <string name="delete_all_occurrences">Apagar todas as ocorrências</string>
     <string name="update_one_only">Atualizar a ocorrência selecionada</string>
-    <string name="update_this_and_future_occurrences">Atualizar esta e todas as ocorrências futuras </string>
+    <string name="update_this_and_future_occurrences">Atualizar esta e todas as ocorrências futuras</string>
     <string name="update_all_occurrences">Atualizar todas as ocorrências</string>
     <string name="repeat_till_date">Repetir até uma data</string>
     <string name="stop_repeating_after_x">Parar repetição após x ocorrências</string>
@@ -175,7 +181,7 @@
     <string name="replace_description_with_location">Substituir descrição do evento por localização</string>
     <string name="display_description_or_location">Exibir descrição ou localização</string>
     <string name="delete_all_events">Deletar todos os eventos</string>
-    <string name="delete_all_events_confirmation">Tem certeza de que deseja excluir todos os eventos? Isso deixará seus tipos de eventos e outras configurações intactas.</string>
+    <string name="delete_all_events_confirmation">Tem certeza de que deseja excluir todos os eventos\? Isso deixará seus tipos de eventos e outras configurações intactas.</string>
     <string name="show_a_grid">Mostrar uma grid</string>
     <string name="loop_reminders">Lembretes de loop até que seja dispensado</string>
     <string name="dim_past_events">Escurecer eventos passados</string>
@@ -209,7 +215,7 @@
     <string name="select_caldav_calendars">Selecione calendários para sincronizar</string>
     <string name="manage_synced_calendars">Gerenciar calendários sincronizados</string>
     <string name="store_locally_only">Armazenar apenas localmente</string>
-    <string name="refresh_caldav_calendars">Recarregar Calendarios CalDAV </string>
+    <string name="refresh_caldav_calendars">Recarregar Calendarios CalDAV</string>
     <string name="refreshing">Recarregando…</string>
     <string name="refreshing_complete">Carregamento completo</string>
     <string name="editing_calendar_failed">A edição do calendário falhou</string>
@@ -259,17 +265,16 @@
     <!-- FAQ -->
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \"Adicionar feriados\"\?</string>
     <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \"Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
-    <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV?</string>
-    <string name="faq_2_text">Sim, basta ativar \ "CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
-         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
-    <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer?</string>
-    <string name="faq_3_text">A exibição do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se você não consegue ouvir o som, verifique as configurações do aplicativo,
-        selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>
-    <string name="faq_4_title">O aplicativo oferece suporte para fuso horário?</string>
+    <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV\?</string>
+    <string name="faq_2_text">"Sim, basta ativar  CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
+\n         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5."</string>
+    <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer\?</string>
+    <string name="faq_3_text">A exibição do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se você não consegue ouvir o som, verifique as configurações do aplicativo, selecionando a opção \"Fonte de áudio usada pelos lembretes\" e modificando o seu valor. Se isso não funcionar, verifique as configurações, especialmente se o som não está mudo.</string>
+    <string name="faq_4_title">O aplicativo oferece suporte para fuso horário\?</string>
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados em seu fuso horário atual. Se você deseja alterar o fuso horário de um evento, será necessário habilitar a escolha de fuso horário nas configurações do aplicativo e alterá-lo na tela de detalhes do evento. Este recurso fica desabilitado por padrão, pois a maioria das pessoas não precisa usá-lo.</string>
     <string name="faq_5_title">O aplicativo não mostra notificações, por que\?</string>
     <string name="faq_5_text">Verifique a bateria do seu dispositivo e as configurações de notificações para ver se algo está bloqueando os lembretes ou desligando aplicativos de fundo. Você também pode dar uma olhada em &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, pode ajudar com algumas dicas úteis.</string>
-    <string name="faq_6_title">Como posso modificar ou excluir um tipo de evento já existente?</string>
+    <string name="faq_6_title">Como posso modificar ou excluir um tipo de evento já existente\?</string>
     <string name="faq_6_text">Você pode modificar ou excluir um tipo de evento através das Configurações - Gerenciar tipos de evento. Clique no evento desejado para editar o texto ou cor, ou toque e segure o evento desejado e arraste-o até a lixeira para excluí-lo.</string>
     <!--
         Não encontrou todas as cadeias a traduzir? Existem mais algumas em:

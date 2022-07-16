@@ -181,7 +181,7 @@
     <string name="replace_description_with_location">Terminbeschreibung durch Ort ersetzen</string>
     <string name="display_description_or_location">Beschreibung oder Ort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
-    <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst? Deine Termintypen und Einstellungen bleiben erhalten.</string>
+    <string name="delete_all_events_confirmation">Bist du sicher, dass du alle Termine löschen willst\? Deine Termintypen und Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
@@ -267,7 +267,7 @@
     <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp „Feiertage“ deklariert. Du kannst in den Einstellungen -&gt; Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV-unterstützende Dienste synchronisieren\?</string>
     <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate Anwendung, welche die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google-Kalender synchronisieren willst, kann deren offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter wie z. B. DAVx5.</string>
-    <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun?</string>
+    <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun\?</string>
     <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android-) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
     <string name="faq_4_title">Unterstützt die Anwendung Zeitzonen\?</string>
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können, muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
