@@ -268,7 +268,7 @@
     <!-- FAQ -->
     <string name="faq_1_title">Kako mogu ukloniti praznike uvezene putem gumba „Dodaj praznik”\?</string>
     <string name="faq_1_text">Praznik koji je stvoren na taj način umetnut je u novu vrstu događaja pod nazivom „Praznici”. Idi u Postavke -&gt; Upravljanje vrstama događaja, dugo pritisni zadanu vrstu događaja i izbriši ga odabirom koša za smeće.</string>
-    <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV?</string>
+    <string name="faq_2_title">Mogu li sinkronizirati događaje putem Google Kalendara ili druge usluge koje podržavaju CalDAV\?</string>
     <string name="faq_2_text">Da, jednostavno uključi opciju „CalDAV sinkronizacija” u postavkama aplikacije i odaberi kalendare koje želiš sinkronizirati. Međutim, trebat ćeš stranu aplikaciju koja će posredovati između uređaja i poslužitelja. U slučaju da želiš sinkronizirati Google kalendar, njihova službena aplikacija Kalendar će obaviti posao. Za ostale kalendare ćeš trebati strani adapter za sinkronizaciju, na primjer DAVx5.</string>
     <string name="faq_3_title">Vidim vizualne podsjetnike, ali ne čujem zvuk. Što mogu učiniti\?</string>
     <string name="faq_3_text">Prikaz podsjetnika, ali i reprodukcija zvuka, jako ovise o Android sustavu. Ako ne čuješ zvuk, idi u postavke aplikacije, odaberi opciju „Audio prijenos za podsjetnike” te promjeni vrijednost. Ako i dalje ne radi, provjeri postavke zvuka, ako zvuk odabranog kanala nije ugašen.</string>
