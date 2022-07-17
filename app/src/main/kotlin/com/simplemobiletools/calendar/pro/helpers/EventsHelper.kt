@@ -285,7 +285,6 @@ class EventsHelper(val context: Context) {
             } else {
                 try {
                     val typesList = context.config.getDisplayEventTypessAsList()
-                    events.addAll(eventsDB.getTasksFromTo(fromTS, toTS, typesList))
 
                     events.addAll(eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, typesList).toMutableList() as ArrayList<Event>)
                 } catch (e: Exception) {
@@ -364,13 +363,13 @@ class EventsHelper(val context: Context) {
             if (displayEventTypes.isEmpty()) {
                 return ArrayList()
             } else {
-                eventsDB.getRepeatableEventsFromToWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
             }
         } else {
             if (eventId == -1L) {
-                eventsDB.getRepeatableEventsFromToWithTypes(toTS).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithTypes(toTS).toMutableList() as ArrayList<Event>
             } else {
-                eventsDB.getRepeatableEventFromToWithId(eventId, toTS).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithId(eventId, toTS).toMutableList() as ArrayList<Event>
             }
         }
 
