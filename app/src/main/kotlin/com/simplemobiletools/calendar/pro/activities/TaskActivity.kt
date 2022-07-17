@@ -17,6 +17,7 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
+import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
@@ -57,9 +58,11 @@ class TaskActivity : SimpleActivity() {
                 return@ensureBackgroundThread
             }
 
+            val storedEventTypes = eventTypesDB.getEventTypes().toMutableList() as ArrayList<EventType>
+            val localEventType = storedEventTypes.firstOrNull { it.id == config.lastUsedLocalEventTypeId }
             runOnUiThread {
                 if (!isDestroyed && !isFinishing) {
-                    gotTask(savedInstanceState, task)
+                    gotTask(savedInstanceState, localEventType, task)
                 }
             }
         }
@@ -126,7 +129,11 @@ class TaskActivity : SimpleActivity() {
         updateTimeText()
     }
 
-    private fun gotTask(savedInstanceState: Bundle?, task: Event?) {
+    private fun gotTask(savedInstanceState: Bundle?, localEventType: EventType?, task: Event?) {
+        if (localEventType == null) {
+            config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
+        }
+
         mEventTypeId = if (config.defaultEventTypeId == -1L) config.lastUsedLocalEventTypeId else config.defaultEventTypeId
 
         if (task != null) {
