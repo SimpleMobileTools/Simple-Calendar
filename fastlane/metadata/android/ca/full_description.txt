@@ -1,11 +1,11 @@
-El Simple Calendar Pro és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis!
+El Simple Calendar és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis!
 
-Tant si organitzeu esdeveniments individuals o recurrents, aniversaris, sants, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar Pro fa que sigui fàcil de mantenir-se organitzat. Amb una increïble varietat d'opcions de personalització, podeu personalitzar recordatoris d'esdeveniments, sons de notificació, ginys de calendari i l'aspecte de l'aplicació.
+Tant si organitzeu esdeveniments individuals o recurrents, aniversaris, sants, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar fa que sigui fàcil de mantenir-se organitzat. Amb una increïble varietat d'opcions de personalització, podeu personalitzar recordatoris d'esdeveniments, sons de notificació, ginys de calendari i l'aspecte de l'aplicació.
 
 Les vistes diàries, setmanals i mensuals fan que revisar els vostres propers esdeveniments i cites sigui molt fàcil. Fins i tot podeu veure-ho tot com una llista única d'esdeveniments en comptes de veure'ls del calendari, de manera que sapigueu exactament què passa a la vostra vida i quan.
 
 ----------------------------------------------------------
-Simple Calendar Pro: funcions i avantatges
+Simple Calendar: funcions i avantatges
 ----------------------------------------------------------
 
 ✔️ Sense anuncis ni finestres emergents molestes
@@ -14,7 +14,7 @@ Simple Calendar Pro: funcions i avantatges
 ✔️ Èmfasi en la simplicitat: fa el que ha de fer un calendari!
 ✔️ Codi obert
 ✔️ Temes i ginys de calendari/esdeveniments totalment personalitzables
-✔️ Traduït a 29 idiomes
+✔️ Traduït a 40 idiomes
 ✔️ Exporta la configuració a fitxers .txt per importar-los en un altre dispositiu
 ✔️ Admet la sincronització del calendari CalDAV per sincronitzar esdeveniments entre dispositius
 ✔️ Vistes diàries, setmanals, mensuals, anuals i d'esdeveniments al calendari
@@ -27,10 +27,13 @@ Simple Calendar Pro: funcions i avantatges
 ✔️ Feu servir com a calendari personal o calendari empresarial
 ✔️ Trieu entre recordatoris i notificacions per correu electrònic per avisar-vos d'un esdeveniment
 
-DESCARREGUEU EL SIMPLE CALENDAR PRO: EL CALENDARI SENZILL FORA DE LÍNIA SENSE ANUNCIS!
+DESCARREGUEU EL SIMPLE CALENDAR: EL CALENDARI SENZILL FORA DE LÍNIA SENSE ANUNCIS!
 
 Consulteu el conjunt complet d'eines simples aquí:
 https://www.simplemobiletools.com
+
+Standalone website of Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
 
 Facebook:
 https://www.facebook.com/simplemobiletools

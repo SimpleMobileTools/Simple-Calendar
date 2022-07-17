@@ -12,7 +12,13 @@
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="go_to_today">Přejít na dnešní datum</string>
     <string name="go_to_date">Přejít na datum</string>
-    <string name="upgraded_from_free">Zdravím,\n\nzdá se, že jste přešli ze staré neplacené verze této aplikace. Lokálně uložené události musíte přemigrovat ručně pomocí exportu do .ics souboru a následně naimportovat. Tlačítka pro export a import najdete v obou verzích pod menu na hlavní obrazovce.\n\nStarou verzi aplikace, která má nahoře nastavení tlačítko \'Stáhnout Pro verzi\', můžete poté odinstalovat. Následně si budete muset opět nastavit položky v nastavení aplikace.\n\nDíky!</string>
+    <string name="upgraded_from_free">Zdravím,
+\n
+\nzdá se, že jste přešli ze staré neplacené verze této aplikace. Lokálně uložené události musíte přemigrovat ručně pomocí exportu do .ics souboru a následně naimportovat. Tlačítka pro export a import najdete v obou verzích pod menu na hlavní obrazovce.
+\n
+\nStarou verzi aplikace, která má nahoře nastavení tlačítko \'Stáhnout Pro verzi\', můžete poté odinstalovat. Následně si budete muset opět nastavit položky v nastavení aplikace.
+\n
+\nDíky!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendář - měsíční</string>
     <string name="widget_list">Kalendář - seznam událostí</string>
@@ -175,7 +181,7 @@
     <string name="replace_description_with_location">Nahradit popis udalosti lokací</string>
     <string name="display_description_or_location">Zobrazit popis nebo lokaci</string>
     <string name="delete_all_events">Smazat všechny události</string>
-    <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
+    <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události\? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
     <string name="show_a_grid">Zobrazovat mřížku</string>
     <string name="loop_reminders">Opakovat připomínky až do zamítnutí</string>
     <string name="dim_past_events">Utlumit minulé události</string>
@@ -260,18 +266,14 @@
         <item quantity="other">v průběhu %d měsíců</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Jak mohu odstranit svátky importované přes tlačítko \"Přidat svátky\"?</string>
-    <string name="faq_1_text">Svátky vytvořené touto cestou jsou vloženy pod novým typem události \"Svátky\". Odstranit je můžete přes: Nastavení -&gt; Správa typů událostí -&gt;
-        dlouze podržte daný typ události a stiskněte tlačítko s ikonou koše pro odstranění.</string>
-    <string name="faq_2_title">Mohu synchronizovat své události pomocí Google Kalendáře nebo přes jinou službu podporující CalDav?</string>
-    <string name="faq_2_text">Ano, zapnutím \"CalDAV synchronizace\" v nastavení aplikace a vybráním kalendářů, se kterými se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery.
-        Pokud chcete synchronizovat Google kalendář, bude vám stačit jejich oficiální aplikace kalendáře. Pro jiné kalendáře budete potřebovat synchronizační adaptér třetí strany, například DAVx5.</string>
-    <string name="faq_3_title">Připomínku vidím, ale neslyším žádný zvuk. Co s tím?</string>
-    <string name="faq_3_text">Nejen zobrazování aktuální připomínky, ale i přehrávání zvuku je velmi ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace,
-        vyberte: \"Zvukový kanál používaný připomínkami\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk zvoleného kanálu vypnut v nastavení vašeho systému.</string>
-    <string name="faq_4_title">Podporuje aplikace časová pásma?</string>
-    <string name="faq_4_text">Ano, podporuje. Ve výchozím stavu jsou všechny události vytvářeny ve vašem současném časovém pásmu. Pokud chcete změnit časové pásmo některé události,
-        musíte nejdříve povolit úpravy časových pásem v nastavení aplikace, poté jej změníte na obrazovce s detaily události. Ve výchozím nastavení je úprava vypnuta, neboť většina lidí ji nebude potřebovat.</string>
+    <string name="faq_1_title">Jak mohu odstranit svátky importované přes tlačítko \"Přidat svátky\"\?</string>
+    <string name="faq_1_text">Svátky vytvořené touto cestou jsou vloženy pod novým typem události \"Svátky\". Odstranit je můžete přes: Nastavení -&gt; Správa typů událostí -&gt; dlouze podržte daný typ události a stiskněte tlačítko s ikonou koše pro odstranění.</string>
+    <string name="faq_2_title">Mohu synchronizovat své události pomocí Google Kalendáře nebo přes jinou službu podporující CalDav\?</string>
+    <string name="faq_2_text">Ano, zapnutím \"CalDAV synchronizace\" v nastavení aplikace a vybráním kalendářů, se kterými se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery. Pokud chcete synchronizovat Google kalendář, bude vám stačit jejich oficiální aplikace kalendáře. Pro jiné kalendáře budete potřebovat synchronizační adaptér třetí strany, například DAVx5.</string>
+    <string name="faq_3_title">Připomínku vidím, ale neslyším žádný zvuk. Co s tím\?</string>
+    <string name="faq_3_text">Nejen zobrazování aktuální připomínky, ale i přehrávání zvuku je velmi ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace, vyberte: \"Zvukový kanál používaný připomínkami\" a změňte na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk zvoleného kanálu vypnut v nastavení vašeho systému.</string>
+    <string name="faq_4_title">Podporuje aplikace časová pásma\?</string>
+    <string name="faq_4_text">Ano, podporuje. Ve výchozím stavu jsou všechny události vytvářeny ve vašem současném časovém pásmu. Pokud chcete změnit časové pásmo některé události, musíte nejdříve povolit úpravy časových pásem v nastavení aplikace, poté jej změníte na obrazovce s detaily události. Ve výchozím nastavení je úprava vypnuta, neboť většina lidí ji nebude potřebovat.</string>
     <string name="faq_5_title">Aplikace nezobrazuje žádná oznámení, proč tomu tak je\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
     <string name="faq_6_title">Jak mohu upravit nebo odstranit existující typ události\?</string>

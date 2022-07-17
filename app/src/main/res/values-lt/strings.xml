@@ -274,9 +274,9 @@
     <string name="faq_3_text">Ne vien tik priminimų atvaizdavimas, bet ir garso atkūrimas yra labai paveikiamas sistemos. Jei negirdite jokio garso, pabandykite pereiti į programėlės nustatymus, paspauskite ant parinkties „Garso srautas, kurį naudos priminimai“ ir pakeiskite ją į kitą reikšmę. Jei garsas ir toliau nebus girdimas, patikrinkite garso nustatymus, ar kartais nėra nutildytas tam tikras garso srautas.</string>
     <string name="faq_4_title">Ar ši programėlė palaiko laiko juostas\?</string>
     <string name="faq_4_text">Taip, palaiko. Pagal numatymą, visi įvykiai yra sukuriami jūsų dabartinėje laiko juostoje. Jei norite pakeisti įvykio laiko juostą, iš pradžių, programėlės nustatymuose turite įjungti laiko juostų parinktį, o tuomet pakeisti laiko juostą išsamesnėje įvykio informacijoje. Pagal numatymą, laiko juostos yra išjungtos, nes daugelis žmonių jomis nesinaudoja.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that?</string>
+    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type?</string>
+    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Haven't found some strings? There's more at

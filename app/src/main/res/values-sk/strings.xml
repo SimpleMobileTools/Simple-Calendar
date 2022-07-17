@@ -12,13 +12,17 @@
     <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
     <string name="go_to_today">Prejsť na dnešok</string>
     <string name="go_to_date">Prejsť na dátum</string>
-    <string name="upgraded_from_free">Zdravím,\n\nvyzerá to tak, že ste zo starej bezplatnej apky prešlie na novú, platenú. Lokálne uložené udalosti musíte premigrovať manuálne pomocou exportovania do .ics súboru a následného importovania. Tlačidlá pre export a import nájdete v menu hlavnej obrazovky.\n\nStarú apku, ktorá má na vrchu nastavení tlačidlo \'Stiahnuť Pro verziu\', môžete potom odinštalovať. Následne si budete musieť opäť nastaviť položky v nastaveniach aplikácie.\n\nVďaka!</string>
-
+    <string name="upgraded_from_free">Zdravím,
+\n
+\nvyzerá to tak, že ste zo starej bezplatnej apky prešlie na novú, platenú. Lokálne uložené udalosti musíte premigrovať manuálne pomocou exportovania do .ics súboru a následného importovania. Tlačidlá pre export a import nájdete v menu hlavnej obrazovky.
+\n
+\nStarú apku, ktorá má na vrchu nastavení tlačidlo \'Stiahnuť Pro verziu\', môžete potom odinštalovať. Následne si budete musieť opäť nastaviť položky v nastaveniach aplikácie.
+\n
+\nVďaka!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendár mesačný</string>
     <string name="widget_list">Kalendár so zoznamom</string>
     <string name="widget_todays_date">Kalendár s dnešným dátumom</string>
-
     <!-- Event -->
     <string name="event">Udalosť</string>
     <string name="edit_event">Upraviť udalosť</string>
@@ -33,7 +37,6 @@
     <string name="please_fill_location">Prosím zadajte polohu, ktorá má byť zobrazená na mape</string>
     <string name="public_event_notification_text">Blíži sa udalosť</string>
     <string name="saving_filtered_out">Ukladá sa… Ale zvolený typ je vyfiltrovaný v hornom Menu - Filtrovať</string>
-
     <!-- Tasks -->
     <string name="task">Úloha</string>
     <string name="tasks">Úlohy</string>
@@ -43,7 +46,6 @@
     <string name="duplicate_task">Duplikovať úlohu</string>
     <string name="mark_completed">Označiť ako dokončenú</string>
     <string name="mark_incomplete">Označiť ako nedokončenú</string>
-
     <!-- Event Repetition -->
     <string name="repetition">Opakovanie</string>
     <string name="no_repetition">Neopakuje sa</string>
@@ -84,7 +86,6 @@
     <string name="fourth_m">štvrtý</string>
     <string name="fifth_m">piaty</string>
     <string name="last_m">posledný</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Opakovať každú</string>
@@ -95,7 +96,6 @@
     <string name="fourth_f">štvrtú</string>
     <string name="fifth_f">piatu</string>
     <string name="last_f">poslednú</string>
-
     <!-- Birthdays -->
     <string name="birthdays">Narodeniny</string>
     <string name="add_birthdays">Pridať narodeniny kontaktov</string>
@@ -103,7 +103,6 @@
     <string name="no_new_birthdays">Nenašli sa žiadne nové narodeniny</string>
     <string name="birthdays_added">Narodeniny boli úspešne pridané</string>
     <string name="add_birthdays_automatically">Pridať nové narodeniny automaticky</string>
-
     <!-- Anniversaries -->
     <string name="anniversaries">Výročia</string>
     <string name="add_anniversaries">Pridať výročia kontaktov</string>
@@ -111,14 +110,12 @@
     <string name="no_new_anniversaries">Nenašli sa žiadne nové výročia</string>
     <string name="anniversaries_added">Výročia boli úspešne pridané</string>
     <string name="add_anniversaries_automatically">Pridať nové výročia automaticky</string>
-
     <!-- Event Reminders -->
     <string name="reminder">Pripomenka</string>
     <string name="before">pred</string>
     <string name="add_another_reminder">Pridať ďalšiu pripomienku</string>
     <string name="event_reminders">Pripomienky udalostí</string>
     <string name="reminders">Pripomienky</string>
-
     <!-- Event attendees -->
     <string name="add_another_attendee">Pridať ďalšieho účastníka</string>
     <string name="my_status">Môj stav:</string>
@@ -126,10 +123,8 @@
     <string name="not_going">Nezúčastním sa</string>
     <string name="maybe_going">Možno sa zúčastním</string>
     <string name="invited">Pozvaný</string>
-
     <!-- Time zones -->
     <string name="enter_a_country">Zadajte krajinu alebo časové pásmo</string>
-
     <!-- Export / Import -->
     <string name="import_events">Importovať udalosti</string>
     <string name="export_events">Exportovať udalosti</string>
@@ -141,16 +136,13 @@
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
     <string name="ignore_event_types">Ignorovať typy udalostí v súbore, stále použiť predvolený</string>
-
     <!-- Event details -->
     <string name="location">Miesto</string>
     <string name="description">Popis</string>
     <string name="all_day">Celodenná</string>
-
     <!-- Weekly view -->
     <string name="week">Týždeň</string>
     <string name="start_week_with_current_day">Začať týždeň s aktuálnym dňom</string>
-
     <!-- Event types -->
     <string name="event_types">Typy udalostí</string>
     <string name="add_new_type">Pridať nový typ</string>
@@ -163,7 +155,6 @@
     <string name="move_events_into_default">Presunúť dotknuté udalosti do predvoleného typu udalostí</string>
     <string name="remove_affected_events">Natrvalo odstrániť dotknuté udalosti</string>
     <string name="unsync_caldav_calendar">Na odstránenie CalDAV kalendára musíte vypnúť jeho synchronizáciu</string>
-
     <!-- Holidays -->
     <string name="holidays">Sviatky</string>
     <string name="add_holidays">Pridať sviatky</string>
@@ -172,7 +163,6 @@
     <string name="holidays_imported_successfully">Sviatky boli úspešne importované do nového typu udalostí \"Sviatky\"</string>
     <string name="importing_some_holidays_failed">Importovanie niektorých sviatkov zlyhalo</string>
     <string name="importing_holidays_failed">Importovanie udalostí zlyhalo</string>
-
     <!-- Settings -->
     <string name="manage_event_types">Spravovať typy udalostí</string>
     <string name="start_day_at">Začať deň o</string>
@@ -191,7 +181,7 @@
     <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
     <string name="display_description_or_location">Zobraziť popis alebo miesto</string>
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
-    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
+    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti\? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
     <string name="show_a_grid">Zobraziť mriežku</string>
     <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
     <string name="dim_past_events">Stlmiť minulé udalosti</string>
@@ -220,7 +210,6 @@
     <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
     <string name="manage_quick_filter_event_types">Spravovať typy udalostí v rýchlom filtrovaní</string>
     <string name="allow_creating_tasks">Povoliť vytváranie úloh</string>
-
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Zvoľte kalendáre pre synchronizáciu</string>
@@ -238,7 +227,6 @@
     <string name="no_synchronized_calendars">Nenašli sa žiadne synchronizovateľné kalendáre</string>
     <string name="status_free">Dostupný</string>
     <string name="status_busy">Zaneprázdnený</string>
-
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">pondelok</string>
@@ -248,7 +236,6 @@
     <string name="friday_alt">piatok</string>
     <string name="saturday_alt">sobotu</string>
     <string name="sunday_alt">nedeľu</string>
-
     <!-- List widget config example events -->
     <string name="sample_title_1">Cvičenie</string>
     <string name="sample_description_1">Nohy</string>
@@ -258,7 +245,6 @@
     <string name="sample_title_4">Obed s Katkou</string>
     <string name="sample_description_4">V supermarkete</string>
     <string name="sample_title_5">Káva</string>
-
     <!-- List widget config -->
     <string name="show_events_happening">Zobraziť udalosti z:</string>
     <string name="within_the_next_one_year">Najbližšieho 1 roka</string>
@@ -279,23 +265,18 @@
         <item quantity="few">Najbližších %d mesiacov</item>
         <item quantity="other">Najbližších %d mesiacov</item>
     </plurals>
-
     <!-- FAQ -->
-    <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"?</string>
-    <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -> Spravovať typy udalostí,
-        podržať daný typ a vymazať ho pomocou smetného koša.</string>
-    <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV?</string>
-    <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany.
-        Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVx5.</string>
-    <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť?</string>
-    <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a
-        zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
-    <string name="faq_4_title">Podporuje apka časové pásma?</string>
-    <string name="faq_4_text">Áno, podporuje. Štandardne sú všetky udalosti vytvárané vo vašom súčasnom časovom pásme. Ak chcete zmeniť časové pásmo niektorej udalosti,
-        najprv musíte povoliť menenie časových pásem v nastaveniach apky, následne ho zmeniť na obrazovke s detailmi udalosti. Menenie je štandardne vypnuté, keďže ho väčšina ľudí potrebovať nebude.</string>
-    <string name="faq_5_title">Apka nezobrazuje upozornenia, čím to je?</string>
-    <string name="faq_5_text">Pozrite sa do nastavení batérie a upozornení vášho zariadenia, či nič neblokuje upozornenia, alebo nevypína na pozadí apku. Mohli by ste sa pozrieť aj na  &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, je tam veľa užitočných tipov.</string>
-    <string name="faq_6_title">Ako môžem upraviť alebo odstrániť existujúci typ udalosti?</string>
+    <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"\?</string>
+    <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -&gt; Spravovať typy udalostí, podržať daný typ a vymazať ho pomocou smetného koša.</string>
+    <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV\?</string>
+    <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany. Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVx5.</string>
+    <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť\?</string>
+    <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
+    <string name="faq_4_title">Podporuje apka časové pásma\?</string>
+    <string name="faq_4_text">Áno, podporuje. Štandardne sú všetky udalosti vytvárané vo vašom súčasnom časovom pásme. Ak chcete zmeniť časové pásmo niektorej udalosti, najprv musíte povoliť menenie časových pásem v nastaveniach apky, následne ho zmeniť na obrazovke s detailmi udalosti. Menenie je štandardne vypnuté, keďže ho väčšina ľudí potrebovať nebude.</string>
+    <string name="faq_5_title">Apka nezobrazuje upozornenia, čím to je\?</string>
+    <string name="faq_5_text">Pozrite sa do nastavení batérie a upozornení vášho zariadenia, či nič neblokuje upozornenia, alebo nevypína na pozadí apku. Mohli by ste sa pozrieť aj na &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, je tam veľa užitočných tipov.</string>
+    <string name="faq_6_title">Ako môžem upraviť alebo odstrániť existujúci typ udalosti\?</string>
     <string name="faq_6_text">Oboje viete spraviť v nastaveniach apky - Spravovať typy udalostí. Kliknutím viete upraviť názov a farbu, odstrániť ich viete dlhým podržaním a použitím odpadkového koša na hornom menu.</string>
     <!--
         Haven't found some strings? There's more at

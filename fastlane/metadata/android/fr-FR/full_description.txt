@@ -1,0 +1,45 @@
+Simple Calendar est un planificateur de calendrier hors ligne extrêmement personnalisable pour les téléphones mobiles Android, conçu pour faire exactement ce qu'une application de calendrier personnel Android devrait faire en 2020. Pas de fonctionnalités compliquées, d'autorisations inutiles et pas de publicité!
+
+Que vous recherchiez un simple rappel de rendez-vous mobile ou que vous organisiez des événements uniques ou récurrents, des anniversaires, que vous ayez besoin de rappeler des anniversaires, de planifier des réunions d'affaires, des rendez-vous ou toute autre chose, Simple Calendar - merveilleux planificateur d'horaires pour téléphones mobiles Android - le rend < b>facile de rester organisé. Avec une incroyable variété d 'options de personnalisation, vous pouvez personnaliser les rappels d'événements, l'apparence des notifications et l'apparence du simple rappel mobile.
+
+Remarquable et facile à utiliser, l'agenda personnel et l'organiseur familial vous permettent de vérifier facilement votre agenda à venir, de planifier des réunions d'affaires, des événements et des rendez-vous. Souvenez-vous de tout agenda dont vous devez vous souvenir.
+
+---------------------------------------------------------------------
+Calendrier simple - Fonctionnalités et avantages
+---------------------------------------------------------------------
+
+✔️ Pas de publicités ou popups ennuyeux, planificateur de calendrier vraiment accessible!
+✔️ Aucun accès Internet nécessaire, vous offrant plus de confidentialité, de sécurité et de stabilité
+✔️ L'accent est mis sur la beauté et la simplicité - il fait ce qu'un agenda personnel quotidien doit faire!
+✔️ Open source quotidien, traduit en 40 langues
+✔️ Passez rapidement d'une vue quotidienne, hebdomadaire, mensuelle, annuelle et d'un événement à l'autre sur le livre de l'organisateur familial
+✔️ L'application Calendrier gratuite prend en charge l'exportation et l'importation d'événements via des fichiers .ics
+✔️ Rappel de rendez-vous et d'événements personnels et agenda facile à utiliser
+✔️ Création d'événement flexible - heures, durée, rappels, règles de répétition puissantes
+✔️ Utilisation comme calendrier personnel ou professionnel partagé entre les équipes au travail
+✔️ Thèmes personnalisables
+✔️ Prise en charge de CalDAV pour la synchronisation des événements via Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc.
+✔️ Gérez tout votre agenda professionnel avec ce planificateur d'horaire Android et cet organisateur d'événements et de famille
+✔️ Possibilité d'importer facilement les jours fériés, ou les anniversaires des contacts
+✔️ Filtrez rapidement les événements personnels par type d'événement
+✔️ De nombreuses façons de prédéfinir les événements par défaut (rappels, répétition, durée)
+✔️ Planificateur d'horaire personnalisable - changer le son, la boucle, le flux audio, les vibrations
+✔️ Prise en charge de l'emplacement de l'événement quotidien, affiché sur une carte
+Possibilité de partager rapidement des événements sur les réseaux sociaux, les e-mails, etc.
+
+Ne contient aucune publicité ou autorisations inutiles. Il est entièrement open source, fournit des couleurs personnalisables.
+
+Découvrez la suite complète des outils Simples ici:
+https://www.simplemobiletools.com
+
+Site Web autonome de Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

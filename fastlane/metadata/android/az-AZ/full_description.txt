@@ -1,0 +1,24 @@
+CalDAV sinxronizasiyalı sadə bir kalendar. Siz asanca təkrarlanan hadisələrinizi və xatırladıcılarınızı yarada bilərsiniz, hətta həftə nömrələrini də göstərə bilir.
+
+Aylıq görünüş və hadisə siyahısı widgeti ehtiva edir hansı ki, siz oradan yazı rəngini, həmçinin, alfanı və arxa plan rəngini dəyişdirə bilərsiniz.
+
+Lazımsız reklam və ya icazə mövcud deyil. Tamamilə açıqlisanslıdır, rəng dəyişmə parametrləri var.
+
+Yaddaş icazəsi yalnız .ics faylından hadisələri çıxarmaq və ya daxil etmək üçün istifadə olunur.
+
+Kontakt icazəsi yalnız kontakt ad günlərini və il dönümlərini daxil etmək üçün istifadə olunur.
+
+Check out the full suite of Simple Tools here:
+https://www.simplemobiletools.com
+
+Standalone website of Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

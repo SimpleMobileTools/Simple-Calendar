@@ -1,0 +1,45 @@
+Simple Calendar guztiz pertsonalizatu daitekeen lineaz kanpoko egutegia da, egutegi batek egin beharko lukeena egiteko diseinatua. Eginbide korapilatsurik, beharrezkoa ez den baimenik eta iragarkirik ez!
+
+Gertaerak, urtebetetzeak, urteurrenak, negozio-bilerak, hitzorduak edo dena delakoa antolatu behar baduzu ere, Simple Calendar-rekin erraza da antolatzea. Eskaintzen dituen pertsonalizazio-aukera guztiekin gertaera-abisuak, jakinarazpen soinuak, egutegi-widgetak eta aplikazioaren estiloa pertsonalizatu dezakezu.
+
+Eguneko, asteko eta hilabeteko ikuspegiek erraz egiten dute hurrengo gertaerak eta hitzorduak begiratzea. Gertaeren zerrenda sinplean ere bistaratu dezakezu guztia, egutegi-ikuspegian bistaratu ordez, zure bizitzan zer eta noiz gertatuko den jakin dezazun.
+
+----------------------------------------------------------
+Simple Calendar – Eginbideak eta abantailak
+----------------------------------------------------------
+
+✔️ Iragarkirik edo laster-leiho nekagarririk ez
+✔️ Internet sarbiderik ez da behar, pribatutasun eta segurtasun handiagoa emanez
+✔️ Gutxieneko baimenak soilik eskatzen ditu
+✔️ Enfasia sinplizitatean: egutegi batek egin behar duena egiten du!
+✔️ Kode irekia
+✔️ Guztiz pertsonalizatu daitezkeen gaiak eta egutegi- edota gertaera-widgetak
+✔️ 40 hizkuntzatara itzulita
+✔️ Esportatu ezarpenak .txt fitxategietara beste gailu batean inportatzeko
+✔️ CalDAV egutegi-sinkronizazioa onartzen du, gertaerak gailu artean sinkronizatzeko
+✔️ Eguneko, asteko, hilabeteko, urteko eta gertaera-ikuspegiak egutegian
+✔️ Gertaerak .ics fitxategien bidez esportatzea eta inportatzea onartzen du
+✔️ Ezarri hainbat gertaera-abisu, pertsonalizatu gertaera-abisuaren soinua eta dardara
+✔️ Atzeratzeko aukera abisuetan
+✔️ Gehitu oporrak, urtebetetzeak, urteurrenak eta hitzortuak errazki
+✔️ Pertsonalizatu gertaerak: hasiera-ordua, iraupena, abisuak eta abar
+✔️ Gehitu parte-hartzaileak gertaera bakoitzean
+✔️ Egutegi pertsonala edo lanerako egutegi gisa erabili dezakezu
+✔️ Hautatu abisu eta eposta jakinarazpenen artean gertaera baten berri izateko
+
+DESKARGATU SIMPLE CALENDAR – LINEAZ KANPO ERABILI DAITEKEEN IRAGARKIRIK GABEKO EGUTEGI SINPLEA!
+
+Ikusi Simple Tools-en sorta osoa hemen:
+https://www.simplemobiletools.com
+
+Simple Calendar-ren webgune autonomoa:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools
