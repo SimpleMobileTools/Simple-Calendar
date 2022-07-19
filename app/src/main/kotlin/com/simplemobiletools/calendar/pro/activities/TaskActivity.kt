@@ -21,10 +21,12 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
+import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.EVERY_DAY_BIT
+import com.simplemobiletools.commons.helpers.SAVE_DISCARD_PROMPT_INTERVAL
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_task.*
@@ -47,6 +49,9 @@ class TaskActivity : SimpleActivity() {
     private var mRepeatInterval = 0
     private var mRepeatLimit = 0L
     private var mRepeatRule = 0
+    private var mTaskOccurrenceTS = 0L
+    private var mOriginalStartTS = 0L
+    private var mLastSavePromptTS = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,12 +95,55 @@ class TaskActivity : SimpleActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.save -> saveTask()
+            R.id.save -> saveCurrentTask()
             R.id.delete -> deleteTask()
             R.id.duplicate -> duplicateTask()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    private fun isTaskChanged(): Boolean {
+        if (!this::mTask.isInitialized) {
+            return false
+        }
+
+        val newStartTS: Long = mTaskDateTime.seconds()
+        val hasTimeChanged = if (mOriginalStartTS == 0L) {
+            mTask.startTS != newStartTS
+        } else {
+            mOriginalStartTS != newStartTS
+        }
+
+        val reminders = getReminders()
+        val originalReminders = mTask.getReminders()
+        if (task_title.text.toString() != mTask.title ||
+            task_description.text.toString() != mTask.description ||
+            reminders != originalReminders ||
+            mRepeatInterval != mTask.repeatInterval ||
+            mRepeatRule != mTask.repeatRule ||
+            mEventTypeId != mTask.eventType ||
+            hasTimeChanged
+        ) {
+            return true
+        }
+
+        return false
+    }
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isTaskChanged()) {
+            mLastSavePromptTS = System.currentTimeMillis()
+            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
+                if (it) {
+                    saveCurrentTask()
+                } else {
+                    super.onBackPressed()
+                }
+            }
+        } else {
+            super.onBackPressed()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -116,6 +164,8 @@ class TaskActivity : SimpleActivity() {
             putInt(REPEAT_INTERVAL, mRepeatInterval)
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
+
+            putLong(EVENT_TYPE_ID, mEventTypeId)
         }
     }
 
@@ -139,6 +189,7 @@ class TaskActivity : SimpleActivity() {
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
+            mEventTypeId = getLong(EVENT_TYPE_ID)
         }
 
         updateEventType()
@@ -154,7 +205,7 @@ class TaskActivity : SimpleActivity() {
 
         if (task != null) {
             mTask = task
-
+            mTaskOccurrenceTS = intent.getLongExtra(EVENT_OCCURRENCE_TS, 0L)
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mTask.id = null
                 updateActionBarTitle(getString(R.string.new_task))
@@ -211,7 +262,9 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun setupEditTask() {
-        mTaskDateTime = Formatter.getDateTimeFromTS(mTask.startTS)
+        val realStart = if (mTaskOccurrenceTS == 0L) mTask.startTS else mTaskOccurrenceTS
+        mOriginalStartTS = realStart
+        mTaskDateTime = Formatter.getDateTimeFromTS(realStart)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         updateActionBarTitle(getString(R.string.edit_task))
 
@@ -244,6 +297,21 @@ class TaskActivity : SimpleActivity() {
         updateActionBarTitle(getString(R.string.new_task))
     }
 
+    private fun saveCurrentTask() {
+        if (config.wasAlarmWarningShown || (mReminder1Minutes == REMINDER_OFF && mReminder2Minutes == REMINDER_OFF && mReminder3Minutes == REMINDER_OFF)) {
+            ensureBackgroundThread {
+                saveTask()
+            }
+        } else {
+            ReminderWarningDialog(this) {
+                config.wasAlarmWarningShown = true
+                ensureBackgroundThread {
+                    saveTask()
+                }
+            }
+        }
+    }
+
     private fun saveTask() {
         val newTitle = task_title.value
         if (newTitle.isEmpty()) {
@@ -253,7 +321,6 @@ class TaskActivity : SimpleActivity() {
             }
             return
         }
-
 
         val reminders = getReminders()
         if (!task_all_day.isChecked) {
@@ -293,11 +360,11 @@ class TaskActivity : SimpleActivity() {
             eventType = mEventTypeId
             type = TYPE_TASK
 
-            reminder1Minutes = mReminder1Minutes
+            reminder1Minutes = reminder1.minutes
             reminder1Type = mReminder1Type
-            reminder2Minutes = mReminder2Minutes
+            reminder2Minutes = reminder2.minutes
             reminder2Type = mReminder2Type
-            reminder3Minutes = mReminder3Minutes
+            reminder3Minutes = reminder3.minutes
             reminder3Type = mReminder3Type
 
             repeatInterval = mRepeatInterval
