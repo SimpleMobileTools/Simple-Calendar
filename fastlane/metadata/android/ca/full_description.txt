@@ -1,5 +1,4 @@
-El Simple Calendar és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis!
-***Permet la sincronització d'esdeveniments a través de Google Calendar
+El Simple Calendar 2022 és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis. Permet la sincronització d'esdeveniments a través de Google Calendar i altres aplicacions que permetin el protocol CalDAV.
 
 Descarregueu-lo ara!
 
@@ -43,6 +42,10 @@ Funcionalitats del Simple Calendar 2022
 ➕ Canvieu ràpidament entre visualitzacions diàries, setmanals, mensuals, anuals i d'esdeveniments
 
 DESCARREGUEU EL SIMPLE CALENDAR: EL CALENDARI SENZILL FORA DE LÍNIA SENSE ANUNCIS! PLANIFICA EL TEU HORARIS 2022!
+
+De manera predeterminada, inclou el «Material design» i un tema fosc, proporcionant una gran experiència d'usuari per a un ús fàcil. La manca d'accés a Internet us ofereix més privadesa, seguretat i estabilitat que altres aplicacions.
+
+No conté anuncis ni permisos innecessaris. És totalment de codi obert, ofereix colors personalitzables.
 
 Consulteu el conjunt complet d'eines simples aquí:
 https://www.simplemobiletools.com
