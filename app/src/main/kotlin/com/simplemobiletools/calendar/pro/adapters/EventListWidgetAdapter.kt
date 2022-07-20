@@ -191,27 +191,27 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         context.eventsHelper.getEventsSync(fromTS, toTS, applyTypeFilter = true) {
             val listItems = ArrayList<ListItem>(it.size)
             val replaceDescription = context.config.replaceDescription
-            val sorted = it.sortedWith(compareBy<Event> {
-                if (it.getIsAllDay()) {
-                    Formatter.getDayStartTS(Formatter.getDayCodeFromTS(it.startTS)) - 1
+            val sorted = it.sortedWith(compareBy<Event> { event ->
+                if (event.getIsAllDay()) {
+                    Formatter.getDayStartTS(Formatter.getDayCodeFromTS(event.startTS)) - 1
                 } else {
-                    it.startTS
+                    event.startTS
                 }
-            }.thenBy {
-                if (it.getIsAllDay()) {
-                    Formatter.getDayEndTS(Formatter.getDayCodeFromTS(it.endTS))
+            }.thenBy { event ->
+                if (event.getIsAllDay()) {
+                    Formatter.getDayEndTS(Formatter.getDayCodeFromTS(event.endTS))
                 } else {
-                    it.endTS
+                    event.endTS
                 }
-            }.thenBy { it.title }.thenBy { if (replaceDescription) it.location else it.description })
+            }.thenBy { event -> event.title }.thenBy { event -> if (replaceDescription) event.location else event.description })
 
             var prevCode = ""
             var prevMonthLabel = ""
             val now = getNowSeconds()
             val today = Formatter.getDayTitle(context, Formatter.getDayCodeFromTS(now))
 
-            sorted.forEach {
-                val code = Formatter.getDayCodeFromTS(it.startTS)
+            sorted.forEach { event ->
+                val code = Formatter.getDayCodeFromTS(event.startTS)
                 val monthLabel = Formatter.getLongMonthYear(context, code)
                 if (monthLabel != prevMonthLabel) {
                     val listSectionMonth = ListSectionMonth(monthLabel)
@@ -222,24 +222,24 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 if (code != prevCode) {
                     val day = Formatter.getDateDayTitle(code)
                     val isToday = day == today
-                    val listSection = ListSectionDay(day, code, isToday, !isToday && it.startTS < now)
+                    val listSection = ListSectionDay(day, code, isToday, !isToday && event.startTS < now)
                     listItems.add(listSection)
                     prevCode = code
                 }
 
                 val listEvent = ListEvent(
-                    it.id!!,
-                    it.startTS,
-                    it.endTS,
-                    it.title,
-                    it.description,
-                    it.getIsAllDay(),
-                    it.color,
-                    it.location,
-                    it.isPastEvent,
-                    it.repeatInterval > 0,
-                    it.isTask(),
-                    it.isTaskCompleted()
+                    event.id!!,
+                    event.startTS,
+                    event.endTS,
+                    event.title,
+                    event.description,
+                    event.getIsAllDay(),
+                    event.color,
+                    event.location,
+                    event.isPastEvent,
+                    event.repeatInterval > 0,
+                    event.isTask(),
+                    event.isTaskCompleted()
                 )
                 listItems.add(listEvent)
             }
