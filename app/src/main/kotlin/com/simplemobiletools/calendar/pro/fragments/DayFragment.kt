@@ -17,13 +17,11 @@ import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
 import com.simplemobiletools.calendar.pro.extensions.printBitmap
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.fragment_day.view.*
 import kotlinx.android.synthetic.main.top_navigation.view.*
-import java.util.*
 
 class DayFragment : Fragment() {
     var mListener: NavigationListener? = null
@@ -129,6 +127,7 @@ class DayFragment : Fragment() {
         Intent(context, getActivityToOpen(event.isTask())).apply {
             putExtra(EVENT_ID, event.id)
             putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+            putExtra(IS_TASK_COMPLETED, event.isTaskCompleted())
             startActivity(this)
         }
     }

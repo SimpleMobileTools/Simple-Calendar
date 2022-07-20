@@ -5,9 +5,9 @@ import android.content.Intent
 import com.simplemobiletools.calendar.pro.extensions.cancelNotification
 import com.simplemobiletools.calendar.pro.extensions.cancelPendingIntent
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
+import com.simplemobiletools.calendar.pro.extensions.updateTaskCompletion
 import com.simplemobiletools.calendar.pro.helpers.ACTION_MARK_COMPLETED
 import com.simplemobiletools.calendar.pro.helpers.EVENT_ID
-import com.simplemobiletools.calendar.pro.helpers.FLAG_TASK_COMPLETED
 
 class MarkCompletedService : IntentService("MarkCompleted") {
 
@@ -17,8 +17,7 @@ class MarkCompletedService : IntentService("MarkCompleted") {
             val taskId = intent.getLongExtra(EVENT_ID, 0L)
             val task = eventsDB.getTaskWithId(taskId)
             if (task != null) {
-                task.flags = task.flags or FLAG_TASK_COMPLETED
-                eventsDB.updateTaskCompletion(task.id!!, task.flags)
+                updateTaskCompletion(task, true)
                 cancelPendingIntent(task.id!!)
                 cancelNotification(task.id!!)
             }

@@ -13,14 +13,16 @@ import com.simplemobiletools.calendar.pro.helpers.Converters
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
 import com.simplemobiletools.calendar.pro.interfaces.EventsDao
+import com.simplemobiletools.calendar.pro.interfaces.TasksDao
 import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.models.Task
 import com.simplemobiletools.calendar.pro.models.Widget
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import java.util.concurrent.Executors
 
-@Database(entities = [Event::class, EventType::class, Widget::class], version = 6)
+@Database(entities = [Event::class, EventType::class, Widget::class, Task::class], version = 7)
 @TypeConverters(Converters::class)
 abstract class EventsDatabase : RoomDatabase() {
 
@@ -29,6 +31,8 @@ abstract class EventsDatabase : RoomDatabase() {
     abstract fun EventTypesDao(): EventTypesDao
 
     abstract fun WidgetsDao(): WidgetsDao
+
+    abstract fun TasksDao(): TasksDao
 
     companion object {
         private var db: EventsDatabase? = null
@@ -49,6 +53,7 @@ abstract class EventsDatabase : RoomDatabase() {
                             .addMigrations(MIGRATION_3_4)
                             .addMigrations(MIGRATION_4_5)
                             .addMigrations(MIGRATION_5_6)
+                            .addMigrations(MIGRATION_6_7)
                             .build()
                         db!!.openHelper.setWriteAheadLoggingEnabled(true)
                     }
@@ -110,6 +115,15 @@ abstract class EventsDatabase : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.apply {
                     execSQL("ALTER TABLE events ADD COLUMN type INTEGER NOT NULL DEFAULT 0")
+                }
+            }
+        }
+
+        private val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.apply {
+                    execSQL("CREATE TABLE IF NOT EXISTS `tasks` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `task_id` INTEGER NOT NULL, `start_ts` INTEGER NOT NULL, `flags` INTEGER NOT NULL)")
+                    execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_tasks_id` ON `tasks` (`id`)")
                 }
             }
         }

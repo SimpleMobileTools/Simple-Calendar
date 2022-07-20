@@ -51,6 +51,7 @@ class TaskActivity : SimpleActivity() {
     private var mRepeatRule = 0
     private var mTaskOccurrenceTS = 0L
     private var mOriginalStartTS = 0L
+    private var mTaskCompleted = false
     private var mLastSavePromptTS = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -206,6 +207,7 @@ class TaskActivity : SimpleActivity() {
         if (task != null) {
             mTask = task
             mTaskOccurrenceTS = intent.getLongExtra(EVENT_OCCURRENCE_TS, 0L)
+            mTaskCompleted = intent.getBooleanExtra(IS_TASK_COMPLETED, false)
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mTask.id = null
                 updateActionBarTitle(getString(R.string.new_task))
@@ -469,7 +471,18 @@ class TaskActivity : SimpleActivity() {
     private fun setupMarkCompleteButton() {
         toggle_mark_complete.setOnClickListener { toggleCompletion() }
         toggle_mark_complete.beVisibleIf(mTask.id != null)
-        if (mTask.isTaskCompleted()) {
+        updateTaskCompleted()
+        ensureBackgroundThread {
+            // the stored value might be incorrect so update it (e.g. user completed the task via notification action before editing)
+            mTaskCompleted = isTaskCompleted(mTask.copy(startTS = mOriginalStartTS, endTS = mOriginalStartTS))
+            runOnUiThread {
+                updateTaskCompleted()
+            }
+        }
+    }
+
+    private fun updateTaskCompleted() {
+        if (mTaskCompleted) {
             toggle_mark_complete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
             toggle_mark_complete.setText(R.string.mark_incomplete)
             toggle_mark_complete.setTextColor(getProperTextColor())
@@ -484,14 +497,9 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun toggleCompletion() {
-        if (mTask.isTaskCompleted()) {
-            mTask.flags = mTask.flags.removeBit(FLAG_TASK_COMPLETED)
-        } else {
-            mTask.flags = mTask.flags or FLAG_TASK_COMPLETED
-        }
-
         ensureBackgroundThread {
-            eventsDB.updateTaskCompletion(mTask.id!!, mTask.flags)
+            val task = mTask.copy(startTS = mOriginalStartTS)
+            updateTaskCompletion(task, completed = !mTaskCompleted)
             hideKeyboard()
             finish()
         }

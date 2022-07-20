@@ -316,6 +316,7 @@ class EventsHelper(val context: Context) {
         }
 
         events.forEach {
+            if (it.isTask()) updateIsTaskCompleted(it)
             it.updateIsPastEvent()
             val originalEvent = eventsDB.getEventWithId(it.id!!)
             if (originalEvent != null &&
@@ -481,10 +482,18 @@ class EventsHelper(val context: Context) {
         return events
     }
 
+    fun updateIsTaskCompleted(event: Event) {
+        val task = context.completedTasksDB.getTaskWithIdAndTs(event.id!!, startTs = event.startTS)
+        event.flags = task?.flags ?: event.flags
+    }
+
     fun getRunningEventsOrTasks(): List<Event> {
         val ts = getNowSeconds()
         val events = eventsDB.getOneTimeEventsOrTasksFromTo(ts, ts).toMutableList() as ArrayList<Event>
         events.addAll(getRepeatableEventsFor(ts, ts))
+        events.forEach {
+            if (it.isTask()) updateIsTaskCompleted(it)
+        }
         return events
     }
 

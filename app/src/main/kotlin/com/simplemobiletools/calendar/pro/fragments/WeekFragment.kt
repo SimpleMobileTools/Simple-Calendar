@@ -610,6 +610,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             Intent(context, getActivityToOpen(event.isTask())).apply {
                                 putExtra(EVENT_ID, event.id!!)
                                 putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+                                putExtra(IS_TASK_COMPLETED, event.isTaskCompleted())
                                 startActivity(this)
                             }
                         }
@@ -813,6 +814,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 Intent(context, getActivityToOpen(event.isTask())).apply {
                     putExtra(EVENT_ID, event.id)
                     putExtra(EVENT_OCCURRENCE_TS, event.startTS)
+                    putExtra(IS_TASK_COMPLETED, event.isTaskCompleted())
                     startActivity(this)
                 }
             }

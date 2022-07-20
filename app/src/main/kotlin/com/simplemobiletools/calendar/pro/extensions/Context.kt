@@ -33,6 +33,7 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
 import com.simplemobiletools.calendar.pro.interfaces.EventsDao
+import com.simplemobiletools.calendar.pro.interfaces.TasksDao
 import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.receivers.CalDAVSyncReceiver
@@ -51,6 +52,7 @@ val Context.config: Config get() = Config.newInstance(applicationContext)
 val Context.eventsDB: EventsDao get() = EventsDatabase.getInstance(applicationContext).EventsDao()
 val Context.eventTypesDB: EventTypesDao get() = EventsDatabase.getInstance(applicationContext).EventTypesDao()
 val Context.widgetsDB: WidgetsDao get() = EventsDatabase.getInstance(applicationContext).WidgetsDao()
+val Context.completedTasksDB: TasksDao get() = EventsDatabase.getInstance(applicationContext).TasksDao()
 val Context.eventsHelper: EventsHelper get() = EventsHelper(this)
 val Context.calDAVHelper: CalDAVHelper get() = CalDAVHelper(this)
 
@@ -237,6 +239,7 @@ fun Context.notifyEvent(originalEvent: Event) {
     val descriptionOrLocation = if (config.replaceDescription) event.location else event.description
     val content = "$displayedStartDate $timeRange $descriptionOrLocation".trim()
     ensureBackgroundThread {
+        if (event.isTask()) eventsHelper.updateIsTaskCompleted(event)
         val notification = getNotification(pendingIntent, event, content)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         try {
@@ -651,5 +654,21 @@ fun Context.getDatesWeekDateTime(date: DateTime): String {
         thisweek.toString()
     } else {
         date.withZone(DateTimeZone.UTC).toString()
+    }
+}
+
+fun Context.isTaskCompleted(event: Event): Boolean {
+    val task = completedTasksDB.getTaskWithIdAndTs(event.id!!, event.startTS) ?: return false
+    return task.flags and FLAG_TASK_COMPLETED != 0
+}
+
+fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
+    if (completed) {
+        event.flags = event.flags or FLAG_TASK_COMPLETED
+        val task = Task(null, event.id!!, event.startTS, event.flags)
+        completedTasksDB.insertOrUpdate(task)
+    } else {
+        event.flags = event.flags.removeBit(FLAG_TASK_COMPLETED)
+        completedTasksDB.deleteTaskWithIdAndTs(event.id!!, event.startTS)
     }
 }
