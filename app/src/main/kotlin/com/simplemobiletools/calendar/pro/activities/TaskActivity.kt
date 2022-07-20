@@ -25,9 +25,7 @@ import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.EVERY_DAY_BIT
-import com.simplemobiletools.commons.helpers.SAVE_DISCARD_PROMPT_INTERVAL
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_task.*
 import org.joda.time.DateTime
@@ -53,6 +51,7 @@ class TaskActivity : SimpleActivity() {
     private var mOriginalStartTS = 0L
     private var mTaskCompleted = false
     private var mLastSavePromptTS = 0L
+    private var mIsNewEvent = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,6 +166,8 @@ class TaskActivity : SimpleActivity() {
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
+            putBoolean(IS_NEW_EVENT, mIsNewEvent)
+            putLong(ORIGINAL_START_TS, mOriginalStartTS)
         }
     }
 
@@ -191,10 +192,16 @@ class TaskActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
             mEventTypeId = getLong(EVENT_TYPE_ID)
+            mIsNewEvent = getBoolean(IS_NEW_EVENT)
+            mOriginalStartTS = getLong(ORIGINAL_START_TS)
         }
 
         updateEventType()
         updateTexts()
+        setupMarkCompleteButton()
+        checkRepeatTexts(mRepeatInterval)
+        checkRepeatRule()
+        updateActionBarTitle()
     }
 
     private fun gotTask(savedInstanceState: Bundle?, localEventType: EventType?, task: Event?) {
@@ -264,6 +271,7 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun setupEditTask() {
+        mIsNewEvent = false
         val realStart = if (mTaskOccurrenceTS == 0L) mTask.startTS else mTaskOccurrenceTS
         mOriginalStartTS = realStart
         mTaskDateTime = Formatter.getDateTimeFromTS(realStart)
@@ -453,6 +461,7 @@ class TaskActivity : SimpleActivity() {
     private fun dateSet(year: Int, month: Int, day: Int) {
         mTaskDateTime = mTaskDateTime.withDate(year, month + 1, day)
         updateDateText()
+        checkRepeatRule()
     }
 
     private fun timeSet(hours: Int, minutes: Int) {
@@ -466,6 +475,21 @@ class TaskActivity : SimpleActivity() {
         updateReminderTexts()
         updateRepetitionText()
     }
+
+    private fun checkRepeatRule() {
+        if (mRepeatInterval.isXWeeklyRepetition()) {
+            val day = mRepeatRule
+            if (day == MONDAY_BIT || day == TUESDAY_BIT || day == WEDNESDAY_BIT || day == THURSDAY_BIT || day == FRIDAY_BIT || day == SATURDAY_BIT || day == SUNDAY_BIT) {
+                setRepeatRule(2.0.pow((mTaskDateTime.dayOfWeek - 1).toDouble()).toInt())
+            }
+        } else if (mRepeatInterval.isXMonthlyRepetition() || mRepeatInterval.isXYearlyRepetition()) {
+            if (mRepeatRule == REPEAT_LAST_DAY && !isLastDayOfTheMonth()) {
+                mRepeatRule = REPEAT_SAME_DAY
+            }
+            checkRepetitionRuleText()
+        }
+    }
+
 
     private fun updateDateText() {
         task_date.text = Formatter.getDate(this, mTaskDateTime)
@@ -483,17 +507,17 @@ class TaskActivity : SimpleActivity() {
     private fun setupMarkCompleteButton() {
         toggle_mark_complete.setOnClickListener { toggleCompletion() }
         toggle_mark_complete.beVisibleIf(mTask.id != null)
-        updateTaskCompleted()
+        updateTaskCompletedButton()
         ensureBackgroundThread {
             // the stored value might be incorrect so update it (e.g. user completed the task via notification action before editing)
-            mTaskCompleted = isTaskCompleted(mTask.copy(startTS = mOriginalStartTS, endTS = mOriginalStartTS))
+            mTaskCompleted = isTaskCompleted(mTask.copy(startTS = mOriginalStartTS))
             runOnUiThread {
-                updateTaskCompleted()
+                updateTaskCompletedButton()
             }
         }
     }
 
-    private fun updateTaskCompleted() {
+    private fun updateTaskCompletedButton() {
         if (mTaskCompleted) {
             toggle_mark_complete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
             toggle_mark_complete.setText(R.string.mark_incomplete)
@@ -846,5 +870,13 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateRepetitionText() {
         task_repetition.text = getRepetitionText(mRepeatInterval)
+    }
+
+    private fun updateActionBarTitle() {
+        if (mIsNewEvent) {
+            updateActionBarTitle(getString(R.string.new_task))
+        } else {
+            updateActionBarTitle(getString(R.string.edit_task))
+        }
     }
 }
