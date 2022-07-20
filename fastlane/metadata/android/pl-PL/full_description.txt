@@ -1,5 +1,4 @@
-Prosty kalendarz 2022 to wysoce konfigurowalna aplikacja kalendarza miesięcznego offline na Androida. Miej w kieszeni planer kalendarza zaprojektowanego tak, aby robił dokładnie to, co osobisty, mały planer harmonogramu powinien robić w 2022 roku. Żadnych skomplikowanych funkcji, niepotrzebnych uprawnień ani reklam!
-***Obsługuje synchronizowanie wydarzeń za pomocą Kalendarza Google
+Prosty kalendarz 2022 to wysoce konfigurowalna aplikacja kalendarza miesięcznego offline na Androida. Miej w kieszeni planer kalendarza zaprojektowanego tak, aby robił dokładnie to, co osobisty, mały planer harmonogramu powinien robić w 2022 roku. Żadnych skomplikowanych funkcji, niepotrzebnych uprawnień ani reklam! Obsługuje synchronizowanie wydarzeń za pomocą Kalendarza Google.
 
 Pobierz teraz!
 
@@ -24,7 +23,7 @@ Cechy prostego kalendarza 2022:
 ✔️ Spersonalizowany specjalnie dla Ciebie
 ➕ Planer harmonogramu – dostosuj i zmień: dźwięk, powtarzanie, strumień audio, wibracje
 ➕ Widżet kalendarza – kolorowe kalendarze i konfigurowalne motywy
-➕ Otwartoźródłowy, mały kalendarz przetłumaczony na ponad 40 języków
+➕ Otwartoźródłowy, mały kalendarz przetłumaczony na ponad 45 języków
 ➕ Zaplanuj swój dzień z innymi – możliwość szybkiego udostępniania wydarzeń w mediach społecznościowych, e-mailach itp.
 ➕ Rodzinny organizer – z bezproblemowym powielaniem wydarzeń, organizacją i zarządzaniem czasem
 
