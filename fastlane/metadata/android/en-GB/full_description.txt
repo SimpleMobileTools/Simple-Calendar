@@ -42,6 +42,10 @@ Simple Calendar 2022 Features
 
 DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO ADS! PLAN YOUR 2022 TIMETABLE!
 
+It comes with material design and dark theme by default, provides great user experience for easy usage. The lack of internet access gives you more privacy, security and stability than other apps.
+
+Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+
 Check out the full suite of Simple Tools here:
 https://www.simplemobiletools.com
 
