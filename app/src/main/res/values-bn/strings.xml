@@ -58,6 +58,7 @@
     <string name="repeat_till">পুনরাবৃত্তি ততক্ষণ পর্যন্ত</string>
     <string name="forever">চিরতরে</string>
     <string name="event_is_repeatable">ঘটনাটি পুনরাবৃত্তিযোগ্য</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">সিলেকশনটিতে পুনরাবৃত্তি ইভেন্টগুলি রয়েছে</string>
     <string name="delete_one_only">কেবলমাত্র সিলেক্টেড ঘটনা মুছুন</string>
     <string name="delete_future_occurrences">এটি এবং ভবিষ্যতের সমস্ত ঘটনা মুছুন</string>

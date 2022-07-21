@@ -59,6 +59,7 @@
     <string name="repeat_till">Korda kuni</string>
     <string name="forever">Igavesti</string>
     <string name="event_is_repeatable">Sündmus on korratav</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Valik sisaldab korduvaid sündmusi</string>
     <string name="delete_one_only">Delete the selected occurrence only</string>
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>

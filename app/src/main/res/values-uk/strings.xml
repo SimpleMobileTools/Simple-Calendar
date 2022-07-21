@@ -59,6 +59,7 @@
     <string name="repeat_till">Повторювати до</string>
     <string name="forever">Безкінечно</string>
     <string name="event_is_repeatable">Ця подія є повторюваною</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Вибране містить повторювані події</string>
     <string name="delete_one_only">Видалити лише обране повторення</string>
     <string name="delete_future_occurrences">Видалити це і всі наступні повторення</string>

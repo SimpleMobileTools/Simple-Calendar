@@ -59,6 +59,7 @@
     <string name="repeat_till">Wiederholen bis</string>
     <string name="forever">unendlich</string>
     <string name="event_is_repeatable">Termin ist wiederholbar</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Die Auswahl enthält wiederkehrende Termine</string>
     <string name="delete_one_only">Nur die ausgewählte Wiederholung löschen</string>
     <string name="delete_future_occurrences">Diese und zukünftige Wiederholungen löschen</string>

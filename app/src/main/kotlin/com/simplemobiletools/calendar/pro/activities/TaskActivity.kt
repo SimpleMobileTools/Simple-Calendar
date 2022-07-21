@@ -11,10 +11,7 @@ import android.view.WindowManager
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.dialogs.ReminderWarningDialog
-import com.simplemobiletools.calendar.pro.dialogs.RepeatLimitTypePickerDialog
-import com.simplemobiletools.calendar.pro.dialogs.RepeatRuleWeeklyDialog
-import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
+import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -344,6 +341,8 @@ class TaskActivity : SimpleActivity() {
             return
         }
 
+        val wasRepeatable = mTask.repeatInterval > 0
+
         val reminders = getReminders()
         if (!task_all_day.isChecked) {
             if ((reminders.getOrNull(2)?.minutes ?: 0) < -1) {
@@ -394,8 +393,12 @@ class TaskActivity : SimpleActivity() {
             repeatRule = mRepeatRule
         }
 
-        ensureBackgroundThread {
-            EventsHelper(this).insertTask(mTask, true) {
+        storeTask(wasRepeatable)
+    }
+
+    private fun storeTask(wasRepeatable: Boolean) {
+        if (mTask.id == null) {
+            eventsHelper.insertTask(mTask, true) {
                 hideKeyboard()
 
                 if (DateTime.now().isAfter(mTaskDateTime.millis)) {
@@ -406,13 +409,77 @@ class TaskActivity : SimpleActivity() {
 
                 finish()
             }
+        } else {
+            if (mRepeatInterval > 0 && wasRepeatable) {
+                runOnUiThread {
+                    showEditRepeatingTaskDialog()
+                }
+            } else {
+                hideKeyboard()
+                eventsHelper.updateEvent(mTask, updateAtCalDAV = false, showToasts = true) {
+                    finish()
+                }
+            }
+        }
+    }
+
+    private fun showEditRepeatingTaskDialog() {
+        EditRepeatingEventDialog(this, isTask = true) {
+            hideKeyboard()
+            when (it) {
+                0 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, true)
+                        mTask.apply {
+                            parentId = id!!.toLong()
+                            id = null
+                            repeatRule = 0
+                            repeatInterval = 0
+                            repeatLimit = 0
+                        }
+
+                        eventsHelper.insertTask(mTask, showToasts = true) {
+                            finish()
+                        }
+                    }
+                }
+                1 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
+                        mTask.apply {
+                            id = null
+                        }
+
+                        eventsHelper.insertTask(mTask, showToasts = true) {
+                            finish()
+                        }
+                    }
+                }
+
+                2 -> {
+                    ensureBackgroundThread {
+                        eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
+                        eventsHelper.updateEvent(mTask, updateAtCalDAV = false, showToasts = true) {
+                            finish()
+                        }
+                    }
+                }
+            }
         }
     }
 
     private fun deleteTask() {
-        ConfirmationDialog(this) {
+        if (mTask.id == null) {
+            return
+        }
+
+        DeleteEventDialog(this, arrayListOf(mTask.id!!), mTask.repeatInterval > 0, isTask = true) {
             ensureBackgroundThread {
-                eventsHelper.deleteEvent(mTask.id!!, false)
+                when (it) {
+                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, true)
+                    DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
+                    DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mTask.id!!, true)
+                }
 
                 runOnUiThread {
                     hideKeyboard()

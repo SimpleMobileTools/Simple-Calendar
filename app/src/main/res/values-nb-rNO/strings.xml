@@ -59,6 +59,7 @@
     <string name="repeat_till">Gjenta til</string>
     <string name="forever">For alltid</string>
     <string name="event_is_repeatable">Hendelsen er repeterbar</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Markeringen inneholder gjentagende hendelser</string>
     <string name="delete_one_only">Slett bare den merkede forekomsten</string>
     <string name="delete_future_occurrences">Slett denne og alle framtidige forekomster</string>

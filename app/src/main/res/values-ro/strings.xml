@@ -59,6 +59,7 @@
     <string name="repeat_till">Repetă până pe</string>
     <string name="forever">Pentru totdeauna</string>
     <string name="event_is_repeatable">Evenimentul este repetabil</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Selecția conține evenimente repetitive</string>
     <string name="delete_one_only">Șterge numai evenimentul repetitiv selectat</string>
     <string name="delete_future_occurrences">Șterge acest și toate evenimentele repetitive viitoare</string>

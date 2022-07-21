@@ -59,6 +59,7 @@
     <string name="repeat_till">Atkārtot līdz</string>
     <string name="forever">Bezgalīgi</string>
     <string name="event_is_repeatable">Notikums ir atkārtojošs</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Atlasītajos ir atkārtojoši/periodiski notikumi</string>
     <string name="delete_one_only">Dzēst tikai šo atlasīto notikumu</string>
     <string name="delete_future_occurrences">Dzēst šo un visus turpmākos notikumus</string>

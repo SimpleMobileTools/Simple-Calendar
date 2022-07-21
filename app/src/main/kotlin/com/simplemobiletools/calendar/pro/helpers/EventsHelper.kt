@@ -252,7 +252,7 @@ class EventsHelper(val context: Context) {
 
     fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
         ensureBackgroundThread {
-            val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@ensureBackgroundThread
+            val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return@ensureBackgroundThread
             var repetitionExceptions = parentEvent.repetitionExceptions
             repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
             repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>

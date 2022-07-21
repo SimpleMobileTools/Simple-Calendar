@@ -59,6 +59,7 @@
     <string name="repeat_till">Noiz arte errepikatu</string>
     <string name="forever">Betiko</string>
     <string name="event_is_repeatable">Gertaera errepikagarria da</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Hautaketak errepikatzen diren gertaerak ditu</string>
     <string name="delete_one_only">Ezabatu hautatutako gertaera soilik</string>
     <string name="delete_future_occurrences">Ezabatu gertaera hau eta datozen guztiak</string>

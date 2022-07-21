@@ -59,6 +59,7 @@
     <string name="repeat_till">Répéter jusqu\'à</string>
     <string name="forever">Éternellement</string>
     <string name="event_is_repeatable">L\'évènement est périodique</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">La sélection contient des évènements périodiques</string>
     <string name="delete_one_only">Supprimer seulement l\'occurrence sélectionnée</string>
     <string name="delete_future_occurrences">Supprimer cette occurrence et toutes les occurrences futures</string>

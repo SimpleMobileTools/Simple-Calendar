@@ -59,6 +59,7 @@
     <string name="repeat_till">Ismétlés eddig:</string>
     <string name="forever">Örökké</string>
     <string name="event_is_repeatable">Az esemény ismétlődik</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">A kiválasztás ismétlődő eseményeket tartalmaz</string>
     <string name="delete_one_only">Csak a kiválasztott előfordulás törlése</string>
     <string name="delete_future_occurrences">Ez és az összes jövőbeli előfordulás törlése</string>

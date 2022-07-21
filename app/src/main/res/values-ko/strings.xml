@@ -59,6 +59,7 @@
     <string name="repeat_till">까지 반복</string>
     <string name="forever">영원히</string>
     <string name="event_is_repeatable">반복 일정입니다</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">선택한 항목에 반복되는 일정들이 있습니다</string>
     <string name="delete_one_only">선택한 항목만 삭제</string>
     <string name="delete_future_occurrences">반복되는 일정까지 삭제</string>

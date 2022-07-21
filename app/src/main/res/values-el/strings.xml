@@ -59,6 +59,7 @@
     <string name="repeat_till">Επανάληψη μέχρι</string>
     <string name="forever">Για πάντα</string>
     <string name="event_is_repeatable">Η εκδήλωση είναι επαναλαμβανόμενη</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Η επιλογή περιέχει επαναλαμβανόμενες εκδηλώσεις</string>
     <string name="delete_one_only">Διαγράψτε μόνο το επιλεγμένο περιστατικό</string>
     <string name="delete_future_occurrences">Διαγράψτε αυτό και όλα τα μελλοντικά συμβάντα</string>

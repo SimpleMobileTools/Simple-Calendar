@@ -59,6 +59,7 @@
     <string name="repeat_till">Ulangi sampai</string>
     <string name="forever">Selamanya</string>
     <string name="event_is_repeatable">Acara berulang</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Acara yang dipilih berisi acara yang berulang</string>
     <string name="delete_one_only">Hapus acara ini saja</string>
     <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya</string>

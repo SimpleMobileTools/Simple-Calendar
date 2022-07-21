@@ -59,6 +59,7 @@
     <string name="repeat_till">重複直到</string>
     <string name="forever">永遠</string>
     <string name="event_is_repeatable">這是個重複活動</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">選擇的項目含有重複活動</string>
     <string name="delete_one_only">只刪除選擇的事件</string>
     <string name="delete_future_occurrences">刪除這個及全部未來的事件</string>

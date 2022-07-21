@@ -57,6 +57,7 @@
     <string name="repeat_till">Repeat till</string>
     <string name="forever">Forever</string>
     <string name="event_is_repeatable">The event is repeatable</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">The selection contains repeating events</string>
     <string name="delete_one_only">Delete the selected occurrence only</string>
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>

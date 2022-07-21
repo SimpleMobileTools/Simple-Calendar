@@ -59,6 +59,7 @@
     <string name="repeat_till">Repeteix fins</string>
     <string name="forever">Per sempre</string>
     <string name="event_is_repeatable">L\'esdeveniment és repetible</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">La selecció conté esdeveniments que es repeteixen</string>
     <string name="delete_one_only">Suprimeix només l\'ocurrència seleccionada</string>
     <string name="delete_future_occurrences">Suprimeix aquesta i totes les ocurrències futures</string>
