@@ -376,6 +376,14 @@ class TaskActivity : SimpleActivity() {
             endTS = startTS
             title = newTitle
             description = task_description.value
+
+            // migrate completed task to the new completed tasks db
+            if (!wasRepeatable && mTask.isTaskCompleted()) {
+                mTask.flags = mTask.flags.removeBit(FLAG_TASK_COMPLETED)
+                ensureBackgroundThread {
+                    updateTaskCompletion(copy(startTS = mOriginalStartTS), true)
+                }
+            }
             flags = mTask.flags.addBitIf(task_all_day.isChecked, FLAG_ALL_DAY)
             lastUpdated = System.currentTimeMillis()
             eventType = mEventTypeId

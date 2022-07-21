@@ -660,8 +660,9 @@ fun Context.getDatesWeekDateTime(date: DateTime): String {
 
 fun Context.isTaskCompleted(event: Event): Boolean {
     if (event.id == null) return false
-    val task = completedTasksDB.getTaskWithIdAndTs(event.id!!, event.startTS) ?: return false
-    return task.flags and FLAG_TASK_COMPLETED != 0
+    val originalEvent = eventsDB.getTaskWithId(event.id!!)
+    val task = completedTasksDB.getTaskWithIdAndTs(event.id!!, event.startTS)
+    return originalEvent?.isTaskCompleted() == true || task?.isTaskCompleted() == true
 }
 
 fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
@@ -673,4 +674,6 @@ fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
         event.flags = event.flags.removeBit(FLAG_TASK_COMPLETED)
         completedTasksDB.deleteTaskWithIdAndTs(event.id!!, event.startTS)
     }
+    // mark event as "incomplete" in the main events db
+    eventsDB.updateTaskCompletion(event.id!!, event.flags.removeBit(FLAG_TASK_COMPLETED))
 }

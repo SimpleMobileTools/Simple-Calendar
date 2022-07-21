@@ -112,6 +112,10 @@ interface EventsDao {
     @Query("UPDATE events SET repetition_exceptions = :repetitionExceptions WHERE id = :id AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun updateEventRepetitionExceptions(repetitionExceptions: String, id: Long)
 
+    @Deprecated("Use Context.updateTaskCompletion() instead unless you know what you are doing.")
+    @Query("UPDATE events SET flags = :newFlags WHERE id = :id")
+    fun updateTaskCompletion(id: Long, newFlags: Int)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
 
