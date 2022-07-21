@@ -659,6 +659,7 @@ fun Context.getDatesWeekDateTime(date: DateTime): String {
 }
 
 fun Context.isTaskCompleted(event: Event): Boolean {
+    if (event.id == null) return false
     val task = completedTasksDB.getTaskWithIdAndTs(event.id!!, event.startTS) ?: return false
     return task.flags and FLAG_TASK_COMPLETED != 0
 }
