@@ -112,7 +112,7 @@ class DayFragment : Fragment() {
         if (activity == null)
             return
 
-        DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events) {
+        DayEventsAdapter(activity as SimpleActivity, events, mHolder.day_events, mDayCode) {
             editEvent(it as Event)
         }.apply {
             mHolder.day_events.adapter = this
