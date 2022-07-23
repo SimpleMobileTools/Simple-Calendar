@@ -4,12 +4,10 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.fragments.DayFragment
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
@@ -43,7 +41,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun actionItemPressed(id: Int) {
         when (id) {
-            R.id.cab_share  -> shareEvents()
+            R.id.cab_share -> shareEvents()
             R.id.cab_delete -> askConfirmDelete()
         }
     }
@@ -97,8 +95,8 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 val endDate = Formatter.getDayTitle(activity, endDayCode, false)
                 val startTimeString = event_item_time.text
                 val endTimeString = Formatter.getTimeFromTS(context, event.endTS)
-                val startDayString = if (startDayCode != dayCode) "($startDate)" else ""
-                val endDayString = if (endDayCode != dayCode) "($endDate)" else ""
+                val startDayString = if (startDayCode != dayCode) " ($startDate)" else ""
+                val endDayString = if (endDayCode != dayCode) " ($endDate)" else ""
                 event_item_time.text = "$startTimeString$startDayString - $endTimeString$endDayString"
             }
 
