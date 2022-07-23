@@ -42,14 +42,14 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE end_ts > :toTS AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
     fun getOneTimeFutureEventsWithTypes(toTS: Long, eventTypeIds: List<Long>): List<Event>
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND repeat_interval != 0 AND type = $TYPE_EVENT")
-    fun getRepeatableEventsFromToWithTypes(toTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND repeat_interval != 0 AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
+    fun getRepeatableEventsOrTasksWithTypes(toTS: Long): List<Event>
 
-    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND repeat_interval != 0 AND type = $TYPE_EVENT")
-    fun getRepeatableEventFromToWithId(id: Long, toTS: Long): List<Event>
+    @Query("SELECT * FROM events WHERE id = :id AND start_ts <= :toTS AND repeat_interval != 0 AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
+    fun getRepeatableEventsOrTasksWithId(id: Long, toTS: Long): List<Event>
 
-    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND start_ts != 0 AND repeat_interval != 0 AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
-    fun getRepeatableEventsFromToWithTypes(toTS: Long, eventTypeIds: List<Long>): List<Event>
+    @Query("SELECT * FROM events WHERE start_ts <= :toTS AND start_ts != 0 AND repeat_interval != 0 AND event_type IN (:eventTypeIds) AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
+    fun getRepeatableEventsOrTasksWithTypes(toTS: Long, eventTypeIds: List<Long>): List<Event>
 
     @Query("SELECT * FROM events WHERE repeat_interval != 0 AND (repeat_limit == 0 OR repeat_limit > :currTS) AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
     fun getRepeatableFutureEventsWithTypes(currTS: Long, eventTypeIds: List<Long>): List<Event>
@@ -106,12 +106,13 @@ interface EventsDao {
     @Query("UPDATE events SET import_id = :importId, source = :source WHERE id = :id AND type = $TYPE_EVENT")
     fun updateEventImportIdAndSource(importId: String, source: String, id: Long)
 
-    @Query("UPDATE events SET repeat_limit = :repeatLimit WHERE id = :id AND type = $TYPE_EVENT")
+    @Query("UPDATE events SET repeat_limit = :repeatLimit WHERE id = :id AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun updateEventRepetitionLimit(repeatLimit: Long, id: Long)
 
-    @Query("UPDATE events SET repetition_exceptions = :repetitionExceptions WHERE id = :id AND type = $TYPE_EVENT")
+    @Query("UPDATE events SET repetition_exceptions = :repetitionExceptions WHERE id = :id AND (type = $TYPE_EVENT OR type = $TYPE_TASK)")
     fun updateEventRepetitionExceptions(repetitionExceptions: String, id: Long)
 
+    @Deprecated("Use Context.updateTaskCompletion() instead unless you know what you are doing.")
     @Query("UPDATE events SET flags = :newFlags WHERE id = :id")
     fun updateTaskCompletion(id: Long, newFlags: Int)
 

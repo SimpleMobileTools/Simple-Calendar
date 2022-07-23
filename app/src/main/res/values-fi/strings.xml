@@ -59,6 +59,7 @@
     <string name="repeat_till">Toista kunnes</string>
     <string name="forever">Aina</string>
     <string name="event_is_repeatable">Tapahtuma on toistettavissa</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Valinta sisältää toistettavia tapahtumia</string>
     <string name="delete_one_only">Poista vain valittu esiintymä</string>
     <string name="delete_future_occurrences">Poista tämä ja seuraavat esiintymät</string>

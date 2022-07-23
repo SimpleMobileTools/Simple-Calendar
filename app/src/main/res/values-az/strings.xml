@@ -59,6 +59,7 @@
     <string name="repeat_till">Bu vaxta qədər təkrarla</string>
     <string name="forever">Sonsuz</string>
     <string name="event_is_repeatable">Bu hadisə təkrarlanabilər</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Seçim təkrarlanan hadisələr ehtiva edir</string>
     <string name="delete_one_only">Yalnız seçilmiş hadisəni sil</string>
     <string name="delete_future_occurrences">Bunu və bütün gələcək hadisələri sil</string>

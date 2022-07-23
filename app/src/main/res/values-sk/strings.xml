@@ -59,6 +59,7 @@
     <string name="repeat_till">Opakovať do</string>
     <string name="forever">Navždy</string>
     <string name="event_is_repeatable">Udalosť je opakujúca sa</string>
+    <string name="task_is_repeatable">Úloha je opakujúca sa</string>
     <string name="selection_contains_repetition">Výber obsahuje opakujúce sa udalosti</string>
     <string name="delete_one_only">Vymazať iba označené opakovania</string>
     <string name="delete_future_occurrences">Vymazať toto a všetky budúce opakovania</string>

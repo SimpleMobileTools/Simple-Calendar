@@ -55,6 +55,7 @@
     <string name="repeat_till">Herhalen tot</string>
     <string name="forever">Blijven herhalen</string>
     <string name="event_is_repeatable">De afspraak wordt herhaald</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">De selectie bevat herhaalde afspraken</string>
     <string name="delete_one_only">Alleen huidige afspraak verwijderen</string>
     <string name="delete_future_occurrences">Deze afspraak en hierop volgende herhalingen verwijderen</string>

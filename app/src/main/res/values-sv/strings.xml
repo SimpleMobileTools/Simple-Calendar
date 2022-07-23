@@ -59,6 +59,7 @@
     <string name="repeat_till">Upprepa tills</string>
     <string name="forever">Alltid</string>
     <string name="event_is_repeatable">Händelsen är återkommande</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
     <string name="delete_one_only">Ta bara bort den valda förekomsten</string>
     <string name="delete_future_occurrences">Ta bort denna och alla framtida förekomster</string>

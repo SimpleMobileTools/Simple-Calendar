@@ -59,6 +59,7 @@
     <string name="repeat_till">addegouezhout betek</string>
     <string name="forever">Da viken</string>
     <string name="event_is_repeatable">An darvoud a c\'hall addegouezhout</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Darvoudoù a c\'hall addegouezhout a zo en diuzad</string>
     <string name="delete_one_only">Dilemel an degouezh bremanel nemetken</string>
     <string name="delete_future_occurrences">Delete this and all future occurrences</string>

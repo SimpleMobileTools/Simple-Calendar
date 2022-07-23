@@ -59,6 +59,7 @@
     <string name="repeat_till">חזרה עד</string>
     <string name="forever">לנצח</string>
     <string name="event_is_repeatable">האירוע ניתן לחזרה</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">הבחירה כוללת אירועים חוזרים</string>
     <string name="delete_one_only">מחיקת אירוע בודד</string>
     <string name="delete_future_occurrences">מחיקת כל האירועים העתידיים בסדרה</string>

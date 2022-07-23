@@ -59,6 +59,7 @@
     <string name="repeat_till">Ponavljaj do</string>
     <string name="forever">Zauvijek</string>
     <string name="event_is_repeatable">Događaj se ponavlja</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Odabir sadrži ponavljajuće događaje</string>
     <string name="delete_one_only">Izbriši samo odabrano ponavljanje</string>
     <string name="delete_future_occurrences">Izbriši ovo i sva buduća ponavljanja</string>

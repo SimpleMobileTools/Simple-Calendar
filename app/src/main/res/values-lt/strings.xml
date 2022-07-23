@@ -59,6 +59,7 @@
     <string name="repeat_till">Kartoti iki</string>
     <string name="forever">Amžinai</string>
     <string name="event_is_repeatable">Įvykis yra pasikartojantis</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Žymėjime yra pasikartojančių įvykių</string>
     <string name="delete_one_only">Ištrinti tik pasirinktą pasikartojimą</string>
     <string name="delete_future_occurrences">Ištrinti šį ir visus būsimus pasikartojimus</string>

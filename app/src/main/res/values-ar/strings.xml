@@ -59,6 +59,7 @@
     <string name="repeat_till">تكرار حتى</string>
     <string name="forever">للأبد</string>
     <string name="event_is_repeatable">الحدث متكرر</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">الإختيار يحتوى على احداث مكررة</string>
     <string name="delete_one_only">حذف النسخ المحددة فقط</string>
     <string name="delete_future_occurrences">حذف هذه النسخة وكل النسخ المستقبلية</string>

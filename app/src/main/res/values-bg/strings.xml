@@ -59,6 +59,7 @@
     <string name="repeat_till">Повтаряй до</string>
     <string name="forever">Завинаги</string>
     <string name="event_is_repeatable">Събитието се повтаря</string>
+    <string name="task_is_repeatable">The task is repeatable</string>
     <string name="selection_contains_repetition">Изборът съдържа само повтарящи се събития</string>
     <string name="delete_one_only">Изтрийте само избраното събитие</string>
     <string name="delete_future_occurrences">Изтрийте това събитие и всички бъдещи събития</string>

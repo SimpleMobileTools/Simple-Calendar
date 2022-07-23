@@ -11,7 +11,13 @@ import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
-class DeleteEventDialog(val activity: Activity, eventIds: List<Long>, hasRepeatableEvent: Boolean, val callback: (deleteRule: Int) -> Unit) {
+class DeleteEventDialog(
+    val activity: Activity,
+    eventIds: List<Long>,
+    hasRepeatableEvent: Boolean,
+    isTask: Boolean = false,
+    val callback: (deleteRule: Int) -> Unit
+) {
     val dialog: AlertDialog?
 
     init {
@@ -23,16 +29,22 @@ class DeleteEventDialog(val activity: Activity, eventIds: List<Long>, hasRepeata
             }
 
             if (eventIds.size > 1) {
-                delete_event_repeat_description.text = resources.getString(R.string.selection_contains_repetition)
+                delete_event_repeat_description.setText(R.string.selection_contains_repetition)
+            }
+
+            if (isTask) {
+                delete_event_repeat_description.setText(R.string.task_is_repeatable)
+            } else {
+                delete_event_repeat_description.setText(R.string.event_is_repeatable)
             }
         }
 
         dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.yes) { dialog, which -> dialogConfirmed(view as ViewGroup) }
-                .setNegativeButton(R.string.no, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
-                }
+            .setPositiveButton(R.string.yes) { dialog, which -> dialogConfirmed(view as ViewGroup) }
+            .setNegativeButton(R.string.no, null)
+            .create().apply {
+                activity.setupDialogStuff(view, this)
+            }
     }
 
     private fun dialogConfirmed(view: ViewGroup) {

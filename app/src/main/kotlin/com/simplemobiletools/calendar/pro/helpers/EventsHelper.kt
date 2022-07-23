@@ -252,7 +252,7 @@ class EventsHelper(val context: Context) {
 
     fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
         ensureBackgroundThread {
-            val parentEvent = eventsDB.getEventWithId(parentEventId) ?: return@ensureBackgroundThread
+            val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return@ensureBackgroundThread
             var repetitionExceptions = parentEvent.repetitionExceptions
             repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
             repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>
@@ -285,7 +285,6 @@ class EventsHelper(val context: Context) {
             } else {
                 try {
                     val typesList = context.config.getDisplayEventTypessAsList()
-                    events.addAll(eventsDB.getTasksFromTo(fromTS, toTS, typesList))
 
                     events.addAll(eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, typesList).toMutableList() as ArrayList<Event>)
                 } catch (e: Exception) {
@@ -317,6 +316,7 @@ class EventsHelper(val context: Context) {
         }
 
         events.forEach {
+            if (it.isTask()) updateIsTaskCompleted(it)
             it.updateIsPastEvent()
             val originalEvent = eventsDB.getEventWithId(it.id!!)
             if (originalEvent != null &&
@@ -364,13 +364,13 @@ class EventsHelper(val context: Context) {
             if (displayEventTypes.isEmpty()) {
                 return ArrayList()
             } else {
-                eventsDB.getRepeatableEventsFromToWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
             }
         } else {
             if (eventId == -1L) {
-                eventsDB.getRepeatableEventsFromToWithTypes(toTS).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithTypes(toTS).toMutableList() as ArrayList<Event>
             } else {
-                eventsDB.getRepeatableEventFromToWithId(eventId, toTS).toMutableList() as ArrayList<Event>
+                eventsDB.getRepeatableEventsOrTasksWithId(eventId, toTS).toMutableList() as ArrayList<Event>
             }
         }
 
@@ -482,10 +482,18 @@ class EventsHelper(val context: Context) {
         return events
     }
 
+    fun updateIsTaskCompleted(event: Event) {
+        val task = context.completedTasksDB.getTaskWithIdAndTs(event.id!!, startTs = event.startTS)
+        event.flags = task?.flags ?: event.flags
+    }
+
     fun getRunningEventsOrTasks(): List<Event> {
         val ts = getNowSeconds()
         val events = eventsDB.getOneTimeEventsOrTasksFromTo(ts, ts).toMutableList() as ArrayList<Event>
         events.addAll(getRepeatableEventsFor(ts, ts))
+        events.forEach {
+            if (it.isTask()) updateIsTaskCompleted(it)
+        }
         return events
     }
 

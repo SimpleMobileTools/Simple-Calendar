@@ -77,6 +77,7 @@ class EventActivity : SimpleActivity() {
     private var mOriginalTimeZone = DateTimeZone.getDefault().id
     private var mOriginalStartTS = 0L
     private var mOriginalEndTS = 0L
+    private var mIsNewEvent = true
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -353,6 +354,9 @@ class EventActivity : SimpleActivity() {
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
+            putBoolean(IS_NEW_EVENT, mIsNewEvent)
+            putLong(ORIGINAL_START_TS, mOriginalStartTS)
+            putLong(ORIGINAL_END_TS, mOriginalEndTS)
         }
     }
 
@@ -389,6 +393,9 @@ class EventActivity : SimpleActivity() {
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
+            mIsNewEvent = getBoolean(IS_NEW_EVENT)
+            mOriginalStartTS = getLong(ORIGINAL_START_TS)
+            mOriginalEndTS = getLong(ORIGINAL_END_TS)
         }
 
         checkRepeatTexts(mRepeatInterval)
@@ -397,6 +404,7 @@ class EventActivity : SimpleActivity() {
         updateEventType()
         updateCalDAVCalendar()
         checkAttendees()
+        updateActionBarTitle()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -420,6 +428,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun setupEditEvent() {
+        mIsNewEvent = false
         val realStart = if (mEventOccurrenceTS == 0L) mEvent.startTS else mEventOccurrenceTS
         val duration = mEvent.endTS - mEvent.startTS
         mOriginalStartTS = realStart
@@ -1105,15 +1114,15 @@ class EventActivity : SimpleActivity() {
 
         val reminders = getReminders()
         if (!event_all_day.isChecked) {
-            if (reminders.getOrNull(2)?.minutes ?: 0 < -1) {
+            if ((reminders.getOrNull(2)?.minutes ?: 0) < -1) {
                 reminders.removeAt(2)
             }
 
-            if (reminders.getOrNull(1)?.minutes ?: 0 < -1) {
+            if ((reminders.getOrNull(1)?.minutes ?: 0) < -1) {
                 reminders.removeAt(1)
             }
 
-            if (reminders.getOrNull(0)?.minutes ?: 0 < -1) {
+            if ((reminders.getOrNull(0)?.minutes ?: 0) < -1) {
                 reminders.removeAt(0)
             }
         }
@@ -1699,6 +1708,14 @@ class EventActivity : SimpleActivity() {
             event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image
         ).forEach {
             it.applyColorFilter(textColor)
+        }
+    }
+
+    private fun updateActionBarTitle() {
+        if (mIsNewEvent) {
+            updateActionBarTitle(getString(R.string.new_event))
+        } else {
+            updateActionBarTitle(getString(R.string.edit_event))
         }
     }
 }
