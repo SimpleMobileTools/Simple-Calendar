@@ -1,38 +1,50 @@
-Prosty kalendarz to w dużym stopniu konfigurowany kalendarz offline zadań prosty dla telefonów komórkowych z systemem Android, zaprojektowany tak, aby zapewniać wszystkie funkcje, które aplikacja osobistego kalendarza dla zadań prosty systemu Android powinna posiadać w roku 2022. Nie znajdziemy tu jednak skomplikowanych funkcji, niepotrzebnych uprawnień i reklam!
+Prosty kalendarz 2022 to wysoce konfigurowalna aplikacja kalendarza miesięcznego offline na Androida. Miej w kieszeni planer kalendarza zaprojektowanego tak, aby robił dokładnie to, co osobisty, mały planer harmonogramu powinien robić w 2022 roku. Żadnych skomplikowanych funkcji, niepotrzebnych uprawnień ani reklam! Obsługuje synchronizację wydarzeń za pośrednictwem Kalendarza Google lub innych kalendarzy obsługujących protokół CalDAV.
 
-Niezależnie od tego, czy poszukuje się mobilnego narzędzia do prostego przypominania o spotkaniach zadań prosty, organizowania jednorazowych lub powtarzających się wydarzeń, przypominania o urodzinach i rocznicach, planowania spotkań biznesowych, wizyt lekarskich lub dowolnych innych zdarzeń, prosty kalendarz to doskonały program do planowania dla telefonów komórkowych z Androidem - zdecydowanie ułatwiający organizację życia. Dzięki niesamowitej różnorodności możliwych do dostosowania opcji  zapewnia łatwość różnicowania przypomnień o zdarzeniach, wyglądu powiadomień i wyglądu prostego przypomnienia mobilnego.
+Przejmij kontrolę nad swoim czasem
+Niezależnie od tego, czy szukasz kalendarza służbowego dla biznesu, planera dnia, terminarza spotkań, czy organizacji i planowania pojedynczych i powtarzających się wydarzeń jak urodziny, rocznica, przypomnienie o spotkaniu lub cokolwiek innego, Prosty kalendarz 2022 ułatwia pozostać zorganizowanym(-ą). Widżet kalendarza ma niesamowitą różnorodność opcji konfiguracji: dostosuj przypomnienia o wydarzeniach, wygląd powiadomień, mały widżet przypomnień kalendarza i ogólny wygląd.
 
-----------------------------------------------------------
-Prosty kalendarz – Funkcje i zalety
-----------------------------------------------------------
+Planer harmonogramu: zaplanuj swój dzień
+Harmonogram spotkań, miesięczny planer i rodzinny organizer w jednym! Łatwo sprawdzaj swój nadchodzący terminarz, planuj spotkania służbowe oraz wydarzenia i rezerwacje terminów. Przypomnienia zapewnią, że będziesz punktualny(-a) i poinformowany(-a) przez swoją aplikację codziennego harmonogramu. Ten widżet kalendarza 2022 jest niezwykle łatwy w użyciu. Możesz nawet wyświetlić wszystko jako prosta lista wydarzeń zamiast w widoku miesięcznym, dzięki czemu wiesz dokładnie, co wydarzy się w Twoim życiu oraz jak zorganizować i zaplanować swój czas.
 
-✔   Nie zawiera reklam oraz irytujących wyskakujących okienek przy pełnym dostępie do kalendarza!
-✔   Nie wymaga dostępu do Internetu, co zapewnia większą prywatność, bezpieczeństwo i stabilność.
-✔   Kładzie nacisk na piękno i prostotę – działa dokładnie tak, jak powinien działać osobisty program do planowania dnia!
-✔   Stanowi oprogramowanie open source codziennego użytku, przetłumaczone na 40 języków
-✔   Daje możliwość szybkiego przełączania pomiędzy widokami dziennymi, tygodniowymi, miesięcznymi, rocznymi oraz zdarzeń w organizatorze życia rodziny
-✔   Obsługuje darmowe eksportowanie i importowanie wydarzeń za pośrednictwem plików .ics
-✔   Posiada poręczną opcję wyłączania przypomnień  
-✔   Umożliwia elastyczne tworzenie zdarzeń – z godziną, czasem trwania, przypomnieniem oraz ważnymi regułami powtarzania
-✔   Umożliwia wykorzystywanie jako kalendarza osobistego lub biznesowego udostępnionego zespołom w pracy
-✔   Zapewnia obsługę CalDAV do synchronizacji wydarzeń za pośrednictwem Kalendarza Google, programu Microsoft Outlook, Nextcloud, Exchange itp.
-✔   Umożliwia łatwy import świąt lub kontaktów wraz z zapisanymi urodzinami i rocznicami
-✔   Przyspiesza filtrowanie wydarzeń osobistych według typu wydarzenia
-✔   Oferuje wiele sposobów wstępnego definiowania zdarzeń domyślnych (przypomnienia, powtórzenia, czas trwania)
-✔   Prawidłowo obsługuje strumienie powiadomień z Android Oreo
-✔   Obsługuje codzienne lokalizowanie wydarzeń pokazanych na mapie
-✔   Umożliwia szybkie udostępnianie wydarzeń w mediach społecznościowych, wiadomościach e-mail, itp.
-✔   Pozwala na bezproblemowe powielanie wydarzeń i planowanych zdarzeń rodzinnych
-✔   Pozwala na eksportowanie ustawień do plików .txt, aby importować je do innego urządzenia
+Cechy prostego kalendarza 2022:
 
-POBIERZ PROSTY KALENDARZ MOBILNY - PROSTE DARMOWE NARZĘDZIE DO PLANOWANIA HARMONOGRAMÓW OFFLINE BEZ REKLAM! Z ŁATWOŚCIĄ PLANUJ SWOJE DZIAŁANIA W 2020 ROKU!
+✔️ Najlepsze wrażenia użytkownika
+➕ Brak reklam i denerwujących wyskakujących okienek – naprawdę świetne wrażenia użytkownika!
+➕ Nie jest potrzebny dostęp do Internetu, co zapewnia większą prywatność, bezpieczeństwo i stabilność
 
-Nie zawiera reklam, nie wymaga niepotrzebnych uprawnień. Jest oprogramowaniem w 100% open-source, umożliwiającym konfigurowanie kolorów.
+✔️ Elastyczność dla Twojej produktywności
+➕ Widżet kalendarza obsługuje eksportowanie i importowanie wydarzeń za pomocą plików .ics
+➕ Eksportuj ustawienia do plików .txt, aby zaimportować je na inne urządzenie
+➕ Elastyczne tworzenie wydarzeń – data, czas trwania, przypomnienia, duży wybór zasad powtarzania
+➕ Obsługa CalDAV do synchronizowania wydarzeń przez Kalendarz Google, Microsoft Outlook, Nextcloud, Exchange itp.
 
-Już dziś poznaj pełen zestaw prostych narzędzi pod tym adresem:
+✔️ Spersonalizowany specjalnie dla Ciebie
+➕ Planer harmonogramu – dostosuj i zmień: dźwięk, powtarzanie, strumień audio, wibracje
+➕ Widżet kalendarza – kolorowe kalendarze i konfigurowalne motywy
+➕ Otwartoźródłowy, mały kalendarz przetłumaczony na ponad 45 języków
+➕ Zaplanuj swój dzień z innymi – możliwość szybkiego udostępniania wydarzeń w mediach społecznościowych, e-mailach itp.
+➕ Rodzinny organizer – z bezproblemowym powielaniem wydarzeń, organizacją i zarządzaniem czasem
+
+✔️ Organizacja i zarządzanie czasem
+➕ Planer dnia – planer czasu pomoże Ci zorganizować swój dzień
+➕ Planer tygodniowy – śledzenie napiętego harmonogramu tygodniowego nigdy nie było łatwiejsze
+➕ Menedżer planu podróży – kalendarz służbowy współdzielony między zespołami w pracy
+➕ Harmonogram spotkań – z łatwością organizuj i utrzymuj swój terminarz
+➕ Aplikacja do planowania – łatwe w użyciu przypomnienia o osobistych wydarzeniach i spotkaniach oraz planer harmonogramu
+
+✔️ Aplikacja kalendarza nr 1
+➕ Łatwo importuj święta, urodziny kontaktów i rocznice
+➕ Szybko filtruj wydarzenia osobiste według typu wydarzeń
+➕ Dzienny harmonogram i lokalizacja wydarzenia pokazana na mapie
+➕ Szybki kalendarz służbowy lub osobisty, cyfrowy terminarz
+➕ Szybko przełączaj się między widokami: dziennym, tygodniowym, miesięcznym, rocznym i wydarzeń
+
+POBIERZ PROSTY PLANER KALENDARZA – HARMONOGRAM OFFLINE I UKŁADANIE TERMINARZA BEZ REKLAM! ZAPLANUJ SWÓJ HARMONOGRAM 2022!
+
+Sprawdź pełen zestaw od Simple Tools tutaj:
 https://www.simplemobiletools.com
 
-Strona internetowa Prosty Kalendarz Pro:
+Strona internetowa Prostego kalendarza Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:

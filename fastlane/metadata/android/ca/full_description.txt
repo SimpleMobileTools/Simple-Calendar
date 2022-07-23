@@ -1,33 +1,51 @@
-El Simple Calendar és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis!
+El Simple Calendar 2022 és un calendari fora de línia totalment personalitzable dissenyat per fer exactament el que hauria de fer un calendari. Sense funcions complicades, permisos innecessaris i sense anuncis. Permet la sincronització d'esdeveniments a través de Google Calendar i altres aplicacions que permetin el protocol CalDAV.
 
-Tant si organitzeu esdeveniments individuals o recurrents, aniversaris, sants, reunions de negocis, cites o qualsevol altra cosa, el Simple Calendar fa que sigui fàcil de mantenir-se organitzat. Amb una increïble varietat d'opcions de personalització, podeu personalitzar recordatoris d'esdeveniments, sons de notificació, ginys de calendari i l'aspecte de l'aplicació.
+Descarregueu-lo ara!
 
-Les vistes diàries, setmanals i mensuals fan que revisar els vostres propers esdeveniments i cites sigui molt fàcil. Fins i tot podeu veure-ho tot com una llista única d'esdeveniments en comptes de veure'ls del calendari, de manera que sapigueu exactament què passa a la vostra vida i quan.
+Aplicació de planificació digital diària: preneu el control del vostre temps
+Tant si busqueu un calendari de feina per a empreses, un planificador diari, un programador de cites o l'organització i la programació d'esdeveniments únics i recurrents com aniversaris, sants, recordatoris de cites o qualsevol altra cosa, el Simple Calendar 2022 facilita mantenir-vos organitzat. El giny de calendari té una varietat increïble d'opcions de personalització: personalitzeu els recordatoris d'esdeveniments, l'aparença de notificacions, el giny de recordatoris de calendari petits i l'aparença general.
 
-----------------------------------------------------------
-Simple Calendar: funcions i avantatges
-----------------------------------------------------------
+Planificador d'horaris: planifiqueu el vostre dia
+Programador de cites, planificador mensual i organitzador familiar en un! Comproveu la vostra propera agenda, programeu reunions de negocis i esdeveniments i reserveu cites fàcilment. Els recordatoris us mantindran al dia i informats en aquesta aplicació de programació diària. El giny de calendari 2022 és molt fàcil d'utilitzar. Fins i tot podeu veure-ho tot com una simple llista d'esdeveniments en lloc d'una visualització mensual, de manera que sapigueu exactament què passa a la vostra vida i com organitzar i planificar l'agenda.
 
-✔️ Sense anuncis ni finestres emergents molestes
-✔️ No cal accés a Internet, oferint-vos més privadesa i seguretat
-✔️ Només es requereixen els permisos mínims
-✔️ Èmfasi en la simplicitat: fa el que ha de fer un calendari!
-✔️ Codi obert
-✔️ Temes i ginys de calendari/esdeveniments totalment personalitzables
-✔️ Traduït a 40 idiomes
-✔️ Exporta la configuració a fitxers .txt per importar-los en un altre dispositiu
-✔️ Admet la sincronització del calendari CalDAV per sincronitzar esdeveniments entre dispositius
-✔️ Vistes diàries, setmanals, mensuals, anuals i d'esdeveniments al calendari
-✔️ Admet l'exportació i la importació d'esdeveniments mitjançant fitxers .ics
-✔️ Establiu diversos recordatoris d'esdeveniments, personalitzeu el so i la vibració dels recordatoris d'esdeveniments
-✔️ Opció de posposar per als recordatoris
-✔️ Afegeix fàcilment vacances, aniversaris, sants i cites
-✔️ Personalitza els esdeveniments: hora d'inici, durada, recordatoris, etc
-✔️ Afegiu assistents a cada esdeveniment
-✔️ Feu servir com a calendari personal o calendari empresarial
-✔️ Trieu entre recordatoris i notificacions per correu electrònic per avisar-vos d'un esdeveniment
+Funcionalitats del Simple Calendar 2022
+✔️ La millor experiència d'usuari
+➕ Sense anuncis ni finestres emergents molestes, una experiència d'usuari realment fantàstica!
+➕ No es necessita accés a Internet, cosa que us ofereix més privadesa, seguretat i estabilitat
 
-DESCARREGUEU EL SIMPLE CALENDAR: EL CALENDARI SENZILL FORA DE LÍNIA SENSE ANUNCIS!
+✔️ Flexibilitat per a la vostra productivitat
+➕ El giny de calendari admet l'exportació i la importació d'esdeveniments mitjançant fitxers .ics
+➕ Exporteu la configuració a fitxers .txt per importar-los a un altre dispositiu
+➕ Creació flexible d'esdeveniments: temps, durada, recordatoris, regles de repetició potents
+➕ Permet CalDAV per sincronitzar esdeveniments mitjançant Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc.
+
+✔️ Personalitzat només per a vós
+➕ Planificador de programació: personalitza i canvia el so, el bucle, el flux d'àudio i les vibracions
+➕ Giny de calendari: calendaris acolorits i temes personalitzables
+➕ Calendari petit de codi obert, traduït a més de 40 idiomes
+➕ Planifiqueu el vostre dia amb els altres: possibilitat de compartir esdeveniments ràpidament a les xarxes socials, correus electrònics, etc.
+➕ Organitzador familiar: amb duplicació d'esdeveniments, organització i gestió del temps sense problemes
+
+✔️ Organització i gestió del temps
+➕ Planificador del dia: el planificador de l'agenda us ajudarà a organitzar el vostre dia
+➕ Planificador setmanal: mantenir-se per davant de la vostra agenda setmanal ocupada mai ha estat tan fàcil
+➕ Gestor d'itineraris: calendari empresarial compartit entre equips de treball
+➕ Programador de cites: organitzeu i manteniu la vostra agenda amb facilitat
+➕ Aplicació de planificació: esdeveniments personals fàcils d'utilitzar, recordatori de cites i planificador d'horaris
+➕ Planifica el vostre dia: gestioneu el dia amb aquest planificador d'horaris d'Android, organitzador d'esdeveniments i familiars
+
+✔️ Aplicació de calendari número 1
+➕ Importeu vacances, contacteu amb aniversaris i aniversaris fàcilment
+➕ Filtreu els esdeveniments personals ràpidament per tipus d'esdeveniment
+➕ Horari diari i ubicació de l'esdeveniment, mostrats en un mapa
+➕ Calendari empresarial ràpid o agenda digital personal
+➕ Canvieu ràpidament entre visualitzacions diàries, setmanals, mensuals, anuals i d'esdeveniments
+
+DESCARREGUEU EL SIMPLE CALENDAR: EL CALENDARI SENZILL FORA DE LÍNIA SENSE ANUNCIS! PLANIFICA EL TEU HORARIS 2022!
+
+De manera predeterminada, inclou el «Material design» i un tema fosc, proporcionant una gran experiència d'usuari per a un ús fàcil. La manca d'accés a Internet us ofereix més privadesa, seguretat i estabilitat que altres aplicacions.
+
+No conté anuncis ni permisos innecessaris. És totalment de codi obert, ofereix colors personalitzables.
 
 Consulteu el conjunt complet d'eines simples aquí:
 https://www.simplemobiletools.com
