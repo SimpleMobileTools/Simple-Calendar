@@ -59,8 +59,8 @@
     <string name="repeat_till">Powtarzaj do</string>
     <string name="forever">Zawsze</string>
     <string name="event_is_repeatable">Wydarzenie jest cykliczne</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
-    <string name="selection_contains_repetition">Wybór zawiera powtarzające się wydarzenia</string>
+    <string name="task_is_repeatable">Zadanie jest cykliczne</string>
+    <string name="selection_contains_repetition">Wybór zawiera wydarzenia cykliczne</string>
     <string name="delete_one_only">Usuń tylko wybrane wystąpienie</string>
     <string name="delete_future_occurrences">Usuń to i wszystkie przyszłe wystąpienia</string>
     <string name="delete_all_occurrences">Usuń wszystkie wystąpienia</string>
