@@ -34,7 +34,6 @@ class TaskActivity : SimpleActivity() {
     private lateinit var mTaskDateTime: DateTime
     private lateinit var mTask: Event
 
-    private var mIsAllDayEvent = false
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
     private var mReminder3Minutes = REMINDER_OFF
@@ -48,7 +47,7 @@ class TaskActivity : SimpleActivity() {
     private var mOriginalStartTS = 0L
     private var mTaskCompleted = false
     private var mLastSavePromptTS = 0L
-    private var mIsNewEvent = true
+    private var mIsNewTask = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,7 +162,7 @@ class TaskActivity : SimpleActivity() {
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
-            putBoolean(IS_NEW_EVENT, mIsNewEvent)
+            putBoolean(IS_NEW_EVENT, mIsNewTask)
             putLong(ORIGINAL_START_TS, mOriginalStartTS)
         }
     }
@@ -189,7 +188,7 @@ class TaskActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
             mEventTypeId = getLong(EVENT_TYPE_ID)
-            mIsNewEvent = getBoolean(IS_NEW_EVENT)
+            mIsNewTask = getBoolean(IS_NEW_EVENT)
             mOriginalStartTS = getLong(ORIGINAL_START_TS)
         }
 
@@ -268,7 +267,7 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun setupEditTask() {
-        mIsNewEvent = false
+        mIsNewTask = false
         val realStart = if (mTaskOccurrenceTS == 0L) mTask.startTS else mTaskOccurrenceTS
         mOriginalStartTS = realStart
         mTaskDateTime = Formatter.getDateTimeFromTS(realStart)
@@ -463,7 +462,6 @@ class TaskActivity : SimpleActivity() {
                         }
                     }
                 }
-
                 2 -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
@@ -663,21 +661,21 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun showReminder1Dialog() {
-        showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = mIsAllDayEvent) {
+        showPickSecondsDialogHelper(mReminder1Minutes) {
             mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
     }
 
     private fun showReminder2Dialog() {
-        showPickSecondsDialogHelper(mReminder2Minutes, showDuringDayOption = mIsAllDayEvent) {
+        showPickSecondsDialogHelper(mReminder2Minutes) {
             mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
     }
 
     private fun showReminder3Dialog() {
-        showPickSecondsDialogHelper(mReminder3Minutes, showDuringDayOption = mIsAllDayEvent) {
+        showPickSecondsDialogHelper(mReminder3Minutes) {
             mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
@@ -948,7 +946,7 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun updateActionBarTitle() {
-        if (mIsNewEvent) {
+        if (mIsNewTask) {
             updateActionBarTitle(getString(R.string.new_task))
         } else {
             updateActionBarTitle(getString(R.string.edit_task))
