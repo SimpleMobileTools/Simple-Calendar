@@ -355,6 +355,7 @@
             android:layout_below="@+id/task_type_divider"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
             android:text="@string/mark_completed"
             android:visibility="gone" />
 
