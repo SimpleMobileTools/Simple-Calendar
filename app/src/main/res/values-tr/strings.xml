@@ -59,7 +59,7 @@
     <string name="repeat_till">Şu kadar tekrarla:</string>
     <string name="forever">Sonsuza kadar</string>
     <string name="event_is_repeatable">Etkinlik tekrarlanabilir</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Görev tekrarlanabilir</string>
     <string name="selection_contains_repetition">Seçim tekrarlanan etkinlikleri içeriyor</string>
     <string name="delete_one_only">Yalnızca seçilen etkinlikleri sil</string>
     <string name="delete_future_occurrences">Bu ve gelecekteki tüm etkinlikleri sil</string>
