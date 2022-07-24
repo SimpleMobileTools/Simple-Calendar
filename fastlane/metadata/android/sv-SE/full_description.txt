@@ -2,16 +2,14 @@ En enkel kalender med valfri Google-synkronisering. Du kan enkelt skapa återkom
 
 Har en widget med en månadsvy och en widget med en händelselista. Du kan anpassa widgetarnas textfärger, bakgrundsfärger och bakgrundsgenomskinligheter.
 
+Den levereras med Material Design och mörkt tema som standard, och ger en bra användarupplevelse för enkel användning. Avsaknaden av internetåtkomst ger dig mer integritet, säkerhet och stabilitet än andra appar.
+
 Innehåller ingen reklam eller onödiga behörigheter. Den har helt öppen källkod och anpassningsbara färger.
 
-Lagringsbehörigheten behövs bara för att exportera eller importera händelser från .ics-filer.
-
-Kontaktbehörigheten används bara för att importera kontakters födelsedagar och årsdagar.
-
-Check out the full suite of Simple Tools here:
+Kolla in hela uppsättningen enkla verktyg här:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+Fristående webbplats för Simpel kalender Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
