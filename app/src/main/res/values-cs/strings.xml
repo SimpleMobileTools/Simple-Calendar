@@ -59,7 +59,7 @@
     <string name="repeat_till">Opakovat do</string>
     <string name="forever">Navždy</string>
     <string name="event_is_repeatable">Událost se opakuje</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Úkol je opakující se</string>
     <string name="selection_contains_repetition">Výběr zahrnuje opakující se události</string>
     <string name="delete_one_only">Vymazat pouze vybrané výskyty</string>
     <string name="delete_future_occurrences">Vymazat tento a jakékoliv budoucí výskyty</string>
