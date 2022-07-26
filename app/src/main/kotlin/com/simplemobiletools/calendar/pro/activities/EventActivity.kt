@@ -225,6 +225,7 @@ class EventActivity : SimpleActivity() {
 
         updateTextColors(event_scrollview)
         updateIconColors()
+        refreshMenuItems()
         event_time_zone_divider.beVisibleIf(config.allowChangingTimeZones)
         event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
         event_time_zone.beVisibleIf(config.allowChangingTimeZones)
@@ -278,7 +279,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun isEventChanged(): Boolean {
-        if (!this::mEvent.isInitialized) {
+        if (!::mEvent.isInitialized) {
             return false
         }
 

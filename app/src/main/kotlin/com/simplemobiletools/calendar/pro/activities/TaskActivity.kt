@@ -264,6 +264,8 @@ class TaskActivity : SimpleActivity() {
 
         task_reminder_2.setOnClickListener { showReminder2Dialog() }
         task_reminder_3.setOnClickListener { showReminder3Dialog() }
+        refreshMenuItems()
+        setupMarkCompleteButton()
 
         if (savedInstanceState == null) {
             updateEventType()
@@ -294,7 +296,6 @@ class TaskActivity : SimpleActivity() {
         task_description.setText(mTask.description)
         task_all_day.isChecked = mTask.getIsAllDay()
         toggleAllDay(mTask.getIsAllDay())
-        setupMarkCompleteButton()
         checkRepeatTexts(mRepeatInterval)
     }
 
