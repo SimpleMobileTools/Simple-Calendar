@@ -6,14 +6,12 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyCompatRadioButton
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
-import java.util.*
 
 class SelectEventTypeDialog(
     val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
@@ -22,7 +20,7 @@ class SelectEventTypeDialog(
     private val NEW_EVENT_TYPE_ID = -2L
     private val LAST_USED_EVENT_TYPE_ID = -1L
 
-    private val dialog: AlertDialog?
+    private var dialog: AlertDialog? = null
     private val radioGroup: RadioGroup
     private var wasInit = false
     private var eventTypes = ArrayList<EventType>()
@@ -50,9 +48,11 @@ class SelectEventTypeDialog(
             }
         }
 
-        dialog = AlertDialog.Builder(activity)
-            .create().apply {
-                activity.setupDialogStuff(view, this)
+        activity.getAlertDialogBuilder()
+            .apply {
+                activity.setupDialogStuff(view, this) { alertDialog ->
+                    dialog = alertDialog
+                }
             }
     }
 

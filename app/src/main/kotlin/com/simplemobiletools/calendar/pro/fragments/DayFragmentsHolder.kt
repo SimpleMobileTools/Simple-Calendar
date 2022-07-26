@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -15,10 +14,7 @@ import com.simplemobiletools.calendar.pro.helpers.DAILY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
-import com.simplemobiletools.commons.extensions.getDatePickerDialogTheme
-import com.simplemobiletools.commons.extensions.getProperBackgroundColor
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateActionBarTitle
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
@@ -113,10 +109,10 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
-        AlertDialog.Builder(requireContext())
+        activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
-            .create().apply {
+            .apply {
                 activity?.setupDialogStuff(view, this)
             }
     }

@@ -12,14 +12,13 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
-import java.util.*
 
 class ExportEventsDialog(
     val activity: SimpleActivity, val path: String, val hidePath: Boolean,
     val callback: (file: File, eventTypes: ArrayList<Long>) -> Unit
 ) {
     private var realPath = if (path.isEmpty()) activity.internalStoragePath else path
-    val config = activity.config
+    private val config = activity.config
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
@@ -54,12 +53,12 @@ class ExportEventsDialog(
             }
         }
 
-        AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok, null)
             .setNegativeButton(R.string.cancel, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this, R.string.export_events) {
-                    getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            .apply {
+                activity.setupDialogStuff(view, this, R.string.export_events) { alertDialog ->
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         val filename = view.export_events_filename.value
                         when {
                             filename.isEmpty() -> activity.toast(R.string.empty_name)
@@ -76,7 +75,7 @@ class ExportEventsDialog(
 
                                     val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
                                     callback(file, eventTypes)
-                                    dismiss()
+                                    alertDialog.dismiss()
                                 }
                             }
                             else -> activity.toast(R.string.invalid_name)

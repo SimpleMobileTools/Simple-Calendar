@@ -6,11 +6,12 @@ import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.FilterEventTypeAdapter
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_filter_event_types.view.*
 
 class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> Unit) {
-    private lateinit var dialog: AlertDialog
+    private var dialog: AlertDialog? = null
     private val view = activity.layoutInflater.inflate(R.layout.dialog_filter_event_types, null)
 
     init {
@@ -18,11 +19,13 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
             val displayEventTypes = activity.config.displayEventTypes
             view.filter_event_types_list.adapter = FilterEventTypeAdapter(activity, it, displayEventTypes)
 
-            dialog = AlertDialog.Builder(activity)
+            activity.getAlertDialogBuilder()
                 .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmEventTypes() }
                 .setNegativeButton(R.string.cancel, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
+                .apply {
+                    activity.setupDialogStuff(view, this) { alertDialog ->
+                        dialog = alertDialog
+                    }
                 }
         }
     }
@@ -33,6 +36,6 @@ class FilterEventTypesDialog(val activity: SimpleActivity, val callback: () -> U
             activity.config.displayEventTypes = selectedItems
             callback()
         }
-        dialog.dismiss()
+        dialog?.dismiss()
     }
 }

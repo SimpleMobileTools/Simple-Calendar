@@ -3,12 +3,12 @@ package com.simplemobiletools.calendar.pro.dialogs
 import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.calendar_item_account.view.*
@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
 
 class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Unit) {
     private var prevAccount = ""
-    private var dialog: AlertDialog
     private var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
 
     init {
@@ -38,10 +37,10 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
             addCalendarItem(true, it.displayName, it.id, ids.contains(it.id))
         }
 
-        dialog = AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmSelection() }
             .setNegativeButton(R.string.cancel, null)
-            .create().apply {
+            .apply {
                 activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
             }
     }

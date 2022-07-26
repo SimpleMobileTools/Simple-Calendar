@@ -7,12 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyMonthPagerAdapter
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getMonthCode
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -114,10 +112,10 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        AlertDialog.Builder(requireContext())
+        activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
-            .create().apply {
+            .apply {
                 activity?.setupDialogStuff(view, this)
             }
     }

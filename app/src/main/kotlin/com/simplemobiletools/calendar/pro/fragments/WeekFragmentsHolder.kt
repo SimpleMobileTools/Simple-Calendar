@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
@@ -185,10 +184,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
-        AlertDialog.Builder(requireContext())
+        activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
-            .create().apply {
+            .apply {
                 activity?.setupDialogStuff(view, this)
             }
     }

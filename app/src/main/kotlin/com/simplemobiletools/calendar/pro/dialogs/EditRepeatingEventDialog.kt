@@ -4,12 +4,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_edit_repeating_event.view.*
 
 class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean = false, val callback: (allOccurrences: Int) -> Unit) {
-    var dialog: AlertDialog
+    private var dialog: AlertDialog? = null
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_edit_repeating_event, null) as ViewGroup).apply {
@@ -24,16 +25,17 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean
             }
         }
 
-        dialog = AlertDialog.Builder(activity)
-            .create().apply {
-                activity.setupDialogStuff(view, this) {
-                    hideKeyboard()
+        activity.getAlertDialogBuilder()
+            .apply {
+                activity.setupDialogStuff(view, this) { alertDialog ->
+                    dialog = alertDialog
+                    alertDialog.hideKeyboard()
                 }
             }
     }
 
     private fun sendResult(allOccurrences: Int) {
         callback(allOccurrences)
-        dialog.dismiss()
+        dialog?.dismiss()
     }
 }

@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.helpers.DELETE_ALL_OCCURRENCES
 import com.simplemobiletools.calendar.pro.helpers.DELETE_FUTURE_OCCURRENCES
 import com.simplemobiletools.calendar.pro.helpers.DELETE_SELECTED_OCCURRENCE
 import com.simplemobiletools.commons.extensions.beVisibleIf
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_delete_event.view.*
 
@@ -18,7 +19,7 @@ class DeleteEventDialog(
     isTask: Boolean = false,
     val callback: (deleteRule: Int) -> Unit
 ) {
-    val dialog: AlertDialog?
+    private var dialog: AlertDialog? = null
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_delete_event, null).apply {
@@ -39,11 +40,13 @@ class DeleteEventDialog(
             }
         }
 
-        dialog = AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.yes) { dialog, which -> dialogConfirmed(view as ViewGroup) }
             .setNegativeButton(R.string.no, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this)
+            .apply {
+                activity.setupDialogStuff(view, this) { alertDialog ->
+                    dialog = alertDialog
+                }
             }
     }
 

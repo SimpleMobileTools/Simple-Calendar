@@ -7,9 +7,9 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setFillWithStroke
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.dialog_select_event_type_color.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventType, val callback: (color: Int) -> Unit) {
-    private val dialog: AlertDialog?
+    private var dialog: AlertDialog? = null
     private val radioGroup: RadioGroup
     private var wasInit = false
     private val colors = activity.calDAVHelper.getAvailableCalDAVCalendarColors(eventType)
@@ -34,9 +34,11 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
         }
 
         wasInit = true
-        dialog = AlertDialog.Builder(activity)
-            .create().apply {
-                activity.setupDialogStuff(view, this)
+        activity.getAlertDialogBuilder()
+            .apply {
+                activity.setupDialogStuff(view, this) { alertDialog ->
+                    dialog = alertDialog
+                }
 
                 if (colors.isEmpty()) {
                     showCustomColorPicker()

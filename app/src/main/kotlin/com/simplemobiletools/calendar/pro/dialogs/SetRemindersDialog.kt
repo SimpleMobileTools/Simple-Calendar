@@ -2,7 +2,6 @@ package com.simplemobiletools.calendar.pro.dialogs
 
 import android.app.Activity
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARY_EVENT
@@ -69,10 +68,10 @@ class SetRemindersDialog(val activity: Activity, val eventType: Int, val callbac
             }
         }
 
-        AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
             .setNegativeButton(R.string.cancel, null)
-            .create().apply {
+            .apply {
                 activity.setupDialogStuff(view, this, R.string.event_reminders)
             }
     }

@@ -6,29 +6,31 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.showErrorToast
 
 class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
-    var dialog: AlertDialog
+    private var dialog: AlertDialog? = null
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_reminder_warning, null)
 
-        dialog = AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
             .setNeutralButton(R.string.settings, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this, cancelOnTouchOutside = false)
-                getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
-                    redirectToSettings()
+            .apply {
+                activity.setupDialogStuff(view, this, cancelOnTouchOutside = false) { alertDialog ->
+                    alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
+                        redirectToSettings()
+                    }
                 }
             }
     }
 
     private fun dialogConfirmed() {
-        dialog.dismiss()
+        dialog?.dismiss()
         callback()
     }
 

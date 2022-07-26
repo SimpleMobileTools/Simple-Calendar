@@ -1,17 +1,15 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
 import android.app.Activity
-import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
 import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
-import java.util.*
 
 class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) {
-    val dialog: AlertDialog
-    val view = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
+    private val view = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
 
     init {
         val days = activity.resources.getStringArray(R.array.week_days)
@@ -34,12 +32,12 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
             view.dialog_vertical_linear_layout.addView(it)
         }
 
-        dialog = AlertDialog.Builder(activity)
-                .setPositiveButton(R.string.ok, { dialog, which -> callback(getRepeatRuleSum()) })
-                .setNegativeButton(R.string.cancel, null)
-                .create().apply {
-                    activity.setupDialogStuff(view, this)
-                }
+        activity.getAlertDialogBuilder()
+            .setPositiveButton(R.string.ok) { dialog, which -> callback(getRepeatRuleSum()) }
+            .setNegativeButton(R.string.cancel, null)
+            .apply {
+                activity.setupDialogStuff(view, this)
+            }
     }
 
     private fun getRepeatRuleSum(): Int {

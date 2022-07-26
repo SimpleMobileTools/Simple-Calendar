@@ -7,20 +7,16 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.STORED_LOCALLY_ONLY
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
-import com.simplemobiletools.commons.extensions.getProperBackgroundColor
-import com.simplemobiletools.commons.extensions.setFillWithStroke
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalDAVCalendar>, val currCalendarId: Int, val callback: (id: Int) -> Unit) {
-    private val dialog: AlertDialog?
+    private var dialog: AlertDialog? = null
     private val radioGroup: RadioGroup
     private var wasInit = false
 
@@ -46,9 +42,11 @@ class SelectEventCalendarDialog(val activity: Activity, val calendars: List<CalD
             }
         }
 
-        dialog = AlertDialog.Builder(activity)
-            .create().apply {
-                activity.setupDialogStuff(view, this)
+        activity.getAlertDialogBuilder()
+            .apply {
+                activity.setupDialogStuff(view, this) { alertDialog ->
+                    dialog = alertDialog
+                }
             }
     }
 

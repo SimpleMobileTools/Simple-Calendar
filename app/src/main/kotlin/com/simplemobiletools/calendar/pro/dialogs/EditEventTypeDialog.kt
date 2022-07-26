@@ -4,7 +4,6 @@ import android.app.Activity
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
@@ -13,7 +12,7 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
 class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
-    var isNewEvent = eventType == null
+    private var isNewEvent = eventType == null
 
     init {
         if (eventType == null) {
@@ -40,15 +39,15 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
             }
         }
 
-        AlertDialog.Builder(activity)
+        activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok, null)
             .setNegativeButton(R.string.cancel, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) {
-                    showKeyboard(view.type_title)
-                    getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            .apply {
+                activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) { alertDialog ->
+                    alertDialog.showKeyboard(view.type_title)
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         ensureBackgroundThread {
-                            eventTypeConfirmed(view.type_title.value, this)
+                            eventTypeConfirmed(view.type_title.value, alertDialog)
                         }
                     }
                 }

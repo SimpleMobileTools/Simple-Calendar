@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
@@ -101,10 +100,10 @@ class YearFragmentsHolder : MyFragmentHolder() {
         val dateTime = DateTime(Formatter.getDateTimeFromCode("${currentYear}0523").toString())
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, 1, null)
 
-        AlertDialog.Builder(requireContext())
+        activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok) { dialog, which -> datePicked(datePicker) }
-            .create().apply {
+            .apply {
                 activity?.setupDialogStuff(view, this)
             }
     }
