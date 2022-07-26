@@ -255,7 +255,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.export_events -> tryExportEvents()
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
-                android.R.id.home -> onBackPressed()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -263,12 +262,16 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
-        swipe_refresh_layout.isRefreshing = false
-        checkSwipeRefreshAvailability()
-        when {
-            fab_extended_overlay.isVisible() -> hideExtendedFab()
-            currentFragments.size > 1 -> removeTopFragment()
-            else -> super.onBackPressed()
+        if (mIsSearchOpen) {
+            closeSearch()
+        } else {
+            swipe_refresh_layout.isRefreshing = false
+            checkSwipeRefreshAvailability()
+            when {
+                fab_extended_overlay.isVisible() -> hideExtendedFab()
+                currentFragments.size > 1 -> removeTopFragment()
+                else -> super.onBackPressed()
+            }
         }
     }
 
@@ -929,7 +932,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
@@ -989,7 +991,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         resetActionBarTitle()
         calendar_fab.beVisible()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun openDayFromMonthly(dateTime: DateTime) {
@@ -1004,7 +1005,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         fragment.arguments = bundle
         try {
             supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
         } catch (e: Exception) {
         }
     }
@@ -1027,7 +1027,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateActionBarTitle()
         }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
-        supportActionBar?.setDisplayHomeAsUpEnabled(currentFragments.size > 1)
     }
 
     private fun refreshViewPager() {
