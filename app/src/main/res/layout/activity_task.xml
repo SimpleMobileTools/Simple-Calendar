@@ -1,363 +1,387 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/task_scrollview"
+    android:id="@+id/task_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/task_holder"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/task_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.simplemobiletools.commons.views.MyEditText
-            android:id="@+id/task_title"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/task_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_margin"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginEnd="@dimen/activity_margin"
-            android:hint="@string/title"
-            android:inputType="textCapSentences"
-            android:maxLength="180"
-            android:maxLines="1"
-            android:minEms="20"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/day_text_size" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:menu="@menu/menu_task"
+            app:title="@string/app_launcher_name"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
 
-        <com.simplemobiletools.commons.views.MyEditText
-            android:id="@+id/task_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_title"
-            android:layout_marginStart="@dimen/activity_margin"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginEnd="@dimen/activity_margin"
-            android:autoLink="all"
-            android:gravity="top"
-            android:hint="@string/description"
-            android:inputType="textCapSentences|textMultiLine"
-            android:linksClickable="true"
-            android:minEms="20"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/day_text_size" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/task_description_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/task_description"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/normal_margin"
-            android:background="@color/divider_grey"
-            android:importantForAccessibility="no" />
-
-        <ImageView
-            android:id="@+id/task_time_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/task_description_divider"
-            android:layout_alignTop="@+id/task_all_day_holder"
-            android:layout_alignBottom="@+id/task_all_day_holder"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_clock_vector" />
+    <ScrollView
+        android:id="@+id/task_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
-            android:id="@+id/task_all_day_holder"
+            android:id="@+id/task_holder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_description_divider"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_toEndOf="@+id/task_time_image"
-            android:background="?attr/selectableItemBackground"
-            android:paddingStart="@dimen/zero"
-            android:paddingTop="@dimen/normal_margin"
-            android:paddingEnd="@dimen/normal_margin"
-            android:paddingBottom="@dimen/normal_margin">
+            android:layout_height="wrap_content">
 
-            <com.simplemobiletools.commons.views.MyAppCompatCheckbox
-                android:id="@+id/task_all_day"
+            <com.simplemobiletools.commons.views.MyEditText
+                android:id="@+id/task_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:layoutDirection="rtl"
-                android:text="@string/all_day"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:hint="@string/title"
+                android:inputType="textCapSentences"
+                android:maxLength="180"
+                android:maxLines="1"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size" />
 
-        </RelativeLayout>
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_time_image"
-            android:layout_alignStart="@+id/task_all_day_holder"
-            android:background="?attr/selectableItemBackground"
-            android:paddingTop="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="January 1 1970" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_time_image"
-            android:layout_alignParentEnd="true"
-            android:background="?attr/selectableItemBackground"
-            android:padding="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="00:00" />
-
-        <ImageView
-            android:id="@+id/task_date_time_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/task_date"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
-            android:background="@color/divider_grey"
-            android:importantForAccessibility="no" />
-
-        <ImageView
-            android:id="@+id/task_reminder_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/task_date_time_divider"
-            android:layout_alignTop="@+id/task_reminder_1"
-            android:layout_alignBottom="@+id/task_reminder_1"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_bell_vector" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_reminder_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_date_time_divider"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_toEndOf="@+id/task_reminder_image"
-            android:background="?attr/selectableItemBackground"
-            android:ellipsize="end"
-            android:lines="1"
-            android:paddingStart="@dimen/zero"
-            android:paddingTop="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="@string/add_another_reminder" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_reminder_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_reminder_1"
-            android:layout_alignStart="@+id/task_reminder_1"
-            android:alpha="0.4"
-            android:background="?attr/selectableItemBackground"
-            android:ellipsize="end"
-            android:lines="1"
-            android:paddingStart="@dimen/zero"
-            android:paddingTop="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin"
-            android:text="@string/add_another_reminder"
-            android:textSize="@dimen/day_text_size"
-            android:visibility="gone"
-            tools:text="@string/add_another_reminder" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_reminder_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_reminder_2"
-            android:layout_alignStart="@+id/task_reminder_1"
-            android:alpha="0.4"
-            android:background="?attr/selectableItemBackground"
-            android:ellipsize="end"
-            android:lines="1"
-            android:paddingStart="@dimen/zero"
-            android:paddingTop="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin"
-            android:text="@string/add_another_reminder"
-            android:textSize="@dimen/day_text_size"
-            android:visibility="gone"
-            tools:text="@string/add_another_reminder" />
-
-        <ImageView
-            android:id="@+id/task_caldav_calendar_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/task_reminder_3"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
-            android:background="@color/divider_grey"
-            android:importantForAccessibility="no" />
-
-        <ImageView
-            android:id="@+id/task_repetition_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/task_caldav_calendar_divider"
-            android:layout_alignTop="@+id/task_repetition"
-            android:layout_alignBottom="@+id/task_repetition"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_repeat_vector" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/task_repetition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_caldav_calendar_divider"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_toEndOf="@+id/task_repetition_image"
-            android:background="?attr/selectableItemBackground"
-            android:paddingTop="@dimen/normal_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/normal_margin"
-            android:textSize="@dimen/day_text_size"
-            tools:text="@string/no_repetition" />
-
-        <RelativeLayout
-            android:id="@+id/task_repetition_rule_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_repetition"
-            android:layout_alignStart="@+id/task_repetition"
-            android:background="?attr/selectableItemBackground"
-            android:visibility="gone">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/task_repetition_rule_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:paddingTop="@dimen/activity_margin"
-                android:paddingBottom="@dimen/activity_margin"
-                android:text="@string/repeat_on"
-                android:textSize="@dimen/day_text_size" />
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/task_repetition_rule"
+            <com.simplemobiletools.commons.views.MyEditText
+                android:id="@+id/task_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/task_repetition_rule_label"
-                android:clickable="false"
-                android:gravity="end"
-                android:padding="@dimen/activity_margin"
-                android:text="@string/every_day"
-                android:textSize="@dimen/day_text_size" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/task_repetition_limit_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_repetition_rule_holder"
-            android:layout_alignStart="@+id/task_repetition"
-            android:background="?attr/selectableItemBackground"
-            android:visibility="gone">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/task_repetition_limit_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/task_repetition_limit"
-                android:clickable="false"
-                android:paddingTop="@dimen/activity_margin"
-                android:paddingBottom="@dimen/activity_margin"
-                android:text="@string/repeat_till"
-                android:textSize="@dimen/day_text_size" />
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/task_repetition_limit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:clickable="false"
-                android:padding="@dimen/activity_margin"
-                android:text="@string/forever"
-                android:textSize="@dimen/day_text_size" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/task_repetition_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/task_repetition_limit_holder"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:background="@color/divider_grey"
-            android:importantForAccessibility="no" />
-
-        <ImageView
-            android:id="@+id/task_type_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/task_repetition_divider"
-            android:layout_alignTop="@+id/task_type_holder"
-            android:layout_alignBottom="@+id/task_type_holder"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:padding="@dimen/medium_margin"
-            android:src="@drawable/ic_color_vector" />
-
-        <RelativeLayout
-            android:id="@+id/task_type_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_repetition_divider"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
-            android:layout_toEndOf="@+id/task_type_image"
-            android:background="?attr/selectableItemBackground">
-
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/task_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_toStartOf="@+id/task_type_color"
-                android:paddingTop="@dimen/normal_margin"
-                android:paddingBottom="@dimen/normal_margin"
+                android:layout_below="@+id/task_title"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:autoLink="all"
+                android:gravity="top"
+                android:hint="@string/description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:linksClickable="true"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/day_text_size" />
 
             <ImageView
-                android:id="@+id/task_type_color"
-                android:layout_width="@dimen/color_sample_size"
-                android:layout_height="@dimen/color_sample_size"
+                android:id="@+id/task_description_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/task_description"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <ImageView
+                android:id="@+id/task_time_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/task_description_divider"
+                android:layout_alignTop="@+id/task_all_day_holder"
+                android:layout_alignBottom="@+id/task_all_day_holder"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_clock_vector" />
+
+            <RelativeLayout
+                android:id="@+id/task_all_day_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_description_divider"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/activity_margin"
-                android:clickable="false" />
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_toEndOf="@+id/task_time_image"
+                android:background="?attr/selectableItemBackground"
+                android:paddingStart="@dimen/zero"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingEnd="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin">
+
+                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/task_all_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:layoutDirection="rtl"
+                    android:text="@string/all_day"
+                    android:textSize="@dimen/day_text_size" />
+
+            </RelativeLayout>
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_time_image"
+                android:layout_alignStart="@+id/task_all_day_holder"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:textSize="@dimen/day_text_size"
+                tools:text="January 1 1970" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_time_image"
+                android:layout_alignParentEnd="true"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/activity_margin"
+                android:textSize="@dimen/day_text_size"
+                tools:text="00:00" />
+
+            <ImageView
+                android:id="@+id/task_date_time_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/task_date"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <ImageView
+                android:id="@+id/task_reminder_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/task_date_time_divider"
+                android:layout_alignTop="@+id/task_reminder_1"
+                android:layout_alignBottom="@+id/task_reminder_1"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_bell_vector" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_reminder_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_date_time_divider"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_toEndOf="@+id/task_reminder_image"
+                android:background="?attr/selectableItemBackground"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingStart="@dimen/zero"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:textSize="@dimen/day_text_size"
+                tools:text="@string/add_another_reminder" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_reminder_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_reminder_1"
+                android:layout_alignStart="@+id/task_reminder_1"
+                android:alpha="0.4"
+                android:background="?attr/selectableItemBackground"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingStart="@dimen/zero"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:text="@string/add_another_reminder"
+                android:textSize="@dimen/day_text_size"
+                android:visibility="gone"
+                tools:text="@string/add_another_reminder" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_reminder_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_reminder_2"
+                android:layout_alignStart="@+id/task_reminder_1"
+                android:alpha="0.4"
+                android:background="?attr/selectableItemBackground"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingStart="@dimen/zero"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:text="@string/add_another_reminder"
+                android:textSize="@dimen/day_text_size"
+                android:visibility="gone"
+                tools:text="@string/add_another_reminder" />
+
+            <ImageView
+                android:id="@+id/task_caldav_calendar_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/task_reminder_3"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <ImageView
+                android:id="@+id/task_repetition_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/task_caldav_calendar_divider"
+                android:layout_alignTop="@+id/task_repetition"
+                android:layout_alignBottom="@+id/task_repetition"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_repeat_vector" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/task_repetition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_caldav_calendar_divider"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_toEndOf="@+id/task_repetition_image"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:paddingBottom="@dimen/normal_margin"
+                android:textSize="@dimen/day_text_size"
+                tools:text="@string/no_repetition" />
+
+            <RelativeLayout
+                android:id="@+id/task_repetition_rule_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_repetition"
+                android:layout_alignStart="@+id/task_repetition"
+                android:background="?attr/selectableItemBackground"
+                android:visibility="gone">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_repetition_rule_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:paddingTop="@dimen/activity_margin"
+                    android:paddingBottom="@dimen/activity_margin"
+                    android:text="@string/repeat_on"
+                    android:textSize="@dimen/day_text_size" />
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_repetition_rule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/task_repetition_rule_label"
+                    android:clickable="false"
+                    android:gravity="end"
+                    android:padding="@dimen/activity_margin"
+                    android:text="@string/every_day"
+                    android:textSize="@dimen/day_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/task_repetition_limit_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_repetition_rule_holder"
+                android:layout_alignStart="@+id/task_repetition"
+                android:background="?attr/selectableItemBackground"
+                android:visibility="gone">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_repetition_limit_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/task_repetition_limit"
+                    android:clickable="false"
+                    android:paddingTop="@dimen/activity_margin"
+                    android:paddingBottom="@dimen/activity_margin"
+                    android:text="@string/repeat_till"
+                    android:textSize="@dimen/day_text_size" />
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_repetition_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="false"
+                    android:padding="@dimen/activity_margin"
+                    android:text="@string/forever"
+                    android:textSize="@dimen/day_text_size" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/task_repetition_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/task_repetition_limit_holder"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <ImageView
+                android:id="@+id/task_type_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/task_repetition_divider"
+                android:layout_alignTop="@+id/task_type_holder"
+                android:layout_alignBottom="@+id/task_type_holder"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_color_vector" />
+
+            <RelativeLayout
+                android:id="@+id/task_type_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_repetition_divider"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:layout_toEndOf="@+id/task_type_image"
+                android:background="?attr/selectableItemBackground">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_toStartOf="@+id/task_type_color"
+                    android:paddingTop="@dimen/normal_margin"
+                    android:paddingBottom="@dimen/normal_margin"
+                    android:textSize="@dimen/day_text_size" />
+
+                <ImageView
+                    android:id="@+id/task_type_color"
+                    android:layout_width="@dimen/color_sample_size"
+                    android:layout_height="@dimen/color_sample_size"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/activity_margin"
+                    android:clickable="false" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/task_type_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/task_type_holder"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <android.widget.TextView
+                android:id="@+id/toggle_mark_complete"
+                style="@style/ColoredButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_type_divider"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:text="@string/mark_completed"
+                android:visibility="gone" />
 
         </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/task_type_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/task_type_holder"
-            android:background="@color/divider_grey"
-            android:importantForAccessibility="no" />
-
-        <android.widget.TextView
-            android:id="@+id/toggle_mark_complete"
-            style="@style/ColoredButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/task_type_divider"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:text="@string/mark_completed"
-            android:visibility="gone" />
-
-    </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

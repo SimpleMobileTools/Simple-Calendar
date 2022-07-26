@@ -218,7 +218,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    private fun refreshMenuItems() {
+    fun refreshMenuItems() {
         if (fab_extended_overlay.isVisible()) {
             hideExtendedFab()
         }
@@ -530,6 +530,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun resetActionBarTitle() {
         main_toolbar.title = getString(R.string.app_launcher_name)
         main_toolbar.subtitle = ""
+    }
+
+    fun updateTitle(text: String) {
+        main_toolbar.title = text
     }
 
     fun updateSubtitle(text: String) {

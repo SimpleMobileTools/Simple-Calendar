@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.helpers.CURRENT_TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.getAllTimeZones
 import com.simplemobiletools.calendar.pro.models.MyTimeZone
+import com.simplemobiletools.commons.helpers.NavigationIcon
 import kotlinx.android.synthetic.main.activity_select_time_zone.*
 import java.util.*
 
@@ -24,7 +25,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_time_zone)
-        title = ""
+        setupOptionsMenu()
 
         SelectTimeZoneAdapter(this, allTimeZones) {
             val data = Intent()
@@ -42,11 +43,13 @@ class SelectTimeZoneActivity : SimpleActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_select_time_zone, menu)
-        setupSearch(menu)
-        updateMenuItemColors(menu)
-        return true
+    override fun onResume() {
+        super.onResume()
+        setupToolbar(select_time_zone_toolbar, NavigationIcon.Arrow, searchMenuItem = mSearchMenuItem)
+    }
+
+    private fun setupOptionsMenu() {
+        setupSearch(select_time_zone_toolbar.menu)
     }
 
     private fun setupSearch(menu: Menu) {

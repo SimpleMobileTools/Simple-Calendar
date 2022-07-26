@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.simplemobiletools.commons.views.MyRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/manage_event_types_list"
+    android:id="@+id/manage_event_types_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/manage_event_types_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/manage_event_types_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:menu="@menu/menu_event_types"
+            app:title="@string/manage_event_types"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.simplemobiletools.commons.views.MyRecyclerView
+        android:id="@+id/manage_event_types_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

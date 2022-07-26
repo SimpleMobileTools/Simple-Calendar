@@ -134,7 +134,7 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun shouldGoToTodayBeVisible() = currentDayCode.getMonthCode() != todayDayCode.getMonthCode()
 
     override fun updateActionBarTitle() {
-        (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
+        (activity as? MainActivity)?.updateTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = (viewPager?.adapter as? MyMonthDayPagerAdapter)?.getNewEventDayCode(viewPager?.currentItem ?: 0)

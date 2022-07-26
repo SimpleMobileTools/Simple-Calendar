@@ -5,8 +5,6 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.WindowManager
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -52,6 +50,8 @@ class TaskActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
+        setupOptionsMenu()
+        refreshMenuItems()
 
         if (checkAppSideloading()) {
             return
@@ -78,25 +78,30 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_task, menu)
-        if (::mTask.isInitialized) {
-            menu.findItem(R.id.delete).isVisible = mTask.id != null
-            menu.findItem(R.id.duplicate).isVisible = mTask.id != null
-        }
-
-        updateMenuItemColors(menu, true)
-        return true
+    override fun onResume() {
+        super.onResume()
+        setupToolbar(task_toolbar, NavigationIcon.Arrow)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.save -> saveCurrentTask()
-            R.id.delete -> deleteTask()
-            R.id.duplicate -> duplicateTask()
-            else -> return super.onOptionsItemSelected(item)
+    private fun refreshMenuItems() {
+        if (::mTask.isInitialized) {
+            task_toolbar.menu.apply {
+                findItem(R.id.delete).isVisible = mTask.id != null
+                findItem(R.id.duplicate).isVisible = mTask.id != null
+            }
         }
-        return true
+    }
+
+    private fun setupOptionsMenu() {
+        task_toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.save -> saveCurrentTask()
+                R.id.delete -> deleteTask()
+                R.id.duplicate -> duplicateTask()
+                else -> return@setOnMenuItemClickListener false
+            }
+            return@setOnMenuItemClickListener true
+        }
     }
 
     private fun isTaskChanged(): Boolean {
@@ -213,7 +218,7 @@ class TaskActivity : SimpleActivity() {
             mTaskCompleted = intent.getBooleanExtra(IS_TASK_COMPLETED, false)
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mTask.id = null
-                updateActionBarTitle(getString(R.string.new_task))
+                task_toolbar.title = getString(R.string.new_task)
             }
 
             if (savedInstanceState == null) {
@@ -272,7 +277,7 @@ class TaskActivity : SimpleActivity() {
         mOriginalStartTS = realStart
         mTaskDateTime = Formatter.getDateTimeFromTS(realStart)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-        updateActionBarTitle(getString(R.string.edit_task))
+        task_toolbar.title = getString(R.string.edit_task)
 
         mEventTypeId = mTask.eventType
         mReminder1Minutes = mTask.reminder1Minutes
@@ -300,7 +305,7 @@ class TaskActivity : SimpleActivity() {
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         task_title.requestFocus()
-        updateActionBarTitle(getString(R.string.new_task))
+        task_toolbar.title = getString(R.string.new_task)
 
         mTask.apply {
             this.startTS = mTaskDateTime.seconds()
@@ -946,10 +951,10 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun updateActionBarTitle() {
-        if (mIsNewTask) {
-            updateActionBarTitle(getString(R.string.new_task))
+        task_toolbar.title = if (mIsNewTask) {
+            getString(R.string.new_task)
         } else {
-            updateActionBarTitle(getString(R.string.edit_task))
+            getString(R.string.edit_task)
         }
     }
 }

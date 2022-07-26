@@ -14,7 +14,10 @@ import com.simplemobiletools.calendar.pro.helpers.DAILY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
+import com.simplemobiletools.commons.extensions.getDatePickerDialogTheme
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
@@ -132,7 +135,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun shouldGoToTodayBeVisible() = currentDayCode != todayDayCode
 
     override fun updateActionBarTitle() {
-        (activity as MainActivity).updateActionBarTitle(getString(R.string.app_launcher_name))
+        (activity as MainActivity).updateTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = currentDayCode

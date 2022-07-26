@@ -1,8 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.ManageEventTypesAdapter
 import com.simplemobiletools.calendar.pro.dialogs.EditEventTypeDialog
@@ -11,17 +9,23 @@ import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.helpers.NavigationIcon
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
-import java.util.*
 
 class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_event_types)
+        setupOptionsMenu()
 
         getEventTypes()
         updateTextColors(manage_event_types_list)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupToolbar(manage_event_types_toolbar, NavigationIcon.Arrow)
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
@@ -39,18 +43,14 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_event_types, menu)
-        updateMenuItemColors(menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.add_event_type -> showEventTypeDialog()
-            else -> return super.onOptionsItemSelected(item)
+    private fun setupOptionsMenu() {
+        manage_event_types_toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.add_event_type -> showEventTypeDialog()
+                else -> return@setOnMenuItemClickListener false
+            }
+            return@setOnMenuItemClickListener true
         }
-        return true
     }
 
     override fun deleteEventTypes(eventTypes: ArrayList<EventType>, deleteEvents: Boolean): Boolean {

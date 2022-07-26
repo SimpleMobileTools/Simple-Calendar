@@ -70,7 +70,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
                     }
 
                     if (position < years.size) {
-                        (activity as? MainActivity)?.updateActionBarTitle("${getString(R.string.app_launcher_name)} - ${years[position]}")
+                        (activity as? MainActivity)?.updateTitle("${getString(R.string.app_launcher_name)} - ${years[position]}")
                     }
                 }
             })
@@ -123,7 +123,7 @@ class YearFragmentsHolder : MyFragmentHolder() {
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear
 
     override fun updateActionBarTitle() {
-        (activity as? MainActivity)?.updateActionBarTitle("${getString(R.string.app_launcher_name)} - $currentYear")
+        (activity as? MainActivity)?.updateTitle("${getString(R.string.app_launcher_name)} - $currentYear")
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()

@@ -146,7 +146,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                         super.onScrollStateChanged(recyclerView, newState)
                         if (!hasBeenScrolled) {
                             hasBeenScrolled = true
-                            activity?.invalidateOptionsMenu()
+                            (activity as? MainActivity)?.refreshItems()
                         }
                     }
                 })
@@ -215,7 +215,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             (mView.calendar_events_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(firstNonPastSectionIndex, 0)
             mView.calendar_events_list.onGlobalLayout {
                 hasBeenScrolled = false
-                activity?.invalidateOptionsMenu()
+                (activity as? MainActivity)?.refreshItems()
             }
         }
     }
@@ -229,7 +229,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     override fun shouldGoToTodayBeVisible() = hasBeenScrolled
 
     override fun updateActionBarTitle() {
-        (activity as? MainActivity)?.updateActionBarTitle(getString(R.string.app_launcher_name))
+        (activity as? MainActivity)?.updateTitle(getString(R.string.app_launcher_name))
     }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
