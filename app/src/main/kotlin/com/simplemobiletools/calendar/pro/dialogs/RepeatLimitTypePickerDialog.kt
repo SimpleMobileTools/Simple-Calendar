@@ -9,10 +9,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.getNowSeconds
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.getDatePickerDialogTheme
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.value
+import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
 import java.util.*
@@ -46,6 +43,10 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
                 activity.setupDialogStuff(view, this) { alertDialog ->
                     dialog = alertDialog
                     activity.currentFocus?.clearFocus()
+
+                    view.repeat_type_count.onTextChangeListener {
+                        view.dialog_radio_view.check(R.id.repeat_type_x_times)
+                    }
                 }
             }
     }
