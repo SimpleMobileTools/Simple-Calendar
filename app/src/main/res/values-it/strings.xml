@@ -59,7 +59,7 @@
     <string name="repeat_till">Ripeti fino a</string>
     <string name="forever">Per sempre</string>
     <string name="event_is_repeatable">L\'evento è ripetibile</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Il compito è ripetibile</string>
     <string name="selection_contains_repetition">La selezione contiene eventi ripetuti</string>
     <string name="delete_one_only">Elimina solamente l\'occorenza selezionata</string>
     <string name="delete_future_occurrences">Rimuovi questo e tutte le future occorrenze</string>
