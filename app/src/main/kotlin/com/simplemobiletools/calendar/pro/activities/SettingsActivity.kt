@@ -7,7 +7,6 @@ import android.content.Intent
 import android.media.AudioManager
 import android.media.RingtoneManager
 import android.os.Bundle
-import android.view.Menu
 import android.widget.Toast
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
@@ -41,6 +40,7 @@ class SettingsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
+        setupToolbar(settings_toolbar, NavigationIcon.Arrow)
         setupSettingItems()
     }
 
@@ -91,7 +91,6 @@ class SettingsActivity : SimpleActivity() {
         checkPrimaryColor()
         setupExportSettings()
         setupImportSettings()
-        invalidateOptionsMenu()
 
         arrayOf(
             settings_color_customization_label,
@@ -139,11 +138,6 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminder1 = reminders.getOrElse(0) { REMINDER_OFF }
         config.defaultReminder2 = reminders.getOrElse(1) { REMINDER_OFF }
         config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        updateMenuItemColors(menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -320,7 +314,10 @@ class SettingsActivity : SimpleActivity() {
 
             ensureBackgroundThread {
                 if (newCalendarIds.isNotEmpty()) {
-                    val existingEventTypeNames = eventsHelper.getEventTypesSync().map { it.getDisplayTitle().lowercase(Locale.getDefault()) } as ArrayList<String>
+                    val existingEventTypeNames = eventsHelper.getEventTypesSync().map {
+                        it.getDisplayTitle().lowercase(Locale.getDefault())
+                    } as ArrayList<String>
+
                     getSyncedCalDAVCalendars().forEach {
                         val calendarTitle = it.getFullTitle()
                         if (!existingEventTypeNames.contains(calendarTitle.lowercase(Locale.getDefault()))) {

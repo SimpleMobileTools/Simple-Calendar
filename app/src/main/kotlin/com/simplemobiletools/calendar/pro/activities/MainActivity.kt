@@ -89,6 +89,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched(BuildConfig.APPLICATION_ID)
+        setupOptionsMenu()
+        refreshMenuItems()
 
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
@@ -169,6 +171,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             val newShouldFilterBeVisible = it.size > 1 || config.displayEventTypes.isEmpty()
             if (newShouldFilterBeVisible != mShouldFilterBeVisible) {
                 mShouldFilterBeVisible = newShouldFilterBeVisible
+                refreshMenuItems()
             }
         }
 
@@ -194,8 +197,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkSwipeRefreshAvailability()
         checkShortcuts()
 
+        setupToolbar(main_toolbar, searchMenuItem = mSearchMenuItem)
         if (!mIsSearchOpen) {
-            invalidateOptionsMenu()
+            refreshMenuItems()
         }
 
         setupQuickFilter()
@@ -214,58 +218,48 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        shouldGoToTodayBeVisible = currentFragments.last().shouldGoToTodayBeVisible()
-        menu.apply {
+    private fun refreshMenuItems() {
+        if (fab_extended_overlay.isVisible()) {
+            hideExtendedFab()
+        }
+
+        shouldGoToTodayBeVisible = currentFragments.lastOrNull()?.shouldGoToTodayBeVisible() ?: false
+        main_toolbar.menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
-        }
-
-        setupSearch(menu)
-        updateMenuItemColors(menu)
-        return true
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        if (fab_extended_overlay.isVisible()) {
-            hideExtendedFab()
-        }
-
-        menu.apply {
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
-            findItem(R.id.filter).isVisible = mShouldFilterBeVisible
         }
-
-        return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (fab_extended_overlay.isVisible()) {
-            hideExtendedFab()
-        }
+    private fun setupOptionsMenu() {
+        setupSearch(main_toolbar.menu)
+        main_toolbar.setOnMenuItemClickListener { menuItem ->
+            if (fab_extended_overlay.isVisible()) {
+                hideExtendedFab()
+            }
 
-        when (item.itemId) {
-            R.id.change_view -> showViewDialog()
-            R.id.go_to_today -> goToToday()
-            R.id.go_to_date -> showGoToDateDialog()
-            R.id.print -> printView()
-            R.id.filter -> showFilterDialog()
-            R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
-            R.id.add_holidays -> addHolidays()
-            R.id.add_birthdays -> tryAddBirthdays()
-            R.id.add_anniversaries -> tryAddAnniversaries()
-            R.id.import_events -> tryImportEvents()
-            R.id.export_events -> tryExportEvents()
-            R.id.settings -> launchSettings()
-            R.id.about -> launchAbout()
-            android.R.id.home -> onBackPressed()
-            else -> return super.onOptionsItemSelected(item)
+            when (menuItem.itemId) {
+                R.id.change_view -> showViewDialog()
+                R.id.go_to_today -> goToToday()
+                R.id.go_to_date -> showGoToDateDialog()
+                R.id.print -> printView()
+                R.id.filter -> showFilterDialog()
+                R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
+                R.id.add_holidays -> addHolidays()
+                R.id.add_birthdays -> tryAddBirthdays()
+                R.id.add_anniversaries -> tryAddAnniversaries()
+                R.id.import_events -> tryImportEvents()
+                R.id.export_events -> tryExportEvents()
+                R.id.settings -> launchSettings()
+                R.id.about -> launchAbout()
+                android.R.id.home -> onBackPressed()
+                else -> return@setOnMenuItemClickListener false
+            }
+            return@setOnMenuItemClickListener true
         }
-        return true
     }
 
     override fun onBackPressed() {
@@ -336,7 +330,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 search_holder.beVisible()
                 calendar_fab.beGone()
                 searchQueryChanged("")
-                invalidateOptionsMenu()
+                refreshMenuItems()
                 return true
             }
 
@@ -344,7 +338,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 mIsSearchOpen = false
                 search_holder.beGone()
                 calendar_fab.beVisibleIf(currentFragments.last() !is YearFragmentsHolder && currentFragments.last() !is WeekFragmentsHolder)
-                invalidateOptionsMenu()
+                refreshMenuItems()
                 return true
             }
         })
@@ -517,7 +511,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             closeSearch()
             updateView(it as Int)
             shouldGoToTodayBeVisible = false
-            invalidateOptionsMenu()
+            refreshMenuItems()
         }
     }
 
@@ -534,8 +528,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun resetActionBarTitle() {
-        updateActionBarTitle(getString(R.string.app_launcher_name))
-        updateActionBarSubtitle("")
+        main_toolbar.title = getString(R.string.app_launcher_name)
+        main_toolbar.subtitle = ""
+    }
+
+    fun updateSubtitle(text: String) {
+        main_toolbar.subtitle = text
     }
 
     private fun showFilterDialog() {
@@ -549,7 +547,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     fun toggleGoToTodayVisibility(beVisible: Boolean) {
         shouldGoToTodayBeVisible = beVisible
         if (goToTodayButton?.isVisible != beVisible) {
-            invalidateOptionsMenu()
+            refreshMenuItems()
         }
     }
 
@@ -872,7 +870,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         updateViewPager(dateCode)
         if (goToTodayButton?.isVisible == true) {
             shouldGoToTodayBeVisible = false
-            invalidateOptionsMenu()
+            refreshMenuItems()
         }
     }
 

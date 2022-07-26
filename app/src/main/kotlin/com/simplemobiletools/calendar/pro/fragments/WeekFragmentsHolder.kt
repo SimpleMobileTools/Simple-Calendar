@@ -168,7 +168,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             val endMonthName = Formatter.getMonthName(requireContext(), endDateTime.monthOfYear)
             (activity as AppCompatActivity).updateActionBarTitle("$startMonthName - $endMonthName")
         }
-        (activity as AppCompatActivity).updateActionBarSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
+        (activity as MainActivity).updateSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
     }
 
     override fun goToToday() {

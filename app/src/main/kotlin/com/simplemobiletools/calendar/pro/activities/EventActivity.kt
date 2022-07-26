@@ -15,8 +15,6 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
@@ -65,7 +63,6 @@ class EventActivity : SimpleActivity() {
     private var mEventOccurrenceTS = 0L
     private var mLastSavePromptTS = 0L
     private var mEventCalendarId = STORED_LOCALLY_ONLY
-    private var mWasActivityInitialized = false
     private var mWasContactsPermissionChecked = false
     private var mWasCalendarChanged = false
     private var mAttendees = ArrayList<Attendee>()
@@ -86,6 +83,8 @@ class EventActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
+        setupOptionsMenu()
+        refreshMenuItems()
 
         if (checkAppSideloading()) {
             return
@@ -113,6 +112,11 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupToolbar(event_toolbar, NavigationIcon.Arrow)
+    }
+
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
             config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
@@ -129,7 +133,7 @@ class EventActivity : SimpleActivity() {
 
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mEvent.id = null
-                updateActionBarTitle(getString(R.string.new_event))
+                event_toolbar.title = getString(R.string.new_event)
             } else {
                 cancelNotification(mEvent.id!!)
             }
@@ -223,30 +227,29 @@ class EventActivity : SimpleActivity() {
         updateIconColors()
         event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
         event_time_zone.beVisibleIf(config.allowChangingTimeZones)
-        mWasActivityInitialized = true
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_event, menu)
-        if (mWasActivityInitialized) {
-            menu.findItem(R.id.delete).isVisible = mEvent.id != null
-            menu.findItem(R.id.share).isVisible = mEvent.id != null
-            menu.findItem(R.id.duplicate).isVisible = mEvent.id != null
+    private fun refreshMenuItems() {
+        if (::mEvent.isInitialized) {
+            event_toolbar.menu.apply {
+                findItem(R.id.delete).isVisible = mEvent.id != null
+                findItem(R.id.share).isVisible = mEvent.id != null
+                findItem(R.id.duplicate).isVisible = mEvent.id != null
+            }
         }
-
-        updateMenuItemColors(menu, true)
-        return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.save -> saveCurrentEvent()
-            R.id.delete -> deleteEvent()
-            R.id.duplicate -> duplicateEvent()
-            R.id.share -> shareEvent()
-            else -> return super.onOptionsItemSelected(item)
+    private fun setupOptionsMenu() {
+        event_toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.save -> saveCurrentEvent()
+                R.id.delete -> deleteEvent()
+                R.id.duplicate -> duplicateEvent()
+                R.id.share -> shareEvent()
+                else -> return@setOnMenuItemClickListener false
+            }
+            return@setOnMenuItemClickListener true
         }
-        return true
     }
 
     private fun getStartEndTimes(): Pair<Long, Long> {
@@ -326,7 +329,7 @@ class EventActivity : SimpleActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if (!mWasActivityInitialized) {
+        if (!::mEvent.isInitialized) {
             return
         }
 
@@ -435,7 +438,7 @@ class EventActivity : SimpleActivity() {
         mOriginalEndTS = realStart + duration
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-        updateActionBarTitle(getString(R.string.edit_event))
+        event_toolbar.title = getString(R.string.edit_event)
         mOriginalTimeZone = mEvent.timeZone
         if (config.allowChangingTimeZones) {
             try {
@@ -478,7 +481,7 @@ class EventActivity : SimpleActivity() {
     private fun setupNewEvent() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         event_title.requestFocus()
-        updateActionBarTitle(getString(R.string.new_event))
+        event_toolbar.title = getString(R.string.new_event)
         if (config.defaultEventTypeId != -1L) {
             config.lastUsedCaldavCalendarId = mStoredEventTypes.firstOrNull { it.id == config.defaultEventTypeId }?.caldavCalendarId ?: 0
         }
@@ -1712,10 +1715,10 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateActionBarTitle() {
-        if (mIsNewEvent) {
-            updateActionBarTitle(getString(R.string.new_event))
+        event_toolbar.title = if (mIsNewEvent) {
+            getString(R.string.new_event)
         } else {
-            updateActionBarTitle(getString(R.string.edit_event))
+            getString(R.string.edit_event)
         }
     }
 }

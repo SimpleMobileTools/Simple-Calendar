@@ -5,5 +5,5 @@
         android:id="@+id/add_event_type"
         android:icon="@drawable/ic_plus_vector"
         android:title="@string/add_new_type"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 </menu>
