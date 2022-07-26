@@ -123,9 +123,9 @@
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_toEndOf="@+id/event_time_image"
                 android:background="?attr/selectableItemBackground"
-                android:paddingTop="@dimen/normal_margin"
+                android:paddingTop="@dimen/medium_margin"
                 android:paddingEnd="@dimen/normal_margin"
-                android:paddingBottom="@dimen/normal_margin">
+                android:paddingBottom="@dimen/medium_margin">
 
                 <com.simplemobiletools.commons.views.MyAppCompatCheckbox
                     android:id="@+id/event_all_day"
