@@ -1,49 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/import_events_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingTop="@dimen/activity_margin">
 
-    <com.simplemobiletools.commons.views.MyTextView
-        android:id="@+id/import_events_event_type_label"
-        android:layout_width="wrap_content"
+    <com.simplemobiletools.commons.views.MyTextInputLayout
+        android:id="@+id/import_event_type_hint"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:paddingStart="@dimen/normal_margin"
-        android:text="@string/default_event_type"
-        android:textSize="@dimen/smaller_text_size" />
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:layout_toStartOf="@+id/import_event_type_color"
+        android:hint="@string/default_event_type"
+        app:layout_constraintEnd_toStartOf="@+id/import_event_type_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RelativeLayout
-        android:id="@+id/import_event_type_holder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:paddingStart="@dimen/normal_margin"
-        android:paddingTop="@dimen/normal_margin"
-        android:paddingEnd="@dimen/activity_margin"
-        android:paddingBottom="@dimen/normal_margin">
-
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/import_event_type_title"
+            style="@style/UnclickableEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/import_event_type_color"
-            android:paddingStart="@dimen/medium_margin"
-            android:paddingEnd="@dimen/medium_margin"
-            tools:text="@string/regular_event" />
+            android:layout_height="wrap_content" />
 
-        <ImageView
-            android:id="@+id/import_event_type_color"
-            android:layout_width="@dimen/color_sample_size"
-            android:layout_height="@dimen/color_sample_size"
-            android:layout_alignParentEnd="true"
-            android:clickable="false" />
+    </com.simplemobiletools.commons.views.MyTextInputLayout>
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/import_event_type_color"
+        android:layout_width="@dimen/color_sample_size"
+        android:layout_height="@dimen/color_sample_size"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:clickable="false"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/import_event_type_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/import_event_type_hint" />
 
     <RelativeLayout
         android:id="@+id/import_events_checkbox_holder"
@@ -53,7 +45,8 @@
         android:paddingStart="@dimen/normal_margin"
         android:paddingTop="@dimen/normal_margin"
         android:paddingEnd="@dimen/activity_margin"
-        android:paddingBottom="@dimen/normal_margin">
+        android:paddingBottom="@dimen/normal_margin"
+        app:layout_constraintTop_toBottomOf="@+id/import_event_type_hint">
 
         <com.simplemobiletools.commons.views.MyAppCompatCheckbox
             android:id="@+id/import_events_checkbox"
@@ -66,4 +59,4 @@
             android:text="@string/ignore_event_types" />
 
     </RelativeLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

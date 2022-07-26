@@ -60,11 +60,12 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
     }
 
     private fun updateRepeatLimitText() {
-        if (repeatLimit <= 0)
+        if (repeatLimit <= 0) {
             repeatLimit = getNowSeconds()
+        }
 
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(repeatLimit)
-        view.repeat_type_date.text = Formatter.getFullDate(activity, repeatLimitDateTime)
+        view.repeat_type_date.setText(Formatter.getFullDate(activity, repeatLimitDateTime))
     }
 
     private fun confirmRepetition() {
@@ -102,7 +103,8 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
         } else {
             repeatLimitDateTime.seconds()
         }
-        callback(repeatLimit)
-        dialog?.dismiss()
+
+        updateRepeatLimitText()
+        view.dialog_radio_view.check(R.id.repeat_type_till_date)
     }
 }

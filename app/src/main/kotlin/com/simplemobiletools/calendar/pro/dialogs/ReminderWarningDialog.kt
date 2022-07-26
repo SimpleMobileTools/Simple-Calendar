@@ -21,7 +21,7 @@ class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
             .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
             .setNeutralButton(R.string.settings, null)
             .apply {
-                activity.setupDialogStuff(view, this, cancelOnTouchOutside = false) { alertDialog ->
+                activity.setupDialogStuff(view, this, R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
                         redirectToSettings()
                     }

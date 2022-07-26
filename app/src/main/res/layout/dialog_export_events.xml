@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/export_events_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -13,43 +12,41 @@
         android:orientation="vertical"
         android:paddingTop="@dimen/activity_margin">
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/export_events_folder_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
-            android:paddingStart="@dimen/normal_margin"
-            android:text="@string/folder"
-            android:textSize="@dimen/smaller_text_size" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/export_events_folder"
+        <com.simplemobiletools.commons.views.MyTextInputLayout
+            android:id="@+id/export_events_folder_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_margin"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/activity_margin"
-            android:padding="@dimen/small_margin"
-            tools:text="Internal/" />
+            android:hint="@string/folder">
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/export_events_filename_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:text="@string/filename_without_ics"
-            android:textSize="@dimen/smaller_text_size" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/export_events_folder"
+                style="@style/UnclickableEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <com.simplemobiletools.commons.views.MyEditText
-            android:id="@+id/export_events_filename"
+        </com.simplemobiletools.commons.views.MyTextInputLayout>
+
+        <com.simplemobiletools.commons.views.MyTextInputLayout
+            android:id="@+id/export_events_filename_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_margin"
-            android:layout_marginEnd="@dimen/big_margin"
-            android:paddingTop="@dimen/normal_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:textSize="@dimen/normal_text_size" />
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:hint="@string/filename_without_ics">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/export_events_filename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/bigger_text_size" />
+
+        </com.simplemobiletools.commons.views.MyTextInputLayout>
 
         <RelativeLayout
             android:id="@+id/export_past_events_checkbox_holder"
@@ -57,9 +54,9 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:paddingStart="@dimen/normal_margin"
-            android:paddingTop="@dimen/normal_margin"
+            android:paddingTop="@dimen/medium_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/normal_margin">
+            android:paddingBottom="@dimen/medium_margin">
 
             <com.simplemobiletools.commons.views.MyAppCompatCheckbox
                 android:id="@+id/export_past_events_checkbox"
@@ -85,7 +82,6 @@
                 android:id="@+id/export_events_divider"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
                 android:background="@color/divider_grey"
                 android:importantForAccessibility="no" />

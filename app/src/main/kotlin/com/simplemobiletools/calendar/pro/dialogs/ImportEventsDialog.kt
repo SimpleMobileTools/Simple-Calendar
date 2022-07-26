@@ -50,7 +50,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun initDialog() {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
-            import_event_type_holder.setOnClickListener {
+            import_event_type_title.setOnClickListener {
                 SelectEventTypeDialog(activity, currEventTypeId, true, true, false, true) {
                     currEventTypeId = it.id!!
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
@@ -90,7 +90,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
         ensureBackgroundThread {
             val eventType = activity.eventTypesDB.getEventTypeWithId(currEventTypeId)
             activity.runOnUiThread {
-                view.import_event_type_title.text = eventType!!.getDisplayTitle()
+                view.import_event_type_title.setText(eventType!!.getDisplayTitle())
                 view.import_event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
             }
         }

@@ -22,7 +22,7 @@ class ExportEventsDialog(
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
-            export_events_folder.text = activity.humanizePath(realPath)
+            export_events_folder.setText(activity.humanizePath(realPath))
             export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
             export_past_events_checkbox.isChecked = config.exportPastEvents
             export_past_events_checkbox_holder.setOnClickListener {
@@ -30,13 +30,13 @@ class ExportEventsDialog(
             }
 
             if (hidePath) {
-                export_events_folder_label.beGone()
+                export_events_folder_hint.beGone()
                 export_events_folder.beGone()
             } else {
                 export_events_folder.setOnClickListener {
                     activity.hideKeyboard(export_events_filename)
                     FilePickerDialog(activity, realPath, false, showFAB = true) {
-                        export_events_folder.text = activity.humanizePath(it)
+                        export_events_folder.setText(activity.humanizePath(it))
                         realPath = it
                     }
                 }
