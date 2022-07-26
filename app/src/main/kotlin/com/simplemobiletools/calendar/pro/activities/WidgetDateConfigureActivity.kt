@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.activities
 import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.SeekBar
@@ -11,10 +12,7 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetDateProvider
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.getProperPrimaryColor
-import com.simplemobiletools.commons.extensions.setFillWithStroke
+import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.widget_config_date.*
 
@@ -52,7 +50,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        window.decorView.setBackgroundColor(0)
+        setupToolbar(config_toolbar)
     }
 
     private fun initVariables() {
@@ -119,12 +117,14 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         config_text_color.setFillWithStroke(mTextColor, mTextColor)
         widget_date_label.setTextColor(mTextColor)
         widget_month_label.setTextColor(mTextColor)
+        config_save.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
     private fun updateBgColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_date_time_wrapper.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, mBgColor)
+        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
     }
 
     private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {

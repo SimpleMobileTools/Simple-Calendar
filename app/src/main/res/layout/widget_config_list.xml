@@ -1,98 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/config_list_holder"
+    android:id="@+id/config_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_margin="@dimen/activity_margin">
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/config_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/config_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:title="@string/app_launcher_name"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
-        android:id="@+id/period_picker_holder"
+        android:id="@+id/config_list_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingBottom="@dimen/activity_margin">
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/period_picker_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_margin"
-            android:layout_marginBottom="@dimen/normal_margin"
-            android:text="@string/show_events_happening" />
-
-        <com.simplemobiletools.commons.views.MyTextView
-            android:id="@+id/period_picker_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/period_picker_label"
-            android:background="@drawable/button_background"
-            android:padding="@dimen/normal_margin"
-            android:text="@string/within_the_next_one_year" />
-
-    </RelativeLayout>
-
-    <com.simplemobiletools.commons.views.MyRecyclerView
-        android:id="@+id/config_events_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/config_bg_color"
-        android:layout_below="@id/period_picker_holder"
-        android:layout_marginBottom="@dimen/activity_margin"
-        android:background="@drawable/widget_round_background"
-        android:clipToPadding="false"
-        android:divider="@null"
-        android:paddingTop="@dimen/medium_margin"
-        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
-
-    <ImageView
-        android:id="@+id/config_bg_color"
-        android:layout_width="@dimen/widget_colorpicker_size"
-        android:layout_height="@dimen/widget_colorpicker_size"
-        android:layout_above="@+id/config_text_color"
-        android:layout_margin="@dimen/tiny_margin" />
-
-    <RelativeLayout
-        android:id="@+id/config_bg_seekbar_holder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/config_bg_color"
-        android:layout_alignBottom="@+id/config_bg_color"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:layout_toEndOf="@+id/config_bg_color"
-        android:background="@drawable/widget_config_seekbar_background">
-
-        <com.simplemobiletools.commons.views.MySeekBar
-            android:id="@+id/config_bg_seekbar"
+        <RelativeLayout
+            android:id="@+id/period_picker_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:paddingStart="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin" />
+            android:paddingBottom="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/period_picker_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:text="@string/show_events_happening" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/period_picker_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/period_picker_label"
+                android:background="@drawable/button_background"
+                android:padding="@dimen/normal_margin"
+                android:text="@string/within_the_next_one_year" />
+
+        </RelativeLayout>
+
+        <com.simplemobiletools.commons.views.MyRecyclerView
+            android:id="@+id/config_events_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/config_bg_color"
+            android:layout_below="@id/period_picker_holder"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:background="@drawable/widget_round_background"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:paddingTop="@dimen/medium_margin"
+            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+
+        <ImageView
+            android:id="@+id/config_bg_color"
+            android:layout_width="@dimen/widget_colorpicker_size"
+            android:layout_height="@dimen/widget_colorpicker_size"
+            android:layout_above="@+id/config_text_color"
+            android:layout_margin="@dimen/tiny_margin" />
+
+        <RelativeLayout
+            android:id="@+id/config_bg_seekbar_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/config_bg_color"
+            android:layout_alignBottom="@+id/config_bg_color"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_toEndOf="@+id/config_bg_color"
+            android:background="@drawable/widget_config_seekbar_background">
+
+            <com.simplemobiletools.commons.views.MySeekBar
+                android:id="@+id/config_bg_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/config_text_color"
+            android:layout_width="@dimen/widget_colorpicker_size"
+            android:layout_height="@dimen/widget_colorpicker_size"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/tiny_margin" />
+
+        <Button
+            android:id="@+id/config_save"
+            style="@style/MyWidgetConfigSaveStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/ok" />
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/config_text_color"
-        android:layout_width="@dimen/widget_colorpicker_size"
-        android:layout_height="@dimen/widget_colorpicker_size"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/tiny_margin" />
-
-    <Button
-        android:id="@+id/config_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/widget_config_seekbar_background"
-        android:fontFamily="sans-serif-light"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin"
-        android:text="@string/ok"
-        android:textColor="@color/dark_grey"
-        android:textFontWeight="400"
-        android:textSize="@dimen/big_text_size" />
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

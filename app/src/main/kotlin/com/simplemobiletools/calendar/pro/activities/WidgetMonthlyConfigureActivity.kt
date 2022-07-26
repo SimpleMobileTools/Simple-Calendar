@@ -4,6 +4,7 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -67,7 +68,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     override fun onResume() {
         super.onResume()
-        window.decorView.setBackgroundColor(0)
+        setupToolbar(config_toolbar)
     }
 
     private fun initVariables() {
@@ -141,6 +142,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         top_value.setTextColor(mTextColor)
         config_text_color.setFillWithStroke(mTextColor, mTextColor)
         updateLabels()
+        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
+        config_save.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
     private fun updateBgColor() {

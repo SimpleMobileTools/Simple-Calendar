@@ -1,66 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/config_holder"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/config_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_margin="@dimen/activity_margin">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/config_calendar"
-        layout="@layout/fragment_month_widget_config"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/config_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/config_bg_color"
-        android:layout_marginBottom="@dimen/activity_margin" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/config_bg_color"
-        android:layout_width="@dimen/widget_colorpicker_size"
-        android:layout_height="@dimen/widget_colorpicker_size"
-        android:layout_above="@+id/config_text_color"
-        android:layout_margin="@dimen/tiny_margin" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/config_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:title="@string/app_launcher_name"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
-        android:id="@+id/config_bg_seekbar_holder"
+        android:id="@+id/config_holder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/config_bg_color"
-        android:layout_alignBottom="@+id/config_bg_color"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:layout_toEndOf="@+id/config_bg_color"
-        android:background="@drawable/widget_config_seekbar_background">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.simplemobiletools.commons.views.MySeekBar
-            android:id="@+id/config_bg_seekbar"
+        <include
+            android:id="@+id/config_calendar"
+            layout="@layout/fragment_month_widget_config"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/config_bg_color"
+            android:layout_marginBottom="@dimen/activity_margin" />
+
+        <ImageView
+            android:id="@+id/config_bg_color"
+            android:layout_width="@dimen/widget_colorpicker_size"
+            android:layout_height="@dimen/widget_colorpicker_size"
+            android:layout_above="@+id/config_text_color"
+            android:layout_margin="@dimen/tiny_margin" />
+
+        <RelativeLayout
+            android:id="@+id/config_bg_seekbar_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/config_bg_color"
+            android:layout_alignBottom="@+id/config_bg_color"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_toEndOf="@+id/config_bg_color"
+            android:background="@drawable/widget_config_seekbar_background">
+
+            <com.simplemobiletools.commons.views.MySeekBar
+                android:id="@+id/config_bg_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/config_text_color"
+            android:layout_width="@dimen/widget_colorpicker_size"
+            android:layout_height="@dimen/widget_colorpicker_size"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/tiny_margin" />
+
+        <Button
+            android:id="@+id/config_save"
+            style="@style/MyWidgetConfigSaveStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingEnd="@dimen/activity_margin" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/ok" />
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/config_text_color"
-        android:layout_width="@dimen/widget_colorpicker_size"
-        android:layout_height="@dimen/widget_colorpicker_size"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/tiny_margin" />
-
-    <Button
-        android:id="@+id/config_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/widget_config_seekbar_background"
-        android:fontFamily="sans-serif-light"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin"
-        android:text="@string/ok"
-        android:textColor="@color/dark_grey"
-        android:textFontWeight="400"
-        android:textSize="@dimen/big_text_size" />
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
