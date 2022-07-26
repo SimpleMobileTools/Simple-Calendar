@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.helpers.CURRENT_TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.TIME_ZONE
 import com.simplemobiletools.calendar.pro.helpers.getAllTimeZones
 import com.simplemobiletools.calendar.pro.models.MyTimeZone
+import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.helpers.NavigationIcon
 import kotlinx.android.synthetic.main.activity_select_time_zone.*
 import java.util.*
@@ -28,6 +29,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
         setupOptionsMenu()
 
         SelectTimeZoneAdapter(this, allTimeZones) {
+            hideKeyboard()
             val data = Intent()
             data.putExtra(TIME_ZONE, it as MyTimeZone)
             setResult(RESULT_OK, data)
@@ -78,6 +80,7 @@ class SelectTimeZoneActivity : SimpleActivity() {
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                hideKeyboard()
                 finish()
                 return true
             }
