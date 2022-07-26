@@ -959,26 +959,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.drawable.ic_today_vector
         }
         val newDrawable = resources.getColoredDrawableWithColor(newDrawableId, getProperPrimaryColor())
-
-        val duration = 75L
-        var rotation = 90f
-        if (showPlus) {
-            rotation *= -1
-        }
-
-        calendar_fab.animate()
-            .rotationBy(rotation)
-            .setDuration(duration)
-            .withEndAction {
-                calendar_fab.rotation = -rotation
-                calendar_fab.setImageDrawable(newDrawable)
-
-                calendar_fab.animate()
-                    .rotationBy(rotation)
-                    .setDuration(duration)
-                    .start()
-            }
-            .start()
+        calendar_fab.setImageDrawable(newDrawable)
     }
 
     private fun openNewEvent() {
