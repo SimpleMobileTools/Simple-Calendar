@@ -932,6 +932,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+        main_toolbar.navigationIcon = null
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
@@ -991,6 +992,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         resetActionBarTitle()
         calendar_fab.beVisible()
+        showBackNavigationArrow()
     }
 
     fun openDayFromMonthly(dateTime: DateTime) {
@@ -1005,6 +1007,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         fragment.arguments = bundle
         try {
             supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
+            showBackNavigationArrow()
         } catch (e: Exception) {
         }
     }
@@ -1027,6 +1030,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             updateActionBarTitle()
         }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
+        if (currentFragments.size > 1) {
+            showBackNavigationArrow()
+        } else {
+            main_toolbar.navigationIcon = null
+        }
+    }
+
+    private fun showBackNavigationArrow() {
+        main_toolbar.navigationIcon = resources.getColoredDrawableWithColor(R.drawable.ic_arrow_left_vector, getProperStatusBarColor().getContrastColor())
     }
 
     private fun refreshViewPager() {
