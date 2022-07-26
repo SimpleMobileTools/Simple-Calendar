@@ -216,13 +216,13 @@ class TaskActivity : SimpleActivity() {
             mTask = task
             mTaskOccurrenceTS = intent.getLongExtra(EVENT_OCCURRENCE_TS, 0L)
             mTaskCompleted = intent.getBooleanExtra(IS_TASK_COMPLETED, false)
+            if (savedInstanceState == null) {
+                setupEditTask()
+            }
+
             if (intent.getBooleanExtra(IS_DUPLICATE_INTENT, false)) {
                 mTask.id = null
                 task_toolbar.title = getString(R.string.new_task)
-            }
-
-            if (savedInstanceState == null) {
-                setupEditTask()
             }
         } else {
             mTask = Event(null)
