@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.19.0 *(2022-07-27)*
+----------------------------
+
+ * Adding task repetition and reminders
+ * Allow creating tasks from widgets
+ * Adding some materialish elements, especially in System default theme
+ * Added some stability, UX and translation improvements
+
 Version 6.18.3 *(2022-06-01)*
 ----------------------------
 
