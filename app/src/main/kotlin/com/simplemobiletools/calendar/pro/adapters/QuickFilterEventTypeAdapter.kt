@@ -11,7 +11,6 @@ import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.quick_filter_event_type_view.view.*
-import java.util.*
 
 class QuickFilterEventTypeAdapter(
     val activity: SimpleActivity,
@@ -83,7 +82,7 @@ class QuickFilterEventTypeAdapter(
 
                 // avoid too quick clicks, could cause glitches
                 quick_filter_event_type.setOnClickListener {
-                    if (System.currentTimeMillis() - lastClickTS > 200) {
+                    if (System.currentTimeMillis() - lastClickTS > 300) {
                         lastClickTS = System.currentTimeMillis()
                         viewClicked(!isSelected, eventType)
                         callback()
