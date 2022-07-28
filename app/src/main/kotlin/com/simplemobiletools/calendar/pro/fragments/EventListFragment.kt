@@ -217,6 +217,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             mView.calendar_events_list.onGlobalLayout {
                 hasBeenScrolled = false
                 (activity as? MainActivity)?.refreshItems()
+                (activity as? MainActivity)?.refreshMenuItems()
             }
         }
     }
