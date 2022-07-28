@@ -147,6 +147,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
                         if (!hasBeenScrolled) {
                             hasBeenScrolled = true
                             (activity as? MainActivity)?.refreshItems()
+                            (activity as? MainActivity)?.refreshMenuItems()
                         }
                     }
                 })
