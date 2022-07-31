@@ -13,11 +13,11 @@ import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.calendar.pro.objects.States.isUpdatingCalDAV
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.helpers.PERMISSION_READ_CALENDAR
+import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 @SuppressLint("MissingPermission")
 class CalDAVHelper(val context: Context) {
@@ -238,6 +238,10 @@ class CalDAVHelper(val context: Context) {
                 val parentEvent = context.eventsDB.getEventWithImportId(parentImportId)
                 val originalDayCode = Formatter.getDayCodeFromTS(originalInstanceTime / 1000L)
                 if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
+                    val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
+                    if (storedEventId != null) {
+                        event.id = storedEventId
+                    }
                     event.parentId = parentEvent.id!!
                     parentEvent.addRepetitionException(originalDayCode)
                     eventsHelper.insertEvent(parentEvent, false, false)
