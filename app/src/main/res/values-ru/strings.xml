@@ -59,7 +59,7 @@
     <string name="repeat_till">Повторять до</string>
     <string name="forever">Бесконечно</string>
     <string name="event_is_repeatable">Это событие может повторяться</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Повторяемая задача</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
     <string name="delete_one_only">Удалить только это событие</string>
     <string name="delete_future_occurrences">Удалить это и все будущие события</string>
