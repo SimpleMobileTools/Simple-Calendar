@@ -1,61 +1,62 @@
-Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!
-***Supports syncing events via Google Calendar
+Обикновен Календар 2022 е силно персонализирано, офлайн приложение за месечен календар за Android. Имайте в джоба си план за дневния ред, проектиран да прави точно това, което трябва да прави един личен малък план за графика през 2022 г. Без сложни функции, ненужни разрешения или реклами! Поддържа синхронизиране на събития чрез Google Calendar или други календари, поддържащи протокола CalDAV.
 
-Download now!
+Поемете контрол над времето си
+Независимо дали търсите работен календар за бизнеса, планиране на деня, планиране на срещи или организиране и планиране на единични и повтарящи се събития като рождени дни, годишнини, напомняне за срещи или нещо друго, Обикновен Календар 2022 улеснява организирането. 
 
-Daily Digital Schedule App: Take Control of Your Time
-Whether you are looking for a work calendar for business, a day planner, an appointment scheduler, or organization and scheduling of single and recurring events like birthdays, anniversary, appointment reminder, or anything else, Simple Calendar 2022 makes it easy to stay organized. The calendar widget has an incredible variety of customization options: customize event reminders, notification appearance, tiny calendar reminders widget, and overall appearance.
+Планиране на графика: Планирайте деня си
+График за срещи, месечен планер и семеен организатор в едно! Проверявайте предстоящата си програма, планирайте бизнес срещи и събития и резервирайте срещи лесно. Напомнянията ще ви държат навреме и ще ви информират за приложението за дневния ви график. Тази 2022 джаджа за календар е забележително лесна за използване.
 
-Schedule Planner: Plan Your Day
-Appointment scheduler, monthly planner, and family organizer in one! Check your upcoming agenda, schedule business meetings, and events & book appointments easily. Reminders will keep you on time and informed on your daily schedule app. This 2022 calendar widget is remarkably easy to use. You can even view everything as a simple list of events rather than in a monthly view, so you know exactly what’s coming up in your life and how to organize and plan your agenda. 
+Прост календар 2022 Характеристики
 
-Simple Calendar 2022 Features
+✔️ Най-доброто потребителско изживяване
+➕ Без реклами или досадни изскачащи прозорци, наистина страхотно потребителско изживяване!
+➕ Не е необходим достъп до интернет, което ви осигурява повече поверителност, сигурност и стабилност
 
-✔️ The Best User Experience
-➕ No ads or annoying popups, truly great user experience!
-➕ No internet access is needed, giving you more privacy, security, and stability
+✔️ Гъвкавост за вашата продуктивност
+➕ Календарната джаджа поддържа експортиране и импортиране на събития чрез .ics файлове
+➕ Експортиране на настройки в .txt файлове за импортиране в друго устройство
+➕ Гъвкаво създаване на събития - време, продължителност, напомняния, мощни правила за повторение
+➕ Поддръжка на CalDAV за синхронизиране на събития чрез Google Calendar, Microsoft Outlook, Nextcloud, Exchange и др.
 
-✔️ Flexibility for Your Productivity
-➕ Calendar Widget supports exporting & importing events via .ics files
-➕ Export settings to .txt files to import to another device
-➕ Flexible event creation – times, duration, reminders, powerful repetition rules
-➕ CalDAV support for syncing events via Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc
+✔️ Персонализирано само за вас
+➕ Планиране на графика - персонализирайте и променяйте звука, цикъла, аудио потока, вибрациите
+➕ Уиджет за календара - цветни календари и теми за персонализиране
+➕ Малък календар с отворен код, преведен на над 45 езика
+➕ Планирайте деня си с другите - възможност за бързо споделяне на събития в социалните мрежи, имейли и др.
+➕ Семеен организатор - с безпроблемно дублиране на събития, организиране и управление на времето
 
-✔️ Personalized Just for You
-➕ Schedule planner - customize and change sound, looping, audio stream, vibrations
-➕ Calendar widget - Colorful Calendars and customizable themes
-➕ Open source tiny calendar, translated into 40+ languages
-➕ Plan your day with others - ability to share events fast on social media, emails, etc
-➕ Family Organizer - with hasslefree event duplication, organization, and time management
+✔️ Организация и управление на времето
+➕ Дневен планер - планът за дневния ред ще ви помогне да организирате деня си
+➕ Седмичен планер - да се справите с натоварения си седмичен график никога не е било по-лесно
+➕ Мениджър на маршрути - бизнес календар, споделен между екипите в работата
+➕ График за срещи - организирайте и поддържайте програмата си с лекота
+➕ Приложение за планиране - лесен за използване личен план за събития, напомняне за срещи и график
+➕ Планирайте деня си - управлявайте деня си с този андроид планиращ график, организатор на събития и семейство
 
-✔️ Organization and Time Management
-➕ Day planner - the agenda planner will help you to organize your day
-➕ Weekly planner - staying ahead of your busy weekly schedule has never been easier
-➕ Itinerary manager - business calendar shared between teams at work
-➕ Appointment scheduler - organize and maintain your agenda with ease
-➕ Planning app - easy to use personal event, appointment reminder, and schedule planner
-➕ Plan your day - manage your day with this android schedule planner, event & family organizer
+✔️ Приложение №1 за календар
+➕ Лесно импортирайте празници, рождени дни на контакти и годишнини
+➕ Филтрирайте бързо личните събития по тип събитие
+➕ Дневен график и местоположение на събитията, показани на картата
+➕ Бърз бизнес календар или лична цифрова програма
+➕ Бързо превключване между дневни, седмични, месечни, годишни изгледи и изгледи за събития
 
-✔️ #1 Calendar App
-➕ Import holidays, contact birthdays, and anniversaries easily
-➕ Filter personal events quickly by event type
-➕ Daily schedule and event location, shown on a map
-➕ Quick business calendar, or personal digital agenda
-➕ Quickly switch between daily, weekly, monthly, yearly & event views
+ИЗТЕГЛЯНЕ НА ПРОСТ КАЛЕНДАР - ОФЛАЙН ГРАФИК И ПРОГРАМА ЗА ПЛАНИРАНЕ БЕЗ РЕКЛАМИ! ПЛАНИРАЙТЕ ГРАФИКА СИ ЗА 2022 Г.!
 
-DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO ADS! PLAN YOUR 2022 TIMETABLE!
+Той идва с материален дизайн и тъмна тема по подразбиране, осигурява страхотно потребителско изживяване за лесно използване. Липсата на достъп до интернет ви осигурява повече поверителност, сигурност и стабилност в сравнение с други приложения.
 
-Check out the full suite of Simple Tools here:
+Не съдържа реклами или ненужни разрешения. Той е с изцяло отворен код, предоставя възможност за персонализиране на цветовете.
+
+Разгледайте пълния набор от прости инструменти тук:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+Самостоятелен уебсайт на Обикновен Календар Про:
 https://www.simplemobiletools.com/calendar
 
-Facebook:
+Фейсбук:
 https://www.facebook.com/simplemobiletools
 
-Reddit:
+Редит:
 https://www.reddit.com/r/SimpleMobileTools
 
-Telegram:
+телеграма:
 https://t.me/SimpleMobileTools
