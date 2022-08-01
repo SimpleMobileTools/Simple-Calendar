@@ -203,6 +203,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         setupQuickFilter()
+
+        main_toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onPause() {
@@ -1039,9 +1043,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun showBackNavigationArrow() {
         main_toolbar.navigationIcon = resources.getColoredDrawableWithColor(R.drawable.ic_arrow_left_vector, getProperStatusBarColor().getContrastColor())
-        main_toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
     }
 
     private fun refreshViewPager() {
