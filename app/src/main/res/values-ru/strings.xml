@@ -10,7 +10,7 @@
     <string name="yearly_view">Годовой просмотр</string>
     <string name="simple_event_list">Простой список событий</string>
     <string name="no_upcoming_events">Похоже, у вас нет предстоящих мероприятий.</string>
-    <string name="go_to_today">Сегодня</string>
+    <string name="go_to_today">Перейти на сегодня</string>
     <string name="go_to_date">Перейти к дате</string>
     <string name="upgraded_from_free">Привет,
 \n
