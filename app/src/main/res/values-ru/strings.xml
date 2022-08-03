@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Простой календарь</string>
+    <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Календарь</string>
-    <string name="change_view">Сменить вид</string>
-    <string name="daily_view">Ежедневный просмотр</string>
-    <string name="weekly_view">Еженедельный просмотр</string>
-    <string name="monthly_view">Ежемесячный просмотр</string>
+    <string name="change_view">Режим</string>
+    <string name="daily_view">День</string>
+    <string name="weekly_view">Неделя</string>
+    <string name="monthly_view">Месяц</string>
     <string name="monthly_daily_view">Месяц и день</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Список событий</string>
@@ -21,15 +21,15 @@
 \nСпасибо!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь на месяц</string>
-    <string name="widget_list">Список событий календаря</string>
-    <string name="widget_todays_date">Календарь сегодняшняя дата</string>
+    <string name="widget_list">Календарь событий</string>
+    <string name="widget_todays_date">Календарь на сегодня</string>
     <!-- Event -->
     <string name="event">Событие</string>
     <string name="edit_event">Редактировать событие</string>
     <string name="new_event">Новое событие</string>
     <string name="create_new_event">Создать новое событие</string>
     <string name="duplicate_event">Дублировать событие</string>
-    <string name="title_empty">Название не может быть пустым</string>
+    <string name="title_empty">Заголовок не может быть пустым</string>
     <string name="end_before_start">Событие не может завершаться раньше, чем начинаться</string>
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
