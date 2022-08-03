@@ -7,9 +7,9 @@
     <string name="weekly_view">Еженедельный просмотр</string>
     <string name="monthly_view">Ежемесячный просмотр</string>
     <string name="monthly_daily_view">Ежемесячный и ежедневный просмотр</string>
-    <string name="yearly_view">Годовой просмотр</string>
+    <string name="yearly_view">Год</string>
     <string name="simple_event_list">Простой список событий</string>
-    <string name="no_upcoming_events">Похоже, у вас нет предстоящих мероприятий.</string>
+    <string name="no_upcoming_events">Похоже, нет предстоящих событий.</string>
     <string name="go_to_today">Перейти на сегодня</string>
     <string name="go_to_date">Перейти к дате</string>
     <string name="upgraded_from_free">Привет,
