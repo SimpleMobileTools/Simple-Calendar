@@ -152,7 +152,8 @@ class CalDAVHelper(val context: Context) {
         val existingEvents = try {
             context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
         } catch (e: Exception) {
-            ArrayList()
+            context.showErrorToast(context.getString(R.string.unknown_error_occurred))
+            return
         }
 
         existingEvents.forEach {
