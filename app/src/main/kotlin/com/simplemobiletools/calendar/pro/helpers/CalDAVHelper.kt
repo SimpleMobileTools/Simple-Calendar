@@ -268,8 +268,8 @@ class CalDAVHelper(val context: Context) {
                             val formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'")
                             val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
                             val dt = formatter.parseDateTime(it).plusMillis(offset)
-                            val daycode = Formatter.getDayCodeFromDateTime(dt)
-                            event.repetitionExceptions.add(daycode)
+                            val dayCode = Formatter.getDayCodeFromDateTime(dt)
+                            event.repetitionExceptions.add(dayCode)
                         } else {
                             val potentialTS = it.substring(0, 8)
                             if (potentialTS.areDigitsOnly()) {
