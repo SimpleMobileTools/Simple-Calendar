@@ -1,20 +1,56 @@
-Paprastas kalendorius su CalDAV sinchronizacija. Galite lengvai kurti pasikartojančius įvykius ir nustatyti priminimus, kalendorius gali rodyti savaitės numerius.
+"Simple Calendar 2022" yra labai lengvai pritaikoma neprisijungusi mėnesio kalendoriaus programa "Android". Turėkite kišenėje darbotvarkės planuoklį, sukurtą būtent tam, ką turėtų daryti asmeninis mažytis tvarkaraštis 2022 m. Jokių sudėtingų funkcijų, nereikalingų leidimų ar reklamų! Ji palaiko įvykių sinchronizavimą per "Google" kalendorių arba kitus kalendorius, palaikančius CalDAV protokolą.
 
-Palaiko mėnesio peržiūrą ir įvykių sąrašo valdiklį, kuriame Jūs galite tinkinti teksto, pagrindinę ir fono spalvas.
+Kontroliuokite savo laiką
+Nesvarbu, ar ieškote darbo kalendoriaus verslui, dienos planuoklio, susitikimų tvarkaraščio, ar vienkartinių ir pasikartojančių įvykių, pavyzdžiui, gimtadienių, jubiliejų, susitikimų priminimų ar bet ko kito, organizavimo ir planavimo, "Simple Calendar 2022" leidžia lengvai išlaikyti tvarką. Kalendoriaus valdiklyje yra neįtikėtinai daug įvairių pritaikymo parinkčių: pritaikyti įvykių priminimai, pranešimų išvaizda, mažytis kalendoriaus priminimų valdiklis ir bendra išvaizda.
 
-Neturi reklamų ar nereikalingų leidimų. Programėlė visiškai atviro kodo, yra galimybė keisti spalvas.
+Tvarkaraščio planuoklis: Planuokite savo dieną: planuokite savo dieną
+Susitikimų tvarkaraštis, mėnesio planuoklis ir šeimos organizatorius viename! Patikrinkite būsimą darbotvarkę, planuokite verslo susitikimus ir renginius bei lengvai užsisakykite susitikimus. Priminimai padės jums laiku ir informuoti apie savo dienotvarkės programėlę. Šį 2022 m. kalendoriaus valdiklį nepaprastai lengva naudoti.
 
-Saugyklos leidimas reikalingas tik eksportuoti ir importuoti įvykius iš .ics bylų.
+Paprasto 2022 m. kalendoriaus funkcijos
 
-Kontaktų leidimas naudojamas tik importuoti kontaktų gimtadienius ir sukaktis.
+✔️ Geriausia naudotojo patirtis
+➕ Jokių reklamų ar erzinančių iššokančių langų, tikrai puiki naudotojo patirtis!
+➕ Nereikia interneto prieigos, todėl suteikiama daugiau privatumo, saugumo ir stabilumo
 
-Check out the full suite of Simple Tools here:
-https://www.simplemobiletools.com
+✔️ Lankstumas jūsų produktyvumui
+➕ Kalendoriaus valdiklis palaiko įvykių eksportavimą ir importavimą per .ics failus
+➕ Eksportuokite nustatymus į .txt failus, kad galėtumėte importuoti į kitą įrenginį
+➕ Lankstus įvykių kūrimas - laikas, trukmė, priminimai, galingos kartojimo taisyklės
+➕ CalDAV palaikymas sinchronizuojant įvykius per "Google Calendar", "Microsoft Outlook", "Nextcloud", "Exchange" ir kt.
 
-Standalone website of Simple Calendar Pro:
+✔️ Suasmenintas tik jums
+➕ Tvarkaraščio planuoklis - pritaikykite ir keiskite garsą, kilpą, garso srautą, vibracijas
+➕ Kalendoriaus valdiklis - spalvoti kalendoriai ir pritaikomos temos
+➕ Atvirojo kodo mažytis kalendorius, išverstas į daugiau nei 45 kalbas
+➕ Planuokite savo dieną kartu su kitais - galimybė greitai dalytis įvykiais socialiniuose tinkluose, el. paštuose ir kt.
+➕ Šeimos organizatorius - su nesudėtingu įvykių dubliavimu, organizavimu ir laiko valdymu
+
+✔️ Organizavimas ir laiko valdymas
+➕ Dienos planuoklis - dienotvarkės planuoklis padės jums organizuoti savo dieną
+➕ Savaitės planuoklis - dar niekada nebuvo taip paprasta laikytis įtempto savaitės tvarkaraščio
+➕ Kelionių plano tvarkyklė - verslo kalendorius, kuriuo dalijasi komandos darbe
+➕ Susitikimų planuoklis - lengvai organizuokite ir tvarkykite savo darbotvarkę
+➕ Planavimo programa - lengvai naudojama asmeninių įvykių, susitikimų priminimų ir tvarkaraščių planuoklė
+➕ Planuokite savo dieną - tvarkykite savo dieną su šiuo "Android" tvarkaraščio planuotuvu, įvykių ir šeimos organizatoriumi
+
+✔️ # 1 kalendoriaus programėlė
+➕ Lengvai importuokite šventes, kontaktų gimtadienius ir jubiliejus
+➕ Greitai filtruokite asmeninius įvykius pagal įvykio tipą
+➕ Dienos tvarkaraštis ir įvykio vieta, rodoma žemėlapyje
+➕ Greitas verslo kalendorius arba asmeninė skaitmeninė darbotvarkė
+➕ Greitai perjunkite dienos, savaitės, mėnesio, metų ir įvykių rodinius
+
+ATSISIŲSKITE PAPRASTĄ KALENDORIAUS PLANUOKLĮ - NEPRISIJUNGUSĮ TVARKARAŠČIO IR DARBOTVARKĖS PLANUOKLĮ BE REKLAMŲ! PLANUOKITE SAVO 2022 M. TVARKARAŠTĮ!
+
+Sudėtyje nėra reklamų ir nereikalingų leidimų. Tai visiškai atvirojo kodo programa, kurioje galima keisti spalvas.
+
+Visą "Simple Tools" rinkinį rasite čia:
+https://www.simplemobiletools.com.
+
+Atskira "Simple Calendar Pro" svetainė:
 https://www.simplemobiletools.com/calendar
 
-Facebook:
+"Facebook":
 https://www.facebook.com/simplemobiletools
 
 Reddit:
