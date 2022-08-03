@@ -18,6 +18,7 @@ import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CALENDAR
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.util.*
+import kotlin.math.max
 
 @SuppressLint("MissingPermission")
 class CalDAVHelper(val context: Context) {
@@ -245,11 +246,11 @@ class CalDAVHelper(val context: Context) {
                     }
                     event.parentId = parentEvent.id!!
                     parentEvent.addRepetitionException(originalDayCode)
-                    eventsHelper.insertEvent(parentEvent, false, false)
+                    eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false)
 
                     event.parentId = parentEvent.id!!
                     event.addRepetitionException(originalDayCode)
-                    eventsHelper.insertEvent(event, false, false)
+                    eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
                     return@queryCursor
                 }
             }
@@ -270,7 +271,7 @@ class CalDAVHelper(val context: Context) {
                             val daycode = Formatter.getDayCodeFromDateTime(dt)
                             event.repetitionExceptions.add(daycode)
                         } else {
-                            var potentialTS = it.substring(0, 8)
+                            val potentialTS = it.substring(0, 8)
                             if (potentialTS.areDigitsOnly()) {
                                 event.repetitionExceptions.add(potentialTS)
                             }
@@ -292,12 +293,12 @@ class CalDAVHelper(val context: Context) {
 
                 if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                     event.id = originalEventId
-                    eventsHelper.updateEvent(event, false, false)
+                    eventsHelper.updateEvent(event, updateAtCalDAV = false, showToasts = false)
                 }
             } else {
                 if (title.isNotEmpty()) {
                     importIdsMap[event.importId] = event
-                    eventsHelper.insertEvent(event, false, false)
+                    eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
                 }
             }
         }
@@ -305,9 +306,9 @@ class CalDAVHelper(val context: Context) {
         val eventIdsToDelete = ArrayList<Long>()
         importIdsMap.keys.filter { !fetchedEventIds.contains(it) }.forEach {
             val caldavEventId = it
-            existingEvents.forEach {
-                if (it.importId == caldavEventId) {
-                    eventIdsToDelete.add(it.id!!)
+            existingEvents.forEach { event ->
+                if (event.importId == caldavEventId) {
+                    eventIdsToDelete.add(event.id!!)
                 }
             }
         }
@@ -433,7 +434,7 @@ class CalDAVHelper(val context: Context) {
 
     private fun getDurationCode(event: Event): String {
         return if (event.getIsAllDay()) {
-            val dur = Math.max(1, (event.endTS - event.startTS) / DAY)
+            val dur = max(1, (event.endTS - event.startTS) / DAY)
             "P${dur}D"
         } else {
             Parser().getDurationCode((event.endTS - event.startTS) / 60L)
