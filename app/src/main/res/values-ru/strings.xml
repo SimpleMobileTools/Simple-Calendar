@@ -45,10 +45,10 @@
     <string name="create_new_task">Создать новую задачу</string>
     <string name="duplicate_task">Дублировать задачу</string>
     <string name="mark_completed">Пометить завершённой</string>
-    <string name="mark_incomplete">Пометить незавершённой</string>
+    <string name="mark_incomplete">Марк неполный</string>
     <!-- Event Repetition -->
-    <string name="repetition">Повторять</string>
-    <string name="no_repetition">Без повторения</string>
+    <string name="repetition">Повторение</string>
+    <string name="no_repetition">Без повторений</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
     <string name="monthly">Ежемесячно</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Повторять до</string>
     <string name="forever">Бесконечно</string>
     <string name="event_is_repeatable">Это событие может повторяться</string>
-    <string name="task_is_repeatable">Повторяемая задача</string>
+    <string name="task_is_repeatable">Задача является повторяемой</string>
     <string name="selection_contains_repetition">В выбранном есть повторяющиеся события</string>
     <string name="delete_one_only">Удалить только это событие</string>
     <string name="delete_future_occurrences">Удалить это и все будущие события</string>
