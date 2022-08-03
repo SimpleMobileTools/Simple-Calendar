@@ -30,15 +30,15 @@
     <string name="create_new_event">Создать новое событие</string>
     <string name="duplicate_event">Дублировать событие</string>
     <string name="title_empty">Заголовок не может быть пустым</string>
-    <string name="end_before_start">Событие не может завершаться раньше, чем начинаться</string>
+    <string name="end_before_start">Мероприятие не может закончиться раньше, чем оно начинается</string>
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
     <string name="filter_events_by_type">Фильтровать события по типу</string>
-    <string name="please_fill_location">Укажите место, которое будет показано на карте</string>
+    <string name="please_fill_location">Пожалуйста, заполните местоположение, чтобы быть показаны на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
     <string name="saving_filtered_out">Сохранение… Однако выбранный тип события исключён в разделе \"Фильтр\" верхнего меню</string>
     <!-- Tasks -->
-    <string name="task">Задача</string>
+    <string name="task">Задание</string>
     <string name="tasks">Задачи</string>
     <string name="edit_task">Редактировать задачу</string>
     <string name="new_task">Новая задача</string>
