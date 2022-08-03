@@ -21,15 +21,15 @@
 \nСпасибо!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Календарь ежемесячно</string>
-    <string name="widget_list">Календарь событий</string>
-    <string name="widget_todays_date">Календарь на сегодня</string>
+    <string name="widget_list">Список событий календаря</string>
+    <string name="widget_todays_date">Календарь сегодняшняя дата</string>
     <!-- Event -->
     <string name="event">Событие</string>
     <string name="edit_event">Редактировать событие</string>
     <string name="new_event">Новое событие</string>
     <string name="create_new_event">Создать новое событие</string>
     <string name="duplicate_event">Дублировать событие</string>
-    <string name="title_empty">Заголовок не может быть пустым</string>
+    <string name="title_empty">Название не может быть пустым</string>
     <string name="end_before_start">Событие не может завершаться раньше, чем начинаться</string>
     <string name="event_added">Событие успешно добавлено</string>
     <string name="event_updated">Событие успешно обновлено</string>
