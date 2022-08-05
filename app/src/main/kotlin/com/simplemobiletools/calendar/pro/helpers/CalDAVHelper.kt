@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.provider.CalendarContract.*
 import android.util.SparseIntArray
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
@@ -150,11 +151,13 @@ class CalDAVHelper(val context: Context) {
     private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, showToasts: Boolean) {
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
+
+        var errorFetchingLocalEvents = false
         val existingEvents = try {
             context.eventsDB.getEventsFromCalDAVCalendar("$CALDAV-$calendarId")
         } catch (e: Exception) {
-            context.showErrorToast(context.getString(R.string.unknown_error_occurred))
-            return
+            errorFetchingLocalEvents = true
+            ArrayList()
         }
 
         existingEvents.forEach {
@@ -182,14 +185,20 @@ class CalDAVHelper(val context: Context) {
         )
 
         val selection = "${Events.CALENDAR_ID} = $calendarId"
-        context.queryCursor(uri, projection, selection, showErrors = showToasts) { cursor ->
+        context.queryCursorInlined(uri, projection, selection, showErrors = showToasts) { cursor ->
             val deleted = cursor.getIntValue(Events.DELETED)
             if (deleted == 1) {
-                return@queryCursor
+                return@queryCursorInlined
             }
 
             val id = cursor.getLongValue(Events._ID)
             val title = cursor.getStringValue(Events.TITLE) ?: ""
+
+            if (errorFetchingLocalEvents) {
+                context.toast(context.getString(R.string.fetching_event_failed, "\"$title\""), Toast.LENGTH_LONG)
+                return
+            }
+
             val description = cursor.getStringValue(Events.DESCRIPTION) ?: ""
             val startTS = cursor.getLongValue(Events.DTSTART) / 1000L
             var endTS = cursor.getLongValue(Events.DTEND) / 1000L
@@ -251,7 +260,7 @@ class CalDAVHelper(val context: Context) {
                     event.parentId = parentEvent.id!!
                     event.addRepetitionException(originalDayCode)
                     eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
-                    return@queryCursor
+                    return@queryCursorInlined
                 }
             }
 

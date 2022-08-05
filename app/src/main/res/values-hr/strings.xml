@@ -228,6 +228,7 @@
     <string name="no_synchronized_calendars">Nijedan sinkronizirajući kalendar nije pronađen</string>
     <string name="status_free">Slobodan/Slobodna</string>
     <string name="status_busy">Zauzet/Zauzeta</string>
+    <string name="fetching_event_failed">Fetching event %s failed</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Ponedjeljak</string>

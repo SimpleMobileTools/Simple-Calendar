@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.media.AudioAttributes
 import android.net.Uri
@@ -676,4 +677,30 @@ fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
     }
     // mark event as "incomplete" in the main events db
     eventsDB.updateTaskCompletion(event.id!!, event.flags.removeBit(FLAG_TASK_COMPLETED))
+}
+
+// same as Context.queryCursor but inlined to allow non-local returns
+inline fun Context.queryCursorInlined(
+    uri: Uri,
+    projection: Array<String>,
+    selection: String? = null,
+    selectionArgs: Array<String>? = null,
+    sortOrder: String? = null,
+    showErrors: Boolean = false,
+    callback: (cursor: Cursor) -> Unit
+) {
+    try {
+        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)
+        cursor?.use {
+            if (cursor.moveToFirst()) {
+                do {
+                    callback(cursor)
+                } while (cursor.moveToNext())
+            }
+        }
+    } catch (e: Exception) {
+        if (showErrors) {
+            showErrorToast(e)
+        }
+    }
 }

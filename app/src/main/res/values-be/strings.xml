@@ -228,6 +228,7 @@
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Заняты</string>
+    <string name="fetching_event_failed">Fetching event %s failed</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">панядзелак</string>
