@@ -2,37 +2,41 @@
 <resources>
     <string name="app_name">Eenvoudige Agenda</string>
     <string name="app_launcher_name">Agenda</string>
-    <string name="change_view">Weergave</string>
-    <string name="daily_view">Dag</string>
-    <string name="weekly_view">Week</string>
-    <string name="monthly_view">Maand</string>
-    <string name="monthly_daily_view">Maand + dag</string>
-    <string name="yearly_view">Jaar</string>
-    <string name="simple_event_list">Lijst</string>
-    <string name="no_upcoming_events">Niets gepland.</string>
-    <string name="go_to_today">Naar vandaag</string>
-    <string name="go_to_date">Naar datum</string>
-    <string name="upgraded_from_free">Het lijkt erop dat dit een upgrade is van de oude gratis versie. Dit betekent dat lokaal opgeslagen afspraken handmatig moeten worden overgezet via \'Afspraken naar .ics-bestand exporteren\' in de oude versie en daarna \'Afspraken uit .ics-bestand importeren\' in deze nieuwe versie. Beide opties zijn te vinden in het menu van het hoofdscherm.
+    <string name="change_view">Weergave wijzigen</string>
+    <string name="daily_view">Dagelijkse weergave</string>
+    <string name="weekly_view">Wekelijkse weergave</string>
+    <string name="monthly_view">Maandelijkse weergave</string>
+    <string name="monthly_daily_view">Maandelijkse en dagelijkse weergave</string>
+    <string name="yearly_view">Jaarlijkse weergave</string>
+    <string name="simple_event_list">Eenvoudige evenementenlijst</string>
+    <string name="no_upcoming_events">Het lijkt erop dat je geen aankomende evenementen hebt.</string>
+    <string name="go_to_today">Ga naar vandaag</string>
+    <string name="go_to_date">Ga naar datum</string>
+    <string name="upgraded_from_free">hee,
 \n
-\nDaarna kan de oude versie, met de knop \'Upgrade naar Pro\' worden gedeïnstalleerd. De instellingen zullen ook opnieuw moeten worden geconfigureerd.</string>
+\nlijkt erop dat je een upgrade hebt gedaan vanaf de oude gratis app. Je moet lokaal opgeslagen gebeurtenissen handmatig migreren via exporteren in een .ics bestand, en dan importeren. U kunt beide export/import knoppen vinden in het hoofdscherm menu.
+\n
+\nU kunt dan de oude versie verwijderen, die een \'Opwaarderen naar Pro\' knop heeft bovenaan de app instellingen. U hoeft dan alleen uw app-instellingen opnieuw in te stellen.
+\n
+\nBedankt!</string>
     <!-- Widget titles -->
-    <string name="widget_monthly">Maandweergave</string>
-    <string name="widget_list">Afsprakenlijst</string>
-    <string name="widget_todays_date">Agenda vandaag</string>
+    <string name="widget_monthly">Kalender maandelijks</string>
+    <string name="widget_list">Kalender evenementenlijst</string>
+    <string name="widget_todays_date">Kalender datum van vandaag</string>
     <!-- Event -->
-    <string name="event">Afspraak</string>
-    <string name="edit_event">Afspraak bewerken</string>
-    <string name="new_event">Nieuwe afspraak</string>
-    <string name="create_new_event">Een nieuwe afspraak maken</string>
-    <string name="duplicate_event">Afspraak namaken</string>
-    <string name="title_empty">Titel kan niet leeg zijn</string>
-    <string name="end_before_start">De begintijd valt na de eindtijd</string>
-    <string name="event_added">Afspraak gemaakt</string>
-    <string name="event_updated">Afspraak bijgewerkt</string>
-    <string name="filter_events_by_type">Afspraken op type filteren</string>
-    <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
-    <string name="public_event_notification_text">Afspraak aanstaande</string>
-    <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
+    <string name="event">Gebeurtenis</string>
+    <string name="edit_event">Gebeurtenis bewerken</string>
+    <string name="new_event">Nieuwe Gebeurtenis</string>
+    <string name="create_new_event">Maak een nieuwe gebeurtenis</string>
+    <string name="duplicate_event">Dubbele gebeurtenis</string>
+    <string name="title_empty">Titel mag niet leeg zijn</string>
+    <string name="end_before_start">Het evenement kan niet eerder eindigen dan het begint</string>
+    <string name="event_added">Gebeurtenis succesvol toegevoegd</string>
+    <string name="event_updated">Gebeurtenis succesvol bijgewerkt</string>
+    <string name="filter_events_by_type">Gebeurtenissen filteren op type</string>
+    <string name="please_fill_location">Gelieve een locatie in te vullen om op een kaart getoond te worden</string>
+    <string name="public_event_notification_text">Er is een gebeurtenis op komst</string>
+    <string name="saving_filtered_out">Opslaan... Maar het geselecteerde gebeurtenistype is uitgefilterd in het bovenste Menu - Filter</string>
     <!-- Tasks -->
     <string name="task">Taak</string>
     <string name="tasks">Taken</string>
@@ -40,8 +44,8 @@
     <string name="new_task">Nieuwe taak</string>
     <string name="create_new_task">Nieuwe taak aanmaken</string>
     <string name="duplicate_task">Taak dupliceren</string>
-    <string name="mark_completed">Als voltooid markeren</string>
-    <string name="mark_incomplete">Als onvoltooid markeren</string>
+    <string name="mark_completed">Markeren voltooid</string>
+    <string name="mark_incomplete">Markeren onvolledig</string>
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
     <string name="no_repetition">Niet herhalen</string>
@@ -53,14 +57,14 @@
     <string name="months_raw">maanden</string>
     <string name="years_raw">jaren</string>
     <string name="repeat_till">Herhalen tot</string>
-    <string name="forever">Blijven herhalen</string>
-    <string name="event_is_repeatable">De afspraak wordt herhaald</string>
-    <string name="task_is_repeatable">De taak kan herhaald worden</string>
-    <string name="selection_contains_repetition">De selectie bevat herhaalde afspraken</string>
-    <string name="delete_one_only">Alleen huidige afspraak verwijderen</string>
-    <string name="delete_future_occurrences">Deze afspraak en hierop volgende herhalingen verwijderen</string>
-    <string name="delete_all_occurrences">Al deze afspraken verwijderen</string>
-    <string name="update_one_only">Alleen huidige afspraak bijwerken</string>
+    <string name="forever">Eeuwig</string>
+    <string name="event_is_repeatable">De gebeurtenis is herhaalbaar</string>
+    <string name="task_is_repeatable">De taak is herhaalbaar</string>
+    <string name="selection_contains_repetition">De selectie bevat herhalende gebeurtenissen</string>
+    <string name="delete_one_only">Alleen de geselecteerde gebeurtenis verwijderen</string>
+    <string name="delete_future_occurrences">Wis dit en alle toekomstige voorvallen</string>
+    <string name="delete_all_occurrences">Alle voorkomens verwijderen</string>
+    <string name="update_one_only">Alleen het geselecteerde exemplaar bijwerken</string>
     <string name="update_this_and_future_occurrences">Deze afspraak en hierop volgende herhalingen bijwerken</string>
     <string name="update_all_occurrences">Alle afspraken bijwerken</string>
     <string name="repeat_till_date">Herhalen tot datum</string>
