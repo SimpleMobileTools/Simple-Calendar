@@ -1,52 +1,56 @@
-Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!
-***Supports syncing events via Google Calendar
+Simple Calendar 2022 er en svært tilpassbar, offline månedlig kalender app for Android. Ha en agendaplanlegger i lommen, designet for å gjøre akkurat det en personlig liten planlegger skal gjøre i 2022. Ingen kompliserte funksjoner, unødvendige tillatelser eller annonser! Den støtter synkroniseringshendelser via Google Kalender eller andre kalendere som støtter CalDAV-protokollen.
 
-Download now!
+Ta kontroll over tiden din
+Enten du leter etter en arbeidskalender for forretninger, en dagsplanlegger, en avtaleplanlegger eller organisering og planlegging av enkelthendelser og regelmessige hendelser som fødselsdager, merkedager, avtalepåminnelser eller noe annet, gjør Enkel kalender 2022 det enkelt å holde orden. Kalenderwidgeten har et utrolig utvalg av tilpasningsalternativer: tilpass påminnelser om hendelser, varslingsutseende, kontrollprogram for små kalenderpåminnelser og generelt utseende.
 
-Daily Digital Schedule App: Take Control of Your Time
-Whether you are looking for a work calendar for business, a day planner, an appointment scheduler, or organization and scheduling of single and recurring events like birthdays, anniversary, appointment reminder, or anything else, Simple Calendar 2022 makes it easy to stay organized. The calendar widget has an incredible variety of customization options: customize event reminders, notification appearance, tiny calendar reminders widget, and overall appearance.
+Planlegger for tidsplan: Planlegg dagen din
+Avtaleplanlegger, månedsplanlegger og familiearrangør i ett! Sjekk din kommende agenda, planlegg forretningsmøter og arrangementer og bestill avtaler enkelt. Påminnelser holder deg i tide og blir informert om den daglige tidsplanappen. Denne 2022 kalender widget er bemerkelsesverdig enkel å bruke. 
 
-Schedule Planner: Plan Your Day
-Appointment scheduler, monthly planner, and family organizer in one! Check your upcoming agenda, schedule business meetings, and events & book appointments easily. Reminders will keep you on time and informed on your daily schedule app. This 2022 calendar widget is remarkably easy to use. You can even view everything as a simple list of events rather than in a monthly view, so you know exactly what’s coming up in your life and how to organize and plan your agenda. 
+Enkle kalenderfunksjoner 2022
 
-Simple Calendar 2022 Features
+✔️ Den beste brukeropplevelsen
+➕ Ingen annonser eller irriterende popups, virkelig flott brukeropplevelse!
+➕ Ingen internett-tilgang er nødvendig, noe som gir deg mer personvern, sikkerhet og stabilitet
 
-✔️ The Best User Experience
-➕ No ads or annoying popups, truly great user experience!
-➕ No internet access is needed, giving you more privacy, security, and stability
+✔️ Fleksibilitet for produktiviteten
+➕ Kalenderwidget støtter eksport og import av hendelser via .ics filer
+➕ Eksportere innstillinger for å .txt filer som skal importeres til en annen enhet
+➕ Fleksibel oppretting av hendelser – tider, varighet, påminnelser, kraftige repetisjonsregler
+➕ CalDAV-støtte for synkronisering av hendelser via Google Kalender, Microsoft Outlook, Nextcloud, Exchange, etc
 
-✔️ Flexibility for Your Productivity
-➕ Calendar Widget supports exporting & importing events via .ics files
-➕ Export settings to .txt files to import to another device
-➕ Flexible event creation – times, duration, reminders, powerful repetition rules
-➕ CalDAV support for syncing events via Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc
+✔️ Personlig tilpasset bare for deg
+➕ Planlegger - tilpasse og endre lyd, looping, lydstrøm, vibrasjoner
+➕ Kalenderwidget - Fargerike kalendere og temaer som kan tilpasses
+➕ Åpen kildekode liten kalender, oversatt til 45+ språk
+➕ Planlegg dagen din med andre - evne til å dele arrangementer raskt på sosiale medier, e-post osv.
+➕ Familiearrangør – med problemfri hendelsesduplisering, organisering og tidsstyring
 
-✔️ Personalized Just for You
-➕ Schedule planner - customize and change sound, looping, audio stream, vibrations
-➕ Calendar widget - Colorful Calendars and customizable themes
-➕ Open source tiny calendar, translated into 40+ languages
-➕ Plan your day with others - ability to share events fast on social media, emails, etc
-➕ Family Organizer - with hasslefree event duplication, organization, and time management
+✔️ Organisasjon og tidsstyring
+➕ Dagplanlegger - agendaplanleggeren vil hjelpe deg med å organisere dagen din
+➕ Ukentlig planlegger - det har aldri vært enklere å holde seg foran den travle ukeplanen
+➕ Reiseruteleder - forretningskalender delt mellom team på jobben
+➕ Avtaleplanlegger - organiser og vedlikehold agendaen din med letthet
+➕ Planleggingsapp – brukervennlig personlig hendelse, avtalepåminnelse og planlegger
+➕ Planlegg dagen din - administrer dagen din med denne Android-planleggeren, arrangementet og familiearrangøren
 
-✔️ Organization and Time Management
-➕ Day planner - the agenda planner will help you to organize your day
-➕ Weekly planner - staying ahead of your busy weekly schedule has never been easier
-➕ Itinerary manager - business calendar shared between teams at work
-➕ Appointment scheduler - organize and maintain your agenda with ease.
-➕ Planning app - easy to use personal event, appointment reminder, and schedule planner
-➕ Plan your day - manage your day with this android schedule planner, event & family organizer
+✔️ #1 Kalender-appen
+➕ Importere helligdager, kontakt fødselsdager og merkedager på en enkel måte
+➕ Filtrere personlige hendelser raskt etter hendelsestype
+➕ Daglig tidsplan og arrangementssted, vist på et kart
+➕ Rask forretningskalender eller personlig digital agenda
+➕ Bytte raskt mellom daglige, ukentlige, månedlige og årlige visninger av arrangementer
 
-✔️ #1 Calendar App
-➕ Import holidays, contact birthdays, and anniversaries easily
-➕ Filter personal events quickly by event type
-➕ Daily schedule and event location, shown on a map
-➕ Quick business calendar, or personal digital agenda
-➕ Quickly switch between daily, weekly, monthly, yearly & event views
+LAST NED EN ENKEL KALENDERPLANLEGGER – EN OFFLINE TIDSPLAN OG AGENDAPLANLEGGER UTEN ANNONSER! PLANLEGG TIDSPLANEN FOR 2022!
 
-DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO ADS! PLAN YOUR 2022 TIMETABLE!
+Den kommer med et materialdesign og et mørkt tema som standard, noe som gir en flott brukeropplevelse for enkel bruk. Mangelen på internett-tilgang gir deg mer personvern, sikkerhet og stabilitet enn andre apper.
 
-Check out the full suite of Simple Tools here:
+Inneholder ingen annonser eller unødvendige tillatelser. Den er helt åpen kildekode og gir tilpassbare farger.
+
+Sjekk ut hele pakken med enkle verktøy her:
 https://www.simplemobiletools.com
+
+Frittstående nettsted for Simple Calendar Pro:
+https://www.simplemobiletools.com/calendar
 
 Facebook:
 https://www.facebook.com/simplemobiletools

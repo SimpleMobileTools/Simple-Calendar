@@ -1,38 +1,53 @@
-Basit Takvim, tam olarak bir takvimin yapması gerekeni yapmak üzere tasarlanmış, tamamen özelleştirilebilir bir kişisel günlüğü çevrimdışı takvimdir günlük defteri.  Karmaşık özellikler, gereksiz izinler ve reklam yok! 
+Simple Calendar 2022, Android için son derece özelleştirilebilir, çevrimdışı bir aylık takvim uygulamasıdır. 2022'te kişisel bir planlamacının yapması gerekeni tam olarak yapmak için tasarlanmış bir gündem planlayıcınız olsun. Karmaşık özellikler, gereksiz izinler veya reklamlar yok! Google Takvim veya CalDAV protokolünü destekleyen diğer takvimler aracılığıyla olayların eşitlenmesini destekler.
 
-İster tek ister yinelenen etkinlikler içinde günlüğüm, doğum günleri, yıldönümleri, iş toplantıları, randevular veya başka herhangi bir şey düzenliyor olun, Basit Takvim kişisel günlüğü günlük defteri düzenli kalmanızı kolaylaştırır. İnanılmaz çeşitlilikteki  özelleştirme seçenekleriyle , etkinlik hatırlatıcılarını, bildirim seslerini, takvim widget'larını ve uygulama görünümünü özelleştirebilirsiniz.
+Zamanınızı Kontrol edin
+İster bir iş için bir iş takvimi, ister bir gün planlayıcısı, randevu programlayıcısı veya doğum günleri, yıl dönümleri, randevu hatırlatıcıları veya başka bir şey gibi tek ve yinelenen etkinliklerin organizasyonu ve planlanması arıyor olun, basit Takvim 2022 düzenli kalmanızı kolaylaştırır. Takvim widget'ında, özelleştirilmiş etkinlik hatırlatıcıları, bildirim görünümü, küçük takvim hatırlatıcıları widget'ı ve genel görünüm gibi inanılmaz çeşitlilikte özelleştirme seçenekleri bulunur.
 
-Günlük, haftalık ve aylık görünümler, yaklaşan etkinliklerinizi ve randevularınızı kontrol etmenizi kolaylaştırır ile kişisel günlüğü. Her şeyi bir takvim görünümü yerine basit bir etkinlik listesi olarak bile görüntüleyebilirsiniz, böylece hayatınızda neler olacağını tam olarak bilirsiniz içinde günlüğüm.
+Program Planlayıcı: Gününüzü planlayın
+Randevu programlayıcısı, aylık planlayıcı ve aile organizatörü bir arada! Yaklaşan gündemi kontrol edin, iş toplantıları ve etkinlikler planlayın ve randevularınızı kolayca rezerve edin. Hatırlatıcılar sizi zamanında ve günlük program uygulamanızdan haberdar eder. Bu 2022 takvim widget'ının kullanımı son derece kolaydır. 
+Basit Takvim 2022 Özellikleri
 
--------------------------------------------------- --------
- Basit Takvim - Özellikler ve Avantajlar 
--------------------------------------------------- --------
+En İyi Kullanıcı Deneyimi
+Hiç reklam veya sinir bozucu açılır pencereler yok, gerçekten harika kullanıcı deneyimi!
+N\'e daha fazla gizlilik, güvenlik ve kararlılık sağlayan internet erişimi gerekmez
 
-✔️ Reklam veya sinir bozucu pop-up yok
-✔️ İnternet erişimi gerekmez içinde günlüğüm, size daha fazla gizlilik ve güvenlik sağlar
-✔️ Minimum izin gerekli bunda günlük defteri
-✔️ Basitliğe vurgu - bir takvimin yapması gerekeni yapar!
-✔️ Açık kaynak
-✔️ Tamamen özelleştirilebilir temalar ve takvim / etkinlik widget'ları
-✔️ 40 dile çevrildi
-✔️ Ayarları başka bir cihaza aktarmak için .txt dosyalarına aktarın
-✔️ Olayları cihazlar arasında senkronize etmek için CalDAV takvim senkronizasyonu desteği
-✔️ Takvimde günlük, haftalık, aylık, yıllık ve etkinlik görünümleri
-✔️ Olayları .ics dosyaları aracılığıyla dışa ve içe aktarma desteği
-✔️ Birden fazla etkinlik hatırlatıcısı ayarlayın, etkinlik hatırlatma sesini ve titreşimi özelleştirin
-✔️ Hatırlatıcılar için erteleme seçeneği bunda günlük defteri
-✔️ Tatilleri, doğum günlerini, yıl dönümlerini ve randevuları kolayca ekleyin
-✔️ Etkinlikleri özelleştirin - başlangıç ​​zamanı, süresi, hatırlatıcılar vb.
-✔️ Her etkinliğe etkinlik katılımcıları ekleyin
-✔️ Kişisel veya iş takvimi olarak kullanın
-✔️ Bir etkinlik hakkında sizi uyarmak için hatırlatıcılar ve e-posta bildirimleri arasından seçim yapın
+Üretkenliğiniz için esneklik
+Takvim Widget'ı, .ics dosyaları yoluyla etkinlikleri dışa ve içe aktarmayı destekler
+Ayarları başka bir aygıta almak için .txt dosyalarına dışa aktarın
+Esnek etkinlik oluşturma – süre, süre, hatırlatıcılar, güçlü tekrar kuralları
+Google Takvim, Microsoft Outlook, NextCloud, Exchange vb. üzerinden etkinlikleri eşitlemek için CalDAV desteği
 
-Basit Takvim'YU İNDİRİN - REKLAMLAR OLMADAN BASİT ÇEVRİMDIŞI TAKVİM!
+Tam size göre kişiselleştirildi
+Schedule planlayıcı - Ses, döngü, ses akışı ve titreşimleri özelleştirin ve değiştirin
+Calendar widget'ı - Renkli Takvimler ve özelleştirilebilir temalar
+Açık kaynaklı küçük takvim, 45'den fazla dile çevrilmiştir
+On gün boyunca diğer kişilerle etkinlik paylaşma, sosyal medyada, e-postalarda vb.
+Ürün Ailesi Düzenleyici - sorunsuz etkinlik çoğaltma, düzenleme, ve zaman yönetimi
 
- Basit Araçlar paketinin tamamına buradan göz atın: 
+Kuruluş ve zaman Yönetimi
+Gün planlayıcı - Gündem planlayıcı, gününüzü düzenlemenize yardımcı olur
+Haftalık planlayıcı - yoğun haftalık programınızın önünde kalmak hiç bu kadar kolay olmamıştı
+On bir Randevu programlayıcı - ajandanızı kolayca organize edin ve koruyun
+On-Planning uygulaması - Kullanımı kolay kişisel etkinlik, randevu hatırlatıcı ve planlama planlayıcısı
+Tüm gününüzü android program planlayıcı, etkinlik ve aile düzenleyiciyle planlayın
+
+1 Takvim Uygulaması
+Tatilleri, doğum günlerini ve yıl dönümlerini kolayca içe aktarın
+Kendi kişisel etkinliklerinizi etkinlik türüne göre hızla filtreleyin
+Günlük program ve etkinlik konumu, haritada gösterilir
+Hızlı iş takvimi veya kişisel dijital gündem
+On iki günlük, haftalık, aylık, ve yıllık etkinlik görünümleri
+
+REKLAMSIZ ÇEVRIMDIŞI BIR PROGRAM VE GÜNDEM PLANLAYICI OLAN BASIT BIR TAKVIM PLANLAYICI INDIRIN! 2022 TAKVIMINI PLANLA!
+
+Malzeme tasarımı ve varsayılan olarak koyu renkli temasıyla birlikte, kolay kullanım için mükemmel bir kullanıcı deneyimi sunar. İnternet erişiminin olmaması size diğer uygulamalardan daha fazla gizlilik, güvenlik ve kararlılık sağlar.
+
+Reklam veya gereksiz izinler içermez. Tamamen açık kaynaktır ve özelleştirilebilir renkler sunar.
+
+Basit Araçlar paketinin tamamına buradan göz atın:
 https://www.simplemobiletools.com
 
- Basit Takvim'nun bağımsız web sitesi: 
+Simple Calendar Pro'nun bağımsız web sitesi:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
@@ -41,5 +56,5 @@ https://www.facebook.com/simplemobiletools
 Reddit:
 https://www.reddit.com/r/SimpleMobileTools
 
-Telegram:
+Telgraf:
 https://t.me/SimpleMobileTools
