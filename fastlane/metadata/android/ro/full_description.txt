@@ -1,38 +1,52 @@
-Calendar simplu poate fi complet personalizat, calendar offline conceput pentru a face exact ceea ce ar trebui să facă un calendar. Fără caracteristici complicate, permisiuni inutile și fără reclame!
+Simple Calendar 2022 este o aplicație de calendar lunar pentru Android, extrem de personalizabilă și offline. Aveți un planificator de agendă în buzunar, conceput pentru a face exact ceea ce ar trebui să facă un planificator personal de program minuscul în 2022. Fără funcții complicate, permisiuni inutile sau reclame! Suportă sincronizarea evenimentelor prin Google Calendar sau alte calendare care acceptă protocolul CalDAV.
 
-Fie că organizați evenimente individuale sau repetitive, zile de naștere, aniversări, întâlniri de afaceri, programări sau orice altceva, Calendar simplu face ușor să rămâneți organizat. Cu o varietate incredibilă de opțiuni de personalizare, puteți personaliza reamintiri pentru evenimente, sunete de notificare, widgeturi de calendar și aspectul aplicației.
+Preia controlul asupra timpului tău
+Fie că sunteți în căutarea unui calendar de lucru pentru afaceri, a unui planificator de zi, a unui programator de întâlniri sau a organizării și programării evenimentelor unice și recurente, cum ar fi zile de naștere, aniversări, memento-uri de întâlniri sau orice altceva, Simple Calendar 2022 vă permite să rămâneți organizat cu ușurință. 
 
-Vizualizările zilnice, săptămânale și lunare fac ca verificarea evenimentelor viitoare și a programărilor să fie o briză. Puteți vedea chiar totul ca pe o simplă listă de evenimente, mai degrabă decât în vizualizarea calendarului, astfel încât să știți exact ce se întâmplă în viața dvs. și când. 
+Planificator de programări: Planificați-vă ziua
+Programator de întâlniri, planificator lunar și organizator de familie într-unul singur! Verificați agenda viitoare, programați întâlniri de afaceri și evenimente și rezervați întâlniri cu ușurință. Amintirile vă vor ține la timp și vă vor informa cu privire la aplicația dvs. de program zilnic. Acest widget de calendar 2022 este remarcabil de ușor de utilizat.  
 
-----------------------------------------------------------
-Calendar simplu – Caracteristici și Benefici
-----------------------------------------------------------
+Caracteristicile Simple Calendar 2022
 
-✔️ Fără reclame sau pop-up-uri enervante
-✔️ Nu este nevoie de acces la internet, oferindu-vă mai multă confidențialitate și securitate
-✔️ Doar permisiunile minime necesare
-✔️ Accent pe simplitate - face ceea ce un calendar trebuie să facă!
-✔️ Open source
-✔️ Teme complet personalizabile și widgeturi de calendar / eveniment
-✔️ Tradus în 40 de limbi
-✔️ Exportați setările în fișiere .txt pentru a le importa pe un alt dispozitiv
-✔️ Sincronizare calendar CalDAV este suportată, pentru a sincroniza evenimente pe dispozitive multiple
-✔️ Vizualizări zilnice, săptămânale, lunare, anuale și evenimente din calendar
-✔️ Acceptă exportarea și importarea evenimentelor prin fișiere .ics
-✔️ Setați multiple reamintiri pentru evenimente, personalizați sunetul și vibrațiile pentru acestea
-✔️ Opțiune de amânare pentru reamintiri
-✔️ Puteți adăuga ușor sărbători, zile de naștere, aniversări și programări
-✔️ Personalizați evenimentele - ora de pornire, durata, reamintiri etc.
-✔️ Puteți seta opțiune de participare pentru fiecare eveniment
-✔️ Utilizați ca calendar personal sau calendar de afaceri
-✔️ Alegeți dintre reamintiri și notificări prin e-mail pentru a vă avertiza despre un eveniment
+✔️ Cea mai bună experiență de utilizare
+➕ Fără reclame sau popup-uri enervante, o experiență de utilizare cu adevărat excelentă!
+➕ Nu este nevoie de acces la internet, oferindu-vă mai multă intimitate, securitate și stabilitate
 
-DESCARCĂ CALENDAR SIMPLU – CALENDARUL SIMPLU OFFLINE FĂRĂ RECLAME!
+✔️ Flexibilitate pentru productivitatea dvs.
+➕ Calendar Widget suportă exportul și importul de evenimente prin intermediul fișierelor .ics
+➕ Exportați setările în fișiere .txt pentru a le importa pe un alt dispozitiv
+➕ Suport CalDAV pentru sincronizarea evenimentelor prin Google Calendar, Microsoft Outlook, Nextcloud, Exchange etc.
 
-Verificați aici pachetul complet al Simple Tools aici:
+✔️ Personalizat doar pentru dvs.
+➕ Planificator de programări - personalizați și modificați sunetul, buclă, flux audio, vibrații
+➕ Widget calendaristic - Calendare colorate și teme personalizabile
+➕ Calendarul minuscul cu sursă deschisă, tradus în peste 45 de limbi
+➕ Planifică-ți ziua cu alții - posibilitatea de a partaja rapid evenimentele pe rețelele sociale, e-mailuri etc.
+➕ Organizator de familie - cu duplicare de evenimente, organizare și gestionare a timpului fără complicații
+
+✔️ Organizare și gestionare a timpului
+➕ Planificator de zi - planificatorul de agendă vă va ajuta să vă organizați ziua
+➕ Planificator săptămânal - a fi în fața programului săptămânal încărcat nu a fost niciodată mai ușor decât acum
+➕ Manager de itinerar - calendar de afaceri partajat între echipele de la locul de muncă
+➕ Programator de întâlniri - organizați-vă și mențineți-vă agenda cu ușurință
+➕ Planifică-ți ziua - gestionează-ți ziua cu acest planificator de program android, organizator de evenimente și familie
+
+✔️ #1 Calendar App
+➕ Importați cu ușurință sărbătorile, zilele de naștere ale contactelor și aniversările
+➕ Filtrați rapid evenimentele personale în funcție de tipul de eveniment
+➕ Programul zilnic și locația evenimentelor, afișate pe o hartă
+➕ Calendar rapid de afaceri, sau agendă digitală personală
+
+DESCĂRCAȚI SIMPLE CALENDAR PLANNER - PLANIFICATOR DE PROGRAM ȘI AGENDĂ OFFLINE FĂRĂ RECLAME! PLANIFICAȚI-VĂ ORARUL 2022!
+
+Vine cu design material și tema întunecată în mod implicit, oferă o experiență de utilizare excelentă pentru o utilizare ușoară. Lipsa accesului la internet vă oferă mai multă intimitate, securitate și stabilitate decât alte aplicații.
+
+Nu conține reclame sau permisiuni inutile. Este complet opensource, oferă culori personalizabile.
+
+Consultați suita completă de instrumente Simple Tools aici:
 https://www.simplemobiletools.com
 
-Site propriu pentru Simple Calendar Pro:
+Site-ul independent al Simple Calendar Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:

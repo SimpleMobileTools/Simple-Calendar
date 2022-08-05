@@ -1,15 +1,55 @@
-En enkel kalender med valfri Google-synkronisering. Du kan enkelt skapa återkommande händelser och ställa in påminnelser. Den kan också visa veckonummer.
+Simple Calendar 2022 är en månadstidskalenderapp för Android som är mycket anpassningsbar och som kan användas offline. Ha en agenda planerare i fickan, utformad för att göra exakt vad en personlig liten schema planerare bör göra år 2022. Inga komplicerade funktioner, onödiga behörigheter eller annonser! Den stöder synkronisering av händelser via Google Calendar eller andra kalendrar som stöder CalDAV-protokollet.
 
-Har en widget med en månadsvy och en widget med en händelselista. Du kan anpassa widgetarnas textfärger, bakgrundsfärger och bakgrundsgenomskinligheter.
+Ta kontroll över din tid
+Oavsett om du letar efter en arbetskalender för ett företag, en dagsplanerare, en tidsbokare eller organisation och schemaläggning av enstaka och återkommande händelser som födelsedagar, årsdagar, påminnelser om möten eller något annat, gör Simple Calendar 2022 det enkelt att hålla sig organiserad. Kalenderwidgeten har en otrolig mängd anpassningsalternativ: anpassade händelsepåminnelser, meddelandeutseende, liten kalenderpåminnelsewidget och övergripande utseende.
 
-Den levereras med Material Design och mörkt tema som standard, och ger en bra användarupplevelse för enkel användning. Avsaknaden av internetåtkomst ger dig mer integritet, säkerhet och stabilitet än andra appar.
+Schemaläggare: Planera din dag
+Tidtabellsläggare, månadsplanerare och familjeorganisatör i ett! Kontrollera din kommande agenda, planera affärsmöten och evenemang och boka möten enkelt. Påminnelser kommer att hålla dig i tid och informerad om din dagliga schemaapp. Denna 2022 kalender widget är anmärkningsvärt lätt att använda. 
 
-Innehåller ingen reklam eller onödiga behörigheter. Den har helt öppen källkod och anpassningsbara färger.
+Enkel kalender 2022 funktioner
 
-Kolla in hela uppsättningen enkla verktyg här:
+✔️ Den bästa användarupplevelsen
+➕ Inga annonser eller irriterande popup-fönster, verkligt bra användarupplevelse!
+➕ Ingen internetåtkomst behövs, vilket ger dig mer integritet, säkerhet och stabilitet.
+
+✔️ Flexibilitet för din produktivitet
+➕ Kalender Widget stöder export och import av händelser via .ics-filer.
+➕ Exportera inställningar till .txt-filer för att importera till en annan enhet.
+➕ Flexibelt skapande av händelser - tider, varaktighet, påminnelser, kraftfulla upprepningsregler.
+➕ CalDAV-stöd för synkronisering av händelser via Google Calendar, Microsoft Outlook, Nextcloud, Exchange osv.
+
+✔️ Personligt anpassad bara för dig
+➕ Schemaplanerare - anpassa och ändra ljud, looping, ljudströmmar, vibrationer.
+➕ Kalenderwidget - färgglada kalendrar och anpassningsbara teman.
+➕ Open source tiny calendar, översatt till 45+ språk.
+➕ Planera din dag tillsammans med andra - möjlighet att dela händelser snabbt på sociala medier, e-post osv.
+➕ Family Organizer - med problemfri duplicering av händelser, organisering och tidshantering.
+
+✔️ Organisation och tidshantering
+➕ Dagplanerare - dagsplaneringsprogrammet hjälper dig att organisera din dag.
+➕ Veckoplanerare - det har aldrig varit enklare att ligga steget före i ditt upptagna veckoschema.
+➕ Reseplanerare - företagskalender som delas mellan team på jobbet.
+➕ Tidtabellshanterare - organisera och håll din agenda med lätthet.
+➕ Planeringsapp - lättanvänd personlig händelse-, tidspåminnelse- och schemaläggare
+➕ Planera din dag - hantera din dag med den här android schemaläggaren, evenemangs- och familjeorganisatorn.
+
+✔️ #1 kalenderapp
+➕ Importera helgdagar, kontaktfödelsedagar och årsdagar enkelt.
+➕ Filtrera personliga händelser snabbt efter händelsetyp
+➕ Dagligt schema och plats för evenemang, visas på en karta
+➕ Snabb företagskalender eller personlig digital agenda
+➕ Växla snabbt mellan dags-, vecko-, månads-, års- och evenemangsvisningar.
+
+LADDA NER EN ENKEL KALENDERPLANERARE - EN OFFLINE SCHEMA- OCH AGENDAPLANERARE UTAN ANNONSER! PLANERA DIN TIDTABELL FÖR 2022!
+
+Den levereras med materialdesign och mörkt tema som standard, vilket ger en bra användarupplevelse för enkel användning. Avsaknaden av internetåtkomst ger dig mer integritet, säkerhet och stabilitet än andra appar.
+
+Innehåller inga annonser eller onödiga behörigheter. Den är helt öppen källkod och ger anpassningsbara färger.
+
+Kolla in hela sviten av Simple Tools här:
 https://www.simplemobiletools.com
 
-Fristående webbplats för Simpel kalender Pro:
+Fristående webbplats för Simple Calendar Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
