@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
     <string name="public_event_notification_text">Du har en kommande händelse</string>
-    <string name="saving_filtered_out">Spara... Men den valda händelsetypen filtreras bort i den översta menyn - Filter</string>
+    <string name="saving_filtered_out">Sparar... Men den valda händelsetypen filtreras bort i den översta menyn - Filter</string>
     <!-- Tasks -->
     <string name="task">Uppgift</string>
     <string name="tasks">Uppgifter</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Upprepa tills</string>
     <string name="forever">Alltid</string>
     <string name="event_is_repeatable">Händelsen är återkommande</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Uppgiften är återkommande</string>
     <string name="selection_contains_repetition">Markeringen innehåller återkommande händelser</string>
     <string name="delete_one_only">Ta bara bort den valda förekomsten</string>
     <string name="delete_future_occurrences">Ta bort denna och alla framtida förekomster</string>

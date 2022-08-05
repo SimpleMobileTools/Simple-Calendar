@@ -1,38 +1,51 @@
-Vienkāršs kalendārs ir elasīgi pielāgojams autonoms bezsaistes kalendārs, kas paredzēts tām funkcijām, kuras kalendāram jāīsteno.Bez sarežģītām iespējām, funkcijas izpildei nevajadzīgu atļauju pieprasījumiem un uzbāzīgām reklāmām!
+Vienkāršs kalendārs 2022 ir ļoti pielāgojama bezsaistes mēneša kalendāra lietotne Android. Turiet kabatā dienaskārtības plānotāju, kas izstrādāts tieši tā, lai darītu tieši to, kas 2022. gadā būtu jādara personīgajam sīkajam grafika plānotājam. Nav sarežģītu funkciju, nevajadzīgu atļauju vai reklāmu! Tā atbalsta notikumu sinhronizēšanu, izmantojot Google kalendāru vai citus kalendārus, kas atbalsta CalDAV protokolu.
 
-Neatkarīgi no tā, vai jūs organizējat vienreizējus vai atkārtojošos regulārus pasākumus, dzimšanas dienas, jubilejas, lietišķas tikšanās, randiņus vai ko citu, Vienkāršs kalendārs padara to par viegli padarāmu. Izmantojot neticami plašu un elastīgu pielāgošanas iespēju paleti, Jūs varat veidot pielāgotus notikumu atgādinājumus, paziņojumu skaņas, kalendāra logrīkus un lietotnes izskatus.
+Pārņemiet kontroli pār savu laiku
+Neatkarīgi no tā, vai meklējat darba kalendāru uzņēmumam, dienas plānotāju, tikšanās grafiku plānotāju vai vienreizēju un atkārtotu notikumu, piemēram, dzimšanas dienu, jubileju, tikšanās atgādinājumu vai jebkā cita, organizēšanu un plānošanu, Simple Calendar 2022 ļauj jums viegli saglabāt organizēt savu darbu. Kalendāra logrīkam ir neticami daudz dažādu pielāgošanas iespēju: pielāgoti notikumu atgādinājumi, paziņojumu izskats, sīks kalendāra atgādinājumu logrīks un kopējais izskats.
 
-Dienas, nedēļas un mēneša skati padara Jūsu gaidāmo notikumu un tikšanos caurskati zibenīgu. Jūs pat visu varat apskatīt kā vienkāršu notikumu sarakstu, nevis kalendāra skatu, un tā precīzi zināt, kas un kad notiks Jūsu dzīvē.
+Grafiks plānotājs: Plānojiet savu dienu: Plānojiet savu dienu
+Tikšanās grafiks, mēneša plānotājs un ģimenes organizators vienā! Pārbaudiet savu gaidāmo darba kārtību, plānojiet biznesa tikšanās un pasākumus un viegli rezervējiet tikšanās. Atgādinātāji nodrošinās jums savlaicīgu un informētu informāciju par jūsu ikdienas grafika lietotni. Šo 2022. gada kalendāra logrīku ir neparasti viegli lietot.
+Vienkāršā 2022. gada kalendāra funkcijas
 
-----------------------------------------------------------
-Vienkāršs kalendārs – Īpašības & priekšrocības
-----------------------------------------------------------
+✔️ Labākā lietotāja pieredze
+➕ Nav reklāmu vai kaitinošu uznirstošo logu, patiesi lieliska lietotāja pieredze!
+➕ Nav nepieciešama piekļuve internetam, kas nodrošina lielāku privātumu, drošību un stabilitāti.
 
-✔️ Nav reklāmu vai kaitinošu uznirstošo logu
-✔️ Nav nepieciešama piekļuve internetam, sniedzot lielāku privātumu un drošību
-✔️ Nepieciešams dot tikai minimālāko atļauju komplektu
-✔️ Uzsvars uz vienkāršību - dara tikai to, kas kalendāram jādara!
-✔️ Atklātais kods
-✔️ Pilnībā pielāgojamas ādiņas un kalendāra/notikumu logrīki
-✔️ Tulkots 40 valodās
-✔️ Eksportējiet iestatījumus uz .txt failu, lai tos importētu citā ierīcē
-✔️ Atbalstīta kalendāra CalDAV sinhronizācija, lai sinhronizētu notikumus dažādās Jūsu ierīcēs
-✔️ Kalendāra dienas, nedēļas, mēneša, gada un notikumu skati
-✔️ Notikumu eksports un imports, izmantojot .ics failus
-✔️ Iespēja iestatīt vairākus notikuma atgādinājumus, pielāgot notikumu atgādinājumu skaņu un vibrāciju
-✔️ Atgādinājumu atlikšanas iespēja
-✔️ Viegli pievienojamas svētku dienas, dzimšanas dienas, jubilejas un tikšanās
-✔️ Pielāgojami notikumi: sākuma laiks, ilgums, atgādinājumi u.c.
-✔️ Iespēja pievienot notikuma apmeklētājus katram notikumam
-✔️ Izmantojams gan kā personīgais, gan biznesa kalendārs
-✔️ Izvēle starp atgādinājumiem un e-pasta paziņojumiem, lai atgādinātu par notikumu
+✔️ Elastība jūsu produktivitātei
+➕ Calendar Widget atbalsta notikumu eksportēšanu un importēšanu, izmantojot .ics failus
+➕ Eksportēt iestatījumus uz .txt failiem, lai importētu uz citu ierīci
+➕ Elastīga notikumu izveide - laiki, ilgums, atgādinājumi, spēcīgi atkārtošanas noteikumi
+➕ CalDAV atbalsts notikumu sinhronizēšanai, izmantojot Google Calendar, Microsoft Outlook, Nextcloud, Exchange u. c.
 
-LEJUPIELĀDĒ VIENKĀRŠS KALENDĀRS - VIENKĀRŠU AUTONOMU KALENDĀRU BEZ REKLĀMĀM!
+✔️ Personalizēts tieši jums
+➕ Grafiku plānotājs - pielāgojiet un mainiet skaņu, cilpu, audio plūsmu, vibrāciju
+➕ Kalendāra logrīks - krāsaini kalendāri un pielāgojamas tēmas
+➕ Atvērtā pirmkoda sīks kalendārs, tulkots vairāk nekā 45 valodās
+➕ Plānojiet savu dienu kopā ar citiem - iespēja ātri kopīgot notikumus sociālajos tīklos, e-pastos utt.
+➕ Ģimenes organizators - ar ērtu notikumu dublēšanu, organizēšanu un laika pārvaldību
 
- Pilnu Vienkāršo Rīku (Simple Tools) komplektu skatiet šeit: 
-https://www.simplemobiletools.com
+✔️ Organizēšana un laika pārvaldība
+➕ Dienas plānotājs - dienas kārtības plānotājs palīdzēs jums organizēt savu dienu
+➕ Nedēļas plānotājs - nekad nav bijis vieglāk sekot līdzi savam saspringtajam nedēļas grafikam.
+➕ Plānošanas menedžeris - darba kalendārs, kas koplietojams starp komandām darbā
+➕ Tikšanās grafiku plānotājs - viegli organizējiet un uzturiet savu darba kārtību
+➕ Plānošanas lietotne - ērti lietojams personīgo notikumu, tikšanās atgādinājumu un grafika plānotājs
 
-Lietotnes Vienkāršs kalendārs Pro vietne:
+✔️ # 1 kalendāra lietotne
+➕ Viegli importējiet brīvdienas, kontaktu dzimšanas dienas un jubilejas
+➕ Ātri filtrējiet personīgos notikumus pēc notikuma veida
+➕ Dienas grafiks un notikumu atrašanās vieta parādīta kartē
+➕ Ātrs biznesa kalendārs vai personīgā digitālā darba kārtība
+➕ Ātri pārslēdzieties starp dienas, nedēļas, mēneša un gada un notikumu skatiem
+
+LEJUPIELĀDĒJIET VIENKĀRŠU KALENDĀRA PLĀNOTĀJU - BEZSAISTES GRAFIKU UN DARBA KĀRTĪBAS PLĀNOTĀJU BEZ REKLĀMĀM! PLĀNOJIET SAVU 2022. GADA GRAFIKU!
+
+Nesatur reklāmas vai nevajadzīgas atļaujas. Tā ir pilnībā atvērta pirmkoda un nodrošina pielāgojamas krāsas.
+
+Aplūkojiet pilnu vienkāršo rīku komplektu šeit:
+https://www.simplemobiletools.com.
+
+Vienkāršā kalendāra Pro atsevišķa tīmekļa vietne:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
