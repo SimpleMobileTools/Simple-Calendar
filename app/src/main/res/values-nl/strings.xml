@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Eenvoudige Agenda</string>
     <string name="app_launcher_name">Agenda</string>
-    <string name="change_view">Weergave</string>
+    <string name="change_view">Weergave wijzigen</string>
     <string name="daily_view">Dag</string>
     <string name="weekly_view">Week</string>
     <string name="monthly_view">Maand</string>
