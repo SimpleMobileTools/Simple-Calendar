@@ -38,7 +38,6 @@ import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult
 import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
@@ -593,10 +592,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 toast(R.string.importing)
                 ensureBackgroundThread {
                     val holidays = getString(R.string.holidays)
-                    var eventTypeId = eventsHelper.getEventTypeIdWithTitle(holidays)
+                    var eventTypeId = eventsHelper.getEventTypeIdWithClass(HOLIDAY_EVENT)
                     if (eventTypeId == -1L) {
-                        val eventType = EventType(null, holidays, resources.getColor(R.color.default_holidays_color))
-                        eventTypeId = eventsHelper.insertOrUpdateEventTypeSync(eventType)
+                        eventTypeId = eventsHelper.createPredefinedEventType(holidays, R.color.default_holidays_color, HOLIDAY_EVENT, true)
                     }
                     val result = IcsImporter(this).importEvents(selectedHoliday as String, eventTypeId, 0, false, reminders)
                     handleParseResult(result)

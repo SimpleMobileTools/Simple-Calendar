@@ -17,6 +17,12 @@ interface EventTypesDao {
     @Query("SELECT id FROM event_types WHERE title = :title AND caldav_calendar_id = 0 COLLATE NOCASE")
     fun getLocalEventTypeIdWithTitle(title: String): Long?
 
+    @Query("SELECT id FROM event_types WHERE type = :classId")
+    fun getEventTypeIdWithClass(classId: Int): Long?
+
+    @Query("SELECT id FROM event_types WHERE type = :classId AND caldav_calendar_id = 0")
+    fun getLocalEventTypeIdWithClass(classId: Int): Long?
+
     @Query("SELECT * FROM event_types WHERE caldav_calendar_id = :calendarId")
     fun getEventTypeWithCalDAVCalendarId(calendarId: Int): EventType?
 
