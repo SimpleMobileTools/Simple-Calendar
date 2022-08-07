@@ -64,19 +64,19 @@
     <string name="delete_one_only">Удалить только это событие</string>
     <string name="delete_future_occurrences">Удалить это и все будущие события</string>
     <string name="delete_all_occurrences">Удалить все связанные события</string>
-    <string name="update_one_only">Обновление только выбранного вхождения</string>
+    <string name="update_one_only">Обновить только выбранное</string>
     <string name="update_this_and_future_occurrences">Обновить это и все будущие события</string>
     <string name="update_all_occurrences">Обновить все связанные</string>
     <string name="repeat_till_date">Повторять до даты</string>
-    <string name="stop_repeating_after_x">Прекратите повторять после x возникновения</string>
+    <string name="stop_repeating_after_x">Повторять x раз</string>
     <string name="repeat_forever">Повторять бесконечно</string>
     <string name="times">раз(а)</string>
     <string name="repeat">Повторять</string>
-    <string name="repeat_on">Повторить на</string>
+    <string name="repeat_on">Повторять в</string>
     <string name="selected_days">В выбранные дни</string>
-    <string name="the_same_day">В тот же день</string>
+    <string name="the_same_day">Этот же день</string>
     <string name="the_last_day">Последний день</string>
-    <string name="repeat_on_the_same_day_monthly">Повторять в один и тот же день каждый месяц</string>
+    <string name="repeat_on_the_same_day_monthly">Повторять в этот же день каждый месяц</string>
     <string name="repeat_on_the_last_day_monthly">Повторять в последний день месяца</string>
     <string name="repeat_on_the_same_day_yearly">Повторять в этот же день каждый год</string>
     <string name="repeat_every_m">Повторять каждый</string>
@@ -107,21 +107,21 @@
     <!-- Anniversaries -->
     <string name="anniversaries">Годовщины</string>
     <string name="add_anniversaries">Добавить годовщины контактов</string>
-    <string name="no_anniversaries">Не найдено ни одного юбилея</string>
+    <string name="no_anniversaries">Годовщины не найдены</string>
     <string name="no_new_anniversaries">Новых годовщин не найдено</string>
     <string name="anniversaries_added">Годовщины успешно добавлены</string>
     <string name="add_anniversaries_automatically">Добавлять новые годовщины автоматически</string>
     <!-- Event Reminders -->
     <string name="reminder">Напоминание</string>
-    <string name="before">до</string>
+    <string name="before">до события</string>
     <string name="add_another_reminder">Добавить ещё одно напоминание</string>
     <string name="event_reminders">Напоминания о событиях</string>
     <string name="reminders">Напоминания</string>
     <!-- Event attendees -->
-    <string name="add_another_attendee">Добавить еще одного участника</string>
+    <string name="add_another_attendee">Добавить участника</string>
     <string name="my_status">Мой статус:</string>
-    <string name="going">Перейти</string>
-    <string name="not_going">Не собираюсь</string>
+    <string name="going">Приду</string>
+    <string name="not_going">Не приду</string>
     <string name="maybe_going">Возможно, приду</string>
     <string name="invited">Приглашённый</string>
     <!-- Time zones -->
@@ -133,7 +133,7 @@
     <string name="import_events_from_ics_pro">Импорт событий из файла ICS (Pro)</string>
     <string name="export_events_to_ics">Экспорт событий в файл ICS</string>
     <string name="default_event_type">Тип события по умолчанию</string>
-    <string name="export_past_events_too">Экспортируйте также прошлые события</string>
+    <string name="export_past_events_too">Экспортировать прошедшие события</string>
     <string name="include_event_types">Включать типы событий</string>
     <string name="filename_without_ics">Имя файла (без .ics)</string>
     <string name="ignore_event_types">Игнорировать типы событий в файле, всегда использовать значение по умолчанию</string>
@@ -153,7 +153,7 @@
     <string name="regular_event">Обычное событие</string>
     <string name="cannot_delete_default_type">Тип событий по умолчанию не может быть удалён</string>
     <string name="select_event_type">Выбрать тип события</string>
-    <string name="move_events_into_default">Переместите затронутые события в тип события по умолчанию</string>
+    <string name="move_events_into_default">Установить затронутым событиям тип по умолчанию</string>
     <string name="remove_affected_events">Навсегда удалить затронутые события</string>
     <string name="unsync_caldav_calendar">Чтобы удалить календарь CalDAV, нужно отключить синхронизацию с ним</string>
     <!-- Holidays -->
@@ -166,23 +166,23 @@
     <string name="importing_holidays_failed">Невозможно импортировать праздники</string>
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="start_day_at">Начните день в</string>
-    <string name="end_day_at">Конец дня в</string>
+    <string name="start_day_at">Начало дня (неделя)</string>
+    <string name="end_day_at">Окончание дня (неделя)</string>
     <string name="midnight_spanning">Показывать события за полночь на верхней панели</string>
-    <string name="allow_customizing_day_count">Позволяет настраивать количество дней</string>
+    <string name="allow_customizing_day_count">Разрешить менять количество дней</string>
     <string name="week_numbers">Показывать номера недель</string>
-    <string name="vibrate">Вибрация при уведомлении о напоминании</string>
+    <string name="vibrate">Вибрация при напоминании</string>
     <string name="reminder_sound">Звук напоминания</string>
-    <string name="no_ringtone_picker">Не найдено приложение, способное установить мелодию звонка</string>
+    <string name="no_ringtone_picker">Не найдено приложение для выбора звука</string>
     <string name="no_ringtone_selected">Нет</string>
-    <string name="day_end_before_start">День не может закончиться раньше, чем начаться</string>
+    <string name="day_end_before_start">Конец дня не может быть раньше начала</string>
     <string name="caldav_sync">Синхронизация по CalDAV</string>
     <string name="event_lists">Списки событий</string>
     <string name="display_past_events">Показывать прошедшие события</string>
-    <string name="replace_description_with_location">Замените описание события на местоположение</string>
+    <string name="replace_description_with_location">Заменять описание местоположением</string>
     <string name="display_description_or_location">Показывать описание или местоположение</string>
     <string name="delete_all_events">Удалить все события</string>
-    <string name="delete_all_events_confirmation">Вы уверены, что хотите удалить все события\? При этом типы событий и другие настройки останутся нетронутыми.</string>
+    <string name="delete_all_events_confirmation">Удалить все события\? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Циклические напоминания до отключения</string>
     <string name="dim_past_events">Показывать прошедшие события тусклыми</string>
@@ -198,15 +198,15 @@
     <string name="default_reminder_2">Напоминание по умолчанию 2</string>
     <string name="default_reminder_3">Напоминание по умолчанию 3</string>
     <string name="view_to_open_from_widget">Режим, открывающийся из виджета списка событий</string>
-    <string name="last_view">Последний просмотр</string>
+    <string name="last_view">Последний использовавшийся</string>
     <string name="new_events">Новые события</string>
     <string name="default_start_time">Время начала по умолчанию</string>
     <string name="next_full_hour">Следующий полный час</string>
     <string name="current_time">Текущее время</string>
     <string name="default_duration">Продолжительность по умолчанию</string>
     <string name="last_used_one">Последнее использованное</string>
-    <string name="other_time">Другое время</string>
-    <string name="highlight_weekends">Выделить выходные дни на некоторых видах</string>
+    <string name="other_time">Другое</string>
+    <string name="highlight_weekends">Выделять выходные дни в соответствующих режимах</string>
     <string name="highlight_weekends_color">Цвет выделенных выходных дней</string>
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
     <string name="manage_quick_filter_event_types">Управление типами событий быстрого фильтра</string>
@@ -217,13 +217,13 @@
     <string name="manage_synced_calendars">Управление календарями для синхронизации</string>
     <string name="store_locally_only">Хранить только локально</string>
     <string name="refresh_caldav_calendars">Обновить календари из CalDAV</string>
-    <string name="refreshing">Освежающий…</string>
-    <string name="refreshing_complete">Освежающий завершено</string>
+    <string name="refreshing">Обновление…</string>
+    <string name="refreshing_complete">Обновление завершено</string>
     <string name="editing_calendar_failed">Не удалось изменить календарь</string>
     <string name="syncing">Синхронизация…</string>
     <string name="synchronization_completed">Синхронизация завершена</string>
     <string name="select_a_different_caldav_color">Выберите другой цвет (применяется локально)</string>
-    <string name="insufficient_permissions">Вам не разрешается писать в выбранном календаре</string>
+    <string name="insufficient_permissions">Запись в выбранный календарь запрещена</string>
     <string name="caldav_event_not_found">Событие не найдено. Включите синхронизацию по CalDAV для соответствующего календаря в настройках приложения.</string>
     <string name="no_synchronized_calendars">Синхронизируемые календари не найдены</string>
     <string name="status_free">Свободен</string>
@@ -240,17 +240,17 @@
     <!-- List widget config example events -->
     <string name="sample_title_1">Тренировка</string>
     <string name="sample_description_1">День ног</string>
-    <string name="sample_title_2">Встреча с Джоном</string>
-    <string name="sample_description_2">В саду \"Скалистый камень</string>
+    <string name="sample_title_2">Встреча с Женей</string>
+    <string name="sample_description_2">У метро \"Невский проспект\"</string>
     <string name="sample_title_3">Библиотека</string>
-    <string name="sample_title_4">Обед с Мэри</string>
-    <string name="sample_description_4">На площади</string>
+    <string name="sample_title_4">Ужин с Машей</string>
+    <string name="sample_description_4">В КЭТ на Караванной</string>
     <string name="sample_title_5">Время для кофе</string>
     <!-- List widget config -->
     <string name="show_events_happening">Показывать события, происходящие:</string>
-    <string name="within_the_next_one_year">В течение ближайшего 1 года</string>
+    <string name="within_the_next_one_year">В течение следующего года</string>
     <string name="today_only">Только сегодня</string>
-    <string name="within_the_next">В течение следующего…</string>
+    <string name="within_the_next">В течение…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">В течение следующего %d дня</item>
         <item quantity="few">В течение следующих %d дней</item>
