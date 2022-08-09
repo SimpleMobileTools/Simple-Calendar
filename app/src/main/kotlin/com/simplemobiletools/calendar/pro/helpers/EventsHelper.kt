@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.app.Activity
 import android.content.Context
 import android.widget.Toast
+import androidx.annotation.ColorRes
 import androidx.collection.LongSparseArray
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
@@ -76,7 +77,11 @@ class EventsHelper(val context: Context) {
 
     fun getEventTypeIdWithTitle(title: String) = eventTypesDB.getEventTypeIdWithTitle(title) ?: -1L
 
+    fun getEventTypeIdWithClass(classId: Int) = eventTypesDB.getEventTypeIdWithClass(classId) ?: -1L
+
     private fun getLocalEventTypeIdWithTitle(title: String) = eventTypesDB.getLocalEventTypeIdWithTitle(title) ?: -1L
+
+    private fun getLocalEventTypeIdWithClass(classId: Int) = eventTypesDB.getLocalEventTypeIdWithClass(classId) ?: -1L
 
     fun getEventTypeWithCalDAVCalendarId(calendarId: Int) = eventTypesDB.getEventTypeWithCalDAVCalendarId(calendarId)
 
@@ -338,22 +343,36 @@ class EventsHelper(val context: Context) {
         callback(events)
     }
 
+    fun createPredefinedEventType(title: String, @ColorRes colorResId: Int, type: Int, caldav: Boolean = false): Long {
+        val eventType = EventType(id = null, title = title, color = context.resources.getColor(colorResId), type = type)
+
+        // check if the event type already exists but without the type (e.g. BIRTHDAY_EVENT) so as to avoid duplication
+        val originalEventTypeId = if (caldav) {
+            getEventTypeIdWithTitle(title)
+        } else {
+            getLocalEventTypeIdWithTitle(title)
+        }
+        if (originalEventTypeId != -1L) {
+            eventType.id = originalEventTypeId
+        }
+
+        return insertOrUpdateEventTypeSync(eventType)
+    }
+
     fun getLocalBirthdaysEventTypeId(createIfNotExists: Boolean = true): Long {
-        val birthdays = context.getString(R.string.birthdays)
-        var eventTypeId = getLocalEventTypeIdWithTitle(birthdays)
+        var eventTypeId = getLocalEventTypeIdWithClass(BIRTHDAY_EVENT)
         if (eventTypeId == -1L && createIfNotExists) {
-            val eventType = EventType(null, birthdays, context.resources.getColor(R.color.default_birthdays_color))
-            eventTypeId = insertOrUpdateEventTypeSync(eventType)
+            val birthdays = context.getString(R.string.birthdays)
+            eventTypeId = createPredefinedEventType(birthdays, R.color.default_birthdays_color, BIRTHDAY_EVENT)
         }
         return eventTypeId
     }
 
     fun getAnniversariesEventTypeId(createIfNotExists: Boolean = true): Long {
-        val anniversaries = context.getString(R.string.anniversaries)
-        var eventTypeId = getLocalEventTypeIdWithTitle(anniversaries)
+        var eventTypeId = getLocalEventTypeIdWithClass(ANNIVERSARY_EVENT)
         if (eventTypeId == -1L && createIfNotExists) {
-            val eventType = EventType(null, anniversaries, context.resources.getColor(R.color.default_anniversaries_color))
-            eventTypeId = insertOrUpdateEventTypeSync(eventType)
+            val anniversaries = context.getString(R.string.anniversaries)
+            eventTypeId = createPredefinedEventType(anniversaries, R.color.default_anniversaries_color, ANNIVERSARY_EVENT)
         }
         return eventTypeId
     }
