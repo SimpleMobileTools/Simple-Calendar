@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.helpers.OTHER_EVENT
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
@@ -59,10 +60,16 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
     }
 
     private fun eventTypeConfirmed(title: String, dialog: AlertDialog) {
-        val eventIdWithTitle = activity.eventsHelper.getEventTypeIdWithTitle(title)
-        var isEventTypeTitleTaken = isNewEvent && eventIdWithTitle != -1L
+        val eventTypeClass = eventType?.type ?: OTHER_EVENT
+        val eventTypeId = if (eventTypeClass == OTHER_EVENT) {
+            activity.eventsHelper.getEventTypeIdWithTitle(title)
+        } else {
+            activity.eventsHelper.getEventTypeIdWithClass(eventTypeClass)
+        }
+
+        var isEventTypeTitleTaken = isNewEvent && eventTypeId != -1L
         if (!isEventTypeTitleTaken) {
-            isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventIdWithTitle && eventIdWithTitle != -1L
+            isEventTypeTitleTaken = !isNewEvent && eventType!!.id != eventTypeId && eventTypeId != -1L
         }
 
         if (title.isEmpty()) {
