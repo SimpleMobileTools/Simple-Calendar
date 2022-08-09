@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Nenašli sa žiadne synchronizovateľné kalendáre</string>
     <string name="status_free">Dostupný</string>
     <string name="status_busy">Zaneprázdnený</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Pridávanie udalosti %s zlyhalo</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">pondelok</string>
