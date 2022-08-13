@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Aucun agenda synchronisable n\'a été trouvé</string>
     <string name="status_free">Disponible</string>
     <string name="status_busy">Occupé</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">L\'extraction de l\'évènement %s a échoué</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Lundi</string>

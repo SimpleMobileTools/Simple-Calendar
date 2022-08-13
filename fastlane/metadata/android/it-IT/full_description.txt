@@ -1,38 +1,55 @@
-Semplice Calendario è un calendario offline completamente personalizzabile progettato per fare esattamente quello che un calendario promemoria dovrebbe fare. Non ci sono funzionalità complicate, permessi non necessari e senza pubblicità nel settimanale calendario.
+Calendario Semplice è un'app di calendario mensile offline personalizzabile. Un'agenda in tasca, progettata per fare ciò che un'agenda dovrebbe fare. Nessuna funzione complicata, autorizzazioni non necessarie o pubblicità! Supporta la sincronizzazione degli eventi tramite Google Calendar o altri calendari con CalDAV.
 
-Se stai organizzando eventi singoli o ricorrenti, compleanni, anniversari, riunioni di lavoro, agenda appuntamenti o qualsiasi altra cosa, Semplice Calendario ti permette di rimanere organizzato. Con un'incredbile varietà di opzioni di personalizzazione, puoi personalizzare i promemoria degli eventi, i suoni delle notifiche, il widget del calendario promemoria e lo stile dell'app nel settimanale calendario.
+Controlla il Tuo Tempo
+Se sei alla ricerca di un calendario di lavoro, di un pianificatore giornaliero o di appuntamenti, di un'organizzazione e pianificazione di eventi singoli e ricorrenti, Calendario Semplice rende facile rimanere organizzati. Incredibile varietà di opzioni di personalizzazione dei promemoria degli eventi, dell'aspetto delle notifiche, del piccolo widget dei promemoria del calendario e dell'aspetto generale.
 
-Le vista giornaliera, settimanale o mensile permette di controllare gli eventi e agenda appuntamenti imminenti. Puoi visualizzare tutto come una semplice lista di eventi invece che in una vista a calendario promemoria, così puoi sapere esattamente cosa sta per succedere nella tua vita e quando.
+Pianificatore di Orari: Pianifica la Tua Giornata
+Pianificatore di appuntamenti, agenda mensile e organizzatore familiare in una sola app! Controlla la tua agenda, programma riunioni di lavoro ed eventi e prenota facilmente gli appuntamenti. I promemoria ti terranno puntuale e informato sulla tua agenda quotidiana. Il widget è facile da usare. Inoltre è possibile visualizzare tutto come un semplice elenco di eventi.
 
-----------------------------------------------------------
-Semplice Calendario - Funzionalità e benefici
-----------------------------------------------------------
+Caratteristiche del Calendario Semplice
 
-✔️ Nessuna pubblicità o popup fastidiosi
-✔️ Nessun accesso internet richiesto, così da darti più privacy e sicurezza
-✔️ Sono richieste solamente i permessi minimi indispensabili nel settimanale calendario
-✔️ Enfatizza la semplicità - quello che un calendario promemoria deve fare!
-✔️ Open source
-✔️ Temi, calendario promemoria e widget degli eventi completamente personalizzable
-✔️ Localizzato in più di 40 lingue
-✔️ Esporta le impostazioni in un file .txt da importare in un altro disposibito
-✔️ Sincronizzazione CalDav supportata per sincronizzare gli eventi su più dispositivi
-✔️ Con viste giornaliere, settimanale calendario, mensili, annuali e lista di eventi
-✔️ Supporta l'importazione e l'esportazione di eventi tramite file .ics
-✔️ Imposta più promemoria per gli eventi, personalizzali con la vibrazione e la suoneria
-✔️ Opzione per posporre i promemoria
-✔️ Aggiungi facilmente festività, compleanni, anniversari e agenda appuntamenti
-✔️ Personalizza gli eventi - inizio, durata, promemoria e molto altro
-✔️ Aggiunti i partecipanti per ogni evento
-✔️ Usalo come calendario promemoria personale o per lavoro
-✔️ Scegli fra promemoria e email di notifica per avvisarti riguardo un evento
+✔️ La migliore esperienza utente
+➕ Nessun annuncio o popup fastidioso, un'esperienza eccezionale!
+➕ Non è necessario l'accesso a Internet, per una maggiore privacy, sicurezza e stabilità.
 
-SCARICA SEMPLICE CALENDARIO – IL CALENDARIO SEMPLICE, OFFLINE E SENZA PUBBLICITÀ!
+✔️ Flessibilità per la Tua Produttività
+➕ Il Widget supporta l'esportazione e l'importazione di eventi tramite file .ics
+➕ Esportazione delle impostazioni in file .txt per l'importazione in un altro dispositivo
+➕ Creazione flessibile di eventi - orari, durata, promemoria, potenti regole di ripetizione
+➕ Supporto CalDAV per la sincronizzazione degli eventi tramite Google Calendar, Microsoft Outlook, Nextcloud, Exchange, ecc.
 
-Dai uno sguardo alla suite completa di Simple Tools:
+✔️ Personalizzato Solo per Te
+➕ Pianificatore di orari - personalizzazione e modifica di suoni, looping, audio e vibrazioni
+➕ Widget calendario - calendari colorati e temi personalizzabili
+➕ Calendario minuscolo open source, tradotto in più di 45 lingue
+➕ Pianifica la tua giornata con gli altri - condivisione veloce degli eventi sui social media, via e-mail, ecc.
+➕ Family Organizer - con duplicazione di eventi, organizzazione e gestione del tempo senza problemi
+
+✔️ Organizzazione e Gestione del Tempo
+➕ Pianificatore giornaliero - ti aiuterà a organizzare la tua giornata
+➕ Pianificatore settimanale - tieni sotto controllo i tuoi impegni settimanali
+➕ Gestore di itinerari - calendario aziendale condiviso tra i team di lavoro
+➕ Pianificatore di appuntamenti - per organizzare e mantenere la tua agenda con facilità
+➕ App per la pianificazione - facile da usare per organizzare eventi personali, promemoria per appuntamenti e pianificare gli impegni
+➕ Pianifica la tua giornata - gestisci la tua giornata con questo pianificatore di orari, eventi e famiglia
+
+✔️ App Calendario #1
+➕ Importa facilmente le festività, i compleanni e gli anniversari dei contatti
+➕ Filtrare rapidamente gli eventi per tipo
+➕ Programma giornaliero e posizione degli eventi, visualizzati su una mappa
+➕ Calendario aziendale rapido o agenda digitale personale
+➕ Passaggio rapido dalla visualizzazione giornaliera a quella settimanale, mensile, annuale e degli eventi
+
+SCARICA CALENDARIO SEMPLICE- PIANIFICATORE OFFLINE DI ORARI E AGENDE SENZA PUBBLICITÀ! PIANIFICA IL TUO 2022!
+
+È dotato di Material Design e tema scuro, per un'ottima esperienza utente dal facile utilizzo. L'assenza di accesso a Internet offre maggiore privacy, sicurezza e stabilità rispetto ad altre applicazioni.
+
+Non contiene pubblicità o autorizzazioni non necessarie. Open source, con colori personalizzabili.
+
+Scopri la suite completa di Simple Tools:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+Sito di Calendario Semplice Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:

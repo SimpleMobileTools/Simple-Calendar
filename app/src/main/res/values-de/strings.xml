@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Es wurden keine synchronisierbaren Kalender gefunden</string>
     <string name="status_free">Verfügbar</string>
     <string name="status_busy">Beschäftigt</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Der Abruf des Ereignisses %s ist fehlgeschlagen</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Montag</string>
