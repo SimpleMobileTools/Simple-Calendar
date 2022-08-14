@@ -40,7 +40,11 @@ Schlichter Kalender - Funktionen
 ➕ Tagesplan und Veranstaltungsort werden auf einer Karte angezeigt
 ➕ Doch lieber keinen Wochenplaner? Schnelles Umschalten zwischen Tages-, Wochen-, Monats-, Jahres- und Ereignisansichten
 
-HOL DIR DEN EINFACHEN, MOBILEN KALENDERPLANER – OFFLINE-PLANER OHNE WERBUNG! PLANE JETZT DEIN 2022! Unser Kalender ist perfekt als Geburtstagskalender, Urlaubsplaner und Arbeitskalender geeignet für die wichtigsten Erinnerungen des Tages. 
+HOL DIR DEN EINFACHEN, MOBILEN KALENDERPLANER – OFFLINE-PLANER OHNE WERBUNG! PLANE JETZT DEIN 2022!
+
+Es kommt mit Material-Design und einem dunklen Thema standardmäßig, bietet eine großartige Benutzererfahrung für die einfache Verwendung. Der fehlende Internetzugang bietet Ihnen mehr Privatsphäre, Sicherheit und Stabilität als andere Apps.
+
+Enthält keine Anzeigen oder unnötige Berechtigungen. Es ist vollständig Open Source, bietet anpassbare Farben.
 
 Die komplette Suite von Simple Tools findest du hier:
 https://www.simplemobiletools.com
