@@ -1,13 +1,53 @@
-Egy egyszerű naptár, Google integráció lehetőségével. Könnyedén lehet ismétlődő eseményeket és emlékeztetőket felvenni, és a hetek sorszámait is mutatja.
+A Simple Calendar 2022 egy jól testreszabható, offline havi naptár alkalmazás Androidra. Legyen a zsebében egy napirendtervező, amelyet úgy terveztek, hogy pontosan azt tegye, amit egy személyes apró napirendtervezőnek 2022-ben tennie kell. Nincsenek bonyolult funkciók, felesleges engedélyek vagy hirdetések! Támogatja az események szinkronizálását a Google Naptáron vagy más, CalDAV protokollt támogató naptárakon keresztül.
 
-Egy 4x4-es átméretezhető widget-et is biztosít, aminek beállíthatod a színét, az alfáját és a háttérszínét is.
+Vedd át az irányítást az időd felett
+Akár egy munkahelyi naptárat keres egy vállalkozás számára, akár egy naptárat, egy találkozó-ütemezőt, vagy egyszeri és ismétlődő események, például születésnapok, évfordulók, találkozó-emlékeztetők vagy bármi más szervezését és ütemezését, a Simple Calendar 2022 megkönnyíti a szervezettséget. A naptár widget hihetetlenül sokféle testreszabási lehetőséggel rendelkezik: testreszabott eseményemlékeztetők, értesítés megjelenése, apró naptár emlékeztető widget és általános megjelenés.
 
-Nincsenek reklámok, és nem igényel szükségtelen engedélyeket. A forráskódja teljesen nyílt, és sötét téma is beállítható.
+Ütemtervező: Tervezze meg a napját
+Időpontütemező, havi tervező és családszervező egyben! Ellenőrizze a közelgő napirendjét, ütemezze az üzleti találkozókat és eseményeket, és foglaljon időpontokat egyszerűen. Az emlékeztetők időben tartanak és tájékoztatnak a napi ütemterv alkalmazásról. Ez a 2022-es naptár widget figyelemre méltóan könnyen használható.
 
-Check out the full suite of Simple Tools here:
+Egyszerű naptár 2022 jellemzői
+
+✔️ A legjobb felhasználói élmény
+➕ Nincsenek reklámok vagy idegesítő felugró ablakok, igazán nagyszerű felhasználói élmény!
+➕ Nincs szükség internet-hozzáférésre, így nagyobb magánéletet, biztonságot és stabilitást biztosít Önnek.
+
+✔️ Rugalmasság az Ön termelékenységéért
+➕ A Calendar Widget támogatja az események exportálását és importálását .ics fájlokon keresztül
+➕ A beállítások .txt fájlba történő exportálása egy másik eszközre történő importáláshoz
+➕ Rugalmas esemény létrehozása - időpontok, időtartam, emlékeztetők, hatékony ismétlési szabályok
+➕ CalDAV támogatás az események szinkronizálásához Google Calendar, Microsoft Outlook, Nextcloud, Exchange stb. segítségével
+
+✔️ Személyre szabottan csak az Ön számára
+➕ Ütemtervező - testreszabható és megváltoztatható hang, looping, hangfolyam, rezgések
+➕ Naptár widget - színes naptárak és testreszabható témák
+➕ Nyílt forráskódú apró naptár, 45+ nyelvre lefordítva
+➕ Családi szervező - problémamentes eseményduplikálással, szervezéssel és időgazdálkodással
+
+✔️ Szervezés és időgazdálkodás
+➕ Naptervező - a napirend tervező segít megszervezni a napját
+➕ Heti tervező - soha nem volt még ilyen egyszerű a sűrű heti ütemtervének betartása
+➕ Útiterv-kezelő - a munkahelyi csapatok között megosztott üzleti naptár
+➕ Időpont-ütemező - szervezze és tartsa napirendjét könnyedén
+➕ Tervezd meg a napodat - kezeld a napodat ezzel az androidos ütemtervezővel, esemény- és családszervezővel
+
+✔️ #1 Naptár alkalmazás
+➕ Importáljon ünnepnapokat, kontaktok születésnapjait és évfordulókat egyszerűen
+➕ Személyes események gyors szűrése eseménytípus szerint
+➕ Napi menetrend és az események helye, térképen megjelenítve
+➕ Gyors üzleti naptár vagy személyes digitális napirend
+➕ Gyors váltás a napi, heti, havi, éves és eseménynézet között
+
+LETÖLTHETŐ EGYSZERŰ NAPTÁRTERVEZŐ - OFFLINE NAPIREND ÉS NAPIREND TERVEZŐ REKLÁMOK NÉLKÜL! TERVEZD MEG A 2022-ES ÜTEMTERVEDET!
+
+Alapértelmezés szerint material designnal és sötét témával rendelkezik, így nagyszerű felhasználói élményt nyújt a könnyű használathoz. Az internet-hozzáférés hiánya nagyobb magánéletet, biztonságot és stabilitást biztosít, mint más alkalmazások.
+
+Nem tartalmaz hirdetéseket vagy felesleges engedélyeket. Teljesen nyílt forráskódú, és testreszabható színeket biztosít.
+
+Tekintse meg a Simple Tools teljes csomagját itt:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+A Simple Calendar Pro önálló weboldala:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
