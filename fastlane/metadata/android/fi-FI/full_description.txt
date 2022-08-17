@@ -1,36 +1,53 @@
-Simple Calendar on täysin mukautettava offlinekalenteri suunniteltu tekemään juuri sitä, mitä kalenterin pitääkin tehdä. 
+Yksinkertainen kalenteri 2022 on erittäin helposti muokattavissa oleva, offline-muotoinen kuukausittainen kalenterisovellus Androidille. Pidä taskussaan agenda suunnittelija, joka on suunniteltu tekemään juuri sitä, mitä henkilökohtaisen pikkuruisen aikataulusuunnittelijan pitäisi tehdä vuonna 2022. Ei monimutkaisia ominaisuuksia, tarpeettomia lupia tai mainoksia! Se tukee tapahtumien synkronointia Google-kalenterin tai muiden CalDAV-protokollaa tukevien kalenterien kautta.
 
-Ei monimutkaisia ominaisuuksia, tarpeettomia käyttöoikeuksia eikä mainoksia! Olitpa sitten organisoimassa yksittäisiä tai toistuvia tapahtumia, syntymäpäiviä, juhlapäiviä, bisnestapaamisia, ajanvarauksia tai mitä vaan muuta, Simple Calendar tekee sen helpoksi. 
+Ota aikasi hallintaasi
+Etsitpä sitten työkalenteria yritykselle, päiväsuunnittelijaa, tapaamisaikataulua tai yksittäisten ja toistuvien tapahtumien, kuten syntymäpäivien, merkkipäivien, tapaamis muistutusten tai minkä tahansa muun järjestämistä ja aikatauluttamista, Simple Calendar 2022 helpottaa järjestyksessä pysymistä. Kalenteri-widgetissä on uskomattoman paljon erilaisia mukautus vaihtoehtoja: ilmoitusten ulkonäköä, pientä kalenterimuistutus widgettiä ja yleistä ulkonäköä.
 
-Uskomattomalla valikoimalla mukautettavia asetuksia voit mukauttaa tapahtumien muistutuksia, ilmoitusten ääniä, kalenteripiensovelluksia sekä sovelluksen ulkonäköä. 
+Aikataulusuunnittelija: Suunnittele päiväsi
+Tapaamisten aikatauluttaja, kuukausisuunnittelija ja perheen järjestäjä yhdessä! Tarkista tuleva asialista, aikatauluta liiketapaamiset ja tapahtumat & varaa tapaamiset helposti. Muistutukset pitävät sinut ajoissa ja ajan tasalla päivittäisestä aikataulu sovelluksestasi. Tämä 2022 kalenteri widget on huomattavan helppokäyttöinen. 
 
-Päivittäis-, viikottais- ja kuukausinäkymät nopeuttavat tulevien tapahtumien ja ajanvarausten tarkastamista. Voit myös näyttää kaikki tapahtumat yksinkertaisena listana kalenterinäkymän sijasta, jolloin tiedät tarkalleen, mitä ja milloin elämässäsi on tulossa.  
+Yksinkertainen kalenteri 2022 Ominaisuudet
 
-Simple Calendar – Ominaisuudet &amp; edut
-✔️ Ei mainoksia tai ärsyttäviä popuppeja
-✔️ Internet-yhteyttä ei vaadita, joten yksityisyytesi &amp; turvallisuutesi on taattu
-✔️ Vain vähimmät mahdolliset käyttöoikeudet pyydetään
-✔️ Yksinkertaisuutta korostetaan - tekee, mitä kalenterin täytyykin! 
-✔️ Avointa lähdekoodia 
-✔️ Täysin mukautettavat teemat &amp; kalenteri- sekä tapahtumapiensovellukset 
-✔️ Käännetty 40 kielelle 
-✔️ Vie asetukset .txt-tiedostoihin viedäksesi toiselle laitteelle 
-✔️ Synkronointiin laitteiden välillä löytyy tuki CalDAV:lle 
-✔️ Päivä-, viikko-, kuukausi ja vuosinäkymät sekä tapahtumanäkymät kalenterissa 
-✔️ Tukee tapahtumien tuontia ja vientiä .ics-tiedostoin 
-✔️ Aseta useita tapahtuman muistutuksia, mukauta muistutusääniä ja värinää 
-✔️ Torkutusominaisuus muistutuksissa 
-✔️ Lisää helposti lomia, syntymäpäiviä, juhlapäiviä &amp; ajanvarauksia 
-✔️ Mukauta tapahtumia – aloitusaika, pituus, muistutukset jne. 
-✔️ Lisää tapahtumiin osallistujia 
-✔️ Käytä henkilökohtaista kalenteria tai bisneskalenteria 
-✔️ Valitse muistutuksia &amp; sähköposti-ilmoituksia muistuttaaksesi tapahtumista LATAA SIMPLE CALENDAR – YKSINKERTAINEN OFFLINEKALENTERI ILMAN MAINOKSIA! 
+✔️ Paras käyttökokemus
+➕ Ei mainoksia tai ärsyttäviä ponnahdusikkunoita, todella loistava käyttökokemus!
+➕ Internet-yhteyttä ei tarvita, mikä antaa sinulle enemmän yksityisyyttä, turvallisuutta ja vakautta.
 
-Katso koko Simple Tools-sovellusvalikoima täältä: 
-https://www.simplemobiletools.com 
+✔️ Joustavuus tuottavuutesi kannalta
+➕ Kalenteriwidget tukee tapahtumien vientiä ja tuontia .ics-tiedostojen kautta.
+➕ Vie asetukset .txt-tiedostoihin tuotaaksesi ne toiseen laitteeseen.
+➕ Joustava tapahtumien luominen - ajat, kesto, muistutukset, tehokkaat toistosäännöt
+➕ CalDAV-tuki tapahtumien synkronoimiseksi Google-kalenterin, Microsoft Outlookin, Nextcloudin, Exchangen jne. kautta.
 
-Simple Calendar Pro:n verkkosivut: 
-https://www.simplemobiletools.com/calendar 
+✔️ Henkilökohtaisesti juuri sinulle suunniteltua
+➕ Aikataulusuunnittelija - mukauttaa ja muuttaa ääntä, silmukointia, äänivirtaa, värinää
+➕ Kalenteri widget - Värikkäät kalenterit ja muokattavat teemat
+➕ Avoimen lähdekoodin pikkuruinen kalenteri, joka on käännetty yli 45 kielelle
+➕ Family Organizer - vaivattomalla tapahtumien monistamisella, organisoinnilla ja ajanhallinnalla.
+
+✔️ Organisointi ja ajanhallinta
+➕ Päivänsuunnittelija - asialista suunnittelija auttaa sinua järjestämään päiväsi
+➕ Viikko suunnittelija - kiireisen viikko-ohjelmasi edellä pysyminen ei ole koskaan ollut helpompaa
+➕ Matkasuunnitelman hallinta - työkalenteri, joka jaetaan tiimien kesken työpaikalla
+➕ Ajanvarausohjelma - järjestä ja ylläpidä asialistasi helposti
+➕ Suunnittele päiväsi - hallitse päiväsi tällä androidin aikataulun suunnittelijalla, tapahtuma- ja perhe järjestäjällä
+
+✔️ #1 Kalenterisovellus
+➕ Tuo juhlapyhät, yhteystietojen syntymäpäivät ja vuosipäivät helposti
+➕ Suodata henkilökohtaiset tapahtumat nopeasti tapahtumatyypin mukaan
+➕ Päivittäinen aikataulu ja tapahtumien sijainti, joka näkyy kartalla
+➕ Nopea liiketoiminta kalenteri tai henkilökohtainen digitaalinen asialista
+
+LATAA YKSINKERTAINEN KALENTERI SUUNNITTELIJA - OFFLINE-AIKATAULUN JA ASIALISTAN SUUNNITTELIJA ILMAN MAINOKSIA! SUUNNITTELE VUODEN 2022 AIKATAULUSI!
+
+Mukana on materiaalinen muotoilu ja oletuksena tumma teema, joka tarjoaa loistavan käyttökokemuksen helppokäyttöisyyttä varten. Internet-yhteyden puuttuminen antaa sinulle enemmän yksityisyyttä, turvallisuutta ja vakautta kuin muut sovellukset.
+
+Ei sisällä mainoksia tai tarpeettomia käyttöoikeuksia. Se on täysin avointa lähdekoodia ja tarjoaa mukautettavat värit.
+
+Tutustu koko Simple Tools -pakettiin täällä:
+https://www.simplemobiletools.com
+
+Simple Calendar Pron itsenäinen verkkosivusto:
+https://www.simplemobiletools.com/calendar
 
 Facebook:
 https://www.facebook.com/simplemobiletools
