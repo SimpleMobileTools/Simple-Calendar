@@ -23,7 +23,6 @@ Funkce jednoduchého kalendáře
 ➕ Widget kalendáře – barevné kalendáře a přizpůsobitelné motivy
 ➕ Malý kalendář s otevřeným zdrojovým kódem, přeložený do více než 45 jazyků
 ➕ Naplánujte si den s ostatními – možnost rychlého sdílení událostí na sociálních sítích, e-mailech atd.
-➕ Rodinný organizér – s bezproblémovým duplikováním událostí, organizací a správou času
 
 ✔️ Organizace a správa času
 ➕ Plánovač dne – plánovač agendy vám pomůže zorganizovat váš den
