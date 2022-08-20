@@ -3,9 +3,7 @@ package com.simplemobiletools.calendar.pro.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.SearchManager
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
@@ -206,11 +204,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         main_toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        val intentFilter = IntentFilter(ACTION_REFRESH_EVENTS)
+        localBroadcastManager.registerReceiver(broadcastReceiver, intentFilter)
     }
 
     override fun onPause() {
         super.onPause()
         storeStateVariables()
+        localBroadcastManager.unregisterReceiver(broadcastReceiver)
     }
 
     override fun onDestroy() {
@@ -1358,6 +1360,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             add(Release(155, R.string.release_155))
             add(Release(167, R.string.release_167))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
+        }
+    }
+
+    private val broadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == ACTION_REFRESH_EVENTS) {
+                refreshViewPager()
+            }
         }
     }
 }
