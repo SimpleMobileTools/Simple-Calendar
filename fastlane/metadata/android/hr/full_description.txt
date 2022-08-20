@@ -1,17 +1,54 @@
-Jednostavan kalendar s dodatnom CalDAV sinkronizacijom. Možete jednostavno stvoriti ponavljajuće događaje i postaviti podsjetnike, također je moguće prikazati tjedne brojeve.
+Jednostavni kalendar 2022 izrazito je prilagodljiva mjesečna kalendarska aplikacija za Android. U džepu imate planera dnevnog reda, dizajniranog da učini upravo ono što bi osobni maleni planer rasporeda trebao učiniti u 2022. godini. Nema kompliciranih značajki, nepotrebnih dozvola ili oglasa! Podržava sinkronizacijske događaje putem Google kalendara ili drugih kalendara koji podržavaju CalDAV protokol.
 
-Sadrži mjesečni prikaz i widget s popisom događaja gdje možete prilagoditi boju teksta, kao i transparentnost te boju pozadine.
+Preuzmite kontrolu nad svojim vremenom
+Bilo da tražite kalendar rada za posao, planer dana, raspored rasporeda ili organizaciju i zakazivanje pojedinačnih i ponavljajućih događaja poput rođendana, obljetnica, podsjetnika na sastanke, ili bilo što drugo, Simple Calendar 2022 olakšava organiziranje. Kalendarski widget ima nevjerojatnu raznolikost mogućnosti prilagodbe: prilagođeni podsjetnici na događaje, izgled obavijesti, sićušni kalendarski podsjetnici widget i cjelokupni izgled.
 
-Ne sadrži oglase ili nepotrebne dozvole. Aplikacije je otvorenog koda, pruža prilagodljive boje.
+Raspored planer: Planirajte svoj dan
+Raspored sastanka, mjesečni planer i obiteljski organizator u jednom! Lako provjerite svoj nadolazeći dnevni red, zakažite poslovne sastanke te događaje i sastanke knjiga. Podsjetnici će vas zadržati na vrijeme i informirati o vašoj dnevnoj aplikaciji. Ovaj kalendar za kalendar 2022. izuzetno je jednostavan za upotrebu.
 
-Dopuštenje za pohranu podataka potrebna je samo za izvoz ili uvoz događaja iz .ics datoteka.
+Jednostavna kalendar 2022. Značajke
 
-Dopuštenje za kontakte upotrebljava se samo pri uvozu rođendana i obljetnica kontakata.
+nost Najbolje iskustvo korisnika
+➕ Nema oglasa ili neugodnih skokova, uistinu sjajno korisničko iskustvo!
+➕ Nije potreban pristup internetu koji vam daje više privatnosti, sigurnosti i stabilnosti
 
-Check out the full suite of Simple Tools here:
+Fleksibilnost za vašu produktivnost
+➕ Kalendar Widget podržava izvoz i uvoz događaja putem datoteka s ics
+➕ Postavke izvoza u .txt datoteke za uvoz u drugi uređaj
+➕ Fleksibilno stvaranje događaja – vremena, trajanje, podsjetnici, moćna pravila ponavljanja
+➕ CalDAV podrška za sinkronizaciju događaja putem Google Calendar, Microsoft Outlook, Nextcloud, Exchange itd
+
+personalizirano samo za tebe
+➕ Planner rasporeda - prilagodite i promijenite zvuk, petlje, zvučni tok, vibracije
+➕ Kalendarski widget - šareni kalendari i prilagodljive teme
+➕ Sitni kalendar otvorenog koda, preveden na 45 + jezika
+➕ Planirajte svoj dan s drugima - sposobnost brzog dijeljenja događaja na društvenim medijima, e-porukama itd
+➕ Obiteljski organizator - s besplatnim dupliranjem događaja, organizacijom i upravljanjem vremenom
+
+Organizacija i upravljanje vremenom
+➕ Dnevni planer - planer dnevnog reda pomoći će vam da organizirate svoj dan
+➕ Tjedni planer - boravak ispred vašeg zauzetog tjednog rasporeda nikada nije bio lakši
+➕ Itinerary menadžer - poslovni kalendar koji se dijeli između timova na poslu
+➕ Raspored zadataka - organizirajte i održavajte svoj dnevni red s lakoćom
+➕ Aplikacija za planiranje - osobni događaj koji se lako koristi, podsjetnik za imenovanje i planer rasporeda
+
+# 1 Kalendar App
+➕ Uvozni praznici, lako se obratite rođendanima i obljetnicama
+➕ Filtrirajte osobne događaje brzo prema vrsti događaja
+➕ Dnevni raspored i mjesto događaja, prikazano na karti
+➕ Brzi poslovni kalendar ili osobni digitalni program
+➕ Brzo prebacite između dnevnih, tjednih, mjesečnih i godišnjih i pregleda događaja
+
+DOWNLOAD SIMPLE CALENDAR PLANNER – AN OFFLINE SCHEDULE I AGENDA PLANNER WITH NO ADS! PLAN TIMETALNOSTI 2022!
+
+Dolazi s dizajnom materijala i tamnom temom prema zadanim postavkama, pružajući sjajno korisničko iskustvo za jednostavno korištenje. Nedostatak pristupa internetu daje vam više privatnosti, sigurnosti i stabilnosti od ostalih aplikacija.
+
+Ne sadrži oglase ili nepotrebne dozvole. Potpuno je open-source i pruža prilagođene boje.
+
+Ovdje pogledajte cijeli paket jednostavnih alata:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+Samostalna web stranica Simple Calendar Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:

@@ -1,38 +1,55 @@
-Jednoduchý kalendář je plně přizpůsobitelný offline kalendář vytvořený přesně pro to, co by kalendáře měly dělat. Žádné zbytečné funkce, nepotřebná oprávnění, ani reklamy!
+Jednoduchý kalendář je vysoce přizpůsobitelná aplikace offline kalendáře pro Android. Mějte v kapse plánovač agendy, který je navržen přesně tak, jak by měl plánovač osobního rozvrhu v roce 2022 vypadat. Žádné složité funkce, zbytečná oprávnění ani reklamy! Podporuje synchronizaci událostí prostřednictvím Kalendáře Google nebo jiných kalendářů podporujících protokol CalDAV.
 
-Nezáleží, zda organizujete jednoduché či opakující se události, narozeniny, výročí, pracovní schůzky, či cokoliv jiného, Jednoduchý kalendář vám ulehčí práci. S velkým množstvím možností přizpůsobení můžete měnit připomínky událostí, zvuky připomínek, widgety kalendáře a celkový vzhled aplikace.
+Mějte svůj čas pod kontrolou
+Ať už hledáte pracovní kalendář pro firmu, plánovač dne, schůzek nebo organizaci a plánování jednorázových i opakujících se událostí, jako narozeniny, výročí, připomenutí schůzky nebo cokoli jiného, s aplikací Jednoduchý kalendář si snadno udržíte pořádek. Widget kalendáře má neuvěřitelné možnosti přizpůsobení: vlastní připomenutí událostí, vzhled oznámení, drobný widget s připomenutím kalendáře a celkově vzhled.
 
-Díky dennímu, týdennímu a měsíčnímu pohledu si velmi snadno prohlédnete následující události a schůzky. Všechny události si můžete zobrazit i v jednodůchém chronologickém seznamu událostí. Díky tomu víte přesně co a kdy se blíží. 
+Plánovač rozvrhu: naplánujte si svůj den
+Plánovač schůzek, měsíční plánovač a rodinný organizér v jednom! Zkontrolujte svůj nadcházející program, naplánujte si pracovní schůzky a události a snadno si je rezervujte. Připomínky vám pomohou neopozdit se a budete informováni o vašem denním plánu. Widget kalendáře je pozoruhodně snadno použitelný. Všechno můžete vidět také jako jednoduchý seznam událostí, namísto měsíčního pohledu, takže přesně víte, co se ve vašem životě přichází a jak naplánovat vaši agendu.
 
-----------------------------------------------------------
-Jednoduchý kalendář – Funkce a výhody
-----------------------------------------------------------
+Funkce jednoduchého kalendáře
 
-✔️ Žádné reklamy či otravná vyskakovací okna
-✔️ Nepotřebuje přístup k internetu, což znamená maximální soukromí a bezpečí
-✔️ Pouze bezprostředně nutná oprávnění
-✔️ Důraz na jednoduchost – dělá přesně to, co se od kalendáře očekává!
-✔️ Otevřený zdrojový kód
-✔️ Plně přizpůsobitelné motivy, pohledy a widgety
-✔️ Přeložen do 40 jazyků
-✔️ Export nastavení do .txt souboru pro import na jiném zařízení
-✔️ Podpora CalDAV synchronizace pro sdílení kalendářů napříč zařízeními
-✔️ Obsahuje denní, týdenní, měsíční, roční pohled na kalendář i jednoduchý seznam událostí
-✔️ Podpora exportu a importu událostí skrze .ics soubory
-✔️ Možnost nastavení více připomínek k události, nebo změna jejich zvuku a vibrací
-✔️ Možnost odložení připomínky
-✔️ Jednoduché přidávání svátků, narozenin, výročí a schůzek
-✔️ Nastavení událostí – začátek, trvání, připomínky, atd
-✔️ Možnost přidání účastníků pro každou událost
-✔️ Použití jako soukromý i business kalendář
-✔️ Zvolte si mezi připomínkami a e-mailovým upozorněním pro synchronizované události
+✔️ Nejlepší uživatelské prostředí
+➕ Žádné reklamy ani otravná vyskakovací okna, opravdu skvělý uživatelský zážitek!
+➕ Není potřeba přístup k internetu, což vám zajistí větší soukromí, bezpečnost a stabilitu.
 
-STÁHNĚTE SI JEDNODUCHÝ KALENDÁŘ – JEDNODUCHÝ OFFLINE KALENDÁŘ BEZ REKLAM!
+✔️ Flexibilita pro vaši produktivitu
+➕ Widget kalendáře podporuje export a import událostí prostřednictvím souborů .ics
+➕ Export nastavení do souborů .txt pro import do jiného zařízení
+➕ Flexibilní vytváření událostí – časy, trvání, připomenutí, účelná pravidla opakování
+➕ Podpora CalDAV pro synchronizaci událostí prostřednictvím kalendáře Google, Microsoft Outlook, Nextcloud, Exchange atd.
 
-Prohlédněte si celou sadu Jednoduchých aplikací na:
-https://www.simplemobiletools.com
+✔️ Přizpůsobení právě pro vás
+➕ Plánovač rozvrhu – přizpůsobení a změna zvuku, opakování, zvukový proud, vibrace
+➕ Widget kalendáře – barevné kalendáře a přizpůsobitelné motivy
+➕ Malý kalendář s otevřeným zdrojovým kódem, přeložený do více než 45 jazyků
+➕ Naplánujte si den s ostatními – možnost rychlého sdílení událostí na sociálních sítích, e-mailech atd.
+➕ Rodinný organizér – s bezproblémovým duplikováním událostí, organizací a správou času
 
-Standalone website of Simple Calendar Pro:
+✔️ Organizace a správa času
+➕ Plánovač dne – plánovač agendy vám pomůže zorganizovat váš den
+➕ Týdenní plánovač – udržet si náskok před nabitým týdenním programem nebylo nikdy jednodušší
+➕ Správce itineráře – pracovní kalendář sdílený mezi týmy v práci
+➕ Plánovač schůzek – snadné uspořádání a vedení agendy
+➕ Aplikace pro plánování – snadno použitelný plánovač osobní událostí, připomínání schůzek a plánování událostí
+➕ Naplánujte si den – spravujte svůj den pomocí tohoto plánovače rozvrhu, organizátoru událostí a rodiny
+
+✔️ #1 Aplikace kalendáře
+➕ Snadno importujte svátky, narozeniny kontaktů a výročí
+➕ Rychle filtrujte události podle typu události
+➕ Denní rozvrh a umístění zobrazené na mapě
+➕ Rychlý pracovní kalendář nebo osobní digitální agenda
+➕ Rychlé přepínání mezi denním, týdenním, měsíčním a ročním zobrazením a zobrazením událostí
+
+STÁHNĚTE SI JEDNODUCHÝ KALENDÁŘ – OFFLINE PLÁNOVAČ ROZVRHU A AGENDY BEZ REKLAM! NAPLÁNUJTE SI ROZVRH NA ROK 2022!
+
+Ve výchozím nastavení přichází s designem Material a tmavým motivem, který poskytuje skvělé uživatelské prostředí pro snadné používání. Nepoužívání přístupu k Internetu vám poskytuje větší soukromí, zabezpečení a stabilitu než jiné aplikace.
+
+Neobsahuje žádné reklamy ani zbytečná oprávnění. Má plně otevřený zdrojový kód, poskytuje možnost změny barev.
+
+Podívejte se na celou sadu jednoduchých nástrojů zde:
+https://www.simplemobiletools.com.
+
+Samostatná webová stránka aplikace Jednoduchý kalendář Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:

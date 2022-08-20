@@ -59,7 +59,7 @@
     <string name="repeat_till">Ponavljaj do</string>
     <string name="forever">Zauvijek</string>
     <string name="event_is_repeatable">Događaj se ponavlja</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Zadatak je ponovljiv</string>
     <string name="selection_contains_repetition">Odabir sadrži ponavljajuće događaje</string>
     <string name="delete_one_only">Izbriši samo odabrano ponavljanje</string>
     <string name="delete_future_occurrences">Izbriši ovo i sva buduća ponavljanja</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Nijedan sinkronizirajući kalendar nije pronađen</string>
     <string name="status_free">Slobodan/Slobodna</string>
     <string name="status_busy">Zauzet/Zauzeta</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Dohvaćanje događaja %s neuspjelo</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Ponedjeljak</string>
