@@ -208,7 +208,7 @@
     <string name="other_time">Annan tid</string>
     <string name="highlight_weekends">Markera veckoslut i vissa vyer</string>
     <string name="highlight_weekends_color">Färg på framhävda helger</string>
-    <string name="allow_changing_time_zones">Tillåta ändring av tidszoner för evenemang</string>
+    <string name="allow_changing_time_zones">Tillåt ändring av tidszoner för händelser</string>
     <string name="manage_quick_filter_event_types">Hantera typer av händelser med snabbfilter</string>
     <string name="allow_creating_tasks">Tillåt att skapa uppgifter</string>
     <!-- CalDAV sync -->
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Inga synkroniserbara kalendrar har hittats</string>
     <string name="status_free">Ledig</string>
     <string name="status_busy">Upptagen</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Det gick inte att hämta händelsen %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Måndag</string>
