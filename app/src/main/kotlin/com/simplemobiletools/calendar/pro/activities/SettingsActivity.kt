@@ -330,8 +330,6 @@ class SettingsActivity : SimpleActivity() {
                     syncCalDAVCalendars {
                         calDAVHelper.refreshCalendars(showToasts = true, scheduleNextSync = true) {
                             if (settings_caldav_sync.isChecked) {
-                                val broadcastIntent = Intent(ACTION_REFRESH_EVENTS)
-                                localBroadcastManager.sendBroadcast(broadcastIntent)
                                 toast(R.string.synchronization_completed)
                             }
                         }
