@@ -359,7 +359,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     }
 
     private fun getViewScaleDetector(): ScaleGestureDetector {
-        return ScaleGestureDetector(context, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        return ScaleGestureDetector(requireContext(), object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
             override fun onScale(detector: ScaleGestureDetector): Boolean {
                 val percent = (prevScaleSpanY - detector.currentSpanY) / screenHeight
                 prevScaleSpanY = detector.currentSpanY
