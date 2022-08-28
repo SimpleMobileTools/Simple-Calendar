@@ -328,7 +328,7 @@ class SettingsActivity : SimpleActivity() {
                     }
 
                     syncCalDAVCalendars {
-                        calDAVHelper.refreshCalendars(true, true) {
+                        calDAVHelper.refreshCalendars(showToasts = true, scheduleNextSync = true) {
                             if (settings_caldav_sync.isChecked) {
                                 toast(R.string.synchronization_completed)
                             }

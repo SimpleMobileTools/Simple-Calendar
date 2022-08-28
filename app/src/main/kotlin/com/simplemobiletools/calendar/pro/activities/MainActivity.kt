@@ -206,6 +206,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         main_toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        if (config.caldavSync) {
+            updateCalDAVEvents()
+        }
     }
 
     override fun onPause() {
@@ -561,14 +565,22 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
+    private fun updateCalDAVEvents() {
+        ensureBackgroundThread {
+            calDAVHelper.refreshCalendars(showToasts = false, scheduleNextSync = true) {
+                refreshViewPager()
+            }
+        }
+    }
+
     private fun refreshCalDAVCalendars(showRefreshToast: Boolean) {
         showCalDAVRefreshToast = showRefreshToast
         if (showRefreshToast) {
             toast(R.string.refreshing)
         }
-
+        updateCalDAVEvents()
         syncCalDAVCalendars {
-            calDAVHelper.refreshCalendars(true, true) {
+            calDAVHelper.refreshCalendars(showToasts = true, scheduleNextSync = true) {
                 calDAVChanged()
             }
         }

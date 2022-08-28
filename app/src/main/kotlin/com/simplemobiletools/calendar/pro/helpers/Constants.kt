@@ -227,6 +227,7 @@ const val IS_NEW_EVENT = "IS_NEW_EVENT"
 
 // actions
 const val ACTION_MARK_COMPLETED = "ACTION_MARK_COMPLETED"
+const val ACTION_REFRESH_EVENTS = "ACTION_REFRESH_EVENTS"
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
