@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Простой календарь</string>
     <string name="app_launcher_name">Календарь</string>
     <string name="change_view">Режим</string>
     <string name="daily_view">День</string>
@@ -166,8 +166,8 @@
     <string name="importing_holidays_failed">Невозможно импортировать праздники</string>
     <!-- Settings -->
     <string name="manage_event_types">Управление типами событий</string>
-    <string name="start_day_at">Начало дня (неделя)</string>
-    <string name="end_day_at">Окончание дня (неделя)</string>
+    <string name="start_day_at">Начало дня</string>
+    <string name="end_day_at">Окончание дня</string>
     <string name="midnight_spanning">Показывать события за полночь на верхней панели</string>
     <string name="allow_customizing_day_count">Разрешить менять количество дней</string>
     <string name="week_numbers">Показывать номера недель</string>
