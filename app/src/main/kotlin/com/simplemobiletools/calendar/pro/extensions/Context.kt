@@ -23,7 +23,6 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.EventActivity
@@ -57,8 +56,6 @@ val Context.widgetsDB: WidgetsDao get() = EventsDatabase.getInstance(application
 val Context.completedTasksDB: TasksDao get() = EventsDatabase.getInstance(applicationContext).TasksDao()
 val Context.eventsHelper: EventsHelper get() = EventsHelper(this)
 val Context.calDAVHelper: CalDAVHelper get() = CalDAVHelper(this)
-
-val Context.localBroadcastManager: LocalBroadcastManager get() = LocalBroadcastManager.getInstance(this)
 
 fun Context.updateWidgets() {
     val widgetIDs = AppWidgetManager.getInstance(applicationContext)?.getAppWidgetIds(ComponentName(applicationContext, MyWidgetMonthlyProvider::class.java))
