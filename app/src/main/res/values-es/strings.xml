@@ -59,7 +59,7 @@
     <string name="repeat_till">Repetir hasta</string>
     <string name="forever">Siempre</string>
     <string name="event_is_repeatable">Este evento se repite</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">La tarea se puede repetir</string>
     <string name="selection_contains_repetition">La selección contiene repetición de eventos</string>
     <string name="delete_one_only">Eliminar solo el evento seleccionado</string>
     <string name="delete_future_occurrences">Eliminar el evento y repeticiones futuras</string>
@@ -116,7 +116,7 @@
     <string name="before">antes</string>
     <string name="add_another_reminder">Agregar otro recordatorio</string>
     <string name="event_reminders">Recordatorios de eventos</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Recordatorios</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Añadir otros asistentes</string>
     <string name="my_status">Estado:</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">No se han encontrado calendarios para sincronizar</string>
     <string name="status_free">Libre</string>
     <string name="status_busy">Ocupado</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Fallo en la obtención del evento %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">lunes</string>
