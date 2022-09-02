@@ -537,7 +537,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         dayevents@ for (event in events) {
-            val startDateTime = Formatter.getDateTimeFromTS(event.startTS)
+            val startDateTime = Formatter.getDateTimeFromTS(if (weekTimestamp > event.startTS) weekTimestamp else event.startTS)
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val endDayCode = Formatter.getDayCodeFromDateTime(endDateTime)
