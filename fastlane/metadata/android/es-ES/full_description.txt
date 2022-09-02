@@ -4,7 +4,7 @@ Toma el control de tu tiempo
 Tanto si buscas un calendario de trabajo para la empresa, un planificador de días, un programador de citas, o la organización y programación de eventos únicos y recurrentes como cumpleaños, aniversarios, recordatorios de citas o cualquier otra cosa, Simple Calendar 2022 hace que sea fácil mantenerse organizado. El widget de calendario tiene una increíble variedad de opciones de personalización: personaliza los recordatorios de eventos, la apariencia de las notificaciones, el pequeño widget de recordatorios de calendario y la apariencia general.
 
 Planificador de horarios: Planifica tu día
-Programador de citas, planificador mensual y organizador familiar en uno. Comprueba tu próxima agenda, programa reuniones de negocios y eventos y reserva citas fácilmente. Los recordatorios te mantendrán puntualmente informado en tu aplicación de agenda diaria. 
+Programador de citas, planificador mensual y organizador familiar en uno. Comprueba tu próxima agenda, programa reuniones de negocios y eventos y reserva citas fácilmente. Los recordatorios te mantendrán puntualmente informado en tu aplicación de agenda diaria. Este widget de calendario 2022 es muy fácil de usar. Incluso puedes ver todo como una simple lista de eventos en lugar de una vista mensual, para que sepas exactamente lo que se avecina en tu vida y cómo organizar y planificar tu agenda.
 
 Características de Simple Calendar 2022
 
@@ -23,22 +23,26 @@ Características de Simple Calendar 2022
 ➕ Widget de calendario - Calendarios de colores y temas personalizables
 ➕ Calendario diminuto de código abierto, traducido a más de 45 idiomas
 ➕ Planifica tu día con otros - capacidad de compartir eventos rápidamente en las redes sociales, correos electrónicos, etc
+➕ Organizador familiar - con duplicación de eventos, organización y gestión del tiempo sin complicaciones
 
 ✔️ Organización y gestión del tiempo
 ➕ Planificador del día - el planificador de la agenda le ayudará a organizar su día
 ➕ Planificador semanal - adelantarse a su apretada agenda semanal nunca ha sido tan fácil
+➕ Gestor de itinerarios - calendario empresarial compartido entre equipos de trabajo
 ➕ Programador de citas - organizar y mantener su agenda con facilidad
 ➕ App de planificación - planificador de eventos personales, recordatorios de citas y horarios fácil de usar
 ➕ Planifica tu día - gestiona tu día con este planificador de horarios android, organizador de eventos y familia
 
 ✔️ #1 Calendar App
-➕ Importar vacaciones, cumpleaños de contactos, y aniversarios fácilmente
-➕ Filtrar los eventos personales rápidamente por tipo de evento
+➕ Importar las vacaciones, los cumpleaños de los contactos, y los aniversarios fácilmente
+➕ Filtrar eventos personales rápidamente por tipo de evento
 ➕ Horario diario y ubicación de los eventos, mostrados en un mapa
 ➕ Calendario empresarial rápido, o agenda digital personal
 ➕ Cambia rápidamente entre las vistas diaria, semanal, mensual, anual y de eventos
 
 DESCARGAR SIMPLE CALENDAR PLANNER - ¡PLANIFICADOR DE HORARIOS Y AGENDAS OFFLINE SIN ANUNCIOS! ¡PLANIFICA TU HORARIO DE 2022!
+
+Viene con material design y tema oscuro por defecto, proporciona una gran experiencia de usuario para un uso fácil. La falta de acceso a Internet le da más privacidad, seguridad y estabilidad que otras aplicaciones.
 
 No contiene anuncios ni permisos innecesarios. Es totalmente opensource, proporciona colores personalizables.
 
