@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Δεν μπόρεσαν να βρεθούν συγχρονισμένα Ημερολόγια</string>
     <string name="status_free">Ελεύθερα</string>
     <string name="status_busy">Κατειλημμένα</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Η ανάκτηση συμβάντος %s απέτυχε</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Δευτέρα</string>
