@@ -6,7 +6,7 @@
     <string name="daily_view">日历视图</string>
     <string name="weekly_view">周历视图</string>
     <string name="monthly_view">月历视图</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">月和日历视图</string>
     <string name="yearly_view">年历视图</string>
     <string name="simple_event_list">简单活动列表</string>
     <string name="no_upcoming_events">您近期似乎没有任何活动。</string>
