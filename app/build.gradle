@@ -22,6 +22,7 @@ android {
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
         vectorDrawables.useSupportLibrary = true
+        resConfigs "en", "ar", "az", "be", "bg", "bn", "br", "ca", "cs", "da", "de", "el", "eo", "es", "et", "eu", "fi", "fr", "gl", "hi-rIN", "hr", "hu", "in", "it", "iw", "ja", "ko", "lt", "lv", "ml", "nb-rNO", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sv", "th", "tr", "uk", "zh-rCN", "zh-rHK", "zh-rTW"
     }
 
     signingConfigs {
