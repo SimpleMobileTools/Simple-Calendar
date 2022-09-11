@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.20.0 *(2022-09-11)*
+----------------------------
+
+ * Added some CalDAV calendar sync related improvements
+ * Added Monochrome icon and Language picker support on Android 13+
+ * Added some translation, stability and UX improvements
+
 Version 6.19.0 *(2022-07-27)*
 ----------------------------
 
