@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Једноставан календар</string>
+    <string name="app_launcher_name">Календар</string>
+    <string name="change_view">Промени приказ</string>
     <string name="daily_view">Дневни приказ</string>
     <string name="weekly_view">Седмични приказ</string>
     <string name="monthly_view">Месечни приказ</string>
     <string name="monthly_daily_view">Месечни и дневни приказ</string>
     <string name="yearly_view">Годишњи приказ</string>
     <string name="simple_event_list">Једноставна листа догађаја</string>
-    <string name="go_to_today">Иди на данашњи дан</string>
-    <string name="public_event_notification_text">Догађај се одржава</string>
-    <string name="saving_filtered_out">Чување... Али изабрани тип догађаја је филтриран у горњем менију - филтер</string>
-    <string name="sample_title_4">Ручак са Мери</string>
-    <string name="sample_description_4">У Плази</string>
-    <string name="change_view">Промени приказ</string>
-    <string name="app_name">Једноставан календар</string>
-    <string name="app_launcher_name">Календар</string>
     <string name="no_upcoming_events">Изгледа да немате никакве предстојеће догађаје.</string>
+    <string name="go_to_today">Иди на данашњи дан</string>
     <string name="go_to_date">Иди на састанак</string>
     <string name="upgraded_from_free">Хеј
 \n
@@ -23,9 +19,11 @@
 \nЗатим можете да деинсталирате стару верзију која има дугме \"Надогради на про\" на врху поставки апликације. Тада ћете морати само да успоставите почетне вредности поставки апликације.
 \n
 \nХвала!</string>
+    <!-- Widget titles -->
     <string name="widget_monthly">Календар месечно</string>
     <string name="widget_list">Листа догађаја календара</string>
     <string name="widget_todays_date">Календарски данашњи датум</string>
+    <!-- Event -->
     <string name="event">Догађаја</string>
     <string name="edit_event">Уреди догађај</string>
     <string name="new_event">Нови догађај</string>
@@ -37,7 +35,9 @@
     <string name="event_updated">Догађај је успешно ажуриран</string>
     <string name="filter_events_by_type">Филтрирање догађаја по типу</string>
     <string name="please_fill_location">Попуните локацију која ће бити приказана на мапи</string>
-    <string name="months_raw">Месеци</string>
+    <string name="public_event_notification_text">Догађај се одржава</string>
+    <string name="saving_filtered_out">Чување… Али изабрани тип догађаја је филтриран у горњем менију - филтер</string>
+    <!-- Tasks -->
     <string name="task">Задатак</string>
     <string name="tasks">Задатке</string>
     <string name="edit_task">Уреди задатак</string>
@@ -46,6 +46,7 @@
     <string name="duplicate_task">Дуплирани задатак</string>
     <string name="mark_completed">Означи као довршено</string>
     <string name="mark_incomplete">Означи као непотпуно</string>
+    <!-- Event Repetition -->
     <string name="repetition">Понављање</string>
     <string name="no_repetition">Без понављања</string>
     <string name="daily">Свакодневно</string>
@@ -53,6 +54,7 @@
     <string name="monthly">Месечни</string>
     <string name="yearly">Годишње</string>
     <string name="weeks_raw">Недеље</string>
+    <string name="months_raw">Месеци</string>
     <string name="years_raw">Година</string>
     <string name="repeat_till">Понављај док</string>
     <string name="forever">Заувек</string>
@@ -85,6 +87,8 @@
     <string name="fourth_m">Иетврти</string>
     <string name="fifth_m">Пети</string>
     <string name="last_m">Последњи</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Понављај сваких</string>
     <string name="every_f">Сваки</string>
     <string name="first_f">Први</string>
@@ -93,30 +97,36 @@
     <string name="fourth_f">Иетврти</string>
     <string name="fifth_f">Пети</string>
     <string name="last_f">Последњи</string>
+    <!-- Birthdays -->
     <string name="birthdays">Рорендана</string>
     <string name="add_birthdays">Додавање рођендана контаката</string>
     <string name="no_birthdays">Рођендани нису пронађени</string>
     <string name="no_new_birthdays">Нови рођендани нису пронађени</string>
     <string name="birthdays_added">Рођендани су успешно додати</string>
     <string name="add_birthdays_automatically">Аутоматско додавање нових рођендана</string>
+    <!-- Anniversaries -->
     <string name="anniversaries">Годишњице</string>
     <string name="add_anniversaries">Додавање годишњица контаката</string>
     <string name="no_anniversaries">Годишњице нису пронађене</string>
     <string name="no_new_anniversaries">Нове годишњице нису пронађене</string>
     <string name="anniversaries_added">Годишњице су успешно додате</string>
     <string name="add_anniversaries_automatically">Аутоматско додавање нових годишњица</string>
+    <!-- Event Reminders -->
     <string name="reminder">Опомене</string>
     <string name="before">Пре</string>
     <string name="add_another_reminder">Додај још један подсетник</string>
     <string name="event_reminders">Подсетници догађаја</string>
     <string name="reminders">Опомене</string>
+    <!-- Event attendees -->
     <string name="add_another_attendee">Додај још једног учесника</string>
     <string name="my_status">Мој статус:</string>
     <string name="going">Идеш</string>
     <string name="not_going">Не идем</string>
     <string name="maybe_going">Можда да одеш</string>
     <string name="invited">Позвао</string>
+    <!-- Time zones -->
     <string name="enter_a_country">Улазак у земљу или временску зону</string>
+    <!-- Export / Import -->
     <string name="import_events">Увоз догађаја</string>
     <string name="export_events">Извези догађаје</string>
     <string name="import_events_from_ics">Увоз догађаја из .ицс датотеке</string>
@@ -127,11 +137,14 @@
     <string name="include_event_types">Укључи типове догађаја</string>
     <string name="filename_without_ics">Име датотеке (без .ицс)</string>
     <string name="ignore_event_types">Занемари типове догађаја у датотеци, увек користи подразумевани</string>
+    <!-- Event details -->
     <string name="location">Локацију</string>
     <string name="description">Опис</string>
     <string name="all_day">Целодневни</string>
+    <!-- Weekly view -->
     <string name="week">Недеље</string>
     <string name="start_week_with_current_day">Започните седмицу тренутним даном</string>
+    <!-- Event types -->
     <string name="event_types">Типови догађаја</string>
     <string name="add_new_type">Додавање новог типа</string>
     <string name="edit_type">Уређивање типа</string>
@@ -143,6 +156,7 @@
     <string name="move_events_into_default">Премештање догађаја на које је утицало у подразумевани тип догађаја</string>
     <string name="remove_affected_events">Трајно уклањање погођених догађаја</string>
     <string name="unsync_caldav_calendar">Да бисте уклонили ЦалДАВ календар, морате да га деинхронизујете</string>
+    <!-- Holidays -->
     <string name="holidays">Празнике</string>
     <string name="add_holidays">Додавање празника</string>
     <string name="national_holidays">Национални празници</string>
@@ -150,6 +164,7 @@
     <string name="holidays_imported_successfully">Празници су успешно увезени у тип догађаја \"Празници\"</string>
     <string name="importing_some_holidays_failed">Увоз неких догађаја није успео</string>
     <string name="importing_holidays_failed">Увоз празника није успео</string>
+    <!-- Settings -->
     <string name="manage_event_types">Управљање типовима догађаја</string>
     <string name="start_day_at">Започни дан у</string>
     <string name="end_day_at">Крајњи дан у</string>
@@ -187,8 +202,6 @@
     <string name="new_events">Нови догађаји</string>
     <string name="default_start_time">Подразумевано време почетка</string>
     <string name="next_full_hour">Сљедећи пун сат</string>
-    <string name="allow_creating_tasks">Дозволи креирање задатака</string>
-    <string name="caldav">ЦалДАВ</string>
     <string name="current_time">Тренутно време</string>
     <string name="default_duration">Подразумевано трајање</string>
     <string name="last_used_one">Последњи пут коришћена</string>
@@ -197,6 +210,9 @@
     <string name="highlight_weekends_color">Боја истакнутих викенда</string>
     <string name="allow_changing_time_zones">Дозволи промену временских зона догађаја</string>
     <string name="manage_quick_filter_event_types">Управљање типовима догађаја брзог филтрирања</string>
+    <string name="allow_creating_tasks">Дозволи креирање задатака</string>
+    <!-- CalDAV sync -->
+    <string name="caldav">ЦалДАВ</string>
     <string name="select_caldav_calendars">Избор календара за синхронизацију</string>
     <string name="manage_synced_calendars">Управљање синхронизованим календарима</string>
     <string name="store_locally_only">Складишти само локално</string>
@@ -206,13 +222,15 @@
     <string name="editing_calendar_failed">Editing calendar failed</string>
     <string name="syncing">Синхронизацију…</string>
     <string name="synchronization_completed">Синхронизација је довршена</string>
-    <string name="insufficient_permissions">Није вам дозвољено да пишете у изабраном календару</string>
     <string name="select_a_different_caldav_color">Изаберите другу боју (може бити примењена само локално)</string>
+    <string name="insufficient_permissions">Није вам дозвољено да пишете у изабраном календару</string>
     <string name="caldav_event_not_found">Догађај није пронађен. Омогућите ЦалДАВ синхронизацију за одговарајући календар у поставкама апликације.</string>
     <string name="no_synchronized_calendars">Нису пронађени календари који се могу синхронизовати</string>
     <string name="status_free">Слободан</string>
     <string name="status_busy">Заузет</string>
     <string name="fetching_event_failed">Преношење догађаја %s није успело</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Понедељак</string>
     <string name="tuesday_alt">Уторак</string>
     <string name="wednesday_alt">Среда</string>
@@ -220,12 +238,16 @@
     <string name="friday_alt">Петак</string>
     <string name="saturday_alt">Субота</string>
     <string name="sunday_alt">Субота</string>
+    <!-- List widget config example events -->
     <string name="sample_title_1">Тренинг</string>
     <string name="sample_description_1">Дан ногу</string>
     <string name="sample_title_2">Састанак са Џоном</string>
     <string name="sample_description_2">У Роцкстоне башти</string>
     <string name="sample_title_3">Библиотека</string>
+    <string name="sample_title_4">Ручак са Мери</string>
+    <string name="sample_description_4">У Плази</string>
     <string name="sample_title_5">Време је за кафу</string>
+    <!-- List widget config -->
     <string name="show_events_happening">Прикажи догађаје који се дешавају:</string>
     <string name="within_the_next_one_year">У наредних 1 година</string>
     <string name="today_only">Само данас</string>
@@ -245,6 +267,7 @@
         <item quantity="few">У наредних %d месеца</item>
         <item quantity="other">У наредних %d месеца</item>
     </plurals>
+    <!-- FAQ -->
     <string name="faq_1_title">Како могу да уклоним празнике увезене преко дугмета \"Додај празнике\"\?</string>
     <string name="faq_1_text">Празници креирани на тај начин умећу се у нови тип догађаја под називом \"Празници\". Можете да одете у подешавања -&gt; управљате типовима догађаја, дуго притискате дати тип догађаја и бришете га тако што ћете изабрати корпу за смеће.</string>
     <string name="faq_2_title">Да ли могу да синхронизујем догађаје путем Гоогле календара или другог сервиса који подржава ЦалДАВ\?</string>
@@ -257,4 +280,8 @@
     <string name="faq_5_text">Проверите поставке батерије и обавештења на уређају ако ништа не блокира подсетнике или убијате апликацију у позадини. Можда ћете желети да погледате и &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, има неке корисне савете.</string>
     <string name="faq_6_title">Како могу да изменим или избришем постојећи тип догађаја\?</string>
     <string name="faq_6_text">Оба можете да урадите у апликацији Поставке - Управљање типовима догађаја. Само кликните на жељену за промену ознаке и боје или изаберите жељену тако што ћете је дуго притискати и користити корпу за смеће у горњем менију за брисање.</string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
 </resources>
