@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Artėjantis įvykis</string>
     <string name="saving_filtered_out">Įrašoma… Bet pasirinktas įvykių tipas yra išfiltruojamas viršutiniame Meniu – Filtras</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Užduotis</string>
+    <string name="tasks">Užduotys</string>
+    <string name="edit_task">Taisyti užduotį</string>
+    <string name="new_task">Nauja užduotis</string>
+    <string name="create_new_task">Sukurti naują užduotį</string>
+    <string name="duplicate_task">Dubliuoti užduotį</string>
+    <string name="mark_completed">Žymėti kaip įvykdytą</string>
+    <string name="mark_incomplete">Žymėti kaip neįvykdytą</string>
     <!-- Event Repetition -->
     <string name="repetition">Pasikartojimas</string>
     <string name="no_repetition">Be pasikartojimo</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Kartoti iki</string>
     <string name="forever">Amžinai</string>
     <string name="event_is_repeatable">Įvykis yra pasikartojantis</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Užduotis yra pasikartojanti</string>
     <string name="selection_contains_repetition">Žymėjime yra pasikartojančių įvykių</string>
     <string name="delete_one_only">Ištrinti tik pasirinktą pasikartojimą</string>
     <string name="delete_future_occurrences">Ištrinti šį ir visus būsimus pasikartojimus</string>
@@ -116,7 +116,7 @@
     <string name="before">prieš</string>
     <string name="add_another_reminder">Pridėti kitą priminimą</string>
     <string name="event_reminders">Priminimai apie įvykius</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Priminimai</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Pridėti kitą kviestinį</string>
     <string name="my_status">Mano būsena:</string>
@@ -186,7 +186,7 @@
     <string name="show_a_grid">Rodyti tinklelį</string>
     <string name="loop_reminders">Kartoti priminimus tol, kol jie nebus atmesti</string>
     <string name="dim_past_events">Pritemdyti praeities įvykius</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Pritemdyti įvykdytas užduotis</string>
     <string name="events">Įvykiai</string>
     <string name="reminder_stream">Garso srautas, kurį naudos priminimai</string>
     <string name="system_stream">Sistema</string>
@@ -210,7 +210,7 @@
     <string name="highlight_weekends_color">Paryškintų savaitgalių spalva</string>
     <string name="allow_changing_time_zones">Leisti keisti įvykių laiko juostą</string>
     <string name="manage_quick_filter_event_types">Tvarkyti greitojo filtro įvykių tipus</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Leisti kurti užduotis</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Pasirinkite norimus sinchronizuoti kalendorius</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Nerasta jokių sinchronizuojamų kalendorių</string>
     <string name="status_free">Laisvas</string>
     <string name="status_busy">Užimtas</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Nepavyko gauti įvykio %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Pirmadienį</string>
@@ -276,10 +276,10 @@
     <string name="faq_3_text">Ne vien tik priminimų atvaizdavimas, bet ir garso atkūrimas yra labai paveikiamas sistemos. Jei negirdite jokio garso, pabandykite pereiti į programėlės nustatymus, paspauskite ant parinkties „Garso srautas, kurį naudos priminimai“ ir pakeiskite ją į kitą reikšmę. Jei garsas ir toliau nebus girdimas, patikrinkite garso nustatymus, ar kartais nėra nutildytas tam tikras garso srautas.</string>
     <string name="faq_4_title">Ar ši programėlė palaiko laiko juostas\?</string>
     <string name="faq_4_text">Taip, palaiko. Pagal numatymą, visi įvykiai yra sukuriami jūsų dabartinėje laiko juostoje. Jei norite pakeisti įvykio laiko juostą, iš pradžių, programėlės nustatymuose turite įjungti laiko juostų parinktį, o tuomet pakeisti laiko juostą išsamesnėje įvykio informacijoje. Pagal numatymą, laiko juostos yra išjungtos, nes daugelis žmonių jomis nesinaudoja.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Programėlė nerodo pranešimų. Kodėl\?</string>
+    <string name="faq_5_text">Patikrinkite savo įrenginio akumuliatoriaus ir pranešimų nustatymus, ar nėra nieko, kas blokuotų priminimus ar nutrauktų foninių programėlių darbą. Taip pat galite pageidauti peržiūrėti internetinę svetainę &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, kurioje rasite naudingų patarimų.</string>
+    <string name="faq_6_title">Kaip galiu pakeisti ar ištrinti esamą įvykio tipą\?</string>
+    <string name="faq_6_text">Ir pirmą, ir antrą veiksmą galite atlikti perėję į Nustatymus – Tvarkyti įvykių tipus. Tiesiog, spustelėkite ant tipo norėdami keisti jo etiketę bei spalvą, arba pažymėkite pageidaujamą tipą ilgai ant jo nuspaudę ir naudokite viršutiniame meniu esančią šiukšlinę, kad jį ištrintumėte.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

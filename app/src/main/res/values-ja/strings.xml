@@ -117,7 +117,7 @@
     <string name="before">前</string>
     <string name="add_another_reminder">別のリマインダーを追加</string>
     <string name="event_reminders">予定のリマインダー</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">リマインダー</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">別の出席者を追加する</string>
     <string name="my_status">My status:</string>
@@ -130,9 +130,9 @@
     <!-- Export / Import -->
     <string name="import_events">予定をインポート</string>
     <string name="export_events">予定をエクスポート</string>
-    <string name="import_events_from_ics">.ics ファイルから予定をインポートする</string>
-    <string name="import_events_from_ics_pro">.ics ファイルから予定をインポートする (Pro)</string>
-    <string name="export_events_to_ics">.ics ファイルに予定をエクスポートする</string>
+    <string name="import_events_from_ics">.ics ファイルから予定をインポート</string>
+    <string name="import_events_from_ics_pro">.ics ファイルから予定をインポート (Pro)</string>
+    <string name="export_events_to_ics">.ics ファイルに予定をエクスポート</string>
     <string name="default_event_type">既定の予定の種類</string>
     <string name="export_past_events_too">過去の予定もエクスポートする</string>
     <string name="include_event_types">予定の種類を含める</string>
@@ -177,17 +177,17 @@
     <string name="no_ringtone_picker">No app capable of setting ringtone found</string>
     <string name="no_ringtone_selected">None</string>
     <string name="day_end_before_start">The day cannot end earlier than it starts</string>
-    <string name="caldav_sync">CalDAV sync</string>
+    <string name="caldav_sync">CalDAV 同期</string>
     <string name="event_lists">予定リスト</string>
     <string name="display_past_events">過去の予定を表示</string>
     <string name="replace_description_with_location">予定の説明を場所に置き換える</string>
     <string name="display_description_or_location">説明や場所を表示する</string>
     <string name="delete_all_events">すべての予定を削除</string>
-    <string name="delete_all_events_confirmation">Are you sure you want to delete all events\? This will leave your event types and other settings intact.</string>
+    <string name="delete_all_events_confirmation">イベントをすべて削除してもよろしいですか？（ただし、イベントの種類やその他の設定はそのまま残ります）</string>
     <string name="show_a_grid">グリッドを表示</string>
     <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">完了したタスクを暗くする</string>
     <string name="events">予定</string>
     <string name="reminder_stream">リマインダーで使用する音の種類</string>
     <string name="system_stream">システム</string>
@@ -199,14 +199,14 @@
     <string name="default_reminder_2">規定のリマインダー2</string>
     <string name="default_reminder_3">規定のリマインダー3</string>
     <string name="view_to_open_from_widget">予定リストウィジェットを開いたときの表示</string>
-    <string name="last_view">Last view</string>
+    <string name="last_view">最後のビュー</string>
     <string name="new_events">新しい予定</string>
     <string name="default_start_time">規定の開始時間</string>
-    <string name="next_full_hour">Next full hour</string>
-    <string name="current_time">Current time</string>
+    <string name="next_full_hour">次の1時間</string>
+    <string name="current_time">現在の時刻</string>
     <string name="default_duration">規定の期間</string>
-    <string name="last_used_one">Last used one</string>
-    <string name="other_time">Other time</string>
+    <string name="last_used_one">最後に使用したもの</string>
+    <string name="other_time">その他の時刻</string>
     <string name="highlight_weekends">一部の表示で週末を強調する</string>
     <string name="highlight_weekends_color">Color of highlighted weekends</string>
     <string name="allow_changing_time_zones">予定のタイムゾーンの変更を許可する</string>

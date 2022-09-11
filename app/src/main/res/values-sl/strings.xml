@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Preprost koledar</string>
+    <string name="app_launcher_name">Koledar</string>
+    <string name="change_view">Sprememba pogleda</string>
+    <string name="daily_view">Dnevni pogled</string>
+    <string name="weekly_view">Tedenski pregled</string>
+    <string name="monthly_view">Mesečni pogled</string>
+    <string name="monthly_daily_view">Mesečni in dnevni pogled</string>
+    <string name="yearly_view">Letni pregled</string>
+    <string name="simple_event_list">Enostaven seznam dogodkov</string>
+    <string name="no_upcoming_events">Zdi se, da nimate nobenih prihajajočih dogodkov.</string>
+    <string name="go_to_today">Pojdi na današnji dan</string>
+    <string name="go_to_date">Pojdi na datum</string>
+    <string name="upgraded_from_free">Hej,
+\n
+\nzdi se, da ste nadgradili staro brezplačno aplikacijo. Lokalno shranjene dogodke morate ročno prenesti z izvozom v datoteko .ics in nato uvoziti. Oba gumba za izvoz/uvoz najdete v meniju glavnega zaslona.
+\n
+\nNato lahko odstranite staro različico, ki ima na vrhu nastavitev aplikacije gumb \"Nadgradi na Pro\". Nato boste morali samo ponastaviti nastavitve aplikacije.
+\n
+\nHvala!</string>
+    <!-- Widget titles -->
+    <string name="widget_monthly">Mesečni koledar</string>
+    <string name="widget_list">Seznam dogodkov v koledarju</string>
+    <string name="widget_todays_date">Koledar današnji datum</string>
+    <!-- Event -->
+    <string name="event">Dogodek</string>
+    <string name="edit_event">Urejanje dogodka</string>
+    <string name="new_event">Nov dogodek</string>
+    <string name="create_new_event">Ustvarjanje novega dogodka</string>
+    <string name="duplicate_event">Podvojen dogodek</string>
+    <string name="title_empty">Naslov ne sme biti prazen</string>
+    <string name="end_before_start">Dogodek se ne sme končati prej, kot se začne.</string>
+    <string name="event_added">Uspešno dodan dogodek</string>
+    <string name="event_updated">Dogodek uspešno posodobljen</string>
+    <string name="filter_events_by_type">Filtriranje dogodkov po vrsti</string>
+    <string name="please_fill_location">Vpišite lokacijo, ki bo prikazana na zemljevidu</string>
+    <string name="public_event_notification_text">Prihaja dogodek</string>
+    <string name="saving_filtered_out">Shranjevanje… Toda izbrana vrsta dogodka je filtrirana v zgornjem meniju - Filter</string>
+    <!-- Tasks -->
+    <string name="task">Naloga</string>
+    <string name="tasks">Naloge</string>
+    <string name="edit_task">Uredi nalogo</string>
+    <string name="new_task">Nova naloga</string>
+    <string name="create_new_task">Ustvarjanje novega opravila</string>
+    <string name="duplicate_task">Podvojeno opravilo</string>
+    <string name="mark_completed">Označi dokončano</string>
+    <string name="mark_incomplete">Označi nepopolno</string>
+    <!-- Event Repetition -->
+    <string name="repetition">Ponavljanje</string>
+    <string name="no_repetition">Brez ponavljanja</string>
+    <string name="daily">Dnevno</string>
+    <string name="weekly">Tedensko</string>
+    <string name="monthly">Mesečno</string>
+    <string name="yearly">Letno</string>
+    <string name="weeks_raw">tedne</string>
+    <string name="months_raw">mesecih</string>
+    <string name="years_raw">leta</string>
+    <string name="repeat_till">Ponavljajte, dokler</string>
+    <string name="forever">Vedno</string>
+    <string name="event_is_repeatable">Dogodek se lahko ponovi</string>
+    <string name="task_is_repeatable">Naloga je ponovljiva.</string>
+    <string name="selection_contains_repetition">Izbor vsebuje ponavljajoče se dogodke</string>
+    <string name="delete_one_only">Izbrišite samo izbrano pojavitev</string>
+    <string name="delete_future_occurrences">Brisanje tega in vseh prihodnjih pojavov</string>
+    <string name="delete_all_occurrences">Brisanje vseh pojavitev</string>
+    <string name="update_one_only">Posodabljanje samo izbranega pojava</string>
+    <string name="update_this_and_future_occurrences">Posodobitev tega in vseh prihodnjih dogodkov</string>
+    <string name="update_all_occurrences">Posodobitev vseh pojavitev</string>
+    <string name="repeat_till_date">Ponavljajte do določenega datuma</string>
+    <string name="stop_repeating_after_x">Prenehajte s ponavljanjem po x pojavitvah</string>
+    <string name="repeat_forever">Ponovite za vedno</string>
+    <string name="times">krat</string>
+    <string name="repeat">Ponovite</string>
+    <string name="repeat_on">Ponovite na</string>
+    <string name="selected_days">Ob izbranih dnevih</string>
+    <string name="the_same_day">Še isti dan</string>
+    <string name="the_last_day">Zadnji dan</string>
+    <string name="repeat_on_the_same_day_monthly">Ponovite vsak mesec na isti dan</string>
+    <string name="repeat_on_the_last_day_monthly">Ponovite zadnji dan v mesecu</string>
+    <string name="repeat_on_the_same_day_yearly">Vsako leto ponovite na isti dan</string>
+    <string name="repeat_every_m">Ponovite vsak</string>
+    <string name="every_m">Vsak</string>
+    <string name="first_m">prvi</string>
+    <string name="second_m">drugi</string>
+    <string name="third_m">tretji</string>
+    <string name="fourth_m">četrti</string>
+    <string name="fifth_m">peti</string>
+    <string name="last_m">zadnji</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every first Sunday" -->
+    <string name="repeat_every_f">Ponovite vsak</string>
+    <string name="every_f">Vsak</string>
+    <string name="first_f">prvi</string>
+    <string name="second_f">drugi</string>
+    <string name="third_f">tretji</string>
+    <string name="fourth_f">četrti</string>
+    <string name="fifth_f">peti</string>
+    <string name="last_f">zadnji</string>
+    <!-- Birthdays -->
+    <string name="birthdays">Rojstni dnevi</string>
+    <string name="add_birthdays">Dodajanje rojstnih dni stikov</string>
+    <string name="no_birthdays">Rojstni dnevi niso bili najdeni</string>
+    <string name="no_new_birthdays">Ni bilo najdenih novih rojstnih dni</string>
+    <string name="birthdays_added">Uspešno dodani rojstni dnevi</string>
+    <string name="add_birthdays_automatically">samodejno dodajanje novih rojstnih dni</string>
+    <!-- Anniversaries -->
+    <string name="anniversaries">Obletnice</string>
+    <string name="add_anniversaries">Dodajanje obletnic stikov</string>
+    <string name="no_anniversaries">Ni bilo najdenih nobenih obletnic</string>
+    <string name="no_new_anniversaries">Niso bile najdene nove obletnice</string>
+    <string name="anniversaries_added">Uspešno dodane obletnice</string>
+    <string name="add_anniversaries_automatically">samodejno dodajanje novih obletnic</string>
+    <!-- Event Reminders -->
+    <string name="reminder">Opomnik</string>
+    <string name="before">pred</string>
+    <string name="add_another_reminder">Dodajte še en opomnik</string>
+    <string name="event_reminders">Opomniki za dogodke</string>
+    <string name="reminders">Opomniki</string>
+    <!-- Event attendees -->
+    <string name="add_another_attendee">Dodajte še enega udeleženca</string>
+    <string name="my_status">Moj status:</string>
+    <string name="going">grem</string>
+    <string name="not_going">Ne grem</string>
+    <string name="maybe_going">Mogoče gre</string>
+    <string name="invited">Povabljeni</string>
+    <!-- Time zones -->
+    <string name="enter_a_country">Vnesite državo ali časovni pas</string>
+    <!-- Export / Import -->
+    <string name="import_events">Uvozni dogodki</string>
+    <string name="export_events">Izvozni dogodki</string>
+    <string name="import_events_from_ics">Uvoz dogodkov iz datoteke .ics</string>
+    <string name="import_events_from_ics_pro">Uvoz dogodkov iz datoteke .ics (Pro)</string>
+    <string name="export_events_to_ics">Izvoz dogodkov v datoteko .ics</string>
+    <string name="default_event_type">Privzeta vrsta dogodka</string>
+    <string name="export_past_events_too">Izvozite tudi pretekle dogodke</string>
+    <string name="include_event_types">Vključite vrste dogodkov</string>
+    <string name="filename_without_ics">Ime datoteke (brez .ics)</string>
+    <string name="ignore_event_types">Ne upoštevajte vrst dogodkov v datoteki, vedno uporabite privzeto</string>
+    <!-- Event details -->
+    <string name="location">Lokacija</string>
+    <string name="description">Opis</string>
+    <string name="all_day">Celodnevni</string>
+    <!-- Weekly view -->
+    <string name="week">teden</string>
+    <string name="start_week_with_current_day">Začetek tedna s trenutnim dnem</string>
+    <!-- Event types -->
+    <string name="event_types">Vrste dogodkov</string>
+    <string name="add_new_type">Dodajanje nove vrste</string>
+    <string name="edit_type">Vrsta urejanja</string>
+    <string name="type_already_exists">Tip s tem naslovom že obstaja</string>
+    <string name="color">Barva</string>
+    <string name="regular_event">Redni dogodek</string>
+    <string name="cannot_delete_default_type">Privzete vrste dogodka ni mogoče izbrisati</string>
+    <string name="select_event_type">Izberite vrsto dogodka</string>
+    <string name="move_events_into_default">Premaknite prizadete dogodke v privzeto vrsto dogodka</string>
+    <string name="remove_affected_events">trajno odstranite prizadete dogodke</string>
+    <string name="unsync_caldav_calendar">Če želite odstraniti koledar CalDAV, ga morate sinhronizirati</string>
+    <!-- Holidays -->
+    <string name="holidays">Počitnice</string>
+    <string name="add_holidays">Dodajanje počitnic</string>
+    <string name="national_holidays">Državni prazniki</string>
+    <string name="religious_holidays">Verski prazniki</string>
+    <string name="holidays_imported_successfully">Prazniki so bili uspešno uvoženi v vrsto dogodka \"Prazniki\"</string>
+    <string name="importing_some_holidays_failed">Uvoz nekaterih dogodkov ni uspel</string>
+    <string name="importing_holidays_failed">Uvoz počitnic ni uspel</string>
+    <!-- Settings -->
+    <string name="manage_event_types">Upravljanje vrst dogodkov</string>
+    <string name="start_day_at">Začetek dneva v</string>
+    <string name="end_day_at">Konec dneva v</string>
+    <string name="midnight_spanning">V zgornji vrstici prikažite dogodke, ki segajo čez polnoč</string>
+    <string name="allow_customizing_day_count">Omogočite prilagajanje števila dni</string>
+    <string name="week_numbers">Številke razstavnega tedna</string>
+    <string name="vibrate">Vibriranje ob obvestilu o opomniku</string>
+    <string name="reminder_sound">Zvok opomnika</string>
+    <string name="no_ringtone_picker">Ni bila najdena nobena aplikacija, ki bi lahko nastavila melodijo zvonjenja</string>
+    <string name="no_ringtone_selected">Noben</string>
+    <string name="day_end_before_start">Dan se ne more končati prej, kot se začne</string>
+    <string name="caldav_sync">Sinhronizacija CalDAV</string>
+    <string name="event_lists">Seznami dogodkov</string>
+    <string name="display_past_events">Prikaz dogodkov iz preteklosti</string>
+    <string name="replace_description_with_location">Nadomestite opis dogodka z lokacijo</string>
+    <string name="display_description_or_location">Prikaži opis ali lokacijo</string>
+    <string name="delete_all_events">Izbriši vse dogodke</string>
+    <string name="delete_all_events_confirmation">Ste prepričani, da želite izbrisati vse dogodke\? Tako bodo vaše vrste dogodkov in druge nastavitve ostale nedotaknjene.</string>
+    <string name="show_a_grid">Prikaži mrežo</string>
+    <string name="loop_reminders">Opomniki v zanki, dokler se ne odpusti</string>
+    <string name="dim_past_events">Dim pretekli dogodki</string>
+    <string name="dim_completed_tasks">Dim opravljene naloge</string>
+    <string name="events">Dogodki</string>
+    <string name="reminder_stream">Zvočni tok, ki ga uporabljajo opomniki</string>
+    <string name="system_stream">Sistem</string>
+    <string name="alarm_stream">Alarm</string>
+    <string name="notification_stream">Obvestilo</string>
+    <string name="ring_stream">Obroč</string>
+    <string name="use_last_event_reminders">opomnike zadnjih dogodkov uporabite kot privzete za nove dogodke</string>
+    <string name="default_reminder_1">Privzeto opomnik 1</string>
+    <string name="default_reminder_2">Privzeto opomnik 2</string>
+    <string name="default_reminder_3">Privzeto opomnik 3</string>
+    <string name="view_to_open_from_widget">Pogled, ki se odpre iz gradnika seznama dogodkov</string>
+    <string name="last_view">Zadnji pogled</string>
+    <string name="new_events">Novi dogodki</string>
+    <string name="default_start_time">Privzeta ura začetka</string>
+    <string name="next_full_hour">Naslednja polna ura</string>
+    <string name="current_time">Trenutni čas</string>
+    <string name="default_duration">Privzeto trajanje</string>
+    <string name="last_used_one">Nazadnje uporabljen</string>
+    <string name="other_time">Drugi čas</string>
+    <string name="highlight_weekends">Poudarite vikende v nekaterih pogledih</string>
+    <string name="highlight_weekends_color">Barva poudarjenih vikendov</string>
+    <string name="allow_changing_time_zones">Omogočanje spreminjanja časovnih pasov dogodkov</string>
+    <string name="manage_quick_filter_event_types">Upravljanje hitrega filtriranja vrst dogodkov</string>
+    <string name="allow_creating_tasks">Omogočanje ustvarjanja opravil</string>
+    <!-- CalDAV sync -->
+    <string name="caldav">CalDAV</string>
+    <string name="select_caldav_calendars">Izberite koledarje za sinhronizacijo</string>
+    <string name="manage_synced_calendars">Upravljanje sinhroniziranih koledarjev</string>
+    <string name="store_locally_only">Shranjujte samo lokalno</string>
+    <string name="refresh_caldav_calendars">Osvežitev koledarjev CalDAV</string>
+    <string name="refreshing">Osvežujoče…</string>
+    <string name="refreshing_complete">Osvežitev popolna</string>
+    <string name="editing_calendar_failed">Urejanje koledarja ni uspelo</string>
+    <string name="syncing">Sinhronizacija…</string>
+    <string name="synchronization_completed">Sinhronizacija je končana</string>
+    <string name="select_a_different_caldav_color">Izberite drugo barvo (lahko se uporabi samo lokalno)</string>
+    <string name="insufficient_permissions">V izbrani koledar ni dovoljeno pisati</string>
+    <string name="caldav_event_not_found">Dogodek ni bil najden. V nastavitvah aplikacije omogočite sinhronizacijo CalDAV za ustrezen koledar.</string>
+    <string name="no_synchronized_calendars">Niso bili najdeni nobeni sinhronizirani koledarji</string>
+    <string name="status_free">prost</string>
+    <string name="status_busy">Zaseden</string>
+    <string name="fetching_event_failed">Pridobivanje dogodka %s neuspešno</string>
+    <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
+    <!-- used in repetition, like "Every last Sunday" -->
+    <string name="monday_alt">Ponedeljek</string>
+    <string name="tuesday_alt">Torek</string>
+    <string name="wednesday_alt">Sreda</string>
+    <string name="thursday_alt">Četrtek</string>
+    <string name="friday_alt">Petek</string>
+    <string name="saturday_alt">Sobota</string>
+    <string name="sunday_alt">Nedelja</string>
+    <!-- List widget config example events -->
+    <string name="sample_title_1">Vadba</string>
+    <string name="sample_description_1">Dan nog</string>
+    <string name="sample_title_2">Srečanje z Johnom</string>
+    <string name="sample_description_2">V vrtu Rockstone</string>
+    <string name="sample_title_3">Knjižnica</string>
+    <string name="sample_title_4">Kosilo z Mary</string>
+    <string name="sample_description_4">Na trgu Plaza</string>
+    <string name="sample_title_5">Čas za kavo</string>
+    <!-- List widget config -->
+    <string name="show_events_happening">Prikaži dogodke, ki se dogajajo:</string>
+    <string name="within_the_next_one_year">V naslednjem enem letu</string>
+    <string name="today_only">Samo danes</string>
+    <string name="within_the_next">V naslednjem…</string>
+    <plurals name="within_the_next_days">
+        <item quantity="one">V naslednjem %d dan</item>
+        <item quantity="two">V naslednjem %d dni</item>
+        <item quantity="few">V naslednjem %d dni</item>
+        <item quantity="other">V naslednjem %d dni</item>
+    </plurals>
+    <plurals name="within_the_next_weeks">
+        <item quantity="one">V naslednjem %d tednu</item>
+        <item quantity="two">V naslednjih %d tednih</item>
+        <item quantity="few">V naslednjih %d tednih</item>
+        <item quantity="other">V naslednjih %d tednih</item>
+    </plurals>
+    <plurals name="within_the_next_months">
+        <item quantity="one">V naslednjem %d mesecu</item>
+        <item quantity="two">V naslednjih %d mesecih</item>
+        <item quantity="few">V naslednjih %d mesecih</item>
+        <item quantity="other">V naslednjih %d mesecih</item>
+    </plurals>
+    <!-- FAQ -->
+    <string name="faq_1_title">Kako lahko odstranim praznike, uvožene z gumbom \"Dodaj praznike\"\?</string>
+    <string name="faq_1_text">Tako ustvarjeni prazniki se vstavijo v novo vrsto dogodka z imenom \"Prazniki\". V razdelku Nastavitve -&gt; Upravljanje tipov dogodkov lahko dolgo pritisnete na določen tip dogodka in ga izbrišete tako, da izberete koš za smeti.</string>
+    <string name="faq_2_title">Ali lahko dogodke sinhroniziram prek Googlovega koledarja ali druge storitve, ki podpira CalDAV\?</string>
+    <string name="faq_2_text">Da, v nastavitvah aplikacije preklopite možnost \"Sinhronizacija CalDAV\" in izberite koledarje, ki jih želite sinhronizirati. Vendar pa boste potrebovali aplikacijo tretje osebe, ki bo skrbela za sinhronizacijo med napravo in strežniki. Če želite sinhronizirati Googlov koledar, bo to delo opravila njihova uradna aplikacija Koledar. Za druge koledarje boste potrebovali sinhronizacijski adapter tretje osebe, na primer DAVx5.</string>
+    <string name="faq_3_title">Vidim vizualne opomnike, vendar ne slišim zvoka. Kaj lahko storim\?</string>
+    <string name="faq_3_text">Sistem močno vpliva ne le na prikaz dejanskega opomnika, temveč tudi na predvajanje zvoka. Če ne slišite zvoka, pojdite v nastavitve aplikacije, pritisnite možnost \"Audio stream used by reminders\" in jo spremenite na drugo vrednost. Če še vedno ne deluje, preverite nastavitve zvoka, ali določen tok ni utišan.</string>
+    <string name="faq_4_title">Ali aplikacija podpira časovne pasove\?</string>
+    <string name="faq_4_text">Da, je. Privzeto so vsi dogodki ustvarjeni v vašem trenutnem časovnem pasu. Če želite spremeniti časovni pas dogodka, morate najprej v nastavitvah aplikacije omogočiti izbiro časovnega pasu in ga nato spremeniti na zaslonu Podrobnosti o dogodku. Privzeto je onemogočen, saj ga večina ljudi ne bo potrebovala.</string>
+    <string name="faq_5_title">Aplikacija ne prikazuje nobenih obvestil, zakaj je tako\?</string>
+    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. Morda boste želeli pogledati tudi na &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, ima nekaj koristnih nasvetov.</string>
+    <string name="faq_6_title">Kako lahko spremenim ali izbrišem obstoječo vrsto dogodka\?</string>
+    <string name="faq_6_text">Oboje lahko storite v aplikaciji Nastavitve - Upravljanje vrst dogodkov. Za spremembo oznake in barve kliknite želeni dogodek ali pa ga izberite z dolgim pritiskom in za brisanje uporabite koš za smeti v zgornjem meniju.</string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

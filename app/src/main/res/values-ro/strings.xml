@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Se apropie un eveniment</string>
     <string name="saving_filtered_out">Se salveaza… Dar tipul de eveniment selectat este omis in Meniu - Filtru de sus</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Sarcină</string>
+    <string name="tasks">Sarcini</string>
+    <string name="edit_task">Editare sarcină</string>
+    <string name="new_task">Sarcină nouă</string>
+    <string name="create_new_task">Creați o nouă sarcină</string>
+    <string name="duplicate_task">Duplicați sarcina</string>
+    <string name="mark_completed">Marcare finalizată</string>
+    <string name="mark_incomplete">Marcare incompletă</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>
     <string name="no_repetition">Fără repetiție</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Repetă până pe</string>
     <string name="forever">Pentru totdeauna</string>
     <string name="event_is_repeatable">Evenimentul este repetabil</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Sarcina poate fi repetată</string>
     <string name="selection_contains_repetition">Selecția conține evenimente repetitive</string>
     <string name="delete_one_only">Șterge numai evenimentul repetitiv selectat</string>
     <string name="delete_future_occurrences">Șterge acest și toate evenimentele repetitive viitoare</string>
@@ -112,11 +112,11 @@
     <string name="anniversaries_added">Aniversări adăugate cu succes</string>
     <string name="add_anniversaries_automatically">Adaugă zile de aniversare automat</string>
     <!-- Event Reminders -->
-    <string name="reminder">Reamintire</string>
+    <string name="reminder">Memento</string>
     <string name="before">înainte de</string>
-    <string name="add_another_reminder">Adaugă o altă reamintire</string>
-    <string name="event_reminders">Reamintiri eveniment</string>
-    <string name="reminders">Reminders</string>
+    <string name="add_another_reminder">Adaugă o alt memento</string>
+    <string name="event_reminders">Mementouri eveniment</string>
+    <string name="reminders">Memento-uri</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Adaugă o altă participare</string>
     <string name="my_status">Starea meu:</string>
@@ -186,7 +186,7 @@
     <string name="show_a_grid">Afișează o grilă</string>
     <string name="loop_reminders">Repetă reamintirile până când sunt închise</string>
     <string name="dim_past_events">Ascunde evenimentele din trecut</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Ascunde sarcinile îndeplinite</string>
     <string name="events">Evenimente</string>
     <string name="reminder_stream">Flux audio folosit de reamintiri</string>
     <string name="system_stream">Sistem</string>
@@ -210,7 +210,7 @@
     <string name="highlight_weekends_color">Culoarea săptămâniilor evidențiate</string>
     <string name="allow_changing_time_zones">Permite modificarea zonele orare ale evenimentului</string>
     <string name="manage_quick_filter_event_types">Gestionează filtrul rapid al tipurilor de eveniment</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permiteți crearea de sarcini</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selectează calendarele pentru sincronizare</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Nu au fost găsite calendare care pot fi sincronizate</string>
     <string name="status_free">Liber</string>
     <string name="status_busy">Ocupat</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Obținerea evenimentului %s a eșuat</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Luni</string>
@@ -248,21 +248,24 @@
     <string name="sample_description_4">În Plaza</string>
     <string name="sample_title_5">Timp pentru cafea</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Afișați evenimentele care au loc:</string>
+    <string name="within_the_next_one_year">În următorul an</string>
+    <string name="today_only">Doar astăzi</string>
+    <string name="within_the_next">În următoarea…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">În următoarea zi</item>
+        <item quantity="few">În următoarele %d zile</item>
+        <item quantity="other">În următoarele %d de zile</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">În următoarea săptămână</item>
+        <item quantity="few">În următoarele %d săptămâni</item>
+        <item quantity="other">În următoarele %d de săptămâni</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">În următoarea lună</item>
+        <item quantity="few">În următoarele %d luni</item>
+        <item quantity="other">În următoarele %d de luni</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Cum pot elimina sărbătorile importate prin intermediul butonului \"Adaugă sărbători\"\?</string>
@@ -273,10 +276,10 @@
     <string name="faq_3_text">Nu doar afișarea reamintirilor propriu-zise, dar și redarea audio este extrem de afectată de sistem. Dacă nu auziți niciun sunet, încercați să accesați setările aplicației, apăsând opțiunea \"Flux audio folosit de reamintiri\" și schimbați-o la o altă valoare. Dacă tot nu funcționează, verificați setările de sunet, dacă fluxul special nu este dezactivat.</string>
     <string name="faq_4_title">Aplicația acceptă fusuri orare\?</string>
     <string name="faq_4_text">Da, acceptă. În mod implicit, toate evenimentele sunt create în fusul dvs. curent. Dacă doriți să schimbați fusul orar al evenimentelor, mai întâi va trebui să activați selectorul de fus orar in setările aplicației, apoi să-l schimbați în ecranul Detalii despre eveniment. Acesta opțiune este dezactivată implicit, deoarece majoritatea oamenilor nu au nevoie de ea.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Aplicația nu afișează nicio notificare, de ce se întâmplă asta\?</string>
+    <string name="faq_5_text">Verificați bateria dispozitivului și setările pentru notificări, dacă nu există nimic care să blocheze memento-urile sau dacă aplicația este oprită în fundal. De asemenea, ați putea să aruncați o privire la &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; pentru câteva sfaturi utile.</string>
+    <string name="faq_6_title">Cum pot modifica sau șterge un tip de eveniment existent\?</string>
+    <string name="faq_6_text">Puteți face ambele lucruri în setările aplicației - Gestionați tipurile de evenimente. Trebuie doar să dați apăsați pe cel dorit pentru a schimba eticheta și culoarea sau selectați-l prin apăsare lungă și folosiți coșul de gunoi din meniul de sus pentru a-l șterge.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
