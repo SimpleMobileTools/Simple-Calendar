@@ -1065,17 +1065,23 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun tryImportEvents() {
         if (isQPlus()) {
-            hideKeyboard()
-            Intent(Intent.ACTION_GET_CONTENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = "text/calendar"
+            handleNotificationPermission { granted ->
+                if (granted) {
+                    hideKeyboard()
+                    Intent(Intent.ACTION_GET_CONTENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE)
+                        type = "text/calendar"
 
-                try {
-                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
-                } catch (e: ActivityNotFoundException) {
-                    toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
-                } catch (e: Exception) {
-                    showErrorToast(e)
+                        try {
+                            startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                        } catch (e: ActivityNotFoundException) {
+                            toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        } catch (e: Exception) {
+                            showErrorToast(e)
+                        }
+                    }
+                } else {
+                    toast(R.string.no_post_notifications_permissions)
                 }
             }
         } else {

@@ -656,16 +656,6 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
-    private fun handleNotificationAvailability(callback: () -> Unit) {
-        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
-            callback()
-        } else {
-            ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
-                callback()
-            }
-        }
-    }
-
     private fun showReminder1Dialog() {
         showPickSecondsDialogHelper(mReminder1Minutes) {
             mReminder1Minutes = if (it == -1 || it == 0) it else it / 60

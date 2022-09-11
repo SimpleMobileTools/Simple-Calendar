@@ -1,8 +1,8 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
-import android.app.Activity
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARY_EVENT
 import com.simplemobiletools.calendar.pro.helpers.BIRTHDAY_EVENT
@@ -11,7 +11,7 @@ import com.simplemobiletools.calendar.pro.helpers.REMINDER_OFF
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_set_reminders.view.*
 
-class SetRemindersDialog(val activity: Activity, val eventType: Int, val callback: (reminders: ArrayList<Int>) -> Unit) {
+class SetRemindersDialog(val activity: SimpleActivity, val eventType: Int, val callback: (reminders: ArrayList<Int>) -> Unit) {
     private var mReminder1Minutes = REMINDER_OFF
     private var mReminder2Minutes = REMINDER_OFF
     private var mReminder3Minutes = REMINDER_OFF
@@ -25,11 +25,17 @@ class SetRemindersDialog(val activity: Activity, val eventType: Int, val callbac
             set_reminders_3.text = activity.getFormattedMinutes(mReminder1Minutes)
 
             set_reminders_1.setOnClickListener {
-                activity.showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = true) {
-                    mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
-                    set_reminders_1.text = activity.getFormattedMinutes(mReminder1Minutes)
-                    if (mReminder1Minutes != REMINDER_OFF) {
-                        set_reminders_2.beVisible()
+                activity.handleNotificationPermission { granted ->
+                    if (granted) {
+                        activity.showPickSecondsDialogHelper(mReminder1Minutes, showDuringDayOption = true) {
+                            mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
+                            set_reminders_1.text = activity.getFormattedMinutes(mReminder1Minutes)
+                            if (mReminder1Minutes != REMINDER_OFF) {
+                                set_reminders_2.beVisible()
+                            }
+                        }
+                    } else {
+                        activity.toast(R.string.no_post_notifications_permissions)
                     }
                 }
             }

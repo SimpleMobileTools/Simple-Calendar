@@ -250,7 +250,11 @@ class SettingsActivity : SimpleActivity() {
                     if (it) {
                         handlePermission(PERMISSION_READ_CALENDAR) {
                             if (it) {
-                                toggleCaldavSync(true)
+                                handleNotificationPermission { granted ->
+                                    if (granted) {
+                                        toggleCaldavSync(true)
+                                    }
+                                }
                             }
                         }
                     }

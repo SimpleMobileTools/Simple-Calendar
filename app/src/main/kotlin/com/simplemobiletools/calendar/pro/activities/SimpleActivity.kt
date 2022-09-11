@@ -4,10 +4,13 @@ import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
 import android.provider.CalendarContract
+import androidx.core.app.NotificationManagerCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
+import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 open class SimpleActivity : BaseSimpleActivity() {
@@ -68,5 +71,21 @@ open class SimpleActivity : BaseSimpleActivity() {
 
     private fun unregisterObserver() {
         contentResolver.unregisterContentObserver(calDAVSyncObserver)
+    }
+
+    protected fun handleNotificationAvailability(callback: () -> Unit) {
+        handleNotificationPermission { granted ->
+            if (granted) {
+                if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+                    callback()
+                } else {
+                    ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                        callback()
+                    }
+                }
+            } else {
+                toast(R.string.no_post_notifications_permissions)
+            }
+        }
     }
 }
