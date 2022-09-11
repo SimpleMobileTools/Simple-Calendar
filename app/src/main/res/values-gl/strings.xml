@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendario</string>
@@ -6,7 +6,7 @@
     <string name="daily_view">Vista diaria</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Vista mensual e diaria</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos simple</string>
     <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
@@ -36,16 +36,16 @@
     <string name="filter_events_by_type">Filtrar eventos por tipo</string>
     <string name="please_fill_location">Escribe a localización para que se mostre nun mapa</string>
     <string name="public_event_notification_text">Hai un evento próximo</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Gardando… Pero o tipo de evento seleccionado foi ocultado desde a opción de filtro no menú superior</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tarefa</string>
+    <string name="tasks">Tarefas</string>
+    <string name="edit_task">Editar tarefa</string>
+    <string name="new_task">Tarefa nova</string>
+    <string name="create_new_task">Crear tarefa nova</string>
+    <string name="duplicate_task">Tarefa duplicada</string>
+    <string name="mark_completed">Marcar como feita</string>
+    <string name="mark_incomplete">Marcar como sen facer</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetición</string>
     <string name="no_repetition">Sen repetición</string>
@@ -59,20 +59,20 @@
     <string name="repeat_till">Repetir ata</string>
     <string name="forever">Sempre</string>
     <string name="event_is_repeatable">O evento é repetible</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
-    <string name="selection_contains_repetition">A selección contén eventos recurrentes</string>
+    <string name="task_is_repeatable">A tarefa é repetible</string>
+    <string name="selection_contains_repetition">A selección contén eventos recorrentes</string>
     <string name="delete_one_only">Eliminar só o evento seleccionado</string>
     <string name="delete_future_occurrences">Eliminar este e todos os eventos futuros</string>
     <string name="delete_all_occurrences">Eliminar todos os eventos</string>
     <string name="update_one_only">Actualizar só o evento seleccionado</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Actualizar este e todos os eventos futuros</string>
     <string name="update_all_occurrences">Actualizar todos os eventos</string>
     <string name="repeat_till_date">Repetir ata a data</string>
     <string name="stop_repeating_after_x">Deixar de repetir despois de x eventos</string>
     <string name="repeat_forever">Repetir por sempre</string>
     <string name="times">veces</string>
     <string name="repeat">Repetir</string>
-    <string name="repeat_on">Repertir os</string>
+    <string name="repeat_on">Repetir os</string>
     <string name="selected_days">Nos días seleccionados</string>
     <string name="the_same_day">O mesmo día</string>
     <string name="the_last_day">O último día</string>
@@ -85,17 +85,17 @@
     <string name="second_m">segundo</string>
     <string name="third_m">terceiro</string>
     <string name="fourth_m">cuarto</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">quinto</string>
     <string name="last_m">último</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Repetir cada</string>
     <string name="every_f">Cada</string>
-    <string name="first_f">primero</string>
+    <string name="first_f">primeiro</string>
     <string name="second_f">segundo</string>
     <string name="third_f">terceiro</string>
     <string name="fourth_f">cuarto</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">quinto</string>
     <string name="last_f">último</string>
     <!-- Birthdays -->
     <string name="birthdays">Aniversario</string>
@@ -103,20 +103,20 @@
     <string name="no_birthdays">Non se atoparon aniversarios</string>
     <string name="no_new_birthdays">Non se atoparon novos aniversarios</string>
     <string name="birthdays_added">Engadíronse correctamente os aniversarios</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Engadir aniversarios novos automaticamente</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Celebracións</string>
     <string name="add_anniversaries">Engadir celebracións de contactos</string>
     <string name="no_anniversaries">Non se atoparon celebracións</string>
     <string name="no_new_anniversaries">Non se atoparon novas celebracións</string>
     <string name="anniversaries_added">Engadíronse correctamente as celebracións</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Engadir celebracións novas automaticamente</string>
     <!-- Event Reminders -->
     <string name="reminder">Recordatorio</string>
     <string name="before">antes</string>
     <string name="add_another_reminder">Engadir outro recordatorio</string>
     <string name="event_reminders">Recordatorios de eventos</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Recordatorios</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Engadir participante</string>
     <string name="my_status">O meu estado:</string>
@@ -136,14 +136,14 @@
     <string name="export_past_events_too">Exportar tamén eventos pasados</string>
     <string name="include_event_types">Incluír tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sen .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Ignorar os tipos dos eventos no ficheiro, usar sempre o predeterminado</string>
     <!-- Event details -->
     <string name="location">Localización</string>
     <string name="description">Descrición</string>
     <string name="all_day">Todo o día</string>
     <!-- Weekly view -->
     <string name="week">Semana</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Comezar a semana no día actual</string>
     <!-- Event types -->
     <string name="event_types">Tipos de eventos</string>
     <string name="add_new_type">Engadir un novo tipo de evento</string>
@@ -166,29 +166,29 @@
     <string name="importing_holidays_failed">Fallou a importación de días festivos</string>
     <!-- Settings -->
     <string name="manage_event_types">Xestionar tipos de eventos</string>
-    <string name="start_day_at">Na vista xeral o día comeza as</string>
+    <string name="start_day_at">O día comeza ás</string>
     <string name="end_day_at">O día na vista semanal remata as</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">Mostrar na barra superior os eventos que duren ata máis alá da medianoite</string>
+    <string name="allow_customizing_day_count">Permitir personalizar o número de días</string>
     <string name="week_numbers">Mostrar os números da semana</string>
     <string name="vibrate">Vibrar coa notificación de recordatorio</string>
     <string name="reminder_sound">Son de recordatorio</string>
     <string name="no_ringtone_picker">Non se atopou ningún aplicativo capaz de establecer o ton de aviso</string>
     <string name="no_ringtone_selected">Ningún</string>
     <string name="day_end_before_start">O día non pode rematar antes de que comece</string>
-    <string name="caldav_sync">CalDAV sincr.</string>
+    <string name="caldav_sync">Sincronización de CalDAV</string>
     <string name="event_lists">Listaxes de eventos</string>
     <string name="display_past_events">Mostrar eventos do pasado</string>
     <string name="replace_description_with_location">Substituír a descrición coa localización</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Mostrar descrición ou localización</string>
     <string name="delete_all_events">Borrar todos os eventos</string>
     <string name="delete_all_events_confirmation">Tes a certeza de querer borrar tódolos eventos\? Esto deixará intactos os tipos de evento e outros axustes.</string>
     <string name="show_a_grid">Mostrar unha cuadrícula</string>
     <string name="loop_reminders">Repetir recordatorios ata que se descarten</string>
     <string name="dim_past_events">Atenuar eventos pasados</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Atenuar tarefas feitas</string>
     <string name="events">Eventos</string>
-    <string name="reminder_stream">Canle de audio usado polos recordatorios</string>
+    <string name="reminder_stream">Canle de audio usada polos recordatorios</string>
     <string name="system_stream">Sistema</string>
     <string name="alarm_stream">Alarma</string>
     <string name="notification_stream">Notificación</string>
@@ -202,15 +202,15 @@
     <string name="new_events">Eventos novos</string>
     <string name="default_start_time">Hora de comezo por defecto</string>
     <string name="next_full_hour">Na hora seguinte</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Hora actual</string>
     <string name="default_duration">Duración por defecto</string>
     <string name="last_used_one">A última usada</string>
     <string name="other_time">Outra hora</string>
     <string name="highlight_weekends">Resaltar fins de semana nalgunhas vistas</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Cor de resalte das fins de semana</string>
     <string name="allow_changing_time_zones">Permitir cambiar as zonas horarias do evento</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">Xestionar tipos de eventos do filtro rápido</string>
+    <string name="allow_creating_tasks">Permitir crear tarefas</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Escolle calendarios a sincronizar</string>
@@ -226,9 +226,9 @@
     <string name="insufficient_permissions">Non tes permiso para escribir no calendario seleccionado</string>
     <string name="caldav_event_not_found">Evento non atopado. Activa a sincronización de CalDAV para o calendario apropiado nos axustes do aplicativo.</string>
     <string name="no_synchronized_calendars">Non se atoparon calendarios sincronizados</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="status_free">Libre</string>
+    <string name="status_busy">Ocupado</string>
+    <string name="fetching_event_failed">Erro ao obter o evento %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">luns</string>
@@ -248,35 +248,35 @@
     <string name="sample_description_4">Na praza</string>
     <string name="sample_title_5">Hora do café</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Mostrar os eventos que ocorran:</string>
+    <string name="within_the_next_one_year">No próximo ano</string>
+    <string name="today_only">Unicamente hoxe</string>
+    <string name="within_the_next">Nos próximos…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">No próximo %d día</item>
+        <item quantity="other">Nos próximos %d días</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Na próxima %d semana</item>
+        <item quantity="other">Nas próximas %d semanas</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">No próximo %d mes</item>
+        <item quantity="other">Nos próximos %d meses</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Como podo eliminar os días festivos engadidos vía o botón \"Engadir días festivos\"\?</string>
-    <string name="faq_1_text">Os días festivos creados dese xeito insértanse nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -&gt; Xestionar tipo de eventos, manter preso o tipo de evento desexado e eliminalo escollendo a Papeleira do lixo.</string>
+    <string name="faq_1_title">Como podo eliminar os días festivos engadidos mediante o botón \"Engadir días festivos\"\?</string>
+    <string name="faq_1_text">Os días festivos creados dese xeito insírense nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -&gt; Xestionar tipos de eventos, manter preso o tipo de evento desexado e eliminalo escollendo a Papeleira do lixo.</string>
     <string name="faq_2_title">Podo sincronizar os meus eventos vía Google Calendar, ou outro servizo que use CalDAV\?</string>
-    <string name="faq_2_text">Si, activa \"CalDAV sincr.\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores. Se desexas sincronizar un calendario de Google, o seu app oficial Calendar fará o traballo. Para outros calendario precisas un app de sincronización, como DAVx5.</string>
+    <string name="faq_2_text">Si, activa \"Sincronización de CalDAV\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores. Se desexas sincronizar un calendario de Google, o seu app oficial Calendar fará o traballo. Para outros calendario precisas un app de sincronización, como DAVx5.</string>
     <string name="faq_3_title">Vexo os recordatorios visualmente, pero non escoito audio. Que podo facer\?</string>
-    <string name="faq_3_text">Non só mostrar o recordatorio propiamente dito, se non que a reprodución do son depende en gran medida do sistema tamén. Se non podes escoitar ningún son, intenta ir aos axustes do app e premer en \"Canle de audio usado polos recordatorios\" e cambialo a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non estea acalado.</string>
+    <string name="faq_3_text">Tanto o recordatorio propiamente dito como a reprodución do son dependen en gran medida do sistema. Se non podes escoitar ningún son, intenta ir aos axustes do app, premer en \"Canle de audio usado polos recordatorios\" e cambialo a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non estea acalado.</string>
     <string name="faq_4_title">O app soporta zonas horarias\?</string>
     <string name="faq_4_text">Si. Por defecto todos os eventos créanse na túa zona horaria actual. Se desexas cambiar a zona horaria dos eventos, primeiro tes que activar o selector de zona horaria nos axustes do app, e despois cambialo na pantalla de Detalles do Evento. Está desactivado de inicio porque a maioría da xente non o necesita.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">O app non mostra ningunha notificación. Que é o que pasa\?</string>
+    <string name="faq_5_text">Comproba os axustes de batería e de notificacións do teu dispositivo e que non haxa nada que bloquee os recordatorios nin que deteña o app ao estar en segundo plano. Pódeslle botar un ollo tamén a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, xa que ten algúns consellos útiles.</string>
+    <string name="faq_6_title">Como podo modificar ou borrar un tipo de evento\?</string>
+    <string name="faq_6_text">Podes facer ámbalas cousas en Axustes, Xestionar tipos de eventos. Preme no que necesites para cambiar o nome e maila cor, ou selecciónao manténdoo premido e usa a papeleira do menú superior para borralo.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
