@@ -58,28 +58,28 @@
     <string name="months_raw">月</string>
     <string name="years_raw">年</string>
     <string name="repeat_till">Repeat till</string>
-    <string name="forever">Forever</string>
-    <string name="event_is_repeatable">The event is repeatable</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="forever">永遠</string>
+    <string name="event_is_repeatable">予定は繰り返し設定になっています</string>
+    <string name="task_is_repeatable">タスクは繰り返し設定になっています</string>
     <string name="selection_contains_repetition">The selection contains repeating events</string>
-    <string name="delete_one_only">Delete the selected occurrence only</string>
-    <string name="delete_future_occurrences">Delete this and all future occurrences</string>
-    <string name="delete_all_occurrences">Delete all occurrences</string>
-    <string name="update_one_only">Update the selected occurrence only</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
-    <string name="update_all_occurrences">Update all occurrences</string>
-    <string name="repeat_till_date">Repeat till a date</string>
-    <string name="stop_repeating_after_x">Stop repeating after x occurrences</string>
-    <string name="repeat_forever">Repeat forever</string>
-    <string name="times">times</string>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_on">Repeat on</string>
+    <string name="delete_one_only">選択した予定のみ削除する</string>
+    <string name="delete_future_occurrences">今回と以降の予定を削除する</string>
+    <string name="delete_all_occurrences">予定をすべて削除する</string>
+    <string name="update_one_only">選択した予定のみ更新する</string>
+    <string name="update_this_and_future_occurrences">今回と以降の予定を更新する</string>
+    <string name="update_all_occurrences">予定をすべて更新する</string>
+    <string name="repeat_till_date">日付まで繰り返す</string>
+    <string name="stop_repeating_after_x">X回繰り返したら停止</string>
+    <string name="repeat_forever">永遠に繰り返す</string>
+    <string name="times">回</string>
+    <string name="repeat">繰り返し</string>
+    <string name="repeat_on">繰り返す</string>
     <string name="selected_days">On selected days</string>
-    <string name="the_same_day">The same day</string>
+    <string name="the_same_day">同じ日</string>
     <string name="the_last_day">The last day</string>
-    <string name="repeat_on_the_same_day_monthly">Repeat on the same day each month</string>
+    <string name="repeat_on_the_same_day_monthly">毎月同じ日に繰り返す</string>
     <string name="repeat_on_the_last_day_monthly">Repeat on the last day of the month</string>
-    <string name="repeat_on_the_same_day_yearly">Repeat on the same day every year</string>
+    <string name="repeat_on_the_same_day_yearly">毎年同じ日に繰り返す</string>
     <string name="repeat_every_m">Repeat every</string>
     <string name="every_m">Every</string>
     <string name="first_m">first</string>
@@ -104,14 +104,14 @@
     <string name="no_birthdays">誕生日は見つかりませんでした</string>
     <string name="no_new_birthdays">新しい誕生日は見つかりませんでした</string>
     <string name="birthdays_added">誕生日が正常に追加されました</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">新しい誕生日を自動的に追加</string>
     <!-- Anniversaries -->
     <string name="anniversaries">記念日</string>
     <string name="add_anniversaries">連絡先の記念日を追加</string>
     <string name="no_anniversaries">記念日は見つかりませんでした</string>
     <string name="no_new_anniversaries">新しい記念日は見つかりませんでした</string>
     <string name="anniversaries_added">記念日が正常に追加されました</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">新しい記念日を自動的に追加</string>
     <!-- Event Reminders -->
     <string name="reminder">リマインダー</string>
     <string name="before">前</string>
@@ -137,7 +137,7 @@
     <string name="export_past_events_too">過去の予定もエクスポートする</string>
     <string name="include_event_types">予定の種類を含める</string>
     <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">ファイル内の予定の種類を無視し、常にデフォルトのものを使用する</string>
     <!-- Event details -->
     <string name="location">場所</string>
     <string name="description">説明</string>
@@ -152,10 +152,10 @@
     <string name="type_already_exists">このタイトルの種類は既に存在します</string>
     <string name="color">色</string>
     <string name="regular_event">通常の予定</string>
-    <string name="cannot_delete_default_type">Default event type cannot be deleted</string>
+    <string name="cannot_delete_default_type">デフォルトの予定の種類は削除できません</string>
     <string name="select_event_type">予定の種類を選択</string>
-    <string name="move_events_into_default">Move affected events into the default event type</string>
-    <string name="remove_affected_events">Permanently remove affected events</string>
+    <string name="move_events_into_default">影響を受ける予定をデフォルトの予定の種類に移す</string>
+    <string name="remove_affected_events">影響を受ける予定を完全に削除する</string>
     <string name="unsync_caldav_calendar">To remove a CalDAV calendar you have to unsynchronize it</string>
     <!-- Holidays -->
     <string name="holidays">祝日</string>
@@ -208,7 +208,7 @@
     <string name="last_used_one">最後に使用したもの</string>
     <string name="other_time">その他の時刻</string>
     <string name="highlight_weekends">一部の表示で週末を強調する</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">週末の強調色</string>
     <string name="allow_changing_time_zones">予定のタイムゾーンの変更を許可する</string>
     <string name="manage_quick_filter_event_types">イベントの種類をクイックフィルターで管理</string>
     <string name="allow_creating_tasks">タスクの作成を許可する</string>
@@ -249,18 +249,18 @@
     <string name="sample_description_4">In the Plaza</string>
     <string name="sample_title_5">Coffee time</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">表示する予定：</string>
+    <string name="within_the_next_one_year">今後 1 年分</string>
+    <string name="today_only">今日だけ</string>
+    <string name="within_the_next">今後…</string>
     <plurals name="within_the_next_days">
-        <item quantity="other">Within the next %d day</item>
+        <item quantity="other">今後 %d 日分</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="other">Within the next %d week</item>
+        <item quantity="other">今後 %d 週間分</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="other">Within the next %d month</item>
+        <item quantity="other">今後 %d ヶ月分</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
