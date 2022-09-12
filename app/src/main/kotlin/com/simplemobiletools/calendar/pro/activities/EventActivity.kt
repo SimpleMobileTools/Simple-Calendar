@@ -20,7 +20,6 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import androidx.core.app.NotificationManagerCompat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
@@ -31,7 +30,6 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -1168,7 +1166,20 @@ class EventActivity : SimpleActivity() {
             eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
         }
-        storeEvent(wasRepeatable)
+
+        if (mEvent.getReminders().isNotEmpty()) {
+            handleNotificationPermission { granted ->
+                if (granted) {
+                    ensureBackgroundThread {
+                        storeEvent(wasRepeatable)
+                    }
+                } else {
+                    toast(R.string.no_post_notifications_permissions)
+                }
+            }
+        } else {
+            storeEvent(wasRepeatable)
+        }
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {

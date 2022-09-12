@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
@@ -17,7 +16,6 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -406,7 +404,19 @@ class TaskActivity : SimpleActivity() {
             repeatRule = mRepeatRule
         }
 
-        storeTask(wasRepeatable)
+        if (mTask.getReminders().isNotEmpty()) {
+            handleNotificationPermission { granted ->
+                if (granted) {
+                    ensureBackgroundThread {
+                        storeTask(wasRepeatable)
+                    }
+                } else {
+                    toast(R.string.no_post_notifications_permissions)
+                }
+            }
+        } else {
+            storeTask(wasRepeatable)
+        }
     }
 
     private fun storeTask(wasRepeatable: Boolean) {
