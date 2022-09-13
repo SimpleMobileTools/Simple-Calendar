@@ -30,7 +30,7 @@
     <string name="create_new_event">Ustvarjanje novega dogodka</string>
     <string name="duplicate_event">Podvojen dogodek</string>
     <string name="title_empty">Naslov ne sme biti prazen</string>
-    <string name="end_before_start">Dogodek se ne sme končati prej, kot se začne.</string>
+    <string name="end_before_start">Dogodek se ne more končati prej kot se začne</string>
     <string name="event_added">Uspešno dodan dogodek</string>
     <string name="event_updated">Dogodek uspešno posodobljen</string>
     <string name="filter_events_by_type">Filtriranje dogodkov po vrsti</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Ponavljajte, dokler</string>
     <string name="forever">Vedno</string>
     <string name="event_is_repeatable">Dogodek se lahko ponovi</string>
-    <string name="task_is_repeatable">Naloga je ponovljiva.</string>
+    <string name="task_is_repeatable">Naloga je ponovljiva</string>
     <string name="selection_contains_repetition">Izbor vsebuje ponavljajoče se dogodke</string>
     <string name="delete_one_only">Izbrišite samo izbrano pojavitev</string>
     <string name="delete_future_occurrences">Brisanje tega in vseh prihodnjih pojavov</string>
