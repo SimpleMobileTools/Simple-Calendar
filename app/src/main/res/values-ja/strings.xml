@@ -57,7 +57,7 @@
     <string name="weeks_raw">週</string>
     <string name="months_raw">月</string>
     <string name="years_raw">年</string>
-    <string name="repeat_till">Repeat till</string>
+    <string name="repeat_till">繰り返し 日付</string>
     <string name="forever">永遠</string>
     <string name="event_is_repeatable">予定は繰り返し設定になっています</string>
     <string name="task_is_repeatable">タスクは繰り返し設定になっています</string>
@@ -80,24 +80,24 @@
     <string name="repeat_on_the_same_day_monthly">毎月同じ日に繰り返す</string>
     <string name="repeat_on_the_last_day_monthly">月の最終日に繰り返す</string>
     <string name="repeat_on_the_same_day_yearly">毎年同じ日に繰り返す</string>
-    <string name="repeat_every_m">Repeat every</string>
-    <string name="every_m">Every</string>
-    <string name="first_m">first</string>
-    <string name="second_m">second</string>
-    <string name="third_m">third</string>
-    <string name="fourth_m">fourth</string>
-    <string name="fifth_m">fifth</string>
-    <string name="last_m">last</string>
+    <string name="repeat_every_m">繰り返し 毎</string>
+    <string name="every_m">毎</string>
+    <string name="first_m">第1</string>
+    <string name="second_m">第2</string>
+    <string name="third_m">第3</string>
+    <string name="fourth_m">第4</string>
+    <string name="fifth_m">第5</string>
+    <string name="last_m">最終</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Repeat every</string>
-    <string name="every_f">Every</string>
-    <string name="first_f">first</string>
-    <string name="second_f">second</string>
-    <string name="third_f">third</string>
-    <string name="fourth_f">fourth</string>
-    <string name="fifth_f">fifth</string>
-    <string name="last_f">last</string>
+    <string name="repeat_every_f">繰り返し 毎</string>
+    <string name="every_f">毎</string>
+    <string name="first_f">第1</string>
+    <string name="second_f">第2</string>
+    <string name="third_f">第3</string>
+    <string name="fourth_f">第4</string>
+    <string name="fifth_f">第5</string>
+    <string name="last_f">最終</string>
     <!-- Birthdays -->
     <string name="birthdays">誕生日</string>
     <string name="add_birthdays">連絡先の誕生日を追加</string>
@@ -229,7 +229,7 @@
     <string name="no_synchronized_calendars">同期可能なカレンダーが見つかりません</string>
     <string name="status_free">Free</string>
     <string name="status_busy">Busy</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">予定 %s の取得に失敗しました</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">月曜日</string>
