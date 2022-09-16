@@ -20,9 +20,9 @@
 \n
 \nThanks!</string>
     <!-- Widget titles -->
-    <string name="widget_monthly">カレンダー月</string>
+    <string name="widget_monthly">カレンダー 月</string>
     <string name="widget_list">カレンダー 予定 リスト</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">カレンダー 今日の日付</string>
     <!-- Event -->
     <string name="event">予定</string>
     <string name="edit_event">予定を編集</string>
@@ -87,7 +87,7 @@
     <string name="third_m">第3</string>
     <string name="fourth_m">第4</string>
     <string name="fifth_m">第5</string>
-    <string name="last_m">最終</string>
+    <string name="last_m">最後</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">繰り返し 毎</string>
@@ -97,7 +97,7 @@
     <string name="third_f">第3</string>
     <string name="fourth_f">第4</string>
     <string name="fifth_f">第5</string>
-    <string name="last_f">最終</string>
+    <string name="last_f">最後</string>
     <!-- Birthdays -->
     <string name="birthdays">誕生日</string>
     <string name="add_birthdays">連絡先の誕生日を追加</string>
@@ -137,7 +137,7 @@
     <string name="export_past_events_too">過去の予定もエクスポートする</string>
     <string name="include_event_types">予定の種類を含める</string>
     <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
-    <string name="ignore_event_types">ファイル内の予定の種類を無視し、常にデフォルトのものを使用する</string>
+    <string name="ignore_event_types">ファイル内の予定の種類を無視し、常に既定のものを使用する</string>
     <!-- Event details -->
     <string name="location">場所</string>
     <string name="description">説明</string>
@@ -152,9 +152,9 @@
     <string name="type_already_exists">このタイトルの種類は既に存在します</string>
     <string name="color">色</string>
     <string name="regular_event">通常の予定</string>
-    <string name="cannot_delete_default_type">デフォルトの予定の種類は削除できません</string>
+    <string name="cannot_delete_default_type">既定の予定の種類は削除できません</string>
     <string name="select_event_type">予定の種類を選択</string>
-    <string name="move_events_into_default">影響を受ける予定をデフォルトの予定の種類に移す</string>
+    <string name="move_events_into_default">影響を受ける予定を既定の予定の種類に移す</string>
     <string name="remove_affected_events">影響を受ける予定を完全に削除する</string>
     <string name="unsync_caldav_calendar">CalDAVカレンダーを削除するには、同期を解除する必要があります</string>
     <!-- Holidays -->
@@ -271,8 +271,8 @@
     <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
     <string name="faq_4_title">Does the app support time zones\?</string>
     <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
+    <string name="faq_5_title">アプリが通知を表示しないのはなぜですか？</string>
+    <string name="faq_5_text">端末の通知設定と電池設定を開き、リマインダーをブロックしたり、バックグラウンド状態でアプリを落としたりする原因がないか確認してください。こちらの情報も参考にしてみてください。 &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; 役に立つヒントがいくつかあります。</string>
     <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
