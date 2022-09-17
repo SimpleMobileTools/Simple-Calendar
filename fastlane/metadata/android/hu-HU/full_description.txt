@@ -1,24 +1,24 @@
-A Simple Calendar 2022 egy jól testreszabható, offline havi naptár alkalmazás Androidra. Legyen a zsebében egy napirendtervező, amelyet úgy terveztek, hogy pontosan azt tegye, amit egy személyes apró napirendtervezőnek 2022-ben tennie kell. Nincsenek bonyolult funkciók, felesleges engedélyek vagy hirdetések! Támogatja az események szinkronizálását a Google Naptáron vagy más, CalDAV protokollt támogató naptárakon keresztül.
+A Simple Calendar 2022 egy jól testreszabható, offline havi naptár alkalmazás Androidra. Legyen a zsebedben egy napirendtervező, amelyet úgy terveztek, hogy pontosan azt tegye, amit egy személyes apró napirendtervezőnek 2022-ben tennie kell. Nincsenek bonyolult funkciók, felesleges engedélyek vagy hirdetések! Támogatja az események szinkronizálását a Google Naptáron vagy más, CalDAV protokollt támogató naptárakon keresztül.
 
 Vedd át az irányítást az időd felett
-Akár egy munkahelyi naptárat keres egy vállalkozás számára, akár egy naptárat, egy találkozó-ütemezőt, vagy egyszeri és ismétlődő események, például születésnapok, évfordulók, találkozó-emlékeztetők vagy bármi más szervezését és ütemezését, a Simple Calendar 2022 megkönnyíti a szervezettséget. A naptár widget hihetetlenül sokféle testreszabási lehetőséggel rendelkezik: testreszabott eseményemlékeztetők, értesítés megjelenése, apró naptár emlékeztető widget és általános megjelenés.
+Akár egy munkahelyi naptárat keresel egy vállalkozás számára, akár egy naptárat, egy találkozó-ütemezőt, vagy egyszeri és ismétlődő események, például születésnapok, évfordulók, találkozó-emlékeztetők vagy bármi más szervezését és ütemezését, a Simple Calendar 2022 megkönnyíti a dolgodat. A naptár widget hihetetlenül sokféle testreszabási lehetőséggel rendelkezik: testreszabott eseményemlékeztetők, értesítés megjelenése, apró naptár emlékeztető widget és általános megjelenés.
 
-Ütemtervező: Tervezze meg a napját
-Időpontütemező, havi tervező és családszervező egyben! Ellenőrizze a közelgő napirendjét, ütemezze az üzleti találkozókat és eseményeket, és foglaljon időpontokat egyszerűen. Az emlékeztetők időben tartanak és tájékoztatnak a napi ütemterv alkalmazásról. Ez a 2022-es naptár widget figyelemre méltóan könnyen használható.
+Ütemtervező: Tervezd meg a napodat
+Időpontütemező, havi tervező és családszervező egyben! Ellenőrizd a közelgő napirendedet, ütemezd be az üzleti találkozókat és eseményeket és foglalj időpontokat egyszerűen. Az emlékeztetők tájékoztatnak a napi ütemterv alkalmazásról. Ez a 2022-es naptár widget figyelemre méltóan könnyen használható.
 
 Egyszerű naptár 2022 jellemzői
 
 ✔️ A legjobb felhasználói élmény
 ➕ Nincsenek reklámok vagy idegesítő felugró ablakok, igazán nagyszerű felhasználói élmény!
-➕ Nincs szükség internet-hozzáférésre, így nagyobb magánéletet, biztonságot és stabilitást biztosít Önnek.
+➕ Nincs szükség internet-hozzáférésre, így nagyobb magánéletet, biztonságot és stabilitást biztosít
 
-✔️ Rugalmasság az Ön termelékenységéért
+✔️ Rugalmasság 
 ➕ A Calendar Widget támogatja az események exportálását és importálását .ics fájlokon keresztül
 ➕ A beállítások .txt fájlba történő exportálása egy másik eszközre történő importáláshoz
 ➕ Rugalmas esemény létrehozása - időpontok, időtartam, emlékeztetők, hatékony ismétlési szabályok
 ➕ CalDAV támogatás az események szinkronizálásához Google Calendar, Microsoft Outlook, Nextcloud, Exchange stb. segítségével
 
-✔️ Személyre szabottan csak az Ön számára
+✔️ Személyre szabható
 ➕ Ütemtervező - testreszabható és megváltoztatható hang, looping, hangfolyam, rezgések
 ➕ Naptár widget - színes naptárak és testreszabható témák
 ➕ Nyílt forráskódú apró naptár, 45+ nyelvre lefordítva
@@ -28,23 +28,23 @@ Egyszerű naptár 2022 jellemzői
 ➕ Naptervező - a napirend tervező segít megszervezni a napját
 ➕ Heti tervező - soha nem volt még ilyen egyszerű a sűrű heti ütemtervének betartása
 ➕ Útiterv-kezelő - a munkahelyi csapatok között megosztott üzleti naptár
-➕ Időpont-ütemező - szervezze és tartsa napirendjét könnyedén
+➕ Időpont-ütemező - szervezd és tartsd be napirendendet
 ➕ Tervezd meg a napodat - kezeld a napodat ezzel az androidos ütemtervezővel, esemény- és családszervezővel
 
 ✔️ #1 Naptár alkalmazás
-➕ Importáljon ünnepnapokat, kontaktok születésnapjait és évfordulókat egyszerűen
+➕ Importálj ünnepnapokat, kontaktok születésnapokat és évfordulókat egyszerűen
 ➕ Személyes események gyors szűrése eseménytípus szerint
 ➕ Napi menetrend és az események helye, térképen megjelenítve
 ➕ Gyors üzleti naptár vagy személyes digitális napirend
 ➕ Gyors váltás a napi, heti, havi, éves és eseménynézet között
 
-LETÖLTHETŐ EGYSZERŰ NAPTÁRTERVEZŐ - OFFLINE NAPIREND ÉS NAPIREND TERVEZŐ REKLÁMOK NÉLKÜL! TERVEZD MEG A 2022-ES ÜTEMTERVEDET!
+LETÖLTHETŐ EGYSZERŰ NAPTÁRTERVEZŐ - OFFLINE NAPIREND TERVEZŐ REKLÁMOK NÉLKÜL! TERVEZD MEG A 2022-ES ÜTEMTERVEDET!
 
-Alapértelmezés szerint material designnal és sötét témával rendelkezik, így nagyszerű felhasználói élményt nyújt a könnyű használathoz. Az internet-hozzáférés hiánya nagyobb magánéletet, biztonságot és stabilitást biztosít, mint más alkalmazások.
+Dizájnos és sötét témával rendelkezik, így nagyszerű felhasználói élményt nyújt a könnyű használathoz. Az internet-hozzáférés hiánya nagyobb magánéletet, biztonságot és stabilitást biztosít, mint más alkalmazások.
 
-Nem tartalmaz hirdetéseket vagy felesleges engedélyeket. Teljesen nyílt forráskódú, és testreszabható színeket biztosít.
+Nem tartalmaz hirdetéseket vagy felesleges engedélyeket. Teljesen nyílt forráskódú és testreszabható színeket biztosít.
 
-Tekintse meg a Simple Tools teljes csomagját itt:
+Nézd meg a Simple Tools teljes csomagját itt:
 https://www.simplemobiletools.com
 
 A Simple Calendar Pro önálló weboldala:
