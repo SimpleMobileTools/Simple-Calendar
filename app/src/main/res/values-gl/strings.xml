@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Calendario</string>
-    <string name="change_view">Cambiar vista</string>
+    <string name="change_view">Cambiala vista</string>
     <string name="daily_view">Vista diaria</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
