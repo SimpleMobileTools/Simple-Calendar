@@ -1,0 +1,61 @@
+Lihtne kalender 2022 on väga hästi kohandatav offline-kuukalendri rakendus Androidile. Omandage taskusse päevaplaneerija, mis on loodud täpselt selleks, mida isiklik pisike päevaplaneerija 2022 peaks tegema. Ei mingeid keerulisi funktsioone, ebavajalikke lubasid ega reklaame! See toetab sündmuste sünkroonimist Google Calendar'i või teiste CalDAV-protokolli toetavate kalendrite kaudu.
+
+Võtke kontroll oma aja üle
+Olenemata sellest, kas otsite töökalendrit ettevõtte jaoks, päevaplaneerijat, kohtumiste planeerijat või üksikute ja korduvate sündmuste (nt sünnipäevad, aastapäev, kohtumiste meeldetuletus või midagi muud) korraldamist ja ajastamist, muudab lihtne kalender 2022 korraldamise lihtsaks. Kalendrividinal on uskumatult palju kohandamisvõimalusi: kohandage sündmuste meeldetuletusi, märguannete välimust, pisikeste kalendri meeldetuletuste vidinat ja üldist välimust.
+
+Ajakava planeerija: Planeeri oma päev
+Kohtumiste planeerija, kuuplaneerija ja perekonna korraldaja ühes! Kontrollige hõlpsasti oma eelseisvat päevakorda, planeerige ärikohtumisi. Ja ka sündmused ja kohtumiste broneerimine. Meeldetuletused hoiavad teid õigel ajal ja teavitavad teid oma päevakava rakendusest. Seda 2022 kalendri vidinat on märkimisväärselt lihtne kasutada. 
+
+Lihtne kalender 2022 omadused
+✔️ Parim kasutajakogemus
+➕ Ei mingeid reklaame ega tüütuid hüpikaknaid, tõeliselt suurepärane kasutajakogemus!
+➕ Interneti-ühendust ei ole vaja, andes teile rohkem privaatsust, turvalisust ja stabiilsust
+
+✔️ Paindlikkus teie tootlikkuse jaoks
+➕ Kalendri vidin toetab sündmuste eksportimist ja importimist .ics failide kaudu
+➕ Sätete eksportimine teise seadmesse imporditavate failide .txt
+➕ Paindlik sündmuste loomine – ajad, kestus, meeldetuletused, võimsad kordusreeglid
+➕ CalDAV-i tugi sündmuste sünkroonimiseks Google'i kalendri, Microsoft Outlooki, Nextcloudi, Exchange'i jne kaudu
+
+✔️ Isikupärastatud just teie jaoks
+➕ Ajakava planeerija - kohandage ja muutke heli, looping, helivoo, vibratsioonid
+➕ Kalendri vidin - värvilised kalendrid ja kohandatavad teemad
+➕ Avatud lähtekoodiga pisikene kalender, mis on tõlgitud 45+ keelde
+➕ Planeeri oma päeva koos teistega - võimalus jagada sündmusi kiiresti sotsiaalmeedias, e-kirjades jne.
+➕ Family Organizer - probleemivaba sündmuste dubleerimise, organiseerimise ja ajajuhtimisega
+
+✔️ Organisatsioon ja ajajuhtimine
+➕ Päevaplaneerija - päevaplaneerija aitab teil oma päeva korraldada
+➕ Nädalaplaneerija - tihedast nädalaplaanist ees püsimine pole kunagi olnud lihtsam
+➕ Reisikorraldaja - töökollektiivide vahel jagatud ärikalender
+➕ Kohtumiste ajaplaneerija - korraldage ja hoidke oma päevakava hõlpsasti üleval
+➕ Planeerimisrakendus - lihtne isiklik sündmuste, kohtumiste meeldetuletus ja ajakava planeerija
+➕ Planeeri oma päev - haldage oma päeva selle androidis oleva ajakava planeerija, sündmuse ja perekonna korraldaja abil
+
+✔️ #1 Kalendri rakendus
+➕ Impordi pühad, kontaktide sünnipäevad ja tähtpäevad hõlpsasti
+➕ Filtreeri isiklikke sündmusi kiiresti sündmuse tüübi järgi
+➕ Päevakava ja sündmuste asukoht, mis kuvatakse kaardil
+➕ Kiire ärikalender või isiklik digitaalne päevakava
+➕ Kiire ümberlülitumine päevase, iganädalase, igakuise, aastase ja sündmuste vaate vahel
+
+LAE ALLA LIHTNE KALENDRIPLANEERIJA - OFFLINE AJAKAVA JA PÄEVAKAVA PLANEERIJA ILMA REKLAAMITA! PLANEERI OMA AJAKAVA 2022!
+
+See on vaikimisi varustatud materiaalse disaini ja tumeda teemaga, pakub suurepärast kasutajakogemust lihtsaks kasutamiseks. Interneti-ühenduse puudumine annab teile rohkem privaatsust, turvalisust ja stabiilsust kui teised rakendused.
+
+Ei sisalda reklaame ega ebavajalikke lubasid. See on täielikult avatud lähtekoodiga, pakub kohandatavaid värve.
+
+Tutvu kogu Lihtsad tööriistad paketiga siin:
+https://www.simplemobiletools.com
+
+Lihtne kalender Pro iseseisev veebileht:
+https://www.simplemobiletools.com/calendar
+
+Facebook:
+https://www.facebook.com/simplemobiletools
+
+Reddit:
+https://www.reddit.com/r/SimpleMobileTools
+
+Telegram:
+https://t.me/SimpleMobileTools

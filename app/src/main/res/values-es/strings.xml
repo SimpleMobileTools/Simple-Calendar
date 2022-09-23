@@ -276,7 +276,7 @@
     <string name="faq_5_title">¿Por qué no aparece ninguna notificación\?</string>
     <string name="faq_5_text">Comprueba la batería y las opciones de notificación, asegúrate de que los recordatorios no estén bloqueados y de que se permita la ejecución de la aplicación en segundo plano. En esta página web &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; encontrarás consejos útiles.</string>
     <string name="faq_6_title">¿Cómo puedo modificar o eliminar un tipo de evento\?</string>
-    <string name="faq_6_text">Estas opciones se encuentran en Ajustes -&gt; Gestionar tipos de evento. Pulsa sobre el elemento para cambiar la etiqueta y el color. Para eliminarlo, mánten pulsado el elemento y haz clic en el icono de la papelera en el menú superior.</string>
+    <string name="faq_6_text">Puede hacer ambas cosas en la aplicación Configuración - Administrar tipos de eventos. Simplemente haga clic en el elemento deseado para cambiar la etiqueta y el color, o seleccione el elemento deseado presionándolo prolongadamente y use la papelera en el menú superior para eliminarlo.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

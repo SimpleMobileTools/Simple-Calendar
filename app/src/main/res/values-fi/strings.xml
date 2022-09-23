@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
+    <string name="app_name">Yksinkertainen kalenteri</string>
     <string name="app_launcher_name">Kalenteri</string>
     <string name="change_view">Vaihda näkymää</string>
     <string name="daily_view">Päivänäkymä</string>
@@ -22,7 +22,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Kalenteri kuukausittain</string>
     <string name="widget_list">Kalenteri tapahtumaluettelo</string>
-    <string name="widget_todays_date">Kalenteri tänään</string>
+    <string name="widget_todays_date">Kalenteri tämän päivän päivämäärä</string>
     <!-- Event -->
     <string name="event">Tapahtuma</string>
     <string name="edit_event">Muokkaa Tapahtumaa</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Toista kunnes</string>
     <string name="forever">Aina</string>
     <string name="event_is_repeatable">Tapahtuma on toistettavissa</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Tehtävä on toistettavissa</string>
     <string name="selection_contains_repetition">Valinta sisältää toistettavia tapahtumia</string>
     <string name="delete_one_only">Poista vain valittu esiintymä</string>
     <string name="delete_future_occurrences">Poista tämä ja seuraavat esiintymät</string>
@@ -72,7 +72,7 @@
     <string name="repeat_forever">Toista aina</string>
     <string name="times">kertaa</string>
     <string name="repeat">Toistaa</string>
-    <string name="repeat_on">Toista</string>
+    <string name="repeat_on">Toista päälle</string>
     <string name="selected_days">Valittuina päivinä</string>
     <string name="the_same_day">Samana päivänä</string>
     <string name="the_last_day">Viimeisenä päivänä</string>
@@ -90,7 +90,7 @@
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
     <string name="repeat_every_f">Toista jokaisena</string>
-    <string name="every_f">Jokaisena</string>
+    <string name="every_f">jokainen</string>
     <string name="first_f">ensimmäisenä</string>
     <string name="second_f">toisena</string>
     <string name="third_f">kolmantena</string>
@@ -100,8 +100,8 @@
     <!-- Birthdays -->
     <string name="birthdays">Syntymäpäivät</string>
     <string name="add_birthdays">Lisää yhteystietojen syntymäpäivät</string>
-    <string name="no_birthdays">Syntymäpäiviä ei löytynyt</string>
-    <string name="no_new_birthdays">Uusia syntymäpäiviä ei löytynyt</string>
+    <string name="no_birthdays">Syntymäpäiviä ei ole löytynyt</string>
+    <string name="no_new_birthdays">Uusia syntymäpäiviä ei ole löytynyt</string>
     <string name="birthdays_added">Syntymäpäivät lisättiin onnistunesti</string>
     <string name="add_birthdays_automatically">Lisää syntymäpäivät automaattisesti</string>
     <!-- Anniversaries -->
@@ -110,13 +110,13 @@
     <string name="no_anniversaries">Vuosipäiviä ei löytynyt</string>
     <string name="no_new_anniversaries">Uusia vuosipäiviä ei löytynyt</string>
     <string name="anniversaries_added">Vuosipäivät lisättiin onnistuneesti</string>
-    <string name="add_anniversaries_automatically">Lisää vuosipäivät automaattisesti</string>
+    <string name="add_anniversaries_automatically">Lisää uusia vuosipäiviä automaattisesti</string>
     <!-- Event Reminders -->
     <string name="reminder">Muistutus</string>
     <string name="before">ennen</string>
     <string name="add_another_reminder">Lisää toinen muistutus</string>
     <string name="event_reminders">Tapahtumamuistutukset</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Muistutukset</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Lisää toinen osallistuja</string>
     <string name="my_status">Tilani:</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Synkronoitavia kalentereita ei löytynyt</string>
     <string name="status_free">Vapaa</string>
     <string name="status_busy">Varattu</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Tapahtuman %s noutaminen epäonnistui</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Maanantaisin</string>
@@ -242,16 +242,16 @@
     <string name="sample_title_1">Treeni</string>
     <string name="sample_description_1">Jalkapäivä</string>
     <string name="sample_title_2">Tapaaminen Jonin kanssa</string>
-    <string name="sample_description_2">Torilla</string>
+    <string name="sample_description_2">Rockstonen puutarhassa</string>
     <string name="sample_title_3">Kirjasto</string>
     <string name="sample_title_4">Lounas Marian kanssa</string>
-    <string name="sample_description_4">Kurvin grillillä</string>
+    <string name="sample_description_4">Plazalla</string>
     <string name="sample_title_5">Kahvitauko</string>
     <!-- List widget config -->
     <string name="show_events_happening">Näytä tapahtumat ajalta:</string>
     <string name="within_the_next_one_year">Vuoden sisällä</string>
-    <string name="today_only">Vain kuluvan päivän tapahtumat</string>
-    <string name="within_the_next">Tapahtumat, jotka tapahtuvat ennen kuin on kulunut…</string>
+    <string name="today_only">Vain tänään</string>
+    <string name="within_the_next">Seuraavan sisällä…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">Tulevan päivän aikana</item>
         <item quantity="other">Tulevien %d päivän aikana</item>
