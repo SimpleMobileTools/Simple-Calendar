@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Calendar</string>
-    <string name="app_launcher_name">Calendario</string>
-    <string name="change_view">Cambiala vista</string>
+    <string name="app_name">Almanaque Sinxelo</string>
+    <string name="app_launcher_name">Almanaque</string>
+    <string name="change_view">Trocala visión</string>
     <string name="daily_view">Vista diaria</string>
     <string name="weekly_view">Vista semanal</string>
     <string name="monthly_view">Vista mensual</string>
@@ -12,13 +12,13 @@
     <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
     <string name="go_to_today">Ir ao día de hoxe</string>
     <string name="go_to_date">Ir a unha data</string>
-    <string name="upgraded_from_free">Ola,
-\n
-\nsemella que actualizaches desde a antiga versión gratuíta. Tes que migrar os eventos gardados localmente exportándoos manualmente a un ficheiro .ics e despois importándoos. Podes atopar o botón exportar/importar no menú da pantalla principal.
-\n
-\nDespois, podes desinstalar a versión antiga, que ten o botón \'Mellorar a Pro\' arriba nos axustes do app. Finalmente só terás que restablecer os axustes do app.
-\n
-\nGrazas!</string>
+    <string name="upgraded_from_free">Ola, 
+\n 
+\nParece que actualizaches a aplicación gratuíta antiga. Tes que migrar manualmente os eventos almacenados localmente mediante a exportación a un ficheiro .ics e, a continuación, importar. Podes atopar os dous botóns de exportación/importación no menú da pantalla principal. 
+\n 
+\nDespois podes desinstalar a versión antiga, que ten un botón \"Actualizar a Pro\" na parte superior da configuración da aplicación. Entón só terás que restablecer a configuración da aplicación. 
+\n 
+\nGrazas.</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendario mensual</string>
     <string name="widget_list">Lista de eventos do calendario</string>
