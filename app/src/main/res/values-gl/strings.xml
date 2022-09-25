@@ -20,9 +20,9 @@
 \n 
 \nGrazas.</string>
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendario mensual</string>
-    <string name="widget_list">Lista de eventos do calendario</string>
-    <string name="widget_todays_date">Calendario no día actual</string>
+    <string name="widget_monthly">Almanaque mensual</string>
+    <string name="widget_list">Lista de eventos do almanaque</string>
+    <string name="widget_todays_date">Almanaque no día actual</string>
     <!-- Event -->
     <string name="event">Evento</string>
     <string name="edit_event">Editar evento</string>
@@ -42,7 +42,7 @@
     <string name="tasks">Tarefas</string>
     <string name="edit_task">Editar tarefa</string>
     <string name="new_task">Tarefa nova</string>
-    <string name="create_new_task">Crear tarefa nova</string>
+    <string name="create_new_task">Crear unha nova tarefa</string>
     <string name="duplicate_task">Tarefa duplicada</string>
     <string name="mark_completed">Marcar como feita</string>
     <string name="mark_incomplete">Marcar como sen facer</string>
