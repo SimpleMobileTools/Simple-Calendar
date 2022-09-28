@@ -3,22 +3,22 @@
     <string name="app_name">Calendar Simplu</string>
     <string name="app_launcher_name">Calendar</string>
     <string name="change_view">Schimbă vizualizarea</string>
-    <string name="daily_view">Vizualizare zi</string>
-    <string name="weekly_view">Vizualizare săptămână</string>
-    <string name="monthly_view">Vizualizare lună</string>
-    <string name="monthly_daily_view">Vizualizare săptămână + zi</string>
-    <string name="yearly_view">Vizualizare an</string>
+    <string name="daily_view">Vizualizare zilnică</string>
+    <string name="weekly_view">Vizualizare săptămânală</string>
+    <string name="monthly_view">Vizualizare lunară</string>
+    <string name="monthly_daily_view">Vizualizare săptămânală și zilnică</string>
+    <string name="yearly_view">Vizualizare anuală</string>
     <string name="simple_event_list">Listă de evenimente simple</string>
-    <string name="no_upcoming_events">Se pare că nu aveți evenimente viitoare.</string>
+    <string name="no_upcoming_events">Se pare că nu aveți niciun eveniment viitor.</string>
     <string name="go_to_today">Sari la ziua de azi</string>
     <string name="go_to_date">Sari la o dată</string>
-    <string name="upgraded_from_free">Hei,
+    <string name="upgraded_from_free">Bună,
 \n
-\nse pare că a-ți avansat de la vechea aplicație gratuită. Trebuie să migrați manual evenimentele stocate local prin exportarea într-un fișier .ics, apoi importarea. Puteți găsi ambele butoane de export / import în meniul ecranului principal.
+\nse pare că ați făcut upgrade de la vechea aplicație gratuită. Trebuie să mutați manual evenimentele stocate local prin export într-un fișier .ics, apoi să le importați. Puteți găsi ambele butoane de export/import în meniul ecranului principal.
 \n
-\nPuteți apoi să dezinstalați versiunea veche, care are un buton \'Upgrade to Pro\' în partea de sus a setărilor aplicației. Atunci va trebui doar să resetați setările aplicației.
+\nApoi puteți dezinstala vechea versiune, care are un buton \"Upgrade to Pro\" în partea de sus a setărilor aplicației. Apoi va trebui doar să resetați setările aplicației.
 \n
-\nMulțumesc!</string>
+\nVă mulțumim!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar lunar</string>
     <string name="widget_list">Calendar listă evenimente</string>
@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Filtrează evenimentele după tip</string>
     <string name="please_fill_location">Completează o locație ca să apară pe o hartă</string>
     <string name="public_event_notification_text">Se apropie un eveniment</string>
-    <string name="saving_filtered_out">Se salveaza… Dar tipul de eveniment selectat este omis in Meniu - Filtru de sus</string>
+    <string name="saving_filtered_out">Se salvează... Dar tipul de eveniment selectat este filtrat în meniul de sus - Filtru</string>
     <!-- Tasks -->
     <string name="task">Sarcină</string>
     <string name="tasks">Sarcini</string>
