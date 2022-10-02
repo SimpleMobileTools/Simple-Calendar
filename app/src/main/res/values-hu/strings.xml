@@ -38,14 +38,14 @@
     <string name="public_event_notification_text">Egy esemény következik</string>
     <string name="saving_filtered_out">Mentés… De a kiválasztott eseménytípus ki van szűrve fent: Menü – Szűrő</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Feladat</string>
+    <string name="tasks">Feladatok</string>
+    <string name="edit_task">Feladat szerkesztése</string>
+    <string name="new_task">Új feladat</string>
+    <string name="create_new_task">Új feladat létrehozása</string>
+    <string name="duplicate_task">Feladat kettőzése</string>
+    <string name="mark_completed">Megjelölés befejezettként</string>
+    <string name="mark_incomplete">Megjelölés nem befejezettként</string>
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>
     <string name="no_repetition">Nincs ismétlés</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Ismétlés eddig:</string>
     <string name="forever">Örökké</string>
     <string name="event_is_repeatable">Az esemény ismétlődik</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">A feladat megismételhető</string>
     <string name="selection_contains_repetition">A kiválasztás ismétlődő eseményeket tartalmaz</string>
     <string name="delete_one_only">Csak a kiválasztott előfordulás törlése</string>
     <string name="delete_future_occurrences">Ez és az összes jövőbeli előfordulás törlése</string>
@@ -116,7 +116,7 @@
     <string name="before">korábban</string>
     <string name="add_another_reminder">További emlékeztető hozzáadása</string>
     <string name="event_reminders">Eseményemlékeztetők</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Emlékeztetők</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">További résztvevő hozzáadása</string>
     <string name="my_status">Saját állapot:</string>
@@ -186,7 +186,7 @@
     <string name="show_a_grid">Rács megjelenítése</string>
     <string name="loop_reminders">Emlékeztetők ismétlése, amíg el nem veti őket</string>
     <string name="dim_past_events">Múltbeli események elhalványítása</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Befejezett feladatok elhalványítása</string>
     <string name="events">Események</string>
     <string name="reminder_stream">Emlékeztetők által használt hangcsatorna</string>
     <string name="system_stream">Rendszer</string>
@@ -210,7 +210,7 @@
     <string name="highlight_weekends_color">Kiemelt hétvégék színe</string>
     <string name="allow_changing_time_zones">Esemény időzónájának megváltoztatásának engedélyezése</string>
     <string name="manage_quick_filter_event_types">Gyorsszűrő eseménytípusok kezelése</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Feladatok létrehozásának engedélyezése</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Válassza ki a szinkronizálandó naptárakat</string>
@@ -228,7 +228,7 @@
     <string name="no_synchronized_calendars">Nem találhatók szinkronizálható naptárak</string>
     <string name="status_free">Szabad</string>
     <string name="status_busy">Elfoglalt</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">A(z) %s esemény lekérése sikertelen</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">hétfőn</string>
@@ -273,10 +273,10 @@
     <string name="faq_3_text">Nem csak az emlékeztető megjelenítése, hanem a hanglejátszás is nagy mértékben függ a rendszerétől. Ha nem hall hangokat, akkor menjen az alkalmazásbeállításokba, nyomja meg az „Emlékeztetők által használt hangcsatorna” lehetőséget, és állítsa másik értékre. Ha továbbra sem működik, akkor ellenőrizze a hangbeállításokat, hogy nem lett-e lenémítva az a hangcsatorna.</string>
     <string name="faq_4_title">Az alkalmazás támogatja az időzónákat\?</string>
     <string name="faq_4_text">Igen. Alapértelmezés szerint minden esemény a jelenlegi időzónájában kerül létrehozásra. Ha módosítani akarja egy esemény időzónáját, akkor előbb engedélyeznie kell az időzóna-választót az alkalmazásbeállításokban, majd módosítania az Esemény részletei képernyőn. Alapértelmezetten le van tiltva, mert a legtöbb embernek nincs rá szüksége.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Az alkalmazás nem jelenít meg értesítéseket, ez miért van\?</string>
+    <string name="faq_5_text">Nézze meg az eszköz akkumulátor- és értesítési beállításait, hogy semmi sem blokkolja az emlékeztetőket vagy lövi ki az alkalmazást a háttérben. Érdemes lehet megnéznie a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; weboldalt, van rajta néhány hasznos tipp.</string>
+    <string name="faq_6_title">Hogyan módosíthatom vagy törölhetem egy meglévő esemény típusát\?</string>
+    <string name="faq_6_text">Mindkettőt a Beállítások – Eseménytípusok kezelése alatt teheti meg. Csak kattintson a kívánt elemre a címkéje vagy a színe a módosításához, vagy válassza ki a kívántat hosszú érintéssel, és a törléshez használja a felső menüben lévő kukát.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
