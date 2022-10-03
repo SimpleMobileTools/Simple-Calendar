@@ -1,10 +1,10 @@
 Calendarul simplu 2022 este o aplicație de calendar offline extrem de personalizabilă pentru Android. Dețineți în buzunar un planificator de agendă, conceput pentru a face exact ceea ce ar trebui să facă o aplicație de planificare în 2022. Fără funcții complicate, permisiuni inutile sau reclame! Suportă sincronizarea de evenimente prin Google Calendar sau alte calendare care acceptă protocolul CalDAV.
 
 Preluați controlul asupra timpului dvs.
-Fie că sunteți în căutarea unui calendar de lucru pentru afaceri, a unui planificator de zi, a unui programator de întâlniri sau a unei organizări și programări a evenimentelor unice și recurente, cum ar fi zile de naștere, aniversări, memento-uri de întâlniri sau orice altceva, Calendarul simplu 2022 vă oferă posibilitatea de a fi organizați cu ușurință. Widgetul calendaristic are o varietate incredibilă de opțiuni de personalizare: personalizați memento-urile de evenimente, aspectul notificărilor, widget-ul mic de memento-uri calendaristice și aspectul în general.
+Fie că sunteți în căutarea unui calendar de lucru pentru afaceri, a unui planificator de zi, a unui programator de întâlniri sau a unei organizări și programări a evenimentelor unice și recurente, cum ar fi zile de naștere, aniversări, memento-uri de întâlniri sau orice altceva, Calendarul simplu 2022 vă oferă posibilitatea de a fi organizați cu ușurință.
 
 Planificator de programări: Planificați-vă ziua
-Planificator de întâlniri, planificator lunar și organizator de familie într-un singur loc! Verificați viitoarele evenimente, programați întâlniri de afaceri și rezervați întâlniri cu ușurință. Amintirile vă vor asigura că veți fi la timp și veți fi informat cu privire la programul zilnic al aplicației. Acest widget de calendar 2022 este extrem de ușor de utilizat. Puteți chiar să vizualizați totul ca o simplă listă de evenimente, în loc de o vizualizare lunară, astfel încât să știți exact ce urmează să se întâmple în viața dvs. și cum să vă organizați și să vă planificați agenda. 
+Planificator de întâlniri, planificator lunar și organizator de familie într-un singur loc! Verificați viitoarele evenimente, programați întâlniri de afaceri și rezervați întâlniri cu ușurință. Amintirile vă vor asigura că veți fi la timp și veți fi informat cu privire la programul zilnic al aplicației. Acest widget de calendar 2022 este extrem de ușor de utilizat.
 
 Caracteristicile Calendarului simplu 2022
 
@@ -22,8 +22,6 @@ Caracteristicile Calendarului simplu 2022
 ➕ Planificator de programări - personalizați și modificați sunetul, bucla, fluxul audio, vibrațiile
 ➕ Widget calendaristic - Calendare colorate și teme personalizabile
 ➕ Calendarul minuscul de tip opensource, tradus în peste 45 de limbi
-➕ Planifică-ți ziua cu alții - posibilitatea de a partaja rapid evenimentele pe rețelele sociale, e-mailuri etc.
-➕ Organizator de familie - cu duplicare de evenimente, organizare și gestionare a timpului fără complicații
 
 ✔️ Organizare și gestionare a timpului
 ➕ Planificator de zi - planificatorul de agendă vă va ajuta să vă organizați ziua
@@ -31,7 +29,6 @@ Caracteristicile Calendarului simplu 2022
 ➕ Manager de itinerar - calendar de afaceri partajat între echipele de la locul de muncă
 ➕ Programator de întâlniri - organizați-vă și mențineți-vă agenda cu ușurință
 ➕ Aplicație de planificare - planificator personal de evenimente, memento-uri de întâlniri și programări ușor de utilizat
-➕ Planifică-ți ziua - gestionează-ți ziua cu acest planificator de program android, organizator de evenimente și de programe pentru familie
 
 ✔️ #1 Aplicație de calendar
 ➕ Importați cu ușurință sărbătorile, zilele de naștere și aniversările ale contactelor 
