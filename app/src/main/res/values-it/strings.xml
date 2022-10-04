@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Semplice calendario</string>
+    <string name="app_name">Calendario Semplice</string>
     <string name="app_launcher_name">Calendario</string>
     <string name="change_view">Cambia vista</string>
     <string name="daily_view">Vista giornaliera</string>
