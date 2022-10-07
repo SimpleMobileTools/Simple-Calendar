@@ -8,4 +8,6 @@
     android:minResizeHeight="40dp"
     android:previewImage="@drawable/img_widget_date_preview"
     android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="1"
+    android:targetCellHeight="1"
     android:updatePeriodMillis="3600000" />
