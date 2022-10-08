@@ -265,10 +265,10 @@
     <!-- FAQ -->
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
     <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
-    <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV\?</string>
-    <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers. In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
-    <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do\?</string>
-    <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>
+    <string name="faq_2_title">Googleカレンダーまたは他のサービスのCalDAVを介して予定を同期できますか？</string>
+    <string name="faq_2_text">はい、アプリの設定で「CalDAV 同期」を有効にして、同期したいカレンダーを選択するだけです。ただし、デバイスとサーバー間の同期を処理するサードパーティのアプリが必要になります。Googleカレンダーと同期をしたい場合、Googleのカレンダーアプリが仕事をします。他のカレンダーの場合は、DAVx5などのサードパーティの同期アダプターが必要になります。</string>
+    <string name="faq_3_title">視覚的なリマインダーは機能しますが、通知音が鳴りません。どうすればいいですか？</string>
+    <string name="faq_3_text">リマインダーの表示だけでなく、通知音の再生もシステムの影響を大きく受けます。通知音が鳴らない場合は、アプリの設定に移動し、「リマインダーで使用する音の種類」オプションを押して、別の音源を試してみてください。それでも機能しない場合、端末側の音の設定を開き、対象の音源がミュートになっていないか確認してみてください。</string>
     <string name="faq_4_title">Does the app support time zones\?</string>
     <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
     <string name="faq_5_title">アプリが通知を表示しないのはなぜですか？</string>
