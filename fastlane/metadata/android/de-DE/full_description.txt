@@ -1,55 +1,55 @@
-Schlichter Kalender ist ein vollständig anpassbarer Offline-Kalender, der Android-Nutzern genau das bietet, was sie von einem mobilen Taschenkalender im Jahr 2022 erwarten. Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!
+Einfacher Kalender 2022 ist eine hochgradig anpassbare, offline-Monatskalender-App für Android. Sie haben einen Terminplaner in Ihrer Tasche, der genau das tut, was ein persönlicher kleiner Terminplaner im Jahr 2022 tun sollte. Keine komplizierten Funktionen, unnötige Berechtigungen oder Werbung! Die App unterstützt die Synchronisierung von Ereignissen mit Google Calendar oder anderen Kalendern, die das CalDAV-Protokoll unterstützen.
 
-➕  Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
+Behalten Sie die Kontrolle über Ihre Zeit
+Ob Sie einen Arbeitskalender für Ihr Unternehmen, einen Tagesplaner, einen Terminplaner oder die Organisation und Planung von einmaligen und wiederkehrenden Ereignissen wie Geburtstagen, Jahrestagen, Terminerinnerungen oder etwas anderem suchen, Simple Calendar 2022 macht es Ihnen leicht, organisiert zu bleiben. Das Kalender-Widget bietet eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Passen Sie die Terminerinnerungen, das Erscheinungsbild der Benachrichtigungen, das kleine Kalender-Erinnerungs-Widget und das gesamte Erscheinungsbild an.
 
-Tagesplaner: Die volle Kontrolle
-Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Schlichter Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das KalenderWidget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
+Zeitplan Planer: Planen Sie Ihren Tag
+Terminplaner, Monatsplaner und Familienorganisator in einem! Überprüfen Sie Ihre anstehende Agenda, planen Sie geschäftliche Meetings und Veranstaltungen und buchen Sie ganz einfach Termine. Erinnerungen halten Sie auf dem Laufenden und informieren Sie über Ihre tägliche Zeitplan-App. Dieses 2022 Kalender-Widget ist bemerkenswert einfach zu bedienen. Sie können sogar alles in einer einfachen Liste von Ereignissen und nicht in einer Monatsansicht sehen, so dass Sie genau wissen, was in Ihrem Leben ansteht und wie Sie Ihre Agenda organisieren und planen können.
 
-Terminplaner: Plane deinen Tag
-Tagesplaner und Familienorganisator in einem – verschaffe dir den perfekten Überblick, wenn es um Verabredungen, geschäftliche Meetings, Events und Termine geht. Dank Erinnerungen bist du immer pünktlich und top informiert. Dabei ist das 2022 Kalender Widget unglaublich einfach zu bedienen.
+Einfacher Kalender 2022 Eigenschaften
 
-Schlichter Kalender - Funktionen
+✔️ Die beste Benutzererfahrung
+➕ Keine Werbung oder lästige Popups, ein wirklich tolles Benutzererlebnis!
+➕ Es wird kein Internetzugang benötigt, was Ihnen mehr Privatsphäre, Sicherheit und Stabilität bietet
 
-✔️ Das beste Benutzererlebnis
-➕ Keine Werbung oder Popups für ein besseres Benutzererlebnis!
-➕ Kein Internetzugang erforderlich, was dir mehr Privatsphäre, Sicherheit und Stabilität bietet.
+✔️ Flexibilität für Ihre Produktivität
+➕ Kalender-Widget unterstützt das Exportieren und Importieren von Terminen über .ics-Dateien
+➕ Exportieren von Einstellungen in .txt-Dateien zum Importieren auf ein anderes Gerät
+➕ Flexible Erstellung von Ereignissen - Zeiten, Dauer, Erinnerungen, leistungsstarke Wiederholungsregeln
+➕ CalDAV-Unterstützung für die Synchronisierung von Ereignissen über Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc.
 
-✔️ Flexibel und Produktiv
-➕ Import/Export-Unterstützung im .ics-Format
-➕ Anpassung von Terminen – Zeiten, Dauer, Erinnerungen, Wiederholungsregeln
-➕  Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
-
-✔️ Ein Kalender für dich
-➕ Terminplaner – Anpassen von Tönen, Sound-Loops und Vibrationen
-➕ Kalender Widget – Bunter Kalender mit anpassbaren Themes
-➕ Familienorganisator – mit müheloser Terminvervielfältigung und Organisation 
-➕ Plane deine Monate mit Feiertagen
+✔️ Personalisiert nur für Sie
+➕ Terminplaner - Sound, Schleifen, Audiostream, Vibrationen anpassen und ändern
+➕ Kalender-Widget - Bunte Kalender und anpassbare Themen
+➕ Winziger Open-Source-Kalender, übersetzt in 45+ Sprachen
+➕ Planen Sie Ihren Tag mit anderen - Sie können Ereignisse schnell über soziale Medien, E-Mails usw. teilen
+➕ Family Organizer - mit müheloser Terminvervielfältigung, Organisation und Zeitmanagement
 
 ✔️ Organisation und Zeitmanagement
-➕ Tagesplaner – der Planer hilft dir, deinen Tag zu organisieren
-➕ Wochenplaner – noch nie war es so einfach, den Überblick zu behalten  
-➕ Terminplaner – Einfache Organisation und Verwaltung deiner Termine
-➕ Planungs-App – Kalender Planer für private Termine, Erinnerungen, Feiertage und Zeitpläne. Plane genauer mit Feiertagen!
-➕ Plane deinen Tag – mit diesem Android-Terminplaner verpasst du keine Termine mehr
+➕ Tagesplaner - der Agenda-Planer hilft Ihnen, Ihren Tag zu organisieren
+➕ Wochenplaner - es war noch nie so einfach, den Überblick über Ihren vollen Wochenplan zu behalten
+➕ Itinerary Manager - gemeinsamer Geschäftskalender für Teams am Arbeitsplatz
+➕ Terminplaner - organisieren und verwalten Sie Ihre Agenda mit Leichtigkeit
+➕ Planungs-App - einfach zu bedienender persönlicher Event-, Termin-Erinnerungs- und Zeitplan-Planer
+➕ Planen Sie Ihren Tag - verwalten Sie Ihren Tag mit diesem Android Terminplaner, Event- und Familienorganisator
 
+✔️ #1 Kalender App
+➕ Einfaches Importieren von Feiertagen, Geburtstagen und Jahrestagen von Kontakten
+➕ Filtern Sie persönliche Ereignisse schnell nach Ereignistyp
+➕ Tagesplan und Veranstaltungsort auf einer Karte angezeigt
+➕ Schneller Geschäftskalender oder persönliche digitale Agenda
+➕ Schnelles Umschalten zwischen Tages-, Wochen-, Monats-, Jahres- und Ereignisansichten
 
-✔️ Nr.1 Kalender App
-➕ Feiertage, Geburtstage und Jahrestage von Kontakten einfach importieren: Dein persönlicher Geburtstagskalender, Urlaubsplaner und Arbeitskalender
-➕ Aktivitäten- und Kalender Planer
-➕ Erinnerungs-Widget mit praktischer Schlummeroption 
-➕ Tagesplan und Veranstaltungsort werden auf einer Karte angezeigt
-➕ Doch lieber keinen Wochenplaner? Schnelles Umschalten zwischen Tages-, Wochen-, Monats-, Jahres- und Ereignisansichten
+EINFACHEN KALENDERPLANER HERUNTERLADEN - OFFLINE-TERMINPLANER OHNE WERBUNG! PLANEN SIE IHREN ZEITPLAN FÜR 2022!
 
-HOL DIR DEN EINFACHEN, MOBILEN KALENDERPLANER – OFFLINE-PLANER OHNE WERBUNG! PLANE JETZT DEIN 2022!
+Er kommt standardmäßig mit Material Design und dunklem Thema, bietet eine großartige Benutzererfahrung für eine einfache Nutzung. Der fehlende Internetzugang bietet Ihnen mehr Privatsphäre, Sicherheit und Stabilität als andere Apps.
 
-Es kommt mit Material-Design und einem dunklen Thema standardmäßig, bietet eine großartige Benutzererfahrung für die einfache Verwendung. Der fehlende Internetzugang bietet Ihnen mehr Privatsphäre, Sicherheit und Stabilität als andere Apps.
+Enthält keine Werbung oder unnötige Berechtigungen. Es ist vollständig OpenSource und bietet anpassbare Farben.
 
-Enthält keine Anzeigen oder unnötige Berechtigungen. Es ist vollständig Open Source, bietet anpassbare Farben.
-
-Die komplette Suite von Simple Tools findest du hier:
+Sehen Sie sich die vollständige Suite von Simple Tools hier an:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
+Eigenständige Website von Simple Calendar Pro:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
@@ -58,5 +58,5 @@ https://www.facebook.com/simplemobiletools
 Reddit:
 https://www.reddit.com/r/SimpleMobileTools
 
-Telegram:
+Telegramm:
 https://t.me/SimpleMobileTools
