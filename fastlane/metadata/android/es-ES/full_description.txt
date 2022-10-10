@@ -1,65 +1,65 @@
-Calendario Sencillo 2022 es una aplicación de calendario mensual sin conexión y altamente personalizable para Android. Tenga un calendario en su bolsillo, diseñado para hacer exactamente lo que un calendario personal debe hacer en 2022. Sin funciones complicadas, permisos innecesarios ni anuncios. Soporta la sincronización con Google Calendar u otros calendarios que soporten CalDAV. 
- 
-Controla tu tiempo. Tanto si buscas un calendario de trabajo para los negocios, para tu día a día, programar citas, organizar y programar eventos: como cumpleaños, aniversarios, citas o cualquier otra cosa. Calendario Sencillo 2022 hace que sea fácil mantenerse organizado. El widget de calendario tiene una increíble variedad de opciones para personalizar: recordatorios, notificaciones, apariencia, etc. 
- 
-Planificador de horarios: planifica tu día a día 
-Organizador familiar. Consulta tu próxima agenda, programa reuniones y eventos de negocios y reserva fácilmente tus citas. Los recordatorios te mantendrán puntualmente informado. Este widget de calendario 2022 es muy fácil de usar. Incluso puedes ver todo como una simple lista. En lugar de una vista mensual, para ver exactamente lo que se avecina en tu vida y cómo organizarlo.  
- 
+Calendario Sencillo 2022 es una aplicación de agenda sin conexión a la red y muy personalizable para Android. Un calendario para el bolsillo, diseñado para hacer lo que una agenda personal debe hacer en 2022. Sin funciones complicadas, permisos innecesarios y sin anuncios. Sincronice con Google Calendar u otros calendarios que soporten CalDAV. 
+
+Controla todo tu tiempo. Tanto si buscas un calendario para el trabajo, negocios, para tu día a día, citas y eventos: como cumpleaños, aniversarios, citas o cualquier otra cosa. Calendario Sencillo 2022 hace que sea fácil mantenerse organizado. El widget del calendario tiene una increíble variedad de opciones para personalizar: recordatorios, notificaciones, apariencia y más. 
+
+Planifica tus horarios: planifica tu día a día 
+Organizador familiar. Consulta la agenda, programa reuniones, eventos de negocios y reserva fácilmente tus citas. Los recordatorios te mantendrán puntualmente informado. Este widget de calendario 2022 es muy fácil de usar. Incluso puedes ver todo como una lista sencilla. En vez de una mensual, para ver exactamente lo que se avecina en tu vida y cómo organizarlo. 
+
 Características de Calendario Sencillo 2022 
- 
-✔️ La mejor experiencia de usuario 
-➕ Sin anuncios ni molestas ventanas emergentes, ¡una experiencia de usuario realmente genial! 
+
+✔️ La mejor experiencia par el usuario 
+➕ Sin anuncios ni molestas ventanas emergentes, ¡una experiencia de uso realmente genial! 
 ➕ No se necesita acceso a Internet, lo que le da más privacidad, seguridad y estabilidad 
- 
+
 ✔️ Flexibilidad para tu productividad 
 ➕ El widget de calendario soporta la exportación e importación de eventos a través de archivos .ics 
-➕ Exportación de ajustes a archivos .txt para importarlos a otro dispositivo 
-➕ Crea eventos flexibles: horarios, duración, recordatorios, potentes reglas de recurrencia 
-➕ Soporte CalDAV para sincronizar eventos a través de Google Calendar, Outlook, Nextcloud, Exchange, etc 
- 
+➕ Exporta los ajustes a archivos .txt para importarlos a otro dispositivo 
+➕ Crea eventos flexibles: horarios, recordatorios y potentes reglas 
+➕ Soporta CalDAV para sincronizar eventos a través de Google Calendar, Outlook, Nextcloud, Exchange, etc 
+
 ✔️ Personalizado sólo para ti 
-➕ Programador de horarios: personaliza y cambia el sonido, las vibraciones 
+➕ Programa horarios: personaliza y cambia los sonidos y las vibraciones 
 ➕ Widget de calendario: calendarios coloridos y temas personalizables 
 ➕ Calendario de código abierto, traducido a más de 45 idiomas 
-➕ Planifica tu día con nosotros: posibilidad de compartir eventos en redes sociales, correos electrónicos, etc 
-➕ Organizador familiar - con duplicación de eventos, organización y gestión del tiempo sin complicaciones 
- 
+➕ Planifica tu día con nosotros: puede compartir sus eventos en las redes sociales, por correo electrónico, etc 
+➕ Organizador familiar - eventos, organización y gestión del tiempo sin complicarse 
+
 ✔️ Organiza y gestiona el tiempo 
-➕ Planificador del día - te ayudará a organizar tu día 
-➕ Planificador semanal - adelantate a tu apretada agenda semanal 
-➕ Gestor de itinerarios - calendario comercial para grupos de trabajo 
-➕ Programador de citas - organice y mantenga su agenda con facilidad 
-➕ Aplicación para planificar - eventos personales, familiares y de trabajo 
+➕ Planifica el día - te ayuda a organizar tú día 
+➕ Planifica la semana o los meses - adelantate a tu apretada agenda 
+➕ Gestiona itinerarios - calendario comercial para grupos de trabajo 
+➕ Programa citas - organice y mantenga su agenda fácilmente 
+➕ Planifique - eventos personales, familiares y de trabajo 
 ➕ Planifica tu día - gestiona tu día a día 
- 
-✔️ Aplicación de calendario número 1 
+
+✔️ La aplicación de calendario número 1 
 ➕ Importa las vacaciones, los cumpleaños de los contactos fácilmente 
-➕ Filtrar eventos personales rápidamente 
-➕ Agenda diaria y localización de eventos en un mapa 
-➕ Calendario empresarial, o calendario digital personal 
-➕ Cambiar entre las vistas diaria, semanal, mensual y anual 
- 
-¡DESCARGE CALENDARIO SENCILLO - PLANIFICADOR DE HORARIOS SIN INTERNET Y SIN PUBLICIDAD! ¡PLANIFICAR SU HORARIO 2022! 
- 
+➕ Filtre eventos personales rápidamente 
+➕ Agenda diaria y localicé sus eventos en el mapa 
+➕ Calendario digital para la empresa o calendario digital personal 
+➕ Cambia entre las vistas diaria, semanal, mensual o anual 
+
+¡DESCARGE CALENDARIO SENCILLO - PLANIFICADOR DE HORARIOS SIN INTERNET Y SIN PUBLICIDAD! ¡PLANIFIQUE SU HORARIO DEL 2022! 
+
 Viene con material design y tema oscuro, proporciona una gran experiencia de uso. La falta de acceso a internet le da más privacidad, seguridad y estabilidad que otras aplicaciones. 
- 
+
 No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, proporciona colores personalizables. 
- 
+
 Consulta el cátalogo completo de Simple Tools aquí: 
 https://www.simplemobiletools.com 
- 
- 
+
+
 Sitio web independiente de Calendario Sencillo Pro: 
 https://www.simplemobiletools.com/calendar 
- 
- 
+
+
 Facebook: 
 https://www.facebook.com/simplemobiletools 
- 
- 
+
+
 Reddit: 
 https://www.reddit.com/r/SimpleMobileTools 
- 
- 
+
+
 Telegram: 
 https://t.me/SimpleMobileTools
