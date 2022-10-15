@@ -1,1 +1,1 @@
-Widget do calendario 2022 para Android. Programador de citas, planificador e recordatorio
+Calendadario simple, con eventos, widget personalizable e sen publicidade.
