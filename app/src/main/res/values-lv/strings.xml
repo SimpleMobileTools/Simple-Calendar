@@ -268,6 +268,7 @@
     <string name="faq_1_title">Kā izdzēst svētku dienas, kas importētas, izmantojot pogu Pievienot svētkus\?</string>
     <string name="faq_1_text">Šādi izveidotas svētku dienas tiek piešķirts jauns notikumu tips - Svētku dienas. Dodieties uz sadaļu \"Iestatījumi \" -&gt; \"Notikumu tipu pārvaldīšana/, tad ilgs nospiediens uz āttiecīgā notikuma tipa un tā izdzēšana ar nospiedienu uz /misenes/.</string>
     <string name="faq_2_title">Vai iespējams sinhronizēt notikumus, izmantojot Google kalendāru vai citu pakalpojumu, kas atbalsta CalDAV\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">"Jā, vienkārši lietotnes iestatījumos iespējojiet  CalDAV Sync \" un atlasiet sinhronizējamos kalendārus. Tomēr jums būs nepieciešama trešās puses programma, kas veic sinhronizāciju starp ierīci un serveri. Ja vēlaties sinhronizēt Google kalendāru, minēto funkciju veiks tā oficiālā lietotne. Citiem kalendāriem Jums būs nepieciešams trešās puses veidots sinhronizācijas rīks, piemēram, DAVx5."</string>
     <string name="faq_3_title">Es redzu vizuālos atgādinājumus, bet nedzirdu skaņu. Kā rīkoties\?</string>
     <string name="faq_3_text">Gan atgādinājuma parādīšana, gan skaņu atskaņošana ir visai atkarīga no sistēmas. Ja nav dzirdama skaņa, atveriet lietotnes iestatījumus, nospiediet \"Atgādinājumiem izmantotā audio straume\" un nomainiet tās vērtību. Ja skaņas nav joprojām, pārbaudiet skaņas iestatījumos, vai šī straume nav izslēgta.</string>

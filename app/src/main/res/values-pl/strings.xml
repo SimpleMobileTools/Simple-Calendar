@@ -274,6 +274,7 @@
     <string name="faq_1_title">Jak mogę usunąć święta zaimportowane przez przycisk „Dodaj święta”\?</string>
     <string name="faq_1_text">Święta dodane w ten sposób są wprowadzane do nowego typu wydarzeń — „Święta”. Możesz wejść w Ustawienia -&gt; Zarządzaj typami wydarzeń, a następnie przyciśnij długo dany typ wydarzeń i usuń go, wybierając ikonę kosza.</string>
     <string name="faq_2_title">Czy mogę synchronizować swoje wydarzenia z Kalendarzem Google lub inną usługą obsługującą CalDAV\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">Tak. Wystarczy włączyć opcję „Synchronizacja CalDAV” w ustawieniach aplikacji i wybrać kalendarze do synchronizacji. Jednak będziesz potrzebować zewnętrznej aplikacji obsługującej synchronizację urządzenia z serwerami. Jeśli chcesz zsynchronizować wydarzenia z Kalendarzem Google, oficjalna aplikacja kalendarza powinna wystarczyć. W innych przypadkach może być potrzebna zewnętrzna aplikacja, np. DAVx5.</string>
     <string name="faq_3_title">Widzę przypomnienia, ale nie słyszę dźwięku. Co mogę zrobić\?</string>
     <string name="faq_3_text">System ma ogromny wpływ nie tylko na wyświetlanie przypomnienia, ale także na odtwarzanie dźwięku. Jeśli nie słyszysz żadnego dźwięku, spróbuj przejść do ustawień aplikacji, naciśnij opcję „Strumień audio używany przez przypomnienia” i zmień jej ustawienie. Jeśli nadal nie będzie działać, sprawdź ustawienia dźwięku w urządzeniu, czy dany strumień nie jest wyciszony.</string>

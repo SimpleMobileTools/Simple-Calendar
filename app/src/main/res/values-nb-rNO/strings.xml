@@ -268,6 +268,7 @@
     <string name="faq_1_title">Hvordan kan jeg fjerne off. fridager importert via meny - \"Legg til off. fridager\"\?</string>
     <string name="faq_1_text">Off. fridager opprettet på denne måten settes inn i en ny hendelsestype kalt \"Off. fridager\". Gå til Innstillinger -&gt; Behandle hendelsestyper, lang-trykk hendelsestypen og slett den ved å velge søppelbøtten.</string>
     <string name="faq_2_title">Kan jeg synkronisere hendelsene mine via Google Kalender eller annen tjeneste som støtter CalDAV\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">Ja, bare aktiver \"CalDAV-synkronisering\" i innstillingene og velg kalenderne du vil synkronisere. Du trenger imidlertid program som håndterer synkroniseringen mellom enheten og serverne. Hvis du vil synkronisere en Google-kalender, vil deres offisielle kalenderapp gjøre jobben. For andre kalendere trenger du en annen synkroniseringsapp, for eksempel DAVx5.</string>
     <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do\?</string>
     <string name="faq_3_text">Not just displaying the actual reminder, but playing the audio is hugely affected by the system too. If you can\'t hear any sound, try going in the app settings, pressing the \"Audio stream used by reminders\" option and changing it to a different value. If it still won\'t work, check your sound settings, if the particular stream isn\'t muted.</string>

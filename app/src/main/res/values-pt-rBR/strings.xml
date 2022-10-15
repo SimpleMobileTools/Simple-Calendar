@@ -268,6 +268,7 @@
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \"Adicionar feriados\"\?</string>
     <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \"Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">"Sim, basta ativar  CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
 \n         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5."</string>
     <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer\?</string>

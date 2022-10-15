@@ -268,6 +268,7 @@
     <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日\?</string>
     <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。 你可以到[設定] -&gt; [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
     <string name="faq_2_title">我可以透過 Google 日曆或其它支援 CalDAV 的服務來同步我的活動嗎\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">行的，只要打開程式設定內的「CalDAV 同步」，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。 如果你要同步 Google 日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是 DAVx5。</string>
     <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦\?</string>
     <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定， 按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>

@@ -268,6 +268,7 @@
     <string name="faq_1_title">공휴일 추가 버튼을 통해 불러온 공휴일을 제거하기 위해선 어떻게 해야하나요\?</string>
     <string name="faq_1_text">공휴일 추가 버튼을 통해 만든 공휴일은 \"공휴일\"이라는 새 일정 유형에 삽입됩니다. 설정 -&gt; 일정 유형 관리로 이동하여 해당 일정 유형을 길게누르고 휴지통을 선택하여 삭제할 수 있습니다.</string>
     <string name="faq_2_title">Google 캘린더 또는 calDAV를 지원하는 다른 서비스와 제 일정을 동기화할 수 있나요\?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">네 가능합니다. 앱 설정에서 \"CalDAV 동기화\"를 켜고 동기화하려는 캘린더를 선택할 수 있습니다. 그러나 핸드폰과 서버간의 동기화를 처리하는 타사 앱이 필요합니다. Google 캘린더를 동기화하려는 경우 공식 캘린더 앱이 작업을 수행합니다. 만약 다른 캘린더를 동기화하려면 동기화를 도와주는 타사 앱(ex : DAVx5)이 필요합니다.</string>
     <string name="faq_3_title">일정에 대한 알림이 화면에 뜨지만 알림음이 들리지 않습니다. 어떻게 해야하나요\?</string>
     <string name="faq_3_text">알림을 화면에 표시하는 것 뿐만 아니라 알림음도 시스템의 영향을 크게 받습니다. 소리가 들리지 않는다면 앱 설정으로 이동하여 \"알림음 출력 방식\" 옵션을 누르고 다른 방식으로 변경해보세요. 그래도 알림음이 들리지 않는다면 특정 출력 방식이 음소거되어 있을 가능성이 있습니다. 핸드폰의 사운드 설정을 확인해주세요.</string>

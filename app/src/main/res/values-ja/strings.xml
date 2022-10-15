@@ -266,6 +266,7 @@
     <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
     <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Googleカレンダーまたは他のサービスのCalDAVを介して予定を同期できますか？</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">はい、アプリの設定で「CalDAV 同期」を有効にして、同期したいカレンダーを選択するだけです。ただし、デバイスとサーバー間の同期を処理するサードパーティのアプリが必要になります。Googleカレンダーと同期をしたい場合、Googleのカレンダーアプリが仕事をします。他のカレンダーの場合は、DAVx5などのサードパーティの同期アダプターが必要になります。</string>
     <string name="faq_3_title">視覚的なリマインダーは機能しますが、通知音が鳴りません。どうすればいいですか？</string>
     <string name="faq_3_text">リマインダーの表示だけでなく、通知音の再生もシステムの影響を大きく受けます。通知音が鳴らない場合は、アプリの設定に移動し、「リマインダーで使用する音の種類」オプションを押して、別の音源を試してみてください。それでも機能しない場合、端末側の音の設定を開き、対象の音源がミュートになっていないか確認してみてください。</string>

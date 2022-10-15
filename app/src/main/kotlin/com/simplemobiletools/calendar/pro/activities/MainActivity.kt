@@ -1194,7 +1194,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val licenses = LICENSE_JODA
 
         val faqItems = arrayListOf(
-            FAQItem(R.string.faq_2_title, R.string.faq_2_text),
+            FAQItem("${getString(R.string.faq_2_title)} ${getString(R.string.faq_2_title_extra)}", R.string.faq_2_text),
             FAQItem(R.string.faq_5_title, R.string.faq_5_text),
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
             FAQItem(R.string.faq_6_title, R.string.faq_6_text),

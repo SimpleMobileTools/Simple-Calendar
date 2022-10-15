@@ -284,6 +284,7 @@
     <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -> Manage Event Types,
         long press the given event type and delete it by selecting the trashbin.</string>
     <string name="faq_2_title">Can I sync my events via Google Calendar, or other service supporting CalDAV?</string>
+    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
     <string name="faq_2_text">Yes, just toggle \"CalDAV sync\" in the app settings and select the calendars you want to sync. However, you will need some third party app handling the synchronization between the device and servers.
         In case you want to synchronize a Google calendar, their official Calendar app will do the job. For other calendars you will need a third party sync adapter, for example DAVx5.</string>
     <string name="faq_3_title">I see the visual reminders, but hear no audio. What can I do?</string>

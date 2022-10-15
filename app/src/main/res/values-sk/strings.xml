@@ -271,6 +271,7 @@
     <string name="faq_1_title">Ako môžem odstrániť sviatky pridané pomocou tlačidla \"Pridať sviatky\"\?</string>
     <string name="faq_1_text">Sviatky vytvorené daným spôsobom sú pridané do typu udalosti \"Sviatky\". Môžete teda ísť do Nastavenia -&gt; Spravovať typy udalostí, podržať daný typ a vymazať ho pomocou smetného koša.</string>
     <string name="faq_2_title">Viem si zosynchronizovať udalosti pomocou Google Kalendára, alebo inej služby podporujúcej CalDAV\?</string>
+    <string name="faq_2_title_extra">Možno aj zdieľať kalendáre s inými ľuďmi\?</string>
     <string name="faq_2_text">Áno, stačí aktivovať funkciu \"CalDAV synchronizácia\" v nastaveniach a zvoliť si správne kalendáre. Pre synchronizáciu medzi zariadením a serverom ale budete potrebovať synchronizačný adaptér od tretej strany. Ak chcete synchronizovať Google kalendár, ich oficiálna aplikácia Kalendár to spraví. Pre iné kalendáre budete potrebovať inú synchronizačnú aplikáciu, napr. DAVx5.</string>
     <string name="faq_3_title">Vidím vizuálnu pripomienku, ale nepočujem žiadny zvuk. Čo s tým viem spraviť\?</string>
     <string name="faq_3_text">Nie len zobrazovanie pripomienok, ale aj prehrávanie zvuku je ovplyvnené systémom. Ak nepočujete zvuk, skúste ísť do nastavení apky, použiť možnosť \"Zvukový kanál používaný pripomienkami\" a zmeniť zvolenú hodnotu. Ak to ešte stále nebude fungovať, skúste sa pozrieť do zvukových nastavení vášho systému, či daný kanál nie je stlmený.</string>
