@@ -1,1 +1,1 @@
-Calendario de eventos con agenda personal de fácil captura con recordatorios
+Widget de Calendario 2022 en Android. Programe citas, recordatorios y eventos
