@@ -268,7 +268,7 @@
     <string name="faq_1_title">Hvordan kan jeg fjerne helligdage der er importeret med funktionen \"Tilføj helligdage\"\?</string>
     <string name="faq_1_text">Helligdage oprettet på den måde er indsat under begivenhedstypen \"Helligdage\". Gå til Indstillinger -&gt; Håndter begivenhedstyper. Efter et par sekunders pres på en type kan du slette den ved at klikke på papirkurven.</string>
     <string name="faq_2_title">Kan jeg synkronisere mine begivenheder med Googles kalender eller en anden kalender der understøtter CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Måske endda dele kalendere med andre?</string>
     <string name="faq_2_text">Ja, klik på \"CalDAV synk\" i appens indstillinger og vælg de kalendere du vil synkronisere. Det kræver dog at du har en app til at synkronisere mellem din enhed og kalenderservere. Hvis du vil synkronisere en Googlekalender, kan Googles officielle app klare det. For andre kalenderes vedkommende kan du bruge en 3. partsapp som for eksempel DAVx5.</string>
     <string name="faq_3_title">Jeg kan se mine påmindelser, men der er ingen lyd på. Hvad kan jeg gøre ved det\?</string>
     <string name="faq_3_text">Såvel visning af påmindelser som afspilning af lyd til dem, er afhængig af systemet. Hvis ikke du kan høre nogen lyd, kan du prøve at gå ind i appens indstillinger. Her kan du trykke på \"Audio-stream anvendt af påmindelser\" og vælge en anden indstilling. Virker det stadig ikke skal du tjekke i dine lydindstillinger om lyden i det aktuelle valg er slået fra.</string>
