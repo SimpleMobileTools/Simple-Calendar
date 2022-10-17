@@ -264,7 +264,7 @@
     <string name="faq_1_title">Hoe kan ik de feestdagen die zijn geïmporteerd via \"Feestdagen toevoegen\" weer verwijderen\?</string>
     <string name="faq_1_text">Deze feestdagen hebben het afspraaktype \"Feestdagen\". Om de feestdagen te verwijderen, ga naar Instellingen -&gt; Afspraaktypes beheren, druk lang op \"Feestdagen\" en druk vervolgens op de prullenbak.</string>
     <string name="faq_2_title">Kan ik mijn afspraken synchroniseren met Google Calendar of een andere service die CalDAV ondersteunt\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Misschien zelfs agenda\'s delen met anderen\?</string>
     <string name="faq_2_text">Schakel \"CalDAV-synchronisatie\" in bij Instellingen en selecteer vervolgens de agenda\'s die gesynchroniseerd moeten worden. Er is wel een app nodig die de synchronisatie tussen het apparaat en de service zelf afhandelt. Betreft het een agenda van Google Calendar, dan voldoet hun officiële app. Voor andere services zal een adapter zoals DAVx5 benodigd zijn.</string>
     <string name="faq_3_title">Ik krijg wel herinneringen, maar ik hoor geen notificatiegeluid. Wat kan ik doen\?</string>
     <string name="faq_3_text">Geluiden afspelen bij een herinnering is sterk afhankelijk van het systeem. Als er geen geluid te horen is, ga dan naar instellingen en pas de optie \"Type geluiden voor herinneringen gebruiken\" aan. Als dat niet werkt, controleer dan bij de geluidsinstellingen van Android of het volume van dit geluidstype niet te laag is ingesteld.</string>
