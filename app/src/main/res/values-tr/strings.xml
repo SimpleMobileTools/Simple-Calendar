@@ -268,7 +268,7 @@
     <string name="faq_1_title">\"Tatil ekle\" düğmesiyle içe aktarılan tatilleri nasıl kaldırabilirim\?</string>
     <string name="faq_1_text">Tatiller, \"Tatiller\" olarak adlandırılan yeni bir etkinlik türüne eklenir. Ayarlar -&gt; Etkinlik Türlerini Yönet\'e gidip, belirlenen etkinlik türüne uzun basıp çöp kutusunu seçerek silebilirsiniz.</string>
     <string name="faq_2_title">Etkinliklerimi Google Takvim\'le veya CalDAV\'ı destekleyen başka bir hizmetle eşzamanlayabilir miyim\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Hatta belki takvimlerimi başkalarıyla paylaşabilir miyim\?</string>
     <string name="faq_2_text">Evet, uygulama ayarlarından \"CalDAV eşzamanlaması\" seçeneğini işaretleyin ve eşzamanlamak istediğiniz takvimleri seçin. Bununla birlikte, aygıt ve sunucular arasındaki eşzamanlamayı ele alan bazı üçüncü taraf uygulamalarına ihtiyacınız olacaktır. Bu durumda bir Google takvimini eşzamanlamak istiyorsanız, resmi Takvim uygulaması bunu yapacaktır. Diğer takvimler için, DAVx5 gibi üçüncü taraf eşzamanlama uygulamasına ihtiyacınız olacaktır.</string>
     <string name="faq_3_title">Görsel hatırlatıcıları görüyorum ama ses duymuyorum. Ne yapabilirim\?</string>
     <string name="faq_3_text">Yalnızca gerçek hatırlatıcıyı görüntülemekle kalmaz, aynı zamanda ses çalmak da sistemden büyük ölçüde etkilenir. Herhangi bir ses duyamıyorsanız, uygulama ayarlarına girmeyi, \"Hatırlatıcılar tarafından kullanılan ses akışına\" basmayı ve bunu farklı bir değere değiştirmeyi deneyin. Hala işe yaramazsa, belirli bir akış sessiz değilse, Ses ayarlarınızı gözden geçirin.</string>
