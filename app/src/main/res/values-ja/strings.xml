@@ -120,7 +120,7 @@
     <string name="reminders">リマインダー</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">別の出席者を追加する</string>
-    <string name="my_status">My status:</string>
+    <string name="my_status">自分のステータス:</string>
     <string name="going">Going</string>
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
@@ -168,7 +168,7 @@
     <!-- Settings -->
     <string name="manage_event_types">予定の種類を管理</string>
     <string name="start_day_at">日の始まり</string>
-    <string name="end_day_at">End day at</string>
+    <string name="end_day_at">日の終わり</string>
     <string name="midnight_spanning">深夜0時をまたぐ予定を上部バーに表示する</string>
     <string name="allow_customizing_day_count">日数のカスタマイズを許可する</string>
     <string name="week_numbers">週番号を表示</string>
@@ -223,12 +223,12 @@
     <string name="editing_calendar_failed">カレンダーを編集できませんでした</string>
     <string name="syncing">同期中…</string>
     <string name="synchronization_completed">同期が完了しました</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
+    <string name="select_a_different_caldav_color">別の色を選択してください (ローカルにのみ適用される可能性があります)</string>
     <string name="insufficient_permissions">選択したカレンダーへの書き込みは許可されていません</string>
-    <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
+    <string name="caldav_event_not_found">予定が見つかりません。アプリの設定で、適切なカレンダーのCalDAV同期を有効にしてください。</string>
     <string name="no_synchronized_calendars">同期可能なカレンダーが見つかりません</string>
-    <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_free">予定なし</string>
+    <string name="status_busy">予定あり</string>
     <string name="fetching_event_failed">予定 %s の取得に失敗しました</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
@@ -263,19 +263,19 @@
         <item quantity="other">今後 %d ヶ月分</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">How can I remove the holidays imported via the \"Add holidays\" button\?</string>
-    <string name="faq_1_text">Holidays created that way are inserted in a new event type called \"Holidays\". You can go in Settings -&gt; Manage Event Types, long press the given event type and delete it by selecting the trashbin.</string>
+    <string name="faq_1_title">「祝日を追加」ボタンでインポートした祝日を削除するにはどうすればいいですか？</string>
+    <string name="faq_1_text">この方法で作成された祝日は、「祝日」という新しい予定の種類に追加されます。この「祝日」という予定の種類を削除するには、設定の「予定の種類を管理」で対象の予定の種類を長押してごみ箱を選択する必要があります。</string>
     <string name="faq_2_title">Googleカレンダーまたは他のサービスのCalDAVを介して予定を同期できますか？</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">カレンダーを他の人と共有することもできますか？</string>
     <string name="faq_2_text">はい、アプリの設定で「CalDAV 同期」を有効にして、同期したいカレンダーを選択するだけです。ただし、デバイスとサーバー間の同期を処理するサードパーティのアプリが必要になります。Googleカレンダーと同期をしたい場合、Googleのカレンダーアプリが仕事をします。他のカレンダーの場合は、DAVx5などのサードパーティの同期アダプターが必要になります。</string>
     <string name="faq_3_title">視覚的なリマインダーは機能しますが、通知音が鳴りません。どうすればいいですか？</string>
     <string name="faq_3_text">リマインダーの表示だけでなく、通知音の再生もシステムの影響を大きく受けます。通知音が鳴らない場合は、アプリの設定に移動し、「リマインダーで使用する音の種類」オプションを押して、別の音源を試してみてください。それでも機能しない場合、端末側の音の設定を開き、対象の音源がミュートになっていないか確認してみてください。</string>
-    <string name="faq_4_title">Does the app support time zones\?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
+    <string name="faq_4_title">アプリはタイムゾーンに対応していますか？</string>
+    <string name="faq_4_text">はい、対応しています。デフォルトでは、すべての予定は現在のタイムゾーンで作成されます。予定のタイムゾーンを変更したい場合、アプリの設定で「予定のタイムゾーンの変更を許可する」を有効にしてから、予定の詳細画面でタイムゾーンを変更する必要があります。ほとんどの人が必要としない機能なので、デフォルトでは無効になっています。</string>
     <string name="faq_5_title">アプリが通知を表示しないのはなぜですか？</string>
     <string name="faq_5_text">端末の通知設定と電池設定を開き、リマインダーを妨げたり、バックグラウンド状態でアプリを落としたりする原因がないか確認してください。こちらの情報も参考にしてみてください。 &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; 役に立つヒントがいくつかあります。</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_title">既存の予定の種類を修正したり削除したりするにはどうすればよいですか？</string>
+    <string name="faq_6_text">アプリの設定の「予定の種類の管理」でどちらも行えます。予定の名前や色を変更する場合は目的のものをタップします。削除する場合は目的のものを長押しして選択し、上部のごみ箱から削除します。</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
