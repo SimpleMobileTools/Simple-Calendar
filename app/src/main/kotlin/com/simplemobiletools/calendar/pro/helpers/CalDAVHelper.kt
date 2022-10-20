@@ -228,8 +228,8 @@ class CalDAVHelper(val context: Context) {
             val event = Event(
                 null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
                 reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
-                    ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
-                    ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
+                ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
+                ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
                 repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source, availability = availability
             )
 

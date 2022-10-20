@@ -224,9 +224,14 @@ class EventActivity : SimpleActivity() {
         updateTextColors(event_scrollview)
         updateIconColors()
         refreshMenuItems()
-        event_time_zone_divider.beVisibleIf(config.allowChangingTimeZones)
-        event_time_zone_image.beVisibleIf(config.allowChangingTimeZones)
-        event_time_zone.beVisibleIf(config.allowChangingTimeZones)
+        showOrHideTimeZone()
+    }
+
+    private fun showOrHideTimeZone() {
+        val allowChangingTimeZones = config.allowChangingTimeZones && !event_all_day.isChecked
+        event_time_zone_divider.beVisibleIf(allowChangingTimeZones)
+        event_time_zone_image.beVisibleIf(allowChangingTimeZones)
+        event_time_zone.beVisibleIf(allowChangingTimeZones)
     }
 
     private fun refreshMenuItems() {
@@ -998,6 +1003,9 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         event_start_time.beGoneIf(isChecked)
         event_end_time.beGoneIf(isChecked)
+        mEvent.timeZone = if (isChecked) DateTimeZone.UTC.id else DateTimeZone.getDefault().id
+        updateTimeZoneText()
+        showOrHideTimeZone()
         resetTime()
     }
 
@@ -1149,7 +1157,11 @@ class EventActivity : SimpleActivity() {
             reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
-            timeZone = if (mEvent.timeZone.isEmpty()) TimeZone.getDefault().id else timeZone
+            timeZone = when {
+                mIsAllDayEvent -> DateTimeZone.UTC.id
+                timeZone.isEmpty() -> DateTimeZone.getDefault().id
+                else -> timeZone
+            }
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
