@@ -6,9 +6,9 @@
     <string name="daily_view">Tagesansicht</string>
     <string name="weekly_view">Wochenansicht</string>
     <string name="monthly_view">Monatsansicht</string>
-    <string name="monthly_daily_view">kompakte Monatsansicht mit Tagesliste</string>
+    <string name="monthly_daily_view">Monats- und Tagesansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Terminliste</string>
+    <string name="simple_event_list">Schlichte Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Zum heutigen Tag springen</string>
     <string name="go_to_date">Zu einem Datum springen</string>
@@ -268,7 +268,7 @@
     <string name="faq_1_title">Wie kann ich Feiertage löschen, die über „Feiertage hinzufügen“ importiert wurden\?</string>
     <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp „Feiertage“ deklariert. Du kannst in den Einstellungen -&gt; Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV-unterstützende Dienste synchronisieren\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Kann ich auch Kalender mit anderen teilen\?</string>
     <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate Anwendung, welche die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google-Kalender synchronisieren willst, kann deren offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter wie z. B. DAVx5.</string>
     <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun\?</string>
     <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android-) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
