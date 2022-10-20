@@ -10,8 +10,8 @@
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Schlichte Terminliste</string>
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
-    <string name="go_to_today">Zum heutigen Tag springen</string>
-    <string name="go_to_date">Zu einem Datum springen</string>
+    <string name="go_to_today">Zu heute springen</string>
+    <string name="go_to_date">Zu Datum springen</string>
     <string name="upgraded_from_free">Hallo,
 \n
 \nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommen. In diesem Fall musst du deine lokal gespeicherten Termine als .ics-Datei exportieren und danach wieder manuell importieren. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.
@@ -22,7 +22,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
     <string name="widget_list">Terminliste</string>
-    <string name="widget_todays_date">Kalender heutiges Datum</string>
+    <string name="widget_todays_date">Kalender, heutiges Datum</string>
     <!-- Event -->
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
@@ -36,7 +36,7 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü - Filter herausgefiltert</string>
+    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü – Filter herausgefiltert</string>
     <!-- Tasks -->
     <string name="task">Aufgabe</string>
     <string name="tasks">Aufgaben</string>
@@ -269,15 +269,15 @@
     <string name="faq_1_text">Die über diesen Weg erstellten Feiertage sind als Termintyp „Feiertage“ deklariert. Du kannst in den Einstellungen -&gt; Termintypen verwalten auf den Termintyp gedrückt halten und über das Papierkorbsymbol löschen.</string>
     <string name="faq_2_title">Kann ich meine Termine über Google Kalender oder andere CalDAV-unterstützende Dienste synchronisieren\?</string>
     <string name="faq_2_title_extra">Kann ich auch Kalender mit anderen teilen\?</string>
-    <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate Anwendung, welche die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google-Kalender synchronisieren willst, kann deren offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter wie z. B. DAVx5.</string>
+    <string name="faq_2_text">Ja, aktiviere „CalDAV-Synchronisierung“ in den Einstellungen und wähle die Kalender aus, die du synchronisieren willst. Jedoch benötigst du eine separate Anwendung, welche die Synchronisierung zwischen Gerät und Servern handhabt. Falls du einen Google-Kalender synchronisieren willst, kann deren offizielle Kalender-Anwendung dies übernehmen. Für andere Kalender benötigst du einen Synchronisierungsadapter wie z. B. DAVx5.</string>
     <string name="faq_3_title">Ich sehe die Erinnerungen, aber ich höre keinen Ton. Was kann ich tun\?</string>
-    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen ist ebenfalls stark vom jeweiligen (Android-) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
+    <string name="faq_3_text">Erinnerungen nicht nur anzeigen, sondern Töne dazu abspielen, ist ebenfalls stark vom jeweiligen (Android) System abhängig. Wenn Du keine Töne hörst, versuche in den Anwendungseinstellungen die Option „Audioausgabekanal für Erinnerungen“ anzuklicken und eine andere Option auszuwählen. Wenn das immer noch nichts ändert, prüfe Deine Lautstärkeeinstellungen und ob der gewählte Kanal nicht auf lautlos steht.</string>
     <string name="faq_4_title">Unterstützt die Anwendung Zeitzonen\?</string>
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können, muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <string name="faq_5_title">Die Anwendung zeigt keine Benachrichtigungen an, woran liegt das\?</string>
     <string name="faq_5_text">Überprüfen Sie den Akku Ihres Geräts und die Einstellungen für Benachrichtigungen, um sicherzustellen, dass die Erinnerungen nicht blockiert werden oder die Anwendung im Hintergrund beendet wird. Vielleicht möchten Sie auch einen Blick auf &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; werfen, dort finden Sie einige nützliche Tipps.</string>
     <string name="faq_6_title">Wie kann ich einen bestehenden Ereignistyp ändern oder löschen\?</string>
-    <string name="faq_6_text">Sie können beides in der Anwendung Einstellungen – Ereignistypen verwalten tun. Klicken Sie einfach auf das gewünschte Ereignis, um die Beschriftung und die Farbe zu ändern, oder wählen Sie das gewünschte Ereignis durch langes Drücken aus und verwenden Sie den Mülleimer im oberen Menü zum Löschen.</string>
+    <string name="faq_6_text">Sie können beides in der Anwendung Einstellungen – Ereignistypen verwalten tun. Klicken Sie einfach auf das gewünschte Ereignis, um Beschriftung und Farbe zu ändern oder wählen Sie das gewünschte Ereignis durch langes Drücken aus und verwenden den Mülleimer im oberen Menü.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
