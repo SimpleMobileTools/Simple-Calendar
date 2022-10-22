@@ -274,7 +274,7 @@
     <string name="faq_1_title">Kako lahko odstranim praznike, uvožene z gumbom \"Dodaj praznike\"\?</string>
     <string name="faq_1_text">Tako ustvarjeni prazniki se vstavijo v novo vrsto dogodka z imenom \"Prazniki\". V razdelku Nastavitve -&gt; Upravljanje tipov dogodkov lahko dolgo pritisnete na določen tip dogodka in ga izbrišete tako, da izberete koš za smeti.</string>
     <string name="faq_2_title">Ali lahko dogodke sinhroniziram prek Googlovega koledarja ali druge storitve, ki podpira CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Morda tudi delite koledarje z drugimi ljudmi\?</string>
     <string name="faq_2_text">Da, v nastavitvah aplikacije preklopite možnost \"Sinhronizacija CalDAV\" in izberite koledarje, ki jih želite sinhronizirati. Vendar pa boste potrebovali aplikacijo tretje osebe, ki bo skrbela za sinhronizacijo med napravo in strežniki. Če želite sinhronizirati Googlov koledar, bo to delo opravila njihova uradna aplikacija Koledar. Za druge koledarje boste potrebovali sinhronizacijski adapter tretje osebe, na primer DAVx5.</string>
     <string name="faq_3_title">Vidim vizualne opomnike, vendar ne slišim zvoka. Kaj lahko storim\?</string>
     <string name="faq_3_text">Sistem močno vpliva ne le na prikaz dejanskega opomnika, temveč tudi na predvajanje zvoka. Če ne slišite zvoka, pojdite v nastavitve aplikacije, pritisnite možnost \"Audio stream used by reminders\" in jo spremenite na drugo vrednost. Če še vedno ne deluje, preverite nastavitve zvoka, ali določen tok ni utišan.</string>
