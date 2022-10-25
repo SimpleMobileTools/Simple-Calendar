@@ -268,7 +268,7 @@
     <string name="faq_1_title">Kuidas ma saan eemaldada nupu \"Lisa pühad\" kaudu imporditud pühad\?</string>
     <string name="faq_1_text">Sel viisil loodud pühad lisatakse uude sündmuse tüüpi nimega \"Pühad\". Saate minna menüüsse Seaded -&gt; Sündmuste tüübid haldamine, vajutada pikalt antud sündmuse tüübile ja kustutada selle, valides prügikasti.</string>
     <string name="faq_2_title">Kas ma saan oma sündmusi sünkroonida Google\'i kalendri või mõne muu CalDAVi toetava teenuse kaudu\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Võib-olla isegi soovid jagada kalendreid teiste inimestega\?</string>
     <string name="faq_2_text">Jah, lülitage rakenduse seadetes lihtsalt \"CalDAV-sünkroonimine\" ja valige kalendrid, mida soovite sünkroonida. Siiski on teil vaja mõnda kolmanda osapoole rakendust, mis tegeleb seadme ja serverite vahelise sünkroniseerimisega. Juhul, kui soovite sünkroonida Google\'i kalendrit, teeb seda tööd nende ametlik kalenderrakendus. Teiste kalendrite jaoks vajate kolmanda osapoole sünkroonimisadapterit, näiteks DAVx5.</string>
     <string name="faq_3_title">Ma näen visuaalseid meeldetuletusi, kuid ei kuule heli. Mida ma saan teha\?</string>
     <string name="faq_3_text">Mitte ainult tegeliku meeldetuletuse kuvamine, vaid ka heli esitamine on süsteemist väga mõjutatud. Kui te ei kuule mingit heli, proovige minna rakenduse seadistustesse, vajutada valikut \"Audio stream used by reminders\" ja muuta see teise väärtuse peale. Kui see ikka veel ei tööta, kontrollige oma heliseadistusi, kas konkreetne voog ei ole vaigistatud.</string>

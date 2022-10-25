@@ -12,13 +12,13 @@
     <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
     <string name="go_to_today">Ir ao día de hoxe</string>
     <string name="go_to_date">Ir a unha data</string>
-    <string name="upgraded_from_free">Ola, 
-\n 
-\nParece que actualizaches da aplicación gratuíta antiga. Tes que migrar manualmente os eventos almaceados localmente mediante a exportación a un ficheiro .ics , a continuación, importar. Podes atopar os dous botóns de exportación/importación no menú da pantalla principal. 
-\n 
-\nDespois podes desinstalar a versión antiga, que ten un botón \'Actualizala a version Pro\' na parte superior da configuración da aplicación. Entón só terás que restablecela configuración da aplicación. 
-\n 
-\nGrazas.</string>
+    <string name="upgraded_from_free">Ola,
+\n
+\nParece que actualizaches a aplicación gratuíta antiga. Ten que migrar manualmente os eventos almacenados localmente mediante a exportación nun ficheiro .ics e despois importando. Podes atopar os dous botóns de exportación/importación no menú da pantalla principal.
+\n
+\nDespois podes desinstalar a versión antiga, que ten un botón \"Actualizar a Pro\" na parte superior da configuración da aplicación. Entón só terás que restablecer a configuración da túa aplicación.
+\n
+\nGrazas!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Almanaque mensual</string>
     <string name="widget_list">Lista de eventos do almanaque</string>
@@ -268,7 +268,7 @@
     <string name="faq_1_title">Como podo eliminar os días festivos engadidos mediante o botón \"Engadir días festivos\"\?</string>
     <string name="faq_1_text">Os días festivos creados dese xeito insírense nun tipo de evento chamado \"Festivo\". Podes ir a Axustes -&gt; Xestionar tipos de eventos, manter preso o tipo de evento desexado e eliminalo escollendo a Papeleira do lixo.</string>
     <string name="faq_2_title">Podo sincronizar os meus eventos vía Google Calendar, ou outro servizo que use CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Quizais poida compartir calendarios con outras persoas\?</string>
     <string name="faq_2_text">Si, activa \"Sincronización de CalDAV\" nos axustes da app e escolle os calendarios que queres sincronizar. Porén, precisas unha app de terceiros para xestionar a sincronización entre dispositivos e servidores. Se desexas sincronizar un calendario de Google, o seu app oficial Calendar fará o traballo. Para outros calendario precisas un app de sincronización, como DAVx5.</string>
     <string name="faq_3_title">Vexo os recordatorios visualmente, pero non escoito audio. Que podo facer\?</string>
     <string name="faq_3_text">Tanto o recordatorio propiamente dito como a reprodución do son dependen en gran medida do sistema. Se non podes escoitar ningún son, intenta ir aos axustes do app, premer en \"Canle de audio usado polos recordatorios\" e cambialo a un valor diferente. Se aínda así non funciona, comproba os axustes de son, que o fluxo en particular non estea acalado.</string>

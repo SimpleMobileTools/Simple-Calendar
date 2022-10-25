@@ -266,9 +266,9 @@
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
-    <string name="faq_1_text">Els dies festius creats d\'aquesta manera s\'insereixen en un tipus d\'esdeveniment nou anomenat «Festius». Podeu anar a Configuració -&gt; Gestiona els tipus d\'esdeveniments, prémer durant força temps el tipus d\'esdeveniment indicat i suprimir-lo seleccionant la paperera.</string>
+    <string name="faq_1_text">Els dies festius creats d\'aquesta manera s\'insereixen en un tipus d\'esdeveniment nou anomenat «Festius». Podeu anar a Configuració -&gt; Gestiona els tipus d\'esdeveniments, prémer prolongadament el tipus d\'esdeveniment indicat i suprimir-lo seleccionant la paperera.</string>
     <string name="faq_2_title">Puc sincronitzar els meus esdeveniments a través de Google Calendar o d\'un altre servei que admeti CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Potser fins i tot compartir calendaris amb altres persones\?</string>
     <string name="faq_2_text">Sí, només cal que activeu la «Sincronització CalDAV» a la configuració de l\'aplicació i seleccioneu els calendaris que voleu sincronitzar. Tanmateix, necessitareu una aplicació de tercers que gestioni la sincronització entre el dispositiu i els servidors. En cas que vulgueu sincronitzar un calendari de Google, la seva aplicació oficial Calendar farà la feina. Per a altres calendaris, necessitareu un adaptador de sincronització de tercers, per exemple DAVx5.</string>
     <string name="faq_3_title">Veig els recordatoris visuals, però no escolto cap àudio. Què puc fer\?</string>
     <string name="faq_3_text">No només es mostra el recordatori real, sinó que la reproducció de l\'àudio també es veu molt afectada pel sistema. Si no sentiu cap so, proveu d\'anar a la configuració de l\'aplicació, premeu l\'opció «Flux d\'àudio utilitzat pels recordatoris» i canvieu-lo a un valor diferent. Si encara no funciona, comproveu la configuració del so, en concret, si la reproducció no està silenciada.</string>
@@ -277,7 +277,7 @@
     <string name="faq_5_title">L\'aplicació no mostra cap notificació, per què és això\?</string>
     <string name="faq_5_text">Comproveu la bateria del dispositiu i la configuració de notificacions, si no hi ha res que bloquegi els recordatoris o que mati l\'aplicació en segon pla. També us recomanem que doneu una ullada a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, té alguns consells útils.</string>
     <string name="faq_6_title">Com puc modificar o suprimir un tipus d\'esdeveniment existent\?</string>
-    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el desitjat per canviar l\'etiqueta o el color, o el podeu seleccionar prement-lo llargament i utilitzeu la paperera del menú superior per suprimir-lo.</string>
+    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el desitjat per canviar l\'etiqueta o el color, o el podeu seleccionar prement-lo prolongadament i utilitzeu la paperera del menú superior per suprimir-lo.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

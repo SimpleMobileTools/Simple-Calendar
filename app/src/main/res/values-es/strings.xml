@@ -254,21 +254,24 @@
     <string name="within_the_next">Durante el próximo…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">Durante el próximo %d día</item>
+        <item quantity="many">Durante los próximos %d días</item>
         <item quantity="other">Durante los próximos %d días</item>
     </plurals>
     <plurals name="within_the_next_weeks">
         <item quantity="one">Durante la próxima %d semana</item>
+        <item quantity="many">Durante las próximas %d semanas</item>
         <item quantity="other">Durante las próximas %d semanas</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Durante el próximo %d mes</item>
-        <item quantity="other">Durante los próximos %d meses</item>
+        <item quantity="one">En el próximo mes %d</item>
+        <item quantity="many">En los próximos meses %d</item>
+        <item quantity="other">En los próximos meses %d</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">¿Cómo puedo eliminar los festivos importados a través del botón \"Añadir festivos\"\?</string>
     <string name="faq_1_text">A los eventos creados de esta forma se les asigna el tipo de evento \"Festivos\". En Ajustes -&gt; Gestionar tipos de evento, mantén pulsado el tipo de evento para seleccionarlo y elimínalo pulsando en la papelera.</string>
     <string name="faq_2_title">¿Puedo sincronizar eventos a través de Google Calendar u otros servicios compatibles con CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">¿Quizás incluso pueda compartir los calendarios con otras personas\?</string>
     <string name="faq_2_text">Sí, simplemente activa la opción \"Sincronizar CalDAV\" en los ajustes de la aplicación y selecciona los calendarios que quieras sincronizar. Sin embargo, hará falta una aplicación de terceros para sincronizar el dispositivo con los servidores. Si quieres sincronizar un calendario de Google, utiliza la aplicación de calendario oficial. Para otros calendarios, necesitarás una aplicación de terceros para sincronizarlos, por ejemplo, DAVx5.</string>
     <string name="faq_3_title">Veo las notificaciones, pero no suenan. ¿Qué puedo hacer\?</string>
     <string name="faq_3_text">Tanto las notificaciones como el sonido de notificación dependen del sistema en gran parte. Si no suenan las notificaciones, entra en los ajustes de la aplicación, pulsa en la opción de \"Tipo de sonido usado en recordatorios\" y cámbialo a una opción diferente. Si continúa fallando, comprueba en las opciones de sonido que la opción seleccionada no esté silenciada.</string>
