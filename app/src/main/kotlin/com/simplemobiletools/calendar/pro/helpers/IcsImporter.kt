@@ -212,6 +212,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                         val eventType = eventTypes.firstOrNull { it.id == curEventTypeId }
                         val source = if (calDAVCalendarId == 0 || eventType?.isSyncedEventType() == false) SOURCE_IMPORTED_ICS else "$CALDAV-$calDAVCalendarId"
+                        val isAllDay = curFlags and FLAG_ALL_DAY != 0
                         val event = Event(
                             null,
                             curStart,
@@ -231,7 +232,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curRepeatExceptions,
                             "",
                             curImportId,
-                            DateTimeZone.getDefault().id,
+                            if (isAllDay) DateTimeZone.UTC.id else DateTimeZone.getDefault().id,
                             curFlags,
                             curEventTypeId,
                             0,
@@ -240,7 +241,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curAvailability
                         )
 
-                        if (event.getIsAllDay() && curEnd > curStart) {
+                        if (isAllDay && curEnd > curStart) {
                             event.endTS -= DAY
 
                             // fix some glitches related to daylight saving shifts
