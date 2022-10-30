@@ -1,26 +1,26 @@
-Jednostavni kalendar 2022 izrazito je prilagodljiva mjesečna kalendarska aplikacija za Android. U džepu imate planera dnevnog reda, dizajniranog da učini upravo ono što bi osobni maleni planer rasporeda trebao učiniti u 2022. godini. Nema kompliciranih značajki, nepotrebnih dozvola ili oglasa! Podržava sinkronizacijske događaje putem Google kalendara ili drugih kalendara koji podržavaju CalDAV protokol.
+Jednostavni kalendar 2022 izrazito je prilagodljiva mjesečna kalendarska aplikacija za Android. U džepu imate planer dnevnog reda, dizajniranog da učini upravo ono što bi osobni maleni planer trebao učiniti u 2022. godini. Nema kompliciranih značajki, nepotrebnih dozvola ili oglasa! Podržava sinkronizacijske događaje putem Google kalendara ili koji podržavaju CalDAV protokol.
 
 Preuzmite kontrolu nad svojim vremenom
-Bilo da tražite kalendar rada za posao, planer dana, raspored rasporeda ili organizaciju i zakazivanje pojedinačnih i ponavljajućih događaja poput rođendana, obljetnica, podsjetnika na sastanke, ili bilo što drugo, Simple Calendar 2022 olakšava organiziranje. Kalendarski widget ima nevjerojatnu raznolikost mogućnosti prilagodbe: prilagođeni podsjetnici na događaje, izgled obavijesti, sićušni kalendarski podsjetnici widget i cjelokupni izgled.
+Bilo da tražite kalendar rada za posao, planer dana, raspored rasporeda ili organizaciju i zakazivanje pojedinačnih i ponavljajućih događaja poput rođendana, obljetnica, podsjetnika na sastanke, ili što drugo, Jednostavni kalendar 2022 olakšava organiziranje. Kalendarski dodatak ima nevjerojatnu raznolikost mogućnosti prilagodbe: prilagođeni podsjetnici na događaje, izgled obavijesti, sićušni kalendarski podsjetnici widget i cjelokupni izgled.
 
 Raspored planer: Planirajte svoj dan
-Raspored sastanka, mjesečni planer i obiteljski organizator u jednom! Lako provjerite svoj nadolazeći dnevni red, zakažite poslovne sastanke te događaje i sastanke knjiga. Podsjetnici će vas zadržati na vrijeme i informirati o vašoj dnevnoj aplikaciji. Ovaj kalendar za kalendar 2022. izuzetno je jednostavan za upotrebu.
+Raspored sastanka, planer i organizator u jednom! Lako provjerite svoj dnevni red, zakažite poslovne sastanke te događaje i sastanke knjiga. Podsjetnici će vas zadržati na vrijeme i informirati o vašoj dnevnoj aplikaciji. Ovaj kalendar za 2022. izuzetno je jednostavan za upotrebu.
 
-Jednostavna kalendar 2022. Značajke
+Jednostavne značajke kalendara 2022
 
-nost Najbolje iskustvo korisnika
-➕ Nema oglasa ili neugodnih skokova, uistinu sjajno korisničko iskustvo!
+Najbolje iskustvo korisnika
+➕ Nema oglasa ili skokova, uistinu sjajno iskustvo!
 ➕ Nije potreban pristup internetu koji vam daje više privatnosti, sigurnosti i stabilnosti
 
 Fleksibilnost za vašu produktivnost
-➕ Kalendar Widget podržava izvoz i uvoz događaja putem datoteka s ics
+➕ Kalendar dodatak podržava izvoz i uvoz događaja putem datoteka s ics
 ➕ Postavke izvoza u .txt datoteke za uvoz u drugi uređaj
 ➕ Fleksibilno stvaranje događaja – vremena, trajanje, podsjetnici, moćna pravila ponavljanja
 ➕ CalDAV podrška za sinkronizaciju događaja putem Google Calendar, Microsoft Outlook, Nextcloud, Exchange itd
 
-personalizirano samo za tebe
-➕ Planner rasporeda - prilagodite i promijenite zvuk, petlje, zvučni tok, vibracije
-➕ Kalendarski widget - šareni kalendari i prilagodljive teme
+Personalizirano samo za tebe
+➕ Planner rasporeda - prilagodite i promijenite zvuk, petlje, vibracije
+➕ Kalendarski dodatak- kalendari i teme
 ➕ Sitni kalendar otvorenog koda, preveden na 45 + jezika
 ➕ Planirajte svoj dan s drugima - sposobnost brzog dijeljenja događaja na društvenim medijima, e-porukama itd
 ➕ Obiteljski organizator - s besplatnim dupliranjem događaja, organizacijom i upravljanjem vremenom
@@ -28,9 +28,10 @@ personalizirano samo za tebe
 Organizacija i upravljanje vremenom
 ➕ Dnevni planer - planer dnevnog reda pomoći će vam da organizirate svoj dan
 ➕ Tjedni planer - boravak ispred vašeg zauzetog tjednog rasporeda nikada nije bio lakši
-➕ Itinerary menadžer - poslovni kalendar koji se dijeli između timova na poslu
-➕ Raspored zadataka - organizirajte i održavajte svoj dnevni red s lakoćom
+➕ Planski menadžer - poslovni kalendar koji se dijeli između timova na poslu
+➕ Raspored zadataka - organizirajte i održavajte dnevni red s lakoćom
 ➕ Aplikacija za planiranje - osobni događaj koji se lako koristi, podsjetnik za imenovanje i planer rasporeda
+➕ Planirajte svoj dan - upravljajte svojim danom pomoću ovog android planera rasporeda, organizatora događaja i obitelji
 
 # 1 Kalendar App
 ➕ Uvozni praznici, lako se obratite rođendanima i obljetnicama
@@ -39,16 +40,16 @@ Organizacija i upravljanje vremenom
 ➕ Brzi poslovni kalendar ili osobni digitalni program
 ➕ Brzo prebacite između dnevnih, tjednih, mjesečnih i godišnjih i pregleda događaja
 
-DOWNLOAD SIMPLE CALENDAR PLANNER – AN OFFLINE SCHEDULE I AGENDA PLANNER WITH NO ADS! PLAN TIMETALNOSTI 2022!
+PREUZMITE JEDNOSTAVNI PLANER KALENDARA – IZVAN MREŽNOG RASPORED I PLANIRANJE RASPOREDA BEZ REKLAMA! PLAN TIMETALNOSTI 2022!
 
-Dolazi s dizajnom materijala i tamnom temom prema zadanim postavkama, pružajući sjajno korisničko iskustvo za jednostavno korištenje. Nedostatak pristupa internetu daje vam više privatnosti, sigurnosti i stabilnosti od ostalih aplikacija.
+Dolazi s dizajnom materijala i tamnom temom prema zadanim postavkama, pružajući korisničko iskustvo za jednostavno korištenje. Nedostatak pristupa internetu daje vam više privatnosti, sigurnosti i stabilnosti od ostalih aplikacija.
 
-Ne sadrži oglase ili nepotrebne dozvole. Potpuno je open-source i pruža prilagođene boje.
+Ne sadrži oglase ili nepotrebne dozvole. Potpuno je otvoren i pruža prilagođene boje.
 
 Ovdje pogledajte cijeli paket jednostavnih alata:
 https://www.simplemobiletools.com
 
-Samostalna web stranica Simple Calendar Pro:
+Samostalna web stranica Jednostavni prokalendar:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
