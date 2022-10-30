@@ -161,7 +161,7 @@ class EventActivity : SimpleActivity() {
         event_end_time.setOnClickListener { setupEndTime() }
         event_time_zone.setOnClickListener { setupTimeZone() }
 
-        event_all_day.setOnCheckedChangeListener { compoundButton, isChecked -> toggleAllDay(isChecked) }
+        event_all_day.setOnCheckedChangeListener { _, isChecked -> toggleAllDay(isChecked) }
         event_repetition.setOnClickListener { showRepeatIntervalDialog() }
         event_repetition_rule_holder.setOnClickListener { showRepetitionRuleDialog() }
         event_repetition_limit_holder.setOnClickListener { showRepetitionTypePicker() }
@@ -213,7 +213,7 @@ class EventActivity : SimpleActivity() {
 
         event_type_holder.setOnClickListener { showEventTypeDialog() }
         event_all_day.apply {
-            isChecked = mEvent.flags and FLAG_ALL_DAY != 0
+            isChecked = mEvent.getIsAllDay()
             jumpDrawablesToCurrentState()
         }
 
@@ -225,13 +225,6 @@ class EventActivity : SimpleActivity() {
         updateIconColors()
         refreshMenuItems()
         showOrHideTimeZone()
-    }
-
-    private fun showOrHideTimeZone() {
-        val allowChangingTimeZones = config.allowChangingTimeZones && !event_all_day.isChecked
-        event_time_zone_divider.beVisibleIf(allowChangingTimeZones)
-        event_time_zone_image.beVisibleIf(allowChangingTimeZones)
-        event_time_zone.beVisibleIf(allowChangingTimeZones)
     }
 
     private fun refreshMenuItems() {
@@ -258,17 +251,25 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun getStartEndTimes(): Pair<Long, Long> {
-        val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
-            0
+        if (mIsAllDayEvent) {
+            val newStartTS = mEventStartDateTime.withTimeAtStartOfDay().seconds()
+            val newEndTS = mEventEndDateTime.withTimeAtStartOfDay().withHourOfDay(12).seconds()
+            return Pair(newStartTS, newEndTS)
         } else {
-            val original = if (mOriginalTimeZone.isEmpty()) DateTimeZone.getDefault().id else mOriginalTimeZone
-            val millis = System.currentTimeMillis()
-            (DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(millis) - DateTimeZone.forID(original).getOffset(millis)) / 1000L
-        }
+            val offset = if (!config.allowChangingTimeZones || mEvent.getTimeZoneString().equals(mOriginalTimeZone, true)) {
+                0
+            } else {
+                val original = mOriginalTimeZone.ifEmpty { DateTimeZone.getDefault().id }
+                val millis = System.currentTimeMillis()
+                val newOffset = DateTimeZone.forID(mEvent.getTimeZoneString()).getOffset(millis)
+                val oldOffset = DateTimeZone.forID(original).getOffset(millis)
+                (newOffset - oldOffset) / 1000L
+            }
 
-        val newStartTS = mEventStartDateTime.seconds() - offset
-        val newEndTS = mEventEndDateTime.seconds() - offset
-        return Pair(newStartTS, newEndTS)
+            val newStartTS = mEventStartDateTime.seconds() - offset
+            val newEndTS = mEventEndDateTime.seconds() - offset
+            return Pair(newStartTS, newEndTS)
+        }
     }
 
     private fun getReminders(): ArrayList<Reminder> {
@@ -309,6 +310,7 @@ class EventActivity : SimpleActivity() {
             mRepeatRule != mEvent.repeatRule ||
             mEventTypeId != mEvent.eventType ||
             mWasCalendarChanged ||
+            mIsAllDayEvent != mEvent.getIsAllDay() ||
             hasTimeChanged
         ) {
             return true
@@ -998,15 +1000,21 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun toggleAllDay(isChecked: Boolean) {
-        mIsAllDayEvent = isChecked
+    private fun toggleAllDay(isAllDay: Boolean) {
         hideKeyboard()
-        event_start_time.beGoneIf(isChecked)
-        event_end_time.beGoneIf(isChecked)
-        mEvent.timeZone = if (isChecked) DateTimeZone.UTC.id else DateTimeZone.getDefault().id
+        mIsAllDayEvent = isAllDay
+        event_start_time.beGoneIf(isAllDay)
+        event_end_time.beGoneIf(isAllDay)
         updateTimeZoneText()
         showOrHideTimeZone()
         resetTime()
+    }
+
+    private fun showOrHideTimeZone() {
+        val allowChangingTimeZones = config.allowChangingTimeZones && !mIsAllDayEvent
+        event_time_zone_divider.beVisibleIf(allowChangingTimeZones)
+        event_time_zone_image.beVisibleIf(allowChangingTimeZones)
+        event_time_zone.beVisibleIf(allowChangingTimeZones)
     }
 
     private fun shareEvent() {
@@ -1157,11 +1165,7 @@ class EventActivity : SimpleActivity() {
             reminder3Type = mReminder3Type
             repeatInterval = mRepeatInterval
             importId = newImportId
-            timeZone = when {
-                mIsAllDayEvent -> DateTimeZone.UTC.id
-                timeZone.isEmpty() -> DateTimeZone.getDefault().id
-                else -> timeZone
-            }
+            timeZone = if (mIsAllDayEvent || timeZone.isEmpty()) DateTimeZone.getDefault().id else timeZone
             flags = mEvent.flags.addBitIf(event_all_day.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
@@ -1195,7 +1199,7 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun storeEvent(wasRepeatable: Boolean) {
-        if (mEvent.id == null || mEvent.id == null) {
+        if (mEvent.id == null) {
             eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
                 hideKeyboard()
 

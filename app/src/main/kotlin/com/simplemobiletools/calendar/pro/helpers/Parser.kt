@@ -10,6 +10,7 @@ import com.simplemobiletools.commons.extensions.areDigitsOnly
 import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
+import kotlin.math.floor
 
 class Parser {
     // from RRULE:FREQ=DAILY;COUNT=5 to Daily, 5x...
@@ -101,8 +102,9 @@ class Parser {
         return if (edited.length == 14) {
             parseLongFormat(edited, value.endsWith("Z"))
         } else {
-            val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd")
-            dateTimeFormat.parseDateTime(edited).withHourOfDay(13).seconds()
+            val dateTimeFormat = DateTimeFormat.forPattern("yyyyMMdd").withZoneUTC()
+            val dateTime = dateTimeFormat.parseDateTime(edited)
+            Formatter.getShiftedTS(dateTime = dateTime, toZone = DateTimeZone.getDefault())
         }
     }
 
@@ -227,12 +229,12 @@ class Parser {
         var hours = 0
         var remainder = minutes
         if (remainder >= DAY_MINUTES) {
-            days = Math.floor((remainder / DAY_MINUTES).toDouble()).toInt()
+            days = floor((remainder / DAY_MINUTES).toDouble()).toInt()
             remainder -= days * DAY_MINUTES
         }
 
         if (remainder >= 60) {
-            hours = Math.floor((remainder / 60).toDouble()).toInt()
+            hours = floor((remainder / 60).toDouble()).toInt()
             remainder -= hours * 60
         }
 
