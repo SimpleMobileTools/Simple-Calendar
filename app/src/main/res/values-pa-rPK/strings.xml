@@ -38,12 +38,12 @@
     <string name="app_name">سادہ کیلینڈر</string>
     <string name="app_launcher_name">کیلینڈر</string>
     <string name="change_view">Change view</string>
-    <string name="daily_view">Daily view</string>
-    <string name="weekly_view">Weekly view</string>
+    <string name="daily_view">دن دا</string>
+    <string name="weekly_view">ہفتے دا</string>
     <string name="monthly_view">مہیناوار درش</string>
     <string name="monthly_daily_view">مہیناوار تے دنوار درش</string>
     <string name="yearly_view">سالانہ درش</string>
-    <string name="simple_event_list">Simple event list</string>
+    <string name="simple_event_list">سادے گھٹنے دی قسم</string>
     <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
     <string name="go_to_today">Go to today</string>
     <string name="upgraded_from_free">Hey,
@@ -78,7 +78,7 @@
     <string name="repetition">Repetition</string>
     <string name="no_repetition">No repetition</string>
     <string name="daily">Daily</string>
-    <string name="weekly">Weekly</string>
+    <string name="weekly">ہفتاواری</string>
     <string name="monthly">Monthly</string>
     <string name="yearly">Yearly</string>
     <string name="weeks_raw">ہفتے</string>
