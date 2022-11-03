@@ -45,18 +45,14 @@ No contiene anuncios ni permisos innecesarios. Es totalmente opensource, proporc
 Consulta el conjunto completo de Simple Tools aquí:
 https://www.simplemobiletools.com
 
-
 Sitio web independiente de Calendario Sencillo Pro:
 https://www.simplemobiletools.com/calendar
-
 
 Facebook:
 https://www.facebook.com/simplemobiletools
 
-
 Reddit:
 https://www.reddit.com/r/SimpleMobileTools
-
 
 Telegram:
 https://t.me/SimpleMobileTools
