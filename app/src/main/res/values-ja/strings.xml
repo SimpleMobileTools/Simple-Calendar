@@ -12,13 +12,13 @@
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
     <string name="go_to_date">日付に移動</string>
-    <string name="upgraded_from_free">Hey,
+    <string name="upgraded_from_free">こんにちは、
 \n
-\nseems like you upgraded from the old free app. You have to migrate locally stored events manually via exporting in an .ics file, then importing. You can find both export/import buttons at the main screen menu.
+\n無料版からアップグレードされたようですね。ローカルに保存された予定を移行するには、.icsファイルにエクスポートしてから、.icsファイルをインポートする必要があります。エクスポートボタンとインポートボタンは上部のメニューにあります。
 \n
-\nYou can then uninstall the old version, which has an \'Upgrade to Pro\' button at the top of the app settings. You will then only have to reset your app settings.
+\nその後、「Pro版にアップグレード」ボタンが設定の上部にある無料版をアンインストールできます。すると、アプリの設定がリセットされることになります。
 \n
-\nThanks!</string>
+\nありがとうございます！</string>
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー 月</string>
     <string name="widget_list">カレンダー 予定 リスト</string>
@@ -176,7 +176,7 @@
     <string name="reminder_sound">リマインダー音</string>
     <string name="no_ringtone_picker">着信音を設定できるアプリが見つかりません</string>
     <string name="no_ringtone_selected">なし</string>
-    <string name="day_end_before_start">The day cannot end earlier than it starts</string>
+    <string name="day_end_before_start">日の終わりを日の始まりより前にすることはできません</string>
     <string name="caldav_sync">CalDAV 同期</string>
     <string name="event_lists">予定リスト</string>
     <string name="display_past_events">過去の予定を表示</string>

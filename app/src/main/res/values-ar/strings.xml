@@ -22,7 +22,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">تقويم شهري</string>
     <string name="widget_list">لائحة أحداث التقويم</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">تقويم تاريخ اليوم</string>
     <!-- Event -->
     <string name="event">حدث</string>
     <string name="edit_event">تعديل حدث</string>
@@ -36,16 +36,16 @@
     <string name="filter_events_by_type">تصفية الأحداث حسب النوع</string>
     <string name="please_fill_location">أدخل الإحداثية كي يتم عرضها على الخريطة</string>
     <string name="public_event_notification_text">اقتراب موعد حدث</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">تم الحفظ... ولكن تتم تصفية نوع الحدث المحدد في القائمة العلوية - تصفية</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">مهمة</string>
+    <string name="tasks">المهام</string>
+    <string name="edit_task">تحرير المهمة</string>
+    <string name="new_task">مهمة جديدة</string>
+    <string name="create_new_task">إنشاء مهمة جديدة</string>
+    <string name="duplicate_task">تكرار المهمة</string>
+    <string name="mark_completed">وضع علامة \"مكتمل\"</string>
+    <string name="mark_incomplete">وضع علامة غير مكتملة</string>
     <!-- Event Repetition -->
     <string name="repetition">تكرار</string>
     <string name="no_repetition">بدون تكرار</string>
@@ -59,13 +59,13 @@
     <string name="repeat_till">تكرار حتى</string>
     <string name="forever">للأبد</string>
     <string name="event_is_repeatable">الحدث متكرر</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">المهمة قابلة للتكرار</string>
     <string name="selection_contains_repetition">الإختيار يحتوى على احداث مكررة</string>
     <string name="delete_one_only">حذف النسخ المحددة فقط</string>
     <string name="delete_future_occurrences">حذف هذه النسخة وكل النسخ المستقبلية</string>
     <string name="delete_all_occurrences">حذف جميع النسخ</string>
     <string name="update_one_only">تم تحديث النسخ المحددة فقط</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">تحديث هذا وجميع الأحداث المستقبلية</string>
     <string name="update_all_occurrences">تحديث جميع النسخ</string>
     <string name="repeat_till_date">كرر حتي تاريخ</string>
     <string name="stop_repeating_after_x">توقف عن التكرار بعد x نسخة</string>
@@ -85,7 +85,7 @@
     <string name="second_m">ثاني</string>
     <string name="third_m">ثالث</string>
     <string name="fourth_m">رابع</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">الخامس</string>
     <string name="last_m">أخير</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
@@ -95,7 +95,7 @@
     <string name="second_f">ثاني</string>
     <string name="third_f">ثالث</string>
     <string name="fourth_f">رابع</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">الخامس</string>
     <string name="last_f">أخير</string>
     <!-- Birthdays -->
     <string name="birthdays">تواريخ الميلاد</string>
@@ -103,20 +103,20 @@
     <string name="no_birthdays">لم يتم إيجاد تواريخ ميلاد</string>
     <string name="no_new_birthdays">لم يتم العثور على تواريخ ميلاد جديدة</string>
     <string name="birthdays_added">تمت إضافة تواريخ الميلاد بنجاح</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">إضافة أعياد ميلاد جديدة تلقائيا</string>
     <!-- Anniversaries -->
     <string name="anniversaries">المناسبات</string>
     <string name="add_anniversaries">إضافة مناسبات جهة إتصال</string>
     <string name="no_anniversaries">لم يتم العثور على مناسبات سنوية</string>
     <string name="no_new_anniversaries">لم يتم العثور على مناسبات سنوية</string>
     <string name="anniversaries_added">تمت إضافة المناسبات</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">إضافة احتفالات الذكرى السنوية الجديدة تلقائيا</string>
     <!-- Event Reminders -->
     <string name="reminder">تذكير</string>
     <string name="before">قبل</string>
     <string name="add_another_reminder">إضافة تذكير آخر</string>
     <string name="event_reminders">تذكيرات الحدث</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">تذكير</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">اضف مشترك اخر</string>
     <string name="my_status">حالتي:</string>
@@ -125,7 +125,7 @@
     <string name="maybe_going">ربما أذهب</string>
     <string name="invited">مدعو</string>
     <!-- Time zones -->
-    <string name="enter_a_country">Enter a country or time zone</string>
+    <string name="enter_a_country">أدخل بلدا أو منطقة زمنية</string>
     <!-- Export / Import -->
     <string name="import_events">إستيراد الأحداث</string>
     <string name="export_events">تصدير الأحداث</string>
@@ -136,14 +136,14 @@
     <string name="export_past_events_too">تصدير الأحداث السابقة أيضاً</string>
     <string name="include_event_types">أضف أنواع الأحداث</string>
     <string name="filename_without_ics">اسم ملف (بدون ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">تجاهل أنواع الأحداث في الملف ، واستخدم دائمًا النوع الافتراضي</string>
     <!-- Event details -->
     <string name="location">الموقع</string>
     <string name="description">الوصف</string>
     <string name="all_day">كامل اليوم</string>
     <!-- Weekly view -->
     <string name="week">أسبوع</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">بدء الأسبوع مع اليوم الحالي</string>
     <!-- Event types -->
     <string name="event_types">أنواع الأحداث</string>
     <string name="add_new_type">إضافة نوع جديد</string>
@@ -168,8 +168,8 @@
     <string name="manage_event_types">إدارة أنواع الأحداث</string>
     <string name="start_day_at">ابدأ اليوم عند</string>
     <string name="end_day_at">نهاية الحدث</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">عرض الأحداث التي تمتد عبر منتصف الليل في الشريط العلوي</string>
+    <string name="allow_customizing_day_count">السماح بتخصيص عدد الأيام</string>
     <string name="week_numbers">عرض أرقام الأسبوع</string>
     <string name="vibrate">إهتزاز عند الإشعار</string>
     <string name="reminder_sound">صوت التذكير</string>
@@ -180,13 +180,13 @@
     <string name="event_lists">قوائم الأحداث</string>
     <string name="display_past_events">عرض أحداث ماضية</string>
     <string name="replace_description_with_location">استبدل وصف الحدث بالموقع</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">عرض الوصف أو الموقع</string>
     <string name="delete_all_events">حذف جميع الأحداث</string>
     <string name="delete_all_events_confirmation">هل حقا تريد حذف جميع الأحداث؟ ستبقى جميع \'أنواع الأحداث\' والإعدادات الأخرى سليمة.</string>
     <string name="show_a_grid">إظهار شبكة</string>
     <string name="loop_reminders">كرر التنبيهات حتى إلغاءها</string>
     <string name="dim_past_events">إخفات الأحداث السابقة</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">تعتيم المهام المكتملة</string>
     <string name="events">أحداث</string>
     <string name="reminder_stream">صوت يستخدم مع التنبيه</string>
     <string name="system_stream">النظام</string>
@@ -202,15 +202,15 @@
     <string name="new_events">أحداث جديدة</string>
     <string name="default_start_time">وقت البدأ الافتراضي</string>
     <string name="next_full_hour">الساعة القادمة بالكامل</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">التوقيت الحالي</string>
     <string name="default_duration">الفترة الافتراضية</string>
     <string name="last_used_one">آخر واحد مستخدَم</string>
     <string name="other_time">وقت آخر</string>
     <string name="highlight_weekends">ظلل نهايات الأسبوع في بعض العروض</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
-    <string name="allow_changing_time_zones">Allow changing event time zones</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="highlight_weekends_color">لون عطلات نهاية الأسبوع المميزة</string>
+    <string name="allow_changing_time_zones">السماح بتغيير المناطق الزمنية للحدث</string>
+    <string name="manage_quick_filter_event_types">إدارة أنواع التصفية السريعة</string>
+    <string name="allow_creating_tasks">السماح بإنشاء المهام</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">اختر التقويمات للمزامنة</string>
@@ -225,10 +225,10 @@
     <string name="select_a_different_caldav_color">اختر لون مختلف (يمكن تطبيقه محليا فقط)</string>
     <string name="insufficient_permissions">لا يمكنك التعديل في هذا التقويم</string>
     <string name="caldav_event_not_found">مناسبة غير موجودة. من فضلك فَعّل مُزامنة CalDAV للحصول على التقويم المناسب من الإعدادات.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">لم يتم العثور على تقويمات قابلة للمزامنة</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="status_busy">مشغول</string>
+    <string name="fetching_event_failed">فشل إحضار الحدث %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">الإثنين</string>
@@ -248,48 +248,48 @@
     <string name="sample_description_4">في الساحة العامة</string>
     <string name="sample_title_5">وقت القهوة</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">عرض الأحداث الجارية:</string>
+    <string name="within_the_next_one_year">خلال السنة القادمة</string>
+    <string name="today_only">اليوم فقط</string>
+    <string name="within_the_next">خلال الفترة التالية…</string>
     <plurals name="within_the_next_days">
-        <item quantity="zero">Within the next %d days</item>
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="two">Within the next %d days</item>
-        <item quantity="few">Within the next %d days</item>
-        <item quantity="many">Within the next %d days</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="zero">خلال اليوم التالي %d</item>
+        <item quantity="one">خلال اليوم التالي %d</item>
+        <item quantity="two">خلال اليوم التالي %d</item>
+        <item quantity="few">خلال الايام التالية %d</item>
+        <item quantity="many">خلال اليوم التالي %d</item>
+        <item quantity="other">خلال اليوم التالي %d</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="zero">Within the next %d weeks</item>
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="two">Within the next %d weeks</item>
-        <item quantity="few">Within the next %d weeks</item>
-        <item quantity="many">Within the next %d weeks</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="zero">خلال الأسبوع التالي %d</item>
+        <item quantity="one">خلال الأسبوع التالي %d</item>
+        <item quantity="two">خلال الأسبوع التالي %d</item>
+        <item quantity="few">خلال الأسبوع التالي %d</item>
+        <item quantity="many">خلال الأسابيع التالية %d</item>
+        <item quantity="other">خلال الأسبوع التالي %d</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="zero">Within the next %d months</item>
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="two">Within the next %d months</item>
-        <item quantity="few">Within the next %d months</item>
-        <item quantity="many">Within the next %d months</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="zero">خلال الشهر التالي %d</item>
+        <item quantity="one">خلال الشهر التالي %d</item>
+        <item quantity="two">خلال الشهر التالي %d</item>
+        <item quantity="few">خلال الشهر التالي %d</item>
+        <item quantity="many">خلال الاشهر التالية %d</item>
+        <item quantity="other">خلال الشهر التالي %d</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">كيف يمكنني حذف العطلات المنقولة عن طريق زر \"أضف عطلات\"؟</string>
     <string name="faq_1_text">العطلات المضافة بهذه الطريقة تدخل تحت نوع جديد يسمى \"العطلات\". يمكنك الذهاب الى الإعدادات -&gt; إدارة أنواع الأحداث، ثم اضغط مطولا على نوع الحدث واحذفه عن طريق اختيار سلة المهملات.</string>
     <string name="faq_2_title">هل يمكنني مزامنة أحداثي عن طريق تقويم جوجل، أو أى خدمة أخرى تدعم CalDAV؟</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">ربما حتى مشاركة التقاويم مع أشخاص آخرين؟</string>
     <string name="faq_2_text">نعم، فقط اعكس حالة \"CalDAV مزامنة\" في إعدادات التطبيق واختر التقويمات التي تريد مزامنتها ولكن، ستحتاج الى برنامج آخر لتنظيم المزامنة بين الجهاز والخادم. إذا كنت تريد مزامنة تقويم جوجل، فبرنامج التقويم الرسمي لديهم سيقوم بالمهمة. للتقويمات الأخرى ستحتاج الى بنامج منظم خارجي مثل DAVdroid.</string>
     <string name="faq_3_title">أرى التنبيه البصرى، ولكن لا أسمع صوتا. ماذا يمكنني أن أفعل؟</string>
     <string name="faq_3_text">ليس فقط عرض التنبيه الفعلي ما يتأثر بشدة بالنظام، ولكن تشغيل الصوت يتأثر بشدة أيضا. إن كنت لا تستطيع سماع أى صوت، جرب الذهاب لإعدادات الهاتف، واضغط على خيار \"الصوت المستخدم في التنبيهات\" وبدّلة لأى اختيار آخر. إن ظل الصوت لا يعمل، تأكد في إعدادات الصوت الخاصة بك، إن لم يكن هذا الصوت تحديدا قد تم كتمه.</string>
-    <string name="faq_4_title">Does the app support time zones\?</string>
-    <string name="faq_4_text">Yes, it does. By default all events are created in your current time zone. If you want to change an events\' time zone, you will first have to enable the time zone picker at the app settings, then change it at the Event Details screen. It is disabled by default as most people won\'t need it.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_4_title">هل يدعم التطبيق المناطق الزمنية؟</string>
+    <string name="faq_4_text">نعم. بشكل افتراضي يتم إنشاء جميع الأحداث في منطقتك الزمنية الحالية. إذا كنت ترغب في تغيير المنطقة الزمنية للأحداث، فسيتعين عليك أولا تمكين منتقي المنطقة الزمنية في إعدادات التطبيق، ثم تغييره في شاشة تفاصيل الحدث. يتم تعطيله افتراضيا لأن معظم الأشخاص لن يحتاجوا إليه.</string>
+    <string name="faq_5_title">لا يظهر التطبيق أي إشعارات ، لماذا؟</string>
+    <string name="faq_5_text">تحقق من إعدادات بطارية جهازك والإشعارات ، إذا لم يكن هناك شيء يمنع التذكيرات ، أو يقتل التطبيق في الخلفية. قد ترغب أيضا في إلقاء نظرة على &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; ، يحتوي على بعض النصائح المفيدة.</string>
+    <string name="faq_6_title">كيف يمكنني تعديل أو حذف نوع حدث موجود؟</string>
+    <string name="faq_6_text">يمكنك القيام بكل من هذين الخيارين في إعدادات التطبيق - إدارة أنواع الأحداث. ما عليك سوى النقر فوق المطلوب لتغيير الملصق واللون ، أو تحديد الاسم المطلوب بالضغط عليه لفترة طويلة واستخدام سلة المهملات في القائمة العلوية للحذف.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
