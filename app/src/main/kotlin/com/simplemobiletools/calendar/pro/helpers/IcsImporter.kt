@@ -232,7 +232,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curRepeatExceptions,
                             "",
                             curImportId,
-                            if (isAllDay) DateTimeZone.UTC.id else DateTimeZone.getDefault().id,
+                            DateTimeZone.getDefault().id,
                             curFlags,
                             curEventTypeId,
                             0,
@@ -242,8 +242,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         )
 
                         if (isAllDay && curEnd > curStart) {
-                            event.endTS -= DAY
-
+                            event.endTS -= TWELVE_HOURS
                             // fix some glitches related to daylight saving shifts
                             if (event.startTS - event.endTS == HOUR_SECONDS.toLong()) {
                                 event.endTS += HOUR_SECONDS

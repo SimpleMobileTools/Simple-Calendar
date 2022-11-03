@@ -227,18 +227,14 @@ class CalDAVHelper(val context: Context) {
             val repeatRule = Parser().parseRepeatInterval(rrule, startTS)
             val event = Event(
                 null, startTS, endTS, title, location, description, reminder1?.minutes ?: REMINDER_OFF,
-                reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF, reminder1?.type
-                ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION, reminder3?.type
-                ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
+                reminder2?.minutes ?: REMINDER_OFF, reminder3?.minutes ?: REMINDER_OFF,
+                reminder1?.type ?: REMINDER_NOTIFICATION, reminder2?.type ?: REMINDER_NOTIFICATION,
+                reminder3?.type ?: REMINDER_NOTIFICATION, repeatRule.repeatInterval, repeatRule.repeatRule,
                 repeatRule.repeatLimit, ArrayList(), attendees, importId, eventTimeZone, allDay, eventTypeId, source = source, availability = availability
             )
 
             if (event.getIsAllDay()) {
-                event.startTS = Formatter.getShiftedImportTimestamp(event.startTS)
-                event.endTS = Formatter.getShiftedImportTimestamp(event.endTS)
-                if (event.endTS > event.startTS) {
-                    event.endTS -= DAY
-                }
+                event.toLocalAllDayEvent()
             }
 
             fetchedEventIds.add(importId)
@@ -402,9 +398,6 @@ class CalDAVHelper(val context: Context) {
             put(Events.CALENDAR_ID, event.getCalDAVCalendarId())
             put(Events.TITLE, event.title)
             put(Events.DESCRIPTION, event.description)
-            put(Events.DTSTART, event.startTS * 1000L)
-            put(Events.ALL_DAY, if (event.getIsAllDay()) 1 else 0)
-            put(Events.EVENT_TIMEZONE, event.getTimeZoneString())
             put(Events.EVENT_LOCATION, event.location)
             put(Events.STATUS, Events.STATUS_CONFIRMED)
             put(Events.AVAILABILITY, event.availability)
@@ -416,9 +409,15 @@ class CalDAVHelper(val context: Context) {
                 put(Events.RRULE, repeatRule)
             }
 
-            if (event.getIsAllDay() && event.endTS >= event.startTS)
-                event.endTS += DAY
+            if (event.getIsAllDay()) {
+                event.toUtcAllDayEvent()
+                put(Events.ALL_DAY, 1)
+            } else {
+                put(Events.ALL_DAY, 0)
+            }
 
+            put(Events.DTSTART, event.startTS * 1000L)
+            put(Events.EVENT_TIMEZONE, event.getTimeZoneString())
             if (event.repeatInterval > 0) {
                 put(Events.DURATION, getDurationCode(event))
                 putNull(Events.DTEND)
