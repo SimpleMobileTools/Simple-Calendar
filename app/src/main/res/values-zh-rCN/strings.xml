@@ -265,7 +265,7 @@
     <string name="faq_1_title">我如何移除用[添加节日]按钮所导入的节日\?</string>
     <string name="faq_1_text">以这方式建立的节日，会被加进一个叫做「节日」的新活动类型。 您可以到[设定] -&gt; [管理活动类型]，长按特定的活动类型，然后选择垃圾桶来删除。</string>
     <string name="faq_2_title">我可以透过 Google 日历或其它支援 CalDAV 的服务来同步我的活动吗\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">或者和其他人分享日历？</string>
     <string name="faq_2_text">行的，只要打开程序设定内的[CalDAV同步]，然后选择您要同步的日历。然而您需要一些第三方应用程序来处理装置和服务器之间的同步。 如果您要同步 Google 日历，他们官方的日历程序就能做到了。而其它日历，您需要有第三方同步工具才行，像是 DAVx5。</string>
     <string name="faq_3_title">我看到了视觉的提醒，但没听到音效。我能怎么办\?</string>
     <string name="faq_3_text">不仅是显示效果的提醒，播放音效也受到系统极大的影响。如果您听不到任何声音，试着到应用程序设定， 按\"用于提醒的音频流\"选项，然后更改成不同数值。如果还是没有用，请检查您的音量设定，指定串流是不是静音的。</string>
