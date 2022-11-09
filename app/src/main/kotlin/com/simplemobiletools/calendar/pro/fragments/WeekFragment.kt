@@ -452,20 +452,22 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val endDayCode = Formatter.getDayCodeFromDateTime(endDateTime)
+            val isAllDay = event.getIsAllDay()
 
-            if ((event.getIsAllDay() || (startDayCode != endDayCode)) && config.showMidnightSpanningEventsAtTop) {
+            if ((isAllDay || (startDayCode != endDayCode)) && config.showMidnightSpanningEventsAtTop) {
                 continue
             }
 
             var currentDateTime = startDateTime
             var currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
             do {
-                val startMinutes = when (currentDayCode == startDayCode) {
-                    true -> (startDateTime.minuteOfDay)
+                // all-day events always start at the 0 minutes and end at the end of the day (1440 minutes)
+                val startMinutes = when {
+                    currentDayCode == startDayCode && !isAllDay -> (startDateTime.minuteOfDay)
                     else -> 0
                 }
-                val duration = when (currentDayCode == endDayCode) {
-                    true -> (endDateTime.minuteOfDay - startMinutes)
+                val duration = when {
+                    currentDayCode == endDayCode && !isAllDay -> (endDateTime.minuteOfDay - startMinutes)
                     else -> 1440
                 }
 
