@@ -15,6 +15,7 @@ import com.simplemobiletools.commons.extensions.writeLn
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import java.io.BufferedWriter
 import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 class IcsExporter {
     enum class ExportResult {
@@ -47,7 +48,20 @@ class IcsExporter {
                 activity.toast(R.string.exporting)
             }
 
-            outputStream.bufferedWriter().use { out ->
+
+            object : BufferedWriter(OutputStreamWriter(outputStream, Charsets.UTF_8)) {
+                val lineSeparator = "\r\n"
+
+                /**
+                 * Writes a line separator. The line separator string is defined by RFC 5545 in 3.1. Content Lines:
+                 * Content Lines are delimited by a line break, which is a CRLF sequence (CR character followed by LF character).
+                 *
+                 * @see <a href="https://icalendar.org/iCalendar-RFC-5545/3-1-content-lines.html">RFC 5545 - 3.1. Content Lines</a>
+                 */
+                override fun newLine() {
+                    write(lineSeparator)
+                }
+            }.use { out ->
                 out.writeLn(BEGIN_CALENDAR)
                 out.writeLn(CALENDAR_PRODID)
                 out.writeLn(CALENDAR_VERSION)
