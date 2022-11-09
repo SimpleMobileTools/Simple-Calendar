@@ -58,7 +58,7 @@ class IcsExporter {
                     event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { out.writeLn("$LOCATION:$it") }
+                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
                     event.availability.let { out.writeLn("$TRANSP${if (it == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}") }
 
                     if (event.getIsAllDay()) {
@@ -137,10 +137,6 @@ class IcsExporter {
 
             isFirstLine = false
             index += MAX_LINE_LENGTH
-        }
-
-        if (isFirstLine) {
-            out.writeLn("$DESCRIPTION$description")
         }
     }
 }
