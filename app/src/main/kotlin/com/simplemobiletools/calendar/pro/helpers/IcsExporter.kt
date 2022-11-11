@@ -15,6 +15,7 @@ import com.simplemobiletools.commons.extensions.writeLn
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import java.io.BufferedWriter
 import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 class IcsExporter {
     enum class ExportResult {
@@ -47,7 +48,20 @@ class IcsExporter {
                 activity.toast(R.string.exporting)
             }
 
-            outputStream.bufferedWriter().use { out ->
+
+            object : BufferedWriter(OutputStreamWriter(outputStream, Charsets.UTF_8)) {
+                val lineSeparator = "\r\n"
+
+                /**
+                 * Writes a line separator. The line separator string is defined by RFC 5545 in 3.1. Content Lines:
+                 * Content Lines are delimited by a line break, which is a CRLF sequence (CR character followed by LF character).
+                 *
+                 * @see <a href="https://icalendar.org/iCalendar-RFC-5545/3-1-content-lines.html">RFC 5545 - 3.1. Content Lines</a>
+                 */
+                override fun newLine() {
+                    write(lineSeparator)
+                }
+            }.use { out ->
                 out.writeLn(BEGIN_CALENDAR)
                 out.writeLn(CALENDAR_PRODID)
                 out.writeLn(CALENDAR_VERSION)
@@ -58,7 +72,7 @@ class IcsExporter {
                     event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
                     event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
                     event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { out.writeLn("$LOCATION:$it") }
+                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
                     event.availability.let { out.writeLn("$TRANSP${if (it == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}") }
 
                     if (event.getIsAllDay()) {
@@ -137,10 +151,6 @@ class IcsExporter {
 
             isFirstLine = false
             index += MAX_LINE_LENGTH
-        }
-
-        if (isFirstLine) {
-            out.writeLn("$DESCRIPTION$description")
         }
     }
 }
