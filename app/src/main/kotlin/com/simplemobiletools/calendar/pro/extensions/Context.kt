@@ -603,7 +603,10 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
 
     Bundle().apply {
         putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
-        putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+        if (showToasts) {
+            // Assume this is a manual synchronisation when we showToasts to the user (swipe_refresh, MainMenu->refresh_caldav_calendars, ...)
+            putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
+        }
         accounts.forEach {
             ContentResolver.requestSync(it, uri.authority, this)
         }

@@ -134,7 +134,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         swipe_refresh_layout.setOnRefreshListener {
-            refreshCalDAVCalendars(false)
+            refreshCalDAVCalendars(true)
         }
 
         checkIsViewIntent()
