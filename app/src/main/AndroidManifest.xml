@@ -301,7 +301,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -315,7 +317,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -329,7 +333,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -343,7 +349,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -357,7 +365,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -371,7 +381,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -385,7 +397,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -399,7 +413,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -413,7 +429,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -427,7 +445,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -441,7 +461,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -455,7 +477,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -469,7 +493,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -483,7 +509,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -496,7 +524,9 @@
             android:targetActivity=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -510,7 +540,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -524,7 +556,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -538,7 +572,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
 
@@ -552,7 +588,9 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
             </intent-filter>
         </activity-alias>
     </application>
