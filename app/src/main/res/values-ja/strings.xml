@@ -33,7 +33,7 @@
     <string name="end_before_start">予定の終了は開始よりも前にできません</string>
     <string name="event_added">予定を正常に追加しました</string>
     <string name="event_updated">予定を正常に更新しました</string>
-    <string name="filter_events_by_type">種類によって予定をフィルタリング</string>
+    <string name="filter_events_by_type">種類による予定のフィルタリング</string>
     <string name="please_fill_location">地図上に表示する場所を入力してください</string>
     <string name="public_event_notification_text">近日中の予定</string>
     <string name="saving_filtered_out">保存していますが、選択した予定の種類は上部メニューのフィルターで除外されています</string>v
@@ -183,7 +183,7 @@
     <string name="replace_description_with_location">予定の説明を場所に置き換える</string>
     <string name="display_description_or_location">説明や場所を表示する</string>
     <string name="delete_all_events">すべての予定を削除</string>
-    <string name="delete_all_events_confirmation">イベントをすべて削除してもよろしいですか？（ただし、イベントの種類やその他の設定はそのまま残ります）</string>
+    <string name="delete_all_events_confirmation">予定をすべて削除してもよろしいですか？（ただし、予定の種類やその他の設定はそのまま残ります）</string>
     <string name="show_a_grid">グリッドを表示</string>
     <string name="loop_reminders">リマインダーを閉じるまで繰り返す</string>
     <string name="dim_past_events">過去の予定を薄い色で表示</string>
@@ -210,7 +210,7 @@
     <string name="highlight_weekends">一部の表示で週末を強調する</string>
     <string name="highlight_weekends_color">週末の強調色</string>
     <string name="allow_changing_time_zones">予定のタイムゾーンの変更を許可する</string>
-    <string name="manage_quick_filter_event_types">イベントの種類をクイックフィルターで管理</string>
+    <string name="manage_quick_filter_event_types">予定の種類をクイックフィルターで管理</string>
     <string name="allow_creating_tasks">タスクの作成を許可する</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
