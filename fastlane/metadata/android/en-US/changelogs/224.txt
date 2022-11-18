@@ -1,0 +1,4 @@
+ * Fixed a couple All-day event related glitches
+ * Use proper line separators at exporting events into .ics files
+ * Do not always use Manual flag at CalDAV sync
+ * Added many translation, stability and UX improvements

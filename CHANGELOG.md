@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.20.2 *(2022-11-18)*
+----------------------------
+
+ * Fixed a couple All-day event related glitches
+ * Use proper line separators at exporting events into .ics files
+ * Do not always use Manual flag at CalDAV sync
+ * Added many translation, stability and UX improvements
+
 Version 6.20.1 *(2022-10-03)*
 ----------------------------
 
