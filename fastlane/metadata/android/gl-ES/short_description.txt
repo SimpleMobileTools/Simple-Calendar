@@ -1,1 +1,1 @@
-Calendadario simple, con eventos, widget personalizable e sen publicidade.
+Widget do calendario 2022 para Android. Programador de citas e recordatorio
