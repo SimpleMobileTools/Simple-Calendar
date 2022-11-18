@@ -219,8 +219,8 @@ class EventsHelper(val context: Context) {
         context.cancelPendingIntent(eventId)
         if (config.caldavSync) {
             val event = eventsDB.getEventWithId(eventId)
-            if (event?.getCalDAVCalendarId() != 0) {
-                context.calDAVHelper.updateCalDAVEvent(event!!)
+            if (event != null && event.getCalDAVCalendarId() != 0) {
+                context.calDAVHelper.updateCalDAVEvent(event)
             }
         }
     }
