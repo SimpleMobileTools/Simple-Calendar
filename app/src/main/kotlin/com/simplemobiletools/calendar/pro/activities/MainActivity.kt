@@ -238,6 +238,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
+            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(R.bool.hide_google_relations)
         }
     }
 
@@ -260,6 +261,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.add_anniversaries -> tryAddAnniversaries()
                 R.id.import_events -> tryImportEvents()
                 R.id.export_events -> tryExportEvents()
+                R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
                 else -> return@setOnMenuItemClickListener false
