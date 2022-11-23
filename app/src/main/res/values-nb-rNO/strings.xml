@@ -36,16 +36,16 @@
     <string name="filter_events_by_type">Filtrer hendelser etter type</string>
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
     <string name="public_event_notification_text">En hendelse er forestående</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="saving_filtered_out">Lagrer… Men den valgte hendelsestypen er filtrert ut i Meny - Filtrer</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Oppgave</string>
+    <string name="tasks">Oppgaver</string>
+    <string name="edit_task">Rediger oppgave</string>
+    <string name="new_task">Ny oppgave</string>
+    <string name="create_new_task">Opprett en ny oppgave</string>
+    <string name="duplicate_task">Dupliser oppgave</string>
+    <string name="mark_completed">Marker som fullført</string>
+    <string name="mark_incomplete">Marker som ufullstendig</string>
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
     <string name="no_repetition">Ingen gjentagelse</string>
@@ -59,7 +59,7 @@
     <string name="repeat_till">Gjenta til</string>
     <string name="forever">For alltid</string>
     <string name="event_is_repeatable">Hendelsen er repeterbar</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Oppgaven kan gjentas</string>
     <string name="selection_contains_repetition">Markeringen inneholder gjentagende hendelser</string>
     <string name="delete_one_only">Slett bare den merkede forekomsten</string>
     <string name="delete_future_occurrences">Slett denne og alle framtidige forekomster</string>
@@ -116,10 +116,10 @@
     <string name="before">før</string>
     <string name="add_another_reminder">Legg til en annen påminnelse</string>
     <string name="event_reminders">Hendelsespåminnelser</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Påminnelser</string>
     <!-- Event attendees -->
-    <string name="add_another_attendee">Add another attendee</string>
-    <string name="my_status">My status:</string>
+    <string name="add_another_attendee">Legg til en annen deltager</string>
+    <string name="my_status">Min status:</string>
     <string name="going">Going</string>
     <string name="not_going">Not going</string>
     <string name="maybe_going">Maybe going</string>
@@ -168,7 +168,7 @@
     <string name="manage_event_types">Behandle hendelsestyper</string>
     <string name="start_day_at">Start dag kl.</string>
     <string name="end_day_at">Avslutt dag kl.</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
+    <string name="midnight_spanning">Vis hendelser som strekker seg over midnatt i topplinjen</string>
     <string name="allow_customizing_day_count">Tillat å tilpasse antall dager</string>
     <string name="week_numbers">Vis ukenummer</string>
     <string name="vibrate">Vibrer ved påminnelsesvarsel</string>
@@ -180,13 +180,13 @@
     <string name="event_lists">Hendelseslister</string>
     <string name="display_past_events">Vis hendelser fra fortiden</string>
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Vis beskrivelse eller sted</string>
     <string name="delete_all_events">Slett alle hendelser</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser\? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>
     <string name="dim_past_events">Dim tidligere hendelser</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Dim fullførte oppgaver</string>
     <string name="events">Hendelser</string>
     <string name="reminder_stream">Lydtype brukt for påminnelser</string>
     <string name="system_stream">System</string>
@@ -207,10 +207,10 @@
     <string name="last_used_one">Den sist brukte</string>
     <string name="other_time">Annen tid</string>
     <string name="highlight_weekends">Fremhev helger på noen visninger</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Farge på uthevede helger</string>
     <string name="allow_changing_time_zones">Tillat å endre tidssoner for hendelser</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">Håndter hurtigfilterhendelsestyper</string>
+    <string name="allow_creating_tasks">Tillat å lage oppgaver</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Velg kalendere å synkronisere</string>
@@ -222,12 +222,12 @@
     <string name="editing_calendar_failed">Redigering av kalender feilet</string>
     <string name="syncing">Synkroniserer…</string>
     <string name="synchronization_completed">Synkronisering fullført</string>
-    <string name="select_a_different_caldav_color">Select a different color (might be applied locally only)</string>
-    <string name="insufficient_permissions">You are not allowed to write in the selected calendar</string>
+    <string name="select_a_different_caldav_color">Velg en annen farge (vil muligens bare bli brukt lokalt)</string>
+    <string name="insufficient_permissions">Du har ikke tillatelse til å skrive i den valgte kalenderen</string>
     <string name="caldav_event_not_found">Event not found. Please enable CalDAV sync for the appropriate calendar in the app settings.</string>
     <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
+    <string name="status_busy">Opptatt</string>
     <string name="fetching_event_failed">Fetching event %s failed</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
