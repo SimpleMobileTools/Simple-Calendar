@@ -275,9 +275,9 @@
     <string name="faq_4_title">Unterstützt die Anwendung Zeitzonen\?</string>
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können, muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <string name="faq_5_title">Die Anwendung zeigt keine Benachrichtigungen an, woran liegt das\?</string>
-    <string name="faq_5_text">Überprüfen Sie den Akku Ihres Geräts und die Einstellungen für Benachrichtigungen, um sicherzustellen, dass die Erinnerungen nicht blockiert werden oder die Anwendung im Hintergrund beendet wird. Vielleicht möchten Sie auch einen Blick auf &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; werfen, dort finden Sie einige nützliche Tipps.</string>
+    <string name="faq_5_text">Überprüfe den Akku deines Geräts und die Einstellungen für Benachrichtigungen, um sicherzustellen, dass die Erinnerungen nicht blockiert werden oder die Anwendung im Hintergrund beendet wird. Vielleicht möchtest du auch einen Blick auf &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; werfen, dort lassen sich einige nützliche Tipps finden.</string>
     <string name="faq_6_title">Wie kann ich einen bestehenden Ereignistyp ändern oder löschen\?</string>
-    <string name="faq_6_text">Sie können beides in der Anwendung Einstellungen – Ereignistypen verwalten tun. Klicken Sie einfach auf das gewünschte Ereignis, um Beschriftung und Farbe zu ändern oder wählen Sie das gewünschte Ereignis durch langes Drücken aus und verwenden den Mülleimer im oberen Menü.</string>
+    <string name="faq_6_text">Du kannst beides in der App unter „Einstellungen – Ereignistypen verwalten“ einstellen. Klicke einfach auf das gewünschte Ereignis, um Beschriftung und Farbe zu ändern oder wähle das gewünschte Ereignis durch langes Drücken aus und verwende den Mülleimer im oberen Menü.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
