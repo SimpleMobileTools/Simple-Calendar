@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.20.3 *(2022-11-24)*
+----------------------------
+
+ * Always show all-day events lasting 1 day at the top of the weekly view
+ * Added some translation, stability and UX improvements
+
 Version 6.20.2 *(2022-11-18)*
 ----------------------------
 
