@@ -454,7 +454,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val endDayCode = Formatter.getDayCodeFromDateTime(endDateTime)
             val isAllDay = event.getIsAllDay()
 
-            if ((isAllDay || (startDayCode != endDayCode)) && config.showMidnightSpanningEventsAtTop) {
+            if (shouldAddEventOnTopBar(isAllDay, startDayCode, endDayCode)) {
                 continue
             }
 
@@ -543,7 +543,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val startDayCode = Formatter.getDayCodeFromDateTime(startDateTime)
             val endDateTime = Formatter.getDateTimeFromTS(event.endTS)
             val endDayCode = Formatter.getDayCodeFromDateTime(endDateTime)
-            if ((event.getIsAllDay() || (startDayCode != endDayCode)) && config.showMidnightSpanningEventsAtTop) {
+
+            if (shouldAddEventOnTopBar(event.getIsAllDay(), startDayCode, endDayCode)) {
                 addAllDayEvent(event)
             } else {
                 var currentDateTime = startDateTime
@@ -694,6 +695,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 listener?.updateHoursTopMargin(mView.week_top_holder.height)
             }
         }
+    }
+
+    private fun shouldAddEventOnTopBar(isAllDay: Boolean, startDayCode: String, endDayCode: String): Boolean {
+        val spansMultipleDays = startDayCode != endDayCode
+        val isSingleDayAllDayEvent = isAllDay && !spansMultipleDays
+        return isSingleDayAllDayEvent || (spansMultipleDays && config.showMidnightSpanningEventsAtTop)
     }
 
     @SuppressLint("NewApi")
