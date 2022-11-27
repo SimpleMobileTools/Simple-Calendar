@@ -1,21 +1,23 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.activities.ManageEventTypesActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyCompatRadioButton
-import kotlinx.android.synthetic.main.dialog_select_radio_group.view.*
+import kotlinx.android.synthetic.main.dialog_select_event_type.view.*
 import kotlinx.android.synthetic.main.radio_button_with_color.view.*
 
 class SelectEventTypeDialog(
     val activity: Activity, val currEventType: Long, val showCalDAVCalendars: Boolean, val showNewEventTypeOption: Boolean,
-    val addLastUsedOneAsFirstOption: Boolean, val showOnlyWritable: Boolean, val callback: (eventType: EventType) -> Unit
+    val addLastUsedOneAsFirstOption: Boolean, val showOnlyWritable: Boolean, var showManageEventTypes: Boolean, val callback: (eventType: EventType) -> Unit
 ) {
     private val NEW_EVENT_TYPE_ID = -2L
     private val LAST_USED_EVENT_TYPE_ID = -1L
@@ -26,8 +28,15 @@ class SelectEventTypeDialog(
     private var eventTypes = ArrayList<EventType>()
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_select_radio_group, null) as ViewGroup
+        val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_type, null) as ViewGroup
         radioGroup = view.dialog_radio_group
+        view.dialog_manage_event_types.apply {
+            beVisibleIf(showManageEventTypes)
+            setOnClickListener {
+                activity.startActivity(Intent(activity, ManageEventTypesActivity::class.java))
+                dialog?.dismiss()
+            }
+        }
 
         activity.eventsHelper.getEventTypes(activity, showOnlyWritable) {
             eventTypes = it

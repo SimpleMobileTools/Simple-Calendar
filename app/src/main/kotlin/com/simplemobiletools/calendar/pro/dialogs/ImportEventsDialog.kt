@@ -51,7 +51,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
         val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
             updateEventType(this)
             import_event_type_title.setOnClickListener {
-                SelectEventTypeDialog(activity, currEventTypeId, true, true, false, true) {
+                SelectEventTypeDialog(activity, currEventTypeId, true, true, false, true, false) {
                     currEventTypeId = it.id!!
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
 

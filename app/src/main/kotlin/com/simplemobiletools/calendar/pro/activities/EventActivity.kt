@@ -799,7 +799,16 @@ class EventActivity : SimpleActivity() {
 
     private fun showEventTypeDialog() {
         hideKeyboard()
-        SelectEventTypeDialog(this, mEventTypeId, false, true, false, true) {
+
+        SelectEventTypeDialog(
+            activity = this,
+            currEventType = mEventTypeId,
+            showCalDAVCalendars = false,
+            showNewEventTypeOption = true,
+            addLastUsedOneAsFirstOption = false,
+            showOnlyWritable = true,
+            showManageEventTypes = true
+        ) {
             mEventTypeId = it.id!!
             updateEventType()
         }

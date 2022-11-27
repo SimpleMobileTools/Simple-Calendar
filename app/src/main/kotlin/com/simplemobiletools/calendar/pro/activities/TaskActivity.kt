@@ -705,7 +705,8 @@ class TaskActivity : SimpleActivity() {
             showCalDAVCalendars = false,
             showNewEventTypeOption = true,
             addLastUsedOneAsFirstOption = false,
-            showOnlyWritable = true
+            showOnlyWritable = true,
+            showManageEventTypes = true
         ) {
             mEventTypeId = it.id!!
             updateEventType()
