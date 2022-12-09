@@ -271,7 +271,7 @@
     <string name="faq_1_title">Jak mohu odstranit svátky importované pomocí tlačítka „Přidat svátky“\?</string>
     <string name="faq_1_text">Svátky vytvořené touto cestou jsou vloženy pod novým typem události „Svátky“. Odstranit je můžete přes: Nastavení -&gt; Správa typů událostí -&gt; dlouze podržte daný typ události a stiskněte tlačítko s ikonou koše pro odstranění.</string>
     <string name="faq_2_title">Mohu synchronizovat své události pomocí Google Kalendáře nebo přes jinou službu podporující CalDav\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Možná dokonce sdílet kalendáře s ostatními lidmi\?</string>
     <string name="faq_2_text">Ano, zapnutím „Synchronizace CalDAV“ v nastavení aplikace a vybráním kalendářů, se kterými se chcete synchronizovat. Budete ovšem potřebovat nějakou aplikaci třetí strany pro samotné synchronizovaní mezi zařízením a servery. Pokud chcete synchronizovat Google kalendář, bude vám stačit jejich oficiální aplikace kalendáře. Pro jiné kalendáře budete potřebovat synchronizační adaptér třetí strany, například DAVx5.</string>
     <string name="faq_3_title">Připomínku vidím, ale neslyším žádný zvuk. Co s tím\?</string>
     <string name="faq_3_text">Nejen zobrazování aktuální připomínky, ale i přehrávání zvuku je velmi ovlivněno operačním systémem. Pokud neslyšíte žádný zvuk, zkuste jít do nastavení aplikace, vyberte: „Zvukový kanál používaný připomínkami“ a změňte jej na něco jiného. Pokud zvuk stále nefunguje, zkontrolujte zda není zvuk zvoleného kanálu vypnut v nastavení vašeho systému.</string>
