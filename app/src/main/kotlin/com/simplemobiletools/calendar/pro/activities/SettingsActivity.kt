@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.dialogs.SelectQuickFilterEventTypesDia
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
+import com.simplemobiletools.calendar.pro.views.MonthView
 import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -84,6 +85,7 @@ class SettingsActivity : SimpleActivity() {
         setupDefaultReminder3()
         setupDisplayPastEvents()
         setupFontSize()
+        setupMonthFontSize()
         setupCustomizeWidgetColors()
         setupViewToOpenFromListWidget()
         setupDimEvents()
@@ -676,6 +678,33 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    // TODO:
+    private fun setupMonthFontSize() {
+        settings_month_font_size.text = getMonthFontSizeText()
+        settings_month_font_size_holder.setOnClickListener {
+            val items = arrayListOf(
+                RadioItem(0, getString(R.string.small)),
+                RadioItem(1, getString(R.string.medium)),
+                RadioItem(2, getString(R.string.large)),
+                //RadioItem(3, getString(R.string.extra_large))
+            )
+
+            RadioGroupDialog(this@SettingsActivity, items, config.monthFontSize) {
+                config.monthFontSize = it as Int
+                settings_month_font_size.text = getMonthFontSizeText()
+            }
+        }
+    }
+
+    private fun getMonthFontSizeText() = getString(
+        when (config.monthFontSize) {
+            FONT_SIZE_SMALL -> R.string.small
+            FONT_SIZE_MEDIUM -> R.string.medium
+            FONT_SIZE_LARGE -> R.string.large
+            else -> R.string.large
+        }
+    )
+
     private fun setupFontSize() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
@@ -883,6 +912,7 @@ class SettingsActivity : SimpleActivity() {
                 put(LAST_EVENT_REMINDER_MINUTES_3, config.lastEventReminderMinutes3)
                 put(DISPLAY_PAST_EVENTS, config.displayPastEvents)
                 put(FONT_SIZE, config.fontSize)
+                put(MONTH_FONT_SIZE, config.monthFontSize)
                 put(LIST_WIDGET_VIEW_TO_OPEN, config.listWidgetViewToOpen)
                 put(REMINDER_AUDIO_STREAM, config.reminderAudioStream)
                 put(DISPLAY_DESCRIPTION, config.displayDescription)
@@ -989,6 +1019,7 @@ class SettingsActivity : SimpleActivity() {
                 LAST_EVENT_REMINDER_MINUTES_3 -> config.lastEventReminderMinutes3 = value.toInt()
                 DISPLAY_PAST_EVENTS -> config.displayPastEvents = value.toInt()
                 FONT_SIZE -> config.fontSize = value.toInt()
+                MONTH_FONT_SIZE -> config.monthFontSize = value.toInt()
                 LIST_WIDGET_VIEW_TO_OPEN -> config.listWidgetViewToOpen = value.toInt()
                 REMINDER_AUDIO_STREAM -> config.reminderAudioStream = value.toInt()
                 DISPLAY_DESCRIPTION -> config.displayDescription = value.toBoolean()

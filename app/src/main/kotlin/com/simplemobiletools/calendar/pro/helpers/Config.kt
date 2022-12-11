@@ -21,6 +21,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(WEEK_NUMBERS, false)
         set(showWeekNumbers) = prefs.edit().putBoolean(WEEK_NUMBERS, showWeekNumbers).apply()
 
+    var monthFontSize: Int
+        get() = prefs.getInt(MONTH_FONT_SIZE, 20)
+        set(monthFontSize) = prefs.edit().putInt(MONTH_FONT_SIZE, monthFontSize).apply()
+
     var startWeeklyAt: Int
         get() = prefs.getInt(START_WEEKLY_AT, 7)
         set(startWeeklyAt) = prefs.edit().putInt(START_WEEKLY_AT, startWeeklyAt).apply()

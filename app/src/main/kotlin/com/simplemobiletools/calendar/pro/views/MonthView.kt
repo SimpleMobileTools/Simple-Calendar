@@ -5,6 +5,7 @@ import android.graphics.*
 import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.util.Log
 import android.util.SparseIntArray
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
@@ -91,8 +92,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             color = primaryColor
         }
 
-        val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
-        eventTitleHeight = smallerTextSize
+        val smallerTextSize: Int = updateTextSize()
         eventTitlePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
             textSize = smallerTextSize.toFloat()
@@ -101,6 +101,20 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         initWeekDayLetters()
         setupCurrentDayOfWeekIndex()
+    }
+
+    fun updateTextSize(): Int {
+        //default is 12sp
+        //val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
+        val smallerTextSize: Int
+        smallerTextSize = when (config.monthFontSize) {
+            0 -> resources.getDimensionPixelSize(R.dimen.tiny_text_size)
+            1 -> resources.getDimensionPixelSize(R.dimen.small_text_size)
+            2 -> resources.getDimensionPixelSize(R.dimen.middle_text_size)
+            else -> resources.getDimensionPixelSize(R.dimen.middle_text_size)
+        }
+        eventTitleHeight = smallerTextSize
+        return smallerTextSize
     }
 
     fun updateDays(newDays: ArrayList<DayMonthly>, isMonthDayView: Boolean) {
@@ -201,6 +215,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         }
 
         if (!isMonthDayView) {
+            eventTitlePaint.textSize = updateTextSize().toFloat()
             for (event in allEvents) {
                 drawEvent(event, canvas)
             }

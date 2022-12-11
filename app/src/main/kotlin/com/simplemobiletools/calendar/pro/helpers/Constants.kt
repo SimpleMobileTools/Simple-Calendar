@@ -26,6 +26,7 @@ const val SHORTCUT_NEW_TASK = "shortcut_new_task"
 const val REGULAR_EVENT_TYPE_ID = 1L
 const val TIME_ZONE = "time_zone"
 const val CURRENT_TIME_ZONE = "current_time_zone"
+const val MONTH_FONT_SIZE = "month_font_size"
 
 const val MONTHLY_VIEW = 1
 const val YEARLY_VIEW = 2
