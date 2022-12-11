@@ -19,9 +19,7 @@ import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.MonthViewEvent
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.HIGHER_ALPHA
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
+import com.simplemobiletools.commons.helpers.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import kotlin.math.max
@@ -103,14 +101,12 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         setupCurrentDayOfWeekIndex()
     }
 
-    fun updateTextSize(): Int {
-        //default is 12sp
-        //val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
-        val smallerTextSize: Int
-        smallerTextSize = when (config.monthFontSize) {
-            0 -> resources.getDimensionPixelSize(R.dimen.tiny_text_size)
-            1 -> resources.getDimensionPixelSize(R.dimen.small_text_size)
-            2 -> resources.getDimensionPixelSize(R.dimen.middle_text_size)
+    private fun updateTextSize(): Int {
+        val smallerTextSize: Int = when (config.monthFontSize) {
+            FONT_SIZE_SMALL -> resources.getDimensionPixelSize(R.dimen.tiny_text_size)
+            FONT_SIZE_MEDIUM -> resources.getDimensionPixelSize(R.dimen.small_text_size)
+            FONT_SIZE_LARGE -> resources.getDimensionPixelSize(R.dimen.smaller_text_size)
+            FONT_SIZE_EXTRA_LARGE -> resources.getDimensionPixelSize(R.dimen.middle_text_size)
             else -> resources.getDimensionPixelSize(R.dimen.middle_text_size)
         }
         eventTitleHeight = smallerTextSize

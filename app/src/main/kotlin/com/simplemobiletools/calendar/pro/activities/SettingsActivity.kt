@@ -678,15 +678,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    // TODO:
     private fun setupMonthFontSize() {
         settings_month_font_size.text = getMonthFontSizeText()
         settings_month_font_size_holder.setOnClickListener {
             val items = arrayListOf(
-                RadioItem(0, getString(R.string.small)),
-                RadioItem(1, getString(R.string.medium)),
-                RadioItem(2, getString(R.string.large)),
-                //RadioItem(3, getString(R.string.extra_large))
+                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
             )
 
             RadioGroupDialog(this@SettingsActivity, items, config.monthFontSize) {
@@ -701,6 +700,7 @@ class SettingsActivity : SimpleActivity() {
             FONT_SIZE_SMALL -> R.string.small
             FONT_SIZE_MEDIUM -> R.string.medium
             FONT_SIZE_LARGE -> R.string.large
+            FONT_SIZE_EXTRA_LARGE -> R.string.extra_large
             else -> R.string.large
         }
     )
