@@ -47,16 +47,9 @@
 
         <activity
             android:name=".activities.MainActivity"
+            android:configChanges="orientation"
             android:exported="true"
             android:launchMode="singleTask">
-
-            <meta-data
-                android:name="android.app.default_searchable"
-                android:resource="@xml/searchable" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -118,12 +111,14 @@
 
         <activity
             android:name="com.simplemobiletools.commons.activities.AboutActivity"
+            android:configChanges="orientation"
             android:exported="false"
             android:label="@string/about"
             android:parentActivityName=".activities.MainActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
+            android:configChanges="orientation"
             android:exported="false"
             android:label="@string/customize_colors"
             android:parentActivityName=".activities.SettingsActivity" />
@@ -161,6 +156,7 @@
 
         <activity
             android:name=".activities.SelectTimeZoneActivity"
+            android:configChanges="orientation"
             android:exported="false"
             android:parentActivityName=".activities.EventActivity">
             <meta-data
@@ -174,6 +170,7 @@
 
         <activity
             android:name=".activities.SettingsActivity"
+            android:configChanges="orientation"
             android:exported="true"
             android:label="@string/settings"
             android:parentActivityName=".activities.MainActivity">
@@ -186,18 +183,21 @@
 
         <activity
             android:name=".activities.ManageEventTypesActivity"
+            android:configChanges="orientation"
             android:exported="false"
             android:label="@string/event_types"
             android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
             android:name=".activities.SnoozeReminderActivity"
+            android:configChanges="orientation"
             android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/Theme.Transparent" />
 
         <activity
             android:name=".activities.EventTypePickerActivity"
+            android:configChanges="orientation"
             android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/Theme.Transparent" />
