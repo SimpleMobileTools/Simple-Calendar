@@ -34,9 +34,13 @@ class SettingsActivity : SimpleActivity() {
     private var mStoredPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         mStoredPrimaryColor = getProperPrimaryColor()
+
+        updateMaterialActivityViews(settings_coordinator, settings_holder, useTransparentNavigation = true, useTopSearchMenu = false)
+        setupMaterialScrollListener(settings_nested_scrollview, settings_toolbar)
     }
 
     override fun onResume() {
@@ -95,7 +99,7 @@ class SettingsActivity : SimpleActivity() {
         setupImportSettings()
 
         arrayOf(
-            settings_color_customization_label,
+            settings_color_customization_section_label,
             settings_general_settings_label,
             settings_reminders_label,
             settings_caldav_label,
@@ -109,23 +113,6 @@ class SettingsActivity : SimpleActivity() {
             settings_migrating_label
         ).forEach {
             it.setTextColor(getProperPrimaryColor())
-        }
-
-        arrayOf(
-            settings_color_customization_holder,
-            settings_general_settings_holder,
-            settings_reminders_holder,
-            settings_caldav_holder,
-            settings_new_events_holder,
-            settings_weekly_view_holder,
-            settings_monthly_view_holder,
-            settings_event_lists_holder,
-            settings_widgets_holder,
-            settings_events_holder,
-            settings_tasks_holder,
-            settings_migrating_holder
-        ).forEach {
-            it.background.applyColorFilter(getProperBackgroundColor().getContrastColor())
         }
     }
 
@@ -167,18 +154,13 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupCustomizeColors() {
-        settings_customize_colors_holder.setOnClickListener {
+        settings_color_customization_holder.setOnClickListener {
             startCustomizationActivity()
         }
     }
 
     private fun setupCustomizeNotifications() {
         settings_customize_notifications_holder.beVisibleIf(isOreoPlus())
-
-        if (settings_customize_notifications_holder.isGone()) {
-            settings_reminder_sound_holder.background = resources.getDrawable(R.drawable.ripple_top_corners, theme)
-        }
-
         settings_customize_notifications_holder.setOnClickListener {
             launchCustomizeNotificationsIntent()
         }
@@ -197,11 +179,6 @@ class SettingsActivity : SimpleActivity() {
     private fun setupLanguage() {
         settings_language.text = Locale.getDefault().displayLanguage
         settings_language_holder.beVisibleIf(isTiramisuPlus())
-
-        if (settings_use_english_holder.isGone() && settings_language_holder.isGone()) {
-            settings_manage_event_types_holder.background = resources.getDrawable(R.drawable.ripple_top_corners, theme)
-        }
-
         settings_language_holder.setOnClickListener {
             launchChangeAppLanguageIntent()
         }
@@ -241,7 +218,6 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupCaldavSync() {
         settings_caldav_sync.isChecked = config.caldavSync
-        checkCalDAVBackgrounds()
         settings_caldav_sync_holder.setOnClickListener {
             if (config.caldavSync) {
                 toggleCaldavSync(false)
@@ -266,19 +242,9 @@ class SettingsActivity : SimpleActivity() {
     private fun setupPullToRefresh() {
         settings_caldav_pull_to_refresh_holder.beVisibleIf(config.caldavSync)
         settings_caldav_pull_to_refresh.isChecked = config.pullToRefresh
-        checkCalDAVBackgrounds()
         settings_caldav_pull_to_refresh_holder.setOnClickListener {
             settings_caldav_pull_to_refresh.toggle()
             config.pullToRefresh = settings_caldav_pull_to_refresh.isChecked
-        }
-    }
-
-    private fun checkCalDAVBackgrounds() {
-        if (config.caldavSync) {
-            settings_caldav_sync_holder.background = resources.getDrawable(R.drawable.ripple_top_corners, theme)
-            settings_manage_synced_calendars_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
-        } else {
-            settings_caldav_sync_holder.background = resources.getDrawable(R.drawable.ripple_all_corners, theme)
         }
     }
 
@@ -306,7 +272,6 @@ class SettingsActivity : SimpleActivity() {
                 updateDefaultEventTypeText()
             }
         }
-        checkCalDAVBackgrounds()
     }
 
     private fun showCalendarPicker() {
@@ -379,12 +344,10 @@ class SettingsActivity : SimpleActivity() {
     private fun setupHighlightWeekends() {
         settings_highlight_weekends.isChecked = config.highlightWeekends
         settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
-        setupHighlightWeekendColorBackground()
         settings_highlight_weekends_holder.setOnClickListener {
             settings_highlight_weekends.toggle()
             config.highlightWeekends = settings_highlight_weekends.isChecked
             settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
-            setupHighlightWeekendColorBackground()
         }
     }
 
@@ -400,14 +363,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupHighlightWeekendColorBackground() {
-        if (settings_highlight_weekends_color_holder.isVisible()) {
-            settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
-        } else {
-            settings_highlight_weekends_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
-        }
-    }
-
     private fun setupDeleteAllEvents() {
         settings_delete_all_events_holder.setOnClickListener {
             ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
@@ -418,20 +373,11 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupDisplayDescription() {
         settings_display_description.isChecked = config.displayDescription
-        setupDescriptionVisibility()
+        settings_replace_description_holder.beVisibleIf(config.displayDescription)
         settings_display_description_holder.setOnClickListener {
             settings_display_description.toggle()
             config.displayDescription = settings_display_description.isChecked
-            setupDescriptionVisibility()
-        }
-    }
-
-    private fun setupDescriptionVisibility() {
-        settings_replace_description_holder.beVisibleIf(config.displayDescription)
-        if (settings_replace_description_holder.isVisible()) {
-            settings_display_description_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
-        } else {
-            settings_display_description_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
+            settings_replace_description_holder.beVisibleIf(config.displayDescription)
         }
     }
 
@@ -566,20 +512,10 @@ class SettingsActivity : SimpleActivity() {
     private fun setupUseSameSnooze() {
         settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
         settings_use_same_snooze.isChecked = config.useSameSnooze
-        setupSnoozeBackgrounds()
         settings_use_same_snooze_holder.setOnClickListener {
             settings_use_same_snooze.toggle()
             config.useSameSnooze = settings_use_same_snooze.isChecked
             settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
-            setupSnoozeBackgrounds()
-        }
-    }
-
-    private fun setupSnoozeBackgrounds() {
-        if (config.useSameSnooze) {
-            settings_use_same_snooze_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
-        } else {
-            settings_use_same_snooze_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
         }
     }
 
@@ -641,12 +577,6 @@ class SettingsActivity : SimpleActivity() {
         arrayOf(settings_default_reminder_1_holder, settings_default_reminder_2_holder, settings_default_reminder_3_holder).forEach {
             it.beVisibleIf(show)
         }
-
-        if (show) {
-            settings_use_last_event_reminders_holder.background = resources.getDrawable(R.drawable.ripple_background, theme)
-        } else {
-            settings_use_last_event_reminders_holder.background = resources.getDrawable(R.drawable.ripple_bottom_corners, theme)
-        }
     }
 
     private fun getHoursString(hours: Int) = String.format("%02d:00", hours)
@@ -695,7 +625,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupCustomizeWidgetColors() {
-        settings_customize_widget_colors_holder.setOnClickListener {
+        settings_widget_color_customization_holder.setOnClickListener {
             Intent(this, WidgetListConfigureActivity::class.java).apply {
                 putExtra(IS_CUSTOMIZING_COLORS, true)
                 startActivity(this)
