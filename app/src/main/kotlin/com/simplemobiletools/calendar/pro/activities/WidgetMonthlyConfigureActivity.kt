@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.SeekBar
 import android.widget.TextView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.addDayEvents
@@ -24,6 +23,7 @@ import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
 import kotlinx.android.synthetic.main.day_monthly_number_view.view.*
 import kotlinx.android.synthetic.main.first_row.*
@@ -39,12 +39,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private var mWidgetId = 0
     private var mBgColorWithoutTransparency = 0
     private var mBgColor = 0
-    private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
-    private var mWeakTextColor = 0
-    private var mPrimaryColor = 0
-    private var mWeekendsTextColor = 0
-    private var mHighlightWeekends = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -53,37 +48,40 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         setContentView(R.layout.widget_config_monthly)
         initVariables()
 
-        val extras = intent.extras
-        if (extras != null)
-            mWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+        val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
+        mWidgetId = intent.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
+        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !isCustomizingColors) {
             finish()
+        }
 
+        val primaryColor = getProperPrimaryColor()
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
         config_text_color.setOnClickListener { pickTextColor() }
-        config_bg_seekbar.setColors(mTextColor, mPrimaryColor, mPrimaryColor)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setupToolbar(config_toolbar)
+        config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
     }
 
     private fun initVariables() {
-        mTextColorWithoutTransparency = config.widgetTextColor
-        updateColors()
-
         mBgColor = config.widgetBgColor
         mBgAlpha = Color.alpha(mBgColor) / 255.toFloat()
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.setOnSeekBarChangeListener(bgSeekbarChangeListener)
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
-        updateBgColor()
+        updateBackgroundColor()
+        config_bg_seekbar.onSeekBarChangeListener { progress ->
+            mBgAlpha = progress / 100.toFloat()
+            updateBackgroundColor()
+        }
 
-        MonthlyCalendarImpl(this, applicationContext).updateMonthlyCalendar(DateTime().withDayOfMonth(1))
+        mTextColor = config.widgetTextColor
+        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        }
+
+        updateTextColor()
+
+        MonthlyCalendarImpl(this, this).updateMonthlyCalendar(DateTime().withDayOfMonth(1))
     }
 
     private fun saveConfig() {
@@ -100,7 +98,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private fun storeWidgetColors() {
         config.apply {
             widgetBgColor = mBgColor
-            widgetTextColor = mTextColorWithoutTransparency
+            widgetTextColor = mTextColor
         }
     }
 
@@ -108,7 +106,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 mBgColorWithoutTransparency = color
-                updateBgColor()
+                updateBackgroundColor()
             }
         }
     }
@@ -116,8 +114,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
             if (wasPositivePressed) {
-                mTextColorWithoutTransparency = color
-                updateColors()
+                mTextColor = color
+                updateTextColor()
                 updateDays()
             }
         }
@@ -130,32 +128,26 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         }
     }
 
-    private fun updateColors() {
-        mTextColor = mTextColorWithoutTransparency
-        mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
-        mPrimaryColor = getProperPrimaryColor()
-        mWeekendsTextColor = config.highlightWeekendsColor
-        mHighlightWeekends = config.highlightWeekends
-
+    private fun updateTextColor() {
         top_left_arrow.applyColorFilter(mTextColor)
         top_right_arrow.applyColorFilter(mTextColor)
         top_value.setTextColor(mTextColor)
         config_text_color.setFillWithStroke(mTextColor, mTextColor)
         updateLabels()
-        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
         config_save.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
-    private fun updateBgColor() {
+    private fun updateBackgroundColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_calendar.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, mBgColor)
+        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
     }
 
     private fun updateDays() {
         val len = mDays!!.size
 
-        if (applicationContext.config.showWeekNumbers) {
+        if (config.showWeekNumbers) {
             week_num.setTextColor(mTextColor)
             week_num.beVisible()
 
@@ -192,7 +184,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
             textColor = textColor.adjustAlpha(LOWER_ALPHA)
         }
 
-        (View.inflate(applicationContext, R.layout.day_monthly_number_view, null) as RelativeLayout).apply {
+        (View.inflate(this, R.layout.day_monthly_number_view, null) as RelativeLayout).apply {
             layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             linearLayout.addView(this)
 
@@ -210,17 +202,6 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         }
     }
 
-    private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            mBgAlpha = progress.toFloat() / 100.toFloat()
-            updateBgColor()
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {}
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {}
-    }
-
     override fun updateMonthlyCalendar(context: Context, month: String, days: ArrayList<DayMonthly>, checkedEvents: Boolean, currTargetDate: DateTime) {
         runOnUiThread {
             mDays = days
@@ -230,10 +211,11 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
     }
 
     private fun updateLabels() {
+        val weekendsTextColor = config.highlightWeekendsColor
         for (i in 0..6) {
             findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
                 val textColor = if (config.highlightWeekends && isWeekend(i, config.isSundayFirst)) {
-                    mWeekendsTextColor
+                    weekendsTextColor
                 } else {
                     mTextColor
                 }

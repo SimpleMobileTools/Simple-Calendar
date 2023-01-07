@@ -7,7 +7,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.SeekBar
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.dialogs.CustomPeriodPickerDialog
@@ -36,9 +35,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mWidgetId = 0
     private var mBgColorWithoutTransparency = 0
     private var mBgColor = 0
-    private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
-    private var selectedPeriodOption = 0
+    private var mSelectedPeriodOption = 0
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -74,27 +72,28 @@ class WidgetListConfigureActivity : SimpleActivity() {
         updateSelectedPeriod(config.lastUsedEventSpan)
     }
 
-    override fun onResume() {
-        super.onResume()
-        updateTextColors(config_list_holder)
-        setupToolbar(config_toolbar)
-    }
-
     private fun initVariables() {
-        mTextColorWithoutTransparency = config.widgetTextColor
-        updateColors()
-
         mBgColor = config.widgetBgColor
         mBgAlpha = Color.alpha(mBgColor) / 255.toFloat()
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.setOnSeekBarChangeListener(bgSeekbarChangeListener)
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
-        updateBgColor()
+        updateBackgroundColor()
+        config_bg_seekbar.onSeekBarChangeListener { progress ->
+            mBgAlpha = progress / 100.toFloat()
+            updateBackgroundColor()
+        }
+
+        mTextColor = config.widgetTextColor
+        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        }
+
+        updateTextColor()
     }
 
     private fun saveConfig() {
-        val widget = Widget(null, mWidgetId, selectedPeriodOption)
+        val widget = Widget(null, mWidgetId, mSelectedPeriodOption)
         ensureBackgroundThread {
             widgetsDB.insertOrUpdate(widget)
         }
@@ -102,7 +101,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         storeWidgetColors()
         requestWidgetUpdate()
 
-        config.lastUsedEventSpan = selectedPeriodOption
+        config.lastUsedEventSpan = mSelectedPeriodOption
 
         Intent().apply {
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mWidgetId)
@@ -119,7 +118,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
             add(WEEK_SECONDS)
             add(MONTH_SECONDS)
             add(YEAR_SECONDS)
-            add(selectedPeriodOption)
+            add(mSelectedPeriodOption)
         }
 
         val items = ArrayList<RadioItem>(seconds.size)
@@ -129,7 +128,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         var selectedIndex = 0
         seconds.forEachIndexed { index, value ->
-            if (value == selectedPeriodOption) {
+            if (value == mSelectedPeriodOption) {
                 selectedIndex = index
             }
         }
@@ -149,14 +148,14 @@ class WidgetListConfigureActivity : SimpleActivity() {
     }
 
     private fun updateSelectedPeriod(selectedPeriod: Int) {
-        selectedPeriodOption = selectedPeriod
+        mSelectedPeriodOption = selectedPeriod
         when (selectedPeriod) {
             0 -> {
-                selectedPeriodOption = YEAR_SECONDS
+                mSelectedPeriodOption = YEAR_SECONDS
                 period_picker_value.setText(R.string.within_the_next_one_year)
             }
             EVENT_PERIOD_TODAY -> period_picker_value.setText(R.string.today_only)
-            else -> period_picker_value.text = getFormattedSeconds(selectedPeriodOption)
+            else -> period_picker_value.text = getFormattedSeconds(mSelectedPeriodOption)
         }
     }
 
@@ -174,7 +173,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private fun storeWidgetColors() {
         config.apply {
             widgetBgColor = mBgColor
-            widgetTextColor = mTextColorWithoutTransparency
+            widgetTextColor = mTextColor
         }
     }
 
@@ -182,7 +181,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 mBgColorWithoutTransparency = color
-                updateBgColor()
+                updateBackgroundColor()
             }
         }
     }
@@ -190,8 +189,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
             if (wasPositivePressed) {
-                mTextColorWithoutTransparency = color
-                updateColors()
+                mTextColor = color
+                updateTextColor()
             }
         }
     }
@@ -203,14 +202,13 @@ class WidgetListConfigureActivity : SimpleActivity() {
         }
     }
 
-    private fun updateColors() {
-        mTextColor = mTextColorWithoutTransparency
+    private fun updateTextColor() {
         (config_events_list.adapter as? EventListAdapter)?.updateTextColor(mTextColor)
         config_text_color.setFillWithStroke(mTextColor, mTextColor)
         config_save.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
-    private fun updateBgColor() {
+    private fun updateBackgroundColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_events_list.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, mBgColor)
@@ -317,16 +315,5 @@ class WidgetListConfigureActivity : SimpleActivity() {
         )
 
         return listItems
-    }
-
-    private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            mBgAlpha = progress.toFloat() / 100.toFloat()
-            updateBgColor()
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {}
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {}
     }
 }

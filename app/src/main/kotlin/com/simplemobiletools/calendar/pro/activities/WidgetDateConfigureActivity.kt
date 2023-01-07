@@ -6,14 +6,13 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.SeekBar
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetDateProvider
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
+import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import kotlinx.android.synthetic.main.widget_config_date.*
 
 class WidgetDateConfigureActivity : SimpleActivity() {
@@ -21,10 +20,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private var mWidgetId = 0
     private var mBgColorWithoutTransparency = 0
     private var mBgColor = 0
-    private var mTextColorWithoutTransparency = 0
     private var mTextColor = 0
-    private var mWeakTextColor = 0
-    private var mPrimaryColor = 0
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
@@ -33,37 +29,40 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         setContentView(R.layout.widget_config_date)
         initVariables()
 
-        val extras = intent.extras
-        if (extras != null)
-            mWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+        val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
+        mWidgetId = intent.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
+        if (mWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID && !isCustomizingColors) {
             finish()
+        }
 
+        val primaryColor = getProperPrimaryColor()
         config_save.setOnClickListener { saveConfig() }
         config_bg_color.setOnClickListener { pickBackgroundColor() }
         config_text_color.setOnClickListener { pickTextColor() }
-        config_bg_seekbar.setColors(mTextColor, mPrimaryColor, mPrimaryColor)
+        config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
         widget_date_label.text = Formatter.getTodayDayNumber()
         widget_month_label.text = Formatter.getCurrentMonthShort()
     }
 
-    override fun onResume() {
-        super.onResume()
-        setupToolbar(config_toolbar)
-    }
-
     private fun initVariables() {
-        mTextColorWithoutTransparency = config.widgetTextColor
-        updateColors()
-
         mBgColor = config.widgetBgColor
         mBgAlpha = Color.alpha(mBgColor) / 255.toFloat()
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.setOnSeekBarChangeListener(bgSeekbarChangeListener)
         config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
-        updateBgColor()
+        updateBackgroundColor()
+        config_bg_seekbar.onSeekBarChangeListener { progress ->
+            mBgAlpha = progress / 100.toFloat()
+            updateBackgroundColor()
+        }
+
+        mTextColor = config.widgetTextColor
+        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        }
+
+        updateTextColor()
     }
 
     private fun saveConfig() {
@@ -80,7 +79,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private fun storeWidgetColors() {
         config.apply {
             widgetBgColor = mBgColor
-            widgetTextColor = mTextColorWithoutTransparency
+            widgetTextColor = mTextColor
         }
     }
 
@@ -88,7 +87,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         ColorPickerDialog(this, mBgColorWithoutTransparency) { wasPositivePressed, color ->
             if (wasPositivePressed) {
                 mBgColorWithoutTransparency = color
-                updateBgColor()
+                updateBackgroundColor()
             }
         }
     }
@@ -96,8 +95,8 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private fun pickTextColor() {
         ColorPickerDialog(this, mTextColor) { wasPositivePressed, color ->
             if (wasPositivePressed) {
-                mTextColorWithoutTransparency = color
-                updateColors()
+                mTextColor = color
+                updateTextColor()
             }
         }
     }
@@ -109,32 +108,17 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         }
     }
 
-    private fun updateColors() {
-        mTextColor = mTextColorWithoutTransparency
-        mWeakTextColor = mTextColorWithoutTransparency.adjustAlpha(LOWER_ALPHA)
-        mPrimaryColor = getProperPrimaryColor()
-
+    private fun updateTextColor() {
         config_text_color.setFillWithStroke(mTextColor, mTextColor)
         widget_date_label.setTextColor(mTextColor)
         widget_month_label.setTextColor(mTextColor)
         config_save.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
-    private fun updateBgColor() {
+    private fun updateBackgroundColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
         config_date_time_wrapper.background.applyColorFilter(mBgColor)
         config_bg_color.setFillWithStroke(mBgColor, mBgColor)
         config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
-    }
-
-    private val bgSeekbarChangeListener = object : SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            mBgAlpha = progress.toFloat() / 100.toFloat()
-            updateBgColor()
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {}
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {}
     }
 }
