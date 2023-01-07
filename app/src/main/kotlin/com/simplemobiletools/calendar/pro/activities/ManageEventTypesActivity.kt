@@ -14,10 +14,15 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_manage_event_types.*
 
 class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_event_types)
         setupOptionsMenu()
+
+        updateMaterialActivityViews(manage_event_types_coordinator, manage_event_types_list, useTransparentNavigation = true, useTopSearchMenu = false)
+        setupMaterialScrollListener(manage_event_types_list, manage_event_types_toolbar)
 
         getEventTypes()
         updateTextColors(manage_event_types_list)
