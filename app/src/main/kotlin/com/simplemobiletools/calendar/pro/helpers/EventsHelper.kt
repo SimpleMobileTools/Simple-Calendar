@@ -232,29 +232,6 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun getEventsWithSearchQuery(text: String, activity: Activity, callback: (searchedText: String, events: List<Event>) -> Unit) {
-        ensureBackgroundThread {
-            val searchQuery = "%$text%"
-            val events = eventsDB.getEventsForSearch(searchQuery)
-            val displayEventTypes = config.displayEventTypes
-            val filteredEvents = events.filter { displayEventTypes.contains(it.eventType.toString()) }
-
-            val eventTypeColors = LongSparseArray<Int>()
-            eventTypesDB.getEventTypes().forEach {
-                eventTypeColors.put(it.id!!, it.color)
-            }
-
-            filteredEvents.forEach {
-                it.updateIsPastEvent()
-                it.color = eventTypeColors.get(it.eventType) ?: context.getProperPrimaryColor()
-            }
-
-            activity.runOnUiThread {
-                callback(text, filteredEvents)
-            }
-        }
-    }
-
     fun addEventRepetitionException(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
         ensureBackgroundThread {
             val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return@ensureBackgroundThread

@@ -86,9 +86,9 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
             maxFetchedTS = DateTime().plusMonths(6).seconds()
         }
 
-        requireContext().eventsHelper.getEvents(minFetchedTS, maxFetchedTS) {
-            if (it.size >= MIN_EVENTS_TRESHOLD) {
-                receivedEvents(it, NOT_UPDATING)
+        requireContext().eventsHelper.getEvents(minFetchedTS, maxFetchedTS) { events ->
+            if (events.size >= MIN_EVENTS_TRESHOLD) {
+                receivedEvents(events, NOT_UPDATING)
             } else {
                 if (!wereInitialEventsAdded) {
                     maxFetchedTS += FETCH_INTERVAL

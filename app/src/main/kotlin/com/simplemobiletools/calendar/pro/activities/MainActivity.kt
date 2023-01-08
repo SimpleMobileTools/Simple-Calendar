@@ -1184,22 +1184,31 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         search_placeholder_2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
-            eventsHelper.getEventsWithSearchQuery(text, this) { searchedText, events ->
-                if (searchedText == mLatestSearchQuery) {
-                    search_results_list.beVisibleIf(events.isNotEmpty())
-                    search_placeholder.beVisibleIf(events.isEmpty())
-                    val listItems = getEventListItems(events)
-                    val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
-                        hideKeyboard()
-                        if (it is ListEvent) {
-                            Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
-                                putExtra(EVENT_ID, it.id)
-                                startActivity(this)
+            val minFetchedTS = DateTime().minusMinutes(config.displayPastEvents).seconds()
+            val maxFetchedTS = DateTime().plusMonths(6).seconds()
+
+            eventsHelper.getEvents(minFetchedTS, maxFetchedTS) { events ->
+                if (text == mLatestSearchQuery) {
+                    runOnUiThread {
+                        val filtered = events.filter {
+                            it.title.contains(text, true) || it.location.contains(text, true) || it.description.contains(text, true)
+                        }
+
+                        search_results_list.beVisibleIf(filtered.isNotEmpty())
+                        search_placeholder.beVisibleIf(filtered.isEmpty())
+                        val listItems = getEventListItems(filtered)
+                        val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                            hideKeyboard()
+                            if (it is ListEvent) {
+                                Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
+                                    putExtra(EVENT_ID, it.id)
+                                    startActivity(this)
+                                }
                             }
                         }
-                    }
 
-                    search_results_list.adapter = eventsAdapter
+                        search_results_list.adapter = eventsAdapter
+                    }
                 }
             }
         } else if (text.length == 1) {

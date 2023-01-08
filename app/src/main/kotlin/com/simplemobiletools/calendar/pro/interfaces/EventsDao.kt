@@ -57,9 +57,6 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\" AND type = $TYPE_EVENT")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
 
-    @Query("SELECT * FROM events WHERE title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery AND type = $TYPE_EVENT")
-    fun getEventsForSearch(searchQuery: String): List<Event>
-
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_BIRTHDAY\' AND type = $TYPE_EVENT")
     fun getBirthdays(): List<Event>
 
