@@ -62,7 +62,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         }
 
         use24HourFormat = requireContext().config.use24HourFormat
-        updateActionBarTitle()
         return mView
     }
 
@@ -229,10 +228,6 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     }
 
     override fun shouldGoToTodayBeVisible() = hasBeenScrolled
-
-    override fun updateActionBarTitle() {
-        (activity as? MainActivity)?.updateTitle(getString(R.string.app_launcher_name))
-    }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
 

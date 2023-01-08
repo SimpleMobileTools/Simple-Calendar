@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/calendar_holder">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendar_wrapper">
 
     <ImageView
         android:id="@+id/top_left_arrow"
@@ -24,7 +25,8 @@
         android:gravity="center"
         android:paddingTop="@dimen/normal_margin"
         android:paddingBottom="@dimen/normal_margin"
-        android:textSize="@dimen/month_text_size" />
+        android:textSize="@dimen/month_text_size"
+        tools:text="January" />
 
     <ImageView
         android:id="@+id/top_right_arrow"

@@ -14,13 +14,14 @@ import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.YEARLY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.YEAR_TO_OPEN
+import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
 import kotlin.text.toInt
 
-class YearFragmentsHolder : MyFragmentHolder() {
+class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_YEARS = 61
 
     private var viewPager: MyViewPager? = null
@@ -49,17 +50,15 @@ class YearFragmentsHolder : MyFragmentHolder() {
 
     private fun setupFragment() {
         val years = getYears(currentYear)
-        val yearlyAdapter = MyYearPagerAdapter(requireActivity().supportFragmentManager, years)
+        val yearlyAdapter = MyYearPagerAdapter(requireActivity().supportFragmentManager, years, this)
         defaultYearlyPage = years.size / 2
 
         viewPager?.apply {
             adapter = yearlyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
-                }
+                override fun onPageScrollStateChanged(state: Int) {}
 
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                }
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
                 override fun onPageSelected(position: Int) {
                     currentYear = years[position]
@@ -68,15 +67,10 @@ class YearFragmentsHolder : MyFragmentHolder() {
                         (activity as? MainActivity)?.toggleGoToTodayVisibility(shouldGoToTodayBeVisible)
                         isGoToTodayVisible = shouldGoToTodayBeVisible
                     }
-
-                    if (position < years.size) {
-                        (activity as? MainActivity)?.updateTitle("${getString(R.string.app_launcher_name)} - ${years[position]}")
-                    }
                 }
             })
             currentItem = defaultYearlyPage
         }
-        updateActionBarTitle()
     }
 
     private fun getYears(targetYear: Int): List<Int> {
@@ -84,6 +78,16 @@ class YearFragmentsHolder : MyFragmentHolder() {
         years += targetYear - PREFILLED_YEARS / 2..targetYear + PREFILLED_YEARS / 2
         return years
     }
+
+    override fun goLeft() {
+        viewPager!!.currentItem = viewPager!!.currentItem - 1
+    }
+
+    override fun goRight() {
+        viewPager!!.currentItem = viewPager!!.currentItem + 1
+    }
+
+    override fun goToDateTime(dateTime: DateTime) {}
 
     override fun goToToday() {
         currentYear = todayYear
@@ -121,10 +125,6 @@ class YearFragmentsHolder : MyFragmentHolder() {
     }
 
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear
-
-    override fun updateActionBarTitle() {
-        (activity as? MainActivity)?.updateTitle("${getString(R.string.app_launcher_name)} - $currentYear")
-    }
 
     override fun getNewEventDayCode() = Formatter.getTodayCode()
 

@@ -48,8 +48,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val textColor = requireContext().getProperTextColor()
         weekHolder = inflater.inflate(R.layout.fragment_week_holder, container, false) as ViewGroup
         weekHolder!!.background = ColorDrawable(requireContext().getProperBackgroundColor())
+        weekHolder!!.week_view_month_label.setTextColor(textColor)
+        weekHolder!!.week_view_week_number.setTextColor(textColor)
 
         val itemHeight = requireContext().getWeeklyViewItemHeight().toInt()
         weekHolder!!.week_view_hours_holder.setPadding(0, 0, 0, itemHeight)
@@ -88,7 +91,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             }
         }
 
-        updateActionBarTitle()
+        setupWeeklyActionbarTitle(currentWeekTS)
     }
 
     private fun setupWeeklyViewPager() {
@@ -131,7 +134,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         weekHolder!!.week_view_hours_holder.removeAllViews()
         val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
         for (i in 1..23) {
-            val formattedHours = Formatter.getHours(requireContext(), hourDateTime.withHourOfDay(i))
+            val formattedHours = Formatter.getTime(requireContext(), hourDateTime.withHourOfDay(i))
             (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
                 text = formattedHours
                 setTextColor(textColor)
@@ -155,19 +158,10 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun setupWeeklyActionbarTitle(timestamp: Long) {
         val startDateTime = Formatter.getDateTimeFromTS(timestamp)
-        val endDateTime = Formatter.getDateTimeFromTS(timestamp + WEEK_SECONDS)
-        val startMonthName = Formatter.getMonthName(requireContext(), startDateTime.monthOfYear)
-        if (startDateTime.monthOfYear == endDateTime.monthOfYear) {
-            var newTitle = startMonthName
-            if (startDateTime.year != DateTime().year) {
-                newTitle += " - ${startDateTime.year}"
-            }
-            (activity as MainActivity).updateTitle(newTitle)
-        } else {
-            val endMonthName = Formatter.getMonthName(requireContext(), endDateTime.monthOfYear)
-            (activity as MainActivity).updateTitle("$startMonthName - $endMonthName")
-        }
-        (activity as MainActivity).updateSubtitle("${getString(R.string.week)} ${startDateTime.plusDays(3).weekOfWeekyear}")
+        val month = Formatter.getShortMonthName(requireContext(), startDateTime.monthOfYear)
+        weekHolder!!.week_view_month_label.text = month
+        val weekNumber = startDateTime.plusDays(3).weekOfWeekyear
+        weekHolder!!.week_view_week_number.text = "${getString(R.string.week_number_short)} $weekNumber"
     }
 
     override fun goToToday() {
@@ -242,10 +236,6 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
-
-    override fun updateActionBarTitle() {
-        setupWeeklyActionbarTitle(currentWeekTS)
-    }
 
     override fun getNewEventDayCode(): String {
         val currentTS = System.currentTimeMillis() / 1000

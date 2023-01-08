@@ -74,7 +74,6 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
             })
             currentItem = defaultDailyPage
         }
-        updateActionBarTitle()
     }
 
     private fun getDays(code: String): List<String> {
@@ -133,10 +132,6 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun shouldGoToTodayBeVisible() = currentDayCode != todayDayCode
-
-    override fun updateActionBarTitle() {
-        (activity as MainActivity).updateTitle(getString(R.string.app_launcher_name))
-    }
 
     override fun getNewEventDayCode() = currentDayCode
 

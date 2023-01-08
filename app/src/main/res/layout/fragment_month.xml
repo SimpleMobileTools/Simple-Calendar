@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/month_calendar_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="@dimen/medium_margin">
+    android:layout_height="match_parent">
 
     <include layout="@layout/top_navigation" />
 

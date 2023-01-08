@@ -115,6 +115,8 @@ object Formatter {
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
     fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
 
+    fun getShortMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months_short)[id - 1]
+
     fun getHourPattern(context: Context) = if (context.config.use24HourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
 
     fun getTimePattern(context: Context) = if (context.config.use24HourFormat) PATTERN_TIME_24 else PATTERN_TIME_12

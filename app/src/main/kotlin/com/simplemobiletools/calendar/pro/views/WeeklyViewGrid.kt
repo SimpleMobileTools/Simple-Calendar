@@ -24,7 +24,7 @@ class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         super.onDraw(canvas)
         val rowHeight = context.getWeeklyViewItemHeight()
         for (i in 0 until ROWS_CNT) {
-            val y = rowHeight * i.toFloat()
+            val y = rowHeight * i.toFloat() - i / 2
             canvas.drawLine(0f, y, width.toFloat(), y, paint)
         }
 

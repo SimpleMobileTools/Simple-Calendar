@@ -14,8 +14,6 @@ abstract class MyFragmentHolder : Fragment() {
 
     abstract fun shouldGoToTodayBeVisible(): Boolean
 
-    abstract fun updateActionBarTitle()
-
     abstract fun getNewEventDayCode(): String
 
     abstract fun printView()

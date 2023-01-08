@@ -1,318 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/calendar_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/yearly_padding_side">
+    android:layout_height="match_parent">
 
-    <TableRow android:layout_weight="1">
+    <include layout="@layout/top_navigation" />
 
-        <RelativeLayout
-            android:id="@+id/month_1_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+    <TableLayout
+        android:id="@+id/calendar_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_left_arrow"
+        android:padding="@dimen/yearly_padding_side">
 
-            <TextView
-                android:id="@+id/month_1_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/january"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+        <TableRow android:layout_weight="1">
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/month_1_label"
-                android:layout_centerInParent="true" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/month_2_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_half"
-            android:layout_marginEnd="@dimen/yearly_padding_half"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/month_2_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/february"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
-
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/month_2_label" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/month_3_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_full"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/month_3_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/march"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
-
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/month_3_label" />
-
-        </RelativeLayout>
-    </TableRow>
-
-    <TableRow android:layout_weight="1">
-
-        <RelativeLayout
-            android:id="@+id/month_4_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/month_4_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/april"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
-
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_4"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_1_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_4_label"
-                app:days="30" />
+                android:layout_marginEnd="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_1_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/january"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_5_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_half"
-            android:layout_marginEnd="@dimen/yearly_padding_half"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/month_1_label"
+                    android:layout_centerInParent="true" />
 
-            <TextView
-                android:id="@+id/month_5_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/may"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_5"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_2_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_5_label" />
+                android:layout_marginStart="@dimen/yearly_padding_half"
+                android:layout_marginEnd="@dimen/yearly_padding_half"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_2_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/february"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_6_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/month_2_label" />
 
-            <TextView
-                android:id="@+id/month_6_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/june"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_6"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_3_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_6_label"
-                app:days="30" />
+                android:layout_marginStart="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
-    </TableRow>
+                <TextView
+                    android:id="@+id/month_3_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/march"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-    <TableRow android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/month_3_label" />
 
-        <RelativeLayout
-            android:id="@+id/month_7_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+            </RelativeLayout>
+        </TableRow>
 
-            <TextView
-                android:id="@+id/month_7_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/july"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+        <TableRow android:layout_weight="1">
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_7"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_4_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_7_label" />
+                android:layout_marginEnd="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_4_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/april"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_8_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_half"
-            android:layout_marginEnd="@dimen/yearly_padding_half"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_4_label"
+                    app:days="30" />
 
-            <TextView
-                android:id="@+id/month_8_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/august"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_8"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_5_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_8_label" />
+                android:layout_marginStart="@dimen/yearly_padding_half"
+                android:layout_marginEnd="@dimen/yearly_padding_half"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_5_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/may"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_9_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_5_label" />
 
-            <TextView
-                android:id="@+id/month_9_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/september"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_9"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_6_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_9_label"
-                app:days="30" />
+                android:layout_marginStart="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
-    </TableRow>
+                <TextView
+                    android:id="@+id/month_6_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/june"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-    <TableRow android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_6_label"
+                    app:days="30" />
 
-        <RelativeLayout
-            android:id="@+id/month_10_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+            </RelativeLayout>
+        </TableRow>
 
-            <TextView
-                android:id="@+id/month_10_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/october"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+        <TableRow android:layout_weight="1">
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_10"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_7_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_10_label" />
+                android:layout_marginEnd="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_7_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/july"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_11_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_half"
-            android:layout_marginEnd="@dimen/yearly_padding_half"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_7_label" />
 
-            <TextView
-                android:id="@+id/month_11_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/november"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_11"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_8_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_11_label"
-                android:layout_marginStart="@dimen/yearly_month_padding"
-                app:days="30" />
+                android:layout_marginStart="@dimen/yearly_padding_half"
+                android:layout_marginEnd="@dimen/yearly_padding_half"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/month_8_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/august"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/month_12_holder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/yearly_padding_full"
-            android:layout_weight="1">
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_8_label" />
 
-            <TextView
-                android:id="@+id/month_12_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/december"
-                android:textAllCaps="true"
-                android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
 
-            <com.simplemobiletools.calendar.pro.views.SmallMonthView
-                android:id="@+id/month_12"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/month_9_holder"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/month_12_label" />
+                android:layout_marginStart="@dimen/yearly_padding_full"
+                android:layout_weight="1">
 
-        </RelativeLayout>
-    </TableRow>
-</TableLayout>
+                <TextView
+                    android:id="@+id/month_9_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/september"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_9_label"
+                    app:days="30" />
+
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <RelativeLayout
+                android:id="@+id/month_10_holder"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/yearly_padding_full"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/month_10_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/october"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_10_label" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/month_11_holder"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/yearly_padding_half"
+                android:layout_marginEnd="@dimen/yearly_padding_half"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/month_11_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/november"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_11_label"
+                    android:layout_marginStart="@dimen/yearly_month_padding"
+                    app:days="30" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/month_12_holder"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/yearly_padding_full"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/month_12_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/december"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <com.simplemobiletools.calendar.pro.views.SmallMonthView
+                    android:id="@+id/month_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/month_12_label" />
+
+            </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

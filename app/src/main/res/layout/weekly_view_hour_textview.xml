@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom|center_horizontal"
-    android:paddingStart="@dimen/small_margin"
-    android:paddingEnd="@dimen/small_margin"
+    android:paddingStart="@dimen/smaller_margin"
+    android:paddingEnd="@dimen/smaller_margin"
     android:textSize="@dimen/normal_text_size" />

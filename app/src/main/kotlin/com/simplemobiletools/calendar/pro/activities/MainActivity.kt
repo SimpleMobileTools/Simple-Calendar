@@ -90,6 +90,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
+        updateMaterialActivityViews(main_coordinator, main_holder, useTransparentNavigation = false, useTopSearchMenu = true)
 
         checkWhatsNewDialog()
         calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
@@ -182,6 +183,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             }
         }
 
+        updateStatusbarColor(getProperBackgroundColor())
+        main_menu.updateColors()
         storeStateVariables()
         updateWidgets()
         updateTextColors(calendar_coordinator)
@@ -196,16 +199,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkSwipeRefreshAvailability()
         checkShortcuts()
 
-        setupToolbar(main_toolbar, searchMenuItem = mSearchMenuItem)
         if (!mIsSearchOpen) {
             refreshMenuItems()
         }
 
         setupQuickFilter()
 
-        main_toolbar.setNavigationOnClickListener {
+        /*main_toolbar.setNavigationOnClickListener {
             onBackPressed()
-        }
+        }*/
 
         if (config.caldavSync) {
             updateCalDAVEvents()
@@ -231,7 +233,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         shouldGoToTodayBeVisible = currentFragments.lastOrNull()?.shouldGoToTodayBeVisible() ?: false
-        main_toolbar.menu.apply {
+        main_menu.getToolbar().menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
@@ -243,8 +245,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun setupOptionsMenu() {
-        setupSearch(main_toolbar.menu)
-        main_toolbar.setOnMenuItemClickListener { menuItem ->
+        main_menu.getToolbar().inflateMenu(R.menu.menu_main)
+        main_menu.toggleHideOnScroll(false)
+        main_menu.setupMenu()
+        main_menu.getToolbar().setOnMenuItemClickListener { menuItem ->
             if (fab_extended_overlay.isVisible()) {
                 hideExtendedFab()
             }
@@ -539,17 +543,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.last().printView()
     }
 
-    private fun resetActionBarTitle() {
-        main_toolbar.title = getString(R.string.app_launcher_name)
-        main_toolbar.subtitle = ""
+    fun resetActionBarTitle() {
+        main_menu.updateHintText(getString(R.string.search))
     }
 
     fun updateTitle(text: String) {
-        main_toolbar.title = text
-    }
-
-    fun updateSubtitle(text: String) {
-        main_toolbar.subtitle = text
+        main_menu.updateHintText(text)
     }
 
     private fun showFilterDialog() {
@@ -948,7 +947,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        main_toolbar.navigationIcon = null
+        //main_toolbar.navigationIcon = null
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
@@ -1043,18 +1042,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         toggleGoToTodayVisibility(currentFragments.last().shouldGoToTodayBeVisible())
         currentFragments.last().apply {
             refreshEvents()
-            updateActionBarTitle()
         }
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
         if (currentFragments.size > 1) {
             showBackNavigationArrow()
         } else {
-            main_toolbar.navigationIcon = null
+            //main_toolbar.navigationIcon = null
         }
     }
 
     private fun showBackNavigationArrow() {
-        main_toolbar.navigationIcon = resources.getColoredDrawableWithColor(R.drawable.ic_arrow_left_vector, getProperStatusBarColor().getContrastColor())
+        //main_toolbar.navigationIcon = resources.getColoredDrawableWithColor(R.drawable.ic_arrow_left_vector, getProperStatusBarColor().getContrastColor())
     }
 
     private fun refreshViewPager() {

@@ -14,13 +14,16 @@ import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
 import com.simplemobiletools.calendar.pro.extensions.printBitmap
 import com.simplemobiletools.calendar.pro.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.pro.helpers.YearlyCalendarImpl
+import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.calendar.pro.views.SmallMonthView
+import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.extensions.updateTextColors
 import kotlinx.android.synthetic.main.fragment_year.view.*
+import kotlinx.android.synthetic.main.top_navigation.view.*
 import org.joda.time.DateTime
 
 class YearFragment : Fragment(), YearlyCalendar {
@@ -30,13 +33,16 @@ class YearFragment : Fragment(), YearlyCalendar {
     private var lastHash = 0
     private var mCalendar: YearlyCalendarImpl? = null
 
+    var listener: NavigationListener? = null
+
     lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_year, container, false)
         mYear = requireArguments().getInt(YEAR_LABEL)
-        requireContext().updateTextColors(mView.calendar_holder)
+        requireContext().updateTextColors(mView.calendar_wrapper)
         setupMonths()
+        setupButtons()
 
         mCalendar = YearlyCalendarImpl(this, requireContext(), mYear)
         return mView
@@ -94,6 +100,40 @@ class YearFragment : Fragment(), YearlyCalendar {
         }
     }
 
+    private fun setupButtons() {
+        val textColor = requireContext().getProperTextColor()
+        mView.top_left_arrow.apply {
+            applyColorFilter(textColor)
+            background = null
+            setOnClickListener {
+                listener?.goLeft()
+            }
+
+            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
+            pointerLeft?.isAutoMirrored = true
+            setImageDrawable(pointerLeft)
+        }
+
+        mView.top_right_arrow.apply {
+            applyColorFilter(textColor)
+            background = null
+            setOnClickListener {
+                listener?.goRight()
+            }
+
+            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
+            pointerRight?.isAutoMirrored = true
+            setImageDrawable(pointerRight)
+        }
+
+        mView.top_value.apply {
+            setTextColor(requireContext().getProperTextColor())
+            setOnClickListener {
+                (activity as MainActivity).showGoToDateDialog()
+            }
+        }
+    }
+
     private fun markCurrentMonth(now: DateTime) {
         if (now.year == mYear) {
             val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", requireContext().packageName))
@@ -105,8 +145,9 @@ class YearFragment : Fragment(), YearlyCalendar {
     }
 
     override fun updateYearlyCalendar(events: SparseArray<ArrayList<DayYearly>>, hashCode: Int) {
-        if (!isAdded)
+        if (!isAdded) {
             return
+        }
 
         if (hashCode == lastHash) {
             return
@@ -117,6 +158,8 @@ class YearFragment : Fragment(), YearlyCalendar {
             val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
             monthView.setEvents(events.get(i))
         }
+
+        mView.top_value.text = mYear.toString()
     }
 
     fun printCurrentView() {
@@ -124,7 +167,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
         toggleSmallMonthPrintModes()
 
-        requireContext().printBitmap(mView.calendar_holder.getViewBitmap())
+        requireContext().printBitmap(mView.calendar_wrapper.getViewBitmap())
 
         isPrintVersion = false
         setupMonths()
