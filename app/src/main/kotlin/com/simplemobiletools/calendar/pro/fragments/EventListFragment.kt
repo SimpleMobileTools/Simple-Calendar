@@ -13,14 +13,12 @@ import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.extensions.*
-import com.simplemobiletools.calendar.pro.helpers.EVENTS_LIST_VIEW
-import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -28,11 +26,6 @@ import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
-    private val NOT_UPDATING = 0
-    private val UPDATE_TOP = 1
-    private val UPDATE_BOTTOM = 2
-
-    private var FETCH_INTERVAL = 3 * MONTH_SECONDS
     private var MIN_EVENTS_TRESHOLD = 30
 
     private var mEvents = ArrayList<Event>()
@@ -88,7 +81,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
         requireContext().eventsHelper.getEvents(minFetchedTS, maxFetchedTS) { events ->
             if (events.size >= MIN_EVENTS_TRESHOLD) {
-                receivedEvents(events, NOT_UPDATING)
+                receivedEvents(events, INITIAL_EVENTS)
             } else {
                 if (!wereInitialEventsAdded) {
                     maxFetchedTS += FETCH_INTERVAL
@@ -96,7 +89,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
 
                 requireContext().eventsHelper.getEvents(minFetchedTS, maxFetchedTS) {
                     mEvents = it
-                    receivedEvents(mEvents, NOT_UPDATING, !wereInitialEventsAdded)
+                    receivedEvents(mEvents, INITIAL_EVENTS, !wereInitialEventsAdded)
                 }
             }
             wereInitialEventsAdded = true

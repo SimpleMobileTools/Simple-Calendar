@@ -2,11 +2,18 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
+import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
 const val COLUMN_COUNT = 7
 const val SCHEDULE_CALDAV_REQUEST_CODE = 10000
+const val FETCH_INTERVAL = 1 * MONTH_SECONDS
+
+// endless scrolling updating
+const val INITIAL_EVENTS = 0
+const val UPDATE_TOP = 1
+const val UPDATE_BOTTOM = 2
 
 const val DAY_CODE = "day_code"
 const val YEAR_LABEL = "year"

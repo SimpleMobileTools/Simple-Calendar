@@ -34,6 +34,7 @@ import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult
 import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
+import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -44,6 +45,8 @@ import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
+import com.simplemobiletools.commons.views.MyLinearLayoutManager
+import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -76,6 +79,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var mStoredHighlightWeekends = false
     private var mStoredStartWeekWithCurrentDay = false
     private var mStoredHighlightWeekendsColor = 0
+
+    // search results have endless scrolling, so reaching the top/bottom fetches further results
+    private var minFetchedSearchTS = 0L
+    private var maxFetchedSearchTS = 0L
+    private var searchResultEvents = ArrayList<Event>()
+    private var bottomItemAtRefresh: ListItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -328,6 +337,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun closeSearch() {
         main_menu.closeSearch()
+        minFetchedSearchTS = 0L
+        maxFetchedSearchTS = 0L
+        searchResultEvents.clear()
+        bottomItemAtRefresh = null
     }
 
     private fun checkCalDAVUpdateListener() {
@@ -1180,40 +1193,103 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             search_holder.fadeIn()
         } else if (text.isEmpty()) {
             search_holder.fadeOut()
+            search_results_list.adapter = null
         }
 
         search_placeholder_2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
-            val minFetchedTS = DateTime().minusMinutes(config.displayPastEvents).seconds()
-            val maxFetchedTS = DateTime().plusMonths(6).seconds()
+            if (search_results_list.adapter == null) {
+                minFetchedSearchTS = DateTime().minusMinutes(config.displayPastEvents).seconds()
+                maxFetchedSearchTS = DateTime().plusMonths(6).seconds()
+            }
 
-            eventsHelper.getEvents(minFetchedTS, maxFetchedTS) { events ->
+            eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS) { events ->
                 if (text == mLatestSearchQuery) {
-                    runOnUiThread {
-                        val filtered = events.filter {
-                            it.title.contains(text, true) || it.location.contains(text, true) || it.description.contains(text, true)
-                        }
-
-                        search_results_list.beVisibleIf(filtered.isNotEmpty())
-                        search_placeholder.beVisibleIf(filtered.isEmpty())
-                        val listItems = getEventListItems(filtered)
-                        val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
-                            hideKeyboard()
-                            if (it is ListEvent) {
-                                Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
-                                    putExtra(EVENT_ID, it.id)
-                                    startActivity(this)
-                                }
-                            }
-                        }
-
-                        search_results_list.adapter = eventsAdapter
-                    }
+                    showSearchResultEvents(events, INITIAL_EVENTS)
                 }
             }
         } else if (text.length == 1) {
             search_placeholder.beVisible()
             search_results_list.beGone()
+        }
+    }
+
+    private fun showSearchResultEvents(events: ArrayList<Event>, updateStatus: Int) {
+        val currentSearchQuery = main_menu.getCurrentQuery()
+        val filtered = events.filter {
+            it.title.contains(currentSearchQuery, true) || it.location.contains(currentSearchQuery, true) || it.description.contains(currentSearchQuery, true)
+        }
+
+        searchResultEvents = filtered.toMutableList() as ArrayList<Event>
+        runOnUiThread {
+            search_results_list.beVisibleIf(filtered.isNotEmpty())
+            search_placeholder.beVisibleIf(filtered.isEmpty())
+            val listItems = getEventListItems(filtered)
+            val currAdapter = search_results_list.adapter
+            if (currAdapter == null) {
+                val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                    hideKeyboard()
+                    if (it is ListEvent) {
+                        Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
+                            putExtra(EVENT_ID, it.id)
+                            startActivity(this)
+                        }
+                    }
+                }
+
+                search_results_list.adapter = eventsAdapter
+
+                search_results_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
+                    override fun updateTop() {
+                        fetchPreviousPeriod()
+                    }
+
+                    override fun updateBottom() {
+                        fetchNextPeriod()
+                    }
+                }
+            } else {
+                (currAdapter as EventListAdapter).updateListItems(listItems)
+                if (updateStatus == UPDATE_TOP) {
+                    val item = listItems.indexOfFirst { it == bottomItemAtRefresh }
+                    if (item != -1) {
+                        search_results_list.scrollToPosition(item)
+                    }
+                } else if (updateStatus == UPDATE_BOTTOM) {
+                    search_results_list.smoothScrollBy(0, resources.getDimension(R.dimen.endless_scroll_move_height).toInt())
+                }
+            }
+        }
+    }
+
+    private fun fetchPreviousPeriod() {
+        val lastPosition = (search_results_list.layoutManager as MyLinearLayoutManager).findLastVisibleItemPosition()
+        bottomItemAtRefresh = (search_results_list.adapter as EventListAdapter).listItems[lastPosition]
+
+        val oldMinFetchedTS = minFetchedSearchTS - 1
+        minFetchedSearchTS -= FETCH_INTERVAL
+        eventsHelper.getEvents(minFetchedSearchTS, oldMinFetchedTS) { events ->
+            events.forEach { event ->
+                if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                    searchResultEvents.add(0, event)
+                }
+            }
+
+            showSearchResultEvents(searchResultEvents, UPDATE_TOP)
+        }
+    }
+
+    private fun fetchNextPeriod() {
+        val oldMaxFetchedTS = maxFetchedSearchTS + 1
+        maxFetchedSearchTS += FETCH_INTERVAL
+        eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedSearchTS) { events ->
+            events.forEach { event ->
+                if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                    searchResultEvents.add(0, event)
+                }
+            }
+
+            showSearchResultEvents(searchResultEvents, UPDATE_BOTTOM)
         }
     }
 
