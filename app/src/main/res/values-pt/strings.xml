@@ -12,11 +12,11 @@
     <string name="no_upcoming_events">Parece que não existem eventos para breve.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
-    <string name="upgraded_from_free">Olá,
+    <string name="upgraded_from_free">Olá.
 \n
-\nParece ter sido feita uma actualização a partir da antiga versão grátis. Para fazer a migração dos eventos armazenados localmente, deve primeiro exportá-los para um ficheiro .ics para depois poder importá-los para a nova versão. Os botões de exportação/importação encontram-se no ecrã do menu principal.
+\nParece ter sido feita uma atualização a partir da antiga versão grátis. Para fazer a migração dos eventos armazenados localmente, deve exportá-los para um ficheiro .ics para depois poder importá-los para a nova versão. Os botões de exportação/importação encontram-se no ecrã do menu principal.
 \n
-\nDe seguida poderá desinstalar a aplicação antiga. Só terá então, de repor as suas próprias definições na aplicação.
+\nDe seguida poderá desinstalar a aplicação antiga. Só terá então de repor as suas próprias definições na aplicação.
 \n
 \nObrigado!</string>
     <!-- Widget titles -->
@@ -39,14 +39,14 @@
     <string name="saving_filtered_out">A guardar… Mas o tipo de evento seleccionado ficou retido no filtro em Menu - Filtrar</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tarefa</string>
+    <string name="tasks">Tarefas</string>
+    <string name="edit_task">Editar tarefa</string>
+    <string name="new_task">Nova tarefa</string>
+    <string name="create_new_task">Criar tarefa</string>
+    <string name="duplicate_task">Duplicar tarefa</string>
+    <string name="mark_completed">Marcar como terminado</string>
+    <string name="mark_incomplete">Marcar como não terminado</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
     <string name="no_repetition">Sem repetição</string>
@@ -60,7 +60,7 @@
     <string name="repeat_till">Repetir até</string>
     <string name="forever">Eternamente</string>
     <string name="event_is_repeatable">O evento é recorrente</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">A tarefa é recorrente</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>
     <string name="delete_future_occurrences">Apagar esta e todas as ocorrências futuras</string>
@@ -100,7 +100,7 @@
     <string name="last_f">último</string>
     <!-- Birthdays -->
     <string name="birthdays">Data de nascimento</string>
-    <string name="add_birthdays">Adicionar data de nascimento ao contacto</string>
+    <string name="add_birthdays">Adicionar data de nascimento dos contactos</string>
     <string name="no_birthdays">Não foram encontradas datas de nascimento</string>
     <string name="no_new_birthdays">Não foram encontradas novas datas de nascimento</string>
     <string name="birthdays_added">Datas de nascimento adicionadas com sucesso</string>
@@ -117,7 +117,7 @@
     <string name="before">antes</string>
     <string name="add_another_reminder">Adicionar outro lembrete</string>
     <string name="event_reminders">Lembretes de eventos</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Lembretes</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Adicionar participante</string>
     <string name="my_status">Meu estado:</string>
@@ -167,8 +167,8 @@
     <string name="importing_holidays_failed">Falha ao importar os feriados</string>
     <!-- Settings -->
     <string name="manage_event_types">Gerir tipos de eventos</string>
-    <string name="start_day_at">Iniciar vista semanal em</string>
-    <string name="end_day_at">Terminar vista semanal em</string>
+    <string name="start_day_at">Iniciar dia às</string>
+    <string name="end_day_at">Terminar dia às</string>
     <string name="midnight_spanning">Mostrar eventos que se estendam para lá da meia-noite na barra superior</string>
     <string name="allow_customizing_day_count">Personalizar contagem dos dias</string>
     <string name="week_numbers">Mostrar número das semanas</string>
@@ -187,7 +187,7 @@
     <string name="show_a_grid">Mostrar grelha</string>
     <string name="loop_reminders">Mostrar lembretes até serem descartados</string>
     <string name="dim_past_events">Desvanecer eventos passados</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Desvanecer tarefas terminadas</string>
     <string name="events">Eventos</string>
     <string name="reminder_stream">Fluxo áudio a utilizar nos lembretes</string>
     <string name="system_stream">Sistema</string>
