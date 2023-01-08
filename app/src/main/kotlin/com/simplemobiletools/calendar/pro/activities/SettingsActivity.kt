@@ -8,12 +8,15 @@ import android.media.AudioManager
 import android.media.RingtoneManager
 import android.os.Bundle
 import android.widget.Toast
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectQuickFilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
+import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
@@ -24,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
 import java.io.File
 import java.io.InputStream
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.system.exitProcess
 
@@ -579,7 +583,17 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun getHoursString(hours: Int) = String.format("%02d:00", hours)
+    private fun getHoursString(hours: Int): String {
+        return if (config.use24HourFormat) {
+            String.format("%02d:00", hours)
+        } else {
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.HOUR_OF_DAY, hours)
+            calendar.set(Calendar.MINUTE, 0)
+            val format = SimpleDateFormat("hh.mm aa")
+            format.format(calendar.time)
+        }
+    }
 
     private fun setupDisplayPastEvents() {
         var displayPastEvents = config.displayPastEvents
@@ -715,14 +729,36 @@ class SettingsActivity : SimpleActivity() {
                     }
 
                     val currentDateTime = DateTime.now()
-                    TimePickerDialog(
-                        this,
-                        getTimePickerDialogTheme(),
-                        timeListener,
-                        currentDateTime.hourOfDay,
-                        currentDateTime.minuteOfHour,
-                        config.use24HourFormat
-                    ).show()
+
+                    if (config.isUsingSystemTheme) {
+                        val timeFormat = if (config.use24HourFormat) {
+                            TimeFormat.CLOCK_24H
+                        } else {
+                            TimeFormat.CLOCK_12H
+                        }
+
+                        val timePicker = MaterialTimePicker.Builder()
+                            .setTimeFormat(timeFormat)
+                            .setHour(currentDateTime.hourOfDay)
+                            .setMinute(currentDateTime.minuteOfHour)
+                            .build()
+
+                        timePicker.addOnPositiveButtonClickListener {
+                            config.defaultStartTime = timePicker.hour * 60 + timePicker.minute
+                            updateDefaultStartTimeText()
+                        }
+
+                        timePicker.show(supportFragmentManager, "")
+                    } else {
+                        TimePickerDialog(
+                            this,
+                            getTimePickerDialogTheme(),
+                            timeListener,
+                            currentDateTime.hourOfDay,
+                            currentDateTime.minuteOfHour,
+                            config.use24HourFormat
+                        ).show()
+                    }
                 }
             }
         }
@@ -735,7 +771,8 @@ class SettingsActivity : SimpleActivity() {
             else -> {
                 val hours = config.defaultStartTime / 60
                 val minutes = config.defaultStartTime % 60
-                settings_default_start_time.text = String.format("%02d:%02d", hours, minutes)
+                val dateTime = DateTime.now().withHourOfDay(hours).withMinuteOfHour(minutes)
+                settings_default_start_time.text = Formatter.getTime(this, dateTime)
             }
         }
     }

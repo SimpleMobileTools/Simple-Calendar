@@ -20,6 +20,8 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
@@ -1359,14 +1361,34 @@ class EventActivity : SimpleActivity() {
 
     private fun setupStartTime() {
         hideKeyboard()
-        TimePickerDialog(
-            this,
-            getTimePickerDialogTheme(),
-            startTimeSetListener,
-            mEventStartDateTime.hourOfDay,
-            mEventStartDateTime.minuteOfHour,
-            config.use24HourFormat
-        ).show()
+        if (config.isUsingSystemTheme) {
+            val timeFormat = if (config.use24HourFormat) {
+                TimeFormat.CLOCK_24H
+            } else {
+                TimeFormat.CLOCK_12H
+            }
+
+            val timePicker = MaterialTimePicker.Builder()
+                .setTimeFormat(timeFormat)
+                .setHour(mEventStartDateTime.hourOfDay)
+                .setMinute(mEventStartDateTime.minuteOfHour)
+                .build()
+
+            timePicker.addOnPositiveButtonClickListener {
+                timeSet(timePicker.hour, timePicker.minute, true)
+            }
+
+            timePicker.show(supportFragmentManager, "")
+        } else {
+            TimePickerDialog(
+                this,
+                getTimePickerDialogTheme(),
+                startTimeSetListener,
+                mEventStartDateTime.hourOfDay,
+                mEventStartDateTime.minuteOfHour,
+                config.use24HourFormat
+            ).show()
+        }
     }
 
     private fun setupEndDate() {
@@ -1382,14 +1404,34 @@ class EventActivity : SimpleActivity() {
 
     private fun setupEndTime() {
         hideKeyboard()
-        TimePickerDialog(
-            this,
-            getTimePickerDialogTheme(),
-            endTimeSetListener,
-            mEventEndDateTime.hourOfDay,
-            mEventEndDateTime.minuteOfHour,
-            config.use24HourFormat
-        ).show()
+        if (config.isUsingSystemTheme) {
+            val timeFormat = if (config.use24HourFormat) {
+                TimeFormat.CLOCK_24H
+            } else {
+                TimeFormat.CLOCK_12H
+            }
+
+            val timePicker = MaterialTimePicker.Builder()
+                .setTimeFormat(timeFormat)
+                .setHour(mEventEndDateTime.hourOfDay)
+                .setMinute(mEventEndDateTime.minuteOfHour)
+                .build()
+
+            timePicker.addOnPositiveButtonClickListener {
+                timeSet(timePicker.hour, timePicker.minute, false)
+            }
+
+            timePicker.show(supportFragmentManager, "")
+        } else {
+            TimePickerDialog(
+                this,
+                getTimePickerDialogTheme(),
+                endTimeSetListener,
+                mEventEndDateTime.hourOfDay,
+                mEventEndDateTime.minuteOfHour,
+                config.use24HourFormat
+            ).show()
+        }
     }
 
     private val startDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->

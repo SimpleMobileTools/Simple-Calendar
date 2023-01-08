@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
@@ -538,9 +540,34 @@ class TaskActivity : SimpleActivity() {
 
     private fun setupTime() {
         hideKeyboard()
-        TimePickerDialog(
-            this, getTimePickerDialogTheme(), timeSetListener, mTaskDateTime.hourOfDay, mTaskDateTime.minuteOfHour, config.use24HourFormat
-        ).show()
+        if (config.isUsingSystemTheme) {
+            val timeFormat = if (config.use24HourFormat) {
+                TimeFormat.CLOCK_24H
+            } else {
+                TimeFormat.CLOCK_12H
+            }
+
+            val timePicker = MaterialTimePicker.Builder()
+                .setTimeFormat(timeFormat)
+                .setHour(mTaskDateTime.hourOfDay)
+                .setMinute(mTaskDateTime.minuteOfHour)
+                .build()
+
+            timePicker.addOnPositiveButtonClickListener {
+                timeSet(timePicker.hour, timePicker.minute)
+            }
+
+            timePicker.show(supportFragmentManager, "")
+        } else {
+            TimePickerDialog(
+                this,
+                getTimePickerDialogTheme(),
+                timeSetListener,
+                mTaskDateTime.hourOfDay,
+                mTaskDateTime.minuteOfHour,
+                config.use24HourFormat
+            ).show()
+        }
     }
 
     private val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
