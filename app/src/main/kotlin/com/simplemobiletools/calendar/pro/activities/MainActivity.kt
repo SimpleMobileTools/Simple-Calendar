@@ -2,9 +2,7 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.SearchManager
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.ColorDrawable
@@ -16,11 +14,8 @@ import android.os.Handler
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.Contacts
 import android.provider.ContactsContract.Data
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuItemCompat
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
@@ -63,9 +58,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private var showCalDAVRefreshToast = false
     private var mShouldFilterBeVisible = false
-    private var mIsSearchOpen = false
     private var mLatestSearchQuery = ""
-    private var mSearchMenuItem: MenuItem? = null
     private var shouldGoToTodayBeVisible = false
     private var goToTodayButton: MenuItem? = null
     private var currentFragments = ArrayList<MyFragmentHolder>()
@@ -244,6 +237,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         main_menu.getToolbar().inflateMenu(R.menu.menu_main)
         main_menu.toggleHideOnScroll(false)
         main_menu.setupMenu()
+
+        main_menu.onSearchTextChangedListener = { text ->
+            searchQueryChanged(text)
+        }
+
         main_menu.getToolbar().setOnMenuItemClickListener { menuItem ->
             if (fab_extended_overlay.isVisible()) {
                 hideExtendedFab()
@@ -316,44 +314,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             mStoredStartWeekWithCurrentDay = startWeekWithCurrentDay
         }
         mStoredDayCode = Formatter.getTodayCode()
-    }
-
-    private fun setupSearch(menu: Menu) {
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        mSearchMenuItem = menu.findItem(R.id.search)
-        (mSearchMenuItem!!.actionView as SearchView).apply {
-            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-            isSubmitButtonEnabled = false
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String) = false
-
-                override fun onQueryTextChange(newText: String): Boolean {
-                    if (mIsSearchOpen) {
-                        searchQueryChanged(newText)
-                    }
-                    return true
-                }
-            })
-        }
-
-        MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                mIsSearchOpen = true
-                search_holder.beVisible()
-                calendar_fab.beGone()
-                searchQueryChanged("")
-                refreshMenuItems()
-                return true
-            }
-
-            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                mIsSearchOpen = false
-                search_holder.beGone()
-                calendar_fab.beVisibleIf(currentFragments.last() !is YearFragmentsHolder && currentFragments.last() !is WeekFragmentsHolder)
-                refreshMenuItems()
-                return true
-            }
-        })
     }
 
     private fun setupQuickFilter() {
@@ -1215,7 +1175,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun searchQueryChanged(text: String) {
         mLatestSearchQuery = text
-        search_placeholder_2.beGoneIf(text.length >= 2)
+
+        if (text.isNotEmpty() && search_holder.isGone()) {
+            search_holder.fadeIn()
+        } else if (text.isEmpty()) {
+            search_holder.fadeOut()
+        }
+
+        search_placeholder_2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
             eventsHelper.getEventsWithSearchQuery(text, this) { searchedText, events ->
                 if (searchedText == mLatestSearchQuery) {
@@ -1235,7 +1202,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     search_results_list.adapter = eventsAdapter
                 }
             }
-        } else {
+        } else if (text.length == 1) {
             search_placeholder.beVisible()
             search_results_list.beGone()
         }
@@ -1248,9 +1215,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
-    // only used at active search
     override fun refreshItems() {
-        searchQueryChanged(mLatestSearchQuery)
         refreshViewPager()
     }
 
