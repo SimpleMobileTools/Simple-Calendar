@@ -37,6 +37,7 @@
     <string name="please_fill_location">지도에 표시할 검색명을 입력해주세요</string>
     <string name="public_event_notification_text">다가오는 일정이 있습니다.</string>
     <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>

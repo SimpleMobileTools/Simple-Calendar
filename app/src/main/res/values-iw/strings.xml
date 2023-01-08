@@ -37,6 +37,7 @@
     <string name="please_fill_location">אנא הזן מיקום להצגה במפה</string>
     <string name="public_event_notification_text">יש אירוע בקרוב</string>
     <string name="saving_filtered_out">שומר... אבל סוג האירוע שנבחר מסונן בתפריט העליון - מסנן</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">משימה</string>
     <string name="tasks">משימות</string>

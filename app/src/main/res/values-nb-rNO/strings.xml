@@ -37,6 +37,7 @@
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
     <string name="public_event_notification_text">En hendelse er forestående</string>
     <string name="saving_filtered_out">Lagrer… Men den valgte hendelsestypen er filtrert ut i Meny - Filtrer</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Oppgave</string>
     <string name="tasks">Oppgaver</string>

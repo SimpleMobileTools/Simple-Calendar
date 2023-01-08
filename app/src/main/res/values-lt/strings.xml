@@ -37,6 +37,7 @@
     <string name="please_fill_location">Įveskite vietą, kuri bus rodoma žemėlapyje</string>
     <string name="public_event_notification_text">Artėjantis įvykis</string>
     <string name="saving_filtered_out">Įrašoma… Bet pasirinktas įvykių tipas yra išfiltruojamas viršutiniame Meniu – Filtras</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Užduotis</string>
     <string name="tasks">Užduotys</string>

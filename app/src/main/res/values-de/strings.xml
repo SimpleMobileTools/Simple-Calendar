@@ -37,6 +37,7 @@
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
     <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü – Filter herausgefiltert</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Aufgabe</string>
     <string name="tasks">Aufgaben</string>

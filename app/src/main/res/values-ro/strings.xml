@@ -37,6 +37,7 @@
     <string name="please_fill_location">Completează o locație ca să apară pe o hartă</string>
     <string name="public_event_notification_text">Se apropie un eveniment</string>
     <string name="saving_filtered_out">Se salvează... Dar tipul de eveniment selectat este filtrat în meniul de sus - Filtru</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Sarcină</string>
     <string name="tasks">Sarcini</string>

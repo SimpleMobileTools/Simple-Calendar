@@ -37,6 +37,7 @@
     <string name="please_fill_location">Lütfen haritada gösterilecek bir yeri doldurun</string>
     <string name="public_event_notification_text">Bir etkinlik yaklaşıyor</string>
     <string name="saving_filtered_out">Kaydediliyor… Ancak seçilen etkinlik türü üst Menü - Filtre kısmında filtreleniyor</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Görev</string>
     <string name="tasks">Görevler</string>

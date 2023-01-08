@@ -37,6 +37,7 @@
     <string name="please_fill_location">Upiši lokaciju za prikazivanje na karti</string>
     <string name="public_event_notification_text">Jedan događaj nadolazi</string>
     <string name="saving_filtered_out">Spremanje … Odabrana vrsta događaja je međutim filtrirana u gornjem izborniku – Filtar</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Zadatak</string>
     <string name="tasks">Zadaci</string>

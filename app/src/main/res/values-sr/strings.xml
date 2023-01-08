@@ -37,6 +37,7 @@
     <string name="please_fill_location">Попуните локацију која ће бити приказана на мапи</string>
     <string name="public_event_notification_text">Догађај се одржава</string>
     <string name="saving_filtered_out">Чување… Али изабрани тип догађаја је филтриран у горњем менију - филтер</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Задатак</string>
     <string name="tasks">Задатке</string>

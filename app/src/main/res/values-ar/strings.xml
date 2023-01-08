@@ -37,6 +37,7 @@
     <string name="please_fill_location">أدخل الإحداثية كي يتم عرضها على الخريطة</string>
     <string name="public_event_notification_text">اقتراب موعد حدث</string>
     <string name="saving_filtered_out">تم الحفظ... ولكن تتم تصفية نوع الحدث المحدد في القائمة العلوية - تصفية</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">مهمة</string>
     <string name="tasks">المهام</string>

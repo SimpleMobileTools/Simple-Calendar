@@ -37,6 +37,7 @@
     <string name="please_fill_location">请填入要显示在地图上的地点</string>
     <string name="public_event_notification_text">一个活动即将到来</string>
     <string name="saving_filtered_out">正在保存…但所选择的事件类型在顶部菜单的“筛选”中被过滤掉</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">任务</string>
     <string name="tasks">任务</string>

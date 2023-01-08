@@ -37,6 +37,7 @@
     <string name="please_fill_location">Укажите место, которое будет показано на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
     <string name="saving_filtered_out">Сохранение… Однако выбранный тип события исключён в разделе \"Фильтр\" верхнего меню</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Задача</string>
     <string name="tasks">Задачи</string>

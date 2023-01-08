@@ -37,6 +37,7 @@
     <string name="please_fill_location">Калі ласка, увядзіце месцазнаходжанне, якое будзе паказана на карце</string>
     <string name="public_event_notification_text">Набліжаецца падзея</string>
     <string name="saving_filtered_out">Захаванне... Але абраны тып падзеі адфільтраваны ў верхнім меню - Фільтр</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Заданне</string>
     <string name="tasks">Заданні</string>

@@ -33,6 +33,7 @@
     <string name="please_fill_location">Vul de locatie in om deze op de kaart te tonen</string>
     <string name="public_event_notification_text">Afspraak aanstaande</string>
     <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Taak</string>
     <string name="tasks">Taken</string>

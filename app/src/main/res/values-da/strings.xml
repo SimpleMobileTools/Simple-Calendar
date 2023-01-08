@@ -37,6 +37,7 @@
     <string name="please_fill_location">Indtast et sted der kan vises på et kort</string>
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Opgave</string>
     <string name="tasks">Opgaver</string>

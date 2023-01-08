@@ -37,6 +37,7 @@
     <string name="please_fill_location">Täytä sijainti, joka näytetään kartalla</string>
     <string name="public_event_notification_text">Tapahtuma tulossa</string>
     <string name="saving_filtered_out">Tallennetaan… mutta valittu tapahtumatyyppi on suodatettu pois näkyvistä Menu - Suodata-valikosta</string>
+    <string name="everything_filtered_out">You have filtered out all event types</string>
     <!-- Tasks -->
     <string name="task">Tehtävä</string>
     <string name="tasks">Tehtävät</string>

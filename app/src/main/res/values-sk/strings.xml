@@ -36,7 +36,8 @@
     <string name="filter_events_by_type">Filtrovať udalosti podľa typu</string>
     <string name="please_fill_location">Prosím zadajte polohu, ktorá má byť zobrazená na mape</string>
     <string name="public_event_notification_text">Blíži sa udalosť</string>
-    <string name="saving_filtered_out">Ukladá sa… Ale zvolený typ je vyfiltrovaný v hornom Menu - Filtrovať</string>
+    <string name="saving_filtered_out">Ukladá sa… Ale zvolený typ je odfiltrovaný v hornom Menu - Filtrovať</string>
+    <string name="everything_filtered_out">Máte odfiltrované všetky typy udalostí</string>
     <!-- Tasks -->
     <string name="task">Úloha</string>
     <string name="tasks">Úlohy</string>
