@@ -278,11 +278,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         weekHolder!!.week_view_holder.height - weekHolder!!.week_view_seekbar.height - weekHolder!!.week_view_days_count_divider.height
 
     override fun printView() {
+        val lightTextColor = resources.getColor(R.color.theme_light_text_color)
         weekHolder!!.apply {
             week_view_days_count_divider.beGone()
             week_view_seekbar.beGone()
             week_view_days_count.beGone()
-            addHours(resources.getColor(R.color.theme_light_text_color))
+            addHours(lightTextColor)
+            week_view_week_number.setTextColor(lightTextColor)
+            week_view_month_label.setTextColor(lightTextColor)
             background = ColorDrawable(Color.WHITE)
             (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
 
@@ -293,6 +296,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                     week_view_days_count_divider.beVisible()
                     week_view_seekbar.beVisible()
                     week_view_days_count.beVisible()
+                    week_view_week_number.setTextColor(requireContext().getProperTextColor())
+                    week_view_month_label.setTextColor(requireContext().getProperTextColor())
                     addHours()
                     background = ColorDrawable(requireContext().getProperBackgroundColor())
                     (viewPager?.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager?.currentItem ?: 0)
