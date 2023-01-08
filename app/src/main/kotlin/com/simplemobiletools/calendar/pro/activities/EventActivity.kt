@@ -79,6 +79,7 @@ class EventActivity : SimpleActivity() {
     private lateinit var mEvent: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
         setupOptionsMenu()
@@ -87,6 +88,9 @@ class EventActivity : SimpleActivity() {
         if (checkAppSideloading()) {
             return
         }
+
+        updateMaterialActivityViews(event_coordinator, event_holder, useTransparentNavigation = true, useTopSearchMenu = false)
+        setupMaterialScrollListener(event_nested_scrollview, event_toolbar)
 
         val intent = intent ?: return
         mWasContactsPermissionChecked = hasPermission(PERMISSION_READ_CONTACTS)
@@ -221,7 +225,7 @@ class EventActivity : SimpleActivity() {
             event_all_day.toggle()
         }
 
-        updateTextColors(event_scrollview)
+        updateTextColors(event_nested_scrollview)
         updateIconColors()
         refreshMenuItems()
         showOrHideTimeZone()

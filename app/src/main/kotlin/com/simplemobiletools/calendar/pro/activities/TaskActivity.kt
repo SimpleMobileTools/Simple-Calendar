@@ -46,6 +46,7 @@ class TaskActivity : SimpleActivity() {
     private var mIsNewTask = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
         setupOptionsMenu()
@@ -54,6 +55,9 @@ class TaskActivity : SimpleActivity() {
         if (checkAppSideloading()) {
             return
         }
+
+        updateMaterialActivityViews(task_coordinator, task_holder, useTransparentNavigation = true, useTopSearchMenu = false)
+        setupMaterialScrollListener(task_nested_scrollview, task_toolbar)
 
         val intent = intent ?: return
         updateColors()
@@ -726,7 +730,7 @@ class TaskActivity : SimpleActivity() {
     }
 
     private fun updateColors() {
-        updateTextColors(task_scrollview)
+        updateTextColors(task_nested_scrollview)
         val textColor = getProperTextColor()
         arrayOf(
             task_time_image, task_reminder_image, task_type_image, task_repetition_image

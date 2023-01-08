@@ -6,28 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/event_app_bar_layout"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/event_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"
+        app:menu="@menu/menu_event"
+        app:title="@string/app_launcher_name"
+        app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/event_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_primary"
-            app:menu="@menu/menu_event"
-            app:title="@string/app_launcher_name"
-            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
-        android:id="@+id/event_scrollview"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/event_nested_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:id="@+id/event_holder"
@@ -634,5 +628,5 @@
                 android:importantForAccessibility="no" />
 
         </RelativeLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
