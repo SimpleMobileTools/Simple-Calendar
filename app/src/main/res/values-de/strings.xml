@@ -36,8 +36,8 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Ereignistyp wird im oberen Menü – Filter herausgefiltert</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Termintyp wird im oberen Menü – Filter herausgefiltert</string>
+    <string name="everything_filtered_out">Du hast alle Termintypen herausgefiltert</string>
     <!-- Tasks -->
     <string name="task">Aufgabe</string>
     <string name="tasks">Aufgaben</string>
@@ -137,7 +137,7 @@
     <string name="export_past_events_too">Auch vergangene Termine exportieren</string>
     <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
-    <string name="ignore_event_types">Ereignistypen in der Datei ignorieren, immer den Standardtyp verwenden</string>
+    <string name="ignore_event_types">Termintypen in der Datei ignorieren, immer den Standardtyp verwenden</string>
     <!-- Event details -->
     <string name="location">Ort</string>
     <string name="description">Beschreibung</string>
@@ -169,7 +169,7 @@
     <string name="manage_event_types">Termintypen verwalten</string>
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
-    <string name="midnight_spanning">Ereignisse, die sich über Mitternacht erstrecken, in der oberen Leiste anzeigen</string>
+    <string name="midnight_spanning">Termine, die sich über Mitternacht erstrecken, in der oberen Leiste anzeigen</string>
     <string name="allow_customizing_day_count">Anpassen der Anzahl der Tage zulassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
@@ -249,7 +249,7 @@
     <string name="sample_description_4">Im Einkaufszentrum</string>
     <string name="sample_title_5">Kaffeepause</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Ereignisse anzeigen, die stattfinden:</string>
+    <string name="show_events_happening">Termine anzeigen, die stattfinden:</string>
     <string name="within_the_next_one_year">Innerhalb des nächsten 1 Jahres</string>
     <string name="today_only">Nur heute</string>
     <string name="within_the_next">Innerhalb der nächsten …</string>
@@ -277,8 +277,8 @@
     <string name="faq_4_text">Ja. Standardmäßig werden alle neuen Termine in der aktuellen Zeitzone des Gerätes erstellt. Um die Zeitzone eines Termins ändern zu können, muss die Option „Zeitzone kann geändert werden“ in den Einstellungen aktiviert sein. Die Zeitzone eines Termins kann dann beim Anlegen oder Bearbeiten geändert werden. In den Standardeinstellungen ist dies nicht aktiv, da die meisten Anwender die Möglichkeit nicht benötigen werden.</string>
     <string name="faq_5_title">Die Anwendung zeigt keine Benachrichtigungen an, woran liegt das\?</string>
     <string name="faq_5_text">Überprüfe den Akku deines Geräts und die Einstellungen für Benachrichtigungen, um sicherzustellen, dass die Erinnerungen nicht blockiert werden oder die Anwendung im Hintergrund beendet wird. Vielleicht möchtest du auch einen Blick auf &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; werfen, dort lassen sich einige nützliche Tipps finden.</string>
-    <string name="faq_6_title">Wie kann ich einen bestehenden Ereignistyp ändern oder löschen\?</string>
-    <string name="faq_6_text">Du kannst beides in der App unter „Einstellungen – Ereignistypen verwalten“ einstellen. Klicke einfach auf das gewünschte Ereignis, um Beschriftung und Farbe zu ändern oder wähle das gewünschte Ereignis durch langes Drücken aus und verwende den Mülleimer im oberen Menü.</string>
+    <string name="faq_6_title">Wie kann ich einen bestehenden Termintyp ändern oder löschen\?</string>
+    <string name="faq_6_text">Du kannst beides in der App unter „Einstellungen – Termintypen verwalten“ einstellen. Klicke einfach auf den gewünschte Termin, um Beschriftung und Farbe zu ändern, oder wähle den gewünschten Termin durch langes Drücken aus und verwende den Mülleimer im oberen Menü.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

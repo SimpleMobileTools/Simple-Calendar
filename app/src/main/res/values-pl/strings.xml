@@ -37,7 +37,7 @@
     <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
     <string name="saving_filtered_out">Zapisywanie… Jednak wybrany typ wydarzenia jest odfiltrowywany w Menu -&gt; Filtruj…</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Odfiltrowałeś(-aś) wszystkie typy wydarzeń</string>
     <!-- Tasks -->
     <string name="task">Zadanie</string>
     <string name="tasks">Zadania</string>
