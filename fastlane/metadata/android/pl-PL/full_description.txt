@@ -1,12 +1,12 @@
-Prosty kalendarz 2022 to wysoce konfigurowalna aplikacja kalendarza miesięcznego offline na Androida. Miej w kieszeni planer kalendarza zaprojektowanego tak, aby robił dokładnie to, co osobisty, mały planer harmonogramu powinien robić w 2022 roku. Żadnych skomplikowanych funkcji, niepotrzebnych uprawnień ani reklam! Obsługuje synchronizację wydarzeń za pośrednictwem Kalendarza Google lub innych kalendarzy obsługujących protokół CalDAV.
+Prosty kalendarz 2023 to wysoce konfigurowalna aplikacja kalendarza miesięcznego offline na Androida. Miej w kieszeni planer kalendarza zaprojektowanego tak, aby robił dokładnie to, co osobisty, mały planer harmonogramu powinien robić w 2023 roku. Żadnych skomplikowanych funkcji, niepotrzebnych uprawnień ani reklam! Obsługuje synchronizację wydarzeń za pośrednictwem Kalendarza Google lub innych kalendarzy obsługujących protokół CalDAV.
 
 Przejmij kontrolę nad swoim czasem
-Niezależnie od tego, czy szukasz kalendarza służbowego dla biznesu, planera dnia, terminarza spotkań, czy organizacji i planowania pojedynczych i powtarzających się wydarzeń jak urodziny, rocznica, przypomnienie o spotkaniu lub cokolwiek innego, Prosty kalendarz 2022 ułatwia pozostać zorganizowanym(-ą). Widżet kalendarza ma niesamowitą różnorodność opcji konfiguracji: dostosuj przypomnienia o wydarzeniach, wygląd powiadomień, mały widżet przypomnień kalendarza i ogólny wygląd.
+Niezależnie od tego, czy szukasz kalendarza służbowego dla biznesu, planera dnia, terminarza spotkań, czy organizacji i planowania pojedynczych i powtarzających się wydarzeń jak urodziny, rocznica, przypomnienie o spotkaniu lub cokolwiek innego, Prosty kalendarz 2023 ułatwia pozostać zorganizowanym(-ą). Widżet kalendarza ma niesamowitą różnorodność opcji konfiguracji: dostosuj przypomnienia o wydarzeniach, wygląd powiadomień, mały widżet przypomnień kalendarza i ogólny wygląd.
 
 Planer harmonogramu: zaplanuj swój dzień
-Harmonogram spotkań, miesięczny planer i rodzinny organizer w jednym! Łatwo sprawdzaj swój nadchodzący terminarz, planuj spotkania służbowe oraz wydarzenia i rezerwacje terminów. Przypomnienia zapewnią, że będziesz punktualny(-a) i poinformowany(-a) przez swoją aplikację codziennego harmonogramu. Ten widżet kalendarza 2022 jest niezwykle łatwy w użyciu. Możesz nawet wyświetlić wszystko jako prosta lista wydarzeń zamiast w widoku miesięcznym, dzięki czemu wiesz dokładnie, co wydarzy się w Twoim życiu oraz jak zorganizować i zaplanować swój czas.
+Harmonogram spotkań, miesięczny planer i rodzinny organizer w jednym! Łatwo sprawdzaj swój nadchodzący terminarz, planuj spotkania służbowe oraz wydarzenia i rezerwacje terminów. Przypomnienia zapewnią, że będziesz punktualny(-a) i poinformowany(-a) przez swoją aplikację codziennego harmonogramu. Ten widżet kalendarza 2023 jest niezwykle łatwy w użyciu. Możesz nawet wyświetlić wszystko jako prosta lista wydarzeń zamiast w widoku miesięcznym, dzięki czemu wiesz dokładnie, co wydarzy się w Twoim życiu oraz jak zorganizować i zaplanować swój czas.
 
-Cechy Prostego kalendarza 2022:
+Cechy Prostego kalendarza 2023:
 
 ✔️ Najlepsze wrażenia użytkownika
 ➕ Brak reklam i denerwujących wyskakujących okienek – naprawdę świetne wrażenia użytkownika!
@@ -39,7 +39,7 @@ Cechy Prostego kalendarza 2022:
 ➕ Szybki kalendarz służbowy lub osobisty, cyfrowy terminarz
 ➕ Szybko przełączaj się między widokami: dziennym, tygodniowym, miesięcznym, rocznym i wydarzeń
 
-POBIERZ PROSTY PLANER KALENDARZA – HARMONOGRAM OFFLINE I UKŁADANIE TERMINARZA BEZ REKLAM! ZAPLANUJ SWÓJ HARMONOGRAM 2022!
+POBIERZ PROSTY PLANER KALENDARZA – HARMONOGRAM OFFLINE I UKŁADANIE TERMINARZA BEZ REKLAM! ZAPLANUJ SWÓJ HARMONOGRAM 2023!
 
 Sprawdź pełen zestaw od Simple Tools tutaj:
 https://www.simplemobiletools.com
