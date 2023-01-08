@@ -318,7 +318,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     background = ColorDrawable(primaryColor)
                     layoutParams.width = view.width
                     layoutParams.height = rowHeight.toInt()
-                    y = hour * rowHeight
+                    y = hour * rowHeight - hour / 2
                     applyColorFilter(primaryColor.getContrastColor())
 
                     setOnClickListener {
