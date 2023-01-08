@@ -20,7 +20,7 @@
         android:id="@+id/month_day_view_divider"
         layout="@layout/divider"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="@dimen/divider_height"
         android:layout_below="@+id/month_day_view_wrapper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/month_day_view_wrapper" />

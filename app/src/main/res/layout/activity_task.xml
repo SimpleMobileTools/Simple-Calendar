@@ -26,6 +26,7 @@
         android:id="@+id/task_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -68,7 +69,7 @@
             <ImageView
                 android:id="@+id/task_description_divider"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/divider_height"
                 android:layout_below="@+id/task_description"
                 android:layout_marginTop="@dimen/activity_margin"
                 android:layout_marginBottom="@dimen/normal_margin"
@@ -77,8 +78,8 @@
 
             <ImageView
                 android:id="@+id/task_time_image"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/task_description_divider"
                 android:layout_alignTop="@+id/task_all_day_holder"
                 android:layout_alignBottom="@+id/task_all_day_holder"
@@ -97,7 +98,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:paddingStart="@dimen/zero"
                 android:paddingTop="@dimen/medium_margin"
-                android:paddingEnd="@dimen/normal_margin"
+                android:paddingEnd="@dimen/activity_margin"
                 android:paddingBottom="@dimen/medium_margin">
 
                 <com.simplemobiletools.commons.views.MyAppCompatCheckbox
@@ -131,6 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/task_time_image"
                 android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/medium_margin"
                 android:background="?attr/selectableItemBackground"
                 android:padding="@dimen/activity_margin"
                 android:textSize="@dimen/day_text_size"
@@ -139,7 +141,7 @@
             <ImageView
                 android:id="@+id/task_date_time_divider"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/divider_height"
                 android:layout_below="@+id/task_date"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
@@ -148,8 +150,8 @@
 
             <ImageView
                 android:id="@+id/task_reminder_image"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/task_date_time_divider"
                 android:layout_alignTop="@+id/task_reminder_1"
                 android:layout_alignBottom="@+id/task_reminder_1"
@@ -215,7 +217,7 @@
             <ImageView
                 android:id="@+id/task_caldav_calendar_divider"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/divider_height"
                 android:layout_below="@+id/task_reminder_3"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
@@ -224,8 +226,8 @@
 
             <ImageView
                 android:id="@+id/task_repetition_image"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/task_caldav_calendar_divider"
                 android:layout_alignTop="@+id/task_repetition"
                 android:layout_alignBottom="@+id/task_repetition"
@@ -313,7 +315,7 @@
             <ImageView
                 android:id="@+id/task_repetition_divider"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/divider_height"
                 android:layout_below="@+id/task_repetition_limit_holder"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:background="@color/divider_grey"
@@ -321,8 +323,8 @@
 
             <ImageView
                 android:id="@+id/task_type_image"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/task_repetition_divider"
                 android:layout_alignTop="@+id/task_type_holder"
                 android:layout_alignBottom="@+id/task_type_holder"
@@ -365,7 +367,7 @@
             <ImageView
                 android:id="@+id/task_type_divider"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="@dimen/divider_height"
                 android:layout_below="@+id/task_type_holder"
                 android:background="@color/divider_grey"
                 android:importantForAccessibility="no" />

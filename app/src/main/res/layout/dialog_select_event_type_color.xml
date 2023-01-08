@@ -25,7 +25,7 @@
         <ImageView
             android:id="@+id/dialog_select_event_type_other_divider"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="@dimen/divider_height"
             android:layout_below="@+id/dialog_select_event_type_other_value"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no"

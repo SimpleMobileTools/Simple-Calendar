@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/dialog_radio_divider"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="@dimen/divider_height"
             android:background="@color/divider_grey"
             android:importantForAccessibility="no" />
 
