@@ -199,15 +199,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         checkSwipeRefreshAvailability()
         checkShortcuts()
 
-        if (!mIsSearchOpen) {
+        if (!main_menu.isSearchOpen) {
             refreshMenuItems()
         }
 
         setupQuickFilter()
-
-        /*main_toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }*/
 
         if (config.caldavSync) {
             updateCalDAVEvents()
@@ -237,7 +233,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !mIsSearchOpen
+            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !main_menu.isSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
             findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(R.bool.hide_google_relations)
@@ -275,7 +271,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
-        if (mIsSearchOpen) {
+        if (main_menu.isSearchOpen) {
             closeSearch()
         } else {
             swipe_refresh_layout.isRefreshing = false
@@ -371,7 +367,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun closeSearch() {
-        mSearchMenuItem?.collapseActionView()
+        main_menu.closeSearch()
     }
 
     private fun checkCalDAVUpdateListener() {
@@ -947,7 +943,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        //main_toolbar.navigationIcon = null
+        main_menu.toggleForceArrowBackIcon(false)
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
@@ -1047,12 +1043,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         if (currentFragments.size > 1) {
             showBackNavigationArrow()
         } else {
-            //main_toolbar.navigationIcon = null
+            main_menu.toggleForceArrowBackIcon(false)
         }
     }
 
     private fun showBackNavigationArrow() {
-        //main_toolbar.navigationIcon = resources.getColoredDrawableWithColor(R.drawable.ic_arrow_left_vector, getProperStatusBarColor().getContrastColor())
+        main_menu.toggleForceArrowBackIcon(true)
+        main_menu.onNavigateBackClickListener = {
+            onBackPressed()
+        }
     }
 
     private fun refreshViewPager() {
