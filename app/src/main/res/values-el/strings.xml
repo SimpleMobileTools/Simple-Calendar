@@ -37,7 +37,7 @@
     <string name="please_fill_location">Συμπληρώστε μια τοποθεσία που θα εμφανίζεται στο χάρτη</string>
     <string name="public_event_notification_text">Μια εκδήλωση είναι επερχόμενη</string>
     <string name="saving_filtered_out">Αποθήκευση… Αλλά ο επιλεγμένος τύπος συμβάντος φιλτράρεται στο πάνω μενού - Φίλτρο</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Έχετε φιλτράρει όλα τα είδη συμβάντων</string>
     <!-- Tasks -->
     <string name="task">Εργασία</string>
     <string name="tasks">Εργασίες</string>
