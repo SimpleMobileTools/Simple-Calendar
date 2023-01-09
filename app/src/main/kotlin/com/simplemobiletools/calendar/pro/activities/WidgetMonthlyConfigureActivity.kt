@@ -64,15 +64,18 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
 
     private fun initVariables() {
         mBgColor = config.widgetBgColor
-        mBgAlpha = Color.alpha(mBgColor) / 255.toFloat()
+        mBgAlpha = Color.alpha(mBgColor) / 255f
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.progress = (mBgAlpha * 100).toInt()
-        updateBackgroundColor()
-        config_bg_seekbar.onSeekBarChangeListener { progress ->
-            mBgAlpha = progress / 100.toFloat()
-            updateBackgroundColor()
+        config_bg_seekbar.apply {
+            progress = (mBgAlpha * 100).toInt()
+
+            onSeekBarChangeListener { progress ->
+                mBgAlpha = progress / 100f
+                updateBackgroundColor()
+            }
         }
+        updateBackgroundColor()
 
         mTextColor = config.widgetTextColor
         if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {

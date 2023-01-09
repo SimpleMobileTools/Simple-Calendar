@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/activity_margin"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_margin="@dimen/activity_margin">
 
         <RelativeLayout
             android:id="@+id/period_picker_holder"
