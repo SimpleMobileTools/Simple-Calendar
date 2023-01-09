@@ -275,12 +275,12 @@
     <string name="faq_2_title_extra">E talvez até partilhar calendários\?</string>
     <string name="faq_2_text">Sim, basta ativar \"Sincronização CalDAV \" nas definições da aplicação e selecionar os calendários a sincronizar. No entanto, será necessária uma outra aplicação para sincronizar o dispositivo com os servidores. Para sincronizar um calendário Google, pode usar a sua aplicação oficial. Para outros calendários, precisará de um adaptador de sincronização de terceiros como, por exemplo, DAVx5.</string>
     <string name="faq_3_title">Vejo os lembretes mas não ouço som. O que posso fazer\?</string>
-    <string name="faq_3_text">A afixação do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se não consegue ouvir o som, verifique as configurações da aplicação, selecione a opção \"Fonte de áudio usada pelos lembretes\" e modifique-a. Se isso não funcionar, verifique nas configurações de audio do sistema se este tipo de media não está em modo Silêncio.</string>
+    <string name="faq_3_text">A afixação do lembrete e o áudio são fortemente influenciados pelas definições do sistema. Se não consegue ouvir o som, verifique as definições da aplicação, selecione a opção \"Fluxo de áudio usado pelos lembretes\" e modifique-a. Se não funcionar, verifique nas definições de áudio do sistema se este tipo multimédia está no modo Silêncio.</string>
     <string name="faq_4_title">A aplicação suporta diferentes fusos horários\?</string>
-    <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados com o seu fuso horário actual. Se pretende alterar o fuso horário de um evento, terá de habilitar a escolha de fuso horário nas configurações da aplicação e alterá-lo nos Detalhes do evento. Este recurso fica desabilitado por padrão, pois não é necessário para a maioria das pessoas.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
+    <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados com o seu fuso horário atual. Se pretende alterar o fuso horário de um evento, terá de ativar a escolha de fuso horário nas definições da aplicação e alterá-lo nos Detalhes do evento. Este opção está desativada por padrão, pois não é necessário para a maioria das pessoas.</string>
+    <string name="faq_5_title">A aplicação não mostra notificações. Porque será\?</string>
     <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
+    <string name="faq_6_title">É possível modificar ou eliminar um tipo de evento existente\?</string>
     <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
     <!--
         Não encontrou todas as cadeias a traduzir? Existem mais algumas em:
