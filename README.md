@@ -1,18 +1,18 @@
 # Simple Calendar
 <img alt="Logo" src="graphics/icon.png" width="120" />
 
-Simple Calendar 2022 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2022. No complicated features, unnecessary permissions, or ads!  
+Simple Calendar 2023 is a highly customizable, offline monthly calendar app for Android. Have an agenda planner in your pocket, designed to do exactly what a personal tiny schedule planner should do in 2023. No complicated features, unnecessary permissions, or ads!  
 ***Supports syncing events via Google Calendar
 
 Download now!
 
 Daily Digital Schedule App: Take Control of Your Time
-Whether you are looking for a work calendar for business, a day planner, an appointment scheduler, or organization and scheduling of single and recurring events like birthdays, anniversary, appointment reminder, or anything else, Simple Calendar 2022 makes it easy to stay organized. The calendar widget has an incredible variety of customization options: customize event reminders, notification appearance, tiny calendar reminders widget, and overall appearance.
+Whether you are looking for a work calendar for business, a day planner, an appointment scheduler, or organization and scheduling of single and recurring events like birthdays, anniversary, appointment reminder, or anything else, Simple Calendar 2023 makes it easy to stay organized. The calendar widget has an incredible variety of customization options: customize event reminders, notification appearance, tiny calendar reminders widget, and overall appearance.
 
 Schedule Planner: Plan Your Day
-Appointment scheduler, monthly planner, and family organizer in one! Check your upcoming agenda, schedule business meetings, and events & book appointments easily. Reminders will keep you on time and informed on your daily schedule app. This 2022 calendar widget is remarkably easy to use. You can even view everything as a simple list of events rather than in a monthly view, so you know exactly what’s coming up in your life and how to organize and plan your agenda. 
+Appointment scheduler, monthly planner, and family organizer in one! Check your upcoming agenda, schedule business meetings, and events & book appointments easily. Reminders will keep you on time and informed on your daily schedule app. This 2023 calendar widget is remarkably easy to use. You can even view everything as a simple list of events rather than in a monthly view, so you know exactly what’s coming up in your life and how to organize and plan your agenda. 
 
-Simple Calendar 2022 Features
+Simple Calendar 2023 Features
 
 ✔️ The Best User Experience  
 ➕ No ads or annoying popups, truly great user experience!  
@@ -46,7 +46,7 @@ Simple Calendar 2022 Features
 ➕ Quick business calendar, or personal digital agenda  
 ➕ Quickly switch between daily, weekly, monthly, yearly & event views
 
-DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO ADS! PLAN YOUR 2022 TIMETABLE!
+DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO ADS! PLAN YOUR 2023 TIMETABLE!
 
 Check out the full suite of Simple Tools here:  
 https://www.simplemobiletools.com
