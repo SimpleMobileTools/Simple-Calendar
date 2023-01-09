@@ -202,7 +202,7 @@
     <string name="last_view">Última vista utilizada</string>
     <string name="new_events">Novo evento</string>
     <string name="default_start_time">Hora inicial padrão</string>
-    <string name="next_full_hour">Próxima hora</string>
+    <string name="next_full_hour">Uma hora</string>
     <string name="current_time">Hora atual</string>
     <string name="default_duration">Duração padrão</string>
     <string name="last_used_one">Última utilizada</string>
@@ -211,9 +211,9 @@
     <string name="highlight_weekends_color">Cor de destaque dos fins de semana</string>
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="allow_creating_tasks">Permitir criação de tarefas</string>
     <!-- CalDAV sync -->
-    <string name="caldav">\'CalDAV\'</string>
+    <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
     <string name="manage_synced_calendars">Gerir calendários sincronizados</string>
     <string name="store_locally_only">Guardar apenas localmente</string>
@@ -229,7 +229,7 @@
     <string name="no_synchronized_calendars">Não existem calendários passíveis de sincronização</string>
     <string name="status_free">Livre</string>
     <string name="status_busy">Ocupado</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Falha ao obter o evento %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">segunda</string>
@@ -250,28 +250,31 @@
     <string name="sample_title_5">Beber um café</string>
     <!-- List widget config -->
     <string name="show_events_happening">Mostrar eventos a decorrer:</string>
-    <string name="within_the_next_one_year">No espaço do próximo ano</string>
-    <string name="today_only">Só hoje</string>
-    <string name="within_the_next">Dentro do próximo…</string>
+    <string name="within_the_next_one_year">Dentro de um ano</string>
+    <string name="today_only">Apenas hoje</string>
+    <string name="within_the_next">Dentro de…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Dentro do próximo %d dia</item>
-        <item quantity="other">Dentro dos próximos %d dias</item>
+        <item quantity="one">No próximo %d dia</item>
+        <item quantity="many">Nos próximos %d dias</item>
+        <item quantity="other">Nos próximos %d dias</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Dentro da próxima %d semana</item>
-        <item quantity="other">Dentro das próximas %d semanas</item>
+        <item quantity="one">Na próxima %d semana</item>
+        <item quantity="many">Nas próximas %d semanas</item>
+        <item quantity="other">Nas próximas %d semanas</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Dentro do próximo %d mês</item>
-        <item quantity="other">Dentro dos próximos %d meses</item>
+        <item quantity="one">No próximo %d mês</item>
+        <item quantity="many">Nos próximos %d meses</item>
+        <item quantity="other">Nos próximos %d meses</item>
     </plurals>
     <!-- FAQ -->
-    <string name="faq_1_title">Como posso remover os feriados importados através do botão \"Adicionar feriados\"\?</string>
-    <string name="faq_1_text">Os feriados criados assim são inseridos num novo tipo de evento chamado \"Feriados \". Em Configurações -&gt; Gerir tipos de eventos, seleccione o tipo de evento e exclua-o mantendo-o premido e enviando-o para o lixo.</string>
-    <string name="faq_2_title">Posso sincronizar os meus eventos pela Google Agenda ou por outro serviço que suporte CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
-    <string name="faq_2_text">Sim, basta activar \"CalDAV sync\" nas configurações da aplicação e seleccionar os calendários a sincronizar. No entanto, será necessária uma outra aplicação que possa levar a cabo a sincronização entre o dispositivo e os servidores. Para sincronizar um calendário da Google, pode usar a sua aplicação oficial, Agenda. Para outros calendários, precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5.</string>
-    <string name="faq_3_title">Vejo os lembretes, mas não ouço som. O que posso fazer\?</string>
+    <string name="faq_1_title">Como posso remover os feriados que importei através do botão \"Adicionar feriados\"\?</string>
+    <string name="faq_1_text">Os feriados criados assim são inseridos no novo tipo de evento chamado \"Feriados \". Em Definições -&gt; Gerir tipos de eventos, selecione o tipo de evento com um toque longo e enviando-o para o lixo.</string>
+    <string name="faq_2_title">Posso sincronizar os meus eventos via Google Calendar ou por outro serviço que suporte CalDAV\?</string>
+    <string name="faq_2_title_extra">E talvez até partilhar calendários\?</string>
+    <string name="faq_2_text">Sim, basta ativar \"Sincronização CalDAV \" nas definições da aplicação e selecionar os calendários a sincronizar. No entanto, será necessária uma outra aplicação para sincronizar o dispositivo com os servidores. Para sincronizar um calendário Google, pode usar a sua aplicação oficial. Para outros calendários, precisará de um adaptador de sincronização de terceiros como, por exemplo, DAVx5.</string>
+    <string name="faq_3_title">Vejo os lembretes mas não ouço som. O que posso fazer\?</string>
     <string name="faq_3_text">A afixação do lembrete e o áudio são fortemente influenciados pelas configurações do sistema. Se não consegue ouvir o som, verifique as configurações da aplicação, selecione a opção \"Fonte de áudio usada pelos lembretes\" e modifique-a. Se isso não funcionar, verifique nas configurações de audio do sistema se este tipo de media não está em modo Silêncio.</string>
     <string name="faq_4_title">A aplicação suporta diferentes fusos horários\?</string>
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados com o seu fuso horário actual. Se pretende alterar o fuso horário de um evento, terá de habilitar a escolha de fuso horário nas configurações da aplicação e alterá-lo nos Detalhes do evento. Este recurso fica desabilitado por padrão, pois não é necessário para a maioria das pessoas.</string>
