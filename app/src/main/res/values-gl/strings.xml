@@ -136,6 +136,7 @@
     <string name="default_event_type">Tipo de evento predeterminado</string>
     <string name="export_past_events_too">Exportar tamén eventos pasados</string>
     <string name="export_tasks">Export tasks</string>
+    <string name="export_past_entries">Export past entries</string>
     <string name="include_event_types">Incluír tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sen .ics)</string>
     <string name="ignore_event_types">Ignorar os tipos dos eventos no ficheiro, usar sempre o predeterminado</string>

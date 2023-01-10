@@ -136,6 +136,7 @@
     <string name="default_event_type">Tipul evenimentului implicit</string>
     <string name="export_past_events_too">Exportă și evenimentele din trecut</string>
     <string name="export_tasks">Export tasks</string>
+    <string name="export_past_entries">Export past entries</string>
     <string name="include_event_types">Include tipurile de eveniment</string>
     <string name="filename_without_ics">Numefisier (fără .ics)</string>
     <string name="ignore_event_types">Ignoră tipurile de eveniment din fișier, folosește întotdeauna cel implicit</string>

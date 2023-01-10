@@ -136,6 +136,7 @@
     <string name="default_event_type">نوع حدث إفتراضي</string>
     <string name="export_past_events_too">تصدير الأحداث السابقة أيضاً</string>
     <string name="export_tasks">Export tasks</string>
+    <string name="export_past_entries">Export past entries</string>
     <string name="include_event_types">أضف أنواع الأحداث</string>
     <string name="filename_without_ics">اسم ملف (بدون ics)</string>
     <string name="ignore_event_types">تجاهل أنواع الأحداث في الملف ، واستخدم دائمًا النوع الافتراضي</string>

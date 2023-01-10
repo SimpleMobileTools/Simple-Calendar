@@ -136,6 +136,7 @@
     <string name="default_event_type">Sündmuse tüüp vaikimis</string>
     <string name="export_past_events_too">Ekspordi ka minevikus toimunud sündmused</string>
     <string name="export_tasks">Export tasks</string>
+    <string name="export_past_entries">Export past entries</string>
     <string name="include_event_types">Kaasa arvatud sündmuse tüübid</string>
     <string name="filename_without_ics">Failinimi (ilma .ics-ta)</string>
     <string name="ignore_event_types">Ignoreeri sündmuse tüübid failis, kasutada alati vaikimisi üks</string>

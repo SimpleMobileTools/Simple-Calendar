@@ -135,6 +135,7 @@
     <string name="default_event_type">ডিফল্ট ইভেন্ট টাইপ</string>
     <string name="export_past_events_too">আগের ইভেন্টগুলোও এক্সপোর্ট করুন</string>
     <string name="export_tasks">Export tasks</string>
+    <string name="export_past_entries">Export past entries</string>
     <string name="include_event_types">ইভেন্ট টাইপ অন্তর্ভুক্ত করুন</string>
     <string name="filename_without_ics">ফাইলের নাম (.ics ছাড়া)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
