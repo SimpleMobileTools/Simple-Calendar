@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Экспорт событий в файл ICS</string>
     <string name="default_event_type">Тип события по умолчанию</string>
     <string name="export_past_events_too">Экспортировать прошедшие события</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Включать типы событий</string>
     <string name="filename_without_ics">Имя файла (без .ics)</string>
     <string name="ignore_event_types">Игнорировать типы событий в файле, всегда использовать значение по умолчанию</string>

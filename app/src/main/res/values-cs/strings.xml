@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Exportovat události do souboru .ics</string>
     <string name="default_event_type">Přednastavený typ události</string>
     <string name="export_past_events_too">Exportovat i dřívější události</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Zahrnout typy událostí</string>
     <string name="filename_without_ics">Název souboru (bez .ics)</string>
     <string name="ignore_event_types">Ignorovat typy událostí v souboru, vždy použít výchozí</string>

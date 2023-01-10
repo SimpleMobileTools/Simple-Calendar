@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Exporta esdeveniments a un fitxer .ics</string>
     <string name="default_event_type">Tipus d\'esdeveniment predeterminat</string>
     <string name="export_past_events_too">Exporta també els esdeveniments passats</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Inclou els tipus d\'esdeveniments</string>
     <string name="filename_without_ics">Nom del fitxer (sense .ics)</string>
     <string name="ignore_event_types">Ignora els tipus d\'esdeveniment del fitxer, utilitza sempre el predeterminat</string>

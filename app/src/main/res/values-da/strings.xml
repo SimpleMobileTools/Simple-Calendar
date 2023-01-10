@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Eksporter begivenheder til en ics-fil</string>
     <string name="default_event_type">Standard type begivenhed</string>
     <string name="export_past_events_too">Eksporter også tidligere begivenheder</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Inkluder begivenhedstyper</string>
     <string name="filename_without_ics">Filnavn (uden .ics)</string>
     <string name="ignore_event_types">Ignorer begivenhedstyper i filen, brug altid standardtypen</string>

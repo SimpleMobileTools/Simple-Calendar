@@ -136,6 +136,7 @@
     <string name="export_events_to_ics">Извезување на настани во .ics фајл</string>
     <string name="default_event_type">Тип на настан по подредување</string>
     <string name="export_past_events_too">Извезете минати настани исто така</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Вклучувајте типови на настани</string>
     <string name="filename_without_ics">Филенам (без .ics)</string>
     <string name="ignore_event_types">Игнорирајте типови на настани во датотеката, секогаш користете го подоцнежниот</string>

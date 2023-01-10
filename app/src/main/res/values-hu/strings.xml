@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Események exportálása .ics fájlba</string>
     <string name="default_event_type">Alapértelmezett eseménytípus</string>
     <string name="export_past_events_too">Múltbeli események exportálása</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Eseménytípusok belevétele</string>
     <string name="filename_without_ics">Fájlnév (.ics nélkül)</string>
     <string name="ignore_event_types">A fájlban lévő eseménytípusok mellőzése, az alapértelmezett használata</string>

@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Ezporzhiañ darvoudoù betek ur restr .ics</string>
     <string name="default_event_type">Doare darvoud dre ziouer</string>
     <string name="export_past_events_too">Ezporzhiañ an darvoudoù tremenet ivez</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Enkorfañ doareoù an darvoudoù ivez</string>
     <string name="filename_without_ics">Anv ar restr (hep .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>

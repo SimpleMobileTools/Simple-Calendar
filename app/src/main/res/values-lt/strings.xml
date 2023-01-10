@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Eksportuoti įvykius į .ics failą</string>
     <string name="default_event_type">Numatytasis įvykio tipas</string>
     <string name="export_past_events_too">Taip pat eksportuoti praėjusius įvykius</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Įtraukti įvykių tipus</string>
     <string name="filename_without_ics">Failo pavadinimas (be .ics)</string>
     <string name="ignore_event_types">Nepaisyti įvykių tipų faile, visada naudoti numatytąjį</string>

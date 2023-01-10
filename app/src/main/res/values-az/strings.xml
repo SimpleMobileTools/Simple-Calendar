@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">.ics faylından hadisələri xaric et</string>
     <string name="default_event_type">Standart hadisə tipi</string>
     <string name="export_past_events_too">Keçmiş hadisələri də xaric et</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Hadisə tiplərini ehtiva et</string>
     <string name="filename_without_ics">Fayl adı (.ics\'sız)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>

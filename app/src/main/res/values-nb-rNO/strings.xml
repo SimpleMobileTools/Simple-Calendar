@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Eksporter hendelser til en .ics-fil</string>
     <string name="default_event_type">Standard hendelsestype</string>
     <string name="export_past_events_too">Eksporter fortidige hendelser også</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Inkluder hendelsestyper</string>
     <string name="filename_without_ics">Filnavn (uten .ics)</string>
     <string name="ignore_event_types">Ignorer hendelsestyper i filen, bruk alltid standardtypen</string>

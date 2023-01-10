@@ -135,6 +135,7 @@
     <string name="export_events_to_ics">Ekspor acara ke berkas .ics</string>
     <string name="default_event_type">Kategori acara default</string>
     <string name="export_past_events_too">Ekspor juga acara yang sudah lewat</string>
+    <string name="export_tasks">Export tasks</string>
     <string name="include_event_types">Sertakan kategori acara</string>
     <string name="filename_without_ics">Nama berkas (tanpa .ics)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
