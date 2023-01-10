@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="AppTheme.Base" />
 
     <style name="DayView">
         <item name="android:gravity">center</item>
@@ -28,5 +28,13 @@
 
     <style name="MonthStyle">
         <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="DatePickerLightStyle">
+        <item name="android:textColorPrimary">@color/theme_light_text_color</item>
+    </style>
+
+    <style name="DatePickerDarkStyle">
+        <item name="android:textColorPrimary">@color/theme_dark_text_color</item>
     </style>
 </resources>

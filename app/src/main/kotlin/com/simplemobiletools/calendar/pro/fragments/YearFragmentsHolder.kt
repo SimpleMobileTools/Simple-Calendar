@@ -15,11 +15,13 @@ import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.YEARLY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.YEAR_TO_OPEN
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.beGone
+import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
+import com.simplemobiletools.commons.extensions.getProperBackgroundColor
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
-import kotlin.text.toInt
 
 class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_YEARS = 61
@@ -95,8 +97,11 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun showGoToDateDialog() {
-        requireActivity().setTheme(requireContext().getDatePickerDialogTheme())
-        val view = layoutInflater.inflate(R.layout.date_picker, null)
+        if (activity == null) {
+            return
+        }
+
+        val view = layoutInflater.inflate(getDatePickerDialogStyle(), null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("month", "id", "android")).beGone()

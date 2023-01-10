@@ -170,8 +170,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun showGoToDateDialog() {
-        requireActivity().setTheme(requireContext().getDatePickerDialogTheme())
-        val view = layoutInflater.inflate(R.layout.date_picker, null)
+        if (activity == null) {
+            return
+        }
+
+        val view = layoutInflater.inflate(getDatePickerDialogStyle(), null)
         val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
 
         val dateTime = getCurrentDate()!!
