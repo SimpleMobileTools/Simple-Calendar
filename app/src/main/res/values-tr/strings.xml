@@ -136,7 +136,7 @@
     <string name="default_event_type">Öntanımlı etkinlik türü</string>
     <string name="export_past_events_too">Geçmiş etkinlikleri de dışa aktar</string>
     <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries</string>
+    <string name="export_past_entries">Export past entries too</string>
     <string name="include_event_types">Etkinlik türlerini ekle</string>
     <string name="filename_without_ics">Dosya adı (.ics olmadan)</string>
     <string name="ignore_event_types">Dosyadaki etkinlik türlerini yoksay, her zaman öntanımlıyı kullan</string>

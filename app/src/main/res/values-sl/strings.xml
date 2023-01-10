@@ -136,7 +136,7 @@
     <string name="default_event_type">Privzeta vrsta dogodka</string>
     <string name="export_past_events_too">Izvozite tudi pretekle dogodke</string>
     <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries</string>
+    <string name="export_past_entries">Export past entries too</string>
     <string name="include_event_types">Vključite vrste dogodkov</string>
     <string name="filename_without_ics">Ime datoteke (brez .ics)</string>
     <string name="ignore_event_types">Ne upoštevajte vrst dogodkov v datoteki, vedno uporabite privzeto</string>

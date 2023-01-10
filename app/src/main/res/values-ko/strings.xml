@@ -136,7 +136,7 @@
     <string name="default_event_type">기본 일정 유형</string>
     <string name="export_past_events_too">과거 일정들 내보내기</string>
     <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries</string>
+    <string name="export_past_entries">Export past entries too</string>
     <string name="include_event_types">일정 유형 포함</string>
     <string name="filename_without_ics">파일이름 (.ics 없이)</string>
     <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>

@@ -136,7 +136,7 @@
     <string name="default_event_type">Predvolený typ udalosti</string>
     <string name="export_past_events_too">Exportovať aj minulé udalosti</string>
     <string name="export_tasks">Exportovať úlohy</string>
-    <string name="export_past_entries">Exportovať minulé položky</string>
+    <string name="export_past_entries">Exportovať aj minulé položky</string>
     <string name="include_event_types">Zahrnúť typy udalostí</string>
     <string name="filename_without_ics">Názov súboru (bez .ics)</string>
     <string name="ignore_event_types">Ignorovať typy udalostí v súbore, stále použiť predvolený</string>

@@ -136,7 +136,7 @@
     <string name="default_event_type">Подразумевани тип догађаја</string>
     <string name="export_past_events_too">Извези и прошле догађаје</string>
     <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries</string>
+    <string name="export_past_entries">Export past entries too</string>
     <string name="include_event_types">Укључи типове догађаја</string>
     <string name="filename_without_ics">Име датотеке (без .ицс)</string>
     <string name="ignore_event_types">Занемари типове догађаја у датотеци, увек користи подразумевани</string>
