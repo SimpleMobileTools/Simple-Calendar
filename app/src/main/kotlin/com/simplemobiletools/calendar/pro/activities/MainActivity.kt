@@ -512,12 +512,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.last().printView()
     }
 
-    fun resetActionBarTitle() {
+    private fun resetActionBarTitle() {
         main_menu.updateHintText(getString(R.string.search))
-    }
-
-    fun updateTitle(text: String) {
-        main_menu.updateHintText(text)
     }
 
     private fun showFilterDialog() {
@@ -1012,6 +1008,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         currentFragments.last().apply {
             refreshEvents()
         }
+
         calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
         if (currentFragments.size > 1) {
             showBackNavigationArrow()
