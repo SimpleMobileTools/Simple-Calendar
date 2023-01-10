@@ -37,7 +37,7 @@
     <string name="please_fill_location">Palun kirjelda kaardil näidatav asukoht</string>
     <string name="public_event_notification_text">Sündmus on algamas</string>
     <string name="saving_filtered_out">Salvestamine... Kuid valitud sündmuse tüüp filtreeritakse välja ülemises menüüs - Filter</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Sa oled kõik sündmuste tüübid välistanud</string>
     <!-- Tasks -->
     <string name="task">Ülesanne</string>
     <string name="tasks">Ülesanded</string>
