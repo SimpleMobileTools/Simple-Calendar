@@ -1193,6 +1193,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             search_results_list.adapter = null
         }
 
+        val placeholderTextId = if (config.displayEventTypes.isEmpty()) {
+            R.string.everything_filtered_out
+        } else {
+            R.string.no_items_found
+        }
+
+        search_placeholder.setText(placeholderTextId)
         search_placeholder_2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
             if (search_results_list.adapter == null) {

@@ -162,8 +162,18 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
         mView.calendar_empty_list_placeholder.beVisibleIf(mEvents.isEmpty())
         mView.calendar_empty_list_placeholder_2.beVisibleIf(mEvents.isEmpty())
         mView.calendar_events_list.beGoneIf(mEvents.isEmpty())
-        if (activity != null)
+        if (activity != null) {
             mView.calendar_empty_list_placeholder.setTextColor(requireActivity().getProperTextColor())
+            if (mEvents.isEmpty()) {
+                val placeholderTextId = if (requireActivity().config.displayEventTypes.isEmpty()) {
+                    R.string.everything_filtered_out
+                } else {
+                    R.string.no_upcoming_events
+                }
+
+                mView.calendar_empty_list_placeholder.setText(placeholderTextId)
+            }
+        }
     }
 
     private fun fetchPreviousPeriod() {
