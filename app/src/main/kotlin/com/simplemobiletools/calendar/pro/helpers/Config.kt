@@ -250,4 +250,8 @@ class Config(context: Context) : BaseConfig(context) {
     var allowCreatingTasks: Boolean
         get() = prefs.getBoolean(ALLOW_CREATING_TASKS, true)
         set(allowCreatingTasks) = prefs.edit().putBoolean(ALLOW_CREATING_TASKS, allowCreatingTasks).apply()
+
+    var wasFilteredOutWarningShown: Boolean
+        get() = prefs.getBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, false)
+        set(wasFilteredOutWarningShown) = prefs.edit().putBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, wasFilteredOutWarningShown).apply()
 }

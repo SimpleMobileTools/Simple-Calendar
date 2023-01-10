@@ -329,6 +329,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         eventsHelper.getEventTypes(this, false) {
             val quickFilterEventTypes = config.quickFilterEventTypes
             quick_event_type_filter.adapter = QuickFilterEventTypeAdapter(this, it, quickFilterEventTypes) {
+                if (config.displayEventTypes.isEmpty() && !config.wasFilteredOutWarningShown) {
+                    toast(R.string.everything_filtered_out, Toast.LENGTH_LONG)
+                    config.wasFilteredOutWarningShown = true
+                }
+
                 refreshViewPager()
                 updateWidgets()
             }
