@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 6.21.0 *(2023-01-11)*
+----------------------------
+
+ * Use Material You design by default on Android 12+
+ * Increased minimal required Android OS version to 6
+ * Properly search tasks too
+ * Warn the user on some places if he filtered out all event types
+ * Added some translation, stability and UX improvements
+
 Version 6.20.3 *(2022-11-24)*
 ----------------------------
 
