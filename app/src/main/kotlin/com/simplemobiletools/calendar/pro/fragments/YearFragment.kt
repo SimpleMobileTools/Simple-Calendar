@@ -159,7 +159,9 @@ class YearFragment : Fragment(), YearlyCalendar {
             monthView.setEvents(events.get(i))
         }
 
-        mView.top_value.text = mYear.toString()
+        mView.top_value.post {
+            mView.top_value.text = mYear.toString()
+        }
     }
 
     fun printCurrentView() {

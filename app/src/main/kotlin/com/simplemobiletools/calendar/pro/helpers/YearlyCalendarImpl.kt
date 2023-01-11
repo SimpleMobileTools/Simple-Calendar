@@ -8,7 +8,6 @@ import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.calendar.pro.models.Event
 import org.joda.time.DateTime
-import java.util.*
 
 class YearlyCalendarImpl(val callback: YearlyCalendar, val context: Context, val year: Int) {
 
