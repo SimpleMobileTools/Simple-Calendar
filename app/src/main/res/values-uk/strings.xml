@@ -37,7 +37,7 @@
     <string name="please_fill_location">Будь ласка, вкажіть місце, що буде показано на карті</string>
     <string name="public_event_notification_text">Наближається подія</string>
     <string name="saving_filtered_out">Збереження… Але вибраний тип події відфільтровується у верхньому Меню - Фільтр</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Відфільтровано всі типи подій</string>
     <!-- Tasks -->
     <string name="task">Завдання</string>
     <string name="tasks">Завдання</string>
@@ -135,8 +135,8 @@
     <string name="export_events_to_ics">Експорт подій в .ics файл</string>
     <string name="default_event_type">Стандартний тип подій</string>
     <string name="export_past_events_too">Експортувати також події, що відбулися</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Експорт завдань</string>
+    <string name="export_past_entries">Експортувати також минулі записи</string>
     <string name="include_event_types">Приєднати тип подій</string>
     <string name="filename_without_ics">Назва файлу (без .ics)</string>
     <string name="ignore_event_types">Ігнорувати типи подій у файлі, завжди використовувати за замовчуванням</string>

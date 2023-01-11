@@ -135,8 +135,8 @@
     <string name="export_events_to_ics">Termine als ics-Datei exportieren</string>
     <string name="default_event_type">Standardtermintyp</string>
     <string name="export_past_events_too">Auch vergangene Termine exportieren</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Aufgaben exportieren</string>
+    <string name="export_past_entries">Auch vergangene Einträge exportieren</string>
     <string name="include_event_types">Termintypen miteinbeziehen</string>
     <string name="filename_without_ics">Dateiname (ohne .ics)</string>
     <string name="ignore_event_types">Termintypen in der Datei ignorieren, immer den Standardtyp verwenden</string>

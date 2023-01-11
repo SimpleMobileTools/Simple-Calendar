@@ -37,7 +37,7 @@
     <string name="please_fill_location">Riempire la posizione per essere mostrata su una mappa</string>
     <string name="public_event_notification_text">Un evento è imminente</string>
     <string name="saving_filtered_out">Salvataggio… Ma il tipo di evento selezionato viene filtrato in alto Menu - Filtro</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Sono stati filtrati tutti i tipi di evento</string>
     <!-- Tasks -->
     <string name="task">Compito</string>
     <string name="tasks">Compiti</string>
@@ -135,8 +135,8 @@
     <string name="export_events_to_ics">Esporta eventi in un file .ics</string>
     <string name="default_event_type">Tipo predefinito per un evento</string>
     <string name="export_past_events_too">Esporta anche gli eventi passati</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Esporta le attività</string>
+    <string name="export_past_entries">Esporta anche le voci passate</string>
     <string name="include_event_types">Includi i tipi di evento</string>
     <string name="filename_without_ics">Nome file (senza .ics)</string>
     <string name="ignore_event_types">Ignora i tipi di evento nel file, usa sempre quello predefinito</string>
