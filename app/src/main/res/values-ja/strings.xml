@@ -135,8 +135,8 @@
     <string name="export_events_to_ics">.ics ファイルに予定をエクスポート</string>
     <string name="default_event_type">既定の予定の種類</string>
     <string name="export_past_events_too">過去の予定もエクスポートする</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">タスクをエクスポート</string>
+    <string name="export_past_entries">過去の項目もエクスポートする</string>
     <string name="include_event_types">予定の種類を含める</string>
     <string name="filename_without_ics">ファイル名 (.ics を除く)</string>
     <string name="ignore_event_types">ファイル内の予定の種類を無視し、常に既定のものを使用する</string>
@@ -164,7 +164,7 @@
     <string name="add_holidays">祝日を追加</string>
     <string name="national_holidays">国民の祝日</string>
     <string name="religious_holidays">宗教的休日</string>
-    <string name="holidays_imported_successfully">祝日は \"祝日\" の予定タイプにインポートされました</string>
+    <string name="holidays_imported_successfully">\"祝日\" という予定の種類にインポートされました</string>
     <string name="importing_some_holidays_failed">一部の予定のインポートに失敗しました</string>
     <string name="importing_holidays_failed">祝日のインポートに失敗しました</string>
     <!-- Settings -->
