@@ -17,8 +17,8 @@ android {
         applicationId "com.simplemobiletools.calendar.pro"
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode 227
-        versionName "6.21.1"
+        versionCode 228
+        versionName "6.21.2"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
         vectorDrawables.useSupportLibrary = true
