@@ -26,6 +26,11 @@
         <package android:name="com.simplemobiletools.contacts.pro" />
     </queries>
 
+    <queries>
+        <package android:name="com.simplemobiletools.calendar.debug" />
+        <package android:name="com.simplemobiletools.calendar" />
+    </queries>
+
     <uses-feature
         android:name="android.hardware.faketouch"
         android:required="false" />
