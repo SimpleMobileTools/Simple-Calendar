@@ -22,7 +22,7 @@
     <!-- Widget titles -->
     <string name="widget_monthly">Bulan</string>
     <string name="widget_list">Daftar acara</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Tanggal kalender hari ini</string>
     <!-- Event -->
     <string name="event">Acara</string>
     <string name="edit_event">Sunting Acara</string>
@@ -36,17 +36,17 @@
     <string name="filter_events_by_type">Filter acara menurut kategori</string>
     <string name="please_fill_location">Silakan isi lokasi untuk ditampilkan pada peta</string>
     <string name="public_event_notification_text">Aacara yang akan datang</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="saving_filtered_out">Menyimpan… Tetapi jenis peristiwa yang dipilih disaring di Menu atas - Filter</string>
+    <string name="everything_filtered_out">Anda telah menyaring semua jenis peristiwa</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Tugas</string>
+    <string name="tasks">Tugas</string>
+    <string name="edit_task">Sunting Tugas</string>
+    <string name="new_task">Tugas Baru</string>
+    <string name="create_new_task">Buat tugas baru</string>
+    <string name="duplicate_task">Gandakan tugas</string>
+    <string name="mark_completed">Tandai sebagai selesai</string>
+    <string name="mark_incomplete">Tandai sebagai belum selesai</string>
     <!-- Event Repetition -->
     <string name="repetition">Perulangan</string>
     <string name="no_repetition">Tidak ada perulangan</string>
@@ -60,13 +60,13 @@
     <string name="repeat_till">Ulangi sampai</string>
     <string name="forever">Selamanya</string>
     <string name="event_is_repeatable">Acara berulang</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Tugas ini dapat diulangi</string>
     <string name="selection_contains_repetition">Acara yang dipilih berisi acara yang berulang</string>
     <string name="delete_one_only">Hapus acara ini saja</string>
     <string name="delete_future_occurrences">Hapus acara ini dan semua perulangannya</string>
     <string name="delete_all_occurrences">Hapus semua perulangan acara</string>
     <string name="update_one_only">Perbarui acara ini saja</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">Perbarui ini dan peristiwa masa depan</string>
     <string name="update_all_occurrences">Perbarui semua perulangan acara</string>
     <string name="repeat_till_date">Ulangi sampai tanggal</string>
     <string name="stop_repeating_after_x">Berhenti berulang setelah x kali</string>
@@ -86,7 +86,7 @@
     <string name="second_m">kedua</string>
     <string name="third_m">ketiga</string>
     <string name="fourth_m">keempat</string>
-    <string name="fifth_m">fifth</string>
+    <string name="fifth_m">kelima</string>
     <string name="last_m">terakhir</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
@@ -96,7 +96,7 @@
     <string name="second_f">kedua</string>
     <string name="third_f">ketiga</string>
     <string name="fourth_f">keempat</string>
-    <string name="fifth_f">fifth</string>
+    <string name="fifth_f">kelima</string>
     <string name="last_f">terakhir</string>
     <!-- Birthdays -->
     <string name="birthdays">Ulang Tahun</string>
@@ -104,20 +104,20 @@
     <string name="no_birthdays">Tidak ada ulang tahun yang ditemukan</string>
     <string name="no_new_birthdays">Tidak ada ulang tahun baru yang ditemukan</string>
     <string name="birthdays_added">Ulang tahun berhasil ditambahkan</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Tambahkan hari ulang tahun baru secara otomatis</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Hari Jadi</string>
     <string name="add_anniversaries">Tambahkan hari jadi kontak</string>
     <string name="no_anniversaries">Tidak ada hari jadi yang ditemukan</string>
     <string name="no_new_anniversaries">Tidak ada hari jadi baru yang ditemukan</string>
     <string name="anniversaries_added">Hari jadi berhasil ditambahkan</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Tambahkan hari jadi baru secara otomatis</string>
     <!-- Event Reminders -->
     <string name="reminder">Pengingat</string>
     <string name="before">sebelum</string>
     <string name="add_another_reminder">Tambah pengingat lainnya</string>
     <string name="event_reminders">Pengingat acara</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Pengingat</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Tambah tamu lainnya</string>
     <string name="my_status">Status saya:</string>
@@ -135,18 +135,18 @@
     <string name="export_events_to_ics">Ekspor acara ke berkas .ics</string>
     <string name="default_event_type">Kategori acara default</string>
     <string name="export_past_events_too">Ekspor juga acara yang sudah lewat</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Ekspor tugas</string>
+    <string name="export_past_entries">Ekspor entri masa lalu juga</string>
     <string name="include_event_types">Sertakan kategori acara</string>
     <string name="filename_without_ics">Nama berkas (tanpa .ics)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Abaikan jenis peristiwa dalam berkas, selalu gunakan yang bawaan</string>
     <!-- Event details -->
     <string name="location">Lokasi</string>
     <string name="description">Deskripsi</string>
     <string name="all_day">Sepanjang hari</string>
     <!-- Weekly view -->
     <string name="week">Minggu</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Mulai minggu dengan hari saat ini</string>
     <!-- Event types -->
     <string name="event_types">Kategori acara</string>
     <string name="add_new_type">Tambah kategori acara baru</string>
@@ -171,8 +171,8 @@
     <string name="manage_event_types">Kelola kategori acara</string>
     <string name="start_day_at">Hari dimulai pada jam</string>
     <string name="end_day_at">Hari berakhir pada jam</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">Tampilkan peristiwa membentang sampai tengah malam di bilah atas</string>
+    <string name="allow_customizing_day_count">Perbolehkan mengubah jumlah hari</string>
     <string name="week_numbers">Tampilkan nomor minggu</string>
     <string name="vibrate">Getar pada notifikasi pengingat</string>
     <string name="reminder_sound">Suara pengingat</string>
@@ -183,13 +183,13 @@
     <string name="event_lists">Daftar acara</string>
     <string name="display_past_events">Tampilkan acara yang sudah lewat</string>
     <string name="replace_description_with_location">Ganti deskripsi acara dengan lokasi</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Tampilkan deskripsi atau lokasi</string>
     <string name="delete_all_events">Hapus semua acara</string>
     <string name="delete_all_events_confirmation">Apakah anda yakin ingin menghapus semua acara\? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
     <string name="show_a_grid">Tampilkan grid</string>
     <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
     <string name="dim_past_events">Redupkan acara yang sudah lewat</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Redupkan tugas yang selesai</string>
     <string name="events">Acara</string>
     <string name="reminder_stream">Audio yang digunakan pengingat</string>
     <string name="system_stream">Sistem</string>
@@ -205,15 +205,15 @@
     <string name="new_events">Acara baru</string>
     <string name="default_start_time">Waktu mulai default</string>
     <string name="next_full_hour">Satu jam kedepan</string>
-    <string name="current_time">Current time</string>
+    <string name="current_time">Waktu saat ini</string>
     <string name="default_duration">Durasi default</string>
     <string name="last_used_one">Terakhir digunakan</string>
     <string name="other_time">Waktu lainnya</string>
     <string name="highlight_weekends">Sorot akhir pekan pada beberapa tampilan</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Warna akhir pekan yang disoroti</string>
     <string name="allow_changing_time_zones">Izinkan mengubah zona waktu acara</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">Kelola penyaringan cepat jenis peristiwa</string>
+    <string name="allow_creating_tasks">Perbolehkan membuat tugas</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Pilih kalender untuk sinkronisasi</string>
@@ -228,10 +228,10 @@
     <string name="select_a_different_caldav_color">Pilih warna yang berbeda (mungkin hanya diterapkan secara lokal)</string>
     <string name="insufficient_permissions">Anda tidak diizinkan untuk membuat/mengubah acara pada kalender yang dipilih</string>
     <string name="caldav_event_not_found">Acara tidak ditemukan. Silakan aktifkan sinkronisasi CalDAV untuk kalender terkait di dalam pengaturan aplikasi.</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">Tidak ada kalender yang dapat ditemukan</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="status_busy">Sibuk</string>
+    <string name="fetching_event_failed">Gagal mendapatkan acara %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Senin</string>
@@ -251,10 +251,10 @@
     <string name="sample_description_4">Di Mall</string>
     <string name="sample_title_5">Waktunya Ngopi</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Tampilkan acara yang terjadi:</string>
+    <string name="within_the_next_one_year">Dalam 1 tahun berikut</string>
+    <string name="today_only">Hanya hari ini</string>
+    <string name="within_the_next">Dalam…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">Within the next %d day</item>
         <item quantity="other">Within the next %d days</item>
@@ -271,16 +271,16 @@
     <string name="faq_1_title">Bagaimana cara menghapus hari libur yang diimpor via tombol \"Tambah hari libur\"\?</string>
     <string name="faq_1_text">Hari libur yang dibuat dengan cara tersebut disimpan di dalam kategori acara baru dengan nama \"Hari Libur\". Anda bisa mengunjungi Pengaturan -&gt; Kelola Kategori Acara, tekan lama kategori acara tersebut dan hapus dengan cara menekan tombol keranjang sampah.</string>
     <string name="faq_2_title">Bisakah saya menyinkronkan acara saya dengan Google Calendar, atau layanan lain yang mendukung CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Mungkin bahkan berbagi kalender dengan orang lain\?</string>
     <string name="faq_2_text">Ya, cukup aktifkan \"Sinkronisasi CalDAV\" di dalam pengaturan aplikasi dan pilih kalender yang ingin anda sinkronkan. Namun, anda membutuhkan aplikasi pihak ketiga untuk menangani proses sinkronisasi antara perangkat dan server. Jika Anda ingin menyinkronkan kalender Google, aplikasi Kalender resmi mereka bisa melakukan proses tersebut. Untuk kalender lainnya anda membutuhkan adapter sinkronisasi pihak ketiga, contohnya DAVx5.</string>
     <string name="faq_3_title">Saya melihat pengingat secara visual, tetapi tidak mendengar suara. Apa yang bisa saya lakukan\?</string>
     <string name="faq_3_text">Tidak hanya menampilkan notifikasi pengingat, memutar audio juga sangat dipengaruhi oleh sistem. Jika anda tidak bisa mendengar suara apapun, coba buka pengaturan aplikasi, tekan opsi \"Audio yang digunakan oleh pengingat\"dan ubah ke nilai yang berbeda. Jika masih belum bisa, periksa pengaturan suara perangkat anda, mungkin ada opsi suara yang disenyapkan.</string>
     <string name="faq_4_title">Apakah apl mendukung zona waktu\?</string>
     <string name="faq_4_text">Ya. Secara bawaan semua acara dibuat dalam zona waktu anda saat ini. Jika anda ingin mengubah zona waktu acara, anda harus terlebih dahulu mengaktifkan opsi pemilih zona waktu di dalam pengaturan apl, dan anda bisa mengubahnya di layar Detail Acara. Fitur ini dinonaktifkan secara bawaan karena tidak banyak orang yang membutuhkannya.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Aplikasinya tidak menampilkan notifikasi, mengapa\?</string>
+    <string name="faq_5_text">Periksa baterai perangkat dan pengaturan notifikasi Anda, jika tidak ada yang memblokir pengingat, atau menghentikan aplikasi di latar belakang. Anda mungkin juga ingin melihat &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, itu memiliki beberapa kiat yang berguna.</string>
+    <string name="faq_6_title">Bagaimana saya dapat mengubah atau menghapus jenis acara yang sudah ada\?</string>
+    <string name="faq_6_text">Anda dapat melakukan kedua-duanya dalam Pengaturan - Kelola jenis acara. Klik saja yang diinginkan untuk mengubah label atau warna, atau pilih yang tidak diinginkan dengan menekannya dengan lama dan gunakan tong sampah di atas menu untuk dihapus.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

@@ -14,7 +14,7 @@
     <string name="go_to_date">Przejdź do daty</string>
     <string name="upgraded_from_free">Witaj,
 \n
-\nwygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu na ekranie głównym.
+\nWygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu na ekranie głównym.
 \n
 \nNastępnie możesz odinstalować starą wersję, która ma przycisk „Uaktualnij do Pro” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.
 \n
@@ -37,7 +37,7 @@
     <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
     <string name="saving_filtered_out">Zapisywanie… Jednak wybrany typ wydarzenia jest odfiltrowywany w Menu -&gt; Filtruj…</string>
-    <string name="everything_filtered_out">Odfiltrowałeś(-aś) wszystkie typy wydarzeń</string>
+    <string name="everything_filtered_out">Odfiltrowałeś(-aś) wszystkie typy wydarzeń.</string>
     <!-- Tasks -->
     <string name="task">Zadanie</string>
     <string name="tasks">Zadania</string>
