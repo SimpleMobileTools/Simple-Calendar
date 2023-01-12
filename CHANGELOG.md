@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.21.2 *(2023-01-12)*
+----------------------------
+
+ * Fixed a keyboard glitch on lower OS versions
+ * Properly show the Upgrade dialog for people that still have the free app installed
+
 Version 6.21.1 *(2023-01-11)*
 ----------------------------
 

@@ -1,0 +1,2 @@
+ * Fixed a keyboard glitch on lower OS versions
+ * Properly show the Upgrade dialog for people that still have the free app installed
