@@ -1,12 +1,12 @@
-Simple Calendar 2022 adalah aplikasi kalender bulanan offline yang sangat dapat disesuaikan untuk Android. Miliki perencana agenda di saku Anda, yang dirancang untuk melakukan persis apa yang harus dilakukan oleh perencana jadwal kecil pribadi pada tahun 2022. Tidak ada fitur rumit, izin yang tidak perlu, atau iklan! Ini mendukung sinkronisasi acara melalui Google Kalender atau kalender lain yang mendukung protokol CalDAV.
+Kalender Simpel 2023 adalah aplikasi kalender bulanan luring yang sangat dapat disesuaikan untuk Android. Miliki perencana agenda di saku Anda, yang dirancang untuk melakukan persis apa yang harus dilakukan oleh perencana jadwal kecil pribadi pada tahun 2022. Tidak ada fitur rumit, izin yang tidak perlu, atau iklan! Ini mendukung sinkronisasi acara melalui Google Kalender atau kalender lain yang mendukung protokol CalDAV.
 
 Kendalikan Waktu Anda
-Apakah Anda mencari kalender kerja untuk bisnis, perencana harian, penjadwal janji temu, atau organisasi dan penjadwalan acara tunggal dan berulang seperti ulang tahun, ulang tahun, pengingat janji temu, atau apa pun, Kalender Sederhana 2022 memudahkan untuk tetap teratur. Widget kalender memiliki berbagai opsi penyesuaian yang luar biasa: sesuaikan pengingat acara, tampilan notifikasi, widget pengingat kalender kecil, dan tampilan keseluruhan.
+Apakah Anda mencari kalender kerja untuk bisnis, perencana harian, penjadwal janji temu, atau organisasi dan penjadwalan acara tunggal dan berulang seperti ulang tahun, ulang tahun, pengingat janji temu, atau apa pun, Kalender Simpel 2023 memudahkan untuk tetap teratur. Widget kalender memiliki berbagai opsi penyesuaian yang luar biasa: sesuaikan pengingat acara, tampilan notifikasi, widget pengingat kalender kecil, dan tampilan keseluruhan.
 
 Perencana Jadwal: Rencanakan Hari Anda
-Penjadwal janji temu, perencana bulanan, dan penyelenggara keluarga dalam satu! Periksa agenda mendatang Anda, jadwalkan rapat bisnis, dan acara & pesan janji temu dengan mudah. Pengingat akan membuat Anda tetap tepat waktu dan mendapat informasi tentang aplikasi jadwal harian Anda. Widget kalender 2022 ini sangat mudah digunakan. Anda bahkan dapat melihat semuanya sebagai daftar acara sederhana daripada dalam tampilan bulanan, sehingga Anda tahu persis apa yang akan terjadi dalam hidup Anda dan bagaimana mengatur dan merencanakan agenda Anda.
+Penjadwal janji temu, perencana bulanan, dan penyelenggara keluarga dalam satu! Periksa agenda mendatang Anda, jadwalkan rapat bisnis, dan acara & pesan janji temu dengan mudah. Pengingat akan membuat Anda tetap tepat waktu dan mendapat informasi tentang aplikasi jadwal harian Anda. Widget kalender 2023 ini sangat mudah digunakan. Anda bahkan dapat melihat semuanya sebagai daftar acara sederhana daripada dalam tampilan bulanan, sehingga Anda tahu persis apa yang akan terjadi dalam hidup Anda dan bagaimana mengatur dan merencanakan agenda Anda.
 
-Fitur Kalender Sederhana 2022
+Fitur Kalender Sederhana 2023
 ✔️ Pengalaman Pengguna Terbaik
 ➕ Tidak ada iklan atau popup yang mengganggu, pengalaman pengguna yang benar-benar hebat!
 ➕ Tidak diperlukan akses internet, memberi Anda lebih banyak privasi, keamanan, dan stabilitas
@@ -22,7 +22,7 @@ Fitur Kalender Sederhana 2022
 ➕ Widget kalender - Kalender Berwarna-warni dan tema yang dapat disesuaikan
 ➕ Kalender kecil sumber terbuka, diterjemahkan ke dalam 45+ bahasa
 ➕ Rencanakan hari Anda dengan orang lain - kemampuan untuk berbagi acara dengan cepat di media sosial, email, dll
-➕ Family Organizer - dengan duplikasi acara, organisasi, dan manajemen waktu yang tidak merepotkan
+➕ Pengelola Keluarga - dengan duplikasi acara, organisasi, dan manajemen waktu yang tidak merepotkan
 
 ✔️ Organisasi dan Manajemen Waktu
 ➕ Perencana hari - perencana agenda akan membantu Anda mengatur hari Anda
@@ -33,19 +33,19 @@ Fitur Kalender Sederhana 2022
 
 ✔️ Aplikasi Kalender #1
 ➕ Impor hari libur, hubungi hari ulang tahun, dan hari jadi dengan mudah
-➕ Memfilter acara pribadi dengan cepat menurut jenis acara
+➕ Menyaring acara pribadi dengan cepat menurut jenis acara
 ➕ Jadwal harian dan lokasi acara, ditampilkan di peta
 ➕ Kalender bisnis cepat, atau agenda digital pribadi
 ➕ Beralih dengan cepat antara tampilan harian, mingguan, bulanan, dan tahunan & acara
 
-UNDUH PERENCANA KALENDER SEDERHANA – PERENCANA JADWAL DAN AGENDA OFFLINE TANPA IKLAN! RENCANAKAN JADWAL 2022 ANDA!
+UNDUH PERENCANA KALENDER SIMPEL – PERENCANA JADWAL DAN AGENDA LURING TANPA IKLAN! RENCANAKAN JADWAL 2023 ANDA!
 
-Tidak berisi iklan atau izin yang tidak perlu. Ini sepenuhnya open-source dan menyediakan warna yang dapat disesuaikan.
+Tidak berisi iklan atau izin yang tidak diperlukan. Ini sepenuhnya sumber terbuka dan menyediakan warna yang dapat disesuaikan.
 
-Lihat rangkaian lengkap Alat Sederhana di sini:
+Lihat rangkaian lengkap Peralatan Simpel di sini:
 https://www.simplemobiletools.com
 
-Situs web mandiri Simple Calendar Pro:
+Situs web Kalender Simpel Pro sendiri:
 https://www.simplemobiletools.com/calendar
 
 Facebook:
