@@ -1208,8 +1208,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         search_placeholder_2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
             if (search_results_list.adapter == null) {
-                minFetchedSearchTS = DateTime().minusMinutes(config.displayPastEvents).seconds()
-                maxFetchedSearchTS = DateTime().plusMonths(6).seconds()
+                minFetchedSearchTS = DateTime().minusYears(1).seconds()
+                maxFetchedSearchTS = DateTime().plusYears(1).seconds()
             }
 
             eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS) { events ->
