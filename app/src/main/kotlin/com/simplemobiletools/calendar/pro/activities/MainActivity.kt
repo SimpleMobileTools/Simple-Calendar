@@ -1212,7 +1212,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 maxFetchedSearchTS = DateTime().plusYears(1).seconds()
             }
 
-            eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS) { events ->
+            eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS, searchQuery = text) { events ->
                 if (text == mLatestSearchQuery) {
                     showSearchResultEvents(events, INITIAL_EVENTS)
                 }

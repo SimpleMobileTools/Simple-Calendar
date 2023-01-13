@@ -248,13 +248,27 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun getEvents(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = true, callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEvents(
+        fromTS: Long,
+        toTS: Long,
+        eventId: Long = -1L,
+        applyTypeFilter: Boolean = true,
+        searchQuery: String = "",
+        callback: (events: ArrayList<Event>) -> Unit
+    ) {
         ensureBackgroundThread {
-            getEventsSync(fromTS, toTS, eventId, applyTypeFilter, callback)
+            getEventsSync(fromTS, toTS, eventId, applyTypeFilter, searchQuery, callback)
         }
     }
 
-    fun getEventsSync(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean, callback: (events: ArrayList<Event>) -> Unit) {
+    fun getEventsSync(
+        fromTS: Long,
+        toTS: Long,
+        eventId: Long = -1L,
+        applyTypeFilter: Boolean,
+        searchQuery: String = "",
+        callback: (events: ArrayList<Event>) -> Unit
+    ) {
         val birthDayEventId = getLocalBirthdaysEventTypeId(createIfNotExists = false)
         val anniversaryEventId = getAnniversariesEventTypeId(createIfNotExists = false)
 
@@ -268,7 +282,13 @@ class EventsHelper(val context: Context) {
                 try {
                     val typesList = context.config.getDisplayEventTypessAsList()
 
-                    events.addAll(eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, typesList).toMutableList() as ArrayList<Event>)
+                    if (searchQuery.isEmpty()) {
+                        events.addAll(eventsDB.getOneTimeEventsFromToWithTypes(toTS, fromTS, typesList).toMutableList() as ArrayList<Event>)
+                    } else {
+                        events.addAll(
+                            eventsDB.getOneTimeEventsFromToWithTypesForSearch(toTS, fromTS, typesList, "%$searchQuery%").toMutableList() as ArrayList<Event>
+                        )
+                    }
                 } catch (e: Exception) {
                 }
             }
@@ -284,7 +304,7 @@ class EventsHelper(val context: Context) {
             )
         }
 
-        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter))
+        events.addAll(getRepeatableEventsFor(fromTS, toTS, eventId, applyTypeFilter, searchQuery))
 
         events = events
             .asSequence()
@@ -298,7 +318,10 @@ class EventsHelper(val context: Context) {
         }
 
         events.forEach {
-            if (it.isTask()) updateIsTaskCompleted(it)
+            if (it.isTask()) {
+                updateIsTaskCompleted(it)
+            }
+
             it.updateIsPastEvent()
             val originalEvent = eventsDB.getEventWithId(it.id!!)
             if (originalEvent != null &&
@@ -354,13 +377,16 @@ class EventsHelper(val context: Context) {
         return eventTypeId
     }
 
-    fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false): List<Event> {
+    fun getRepeatableEventsFor(fromTS: Long, toTS: Long, eventId: Long = -1L, applyTypeFilter: Boolean = false, searchQuery: String = ""): List<Event> {
         val events = if (applyTypeFilter) {
             val displayEventTypes = context.config.displayEventTypes
             if (displayEventTypes.isEmpty()) {
                 return ArrayList()
-            } else {
+            } else if (searchQuery.isEmpty()) {
                 eventsDB.getRepeatableEventsOrTasksWithTypes(toTS, context.config.getDisplayEventTypessAsList()).toMutableList() as ArrayList<Event>
+            } else {
+                eventsDB.getRepeatableEventsOrTasksWithTypesForSearch(toTS, context.config.getDisplayEventTypessAsList(), "%$searchQuery%")
+                    .toMutableList() as ArrayList<Event>
             }
         } else {
             if (eventId == -1L) {
