@@ -1,4 +1,4 @@
-Jednoduchý kalendář je vysoce přizpůsobitelná aplikace offline kalendáře pro Android. Mějte v kapse plánovač agendy, který je navržen přesně tak, jak by měl plánovač osobního rozvrhu v roce 2022 vypadat. Žádné složité funkce, zbytečná oprávnění ani reklamy! Podporuje synchronizaci událostí prostřednictvím Kalendáře Google nebo jiných kalendářů podporujících protokol CalDAV.
+Jednoduchý kalendář je vysoce přizpůsobitelná aplikace offline kalendáře pro Android. Mějte v kapse plánovač agendy, který je navržen přesně tak, jak by měl plánovač osobního rozvrhu v roce 2023 vypadat. Žádné složité funkce, zbytečná oprávnění ani reklamy! Podporuje synchronizaci událostí prostřednictvím Kalendáře Google nebo jiných kalendářů podporujících protokol CalDAV.
 
 Mějte svůj čas pod kontrolou
 Ať už hledáte pracovní kalendář pro firmu, plánovač dne, schůzek nebo organizaci a plánování jednorázových i opakujících se událostí, jako narozeniny, výročí, připomenutí schůzky nebo cokoli jiného, s aplikací Jednoduchý kalendář si snadno udržíte pořádek. Widget kalendáře má neuvěřitelné možnosti přizpůsobení: vlastní připomenutí událostí, vzhled oznámení, drobný widget s připomenutím kalendáře a celkově vzhled.
@@ -39,7 +39,7 @@ Funkce jednoduchého kalendáře
 ➕ Rychlý pracovní kalendář nebo osobní digitální agenda
 ➕ Rychlé přepínání mezi denním, týdenním, měsíčním a ročním zobrazením a zobrazením událostí
 
-STÁHNĚTE SI JEDNODUCHÝ KALENDÁŘ – OFFLINE PLÁNOVAČ ROZVRHU A AGENDY BEZ REKLAM! NAPLÁNUJTE SI ROZVRH NA ROK 2022!
+STÁHNĚTE SI JEDNODUCHÝ KALENDÁŘ – OFFLINE PLÁNOVAČ ROZVRHU A AGENDY BEZ REKLAM! NAPLÁNUJTE SI ROZVRH NA ROK 2023!
 
 Ve výchozím nastavení přichází s designem Material a tmavým motivem, který poskytuje skvělé uživatelské prostředí pro snadné používání. Nepoužívání přístupu k Internetu vám poskytuje větší soukromí, zabezpečení a stabilitu než jiné aplikace.
 

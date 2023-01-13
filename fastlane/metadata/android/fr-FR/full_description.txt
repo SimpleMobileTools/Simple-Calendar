@@ -1,12 +1,12 @@
-Simple Calendar 2022 est une application de calendrier mensuel hors ligne hautement personnalisable pour Android. Ayez un planificateur d’agenda dans votre poche, conçu pour faire exactement ce qu’un planificateur d’horaire personnel minuscule devrait faire en 2022. Pas de fonctionnalités compliquées, des autorisations inutiles, ou des annonces! Il prend en charge la synchronisation des événements via Google Calendar ou d’autres calendriers supportant le protocole CalDAV.
+Simple Calendar 2023 est une application de calendrier mensuel hors ligne hautement personnalisable pour Android. Ayez un planificateur d’agenda dans votre poche, conçu pour faire exactement ce qu’un planificateur d’horaire personnel minuscule devrait faire en 2023. Pas de fonctionnalités compliquées, des autorisations inutiles, ou des annonces! Il prend en charge la synchronisation des événements via Google Calendar ou d’autres calendriers supportant le protocole CalDAV.
 
 Prenez le contrôle de votre temps
-Que vous soyez à la recherche d’un calendrier de travail pour une entreprise, un planificateur de jour, un planificateur de rendez-vous, ou l’organisation et la planification d’événements uniques et récurrents comme les anniversaires, les rappels de rendez-vous, ou quoi que ce soit d’autre, Simple Calendar 2022 facilite l’organisation.
+Que vous soyez à la recherche d’un calendrier de travail pour une entreprise, un planificateur de jour, un planificateur de rendez-vous, ou l’organisation et la planification d’événements uniques et récurrents comme les anniversaires, les rappels de rendez-vous, ou quoi que ce soit d’autre, Simple Calendar 2023 facilite l’organisation.
 
 Planificateur d’horaire : Planifiez votre journée
-Planificateur de rendez-vous, planificateur mensuel et organisateur familial en un seul! Consultez votre agenda à venir, planifiez des réunions d’affaires et des événements et prenez rendez-vous facilement. Les rappels vous tiendront à l’heure et vous informeront sur votre application d’horaire quotidien. Ce widget de calendrier 2022 est remarquablement facile à utiliser.
+Planificateur de rendez-vous, planificateur mensuel et organisateur familial en un seul! Consultez votre agenda à venir, planifiez des réunions d’affaires et des événements et prenez rendez-vous facilement. Les rappels vous tiendront à l’heure et vous informeront sur votre application d’horaire quotidien. Ce widget de calendrier 2023 est remarquablement facile à utiliser.
 
-Caractéristiques simples du calendrier 2022
+Caractéristiques simples du calendrier 2023
 
 ✔️ La meilleure expérience utilisateur
 ➕ Pas d’annonces ou de popups ennuyeux, vraiment grande expérience utilisateur!
@@ -37,7 +37,7 @@ Caractéristiques simples du calendrier 2022
 ➕ Horaire quotidien et lieu de l’événement, indiqué sur une carte
 ➕ Calendrier d’affaires rapide ou agenda numérique personnel
 
-TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE – LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR D’OAN FFLINE SANS PUBLICITÉ! PLANIFIEZ VOTRE CALENDRIER 2022!
+TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE – LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR D’OAN FFLINE SANS PUBLICITÉ! PLANIFIEZ VOTRE CALENDRIER 2023!
 
 Il est livré avec la conception du matériel et da ark thème par défaut, offre une grande expérience utilisateur pour une utilisation facile. Le manque d’accès à Internet vous donne plus de confidentialité, de sécurité et de stabilité que les autres applications.
 

@@ -1,4 +1,4 @@
-Yksinkertainen kalenteri 2022 on erittäin helposti muokattavissa oleva, offline-muotoinen kuukausittainen kalenterisovellus Androidille. Pidä kalenterisuunnittelija taskussa. Ei monimutkaisia ominaisuuksia, tarpeettomia lupia tai mainoksia! Se tukee CalDAV-protokollaa.
+Yksinkertainen kalenteri 2023 on erittäin helposti muokattavissa oleva, offline-muotoinen kuukausittainen kalenterisovellus Androidille. Pidä kalenterisuunnittelija taskussa. Ei monimutkaisia ominaisuuksia, tarpeettomia lupia tai mainoksia! Se tukee CalDAV-protokollaa.
 
 Ota aikasi hallintaasi
 Sitä voidaan käyttää päivittäisenä suunnittelijana, kokoussuunnittelijana tai apuvälineenä kertaluonteisten ja toistuvien tapahtumien, kuten syntymäpäivien, vuosipäivien, kokousmuistutusten tai minkä tahansa muun järjestämisen ja aikatauluttamisen helpottamiseksi, on helppo pysyä järjestyksessä. Siinä on uskomattoman paljon erilaisia mukautusvaihtoehtoja: ilmoitusten ulkoasu, pieni kalenterimuistutuswidget ja yleinen ulkoasu.
@@ -6,7 +6,7 @@ Sitä voidaan käyttää päivittäisenä suunnittelijana, kokoussuunnittelijana
 Aikataulusuunnittelija: suunnittele päiväsi
 Aikatauluttaja, kuukausisuunnittelija ja perheenjärjestäjä yhdessä! Tarkista tulevat esityslistat, aikatauluta yrityskokoukset ja -tapahtumat & varaa tapaamiset helposti. Muistutukset pitävät sinut ajoissa ja ajan tasalla. Se on huomattavan helppokäyttöinen. Voit jopa tarkastella kaikkea luettelona, jotta tiedät, miten järjestät ja suunnittelet asialistasi. 
 
-Yksinkertainen kalenteri 2022 Ominaisuudet
+Yksinkertainen kalenteri 2023 Ominaisuudet
 
 ✔️ Paras käyttökokemus
 ➕ Ei mainoksia tai ärsyttäviä ponnahdusikkunoita, todella loistava käyttökokemus!
@@ -40,7 +40,7 @@ Yksinkertainen kalenteri 2022 Ominaisuudet
 ➕ Nopea yrityskalenteri tai henkilökohtainen digitaalinen asialista
 ➕ Vaihda nopeasti päivittäisten, viikoittaisten, kuukausittaisten, vuosittaisten ja tapahtumanäkymien välillä.
 
-LATAA YKSINKERTAINEN KALENTERI PLANNER - OFFLINE AIKATAULU JA ASIALISTAN SUUNNITTELIJA ILMAN MAINOKSIA! SUUNNITTELE AIKATAULUSI 2022!
+LATAA YKSINKERTAINEN KALENTERI PLANNER - OFFLINE AIKATAULU JA ASIALISTAN SUUNNITTELIJA ILMAN MAINOKSIA! SUUNNITTELE AIKATAULUSI 2023!
 
 Mukana material design ja oletuksena tumma teema. Internet-yhteyden puuttuminen antaa sinulle enemmän yksityisyyttä, turvallisuutta ja vakautta kuin muut sovellukset.
 

@@ -1,12 +1,12 @@
-Simple Calendar 2022 är en månadstidskalenderapp för Android som är mycket anpassningsbar och som kan användas offline. Ha en agenda planerare i fickan, utformad för att göra exakt vad en personlig liten schema planerare bör göra år 2022. Inga komplicerade funktioner, onödiga behörigheter eller annonser! Den stöder synkronisering av händelser via Google Calendar eller andra kalendrar som stöder CalDAV-protokollet.
+Simple Calendar 2023 är en månadstidskalenderapp för Android som är mycket anpassningsbar och som kan användas offline. Ha en agenda planerare i fickan, utformad för att göra exakt vad en personlig liten schema planerare bör göra år 2023. Inga komplicerade funktioner, onödiga behörigheter eller annonser! Den stöder synkronisering av händelser via Google Calendar eller andra kalendrar som stöder CalDAV-protokollet.
 
 Ta kontroll över din tid
-Oavsett om du letar efter en arbetskalender för ett företag, en dagsplanerare, en tidsbokare eller organisation och schemaläggning av enstaka och återkommande händelser som födelsedagar, årsdagar, påminnelser om möten eller något annat, gör Simple Calendar 2022 det enkelt att hålla sig organiserad. Kalenderwidgeten har en otrolig mängd anpassningsalternativ: anpassade händelsepåminnelser, meddelandeutseende, liten kalenderpåminnelsewidget och övergripande utseende.
+Oavsett om du letar efter en arbetskalender för ett företag, en dagsplanerare, en tidsbokare eller organisation och schemaläggning av enstaka och återkommande händelser som födelsedagar, årsdagar, påminnelser om möten eller något annat, gör Simple Calendar 2023 det enkelt att hålla sig organiserad. Kalenderwidgeten har en otrolig mängd anpassningsalternativ: anpassade händelsepåminnelser, meddelandeutseende, liten kalenderpåminnelsewidget och övergripande utseende.
 
 Schemaläggare: Planera din dag
-Tidtabellsläggare, månadsplanerare och familjeorganisatör i ett! Kontrollera din kommande agenda, planera affärsmöten och evenemang och boka möten enkelt. Påminnelser kommer att hålla dig i tid och informerad om din dagliga schemaapp. Denna 2022 kalender widget är anmärkningsvärt lätt att använda. 
+Tidtabellsläggare, månadsplanerare och familjeorganisatör i ett! Kontrollera din kommande agenda, planera affärsmöten och evenemang och boka möten enkelt. Påminnelser kommer att hålla dig i tid och informerad om din dagliga schemaapp. Denna 2023 kalender widget är anmärkningsvärt lätt att använda. 
 
-Enkel kalender 2022 funktioner
+Enkel kalender 2023 funktioner
 
 ✔️ Den bästa användarupplevelsen
 ➕ Inga annonser eller irriterande popup-fönster, verkligt bra användarupplevelse!
@@ -40,7 +40,7 @@ Enkel kalender 2022 funktioner
 ➕ Snabb företagskalender eller personlig digital agenda
 ➕ Växla snabbt mellan dags-, vecko-, månads-, års- och evenemangsvisningar.
 
-LADDA NER EN ENKEL KALENDERPLANERARE - EN OFFLINE SCHEMA- OCH AGENDAPLANERARE UTAN ANNONSER! PLANERA DIN TIDTABELL FÖR 2022!
+LADDA NER EN ENKEL KALENDERPLANERARE - EN OFFLINE SCHEMA- OCH AGENDAPLANERARE UTAN ANNONSER! PLANERA DIN TIDTABELL FÖR 2023!
 
 Den levereras med materialdesign och mörkt tema som standard, vilket ger en bra användarupplevelse för enkel användning. Avsaknaden av internetåtkomst ger dig mer integritet, säkerhet och stabilitet än andra appar.
 

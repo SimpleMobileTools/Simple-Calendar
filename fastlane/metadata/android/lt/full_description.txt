@@ -1,12 +1,12 @@
-"Simple Calendar 2022" yra labai lengvai pritaikoma neprisijungusi mėnesio kalendoriaus programa "Android". Turėkite kišenėje darbotvarkės planuoklį, sukurtą būtent tam, ką turėtų daryti asmeninis mažytis tvarkaraštis 2022 m. Jokių sudėtingų funkcijų, nereikalingų leidimų ar reklamų! Ji palaiko įvykių sinchronizavimą per "Google" kalendorių arba kitus kalendorius, palaikančius CalDAV protokolą.
+"Simple Calendar 2023" yra labai lengvai pritaikoma neprisijungusi mėnesio kalendoriaus programa "Android". Turėkite kišenėje darbotvarkės planuoklį, sukurtą būtent tam, ką turėtų daryti asmeninis mažytis tvarkaraštis 2023 m. Jokių sudėtingų funkcijų, nereikalingų leidimų ar reklamų! Ji palaiko įvykių sinchronizavimą per "Google" kalendorių arba kitus kalendorius, palaikančius CalDAV protokolą.
 
 Kontroliuokite savo laiką
-Nesvarbu, ar ieškote darbo kalendoriaus verslui, dienos planuoklio, susitikimų tvarkaraščio, ar vienkartinių ir pasikartojančių įvykių, pavyzdžiui, gimtadienių, jubiliejų, susitikimų priminimų ar bet ko kito, organizavimo ir planavimo, "Simple Calendar 2022" leidžia lengvai išlaikyti tvarką. Kalendoriaus valdiklyje yra neįtikėtinai daug įvairių pritaikymo parinkčių: pritaikyti įvykių priminimai, pranešimų išvaizda, mažytis kalendoriaus priminimų valdiklis ir bendra išvaizda.
+Nesvarbu, ar ieškote darbo kalendoriaus verslui, dienos planuoklio, susitikimų tvarkaraščio, ar vienkartinių ir pasikartojančių įvykių, pavyzdžiui, gimtadienių, jubiliejų, susitikimų priminimų ar bet ko kito, organizavimo ir planavimo, "Simple Calendar 2023" leidžia lengvai išlaikyti tvarką. Kalendoriaus valdiklyje yra neįtikėtinai daug įvairių pritaikymo parinkčių: pritaikyti įvykių priminimai, pranešimų išvaizda, mažytis kalendoriaus priminimų valdiklis ir bendra išvaizda.
 
 Tvarkaraščio planuoklis: Planuokite savo dieną: planuokite savo dieną
-Susitikimų tvarkaraštis, mėnesio planuoklis ir šeimos organizatorius viename! Patikrinkite būsimą darbotvarkę, planuokite verslo susitikimus ir renginius bei lengvai užsisakykite susitikimus. Priminimai padės jums laiku ir informuoti apie savo dienotvarkės programėlę. Šį 2022 m. kalendoriaus valdiklį nepaprastai lengva naudoti.
+Susitikimų tvarkaraštis, mėnesio planuoklis ir šeimos organizatorius viename! Patikrinkite būsimą darbotvarkę, planuokite verslo susitikimus ir renginius bei lengvai užsisakykite susitikimus. Priminimai padės jums laiku ir informuoti apie savo dienotvarkės programėlę. Šį 2023 m. kalendoriaus valdiklį nepaprastai lengva naudoti.
 
-Paprasto 2022 m. kalendoriaus funkcijos
+Paprasto 2023 m. kalendoriaus funkcijos
 
 ✔️ Geriausia naudotojo patirtis
 ➕ Jokių reklamų ar erzinančių iššokančių langų, tikrai puiki naudotojo patirtis!
@@ -40,7 +40,7 @@ Paprasto 2022 m. kalendoriaus funkcijos
 ➕ Greitas verslo kalendorius arba asmeninė skaitmeninė darbotvarkė
 ➕ Greitai perjunkite dienos, savaitės, mėnesio, metų ir įvykių rodinius
 
-ATSISIŲSKITE PAPRASTĄ KALENDORIAUS PLANUOKLĮ - NEPRISIJUNGUSĮ TVARKARAŠČIO IR DARBOTVARKĖS PLANUOKLĮ BE REKLAMŲ! PLANUOKITE SAVO 2022 M. TVARKARAŠTĮ!
+ATSISIŲSKITE PAPRASTĄ KALENDORIAUS PLANUOKLĮ - NEPRISIJUNGUSĮ TVARKARAŠČIO IR DARBOTVARKĖS PLANUOKLĮ BE REKLAMŲ! PLANUOKITE SAVO 2023 M. TVARKARAŠTĮ!
 
 Sudėtyje nėra reklamų ir nereikalingų leidimų. Tai visiškai atvirojo kodo programa, kurioje galima keisti spalvas.
 

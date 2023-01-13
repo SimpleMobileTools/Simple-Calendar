@@ -1,11 +1,11 @@
-Calendario Sencillo 2022 es una aplicación de calendario mensual sin conexión altamente personalizable para Android. Tenga un planificador de calendario en su bolsillo, diseñado para hacer exactamente lo debe hacer en pleno 2022. Sin funciones complicadas, permisos innecesarios o anuncios. Soporta la sincronización de los eventos a través de Google Calendar u otros calendarios que soporten el protocolo CalDAV.
+Calendario Sencillo 2023 es una aplicación de calendario mensual sin conexión altamente personalizable para Android. Tenga un planificador de calendario en su bolsillo, diseñado para hacer exactamente lo debe hacer en pleno 2023. Sin funciones complicadas, permisos innecesarios o anuncios. Soporta la sincronización de los eventos a través de Google Calendar u otros calendarios que soporten el protocolo CalDAV.
 
 Toma el control de tu tiempo
-Tanto si buscas un calendario de trabajo para la empresa, un planificador para tus días, programar citas, organizar o eventos únicos y recurrentes (cumpleaños, aniversarios, recordatorios de citas o cualquier otra cosa), Calendario Sencillo 2022 hace que sea fácil mantenerse organizado. El widget del calendario tiene una increíble variedad de opciones para adaptarse a ti: personaliza los recordatorios de eventos, la apariencia de las notificaciones, el pequeño widget de los recordatorios en el calendario y el aspecto en general.
+Tanto si buscas un calendario de trabajo para la empresa, un planificador para tus días, programar citas, organizar o eventos únicos y recurrentes (cumpleaños, aniversarios, recordatorios de citas o cualquier otra cosa), Calendario Sencillo 2023 hace que sea fácil mantenerse organizado. El widget del calendario tiene una increíble variedad de opciones para adaptarse a ti: personaliza los recordatorios de eventos, la apariencia de las notificaciones, el pequeño widget de los recordatorios en el calendario y el aspecto en general.
 
 Planificador de horarios: Planifica tu día, programa citas, planificador mensual y organiza toda la familia todo en una sola aplicación. Consulte su próxima agenda, programe reuniones o eventos de negocios y reserve citas fácilmente. Los recordatorios te mantendrán puntualmente informado en tu aplicación para la planificación diaria.
 
-Características del Calendario Sencillo 2022:
+Características del Calendario Sencillo 2023:
 
 ✔️ La mejor experiencia para el usuario
 ➕ Sin anuncios ni molestas ventanas emergentes, ¡una experiencia para el usuario realmente genial!
@@ -38,7 +38,7 @@ Características del Calendario Sencillo 2022:
 ➕ Calendario empresarial rápido, o calendario digital personal
 ➕ Cambia rápidamente entre las vistas diaria, semanal, mensual, anual
 
-DESCARGAR CALENDARIO SENCILLO - ¡PLANIFICADOR DE HORARIOS Y AGENDAS OFFLINE Y SIN PUBLICIDAD! ¡PLANIFICA TU AGENDA DEL 2022!
+DESCARGAR CALENDARIO SENCILLO - ¡PLANIFICADOR DE HORARIOS Y AGENDAS OFFLINE Y SIN PUBLICIDAD! ¡PLANIFICA TU AGENDA DEL 2023!
 
 No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, proporciona colores personalizables.
 

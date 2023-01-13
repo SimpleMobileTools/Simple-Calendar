@@ -1,11 +1,11 @@
-Simple Calendar 2022, Android için son derece özelleştirilebilir, çevrimdışı bir aylık takvim uygulamasıdır. 2022'te kişisel bir planlamacının yapması gerekeni tam olarak yapmak için tasarlanmış bir gündem planlayıcınız olsun. Karmaşık özellikler, gereksiz izinler veya reklamlar yok! Google Takvim veya CalDAV protokolünü destekleyen diğer takvimler aracılığıyla olayların eşitlenmesini destekler.
+Simple Calendar 2023, Android için son derece özelleştirilebilir, çevrimdışı bir aylık takvim uygulamasıdır. 2023'te kişisel bir planlamacının yapması gerekeni tam olarak yapmak için tasarlanmış bir gündem planlayıcınız olsun. Karmaşık özellikler, gereksiz izinler veya reklamlar yok! Google Takvim veya CalDAV protokolünü destekleyen diğer takvimler aracılığıyla olayların eşitlenmesini destekler.
 
 Zamanınızı Kontrol edin
-İster bir iş için bir iş takvimi, ister bir gün planlayıcısı, randevu programlayıcısı veya doğum günleri, yıl dönümleri, randevu hatırlatıcıları veya başka bir şey gibi tek ve yinelenen etkinliklerin organizasyonu ve planlanması arıyor olun, basit Takvim 2022 düzenli kalmanızı kolaylaştırır. Takvim widget'ında, özelleştirilmiş etkinlik hatırlatıcıları, bildirim görünümü, küçük takvim hatırlatıcıları widget'ı ve genel görünüm gibi inanılmaz çeşitlilikte özelleştirme seçenekleri bulunur.
+İster bir iş için bir iş takvimi, ister bir gün planlayıcısı, randevu programlayıcısı veya doğum günleri, yıl dönümleri, randevu hatırlatıcıları veya başka bir şey gibi tek ve yinelenen etkinliklerin organizasyonu ve planlanması arıyor olun, basit Takvim 2023 düzenli kalmanızı kolaylaştırır. Takvim widget'ında, özelleştirilmiş etkinlik hatırlatıcıları, bildirim görünümü, küçük takvim hatırlatıcıları widget'ı ve genel görünüm gibi inanılmaz çeşitlilikte özelleştirme seçenekleri bulunur.
 
 Program Planlayıcı: Gününüzü planlayın
-Randevu programlayıcısı, aylık planlayıcı ve aile organizatörü bir arada! Yaklaşan gündemi kontrol edin, iş toplantıları ve etkinlikler planlayın ve randevularınızı kolayca rezerve edin. Hatırlatıcılar sizi zamanında ve günlük program uygulamanızdan haberdar eder. Bu 2022 takvim widget'ının kullanımı son derece kolaydır. 
-Basit Takvim 2022 Özellikleri
+Randevu programlayıcısı, aylık planlayıcı ve aile organizatörü bir arada! Yaklaşan gündemi kontrol edin, iş toplantıları ve etkinlikler planlayın ve randevularınızı kolayca rezerve edin. Hatırlatıcılar sizi zamanında ve günlük program uygulamanızdan haberdar eder. Bu 2023 takvim widget'ının kullanımı son derece kolaydır. 
+Basit Takvim 2023 Özellikleri
 
 En İyi Kullanıcı Deneyimi
 Hiç reklam veya sinir bozucu açılır pencereler yok, gerçekten harika kullanıcı deneyimi!
@@ -38,7 +38,7 @@ Günlük program ve etkinlik konumu, haritada gösterilir
 Hızlı iş takvimi veya kişisel dijital gündem
 On iki günlük, haftalık, aylık, ve yıllık etkinlik görünümleri
 
-REKLAMSIZ ÇEVRIMDIŞI BIR PROGRAM VE GÜNDEM PLANLAYICI OLAN BASIT BIR TAKVIM PLANLAYICI INDIRIN! 2022 TAKVIMINI PLANLA!
+REKLAMSIZ ÇEVRIMDIŞI BIR PROGRAM VE GÜNDEM PLANLAYICI OLAN BASIT BIR TAKVIM PLANLAYICI INDIRIN! 2023 TAKVIMINI PLANLA!
 
 Malzeme tasarımı ve varsayılan olarak koyu renkli temasıyla birlikte, kolay kullanım için mükemmel bir kullanıcı deneyimi sunar. İnternet erişiminin olmaması size diğer uygulamalardan daha fazla gizlilik, güvenlik ve kararlılık sağlar.
 
