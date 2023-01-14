@@ -245,6 +245,10 @@ class EventActivity : SimpleActivity() {
 
     private fun setupOptionsMenu() {
         event_toolbar.setOnMenuItemClickListener { menuItem ->
+            if (!::mEvent.isInitialized) {
+                return@setOnMenuItemClickListener true
+            }
+
             when (menuItem.itemId) {
                 R.id.save -> saveCurrentEvent()
                 R.id.delete -> deleteEvent()
