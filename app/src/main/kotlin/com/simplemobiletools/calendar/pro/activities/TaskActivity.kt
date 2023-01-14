@@ -351,6 +351,11 @@ class TaskActivity : SimpleActivity() {
         }
 
         val wasRepeatable = mTask.repeatInterval > 0
+        val newImportId = if (mTask.id != null) {
+            mTask.importId
+        } else {
+            UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+        }
 
         val reminders = getReminders()
         if (!task_all_day.isChecked) {
@@ -393,6 +398,7 @@ class TaskActivity : SimpleActivity() {
                     updateTaskCompletion(copy(startTS = mOriginalStartTS), true)
                 }
             }
+            importId = newImportId
             flags = mTask.flags.addBitIf(task_all_day.isChecked, FLAG_ALL_DAY)
             lastUpdated = System.currentTimeMillis()
             eventType = mEventTypeId
@@ -458,7 +464,7 @@ class TaskActivity : SimpleActivity() {
             when (it) {
                 0 -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, true)
+                        eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, addToCalDAV = false)
                         mTask.apply {
                             parentId = id!!.toLong()
                             id = null
@@ -609,7 +615,6 @@ class TaskActivity : SimpleActivity() {
             checkRepetitionRuleText()
         }
     }
-
 
     private fun updateDateText() {
         task_date.text = Formatter.getDate(this, mTaskDateTime)
@@ -765,7 +770,6 @@ class TaskActivity : SimpleActivity() {
             it.applyColorFilter(textColor)
         }
     }
-
 
     private fun showRepeatIntervalDialog() {
         showEventRepeatIntervalDialog(mRepeatInterval) {
