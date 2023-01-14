@@ -94,6 +94,7 @@
         </RelativeLayout>
 
         <ImageView
+            android:id="@+id/export_past_entries_divider"
             android:layout_width="match_parent"
             android:layout_height="@dimen/divider_height"
             android:layout_marginStart="@dimen/activity_margin"
