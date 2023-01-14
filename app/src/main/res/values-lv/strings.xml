@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Izskatās, ka jums nav gaidāmo notikumu.</string>
     <string name="go_to_today">Iet uz šodienu</string>
     <string name="go_to_date">Iet uz datumu</string>
-    <string name="upgraded_from_free">Sveiki!
-\n
-\n Šķiet, ka esiet paaugstinājuši versiju no vecās bezmaksas lietotnes. Lokāli saglabātie notikumi ir manuāli jāpārceļ, tos eksportējot uz .ics failu un pēc tam importējot. Abas eksporta/importa pogas var atrast galvenā skata izvēlnē.
-\n
-\nPēc tam varat noņemt veco versiju, kurai lietotnes iestatījumu augšpusē ir poga \'Upgrade to Pro\'. Pēc tam Jums būs tikai jāveic lietotnes iestatījumu atstatīšana.
-\n
-\nTencinam!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Mēneša kalendārs</string>
     <string name="widget_list">Kalendāra notikumu saraksts</string>

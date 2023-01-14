@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Nemáte žádné nadcházející události.</string>
     <string name="go_to_today">Přejít na dnešní datum</string>
     <string name="go_to_date">Přejít na datum</string>
-    <string name="upgraded_from_free">Zdravím,
-\n
-\nzdá se, že jste přešli ze staré neplacené verze této aplikace. Lokálně uložené události musíte přenést ručně pomocí exportu do .ics souboru a následně naimportovat. Tlačítka pro export a import najdete v obou verzích pod menu na hlavní obrazovce.
-\n
-\nStarou verzi aplikace, která má nahoře nastavení tlačítko „Stáhnout Pro verzi“, můžete poté odinstalovat. Následně si budete muset opět nastavit položky v nastavení aplikace.
-\n
-\nDíky!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendář – měsíční</string>
     <string name="widget_list">Kalendář – seznam událostí</string>

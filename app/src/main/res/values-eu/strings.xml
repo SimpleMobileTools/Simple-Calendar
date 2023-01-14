@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Hurrengo gertaerarik ez.</string>
     <string name="go_to_today">Joan gaurko egunera</string>
     <string name="go_to_date">Joan data zehatz batera</string>
-    <string name="upgraded_from_free">Kaixo,
-\n
-\nbadirudi doako aplikazio zaharra eguneratu duzula. Eskuz biltegiratutako gertaerak migratu behar dituzu .ics fitxategi batean esportatuz, eta gero inportatuz. Esportazio- eta inportazio-botoiak pantaila nagusiaren menuan aurki ditzakezu.
-\n
-\nOndoren, bertsio zaharra desinstalatu dezakezu aplikazioaren ezarpenen goiko aldean dagoen \'Eskuratu Pro bertsioa\' botoiarekin. Azkenik, aplikazioaren ezarpenak berrezarri besterik ez dituzu egin behar.
-\n
-\nEskerrik asko!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Egutegia (hilabetea)</string>
     <string name="widget_list">Egutegia (gertaera-zerrenda)</string>

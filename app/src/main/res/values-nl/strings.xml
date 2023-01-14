@@ -12,9 +12,6 @@
     <string name="no_upcoming_events">Niets gepland.</string>
     <string name="go_to_today">Naar vandaag</string>
     <string name="go_to_date">Naar datum</string>
-    <string name="upgraded_from_free">Het lijkt erop dat dit een upgrade is van de oude gratis versie. Dit betekent dat lokaal opgeslagen afspraken handmatig moeten worden overgezet via \'Afspraken naar .ics-bestand exporteren\' in de oude versie en daarna \'Afspraken uit .ics-bestand importeren\' in deze nieuwe versie. Beide opties zijn te vinden in het menu van het hoofdscherm.
-\n
-\nDaarna kan de oude versie, met de knop \'Upgrade naar Pro\' worden gedeïnstalleerd. De instellingen zullen ook opnieuw moeten worden geconfigureerd.</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Maandweergave</string>
     <string name="widget_list">Afsprakenlijst</string>

@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Zdi se, da nimate nobenih prihajajočih dogodkov.</string>
     <string name="go_to_today">Pojdi na današnji dan</string>
     <string name="go_to_date">Pojdi na datum</string>
-    <string name="upgraded_from_free">Hej,
-\n
-\nzdi se, da ste nadgradili staro brezplačno aplikacijo. Lokalno shranjene dogodke morate ročno prenesti z izvozom v datoteko .ics in nato uvoziti. Oba gumba za izvoz/uvoz najdete v meniju glavnega zaslona.
-\n
-\nNato lahko odstranite staro različico, ki ima na vrhu nastavitev aplikacije gumb \"Nadgradi na Pro\". Nato boste morali samo ponastaviti nastavitve aplikacije.
-\n
-\nHvala!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Mesečni koledar</string>
     <string name="widget_list">Seznam dogodkov v koledarju</string>

@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Aucun évènement à venir.</string>
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
-    <string name="upgraded_from_free">Bonjour,
-\n
-\nIl semblerait que vous soyez passés de l\'ancienne appli gratuite à la version Pro. Vous devez migrer manuellement les évènements enregistrés localement en les exportant vers un fichier .ics, puis en important ce fichier. Vous trouverez les boutons Exporter/Importer dans le menu sur l\'écran principal.
-\n
-\nVous pourrez ensuite désinstaller l\'ancienne version, qui contient un bouton « Passer à la version Pro » en haut des paramètres de l\'appli. Vous n\'aurez ensuite qu\'à réimporter vos évènements dans l\'appli Pro.
-\n
-\nMerci !</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Vue Mois</string>
     <string name="widget_list">Liste d\'évènements de l\'agenda</string>

@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
     <string name="go_to_today">Gå till idag</string>
     <string name="go_to_date">Gå till datum</string>
-    <string name="upgraded_from_free">Hej,
-\n
-\nDet verkar som om du har uppgraderat från den gamla gratisappen. Du måste migrera lokalt lagrade händelser manuellt genom att exportera i en .ics-fil och sedan importera. Du hittar båda knapparna för export/import på huvudskärmens meny.
-\n
-\nDu kan sedan avinstallera den gamla versionen, som har en \"Upgrade to Pro\"-knapp högst upp i appinställningarna. Du behöver då bara återställa appinställningarna.
-\n
-\nTack!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender månadsvis</string>
     <string name="widget_list">Kalender händelselista</string>

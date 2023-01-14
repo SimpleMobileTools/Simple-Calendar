@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">今後の予定はありません。</string>
     <string name="go_to_today">今日へ移動</string>
     <string name="go_to_date">日付に移動</string>
-    <string name="upgraded_from_free">こんにちは、
-\n
-\n無料版からアップグレードされたようですね。ローカルに保存された予定を移行するには、.icsファイルにエクスポートしてから、.icsファイルをインポートする必要があります。エクスポートボタンとインポートボタンは上部のメニューにあります。
-\n
-\nその後、「Pro版にアップグレード」ボタンが設定の上部にある無料版をアンインストールできます。すると、アプリの設定がリセットされることになります。
-\n
-\nありがとうございます！</string>
     <!-- Widget titles -->
     <string name="widget_monthly">カレンダー 月</string>
     <string name="widget_list">カレンダー 予定 リスト</string>

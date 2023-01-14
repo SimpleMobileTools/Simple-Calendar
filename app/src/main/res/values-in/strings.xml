@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Sepertinya anda tidak memiliki acara yang akan datang.</string>
     <string name="go_to_today">Buka hari ini</string>
     <string name="go_to_date">Buka tanggal</string>
-    <string name="upgraded_from_free">Hai,
-\n
-\nsepertinya anda memperbarui dari versi aplikasi gratis yang lama. Anda perlu memindahkan acara yang disimpan lokal secara manual dengan cara mengekspornya ke berkas .ics, lalu mengimpornya kembali. Anda bisa menemukan tombol ekspor/impor di layar menu utama.
-\n
-\nSetelah itu anda bisa mencopot versi yang lama, yang memiliki tombol \'Tingkatkan ke Pro\' di bagian atas pengaturan aplikasi. Lalu anda hanya perlu menyetel ulang pengaturan aplikasi anda.
-\n
-\nTerima kasih!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Bulan</string>
     <string name="widget_list">Daftar acara</string>

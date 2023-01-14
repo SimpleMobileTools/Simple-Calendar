@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">您近期似乎没有任何活动。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
-    <string name="upgraded_from_free">嘿，
-\n
-\n您似乎从旧版免费应用升级了。您必须手动迁移本地存储的活动，通过导出为 .ics 文件后再尝试导入。您可以在主画面菜单中找到导出/导入两个按钮。
-\n
-\n然后您便能卸载旧版了，在应用程序设定的顶端有个\'升级至专业版\'按钮。您只需要重置您的应用程序设定。
-\n
-\n谢谢!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">日历 月历视图</string>
     <string name="widget_list">日历 活动列表</string>

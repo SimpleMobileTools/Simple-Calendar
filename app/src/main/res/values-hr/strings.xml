@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Izgleda da nema nadolazećih događaja.</string>
     <string name="go_to_today">Idi na danas</string>
     <string name="go_to_date">Idi na datum</string>
-    <string name="upgraded_from_free">Hej,
-\n
-\nčini se da si nadogradio/la staru besplatnu aplikaciju. Lokalno spremljene događaje moraš migrirati putem izvoza u .ics datoteku. Zatim ih uvezi. Gumbovi za izvoz/uvoz možeš pronaći u izborniku glavnog ekrana.
-\n
-\nZatim možeš deinstalirati staru verziju s gumbom „Nadogradi na Pro” na vrhu postavki aplikacije. Tada ćeš samo morati obnoviti postavke aplikacije.
-\n
-\nHvala!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Mjesečni kalendar</string>
     <string name="widget_list">Popis događaja kalendara</string>

@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Parece que você não tem próximos eventos.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para a data</string>
-    <string name="upgraded_from_free">Ei,
-\n
-\nparece que você fez a atualização do aplicativo antigo. É necessário migrar manualmente os eventos armazenados localmente, exportando um arquivo .ics e o importando novamente. Encontre os botões de exportação e importação no menu da tela principal.
-\n
-\nEm seguida, desinstale a versão antiga, que apresenta o botão de atualização para a versão Pro na tela de configuração. Na sequência, será necessário redefinir as configurações do aplicativo.
-\n
-\nObrigado!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>

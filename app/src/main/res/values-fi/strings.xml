@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Näyttää siltä ettei sinulla ole tulevia tapahtumia.</string>
     <string name="go_to_today">Mene tähän päivään</string>
     <string name="go_to_date">Mene päivään</string>
-    <string name="upgraded_from_free">Hei,
-\n
-\nnäyttää siltä, että olet päivittänyt vanhasta ilmaisesta sovelluksesta. Sinun on siirrettävä paikallisesti tallennetut tapahtumat manuaalisesti viemällä ne ensin .ics-tiedostoon ja tuomalla ne sitten sovellukseen. Löydät molemmat vienti/tuonti-painikkeet päänäytön valikosta.
-\n
-\nTämän jälkeen voit poistaa vanhan version, jonka sovelluksen asetusten yläosassa on Päivitä Pro-painike. Tämän jälkeen sinun on vain nollattava sovellusasetuksesi.
-\n
-\nKiitos!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalenteri kuukausittain</string>
     <string name="widget_list">Kalenteri tapahtumaluettelo</string>

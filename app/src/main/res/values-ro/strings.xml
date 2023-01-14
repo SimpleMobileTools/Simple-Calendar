@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Se pare că nu aveți niciun eveniment viitor.</string>
     <string name="go_to_today">Sari la ziua de azi</string>
     <string name="go_to_date">Sari la o dată</string>
-    <string name="upgraded_from_free">Bună,
-\n
-\nse pare că ați făcut upgrade de la vechea aplicație gratuită. Trebuie să mutați manual evenimentele stocate local prin export într-un fișier .ics, apoi să le importați. Puteți găsi ambele butoane de export/import în meniul ecranului principal.
-\n
-\nApoi puteți dezinstala vechea versiune, care are un buton \"Upgrade to Pro\" în partea de sus a setărilor aplicației. Apoi va trebui doar să resetați setările aplicației.
-\n
-\nVă mulțumim!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendar lunar</string>
     <string name="widget_list">Calendar listă evenimente</string>

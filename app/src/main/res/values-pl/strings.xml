@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Wygląda na to, że nie masz żadnych nadchodzących wydarzeń.</string>
     <string name="go_to_today">Przejdź do dzisiaj</string>
     <string name="go_to_date">Przejdź do daty</string>
-    <string name="upgraded_from_free">Witaj,
-\n
-\nWygląda na to, że uaktualniłeś(-aś) starą darmową aplikację na nową płatną. Musisz ręcznie przenieść wydarzenia przechowywane lokalnie przez wyeksportowanie ich do pliku .ics, a następnie zaimportowanie. Oba przyciski eksportu i importu możesz znaleźć w menu na ekranie głównym.
-\n
-\nNastępnie możesz odinstalować starą wersję, która ma przycisk „Uaktualnij do Pro” na górze w ustawieniach aplikacji. Wystarczy wtedy zresetować ustawienia aplikacji.
-\n
-\nDzięki!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalendarz miesięczny</string>
     <string name="widget_list">Kalendarz z listą wydarzeń</string>

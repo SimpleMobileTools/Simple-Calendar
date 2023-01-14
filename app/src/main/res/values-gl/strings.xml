@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Semella que non tes ningún evento próximo.</string>
     <string name="go_to_today">Ir ao día de hoxe</string>
     <string name="go_to_date">Ir a unha data</string>
-    <string name="upgraded_from_free">Ola,
-\n
-\nParece que actualizaches a aplicación gratuíta antiga. Ten que migrar manualmente os eventos almacenados localmente mediante a exportación nun ficheiro .ics e despois importando. Podes atopar os dous botóns de exportación/importación no menú da pantalla principal.
-\n
-\nDespois podes desinstalar a versión antiga, que ten un botón \"Actualizar a Pro\" na parte superior da configuración da aplicación. Entón só terás que restablecer a configuración da túa aplicación.
-\n
-\nGrazas!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Almanaque mensual</string>
     <string name="widget_list">Lista de eventos do almanaque</string>

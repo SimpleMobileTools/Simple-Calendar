@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Yaklaşan etkinlikleriniz yok gibi görünüyor.</string>
     <string name="go_to_today">Bugüne git</string>
     <string name="go_to_date">Tarihe git</string>
-    <string name="upgraded_from_free">Merhaba,
-\n
-\neski ücretsiz uygulamadan yükseltmiş gibi görünüyorsunuz. Yerel olarak saklanan etkinlikleri bir .ics dosyasına aktarıp ardından içe aktararak elle taşımanız gerekiyor. Her iki dışa/içe aktar düğmesini ana ekran menüsünde bulabilirsiniz.
-\n
-\nArdından, uygulama ayarlarının en üst kısmında \'Pro\'ya Yükselt\' düğmesi olan eski sürümü kaldırabilirsiniz. Daha sonra yalnızca uygulama ayarlarınızı sıfırlamanız gerekir.
-\n
-\nTeşekkürler!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Aylık takvim</string>
     <string name="widget_list">Takvim etkinlik listesi</string>

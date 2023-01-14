@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Parece que não existem eventos para breve.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
-    <string name="upgraded_from_free">Olá.
-\n
-\nParece ter sido feita uma atualização a partir da antiga versão grátis. Para fazer a migração dos eventos armazenados localmente, deve exportá-los para um ficheiro .ics para depois poder importá-los para a nova versão. Os botões de exportação/importação encontram-se no ecrã do menu principal.
-\n
-\nDe seguida poderá desinstalar a aplicação antiga. Só terá então de repor as suas próprias definições na aplicação.
-\n
-\nObrigado!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendário mensal</string>
     <string name="widget_list">Lista de eventos</string>

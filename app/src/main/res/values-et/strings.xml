@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Tundub, et sul pole eelseisvaid sündmusi.</string>
     <string name="go_to_today">Vaata tänast päeva</string>
     <string name="go_to_date">Vaata kuupäeva</string>
-    <string name="upgraded_from_free">Tšau
-\n
-\nTundub, et täiendasite vanast tasuta rakendusest. Peate kohalikult salvestatud sündmused käsitsi migreerima, eksportides .ics faili ja seejärel importides. Mõlemad ekspordi/impordi nupud leiad peaekraani menüüst.
-\n
-\nSeejärel saate desinstallida vana versiooni, mille rakenduse seadete ülaosas on nupp \"Uuenda Pro-le\". Seejärel peate lähtestama ainult rakenduse seaded.
-\n
-\nTänud!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Kalender igakuiselt</string>
     <string name="widget_list">Kalendri sündmuste nimekiri</string>

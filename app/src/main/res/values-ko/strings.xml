@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">등록된 일정이 없습니다.</string>
     <string name="go_to_today">오늘로 이동</string>
     <string name="go_to_date">해당일로 이동</string>
-    <string name="upgraded_from_free">안녕하세요
-\n
-\n해당 앱이 오래전 무료 앱에서 업그레이드된 것 같습니다. 이전에 등록된 일정들을 가져오기 위해 수동으로 .ics 파일로 내보내기 후 다시 가져오기를 통해 적용해야합니다. 메인화면 오른쪽 상단 메뉴버튼을 눌러 내보내기 / 가져오기를 할 수 있습니다.
-\n
-\n앱 설정화면 최상단에 Pro 버전으로 업그레이드(Upgrade to Pro) 버튼을 눌러 이전 버전을 제거할 수 있습니다. 그 다음 앱 설정으로 들어가 리셋하면 됩니다.
-\n
-\n감사합니다!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">월별 달력</string>
     <string name="widget_list">일정 목록 달력</string>

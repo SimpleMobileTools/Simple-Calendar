@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Sembla que no hi ha cap esdeveniment pròxim.</string>
     <string name="go_to_today">Ves a avui</string>
     <string name="go_to_date">Ves a la data</string>
-    <string name="upgraded_from_free">Hola,
-\n
-\nsembla que heu actualitzat des de l\'antiga aplicació gratuïta. Cal migrar manualment els esdeveniments emmagatzemats localment a través d\'exportar a un fitxer .ics, i després importar. Podeu trobar els botons d\'exportació/importació en el menú de la pantalla principal.
-\n
-\nA continuació podreu desinstal·lar la versió antiga, que té un botó «Actualitza a Pro» a la part superior de la configuració de l\'aplicació. Finalment, només caldrà reiniciar la configuració de l\'aplicació.
-\n
-\nGràcies!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Calendari mensual</string>
     <string name="widget_list">Llista d\'esdeveniments del calendari</string>

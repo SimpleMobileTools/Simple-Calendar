@@ -12,13 +12,6 @@
     <string name="no_upcoming_events">Scheint so, als hättest du keine anstehenden Termine.</string>
     <string name="go_to_today">Zu heute springen</string>
     <string name="go_to_date">Zu Datum springen</string>
-    <string name="upgraded_from_free">Hallo,
-\n
-\nes scheint, als hättest du ein Upgrade von der alten, kostenlosen Version vorgenommen. In diesem Fall musst du deine lokal gespeicherten Termine als .ics-Datei exportieren und danach wieder manuell importieren. Die Import-/Export-Funktionen findest du im Menü der Hauptansicht.
-\n
-\nAnschließend kannst du die alte Version deinstallieren, die du an der Zur-Pro-Version-upgraden-Schaltfläche oben den Einstellungen erkennst. Nun musst du nur noch deine Einstellungen zurücksetzen.
-\n
-\nDanke!</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Monatskalender</string>
     <string name="widget_list">Terminliste</string>
