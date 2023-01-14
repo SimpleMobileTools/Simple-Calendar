@@ -23,7 +23,6 @@ Características del Calendario Sencillo 2023:
 ➕ Un gran calendario de código abierto, traducido a más de 45 idiomas
 ➕ Planifica tu día con los demás: tienes la posibilidad de compartir rápidamente los eventos en las redes sociales, correos electrónicos, etc
 
-
 ✔️ Organiza y gestiona el tiempo
 ➕ Planificor diario: le ayudará a organizar su día a día
 ➕ Planificador semanal: adelantarse a su apretada agenda semanal nunca ha sido más fácil
@@ -45,14 +44,18 @@ No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto,
 Consulta el conjunto completo de Simple Mobile Tools aquí:
 https://www.simplemobiletools.com
 
+
 Sitio web independiente de Calendario Sencillo Pro:
 https://www.simplemobiletools.com/calendar
+
 
 Facebook:
 https://www.facebook.com/simplemobiletools
 
+
 Reddit:
 https://www.reddit.com/r/SimpleMobileTools
+
 
 Telegram:
 https://t.me/SimpleMobileTools
