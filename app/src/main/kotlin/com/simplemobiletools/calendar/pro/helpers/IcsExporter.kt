@@ -64,7 +64,7 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
                 out.writeLn(CALENDAR_VERSION)
                 for (event in events) {
                     if (event.isTask()) {
-                        writeTodo(out, event)
+                        writeTask(out, event)
                     } else {
                         writeEvent(out, event)
                     }
@@ -160,9 +160,9 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
         }
     }
 
-    private fun writeTodo(writer: BufferedWriter, task: Event) {
+    private fun writeTask(writer: BufferedWriter, task: Event) {
         with(writer) {
-            writeLn(BEGIN_TODO)
+            writeLn(BEGIN_TASK)
             task.title.replace("\n", "\\n").let { if (it.isNotEmpty()) writeLn("$SUMMARY:$it") }
             task.importId.let { if (it.isNotEmpty()) writeLn("$UID$it") }
             writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(task.eventType)?.color}")
@@ -187,7 +187,7 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
             fillIgnoredOccurrences(task, writer)
 
             eventsExported++
-            writeLn(END_TODO)
+            writeLn(END_TASK)
         }
     }
 }
