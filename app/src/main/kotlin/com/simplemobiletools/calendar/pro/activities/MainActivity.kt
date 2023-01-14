@@ -35,6 +35,7 @@ import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
+import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -1266,6 +1267,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 } else if (updateStatus == UPDATE_BOTTOM) {
                     search_results_list.smoothScrollBy(0, resources.getDimension(R.dimen.endless_scroll_move_height).toInt())
+                } else {
+                    val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSectionDay && !it.isPastSection }
+                    if (firstNonPastSectionIndex != -1) {
+                        search_results_list.scrollToPosition(firstNonPastSectionIndex)
+                    }
                 }
             }
         }
