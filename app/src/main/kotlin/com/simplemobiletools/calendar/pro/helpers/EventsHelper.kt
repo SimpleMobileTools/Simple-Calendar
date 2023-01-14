@@ -522,12 +522,23 @@ class EventsHelper(val context: Context) {
     fun getEventsToExport(eventTypes: ArrayList<Long>): ArrayList<Event> {
         val currTS = getNowSeconds()
         var events = ArrayList<Event>()
+        val tasks = ArrayList<Event>()
         if (config.exportPastEvents) {
             events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
+            if (config.exportTasks) {
+                tasks.addAll(eventsDB.getAllTasksWithTypes(eventTypes))
+            }
         } else {
-            events.addAll(eventsDB.getOneTimeFutureEventsWithTypes(currTS, eventTypes))
-            events.addAll(eventsDB.getRepeatableFutureEventsWithTypes(currTS, eventTypes))
+            events.addAll(eventsDB.getAllFutureEventsWithTypes(currTS, eventTypes))
+            if (config.exportTasks) {
+                tasks.addAll(eventsDB.getAllFutureTasksWithTypes(currTS, eventTypes))
+            }
         }
+
+        tasks.forEach {
+            updateIsTaskCompleted(it)
+        }
+        events.addAll(tasks)
 
         events = events.distinctBy { it.id } as ArrayList<Event>
         return events

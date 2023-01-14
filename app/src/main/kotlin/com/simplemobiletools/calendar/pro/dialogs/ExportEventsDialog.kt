@@ -17,13 +17,22 @@ class ExportEventsDialog(
     val activity: SimpleActivity, val path: String, val hidePath: Boolean,
     val callback: (file: File, eventTypes: ArrayList<Long>) -> Unit
 ) {
-    private var realPath = if (path.isEmpty()) activity.internalStoragePath else path
+    private var realPath = path.ifEmpty { activity.internalStoragePath }
     private val config = activity.config
 
     init {
         val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
             export_events_folder.setText(activity.humanizePath(realPath))
             export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
+
+            export_events_checkbox.isChecked = config.exportEvents
+            export_events_checkbox_holder.setOnClickListener {
+                export_events_checkbox.toggle()
+            }
+            export_tasks_checkbox.isChecked = config.exportTasks
+            export_tasks_checkbox_holder.setOnClickListener {
+                export_tasks_checkbox.toggle()
+            }
             export_past_events_checkbox.isChecked = config.exportPastEvents
             export_past_events_checkbox_holder.setOnClickListener {
                 export_past_events_checkbox.toggle()
@@ -70,8 +79,12 @@ class ExportEventsDialog(
                                 }
 
                                 ensureBackgroundThread {
-                                    config.lastExportPath = file.absolutePath.getParentPath()
-                                    config.exportPastEvents = view.export_past_events_checkbox.isChecked
+                                    config.apply {
+                                        lastExportPath = file.absolutePath.getParentPath()
+                                        exportEvents = view.export_events_checkbox.isChecked
+                                        exportTasks = view.export_tasks_checkbox.isChecked
+                                        exportPastEvents = view.export_past_events_checkbox.isChecked
+                                    }
 
                                     val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
                                     callback(file, eventTypes)

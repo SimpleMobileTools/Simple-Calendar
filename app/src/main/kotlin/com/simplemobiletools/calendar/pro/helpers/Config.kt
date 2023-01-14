@@ -223,6 +223,14 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(LAST_EXPORT_PATH, "")!!
         set(lastExportPath) = prefs.edit().putString(LAST_EXPORT_PATH, lastExportPath).apply()
 
+    var exportEvents: Boolean
+        get() = prefs.getBoolean(EXPORT_EVENTS, true)
+        set(exportEvents) = prefs.edit().putBoolean(EXPORT_EVENTS, exportEvents).apply()
+
+    var exportTasks: Boolean
+        get() = prefs.getBoolean(EXPORT_TASKS, true)
+        set(exportTasks) = prefs.edit().putBoolean(EXPORT_TASKS, exportTasks).apply()
+
     var exportPastEvents: Boolean
         get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
         set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()

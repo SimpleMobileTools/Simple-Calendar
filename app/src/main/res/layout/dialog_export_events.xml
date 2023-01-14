@@ -49,14 +49,65 @@
         </com.simplemobiletools.commons.views.MyTextInputLayout>
 
         <RelativeLayout
+            android:id="@+id/export_events_checkbox_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="?attr/selectableItemBackground"
+            android:paddingVertical="@dimen/medium_margin"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingEnd="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                android:id="@+id/export_events_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:checked="true"
+                android:clickable="false"
+                android:layoutDirection="rtl"
+                android:padding="@dimen/medium_margin"
+                android:text="@string/export_events" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/export_tasks_checkbox_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingVertical="@dimen/medium_margin"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingEnd="@dimen/activity_margin">
+
+            <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                android:id="@+id/export_tasks_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:checked="true"
+                android:clickable="false"
+                android:layoutDirection="rtl"
+                android:padding="@dimen/medium_margin"
+                android:text="@string/export_tasks" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:background="@color/divider_grey"
+            android:importantForAccessibility="no" />
+
+        <RelativeLayout
             android:id="@+id/export_past_events_checkbox_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
+            android:paddingVertical="@dimen/medium_margin"
             android:paddingStart="@dimen/normal_margin"
-            android:paddingTop="@dimen/medium_margin"
-            android:paddingEnd="@dimen/activity_margin"
-            android:paddingBottom="@dimen/medium_margin">
+            android:paddingEnd="@dimen/activity_margin">
 
             <com.simplemobiletools.commons.views.MyAppCompatCheckbox
                 android:id="@+id/export_past_events_checkbox"
@@ -66,7 +117,7 @@
                 android:clickable="false"
                 android:layoutDirection="rtl"
                 android:padding="@dimen/medium_margin"
-                android:text="@string/export_past_events_too" />
+                android:text="@string/export_past_entries" />
 
         </RelativeLayout>
 

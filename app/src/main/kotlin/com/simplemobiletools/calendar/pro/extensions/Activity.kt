@@ -13,7 +13,6 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.RadioItem
 import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
 
 fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
     ensureBackgroundThread {
@@ -29,8 +28,8 @@ fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
         }
 
         getFileOutputStream(file.toFileDirItem(this), true) {
-            IcsExporter().exportEvents(this, it, events, false) {
-                if (it == IcsExporter.ExportResult.EXPORT_OK) {
+            IcsExporter(this).exportEvents(it, events, false) { result ->
+                if (result == IcsExporter.ExportResult.EXPORT_OK) {
                     sharePathIntent(file.absolutePath, BuildConfig.APPLICATION_ID)
                 }
             }
