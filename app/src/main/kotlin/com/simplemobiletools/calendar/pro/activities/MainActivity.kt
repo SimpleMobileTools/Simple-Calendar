@@ -1292,8 +1292,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         minFetchedSearchTS -= FETCH_INTERVAL
         eventsHelper.getEvents(minFetchedSearchTS, oldMinFetchedTS) { events ->
             events.forEach { event ->
-                if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
-                    searchResultEvents.add(0, event)
+                try {
+                    if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                        searchResultEvents.add(0, event)
+                    }
+                } catch (ignored: ConcurrentModificationException) {
                 }
             }
 
@@ -1306,8 +1309,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         maxFetchedSearchTS += FETCH_INTERVAL
         eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedSearchTS) { events ->
             events.forEach { event ->
-                if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
-                    searchResultEvents.add(0, event)
+                try {
+                    if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                        searchResultEvents.add(0, event)
+                    }
+                } catch (ignored: ConcurrentModificationException) {
                 }
             }
 
