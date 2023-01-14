@@ -523,13 +523,17 @@ class EventsHelper(val context: Context) {
         val currTS = getNowSeconds()
         var events = ArrayList<Event>()
         val tasks = ArrayList<Event>()
-        if (config.exportPastEvents) {
-            events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
+        if (config.exportPastEntries) {
+            if (config.exportEvents) {
+                events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
+            }
             if (config.exportTasks) {
                 tasks.addAll(eventsDB.getAllTasksWithTypes(eventTypes))
             }
         } else {
-            events.addAll(eventsDB.getAllFutureEventsWithTypes(currTS, eventTypes))
+            if (config.exportEvents) {
+                events.addAll(eventsDB.getAllFutureEventsWithTypes(currTS, eventTypes))
+            }
             if (config.exportTasks) {
                 tasks.addAll(eventsDB.getAllFutureTasksWithTypes(currTS, eventTypes))
             }

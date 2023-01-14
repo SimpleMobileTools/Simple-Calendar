@@ -231,7 +231,7 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(EXPORT_TASKS, true)
         set(exportTasks) = prefs.edit().putBoolean(EXPORT_TASKS, exportTasks).apply()
 
-    var exportPastEvents: Boolean
+    var exportPastEntries: Boolean
         get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
         set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()
 

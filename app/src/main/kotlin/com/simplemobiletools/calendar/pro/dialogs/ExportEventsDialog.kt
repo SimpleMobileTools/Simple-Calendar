@@ -33,7 +33,7 @@ class ExportEventsDialog(
             export_tasks_checkbox_holder.setOnClickListener {
                 export_tasks_checkbox.toggle()
             }
-            export_past_events_checkbox.isChecked = config.exportPastEvents
+            export_past_events_checkbox.isChecked = config.exportPastEntries
             export_past_events_checkbox_holder.setOnClickListener {
                 export_past_events_checkbox.toggle()
             }
@@ -83,7 +83,7 @@ class ExportEventsDialog(
                                         lastExportPath = file.absolutePath.getParentPath()
                                         exportEvents = view.export_events_checkbox.isChecked
                                         exportTasks = view.export_tasks_checkbox.isChecked
-                                        exportPastEvents = view.export_past_events_checkbox.isChecked
+                                        exportPastEntries = view.export_past_events_checkbox.isChecked
                                     }
 
                                     val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
