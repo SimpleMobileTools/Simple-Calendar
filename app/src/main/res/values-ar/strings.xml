@@ -207,7 +207,7 @@
     <string name="next_full_hour">الساعة القادمة بالكامل</string>
     <string name="current_time">التوقيت الحالي</string>
     <string name="default_duration">الفترة الافتراضية</string>
-    <string name="last_used_one">آخر واحد مستخدَم</string>
+    <string name="last_used_one">آخر استخدام</string>
     <string name="other_time">وقت آخر</string>
     <string name="highlight_weekends">ظلل نهايات الأسبوع في بعض العروض</string>
     <string name="highlight_weekends_color">لون عطلات نهاية الأسبوع المميزة</string>
