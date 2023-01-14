@@ -1226,8 +1226,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun showSearchResultEvents(events: ArrayList<Event>, updateStatus: Int) {
         val currentSearchQuery = main_menu.getCurrentQuery()
-        val filtered = events.filter {
-            it.title.contains(currentSearchQuery, true) || it.location.contains(currentSearchQuery, true) || it.description.contains(currentSearchQuery, true)
+        val filtered = try {
+            events.filter {
+                it.title.contains(currentSearchQuery, true) || it.location.contains(currentSearchQuery, true) || it.description.contains(
+                    currentSearchQuery,
+                    true
+                )
+            }
+        } catch (e: ConcurrentModificationException) {
+            return
         }
 
         searchResultEvents = filtered.toMutableList() as ArrayList<Event>
