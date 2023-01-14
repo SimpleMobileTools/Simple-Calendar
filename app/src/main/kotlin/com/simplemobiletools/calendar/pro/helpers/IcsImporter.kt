@@ -5,6 +5,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.extensions.updateTaskCompletion
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_FAIL
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_NOTHING_NEW
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPORT_OK
@@ -17,6 +18,7 @@ import com.simplemobiletools.commons.extensions.showErrorToast
 import com.simplemobiletools.commons.helpers.HOUR_SECONDS
 import org.joda.time.DateTimeZone
 import java.io.File
+import kotlin.math.min
 
 class IcsImporter(val activity: SimpleActivity) {
     enum class ImportResult {
@@ -45,7 +47,9 @@ class IcsImporter(val activity: SimpleActivity) {
     private var isNotificationDescription = false
     private var isProperReminderAction = false
     private var isSequence = false
+    private var curType = TYPE_EVENT
     private var isParsingEvent = false
+    private var isParsingTask = false
     private var curReminderTriggerMinutes = REMINDER_OFF
     private var curReminderTriggerAction = REMINDER_NOTIFICATION
     private val eventsHelper = activity.eventsHelper
@@ -89,8 +93,13 @@ class IcsImporter(val activity: SimpleActivity) {
                         resetValues()
                         curEventTypeId = defaultEventTypeId
                         isParsingEvent = true
+                    } else if (line.trim() == BEGIN_TASK) {
+                        resetValues()
+                        curEventTypeId = defaultEventTypeId
+                        isParsingTask = true
+                        curType = TYPE_TASK
                     } else if (line.startsWith(DTSTART)) {
-                        if (isParsingEvent) {
+                        if (isParsingEvent || isParsingTask) {
                             curStart = getTimestamp(line.substring(DTSTART.length))
 
                             if (curRrule != "") {
@@ -144,6 +153,14 @@ class IcsImporter(val activity: SimpleActivity) {
                         if (line.substring(MISSING_YEAR.length) == "1") {
                             curFlags = curFlags or FLAG_MISSING_YEAR
                         }
+                    } else if (line.startsWith(STATUS)) {
+                        if (isParsingTask && line.substring(STATUS.length) == COMPLETED) {
+                            curFlags = curFlags or FLAG_TASK_COMPLETED
+                        }
+                    } else if (line.startsWith(COMPLETED)) {
+                        if (isParsingTask && line.substring(COMPLETED.length).trim().isNotEmpty()) {
+                            curFlags = curFlags or FLAG_TASK_COMPLETED
+                        }
                     } else if (line.startsWith(CATEGORIES) && !overrideFileEventTypes) {
                         val categories = line.substring(CATEGORIES.length)
                         tryAddCategories(categories)
@@ -182,11 +199,12 @@ class IcsImporter(val activity: SimpleActivity) {
                             curReminderActions.add(curReminderTriggerAction)
                         }
                         isNotificationDescription = false
-                    } else if (line.trim() == END_EVENT) {
-                        isParsingEvent = false
-                        if (curStart != -1L && curEnd == -1L) {
+                    } else if (line.trim() == END_EVENT || line.trim() == END_TASK) {
+                        if (curStart != -1L && (curEnd == -1L || isParsingTask)) {
                             curEnd = curStart
                         }
+                        isParsingEvent = false
+                        isParsingTask = false
 
                         if (curTitle.isEmpty() || curStart == -1L) {
                             line = curLine
@@ -194,8 +212,7 @@ class IcsImporter(val activity: SimpleActivity) {
                         }
 
                         // repeating event exceptions can have the same import id as their parents, so pick the latest event to update
-                        val eventToUpdate =
-                            existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.sortedByDescending { it.lastUpdated }.firstOrNull()
+                        val eventToUpdate = existingEvents.filter { curImportId.isNotEmpty() && curImportId == it.importId }.maxByOrNull { it.lastUpdated }
                         if (eventToUpdate != null && eventToUpdate.lastUpdated >= curLastModified) {
                             eventsAlreadyExist++
                             line = curLine
@@ -238,10 +255,11 @@ class IcsImporter(val activity: SimpleActivity) {
                             0,
                             curLastModified,
                             source,
-                            curAvailability
+                            curAvailability,
+                            type = curType
                         )
 
-                        if (isAllDay && curEnd > curStart) {
+                        if (isAllDay && curEnd > curStart && !event.isTask()) {
                             event.endTS -= TWELVE_HOURS
                             // fix some glitches related to daylight saving shifts
                             if (event.startTS - event.endTS == HOUR_SECONDS.toLong()) {
@@ -264,13 +282,13 @@ class IcsImporter(val activity: SimpleActivity) {
                             // if an event belongs to a sequence insert it immediately, to avoid some glitches with linked events
                             if (isSequence) {
                                 if (curRecurrenceDayCode.isEmpty()) {
-                                    eventsHelper.insertEvent(event, true, false)
+                                    eventsHelper.insertEvent(event, addToCalDAV = !event.isTask(), showToasts = false)
                                 } else {
                                     // if an event contains the RECURRENCE-ID field, it is an exception to a recurring event, so update its parent too
                                     val parentEvent = activity.eventsDB.getEventWithImportId(event.importId)
                                     if (parentEvent != null && !parentEvent.repetitionExceptions.contains(curRecurrenceDayCode)) {
                                         parentEvent.addRepetitionException(curRecurrenceDayCode)
-                                        eventsHelper.insertEvent(parentEvent, true, false)
+                                        eventsHelper.insertEvent(parentEvent, !parentEvent.isTask(), showToasts = false)
 
                                         event.parentId = parentEvent.id!!
                                         eventsToInsert.add(event)
@@ -281,7 +299,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             }
                         } else {
                             event.id = eventToUpdate.id
-                            eventsHelper.updateEvent(event, true, false)
+                            eventsHelper.updateEvent(event, updateAtCalDAV = !event.isTask(), showToasts = false)
                         }
                         eventsImported++
                         resetValues()
@@ -290,7 +308,12 @@ class IcsImporter(val activity: SimpleActivity) {
                 }
             }
 
-            eventsHelper.insertEvents(eventsToInsert, true)
+            val (tasks, events) = eventsToInsert.partition { it.isTask() }
+            eventsHelper.insertEvents(tasks as ArrayList<Event>, addToCalDAV = false)
+            eventsHelper.insertEvents(events as ArrayList<Event>, addToCalDAV = true)
+            tasks.filter { it.isTaskCompleted() }.forEach {
+                activity.updateTaskCompletion(it, completed = true)
+            }
         } catch (e: Exception) {
             activity.showErrorToast(e)
             eventsFailed++
@@ -361,7 +384,7 @@ class IcsImporter(val activity: SimpleActivity) {
         return if (title.startsWith(";") && title.contains(":")) {
             title.substring(title.lastIndexOf(':') + 1)
         } else {
-            title.substring(1, Math.min(title.length, 180))
+            title.substring(1, min(title.length, 180))
         }
     }
 
@@ -397,5 +420,6 @@ class IcsImporter(val activity: SimpleActivity) {
         isParsingEvent = false
         curReminderTriggerMinutes = REMINDER_OFF
         curReminderTriggerAction = REMINDER_NOTIFICATION
+        curType = TYPE_EVENT
     }
 }
