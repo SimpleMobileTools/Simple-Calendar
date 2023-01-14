@@ -250,11 +250,11 @@
     <string name="within_the_next">En el següent…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">En el %d dia següent</item>
-        <item quantity="other">En els %d dies següents</item>
+        <item quantity="other">En els %d de dies següents</item>
     </plurals>
     <plurals name="within_the_next_weeks">
         <item quantity="one">En la %d setmana següent</item>
-        <item quantity="other">En les %d setmanes següents</item>
+        <item quantity="other">En les %d de setmanes següents</item>
     </plurals>
     <plurals name="within_the_next_months">
         <item quantity="one">En el %d mes següent</item>
