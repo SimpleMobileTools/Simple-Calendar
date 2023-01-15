@@ -72,8 +72,8 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_ANNIVERSARY\' AND type = $TYPE_EVENT")
     fun getAnniversaries(): List<Event>
 
-    @Query("SELECT * FROM events WHERE import_id != \"\" AND type = $TYPE_EVENT")
-    fun getEventsWithImportIds(): List<Event>
+    @Query("SELECT * FROM events WHERE import_id != \"\"")
+    fun getEventsOrTasksWithImportIds(): List<Event>
 
     @Query("SELECT * FROM events WHERE source = :source AND type = $TYPE_EVENT")
     fun getEventsFromCalDAVCalendar(source: String): List<Event>

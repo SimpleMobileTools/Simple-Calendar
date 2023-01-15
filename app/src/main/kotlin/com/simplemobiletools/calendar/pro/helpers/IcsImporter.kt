@@ -67,7 +67,7 @@ class IcsImporter(val activity: SimpleActivity) {
     ): ImportResult {
         try {
             val eventTypes = eventsHelper.getEventTypesSync()
-            val existingEvents = activity.eventsDB.getEventsWithImportIds().toMutableList() as ArrayList<Event>
+            val existingEvents = activity.eventsDB.getEventsOrTasksWithImportIds().toMutableList() as ArrayList<Event>
             val eventsToInsert = ArrayList<Event>()
             var line = ""
 
