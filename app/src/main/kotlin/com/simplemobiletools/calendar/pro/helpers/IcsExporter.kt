@@ -17,7 +17,7 @@ import java.io.BufferedWriter
 import java.io.OutputStream
 import java.io.OutputStreamWriter
 
-class IcsExporter {
+class IcsExporter(private val activity: BaseSimpleActivity) {
     enum class ExportResult {
         EXPORT_FAIL, EXPORT_OK, EXPORT_PARTIAL
     }
@@ -26,9 +26,10 @@ class IcsExporter {
     private var eventsExported = 0
     private var eventsFailed = 0
     private var calendars = ArrayList<CalDAVCalendar>()
+    private val reminderLabel = activity.getString(R.string.reminder)
+    private val exportTime = Formatter.getExportedTime(System.currentTimeMillis())
 
     fun exportEvents(
-        activity: BaseSimpleActivity,
         outputStream: OutputStream?,
         events: ArrayList<Event>,
         showExportingToast: Boolean,
@@ -40,14 +41,10 @@ class IcsExporter {
         }
 
         ensureBackgroundThread {
-            val reminderLabel = activity.getString(R.string.reminder)
-            val exportTime = Formatter.getExportedTime(System.currentTimeMillis())
-
             calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
             if (showExportingToast) {
                 activity.toast(R.string.exporting)
             }
-
 
             object : BufferedWriter(OutputStreamWriter(outputStream, Charsets.UTF_8)) {
                 val lineSeparator = "\r\n"
@@ -66,34 +63,11 @@ class IcsExporter {
                 out.writeLn(CALENDAR_PRODID)
                 out.writeLn(CALENDAR_VERSION)
                 for (event in events) {
-                    out.writeLn(BEGIN_EVENT)
-                    event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) out.writeLn("$SUMMARY:$it") }
-                    event.importId.let { if (it.isNotEmpty()) out.writeLn("$UID$it") }
-                    event.eventType.let { out.writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(it)?.color}") }
-                    event.eventType.let { out.writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(it)?.title}") }
-                    event.lastUpdated.let { out.writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(it)}") }
-                    event.location.let { if (it.isNotEmpty()) out.writeLn("$LOCATION:$it") }
-                    event.availability.let { out.writeLn("$TRANSP${if (it == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}") }
-
-                    if (event.getIsAllDay()) {
-                        out.writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
-                        out.writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + TWELVE_HOURS)}")
+                    if (event.isTask()) {
+                        writeTask(out, event)
                     } else {
-                        event.startTS.let { out.writeLn("$DTSTART:${Formatter.getExportedTime(it * 1000L)}") }
-                        event.endTS.let { out.writeLn("$DTEND:${Formatter.getExportedTime(it * 1000L)}") }
+                        writeEvent(out, event)
                     }
-                    event.hasMissingYear().let { out.writeLn("$MISSING_YEAR${if (it) 1 else 0}") }
-
-                    out.writeLn("$DTSTAMP$exportTime")
-                    out.writeLn("$STATUS$CONFIRMED")
-                    Parser().getRepeatCode(event).let { if (it.isNotEmpty()) out.writeLn("$RRULE$it") }
-
-                    fillDescription(event.description.replace("\n", "\\n"), out)
-                    fillReminders(event, out, reminderLabel)
-                    fillIgnoredOccurrences(event, out)
-
-                    eventsExported++
-                    out.writeLn(END_EVENT)
                 }
                 out.writeLn(END_CALENDAR)
             }
@@ -151,6 +125,69 @@ class IcsExporter {
 
             isFirstLine = false
             index += MAX_LINE_LENGTH
+        }
+    }
+
+    private fun writeEvent(writer: BufferedWriter, event: Event) {
+        with(writer) {
+            writeLn(BEGIN_EVENT)
+            event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) writeLn("$SUMMARY:$it") }
+            event.importId.let { if (it.isNotEmpty()) writeLn("$UID$it") }
+            writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(event.eventType)?.color}")
+            writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(event.eventType)?.title}")
+            writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(event.lastUpdated)}")
+            writeLn("$TRANSP${if (event.availability == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}")
+
+            if (event.getIsAllDay()) {
+                writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")
+                writeLn("$DTEND;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.endTS + TWELVE_HOURS)}")
+            } else {
+                writeLn("$DTSTART:${Formatter.getExportedTime(event.startTS * 1000L)}")
+                writeLn("$DTEND:${Formatter.getExportedTime(event.endTS * 1000L)}")
+            }
+            writeLn("$MISSING_YEAR${if (event.hasMissingYear()) 1 else 0}")
+
+            writeLn("$DTSTAMP$exportTime")
+            writeLn("$STATUS$CONFIRMED")
+            Parser().getRepeatCode(event).let { if (it.isNotEmpty()) writeLn("$RRULE$it") }
+
+            fillDescription(event.description.replace("\n", "\\n"), writer)
+            fillReminders(event, writer, reminderLabel)
+            fillIgnoredOccurrences(event, writer)
+
+            eventsExported++
+            writeLn(END_EVENT)
+        }
+    }
+
+    private fun writeTask(writer: BufferedWriter, task: Event) {
+        with(writer) {
+            writeLn(BEGIN_TASK)
+            task.title.replace("\n", "\\n").let { if (it.isNotEmpty()) writeLn("$SUMMARY:$it") }
+            task.importId.let { if (it.isNotEmpty()) writeLn("$UID$it") }
+            writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(task.eventType)?.color}")
+            writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(task.eventType)?.title}")
+            writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(task.lastUpdated)}")
+            task.location.let { if (it.isNotEmpty()) writeLn("$LOCATION:$it") }
+
+            if (task.getIsAllDay()) {
+                writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(task.startTS)}")
+            } else {
+                writeLn("$DTSTART:${Formatter.getExportedTime(task.startTS * 1000L)}")
+            }
+
+            writeLn("$DTSTAMP$exportTime")
+            if (task.isTaskCompleted()) {
+                writeLn("$STATUS$COMPLETED")
+            }
+            Parser().getRepeatCode(task).let { if (it.isNotEmpty()) writeLn("$RRULE$it") }
+
+            fillDescription(task.description.replace("\n", "\\n"), writer)
+            fillReminders(task, writer, reminderLabel)
+            fillIgnoredOccurrences(task, writer)
+
+            eventsExported++
+            writeLn(END_TASK)
         }
     }
 }

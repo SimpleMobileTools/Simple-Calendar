@@ -159,6 +159,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             ConfirmationDialog(this, "", R.string.upgraded_to_pro_calendar, R.string.ok, 0, false) {}
             config.wasUpgradedFromFreeShown = true
         }
+
+        addImportIdsToTasks {
+            refreshViewPager()
+        }
     }
 
     override fun onResume() {
@@ -1129,8 +1133,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             }
         } else {
-            handlePermission(PERMISSION_WRITE_STORAGE) {
-                if (it) {
+            handlePermission(PERMISSION_WRITE_STORAGE) { granted ->
+                if (granted) {
                     ExportEventsDialog(this, config.lastExportPath, false) { file, eventTypes ->
                         getFileOutputStream(file.toFileDirItem(this), true) {
                             exportEventsTo(eventTypes, it)
@@ -1147,9 +1151,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             if (events.isEmpty()) {
                 toast(R.string.no_entries_for_exporting)
             } else {
-                IcsExporter().exportEvents(this, outputStream, events, true) {
+                IcsExporter(this).exportEvents(outputStream, events, true) { result ->
                     toast(
-                        when (it) {
+                        when (result) {
                             ExportResult.EXPORT_OK -> R.string.exporting_successful
                             ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
                             else -> R.string.exporting_failed

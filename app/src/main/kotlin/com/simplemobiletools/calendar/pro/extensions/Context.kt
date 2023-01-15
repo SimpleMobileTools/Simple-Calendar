@@ -708,3 +708,23 @@ inline fun Context.queryCursorInlined(
         }
     }
 }
+
+fun Context.addImportIdsToTasks(callback: () -> Unit) {
+    ensureBackgroundThread {
+        var count = 0
+
+        eventsDB.getAllTasks().forEach { task ->
+            if (task.importId.isEmpty()) {
+                eventsDB.updateTaskImportId(
+                    importId = generateImportId(),
+                    id = task.id!!
+                )
+                count += 1
+            }
+        }
+
+        if (count > 0) {
+            callback()
+        }
+    }
+}

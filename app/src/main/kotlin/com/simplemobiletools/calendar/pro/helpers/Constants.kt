@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
+import java.util.*
 
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
@@ -116,6 +117,8 @@ const val ADD_ANNIVERSARIES_AUTOMATICALLY = "add_anniversaries_automatically"
 const val BIRTHDAY_REMINDERS = "birthday_reminders"
 const val ANNIVERSARY_REMINDERS = "anniversary_reminders"
 const val LAST_EXPORT_PATH = "last_export_path"
+const val EXPORT_EVENTS = "export_events"
+const val EXPORT_TASKS = "export_tasks"
 const val EXPORT_PAST_EVENTS = "export_past_events"
 const val WEEKLY_VIEW_ITEM_HEIGHT_MULTIPLIER = "weekly_view_item_height_multiplier"
 const val WEEKLY_VIEW_DAYS = "weekly_view_days"
@@ -144,6 +147,8 @@ const val CALENDAR_PRODID = "PRODID:-//Simple Mobile Tools//NONSGML Event Calend
 const val CALENDAR_VERSION = "VERSION:2.0"
 const val BEGIN_EVENT = "BEGIN:VEVENT"
 const val END_EVENT = "END:VEVENT"
+const val BEGIN_TASK = "BEGIN:VTODO"
+const val END_TASK = "END:VTODO"
 const val BEGIN_ALARM = "BEGIN:VALARM"
 const val END_ALARM = "END:VALARM"
 const val DTSTART = "DTSTART"
@@ -182,6 +187,7 @@ const val UNTIL = "UNTIL"
 const val COUNT = "COUNT"
 const val INTERVAL = "INTERVAL"
 const val CONFIRMED = "CONFIRMED"
+const val COMPLETED = "COMPLETED"
 const val VALUE = "VALUE"
 const val DATE = "DATE"
 
@@ -252,4 +258,8 @@ fun getActivityToOpen(isTask: Boolean) = if (isTask) {
     TaskActivity::class.java
 } else {
     EventActivity::class.java
+}
+
+fun generateImportId(): String {
+    return UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 }

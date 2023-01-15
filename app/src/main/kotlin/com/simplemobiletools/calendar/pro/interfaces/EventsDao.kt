@@ -12,8 +12,20 @@ interface EventsDao {
     @Query("SELECT * FROM events")
     fun getAllEvents(): List<Event>
 
+    @Query("SELECT * FROM events WHERE type = $TYPE_TASK")
+    fun getAllTasks(): List<Event>
+
     @Query("SELECT * FROM events WHERE event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
     fun getAllEventsWithTypes(eventTypeIds: List<Long>): List<Event>
+
+    @Query("SELECT * FROM events WHERE event_type IN (:eventTypeIds) AND type = $TYPE_TASK")
+    fun getAllTasksWithTypes(eventTypeIds: List<Long>): List<Event>
+
+    @Query("SELECT * FROM events WHERE end_ts > :currTS AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
+    fun getAllFutureEventsWithTypes(currTS: Long, eventTypeIds: List<Long>): List<Event>
+
+    @Query("SELECT * FROM events WHERE end_ts > :currTS AND event_type IN (:eventTypeIds) AND type = $TYPE_TASK")
+    fun getAllFutureTasksWithTypes(currTS: Long, eventTypeIds: List<Long>): List<Event>
 
     @Query("SELECT * FROM events WHERE id = :id AND type = $TYPE_EVENT")
     fun getEventWithId(id: Long): Event?
@@ -42,9 +54,6 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND end_ts >= :fromTS AND start_ts != 0 AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND (title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery)")
     fun getOneTimeEventsFromToWithTypesForSearch(toTS: Long, fromTS: Long, eventTypeIds: List<Long>, searchQuery: String): List<Event>
 
-    @Query("SELECT * FROM events WHERE end_ts > :toTS AND repeat_interval = 0 AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
-    fun getOneTimeFutureEventsWithTypes(toTS: Long, eventTypeIds: List<Long>): List<Event>
-
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND repeat_interval != 0")
     fun getRepeatableEventsOrTasksWithTypes(toTS: Long): List<Event>
 
@@ -57,9 +66,6 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE start_ts <= :toTS AND start_ts != 0 AND repeat_interval != 0 AND event_type IN (:eventTypeIds) AND (title LIKE :searchQuery OR location LIKE :searchQuery OR description LIKE :searchQuery)")
     fun getRepeatableEventsOrTasksWithTypesForSearch(toTS: Long, eventTypeIds: List<Long>, searchQuery: String): List<Event>
 
-    @Query("SELECT * FROM events WHERE repeat_interval != 0 AND (repeat_limit == 0 OR repeat_limit > :currTS) AND event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
-    fun getRepeatableFutureEventsWithTypes(currTS: Long, eventTypeIds: List<Long>): List<Event>
-
     @Query("SELECT * FROM events WHERE id IN (:ids) AND import_id != \"\" AND type = $TYPE_EVENT")
     fun getEventsByIdsWithImportIds(ids: List<Long>): List<Event>
 
@@ -69,8 +75,8 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE source = \'$SOURCE_CONTACT_ANNIVERSARY\' AND type = $TYPE_EVENT")
     fun getAnniversaries(): List<Event>
 
-    @Query("SELECT * FROM events WHERE import_id != \"\" AND type = $TYPE_EVENT")
-    fun getEventsWithImportIds(): List<Event>
+    @Query("SELECT * FROM events WHERE import_id != \"\"")
+    fun getEventsOrTasksWithImportIds(): List<Event>
 
     @Query("SELECT * FROM events WHERE source = :source AND type = $TYPE_EVENT")
     fun getEventsFromCalDAVCalendar(source: String): List<Event>
@@ -118,6 +124,9 @@ interface EventsDao {
     @Deprecated("Use Context.updateTaskCompletion() instead unless you know what you are doing.")
     @Query("UPDATE events SET flags = :newFlags WHERE id = :id")
     fun updateTaskCompletion(id: Long, newFlags: Int)
+
+    @Query("UPDATE events SET import_id = :importId WHERE id = :id AND type = $TYPE_TASK")
+    fun updateTaskImportId(importId: String, id: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long
