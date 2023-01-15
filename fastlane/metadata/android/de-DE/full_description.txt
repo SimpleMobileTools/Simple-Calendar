@@ -49,9 +49,6 @@ Enthält keine Anzeigen oder unnötige Berechtigungen. Es ist vollständig Open 
 Die komplette Suite von Simple Tools findest du hier:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
-https://www.simplemobiletools.com/calendar
-
 Facebook:
 https://www.facebook.com/simplemobiletools
 

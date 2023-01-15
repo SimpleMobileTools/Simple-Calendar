@@ -49,9 +49,6 @@ Ei sisällä mainoksia tai tarpeettomia käyttöoikeuksia. Se on täysin avoimen
 Katso koko paketti yksinkertaisia työkaluja täältä:
 https://www.simplemobiletools.com
 
-Yksinkertainen Kalenteri Pro itsenäinen verkkosivusto:
-https://www.simplemobiletools.com/calendar
-
 Facebook:
 https://www.facebook.com/simplemobiletools
 

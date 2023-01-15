@@ -47,9 +47,6 @@ No conté anuncis ni permisos innecessaris. És totalment de codi obert, ofereix
 Consulteu el conjunt complet d'eines simples aquí:
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:
-https://www.simplemobiletools.com/calendar
-
 Facebook:
 https://www.facebook.com/simplemobiletools
 
