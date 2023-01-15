@@ -78,11 +78,18 @@ class ExportEventsDialog(
                                     return@setOnClickListener
                                 }
 
+                                val exportEventsChecked = view.export_events_checkbox.isChecked
+                                val exportTasksChecked = view.export_tasks_checkbox.isChecked
+                                if (!exportEventsChecked && !exportTasksChecked) {
+                                    activity.toast(R.string.no_entries_for_exporting)
+                                    return@setOnClickListener
+                                }
+
                                 ensureBackgroundThread {
                                     config.apply {
                                         lastExportPath = file.absolutePath.getParentPath()
-                                        exportEvents = view.export_events_checkbox.isChecked
-                                        exportTasks = view.export_tasks_checkbox.isChecked
+                                        exportEvents = exportEventsChecked
+                                        exportTasks = exportTasksChecked
                                         exportPastEntries = view.export_past_events_checkbox.isChecked
                                     }
 
