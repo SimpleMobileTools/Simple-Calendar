@@ -23,7 +23,6 @@ Características del Calendario Sencillo 2023:
 ➕ Un gran calendario de código abierto, traducido a más de 45 idiomas
 ➕ Planifica tu día con los demás: tienes la posibilidad de compartir rápidamente los eventos en las redes sociales, correos electrónicos, etc
 
-
 ✔️ Organiza y gestiona el tiempo
 ➕ Planificor diario: le ayudará a organizar su día a día
 ➕ Planificador semanal: adelantarse a su apretada agenda semanal nunca ha sido más fácil
