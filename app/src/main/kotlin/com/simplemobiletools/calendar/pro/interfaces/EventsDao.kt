@@ -12,6 +12,9 @@ interface EventsDao {
     @Query("SELECT * FROM events")
     fun getAllEvents(): List<Event>
 
+    @Query("SELECT * FROM events WHERE type = $TYPE_TASK")
+    fun getAllTasks(): List<Event>
+
     @Query("SELECT * FROM events WHERE event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
     fun getAllEventsWithTypes(eventTypeIds: List<Long>): List<Event>
 
@@ -121,6 +124,9 @@ interface EventsDao {
     @Deprecated("Use Context.updateTaskCompletion() instead unless you know what you are doing.")
     @Query("UPDATE events SET flags = :newFlags WHERE id = :id")
     fun updateTaskCompletion(id: Long, newFlags: Int)
+
+    @Query("UPDATE events SET import_id = :importId WHERE id = :id AND type = $TYPE_TASK")
+    fun updateTaskImportId(importId: String, id: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(event: Event): Long

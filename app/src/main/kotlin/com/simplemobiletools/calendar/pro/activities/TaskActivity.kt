@@ -354,7 +354,7 @@ class TaskActivity : SimpleActivity() {
         val newImportId = if (mTask.id != null) {
             mTask.importId
         } else {
-            UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+            generateImportId()
         }
 
         val reminders = getReminders()

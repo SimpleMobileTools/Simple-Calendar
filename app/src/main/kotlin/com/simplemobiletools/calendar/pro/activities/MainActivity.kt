@@ -159,6 +159,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             ConfirmationDialog(this, "", R.string.upgraded_to_pro_calendar, R.string.ok, 0, false) {}
             config.wasUpgradedFromFreeShown = true
         }
+
+        addImportIdsToTasks {
+            refreshViewPager()
+        }
     }
 
     override fun onResume() {

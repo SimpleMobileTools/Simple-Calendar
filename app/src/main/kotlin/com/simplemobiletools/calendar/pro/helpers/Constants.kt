@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
+import java.util.*
 
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
@@ -257,4 +258,8 @@ fun getActivityToOpen(isTask: Boolean) = if (isTask) {
     TaskActivity::class.java
 } else {
     EventActivity::class.java
+}
+
+fun generateImportId(): String {
+    return UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
 }

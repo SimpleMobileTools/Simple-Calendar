@@ -1115,7 +1115,7 @@ class EventActivity : SimpleActivity() {
         val newImportId = if (mEvent.id != null) {
             mEvent.importId
         } else {
-            UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+            generateImportId()
         }
 
         val newEventType = if (!config.caldavSync || config.lastUsedCaldavCalendarId == 0 || mEventCalendarId == STORED_LOCALLY_ONLY) {
