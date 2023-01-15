@@ -38,6 +38,8 @@ class SelectEventTypeDialog(
             }
         }
 
+        view.dialog_radio_divider.beVisibleIf(showManageEventTypes)
+
         activity.eventsHelper.getEventTypes(activity, showOnlyWritable) {
             eventTypes = it
             activity.runOnUiThread {
