@@ -6,7 +6,7 @@
     <string name="daily_view">عرض يومي</string>
     <string name="weekly_view">عرض أسبوعي</string>
     <string name="monthly_view">عرض شهري</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">عرض شهري + يومي</string>
     <string name="yearly_view">عرض سنوي</string>
     <string name="simple_event_list">لائحة أحداث بسيطة</string>
     <string name="no_upcoming_events">يبدو انه ليس لديك أى أحداث قادمة.</string>
@@ -30,7 +30,7 @@
     <string name="please_fill_location">أدخل الإحداثية كي يتم عرضها على الخريطة</string>
     <string name="public_event_notification_text">اقتراب موعد حدث</string>
     <string name="saving_filtered_out">تم الحفظ... ولكن تتم تصفية نوع الحدث المحدد في القائمة العلوية - تصفية</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">لقد قمت بتصفية جميع أنواع الأحداث</string>
     <!-- Tasks -->
     <string name="task">مهمة</string>
     <string name="tasks">المهام</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">تصدير أحداث إلى ملف ics</string>
     <string name="default_event_type">نوع حدث إفتراضي</string>
     <string name="export_past_events_too">تصدير الأحداث السابقة أيضاً</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">تصدير المهام</string>
+    <string name="export_past_entries">تصدير الإدخالات السابقة أيضا</string>
     <string name="include_event_types">أضف أنواع الأحداث</string>
     <string name="filename_without_ics">اسم ملف (بدون ics)</string>
     <string name="ignore_event_types">تجاهل أنواع الأحداث في الملف ، واستخدم دائمًا النوع الافتراضي</string>

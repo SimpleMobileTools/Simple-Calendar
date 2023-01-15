@@ -258,7 +258,7 @@
     </plurals>
     <plurals name="within_the_next_months">
         <item quantity="one">En el %d mes següent</item>
-        <item quantity="other">En els %d mesos següents</item>
+        <item quantity="other">En els %d de mesos següents</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
