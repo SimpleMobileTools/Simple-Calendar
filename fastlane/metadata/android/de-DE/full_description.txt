@@ -1,6 +1,6 @@
 Schlichter Kalender ist ein vollständig anpassbarer Offline-Kalender, der Android-Nutzern genau das bietet, was sie von einem mobilen Taschenkalender im Jahr 2023 erwarten. Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!
 
-➕  Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
+➕ Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
 
 Tagesplaner: Die volle Kontrolle
 Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Schlichter Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das KalenderWidget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
@@ -17,7 +17,7 @@ Schlichter Kalender - Funktionen
 ✔️ Flexibel und Produktiv
 ➕ Import/Export-Unterstützung im .ics-Format
 ➕ Anpassung von Terminen – Zeiten, Dauer, Erinnerungen, Wiederholungsregeln
-➕  Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
+➕ Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
 
 ✔️ Ein Kalender für dich
 ➕ Terminplaner – Anpassen von Tönen, Sound-Loops und Vibrationen
@@ -27,7 +27,7 @@ Schlichter Kalender - Funktionen
 
 ✔️ Organisation und Zeitmanagement
 ➕ Tagesplaner – der Planer hilft dir, deinen Tag zu organisieren
-➕ Wochenplaner – noch nie war es so einfach, den Überblick zu behalten  
+➕ Wochenplaner – noch nie war es so einfach, den Überblick zu behalten
 ➕ Terminplaner – Einfache Organisation und Verwaltung deiner Termine
 ➕ Planungs-App – Kalender Planer für private Termine, Erinnerungen, Feiertage und Zeitpläne. Plane genauer mit Feiertagen!
 ➕ Plane deinen Tag – mit diesem Android-Terminplaner verpasst du keine Termine mehr
@@ -36,7 +36,7 @@ Schlichter Kalender - Funktionen
 ✔️ Nr.1 Kalender App
 ➕ Feiertage, Geburtstage und Jahrestage von Kontakten einfach importieren: Dein persönlicher Geburtstagskalender, Urlaubsplaner und Arbeitskalender
 ➕ Aktivitäten- und Kalender Planer
-➕ Erinnerungs-Widget mit praktischer Schlummeroption 
+➕ Erinnerungs-Widget mit praktischer Schlummeroption
 ➕ Tagesplan und Veranstaltungsort werden auf einer Karte angezeigt
 ➕ Doch lieber keinen Wochenplaner? Schnelles Umschalten zwischen Tages-, Wochen-, Monats-, Jahres- und Ereignisansichten
 
