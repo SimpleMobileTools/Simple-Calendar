@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Havi és napi nézet</string>
     <string name="yearly_view">Éves nézet</string>
     <string name="simple_event_list">Egyszerű eseménylista</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Nincsenek közelgő események.</string>
     <string name="go_to_today">Ugrás a mához</string>
     <string name="go_to_date">Ugrás a dátumhoz</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Töltse ki a helyet, hogy megjelenjen a térképen</string>
     <string name="public_event_notification_text">Egy esemény következik</string>
     <string name="saving_filtered_out">Mentés… De a kiválasztott eseménytípus ki van szűrve fent: Menü – Szűrő</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Kiszűrte az összes eseménytípust</string>
     <!-- Tasks -->
     <string name="task">Feladat</string>
     <string name="tasks">Feladatok</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Események exportálása .ics fájlba</string>
     <string name="default_event_type">Alapértelmezett eseménytípus</string>
     <string name="export_past_events_too">Múltbeli események exportálása</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Feladatok exportálása</string>
+    <string name="export_past_entries">A múltbeli eseményeket is exportálja</string>
     <string name="include_event_types">Eseménytípusok belevétele</string>
     <string name="filename_without_ics">Fájlnév (.ics nélkül)</string>
     <string name="ignore_event_types">A fájlban lévő eseménytípusok mellőzése, az alapértelmezett használata</string>
@@ -264,7 +264,7 @@
     <string name="faq_1_title">Hogyan távolíthatom el az „Ünnepnapok hozzáadása” gombbal importált ünnepnapokat\?</string>
     <string name="faq_1_text">Az így létrehozott ünnepnapok az új „Ünnepnapok” eseménytípusba kerül beszúrásra. Menjen a Beállítások -&gt; Eseménytípusok kezelése lehetőséghez, nyomja meg hosszan az eseménytípust, majd törölje a kuka ikon választásával.</string>
     <string name="faq_2_title">Szinkronizálhatom az eseményeimet a Google Naptárral, vagy más CalDAV-ot támogató szolgáltatással\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Vagy akár meg is oszthatom a naptárokat másokkal\?</string>
     <string name="faq_2_text">Igen, csak kapcsolja be a „CalDAV szinkronizációt” az alkalmazásbeállításokba, és válassza ki a szinkronizálandó naptárakat. Ahhoz viszont egy harmadik féltől származó alkalmazásra lesz szüksége, hogy kezelje az eszköz és a kiszolgálók közti szinkronizálást. Ha Google naptárral akar szinkronizálni, akkor a hivatalos Naptár alkalmazás is megfelel. Más naptárakhoz egy harmadik féltől származó adapterre lesz szüksége, például a DAVx5-re.</string>
     <string name="faq_3_title">Látom a vizuális emlékeztetőket, de nincs hang. Mit tehetek\?</string>
     <string name="faq_3_text">Nem csak az emlékeztető megjelenítése, hanem a hanglejátszás is nagy mértékben függ a rendszerétől. Ha nem hall hangokat, akkor menjen az alkalmazásbeállításokba, nyomja meg az „Emlékeztetők által használt hangcsatorna” lehetőséget, és állítsa másik értékre. Ha továbbra sem működik, akkor ellenőrizze a hangbeállításokat, hogy nem lett-e lenémítva az a hangcsatorna.</string>
