@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Vista mensual i diària</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Llista d\'esdeveniments senzilla</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">No hi ha esdeveniments propers.</string>
     <string name="go_to_today">Ves a avui</string>
     <string name="go_to_date">Ves a la data</string>
     <!-- Widget titles -->
@@ -250,15 +250,15 @@
     <string name="within_the_next">En el següent…</string>
     <plurals name="within_the_next_days">
         <item quantity="one">En el %d dia següent</item>
-        <item quantity="other">En els %d de dies següents</item>
+        <item quantity="other">En els %d dies següents</item>
     </plurals>
     <plurals name="within_the_next_weeks">
         <item quantity="one">En la %d setmana següent</item>
-        <item quantity="other">En les %d de setmanes següents</item>
+        <item quantity="other">En les %d setmanes següents</item>
     </plurals>
     <plurals name="within_the_next_months">
         <item quantity="one">En el %d mes següent</item>
-        <item quantity="other">En els %d de mesos següents</item>
+        <item quantity="other">En els %d mesos següents</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Com puc eliminar els dies festius importats mitjançant el botó «Afegeix festius»\?</string>
