@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Månad och daglig vy</string>
     <string name="yearly_view">Årsvy</string>
     <string name="simple_event_list">Händelselista</string>
-    <string name="no_upcoming_events">Det verkar som att du inte har några kommande händelser.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Gå till idag</string>
     <string name="go_to_date">Gå till datum</string>
     <!-- Widget titles -->

@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Mjesečni i dnevni prikaz</string>
     <string name="yearly_view">Godišnji prikaz</string>
     <string name="simple_event_list">Jednostavan popis događaja</string>
-    <string name="no_upcoming_events">Izgleda da nema nadolazećih događaja.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Idi na danas</string>
     <string name="go_to_date">Idi na datum</string>
     <!-- Widget titles -->

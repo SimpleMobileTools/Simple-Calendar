@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">İllik görünüş</string>
     <string name="simple_event_list">Sadə hadisələr siyahısı</string>
-    <string name="no_upcoming_events">Deyəsən yaxınlarda heçbir hadisə yoxdur.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Bugünə get</string>
     <string name="go_to_date">Go to date</string>
     <!-- Widget titles -->

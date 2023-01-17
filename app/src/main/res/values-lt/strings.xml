@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Mėnesio + dienos rodinys</string>
     <string name="yearly_view">Metų rodinys</string>
     <string name="simple_event_list">Paprastas įvykių sąrašas</string>
-    <string name="no_upcoming_events">Atrodo, kad neturite jokių artėjančių įvykių.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Pereiti į šiandieną</string>
     <string name="go_to_date">Pereiti į datą</string>
     <!-- Widget titles -->
