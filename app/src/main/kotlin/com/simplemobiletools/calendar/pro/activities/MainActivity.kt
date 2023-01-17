@@ -768,8 +768,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
                     eventsFound++
                     if (!importIDs.containsKey(contactId)) {
-                        eventsHelper.insertEvent(event, false, false) {
-                            eventsAdded++
+                        // avoid adding duplicate birthdays/anniversaries
+                        if (existingEvents.none { it.title == event.title && it.startTS == event.startTS }) {
+                            eventsHelper.insertEvent(event, false, false) {
+                                eventsAdded++
+                            }
                         }
                     }
                     break
