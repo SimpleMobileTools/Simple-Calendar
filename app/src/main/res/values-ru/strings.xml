@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Месяц и день</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Список событий</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Нет предстоящих событий.</string>
     <string name="go_to_today">Сегодня</string>
     <string name="go_to_date">Перейти к дате</string>
     <!-- Widget titles -->
