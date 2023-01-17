@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monats- und Tagesansicht</string>
     <string name="yearly_view">Jahresansicht</string>
     <string name="simple_event_list">Schlichte Terminliste</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Keine anstehenden Termine.</string>
     <string name="go_to_today">Zu heute springen</string>
     <string name="go_to_date">Zu Datum springen</string>
     <!-- Widget titles -->
