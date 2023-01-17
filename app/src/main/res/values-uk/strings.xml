@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Рік</string>
     <string name="simple_event_list">Список подій</string>
-    <string name="no_upcoming_events">Здається, ви ще не запланували події.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Події сьогодні</string>
     <string name="go_to_date">Перегляд за датою</string>
     <!-- Widget titles -->

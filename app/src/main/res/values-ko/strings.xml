@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">연간 보기</string>
     <string name="simple_event_list">일정 목록</string>
-    <string name="no_upcoming_events">등록된 일정이 없습니다.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">오늘로 이동</string>
     <string name="go_to_date">해당일로 이동</string>
     <!-- Widget titles -->

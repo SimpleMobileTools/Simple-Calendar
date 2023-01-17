@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Tampilan tahun</string>
     <string name="simple_event_list">Daftar acara</string>
-    <string name="no_upcoming_events">Sepertinya anda tidak memiliki acara yang akan datang.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Buka hari ini</string>
     <string name="go_to_date">Buka tanggal</string>
     <!-- Widget titles -->

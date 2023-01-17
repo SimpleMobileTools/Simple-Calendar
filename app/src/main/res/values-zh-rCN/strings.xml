@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">月和日历视图</string>
     <string name="yearly_view">年历视图</string>
     <string name="simple_event_list">简单活动列表</string>
-    <string name="no_upcoming_events">您近期似乎没有任何活动。</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
     <!-- Widget titles -->

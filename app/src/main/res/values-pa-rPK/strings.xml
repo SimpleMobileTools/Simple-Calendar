@@ -44,7 +44,7 @@
     <string name="monthly_daily_view">مہیناوار تے دنوار درش</string>
     <string name="yearly_view">سالانہ درش</string>
     <string name="simple_event_list">سادے گھٹنے دی قسم</string>
-    <string name="no_upcoming_events">Seems like you don\'t have any upcoming events.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Go to today</string>
     <string name="widget_monthly">Calendar monthly</string>
     <string name="widget_list">Calendar event list</string>

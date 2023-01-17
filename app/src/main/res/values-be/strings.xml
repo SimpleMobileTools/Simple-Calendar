@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Месяц і дзень</string>
     <string name="yearly_view">Год</string>
     <string name="simple_event_list">Спіс падзей</string>
-    <string name="no_upcoming_events">Здаецца, у вас няма бліжэйшых падзей.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Сёння</string>
     <string name="go_to_date">Перайсці да спаткання</string>
     <!-- Widget titles -->

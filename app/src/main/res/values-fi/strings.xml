@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Kuukausi- ja päivänäkymä</string>
     <string name="yearly_view">Vuosinäkymä</string>
     <string name="simple_event_list">Yksinkertainen tapahtumaluettelo</string>
-    <string name="no_upcoming_events">Näyttää siltä ettei sinulla ole tulevia tapahtumia.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Mene tähän päivään</string>
     <string name="go_to_date">Mene päivään</string>
     <!-- Widget titles -->

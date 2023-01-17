@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">বাৎসরিক ভিউ</string>
     <string name="simple_event_list">ইভেন্টগুলির সহজ তালিকা</string>
-    <string name="no_upcoming_events">মনে হচ্ছে সামনে তোমার কোন ইভেন্ট নেই</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">আজকের দিনে যাও</string>
     <string name="go_to_date">তারিখে যাও</string>
     <!-- Widget titles -->

@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Vizualizare săptămânală și zilnică</string>
     <string name="yearly_view">Vizualizare anuală</string>
     <string name="simple_event_list">Listă de evenimente simple</string>
-    <string name="no_upcoming_events">Se pare că nu aveți niciun eveniment viitor.</string>
+    <string name="no_upcoming_events">No upcoming events.</string>
     <string name="go_to_today">Sari la ziua de azi</string>
     <string name="go_to_date">Sari la o dată</string>
     <!-- Widget titles -->
