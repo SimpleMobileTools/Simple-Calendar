@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 6.21.3 *(2023-01-17)*
+----------------------------
+
+ * Allow exporting and importing tasks
+ * Fixed a glitch with birthdays and anniversaries getting duplicate
+ * Search events for +-2 years by default
+ * Added some translation, stability and UX improvements
+
 Version 6.21.2 *(2023-01-12)*
 ----------------------------
 
