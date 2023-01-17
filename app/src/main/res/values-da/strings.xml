@@ -30,7 +30,7 @@
     <string name="please_fill_location">Indtast et sted der kan vises på et kort</string>
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Du har filtreret alle typer begivenheder fra</string>
     <!-- Tasks -->
     <string name="task">Opgave</string>
     <string name="tasks">Opgaver</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Eksporter begivenheder til en ics-fil</string>
     <string name="default_event_type">Standard type begivenhed</string>
     <string name="export_past_events_too">Eksporter også tidligere begivenheder</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Eksporter opgaver</string>
+    <string name="export_past_entries">Eksporter også gamle poster</string>
     <string name="include_event_types">Inkluder begivenhedstyper</string>
     <string name="filename_without_ics">Filnavn (uden .ics)</string>
     <string name="ignore_event_types">Ignorer begivenhedstyper i filen, brug altid standardtypen</string>
