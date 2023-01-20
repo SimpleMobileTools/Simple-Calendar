@@ -576,6 +576,9 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         dayColumn.addView(this)
                         y = currentEventWeeklyView!!.range.lower * minuteHeight
 
+                        // compensate grid offset
+                        y -= (currentEventWeeklyView.range.lower / 60) / 2
+
                         week_event_task_image.beVisibleIf(event.isTask())
                         if (event.isTask()) {
                             week_event_task_image.applyColorFilter(textColor)
