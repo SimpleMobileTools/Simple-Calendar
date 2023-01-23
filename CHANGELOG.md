@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.21.4 *(2023-01-23)*
+----------------------------
+
+ * Improved Search behiavour, search more into the past and future
+ * Fixed a weekly view visual glitch
+ * Added some translation, stability and UX improvements
+
 Version 6.21.3 *(2023-01-17)*
 ----------------------------
 
