@@ -1222,7 +1222,26 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
             eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS, searchQuery = text) { events ->
                 if (text == mLatestSearchQuery) {
+                    // if we have less than MIN_EVENTS_THRESHOLD events, search again by extending the time span
                     showSearchResultEvents(events, INITIAL_EVENTS)
+
+                    if (events.size < MIN_EVENTS_TRESHOLD) {
+                        minFetchedSearchTS = 0L
+                        maxFetchedSearchTS = MAX_SEARCH_YEAR
+
+                        eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS) { events ->
+                            events.forEach { event ->
+                                try {
+                                    if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
+                                        searchResultEvents.add(0, event)
+                                    }
+                                } catch (ignored: ConcurrentModificationException) {
+                                }
+                            }
+
+                            showSearchResultEvents(searchResultEvents, INITIAL_EVENTS)
+                        }
+                    }
                 }
             }
         } else if (text.length == 1) {
@@ -1292,6 +1311,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun fetchPreviousPeriod() {
+        if (minFetchedSearchTS == 0L) {
+            return
+        }
+
         val lastPosition = (search_results_list.layoutManager as MyLinearLayoutManager).findLastVisibleItemPosition()
         bottomItemAtRefresh = (search_results_list.adapter as EventListAdapter).listItems[lastPosition]
 
@@ -1312,6 +1335,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun fetchNextPeriod() {
+        if (maxFetchedSearchTS == MAX_SEARCH_YEAR) {
+            return
+        }
+
         val oldMaxFetchedTS = maxFetchedSearchTS + 1
         maxFetchedSearchTS += FETCH_INTERVAL
         eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedSearchTS) { events ->

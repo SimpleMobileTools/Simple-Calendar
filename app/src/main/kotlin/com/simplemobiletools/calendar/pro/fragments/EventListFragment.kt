@@ -26,8 +26,6 @@ import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import org.joda.time.DateTime
 
 class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
-    private var MIN_EVENTS_TRESHOLD = 30
-
     private var mEvents = ArrayList<Event>()
     private var minFetchedTS = 0L
     private var maxFetchedTS = 0L

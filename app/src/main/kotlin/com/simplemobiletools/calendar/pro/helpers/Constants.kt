@@ -10,8 +10,10 @@ const val ROW_COUNT = 6
 const val COLUMN_COUNT = 7
 const val SCHEDULE_CALDAV_REQUEST_CODE = 10000
 const val FETCH_INTERVAL = 3 * MONTH_SECONDS
+const val MAX_SEARCH_YEAR = 2051218800L  // 2035, limit search results for events repeating indefinitely
 
 // endless scrolling updating
+const val MIN_EVENTS_TRESHOLD = 30
 const val INITIAL_EVENTS = 0
 const val UPDATE_TOP = 1
 const val UPDATE_BOTTOM = 2
