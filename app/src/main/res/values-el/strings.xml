@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Μηνιαία + ημερήσια προβολή</string>
     <string name="yearly_view">Ετήσια προβολή</string>
     <string name="simple_event_list">Απλή λίστα εκδηλώσεων</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Χωρίς επερχόμενες εκδηλώσεις.</string>
     <string name="go_to_today">Μετάβαση στο σήμερα</string>
     <string name="go_to_date">Μετάβαση σε ημερ/νία</string>
     <!-- Widget titles -->
