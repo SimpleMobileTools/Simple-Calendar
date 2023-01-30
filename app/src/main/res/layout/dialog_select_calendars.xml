@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:alpha="0.8"
+            android:paddingStart="@dimen/big_margin"
+            android:paddingEnd="@dimen/big_margin"
             android:text="@string/no_synchronized_calendars"
             android:textStyle="italic" />
 
