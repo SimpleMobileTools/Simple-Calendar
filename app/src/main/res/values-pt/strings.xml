@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Vista mensal e diária</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Não existem eventos para breve.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para data</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Introduza a localização a mostrar no mapa</string>
     <string name="public_event_notification_text">Está para breve um evento</string>
     <string name="saving_filtered_out">A guardar… Mas o tipo de evento seleccionado ficou retido no filtro em Menu - Filtrar</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Você filtrou todos os tipos de eventos</string>
     <!-- Tasks -->
     <string name="task">Tarefa</string>
     <string name="tasks">Tarefas</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Exportar para um ficheiro .ics</string>
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="export_past_events_too">Exportar eventos antigos</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Exportar tarefas</string>
+    <string name="export_past_entries">Exportar eventos passados</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do ficheiro (sem .ics)</string>
     <string name="ignore_event_types">Ignorar tipos de evento do ficheiro e utilizar sempre o evento padrão</string>
@@ -274,9 +274,9 @@
     <string name="faq_4_title">A aplicação suporta diferentes fusos horários\?</string>
     <string name="faq_4_text">Sim. Por padrão, todos os eventos são criados com o seu fuso horário atual. Se pretende alterar o fuso horário de um evento, terá de ativar a escolha de fuso horário nas definições da aplicação e alterá-lo nos Detalhes do evento. Este opção está desativada por padrão, pois não é necessário para a maioria das pessoas.</string>
     <string name="faq_5_title">A aplicação não mostra notificações. Porque será\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
+    <string name="faq_5_text">Analise as definições de bateria e de notificações do dispositivo. Pode ser que exista algo a bloquear os lembretes ou a terminar a aplicação em segundo plano. Consulte &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; para ver algumas dicas.</string>
     <string name="faq_6_title">É possível modificar ou eliminar um tipo de evento existente\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_text">Pode fazer ambas em Definições - Gerir tipos de eventos. Basta tocar no desejado para alterar o texto ou a cor e pode também eliminar qualquer um com um toque longo no tipo de evento e utilizando a reciclagem no menu superior.</string>
     <!--
         Não encontrou todas as cadeias a traduzir? Existem mais algumas em:
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

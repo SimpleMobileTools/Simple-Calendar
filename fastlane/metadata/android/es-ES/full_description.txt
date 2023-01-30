@@ -1,47 +1,50 @@
-Calendario Sencillo 2023 es una aplicación de calendario mensual sin conexión altamente personalizable para Android. Tenga un planificador de calendario en su bolsillo, diseñado para hacer exactamente lo debe hacer en pleno 2023. Sin funciones complicadas, permisos innecesarios o anuncios. Soporta la sincronización de los eventos a través de Google Calendar u otros calendarios que soporten el protocolo CalDAV.
+El Calendario Simple 2023 es un calendario sin conexión totalmente personalizable diseñado para hacer exactamente lo que debería hacer un calendario. Sin funciones complicadas, permisos innecesarios y sin anuncios. Permite la sincronización de eventos a través del Calendario de Google y otras aplicaciones que permitan el protocolo CalDAV.
 
-Toma el control de tu tiempo
-Tanto si buscas un calendario de trabajo para la empresa, un planificador para tus días, programar citas, organizar o eventos únicos y recurrentes (cumpleaños, aniversarios, recordatorios de citas o cualquier otra cosa), Calendario Sencillo 2023 hace que sea fácil mantenerse organizado. El widget del calendario tiene una increíble variedad de opciones para adaptarse a ti: personaliza los recordatorios de eventos, la apariencia de las notificaciones, el pequeño widget de los recordatorios en el calendario y el aspecto en general.
+Tenga el control de su tiempo
+Tanto si busca un calendario de trabajo para los negocios, un planificador diario, un programador de citas o la organización y la programación de eventos únicos y recurrentes como cumpleaños, santos, recordatorios de citas o cualquier otra cosa, el Calendario Simple 2023 facilita mantenerse organizado.
 
-Planificador de horarios: Planifica tu día, programa citas, planificador mensual y organiza toda la familia todo en una sola aplicación. Consulte su próxima agenda, programe reuniones o eventos de negocios y reserve citas fácilmente. Los recordatorios te mantendrán puntualmente informado en tu aplicación para la planificación diaria.
+Planificador de horarios: planifique su día
+Programador de citas, planificador mensual y organizador familiar en uno! Compruebe su próxima agenda, programe reuniones de negocios y eventos y reserve citas fácilmente. Los recordatorios le mantendrán al día e informados en esta aplicación de programación diaria. El widget del calendario 2023 es muy fácil de utilizar.
 
-Características del Calendario Sencillo 2023:
+Funcionalidades del Calendario Simple 2023
+✔️ La mejor experiencia de usuario
+➕ Sin anuncios ni ventanas emergentes molestas, ¡una experiencia de usuario realmente fantástica!
+➕ No se necesita acceso a Internet, lo que le ofrece más privacidad, seguridad y estabilidad
 
-✔️ La mejor experiencia para el usuario
-➕ Sin anuncios ni molestas ventanas emergentes, ¡una experiencia para el usuario realmente genial!
-➕ No se necesita acceso a Internet, lo que da más privacidad, seguridad y estabilidad
+✔️ Flexibilidad para su productividad
+➕ El widget de calendario admite la exportación y la importación de eventos mediante archivos .ics
+➕ Exporte la configuración a archivos .txt para importarlos a otro dispositivo
+➕ Creación flexible de eventos: tiempo, duración, recordatorios, reglas de repetición potentes
+➕ Permite CalDAV para sincronizar eventos mediante Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc.
 
-✔️ Flexibilidad para la productividad
-➕ El widget del calendario soporta la exportación e importación de eventos a través de archivos .ics
-➕ Exporta los ajustes a archivos .txt para compartirlo con otros dispositivos
-➕ Crea fácilmente eventos: horarios, duración, recordatorios, potentes reglas de recurrencia
-➕ Soporta CalDAV para sincronizar eventos a través de Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc
+✔️ Personalizado sólo para usted
+➕ Planificador de programación: personaliza y cambia el sonido, el bucle, el flujo de audio y las vibraciones
+➕ Widget de calendario: calendarios coloreados y temas personalizables
+➕ Calendario pequeño de código abierto, traducido a más de 40 idiomas
+➕ Organizador familiar: con duplicación de eventos, organización y gestión del tiempo sin problemas
 
-✔️ Personalizado sólo para ti
-➕ Programador de horarios: personaliza y cambia el sonido, la intensidad y duración del audio y las vibraciones
-➕ Widget de calendario: calendarios coloridos y temas personalizables
-➕ Un gran calendario de código abierto, traducido a más de 45 idiomas
-➕ Planifica tu día con los demás: tienes la posibilidad de compartir rápidamente los eventos en las redes sociales, correos electrónicos, etc
-
-✔️ Organiza y gestiona el tiempo
-➕ Planificor diario: le ayudará a organizar su día a día
-➕ Planificador semanal: adelantarse a su apretada agenda semanal nunca ha sido más fácil
+✔️ Organización y gestión del tiempo
+➕ Planificador del día: el planificador de la agenda le ayudará a organizar su día
+➕ Planificador semanal: mantenerse por delante de su agenda semanal ocupada nunca ha sido tan fácil
+➕ Gestor de itinerarios: calendario empresarial compartido entre equipos de trabajo
 ➕ Programador de citas: organice y mantenga su agenda con facilidad
-➕ Aplicación de agenda: planifique eventos personales fácilmente, recordatorios de citas y horarios
-➕ Planifica tu día: gestiona tu día con este planificador de horarios para Android, organizador para eventos y familias
+➕ Aplicación de planificación: eventos personales fáciles de utilizar, recordatorio de citas y planificador de horarios
+➕ Planifica su día: gestiona el día con este planificador de horarios de Android, organizador de eventos y familiares
 
-✔️ Aplicación de Calendario Número 1
-➕ Importa vacaciones, cumpleaños de los contactos y aniversarios fácilmente
-➕ Filtrar eventos personales rápidamente por tipo de evento
-➕ Calendario diario y la ubicación de los eventos, mostrados en un mapa
-➕ Calendario empresarial rápido, o calendario digital personal
-➕ Cambia rápidamente entre las vistas diaria, semanal, mensual, anual
+✔️ Aplicación de calendario número 1
+➕ Importe vacaciones, contacte con cumpleaños y cumpleaños fácilmente
+➕ Filtre los eventos personales rápidamente por tipos de evento
+➕ Horario diario y ubicación del evento, mostrados en un mapa
+➕ Calendario empresarial rápido o agenda digital personal
+➕ Cambie rápidamente entre visualizaciones diarias, semanales, mensuales, anuales y de eventos
 
-DESCARGAR CALENDARIO SENCILLO - ¡PLANIFICADOR DE HORARIOS Y AGENDAS OFFLINE Y SIN PUBLICIDAD! ¡PLANIFICA TU AGENDA DEL 2023!
+DESCARGAR EL CALENDARIO SIMPLE: ¡EL CALENDARIO SENCILLO FUERA DE LÍNEA SIN ANUNCIOS! ¡PLANIFICA TU HORARIOS 2023!
 
-No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, proporciona colores personalizables.
+De forma predeterminada, incluye el “Material design” y un tema oscuro, proporcionando una gran experiencia de usuario para un uso fácil. La falta de acceso a Internet le ofrece más privacidad, seguridad y estabilidad que otras aplicaciones.
 
-Consulta el conjunto completo de Simple Mobile Tools aquí:
+No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, ofrece colores personalizables.
+
+Consulte el conjunto completo de herramientas simples aquí:
 https://www.simplemobiletools.com
 
 Facebook:
