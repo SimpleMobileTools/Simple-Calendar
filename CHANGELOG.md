@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.21.5 *(2023-01-30)*
+----------------------------
+
+ * Fixed an app crash at using Search
+ * Added some translation, stability and UX improvements
+
 Version 6.21.4 *(2023-01-23)*
 ----------------------------
 
