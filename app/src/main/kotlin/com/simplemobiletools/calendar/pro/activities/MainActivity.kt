@@ -1229,7 +1229,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         minFetchedSearchTS = 0L
                         maxFetchedSearchTS = MAX_SEARCH_YEAR
 
-                        eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS) { events ->
+                        eventsHelper.getEvents(minFetchedSearchTS, maxFetchedSearchTS, searchQuery = text) { events ->
                             events.forEach { event ->
                                 try {
                                     if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
@@ -1320,7 +1320,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val oldMinFetchedTS = minFetchedSearchTS - 1
         minFetchedSearchTS -= FETCH_INTERVAL
-        eventsHelper.getEvents(minFetchedSearchTS, oldMinFetchedTS) { events ->
+        eventsHelper.getEvents(minFetchedSearchTS, oldMinFetchedTS, searchQuery = mLatestSearchQuery) { events ->
             events.forEach { event ->
                 try {
                     if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
@@ -1341,7 +1341,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val oldMaxFetchedTS = maxFetchedSearchTS + 1
         maxFetchedSearchTS += FETCH_INTERVAL
-        eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedSearchTS) { events ->
+        eventsHelper.getEvents(oldMaxFetchedTS, maxFetchedSearchTS, searchQuery = mLatestSearchQuery) { events ->
             events.forEach { event ->
                 try {
                     if (searchResultEvents.firstOrNull { it.id == event.id && it.startTS == event.startTS } == null) {
