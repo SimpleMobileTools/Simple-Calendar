@@ -16,7 +16,6 @@ object Formatter {
     private const val MONTH_PATTERN = "MMM"
     private const val DAY_PATTERN = "d"
     private const val DAY_OF_WEEK_PATTERN = "EEE"
-    private const val LONGEST_PATTERN = "MMMM d YYYY (EEEE)"
     private const val DATE_DAY_PATTERN = "d EEEE"
     private const val PATTERN_TIME_12 = "hh:mm a"
     private const val PATTERN_TIME_24 = "HH:mm"
@@ -71,8 +70,6 @@ object Formatter {
         return date
     }
 
-    fun getLongestDate(ts: Long) = getDateTimeFromTS(ts).toString(LONGEST_PATTERN)
-
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 
     fun getFullDate(context: Context, dateTime: DateTime): String {
@@ -88,8 +85,6 @@ object Formatter {
     fun getTodayDayNumber() = getDateTimeFromTS(getNowSeconds()).toString(DAY_PATTERN)
 
     fun getCurrentMonthShort() = getDateTimeFromTS(getNowSeconds()).toString(MONTH_PATTERN)
-
-    fun getHours(context: Context, dateTime: DateTime) = dateTime.toString(getHourPattern(context))
 
     fun getTime(context: Context, dateTime: DateTime) = dateTime.toString(getTimePattern(context))
 

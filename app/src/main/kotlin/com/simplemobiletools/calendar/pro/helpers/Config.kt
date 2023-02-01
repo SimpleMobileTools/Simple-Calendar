@@ -78,15 +78,15 @@ class Config(context: Context) : BaseConfig(context) {
         set(displayPastEvents) = prefs.edit().putInt(DISPLAY_PAST_EVENTS, displayPastEvents).apply()
 
     var displayEventTypes: Set<String>
-        get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet<String>())!!
+        get() = prefs.getStringSet(DISPLAY_EVENT_TYPES, HashSet())!!
         set(displayEventTypes) = prefs.edit().remove(DISPLAY_EVENT_TYPES).putStringSet(DISPLAY_EVENT_TYPES, displayEventTypes).apply()
 
     var quickFilterEventTypes: Set<String>
-        get() = prefs.getStringSet(QUICK_FILTER_EVENT_TYPES, HashSet<String>())!!
+        get() = prefs.getStringSet(QUICK_FILTER_EVENT_TYPES, HashSet())!!
         set(quickFilterEventTypes) = prefs.edit().remove(QUICK_FILTER_EVENT_TYPES).putStringSet(QUICK_FILTER_EVENT_TYPES, quickFilterEventTypes).apply()
 
     fun addQuickFilterEventType(type: String) {
-        val currQuickFilterEventTypes = HashSet<String>(quickFilterEventTypes)
+        val currQuickFilterEventTypes = HashSet(quickFilterEventTypes)
         currQuickFilterEventTypes.add(type)
         quickFilterEventTypes = currQuickFilterEventTypes
     }
@@ -148,17 +148,17 @@ class Config(context: Context) : BaseConfig(context) {
     fun getDisplayEventTypessAsList() = displayEventTypes.map { it.toLong() }.toMutableList() as ArrayList<Long>
 
     fun addDisplayEventType(type: String) {
-        addDisplayEventTypes(HashSet<String>(Arrays.asList(type)))
+        addDisplayEventTypes(HashSet(Arrays.asList(type)))
     }
 
     private fun addDisplayEventTypes(types: Set<String>) {
-        val currDisplayEventTypes = HashSet<String>(displayEventTypes)
+        val currDisplayEventTypes = HashSet(displayEventTypes)
         currDisplayEventTypes.addAll(types)
         displayEventTypes = currDisplayEventTypes
     }
 
     fun removeDisplayEventTypes(types: Set<String>) {
-        val currDisplayEventTypes = HashSet<String>(displayEventTypes)
+        val currDisplayEventTypes = HashSet(displayEventTypes)
         currDisplayEventTypes.removeAll(types)
         displayEventTypes = currDisplayEventTypes
     }

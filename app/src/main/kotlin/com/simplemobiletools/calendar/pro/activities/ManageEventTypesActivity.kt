@@ -69,6 +69,7 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
         ensureBackgroundThread {
             eventsHelper.deleteEventTypes(eventTypes, deleteEvents)
         }
+
         return true
     }
 }

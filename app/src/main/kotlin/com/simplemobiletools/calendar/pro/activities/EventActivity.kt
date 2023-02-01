@@ -121,6 +121,113 @@ class EventActivity : SimpleActivity() {
         setupToolbar(event_toolbar, NavigationIcon.Arrow)
     }
 
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isEventChanged()) {
+            mLastSavePromptTS = System.currentTimeMillis()
+            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
+                if (it) {
+                    saveCurrentEvent()
+                } else {
+                    super.onBackPressed()
+                }
+            }
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (!::mEvent.isInitialized) {
+            return
+        }
+
+        outState.apply {
+            putSerializable(EVENT, mEvent)
+            putLong(START_TS, mEventStartDateTime.seconds())
+            putLong(END_TS, mEventEndDateTime.seconds())
+            putString(TIME_ZONE, mEvent.timeZone)
+
+            putInt(REMINDER_1_MINUTES, mReminder1Minutes)
+            putInt(REMINDER_2_MINUTES, mReminder2Minutes)
+            putInt(REMINDER_3_MINUTES, mReminder3Minutes)
+
+            putInt(REMINDER_1_TYPE, mReminder1Type)
+            putInt(REMINDER_2_TYPE, mReminder2Type)
+            putInt(REMINDER_3_TYPE, mReminder3Type)
+
+            putInt(REPEAT_INTERVAL, mRepeatInterval)
+            putInt(REPEAT_RULE, mRepeatRule)
+            putLong(REPEAT_LIMIT, mRepeatLimit)
+
+            putString(ATTENDEES, getAllAttendees(false))
+
+            putInt(AVAILABILITY, mAvailability)
+
+            putLong(EVENT_TYPE_ID, mEventTypeId)
+            putInt(EVENT_CALENDAR_ID, mEventCalendarId)
+            putBoolean(IS_NEW_EVENT, mIsNewEvent)
+            putLong(ORIGINAL_START_TS, mOriginalStartTS)
+            putLong(ORIGINAL_END_TS, mOriginalEndTS)
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (!savedInstanceState.containsKey(START_TS)) {
+            hideKeyboard()
+            finish()
+            return
+        }
+
+        savedInstanceState.apply {
+            mEvent = getSerializable(EVENT) as Event
+            mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
+            mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
+            mEvent.timeZone = getString(TIME_ZONE) ?: TimeZone.getDefault().id
+
+            mReminder1Minutes = getInt(REMINDER_1_MINUTES)
+            mReminder2Minutes = getInt(REMINDER_2_MINUTES)
+            mReminder3Minutes = getInt(REMINDER_3_MINUTES)
+
+            mReminder1Type = getInt(REMINDER_1_TYPE)
+            mReminder2Type = getInt(REMINDER_2_TYPE)
+            mReminder3Type = getInt(REMINDER_3_TYPE)
+
+            mAvailability = getInt(AVAILABILITY)
+
+            mRepeatInterval = getInt(REPEAT_INTERVAL)
+            mRepeatRule = getInt(REPEAT_RULE)
+            mRepeatLimit = getLong(REPEAT_LIMIT)
+
+            val token = object : TypeToken<List<Attendee>>() {}.type
+            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), token) ?: ArrayList()
+
+            mEventTypeId = getLong(EVENT_TYPE_ID)
+            mEventCalendarId = getInt(EVENT_CALENDAR_ID)
+            mIsNewEvent = getBoolean(IS_NEW_EVENT)
+            mOriginalStartTS = getLong(ORIGINAL_START_TS)
+            mOriginalEndTS = getLong(ORIGINAL_END_TS)
+        }
+
+        checkRepeatTexts(mRepeatInterval)
+        checkRepeatRule()
+        updateTexts()
+        updateEventType()
+        updateCalDAVCalendar()
+        checkAttendees()
+        updateActionBarTitle()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        if (requestCode == SELECT_TIME_ZONE_INTENT && resultCode == Activity.RESULT_OK && resultData?.hasExtra(TIME_ZONE) == true) {
+            val timeZone = resultData.getSerializableExtra(TIME_ZONE) as MyTimeZone
+            mEvent.timeZone = timeZone.zoneName
+            updateTimeZoneText()
+        }
+        super.onActivityResult(requestCode, resultCode, resultData)
+    }
+
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) {
         if (localEventType == null || localEventType.caldavCalendarId != 0) {
             config.lastUsedLocalEventTypeId = REGULAR_EVENT_TYPE_ID
@@ -327,113 +434,6 @@ class EventActivity : SimpleActivity() {
         }
 
         return false
-    }
-
-    override fun onBackPressed() {
-        if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isEventChanged()) {
-            mLastSavePromptTS = System.currentTimeMillis()
-            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
-                if (it) {
-                    saveCurrentEvent()
-                } else {
-                    super.onBackPressed()
-                }
-            }
-        } else {
-            super.onBackPressed()
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        if (!::mEvent.isInitialized) {
-            return
-        }
-
-        outState.apply {
-            putSerializable(EVENT, mEvent)
-            putLong(START_TS, mEventStartDateTime.seconds())
-            putLong(END_TS, mEventEndDateTime.seconds())
-            putString(TIME_ZONE, mEvent.timeZone)
-
-            putInt(REMINDER_1_MINUTES, mReminder1Minutes)
-            putInt(REMINDER_2_MINUTES, mReminder2Minutes)
-            putInt(REMINDER_3_MINUTES, mReminder3Minutes)
-
-            putInt(REMINDER_1_TYPE, mReminder1Type)
-            putInt(REMINDER_2_TYPE, mReminder2Type)
-            putInt(REMINDER_3_TYPE, mReminder3Type)
-
-            putInt(REPEAT_INTERVAL, mRepeatInterval)
-            putInt(REPEAT_RULE, mRepeatRule)
-            putLong(REPEAT_LIMIT, mRepeatLimit)
-
-            putString(ATTENDEES, getAllAttendees(false))
-
-            putInt(AVAILABILITY, mAvailability)
-
-            putLong(EVENT_TYPE_ID, mEventTypeId)
-            putInt(EVENT_CALENDAR_ID, mEventCalendarId)
-            putBoolean(IS_NEW_EVENT, mIsNewEvent)
-            putLong(ORIGINAL_START_TS, mOriginalStartTS)
-            putLong(ORIGINAL_END_TS, mOriginalEndTS)
-        }
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        if (!savedInstanceState.containsKey(START_TS)) {
-            hideKeyboard()
-            finish()
-            return
-        }
-
-        savedInstanceState.apply {
-            mEvent = getSerializable(EVENT) as Event
-            mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
-            mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
-            mEvent.timeZone = getString(TIME_ZONE) ?: TimeZone.getDefault().id
-
-            mReminder1Minutes = getInt(REMINDER_1_MINUTES)
-            mReminder2Minutes = getInt(REMINDER_2_MINUTES)
-            mReminder3Minutes = getInt(REMINDER_3_MINUTES)
-
-            mReminder1Type = getInt(REMINDER_1_TYPE)
-            mReminder2Type = getInt(REMINDER_2_TYPE)
-            mReminder3Type = getInt(REMINDER_3_TYPE)
-
-            mAvailability = getInt(AVAILABILITY)
-
-            mRepeatInterval = getInt(REPEAT_INTERVAL)
-            mRepeatRule = getInt(REPEAT_RULE)
-            mRepeatLimit = getLong(REPEAT_LIMIT)
-
-            val token = object : TypeToken<List<Attendee>>() {}.type
-            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), token) ?: ArrayList()
-
-            mEventTypeId = getLong(EVENT_TYPE_ID)
-            mEventCalendarId = getInt(EVENT_CALENDAR_ID)
-            mIsNewEvent = getBoolean(IS_NEW_EVENT)
-            mOriginalStartTS = getLong(ORIGINAL_START_TS)
-            mOriginalEndTS = getLong(ORIGINAL_END_TS)
-        }
-
-        checkRepeatTexts(mRepeatInterval)
-        checkRepeatRule()
-        updateTexts()
-        updateEventType()
-        updateCalDAVCalendar()
-        checkAttendees()
-        updateActionBarTitle()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (requestCode == SELECT_TIME_ZONE_INTENT && resultCode == Activity.RESULT_OK && resultData?.hasExtra(TIME_ZONE) == true) {
-            val timeZone = resultData.getSerializableExtra(TIME_ZONE) as MyTimeZone
-            mEvent.timeZone = timeZone.zoneName
-            updateTimeZoneText()
-        }
-        super.onActivityResult(requestCode, resultCode, resultData)
     }
 
     private fun updateTexts() {
@@ -1584,9 +1584,11 @@ class EventActivity : SimpleActivity() {
         event_attendees_holder.addView(attendeeHolder)
 
         val textColor = getProperTextColor()
-        autoCompleteView.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
-        selectedAttendeeHolder.event_contact_name.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
-        selectedAttendeeHolder.event_contact_me_status.setColors(textColor, getProperPrimaryColor(), getProperBackgroundColor())
+        val backgroundColor = getProperBackgroundColor()
+        val primaryColor = getProperPrimaryColor()
+        autoCompleteView.setColors(textColor, primaryColor, backgroundColor)
+        selectedAttendeeHolder.event_contact_name.setColors(textColor, primaryColor, backgroundColor)
+        selectedAttendeeHolder.event_contact_me_status.setColors(textColor, primaryColor, backgroundColor)
         selectedAttendeeDismiss.applyColorFilter(textColor)
 
         selectedAttendeeDismiss.setOnClickListener {
