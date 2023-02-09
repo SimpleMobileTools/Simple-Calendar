@@ -137,6 +137,7 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
             writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(event.eventType)?.title}")
             writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(event.lastUpdated)}")
             writeLn("$TRANSP${if (event.availability == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}")
+            event.location.let { if (it.isNotEmpty()) writeLn("$LOCATION:$it") }
 
             if (event.getIsAllDay()) {
                 writeLn("$DTSTART;$VALUE=$DATE:${Formatter.getDayCodeFromTS(event.startTS)}")

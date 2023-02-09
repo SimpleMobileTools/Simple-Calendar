@@ -138,12 +138,11 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 .toMutableList() as ArrayList<Event>
 
             day.dayEvents.forEach {
-                var backgroundColor = it.color
+                val backgroundColor = it.color
                 var eventTextColor = backgroundColor.getContrastColor()
 
                 if (it.isTask() && it.isTaskCompleted() && dimCompletedTasks || !day.isThisMonth || (dimPastEvents && it.isPastEvent)) {
                     eventTextColor = eventTextColor.adjustAlpha(MEDIUM_ALPHA)
-                    backgroundColor = backgroundColor.adjustAlpha(MEDIUM_ALPHA)
                 }
 
                 val newRemoteView = RemoteViews(packageName, R.layout.day_monthly_event_view_widget).apply {
