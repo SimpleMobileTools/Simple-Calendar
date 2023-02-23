@@ -51,9 +51,6 @@ DOWNLOAD SIMPLE CALENDAR PLANNER – OFFLINE SCHEDULE AND AGENDA PLANNER WITH NO
 Check out the full suite of Simple Tools here:  
 https://www.simplemobiletools.com
 
-Standalone website of Simple Calendar Pro:  
-https://www.simplemobiletools.com/calendar
-
 Facebook:  
 https://www.facebook.com/simplemobiletools
 
