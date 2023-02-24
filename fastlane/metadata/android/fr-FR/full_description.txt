@@ -1,19 +1,19 @@
-Simple Calendar 2023 est une application de calendrier mensuel hors ligne hautement personnalisable pour Android. Ayez un planificateur d’agenda dans votre poche, conçu pour faire exactement ce qu’un planificateur d’horaire personnel minuscule devrait faire en 2023. Pas de fonctionnalités compliquées, des autorisations inutiles, ou des annonces! Il prend en charge la synchronisation des événements via Google Calendar ou d’autres calendriers supportant le protocole CalDAV.
+Simple Calendrier 2023 est une application de calendrier mensuel hors ligne hautement personnalisable pour Android. Ayez un planificateur d’agenda dans votre poche, conçu pour faire exactement ce qu’un planificateur d’horaire personnel minuscule devrait faire en 2023. Pas de fonctionnalités compliquées, d'autorisations inutiles, ou d'annonces ! Il prend en charge la synchronisation des événements via Google Agenda ou d’autres calendriers prenant en charge le protocole CalDAV.
 
 Prenez le contrôle de votre temps
-Que vous soyez à la recherche d’un calendrier de travail pour une entreprise, un planificateur de jour, un planificateur de rendez-vous, ou l’organisation et la planification d’événements uniques et récurrents comme les anniversaires, les rappels de rendez-vous, ou quoi que ce soit d’autre, Simple Calendar 2023 facilite l’organisation.
+Que vous soyez à la recherche d’un calendrier de travail pour une entreprise, un planificateur de jour, un planificateur de rendez-vous, ou l’organisation et la planification d’événements uniques et récurrents comme les anniversaires, les rappels de rendez-vous, ou quoi que ce soit d’autre, Simple Calendrier 2023 facilite l’organisation.
 
-Planificateur d’horaire : Planifiez votre journée
-Planificateur de rendez-vous, planificateur mensuel et organisateur familial en un seul! Consultez votre agenda à venir, planifiez des réunions d’affaires et des événements et prenez rendez-vous facilement. Les rappels vous tiendront à l’heure et vous informeront sur votre application d’horaire quotidien. Ce widget de calendrier 2023 est remarquablement facile à utiliser.
+Planificateur d’horaire : Planifiez votre journée
+Planificateur de rendez-vous, planificateur mensuel et organisateur familial en une seul application ! Consultez votre agenda à venir, planifiez des réunions d’affaires et des événements et prenez rendez-vous facilement. Les rappels vous tiendront à l’heure et vous informeront sur votre application d’horaire quotidien. Ce widget de calendrier 2023 est remarquablement facile à utiliser.
 
-Caractéristiques simples du calendrier 2023
+Caractéristiques de Simple Calendrier 2023
 
 ✔️ La meilleure expérience utilisateur
-➕ Pas d’annonces ou de popups ennuyeux, vraiment grande expérience utilisateur!
+➕ Pas d’annonces ou de popups ennuyeux, vraiment une bonne expérience utilisateur !
 ➕ Aucun accès Internet n’est nécessaire, vous donnant plus d’intimité, de sécurité et de stabilité
 
 ✔️ Flexibilité pour votre productivité
-➕ Calendar Widget prend en charge l’exportation et l’importation d’événements via les fichiers . ics
+➕ Widget Calendrier prend en charge l’exportation et l’importation d’événements via les fichiers . ics
 ➕ Exporter les paramètres vers des fichiers . txt à importer vers un autre périphérique
 ➕ Création d’événement flexible – horaires, durée, rappels, règles de répétition puissantes
 ➕ Prise en charge de CalDAV pour la synchronisation d’événements via Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc
@@ -21,34 +21,37 @@ Caractéristiques simples du calendrier 2023
 ✔️ Personnalisé pour vous
 ➕ Planificateur d’horaire - personnaliser et modifier le son, la boucle, le flux audio, les vibrations
 ➕ Widget Calendrier - Calendriers colorés et thèmes personnalisables
-➕ Open source minuscule calendrier, traduit en 45+ langues
-➕ Family Organizer - avec duplication, organisation et gestion du temps
+➕ Petit calendrier open source, traduit en plus de 45 langues
+➕ Organisateur familial - avec duplication, organisation et gestion du temps
 
 ✔️ Organisation et gestion du temps
-➕ Agenda - le agenda vous aidera à organiser votre journée
+➕ Agenda - l'agenda vous aidera à organiser votre journée
 ➕ Planificateur hebdomadaire – Il n’a jamais été aussi facile de devancer votre horaire hebdomadaire chargé.
 ➕ Responsable de l’itinéraire - calendrier des activités partagé entre les équipes au travail
 ➕ Planificateur de rendez-vous - organiser et tenir à jour votre agenda avec facilité
 ➕ Planifiez votre journée - gérez votre journée avec cet agenda android, organisateur d’événements et de familles
 
-✔️ application de calendrier no 1
+✔️ Application de calendrier numéro 1
 ➕ Importez les jours fériés, les anniversaires et les anniversaires facilement
 ➕ Filtrer rapidement les événements personnels par type d’événement
 ➕ Horaire quotidien et lieu de l’événement, indiqué sur une carte
 ➕ Calendrier d’affaires rapide ou agenda numérique personnel
+➕ Passez rapidement entre la vue journalière, hebdomadaire, mensuelle, annuelle & la liste d'événements
 
-TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE – LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR D’OAN FFLINE SANS PUBLICITÉ! PLANIFIEZ VOTRE CALENDRIER 2023!
+TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE – LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR HORS LIGNE SANS PUBLICITÉ ! PLANIFIEZ VOTRE CALENDRIER 2023 !
 
-Il est livré avec la conception du matériel et da ark thème par défaut, offre une grande expérience utilisateur pour une utilisation facile. Le manque d’accès à Internet vous donne plus de confidentialité, de sécurité et de stabilité que les autres applications.
+Il est livré avec le Material Design et un thème sombre par défaut, offre une grande expérience utilisateur pour une utilisation facile. Le manque d’accès à Internet vous donne plus de confidentialité, de sécurité et de stabilité que les autres applications.
 
-Découvrez la gamme complète d’outils simples ici :
+Ne contient pas d'annonces publicitaires ou de permissions non nécessaires. Est entièrement open source, fournit des couleurs personnalisables.
+
+Découvrez la gamme complète d’outils simples ici :
 https://www.simplemobiletools.com
 
-Facebook :
+Facebook :
 https://www.facebook.com/simplemobiletools
 
-Reddit :
+Reddit :
 https://www.reddit.com/r/SimpleMobileTools
 
-Télégramme :
-https://t. me/SimpleMobileTools
+Telegram :
+https://t.me/SimpleMobileTools

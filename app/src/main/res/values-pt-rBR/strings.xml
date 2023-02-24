@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Vista mensal + diária</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Lista de eventos</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Não há eventos futuros.</string>
     <string name="go_to_today">Ir para hoje</string>
     <string name="go_to_date">Ir para a data</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Por favor, preencha um local para ser mostrado em um mapa</string>
     <string name="public_event_notification_text">Um evento está próximo</string>
     <string name="saving_filtered_out">Salvando… Mas o tipo de evento selecionado ficou em Menu - Filtrar</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Você filtrou todos os tipos de eventos</string>
     <!-- Tasks -->
     <string name="task">Tarefa</string>
     <string name="tasks">Tarefas</string>
@@ -53,7 +53,7 @@
     <string name="repeat_till">Repetir até</string>
     <string name="forever">Eternamente</string>
     <string name="event_is_repeatable">O evento é repetitivo</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">A tarefa é repetível</string>
     <string name="selection_contains_repetition">A seleção contém eventos recorrentes</string>
     <string name="delete_one_only">Apagar a ocorrência selecionada</string>
     <string name="delete_future_occurrences">Exclua essa e todas as ocorrências futuras</string>
@@ -110,7 +110,7 @@
     <string name="before">antes</string>
     <string name="add_another_reminder">Adicionar outro lembrete</string>
     <string name="event_reminders">Lembretes de eventos</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Lembretes</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Adicionar outro participante</string>
     <string name="my_status">Meu status:</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Exportar eventos para um arquivo .ics</string>
     <string name="default_event_type">Tipo de evento padrão</string>
     <string name="export_past_events_too">Exportar eventos passados também</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Exportar tarefas</string>
+    <string name="export_past_entries">Exportar entradas anteriores também</string>
     <string name="include_event_types">Incluir tipos de eventos</string>
     <string name="filename_without_ics">Nome do arquivo (sem .ics)</string>
     <string name="ignore_event_types">Ignorar os tipos de eventos no arquivo, usar sempre o padrão</string>
@@ -264,7 +264,7 @@
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \"Adicionar feriados\"\?</string>
     <string name="faq_1_text">Os feriados criados dessa maneira são inseridos em um novo tipo de evento chamado \"Feriados \". Você pode ir em Configurações -&gt; Gerenciar tipos de eventos, pressione e segure o tipo de evento fornecido e exclua-o selecionando a lixeira.</string>
     <string name="faq_2_title">Posso sincronizar meus eventos por meio do Google Agenda ou de outro serviço de suporte CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Talvez até mesmo compartilhar calendários com outras pessoas\?</string>
     <string name="faq_2_text">"Sim, basta ativar  CalDAV sync \" nas configurações do aplicativo e selecionar os calendários que você deseja sincronizar. No entanto, você precisará de algum aplicativo de terceiros que manipule a sincronização entre o dispositivo e os servidores.
 \n         Caso você queira sincronizar um calendário do Google, o aplicativo oficial do Google Agenda fará o trabalho. Para outros calendários, você precisará de um adaptador de sincronização de terceiros, por exemplo, o DAVx5."</string>
     <string name="faq_3_title">Vejo os lembrete, mas não ouço áudio. O que posso fazer\?</string>
