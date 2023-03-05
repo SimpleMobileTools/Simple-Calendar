@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Nahradit popis události místem</string>
     <string name="display_description_or_location">Zobrazit popis nebo místo</string>
     <string name="delete_all_events">Smazat všechny události</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události\? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
     <string name="show_a_grid">Zobrazovat mřížku</string>
     <string name="loop_reminders">Opakovat připomínky až do zamítnutí</string>

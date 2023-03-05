@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Заменять описание местоположением</string>
     <string name="display_description_or_location">Показывать описание или местоположение</string>
     <string name="delete_all_events">Удалить все события</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Удалить все события\? Это не затронет типы событий и другие настройки.</string>
     <string name="show_a_grid">Показывать сетку</string>
     <string name="loop_reminders">Циклические напоминания до отключения</string>

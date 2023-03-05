@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Remplacer la description de l\'évènement par l\'emplacement</string>
     <string name="display_description_or_location">Afficher la description ou l\'emplacement</string>
     <string name="delete_all_events">Supprimer tous les évènements</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Voulez-vous vraiment supprimer tous les évènements \? Les types d\'évènements et vos autres paramètres ne seront pas modifiés.</string>
     <string name="show_a_grid">Affichage en grille</string>
     <string name="loop_reminders">Répéter les rappels jusqu\'à ce qu\'ils soient rejetés</string>

@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Замена описа догађаја локацијом</string>
     <string name="display_description_or_location">Опис приказа или локација</string>
     <string name="delete_all_events">Избриши све догађаје</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Желите ли заиста да избришете све догађаје\? Ово ће оставити ваше типове догађаја и друге поставке нетакнуте.</string>
     <string name="show_a_grid">Приказивање координатне мреже</string>
     <string name="loop_reminders">Подсетници петље док се не одбаце</string>

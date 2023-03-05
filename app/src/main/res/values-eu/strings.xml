@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Ordeztu gertaeraren deskripzioa kokalekuarekin</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">Ezabatu gertaera guztiak</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Ziur zaude gertaera guztiak ezabatu nahi dituzula\? Honek gertaera motak eta bestelako ezarpenak berdin utziko ditu.</string>
     <string name="show_a_grid">Erakutsi sareta</string>
     <string name="loop_reminders">Errepikatu abisuak baztertu arte</string>

@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Etkinlik açıklamasını konumla değiştir</string>
     <string name="display_description_or_location">Açıklamayı veya konumu göster</string>
     <string name="delete_all_events">Tüm etkinlikleri sil</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Tüm etkinlikleri silmek istediğinizden emin misiniz\? Bu, etkinlik türlerinizi ve diğer ayarlarınızı bozulmamış halde bırakır.</string>
     <string name="show_a_grid">Izgara göster</string>
     <string name="loop_reminders">Kapatılana kadar hatırlatıcıları tekrarla</string>

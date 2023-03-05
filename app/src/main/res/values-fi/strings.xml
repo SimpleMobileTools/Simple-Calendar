@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
     <string name="display_description_or_location">Näytä kuvaus tai sijainti</string>
     <string name="delete_all_events">Poista kaikki tapahtumat</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat\? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
     <string name="show_a_grid">Näytä ruudukko</string>
     <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>

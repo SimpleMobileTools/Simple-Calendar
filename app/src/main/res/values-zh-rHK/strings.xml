@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">刪除全部活動</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎\?會完整留下你的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>

@@ -178,7 +178,8 @@
     <string name="replace_description_with_location">Nahradiť popis udalosti miestom</string>
     <string name="display_description_or_location">Zobraziť popis alebo miesto</string>
     <string name="delete_all_events">Odstrániť všetky udalosti</string>
-    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti\? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
+    <string name="delete_all_events_and_tasks">Odstrániť všetky udalosti a úlohy</string>
+    <string name="delete_all_events_confirmation">Ste si istý, že chcete odstrániť všetky udalosti a úlohy\? Všetky typy udalostí a nastavenia ostanú nedotknuté.</string>
     <string name="show_a_grid">Zobraziť mriežku</string>
     <string name="loop_reminders">Opakovať pripomienky až po odstránenie</string>
     <string name="dim_past_events">Stlmiť minulé udalosti</string>

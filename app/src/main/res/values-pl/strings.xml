@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Zamieniaj opis wydarzenia na lokalizację</string>
     <string name="display_description_or_location">Wyświetlaj opis lub lokalizację</string>
     <string name="delete_all_events">Usuń wszystkie wydarzenia</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Czy usunąć wszystkie wydarzenia\? Nie naruszy to typów wydarzeń i innych ustawień.</string>
     <string name="show_a_grid">Pokazuj siatkę</string>
     <string name="loop_reminders">Powtarzaj przypomnienia aż do ich odrzucenia</string>
