@@ -232,7 +232,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(exportTasks) = prefs.edit().putBoolean(EXPORT_TASKS, exportTasks).apply()
 
     var exportPastEntries: Boolean
-        get() = prefs.getBoolean(EXPORT_PAST_EVENTS, false)
+        get() = prefs.getBoolean(EXPORT_PAST_EVENTS, true)
         set(exportPastEvents) = prefs.edit().putBoolean(EXPORT_PAST_EVENTS, exportPastEvents).apply()
 
     var weeklyViewItemHeightMultiplier: Float
