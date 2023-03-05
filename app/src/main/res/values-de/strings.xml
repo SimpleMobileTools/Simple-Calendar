@@ -213,10 +213,10 @@
     <string name="manage_synced_calendars">Synchronisierte Kalender verwalten</string>
     <string name="store_locally_only">Nur lokal speichern</string>
     <string name="refresh_caldav_calendars">CalDAV-Kalender aktualisieren</string>
-    <string name="refreshing">Aktualisieren …</string>
+    <string name="refreshing">Wird aktualisiert …</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
-    <string name="syncing">Synchronisieren …</string>
+    <string name="syncing">Wird synchronisiert …</string>
     <string name="synchronization_completed">Synchronisierung erfolgreich</string>
     <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
     <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>
