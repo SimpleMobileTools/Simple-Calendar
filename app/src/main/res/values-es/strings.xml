@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Usar la ubicación como descripción del evento</string>
     <string name="display_description_or_location">Mostrar descripción o ubicación</string>
     <string name="delete_all_events">Borrar todos los eventos</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">¿Estás seguro de que quieres borrar todos los eventos\? Se mantendrán los tipos de evento y otros ajustes.</string>
+    <string name="delete_all_events_and_tasks">Borrar todos los eventos y tareas</string>
+    <string name="delete_all_events_confirmation">¿Estás seguro de que quieres borrar todos los eventos y tareas\? Esto dejará intactos tus tipos de eventos y otros ajustes.</string>
     <string name="show_a_grid">Mostrar cuadrícula</string>
     <string name="loop_reminders">Repetir recordatorios hasta ser descartados</string>
     <string name="dim_past_events">Atenuar eventos pasados</string>
