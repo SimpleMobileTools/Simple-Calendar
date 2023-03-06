@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">月和日历视图</string>
     <string name="yearly_view">年历视图</string>
     <string name="simple_event_list">简单活动列表</string>
-    <string name="no_upcoming_events">没有即将到来的事件。</string>
+    <string name="no_upcoming_events">没有即将到来的活动。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
     <!-- Widget titles -->
@@ -29,8 +29,8 @@
     <string name="filter_events_by_type">依类型筛选活动</string>
     <string name="please_fill_location">请填入要显示在地图上的地点</string>
     <string name="public_event_notification_text">一个活动即将到来</string>
-    <string name="saving_filtered_out">正在保存…但所选择的事件类型在顶部菜单的“筛选”中被过滤掉</string>
-    <string name="everything_filtered_out">你过滤掉了所有事件类型</string>
+    <string name="saving_filtered_out">正在保存…但所选择的活动类型在顶部菜单的“筛选”中被过滤掉</string>
+    <string name="everything_filtered_out">你过滤掉了所有活动类型</string>
     <!-- Tasks -->
     <string name="task">任务</string>
     <string name="tasks">任务</string>
@@ -55,12 +55,12 @@
     <string name="event_is_repeatable">这是个重复活动</string>
     <string name="task_is_repeatable">该任务可重复</string>
     <string name="selection_contains_repetition">选择的项目含有重复活动</string>
-    <string name="delete_one_only">只删除选择的事件</string>
-    <string name="delete_future_occurrences">删除这个及全部未来的事件</string>
-    <string name="delete_all_occurrences">删除全部事件</string>
-    <string name="update_one_only">只更新选择的事件</string>
-    <string name="update_this_and_future_occurrences">更新这个和所有未来的事件</string>
-    <string name="update_all_occurrences">更新全部事件</string>
+    <string name="delete_one_only">只删除选择的活动</string>
+    <string name="delete_future_occurrences">删除这个及全部未来的活动</string>
+    <string name="delete_all_occurrences">删除全部活动</string>
+    <string name="update_one_only">只更新选择的活动</string>
+    <string name="update_this_and_future_occurrences">更新这个和所有未来的活动</string>
+    <string name="update_all_occurrences">更新全部活动</string>
     <string name="repeat_till_date">重复直到某日</string>
     <string name="stop_repeating_after_x">经过 x 次后停止重复</string>
     <string name="repeat_forever">永远重复</string>
@@ -132,7 +132,7 @@
     <string name="export_past_entries">同样导出过去的条目</string>
     <string name="include_event_types">包含活动类型</string>
     <string name="filename_without_ics">文件名称 (不含.ics)</string>
-    <string name="ignore_event_types">忽略文件中的事件类型，始终使用默认类型</string>
+    <string name="ignore_event_types">忽略文件中的活动类型，始终使用默认类型</string>
     <!-- Event details -->
     <string name="location">地点</string>
     <string name="description">描述</string>
@@ -164,7 +164,7 @@
     <string name="manage_event_types">管理活动类型</string>
     <string name="start_day_at">每日开始于</string>
     <string name="end_day_at">每日结束于</string>
-    <string name="midnight_spanning">在顶部栏显示跨越午夜的事件</string>
+    <string name="midnight_spanning">在顶部栏显示跨越午夜的活动</string>
     <string name="allow_customizing_day_count">允许自定义天数</string>
     <string name="week_numbers">显示第几周</string>
     <string name="vibrate">提醒通知时震动</string>
@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">活动描述改成地点</string>
     <string name="display_description_or_location">显示描述或位置</string>
     <string name="delete_all_events">删除全部活动</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">您确定要删除全部活动吗\?会完整留下您的活动类型和其他设定。</string>
+    <string name="delete_all_events_and_tasks">删除所有活动和任务</string>
+    <string name="delete_all_events_confirmation">您确定要删除全部活动和任务吗\? 您的活动类型和其他设定将保持完整。</string>
     <string name="show_a_grid">显示网络</string>
     <string name="loop_reminders">不断重复提醒直到解除</string>
     <string name="dim_past_events">淡化过去的活动</string>
@@ -206,7 +206,7 @@
     <string name="highlight_weekends">在部分视图高亮周末</string>
     <string name="highlight_weekends_color">突出显示的周末的颜色</string>
     <string name="allow_changing_time_zones">允许更改活动时区</string>
-    <string name="manage_quick_filter_event_types">管理快速过滤事件类型</string>
+    <string name="manage_quick_filter_event_types">管理快速过滤活动类型</string>
     <string name="allow_creating_tasks">允许创建任务</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV 同步</string>
@@ -225,7 +225,7 @@
     <string name="no_synchronized_calendars">未发现可同步的日历</string>
     <string name="status_free">空闲</string>
     <string name="status_busy">繁忙</string>
-    <string name="fetching_event_failed">获取 %s 事件失败</string>
+    <string name="fetching_event_failed">获取 %s 活动失败</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">星期一</string>
@@ -245,7 +245,7 @@
     <string name="sample_description_4">在购物商场</string>
     <string name="sample_title_5">休息时间</string>
     <!-- List widget config -->
-    <string name="show_events_happening">显示如下时间段内将发生的事件：</string>
+    <string name="show_events_happening">显示如下时间段内将发生的活动：</string>
     <string name="within_the_next_one_year">未来一年内</string>
     <string name="today_only">仅今天</string>
     <string name="within_the_next">在未来…</string>
@@ -270,8 +270,8 @@
     <string name="faq_4_text">是的，它支持。默认所有的活动会在您当前的时区下创建。如果您想要改变活动的时区， 您首先需要在应用程序设定中启用时区选择器，然后在活动详情界面中更改它。这个默认是禁用的因为大多数人都不会用到它。</string>
     <string name="faq_5_title">这个应用为何不显示通知？</string>
     <string name="faq_5_text">检查设备的电池和通知设置，如果没有任何东西阻止提醒，或在后台关闭应用程序。你也许还想看看 &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;，当中有些有用的提示。</string>
-    <string name="faq_6_title">如何修改或删除已存在的事件类型？</string>
-    <string name="faq_6_text">要进行这两类操作，请转到设置 - 管理事件类型。单击想要操作的项目以更改标签和颜色，或者长按选中想要操作的项目，并使用顶部菜单的回收站进行删除。</string>
+    <string name="faq_6_title">如何修改或删除已存在的活动类型？</string>
+    <string name="faq_6_text">要进行这两类操作，请转到设置 - 管理活动类型。单击想要操作的项目以更改标签和颜色，或者长按选中想要操作的项目，并使用顶部菜单的回收站进行删除。</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
