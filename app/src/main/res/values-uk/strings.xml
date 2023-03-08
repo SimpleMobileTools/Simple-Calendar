@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Замінювати описання події місцем</string>
     <string name="display_description_or_location">Відображати опис або місце розташування</string>
     <string name="delete_all_events">Видалити всі події</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Ви дійсно бажаєте видалити всі події\? Це не торкнеться ваших типів подій та інших налаштувань.</string>
+    <string name="delete_all_events_and_tasks">Видалити всі події та завдання</string>
+    <string name="delete_all_events_confirmation">Ви дійсно бажаєте видалити всі події та завдання\? Це не торкнеться ваших типів подій та інших налаштувань.</string>
     <string name="show_a_grid">Показувати решітку</string>
     <string name="loop_reminders">Повторювати нагадування циклічно до відключення</string>
     <string name="dim_past_events">Показувати події, що відбулися, менш виразно</string>
