@@ -81,8 +81,8 @@ interface EventsDao {
     @Query("SELECT * FROM events WHERE source = :source AND type = $TYPE_EVENT")
     fun getEventsFromCalDAVCalendar(source: String): List<Event>
 
-    @Query("SELECT * FROM events WHERE id IN (:ids) AND type = $TYPE_EVENT")
-    fun getEventsWithIds(ids: List<Long>): List<Event>
+    @Query("SELECT * FROM events WHERE id IN (:ids)")
+    fun getEventsOrTasksWithIds(ids: List<Long>): List<Event>
 
     //val selection = "$COL_REMINDER_MINUTES != -1 AND ($COL_START_TS > ? OR $COL_REPEAT_INTERVAL != 0) AND $COL_START_TS != 0"
     @Query("SELECT * FROM events WHERE reminder_1_minutes != -1 AND (start_ts > :currentTS OR repeat_interval != 0) AND start_ts != 0")
