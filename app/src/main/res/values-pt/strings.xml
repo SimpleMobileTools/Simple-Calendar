@@ -179,7 +179,7 @@
     <string name="display_description_or_location">Mostrar descrição ou localização</string>
     <string name="delete_all_events">Apagar todos os eventos</string>
     <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Tem a certeza de que deseja apagar todos os eventos\? Esta ação não afeta os tipos de eventos nem as outras definições.</string>
+    <string name="delete_all_events_confirmation">Tem a certeza de que deseja apagar todos os eventos e tarefas\? Esta ação não afeta os tipos de eventos nem as outras definições.</string>
     <string name="show_a_grid">Mostrar grelha</string>
     <string name="loop_reminders">Mostrar lembretes até serem descartados</string>
     <string name="dim_past_events">Desvanecer eventos passados</string>
