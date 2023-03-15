@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Mjesečni i dnevni prikaz</string>
     <string name="yearly_view">Godišnji prikaz</string>
     <string name="simple_event_list">Jednostavan popis događaja</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Nema nadolazećih događaja.</string>
     <string name="go_to_today">Idi na danas</string>
     <string name="go_to_date">Idi na datum</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Upiši lokaciju za prikazivanje na karti</string>
     <string name="public_event_notification_text">Jedan događaj nadolazi</string>
     <string name="saving_filtered_out">Spremanje … Odabrana vrsta događaja je međutim filtrirana u gornjem izborniku – Filtar</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Izdvojene su sve vrste događaja</string>
     <!-- Tasks -->
     <string name="task">Zadatak</string>
     <string name="tasks">Zadaci</string>
@@ -53,7 +53,7 @@
     <string name="repeat_till">Ponavljaj do</string>
     <string name="forever">Zauvijek</string>
     <string name="event_is_repeatable">Događaj se ponavlja</string>
-    <string name="task_is_repeatable">Zadatak je ponovljiv</string>
+    <string name="task_is_repeatable">Zadatak se ponavlja</string>
     <string name="selection_contains_repetition">Odabir sadrži ponavljajuće događaje</string>
     <string name="delete_one_only">Izbriši samo odabrano ponavljanje</string>
     <string name="delete_future_occurrences">Izbriši ovo i sva buduća ponavljanja</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Izvezi događaja u .ics datoteku</string>
     <string name="default_event_type">Standardna vrsta događaja</string>
     <string name="export_past_events_too">Također izvezi prošle događaje</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Izvezi zadatke</string>
+    <string name="export_past_entries">Također izvezi prijašnje unose</string>
     <string name="include_event_types">Uključi vrste događaja</string>
     <string name="filename_without_ics">Ime datoteke (bez .ics)</string>
     <string name="ignore_event_types">Zanemari vrste događaja u datoteci, uvijek koristi standardnu</string>
@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Zamijeni opis događaja s lokacijom</string>
     <string name="display_description_or_location">Prikaži opis ili lokaciju</string>
     <string name="delete_all_events">Izbriši sve događaje</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Stvarno želiš izbrisati sve događaje\? To će ostaviti tvoje vrste događaja i druge postavke netaknutima.</string>
+    <string name="delete_all_events_and_tasks">Izbriši sve događaje i zadatke</string>
+    <string name="delete_all_events_confirmation">Stvarno želiš izbrisati sve događaje i zadatke\? To će ostaviti tvoje vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>
     <string name="loop_reminders">Ponavljaj podsjetnike sve dok se ne odbace</string>
     <string name="dim_past_events">Zatamni prošle događaje</string>
