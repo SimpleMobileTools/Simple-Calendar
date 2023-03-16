@@ -161,7 +161,7 @@ const val DURATION = "DURATION:"
 const val SUMMARY = "SUMMARY"
 const val DESCRIPTION = "DESCRIPTION"
 const val DESCRIPTION_EXPORT = "DESCRIPTION:"
-val DESCRIPTION_REGEX = Regex("""DESCRIPTION(?:;[^:]*="[^"]*")*:(.*(?:\r?\n(?!\s).*)*)""")
+val DESCRIPTION_REGEX = Regex("""DESCRIPTION(?:(?:;[^:;]*="[^"]*")*;?(?:;LANGUAGE=[^:;]*)?(?:;[^:;]*="[^"]*")*)*:(.*(?:\r?\n\s+.*)*)""")
 const val UID = "UID:"
 const val ACTION = "ACTION:"
 const val TRANSP = "TRANSP:"
