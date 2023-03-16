@@ -178,7 +178,8 @@
     <string name="replace_description_with_location">Ganti deskripsi acara dengan lokasi</string>
     <string name="display_description_or_location">Tampilkan deskripsi atau lokasi</string>
     <string name="delete_all_events">Hapus semua acara</string>
-    <string name="delete_all_events_confirmation">Apakah anda yakin ingin menghapus semua acara\? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_confirmation">Apakah Anda yakin ingin menghapus semua acara dan tugas\? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
     <string name="show_a_grid">Tampilkan grid</string>
     <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
     <string name="dim_past_events">Redupkan acara yang sudah lewat</string>

@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">استبدل وصف الحدث بالموقع</string>
     <string name="display_description_or_location">عرض الوصف أو الموقع</string>
     <string name="delete_all_events">حذف جميع الأحداث</string>
+    <string name="delete_all_events_and_tasks">حذف جميع الأحداث والمهام</string>
     <string name="delete_all_events_confirmation">هل حقا تريد حذف جميع الأحداث؟ ستبقى جميع \'أنواع الأحداث\' والإعدادات الأخرى سليمة.</string>
     <string name="show_a_grid">إظهار شبكة</string>
     <string name="loop_reminders">كرر التنبيهات حتى إلغاءها</string>

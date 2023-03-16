@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
     <string name="display_description_or_location">Vis beskrivelse eller sted</string>
     <string name="delete_all_events">Slett alle hendelser</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser\? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>

@@ -155,9 +155,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         addBirthdaysAnniversariesAtStart()
 
-        if (!config.wasUpgradedFromFreeShown && isPackageInstalled("com.simplemobiletools.calendar")) {
+        if (isPackageInstalled("com.simplemobiletools.calendar")) {
             ConfirmationDialog(this, "", R.string.upgraded_to_pro_calendar, R.string.ok, 0, false) {}
-            config.wasUpgradedFromFreeShown = true
         }
 
         addImportIdsToTasks {

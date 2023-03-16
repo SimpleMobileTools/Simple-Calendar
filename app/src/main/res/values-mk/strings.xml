@@ -179,6 +179,7 @@
     <string name="replace_description_with_location">Заменете го описот на настанот со локација</string>
     <string name="display_description_or_location">Опис на прикажување или локација</string>
     <string name="delete_all_events">Избришете ги сите настани</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Дали сте сигурни дека сакате да ги избришете сите настани\? Ова ќе ги остави вашите типови на настани и други подесувања недопрени.</string>
     <string name="show_a_grid">Покажи мрежа</string>
     <string name="loop_reminders">Потсетници на јамка додека не се отфрлат</string>

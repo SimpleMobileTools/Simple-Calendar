@@ -178,7 +178,8 @@
     <string name="replace_description_with_location">Substitueix la descripció de l\'esdeveniment per la ubicació</string>
     <string name="display_description_or_location">Mostra la descripció o la ubicació</string>
     <string name="delete_all_events">Suprimeix tots els esdeveniments</string>
-    <string name="delete_all_events_confirmation">Esteu segur que voleu suprimir tots els esdeveniments\? Això deixarà intactes els tipus d\'esdeveniments i altres opcions de configuració.</string>
+    <string name="delete_all_events_and_tasks">Suprimeix tots els esdeveniments i tasques</string>
+    <string name="delete_all_events_confirmation">Esteu segur que voleu suprimir tots els esdeveniments i tasques\? Això deixarà intactes els tipus d\'esdeveniments i altres opcions de configuració.</string>
     <string name="show_a_grid">Mostra una quadrícula</string>
     <string name="loop_reminders">Recordatoris en bucle fins que es descartin</string>
     <string name="dim_past_events">Atenua els esdeveniments passats</string>

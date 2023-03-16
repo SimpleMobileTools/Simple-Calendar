@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">החלפת תיאור האירוע עם מיקום</string>
     <string name="display_description_or_location">הצג תיאור או מיקום</string>
     <string name="delete_all_events">מחיקת כל האירועים</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">למחוק את כל האירועים\? סוגי האירועים והגדרות נוספות יישמרו.</string>
     <string name="show_a_grid">תצוגת רשת</string>
     <string name="loop_reminders">תזכורות לולאה עד להדחה</string>

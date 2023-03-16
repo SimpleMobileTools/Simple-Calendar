@@ -22,7 +22,7 @@ fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
             return@ensureBackgroundThread
         }
 
-        val events = eventsDB.getEventsWithIds(ids) as ArrayList<Event>
+        val events = eventsDB.getEventsOrTasksWithIds(ids) as ArrayList<Event>
         if (events.isEmpty()) {
             toast(R.string.no_items_found)
         }

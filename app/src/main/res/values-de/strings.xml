@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Terminbeschreibung durch Ort ersetzen</string>
     <string name="display_description_or_location">Beschreibung oder Ort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Sollen wirklich alle Termine gelöscht werden\? Die Termintypen und andere Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
@@ -213,10 +214,10 @@
     <string name="manage_synced_calendars">Synchronisierte Kalender verwalten</string>
     <string name="store_locally_only">Nur lokal speichern</string>
     <string name="refresh_caldav_calendars">CalDAV-Kalender aktualisieren</string>
-    <string name="refreshing">Aktualisieren …</string>
+    <string name="refreshing">Wird aktualisiert …</string>
     <string name="refreshing_complete">Aktualisierung abgeschlossen</string>
     <string name="editing_calendar_failed">Ändern des Kalenders fehlgeschlagen</string>
-    <string name="syncing">Synchronisieren …</string>
+    <string name="syncing">Wird synchronisiert …</string>
     <string name="synchronization_completed">Synchronisierung erfolgreich</string>
     <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
     <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>

@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Înlocuiește descrierea evenimentului cu locația</string>
     <string name="display_description_or_location">Afișează descripție sau locație</string>
     <string name="delete_all_events">Șterge toate evenimentele</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Sigur doriți să ștergeți toate evenimentele\? Acest lucru va lăsa tipurile de evenimente și alte setări intacte.</string>
     <string name="show_a_grid">Afișează o grilă</string>
     <string name="loop_reminders">Repetă reamintirile până când sunt închise</string>

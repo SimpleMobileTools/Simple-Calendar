@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.21.6 *(2023-03-07)*
+----------------------------
+
+ * Improved some holidays
+ * Added some translation, stability and UX improvements
+
 Version 6.21.5 *(2023-01-30)*
 ----------------------------
 

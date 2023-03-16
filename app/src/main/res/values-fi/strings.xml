@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Kuukausi- ja päivänäkymä</string>
     <string name="yearly_view">Vuosinäkymä</string>
     <string name="simple_event_list">Yksinkertainen tapahtumaluettelo</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Tulevia tapahtumia ei ole.</string>
     <string name="go_to_today">Mene tähän päivään</string>
     <string name="go_to_date">Mene päivään</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Täytä sijainti, joka näytetään kartalla</string>
     <string name="public_event_notification_text">Tapahtuma tulossa</string>
     <string name="saving_filtered_out">Tallennetaan… mutta valittu tapahtumatyyppi on suodatettu pois näkyvistä Menu - Suodata-valikosta</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Olet suodattanut pois kaikki tapahtumatyypit</string>
     <!-- Tasks -->
     <string name="task">Tehtävä</string>
     <string name="tasks">Tehtävät</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Vie tapahtumat .ics-tiedostoon</string>
     <string name="default_event_type">Oletus tapahtuma tyyppi</string>
     <string name="export_past_events_too">Vie myös menneet tapahtumat</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Vie tehtävät</string>
+    <string name="export_past_entries">Vie myös menneet tapahtumat</string>
     <string name="include_event_types">Sisällytä tapahtumatyypit</string>
     <string name="filename_without_ics">Tiedostonimi (ilman .ics)</string>
     <string name="ignore_event_types">Ohita tiedostoon tallennetut tapahtumatyypit, käytä aina oletusta</string>
@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
     <string name="display_description_or_location">Näytä kuvaus tai sijainti</string>
     <string name="delete_all_events">Poista kaikki tapahtumat</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat\? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
     <string name="show_a_grid">Näytä ruudukko</string>
     <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>
@@ -264,7 +265,7 @@
     <string name="faq_1_title">Kuinka voin poistaa \"Lisää juhlapäivät\"-painikkeella tuotuja juhlapäiviä\?</string>
     <string name="faq_1_text">Näin luodut juhlapäivät lisätään uuteen tapahtumatyyppiin nimeltä \"Juhlapäivät\". Siirry kohtaan Asetukset -&gt; Hallitse tapahtumatyyppejä, paina pitkään annettua tapahtuman tyyppiä ja poista se valitsemalla roskakorin kuvaa.</string>
     <string name="faq_2_title">Voinko synkronoida tapahtumani Google-kalenterin tai muun CalDAVia tukevan palvelun kautta\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Haluatko mahdollisesti jakaa kalentereita muille\?</string>
     <string name="faq_2_text">Kyllä, vaihda vain CalDAV synkronointi sovelluksen asetuksissa ja valitse synkronoitavat kalenterit. Tarvitset kuitenkin jonkin kolmannen osapuolen sovelluksen, joka hoitaa laitteen ja palvelinten välisen synkronoinnin. Jos haluat synkronoida Google-kalenterin, heidän virallinen Kalenteri-sovelluksensa tekee työn. Muita kalentereita varten tarvitset kolmannen osapuolen synkronointisovittimen, esimerkiksi DAVx5.</string>
     <string name="faq_3_title">Näen visuaaliset muistutukset, mutta en kuule ääntä. Mitä voin tehdä\?</string>
     <string name="faq_3_text">Ei vain todellisen muistutuksen näyttäminen, vaan järjestelmä vaikuttaa valtavasti äänen toistamiseen. Jos et kuule ääntä, yritä siirtyä sovelluksen asetuksiin, painamalla \"Muistutuksien käyttämä äänen toisto\"-vaihtoehtoa ja vaihtamalla se toiseen arvoon. Jos se ei vieläkään toimi, tarkista ääniasetuksesi, jos tiettyä äänen toistoa ei ole mykistetty.</string>

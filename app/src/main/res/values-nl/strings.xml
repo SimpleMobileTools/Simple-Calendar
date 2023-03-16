@@ -178,7 +178,8 @@
     <string name="replace_description_with_location">Beschrijving vervangen door locatie van afspraken</string>
     <string name="display_description_or_location">Beschrijving of locatie tonen</string>
     <string name="delete_all_events">Alle afspraken verwijderen</string>
-    <string name="delete_all_events_confirmation">Alle afspraken verwijderen\? Afspraaktypes en andere instellingen blijven behouden.</string>
+    <string name="delete_all_events_and_tasks">Alle afspraken en taken verwijderen</string>
+    <string name="delete_all_events_confirmation">Alle afspraken en taken verwijderen\? Afspraaktypes en andere instellingen blijven behouden.</string>
     <string name="show_a_grid">Rasterlijnen tonen</string>
     <string name="loop_reminders">Herinneringen blijven herhalen totdat ze zijn uitgezet</string>
     <string name="dim_past_events">Afgelopen afspraken dimmen</string>

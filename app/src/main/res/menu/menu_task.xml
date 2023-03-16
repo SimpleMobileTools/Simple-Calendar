@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_copy_vector"
         android:title="@string/duplicate_task"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share_vector"
+        android:title="@string/share"
+        app:showAsAction="ifRoom" />
 </menu>

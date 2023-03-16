@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">일정 내용대신 위치로 표시</string>
     <string name="display_description_or_location">Display description or location</string>
     <string name="delete_all_events">모든 일정 삭제</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">모든 일정들을 삭제하시겠습니까\? 일정 유형 및 기타 설정은 그대로 유지됩니다.</string>
     <string name="show_a_grid">격자 표시</string>
     <string name="loop_reminders">끌때까지 알림 반복</string>

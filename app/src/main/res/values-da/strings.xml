@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="display_description_or_location">Vis beskrivelse eller lokation</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder\? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
     <string name="show_a_grid">Vis gitter</string>
     <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>

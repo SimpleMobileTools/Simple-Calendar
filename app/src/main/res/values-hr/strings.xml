@@ -178,6 +178,7 @@
     <string name="replace_description_with_location">Zamijeni opis događaja s lokacijom</string>
     <string name="display_description_or_location">Prikaži opis ili lokaciju</string>
     <string name="delete_all_events">Izbriši sve događaje</string>
+    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Stvarno želiš izbrisati sve događaje\? To će ostaviti tvoje vrste događaja i druge postavke netaknutima.</string>
     <string name="show_a_grid">Prikaži mrežu</string>
     <string name="loop_reminders">Ponavljaj podsjetnike sve dok se ne odbace</string>

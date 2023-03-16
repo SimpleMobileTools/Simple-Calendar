@@ -91,6 +91,7 @@ class TaskActivity : SimpleActivity() {
         if (::mTask.isInitialized) {
             task_toolbar.menu.apply {
                 findItem(R.id.delete).isVisible = mTask.id != null
+                findItem(R.id.share).isVisible = mTask.id != null
                 findItem(R.id.duplicate).isVisible = mTask.id != null
             }
         }
@@ -102,6 +103,7 @@ class TaskActivity : SimpleActivity() {
                 R.id.save -> saveCurrentTask()
                 R.id.delete -> deleteTask()
                 R.id.duplicate -> duplicateTask()
+                R.id.share -> shareTask()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -502,6 +504,10 @@ class TaskActivity : SimpleActivity() {
         }
     }
 
+    private fun shareTask() {
+        shareEvents(arrayListOf(mTask.id!!))
+    }
+
     private fun deleteTask() {
         if (mTask.id == null) {
             return
@@ -557,6 +563,7 @@ class TaskActivity : SimpleActivity() {
                 .setTimeFormat(timeFormat)
                 .setHour(mTaskDateTime.hourOfDay)
                 .setMinute(mTaskDateTime.minuteOfHour)
+                .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
                 .build()
 
             timePicker.addOnPositiveButtonClickListener {
