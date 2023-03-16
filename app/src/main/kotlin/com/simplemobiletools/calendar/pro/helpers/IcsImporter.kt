@@ -117,7 +117,7 @@ class IcsImporter(val activity: SimpleActivity) {
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         val match = DESCRIPTION_REGEX.matchEntire(line)
                         if (match != null) {
-                            curDescription = match.groups[1]?.value?.replace("\\n", "\n")?.replace("\\,", ",") ?: ""
+                            curDescription = match.groups[1]!!.value.replace("\\n", "\n").replace("\\,", ",") ?: ""
                         }
                         if (curDescription.trim().isEmpty()) {
                             curDescription = ""
