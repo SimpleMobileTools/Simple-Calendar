@@ -741,6 +741,7 @@ class SettingsActivity : SimpleActivity() {
                             .setTimeFormat(timeFormat)
                             .setHour(currentDateTime.hourOfDay)
                             .setMinute(currentDateTime.minuteOfHour)
+                            .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
                             .build()
 
                         timePicker.addOnPositiveButtonClickListener {

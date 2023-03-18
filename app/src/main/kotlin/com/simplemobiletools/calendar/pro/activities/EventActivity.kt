@@ -21,6 +21,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -1376,6 +1377,7 @@ class EventActivity : SimpleActivity() {
                 .setTimeFormat(timeFormat)
                 .setHour(mEventStartDateTime.hourOfDay)
                 .setMinute(mEventStartDateTime.minuteOfHour)
+                .setInputMode(INPUT_MODE_CLOCK)
                 .build()
 
             timePicker.addOnPositiveButtonClickListener {
@@ -1419,6 +1421,7 @@ class EventActivity : SimpleActivity() {
                 .setTimeFormat(timeFormat)
                 .setHour(mEventEndDateTime.hourOfDay)
                 .setMinute(mEventEndDateTime.minuteOfHour)
+                .setInputMode(INPUT_MODE_CLOCK)
                 .build()
 
             timePicker.addOnPositiveButtonClickListener {
