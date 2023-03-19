@@ -208,6 +208,10 @@
     <string name="allow_changing_time_zones">Дозволи промену временских зона догађаја</string>
     <string name="manage_quick_filter_event_types">Управљање типовима догађаја брзог филтрирања</string>
     <string name="allow_creating_tasks">Дозволи креирање задатака</string>
+    <string name="backups">Backups</string>
+    <string name="enable_automatic_backups">Enable automatic backups</string>
+    <string name="manage_automatic_backups">Manage automatic backups</string>
+    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
     <!-- CalDAV sync -->
     <string name="caldav">ЦалДАВ</string>
     <string name="select_caldav_calendars">Избор календара за синхронизацију</string>
