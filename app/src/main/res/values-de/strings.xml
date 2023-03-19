@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Terminbeschreibung durch Ort ersetzen</string>
     <string name="display_description_or_location">Beschreibung oder Ort anzeigen</string>
     <string name="delete_all_events">Alle Termine löschen</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Sollen wirklich alle Termine gelöscht werden\? Die Termintypen und andere Einstellungen bleiben erhalten.</string>
+    <string name="delete_all_events_and_tasks">Alle Termine und Aufgaben löschen</string>
+    <string name="delete_all_events_confirmation">Sollen wirklich alle Termine und Aufgaben gelöscht werden\? Die Termintypen und andere Einstellungen bleiben erhalten.</string>
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
