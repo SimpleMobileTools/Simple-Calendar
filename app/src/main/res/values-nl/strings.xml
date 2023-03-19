@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Bewerken van tijdzone voor afspraken toestaan</string>
     <string name="manage_quick_filter_event_types">Snelfilter gebeurtenistypes beheren</string>
     <string name="allow_creating_tasks">Taken aanmaken toestaan</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Back-ups</string>
+    <string name="enable_automatic_backups">Automatisch back-ups maken</string>
+    <string name="manage_automatic_backups">Automatische back-ups beheren</string>
+    <string name="date_time_pattern_info">De volgende patronen worden ondersteund voor de bestandsnamen:
+\n
+\n%Y - jaar
+\n%M - maand
+\n%D - dag
+\n%h - uren
+\n%m - minuten
+\n%s - seconden</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecteer te synchroniseren agenda\'s</string>
