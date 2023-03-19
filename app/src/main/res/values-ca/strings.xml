@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Permet canviar les zones horàries dels esdeveniments</string>
     <string name="manage_quick_filter_event_types">Gestiona els tipus d\'esdeveniment de filtre ràpid</string>
     <string name="allow_creating_tasks">Permet crear tasques</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Còpies de seguretat</string>
+    <string name="enable_automatic_backups">Activa les còpies de seguretat automàtiques</string>
+    <string name="manage_automatic_backups">Gestió de les còpies de seguretat automàtiques</string>
+    <string name="date_time_pattern_info">Podeu emprar els patrons següents per a donar nom automàticament als fitxers:
+\n
+\n%Y - any
+\n%M - mes
+\n%D - dia
+\n%h - hora
+\n%m - minut
+\n%s - segon</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleccioneu els calendaris que voleu sincronitzar</string>
