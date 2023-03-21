@@ -178,7 +178,7 @@
     <string name="replace_description_with_location">Erstat beskrivelse med sted</string>
     <string name="display_description_or_location">Vis beskrivelse eller lokation</string>
     <string name="delete_all_events">Slet alle begivenheder</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_and_tasks">Slet alle begivenheder og opgaver</string>
     <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle begivenheder\? Dine begivenhedstyper og andre indstillinger vil forblive intakte.</string>
     <string name="show_a_grid">Vis gitter</string>
     <string name="loop_reminders">Fortsæt påmindelser indtil jeg stopper dem</string>
@@ -209,9 +209,9 @@
     <string name="manage_quick_filter_event_types">Håndter begivenhedstyper med hurtigt filter</string>
     <string name="allow_creating_tasks">Tillad oprettelse af opgaver</string>
     <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="enable_automatic_backups">Aktiver automatisk backup</string>
+    <string name="manage_automatic_backups">Administrer automatisk backup</string>
+    <string name="date_time_pattern_info">Du kan bruge disse pladsholdere til automatisk at navngive din fil:\n\n%Y - år\n%M - måned\n%D - dag\n%h - time\n%m - minut\n%s - sekund</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Vælg kalendere til synk</string>
