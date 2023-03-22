@@ -258,4 +258,36 @@ class Config(context: Context) : BaseConfig(context) {
     var wasFilteredOutWarningShown: Boolean
         get() = prefs.getBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, false)
         set(wasFilteredOutWarningShown) = prefs.edit().putBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, wasFilteredOutWarningShown).apply()
+
+    var autoBackup: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP, false)
+        set(enableAutomaticBackups) = prefs.edit().putBoolean(AUTO_BACKUP, enableAutomaticBackups).apply()
+
+    var autoBackupPath: String
+        get() = prefs.getString(AUTO_BACKUP_PATH, "")!!
+        set(autoBackupPath) = prefs.edit().putString(AUTO_BACKUP_PATH, autoBackupPath).apply()
+
+    var autoBackupFilename: String
+        get() = prefs.getString(AUTO_BACKUP_FILENAME, "")!!
+        set(autoBackupFilename) = prefs.edit().putString(AUTO_BACKUP_FILENAME, autoBackupFilename).apply()
+
+    var autoBackupEventTypes: Set<String>
+        get() = prefs.getStringSet(AUTO_BACKUP_EVENT_TYPES, HashSet())!!
+        set(autoBackupEventTypes) = prefs.edit().remove(AUTO_BACKUP_EVENT_TYPES).putStringSet(AUTO_BACKUP_EVENT_TYPES, autoBackupEventTypes).apply()
+
+    var autoBackupEvents: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_EVENTS, false)
+        set(autoBackupEvents) = prefs.edit().putBoolean(AUTO_BACKUP_EVENTS, autoBackupEvents).apply()
+
+    var autoBackupTasks: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_TASKS, false)
+        set(autoBackupTasks) = prefs.edit().putBoolean(AUTO_BACKUP_TASKS, autoBackupTasks).apply()
+
+    var autoBackupPastEntries: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_PAST_ENTRIES, false)
+        set(autoBackupPastEntries) = prefs.edit().putBoolean(AUTO_BACKUP_PAST_ENTRIES, autoBackupPastEntries).apply()
+
+    var lastAutoBackupTime: Long
+        get() = prefs.getLong(LAST_AUTO_BACKUP_TIME, 0L)
+        set(lastAutoBackupTime) = prefs.edit().putLong(LAST_AUTO_BACKUP_TIME, lastAutoBackupTime).apply()
 }

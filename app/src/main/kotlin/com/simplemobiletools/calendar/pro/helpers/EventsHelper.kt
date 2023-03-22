@@ -519,22 +519,22 @@ class EventsHelper(val context: Context) {
         return events
     }
 
-    fun getEventsToExport(eventTypes: ArrayList<Long>): ArrayList<Event> {
+    fun getEventsToExport(eventTypes: ArrayList<Long>, exportEvents: Boolean, exportTasks: Boolean, exportPastEntries: Boolean): ArrayList<Event> {
         val currTS = getNowSeconds()
         var events = ArrayList<Event>()
         val tasks = ArrayList<Event>()
-        if (config.exportPastEntries) {
-            if (config.exportEvents) {
+        if (exportPastEntries) {
+            if (exportEvents) {
                 events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))
             }
-            if (config.exportTasks) {
+            if (exportTasks) {
                 tasks.addAll(eventsDB.getAllTasksWithTypes(eventTypes))
             }
         } else {
-            if (config.exportEvents) {
+            if (exportEvents) {
                 events.addAll(eventsDB.getAllFutureEventsWithTypes(currTS, eventTypes))
             }
-            if (config.exportTasks) {
+            if (exportTasks) {
                 tasks.addAll(eventsDB.getAllFutureTasksWithTypes(currTS, eventTypes))
             }
         }
