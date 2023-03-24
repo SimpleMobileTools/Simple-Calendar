@@ -208,6 +208,15 @@ fun Context.cancelScheduledAutomaticBackup() {
     alarmManager.cancel(getAutomaticBackupIntent())
 }
 
+fun Context.checkAndBackupEventsOnBoot() {
+    val now = getNowSeconds()
+    val intervalInSeconds = AUTO_BACKUP_INTERVAL_IN_DAYS * DAY
+    if (config.autoBackup && config.lastAutoBackupTime !in (now - intervalInSeconds)..now) {
+        // device was probably off at the scheduled time so backup now
+        backupEventsAndTasks()
+    }
+}
+
 fun Context.backupEventsAndTasks() {
     ensureBackgroundThread {
         val config = config
