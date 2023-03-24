@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Yksinkertainen kalenteri</string>
+    <string name="app_name">Simple Calendar</string>
     <string name="app_launcher_name">Kalenteri</string>
     <string name="change_view">Vaihda näkymää</string>
     <string name="daily_view">Päivänäkymä</string>
@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Korvaa tapahtuman kuvaus sijainnilla</string>
     <string name="display_description_or_location">Näytä kuvaus tai sijainti</string>
     <string name="delete_all_events">Poista kaikki tapahtumat</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat\? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
+    <string name="delete_all_events_and_tasks">Poista tapahtumat ja tehtävät</string>
+    <string name="delete_all_events_confirmation">Haluatko varmasti poistaa kaikki tapahtumat ja tehtävät\? Tämä jättää tapahtumatyypisi ja muut asetukset ennalleen.</string>
     <string name="show_a_grid">Näytä ruudukko</string>
     <string name="loop_reminders">Toista muistutuksia, kunnes ne hylätään</string>
     <string name="dim_past_events">Himmennä menneet tapahtumat</string>
@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Salli tapahtumien aikavyöhykkeiden muuttaminen</string>
     <string name="manage_quick_filter_event_types">Hallitse pikasuodatuksen tapahtumatyyppejä</string>
     <string name="allow_creating_tasks">Salli tehtävien luonti</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Varmuuskopiot</string>
+    <string name="enable_automatic_backups">Ota käyttöön automaattiset varmuuskopiot</string>
+    <string name="manage_automatic_backups">Hallitse automaattisia varmuuskopioita</string>
+    <string name="date_time_pattern_info">Voit käyttää seuraavia merkintöjä tiedostojen automaattiseen nimeämiseen:
+\n
+\n%Y - vuosi
+\n%M - kuukausi
+\n%D - päivä
+\n%h - tunti
+\n%m - minuutti
+\n%s - sekunti</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Valitse synkronoitavat kalenterit</string>
