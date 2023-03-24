@@ -263,9 +263,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(AUTO_BACKUP, false)
         set(enableAutomaticBackups) = prefs.edit().putBoolean(AUTO_BACKUP, enableAutomaticBackups).apply()
 
-    var autoBackupPath: String
-        get() = prefs.getString(AUTO_BACKUP_PATH, "")!!
-        set(autoBackupPath) = prefs.edit().putString(AUTO_BACKUP_PATH, autoBackupPath).apply()
+    var autoBackupFolder: String
+        get() = prefs.getString(AUTO_BACKUP_FOLDER, "")!!
+        set(autoBackupPath) = prefs.edit().putString(AUTO_BACKUP_FOLDER, autoBackupPath).apply()
 
     var autoBackupFilename: String
         get() = prefs.getString(AUTO_BACKUP_FILENAME, "")!!

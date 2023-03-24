@@ -13,16 +13,16 @@ import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
 class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: (() -> Unit)? = null, onCancel: (() -> Unit)? = null) {
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
     private val config = activity.config
-    private var realPath = config.autoBackupPath
-    private var selectedEventTypes = config.autoBackupEventTypes
+    private var backupFolder = config.autoBackupFolder
+    private var selectedEventTypes = config.autoBackupEventTypes.ifEmpty { config.displayEventTypes }
 
     init {
         view.apply {
             backup_events_folder.setText(
-                if (realPath.isEmpty()) {
+                if (backupFolder.isEmpty()) {
                     activity.getString(R.string.select_folder)
                 } else {
-                    activity.humanizePath(realPath)
+                    activity.humanizePath(backupFolder)
                 }
             )
 
@@ -65,9 +65,9 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             .setPositiveButton(R.string.ok, null)
             .setNegativeButton(R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.manage_automatic_backups) { alertDialog ->
-                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                        if (realPath.isEmpty()) {
+                activity.setupDialogStuff(view, this, R.string.manage_automatic_backups) { dialog ->
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                        if (backupFolder.isEmpty()) {
                             activity.toast(R.string.select_folder)
                             selectBackupFolder()
                             return@setOnClickListener
@@ -86,7 +86,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
 
                                 ensureBackgroundThread {
                                     config.apply {
-                                        autoBackupPath = realPath
+                                        autoBackupFolder = backupFolder
                                         autoBackupFilename = filename
                                         autoBackupEvents = backupEventsChecked
                                         autoBackupTasks = backupTasksChecked
@@ -97,16 +97,16 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                                     }
 
                                     onSuccess?.invoke()
-                                    alertDialog.dismiss()
+                                    dialog.dismiss()
                                 }
                             }
                             else -> activity.toast(R.string.invalid_name)
                         }
                     }
 
-                    alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
                         onCancel?.invoke()
-                        alertDialog.dismiss()
+                        dialog.dismiss()
                     }
                 }
             }
@@ -114,9 +114,22 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
 
     private fun selectBackupFolder() {
         activity.hideKeyboard(view.backup_events_filename)
-        FilePickerDialog(activity, realPath, false, showFAB = true) {
-            view.backup_events_folder.setText(activity.humanizePath(it))
-            realPath = it
+        FilePickerDialog(activity, backupFolder, false, showFAB = true) {
+            val path = it
+            activity.handleSAFDialog(it) { grantedSAF ->
+                if (!grantedSAF) {
+                    return@handleSAFDialog
+                }
+
+                activity.handleSAFDialogSdk30(path) { grantedSAF30 ->
+                    if (!grantedSAF30) {
+                        return@handleSAFDialogSdk30
+                    }
+
+                    backupFolder = path
+                    view.backup_events_folder.setText(activity.humanizePath(path))
+                }
+            }
         }
     }
 }
