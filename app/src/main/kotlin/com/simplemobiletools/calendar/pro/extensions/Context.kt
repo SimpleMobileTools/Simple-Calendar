@@ -248,14 +248,12 @@ fun Context.backupEventsAndTasks() {
             null
         }
 
-        IcsExporter(this).exportEvents(outputStream, events, true) { result ->
-            toast(
-                when (result) {
-                    IcsExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
-                    IcsExporter.ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
-                    else -> R.string.exporting_failed
-                }
-            )
+        IcsExporter(this).exportEvents(outputStream, events, showExportingToast = false) { result ->
+            when (result) {
+                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(R.string.exporting_some_entries_failed)
+                IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
+                else -> {}
+            }
             config.lastAutoBackupTime = getNowSeconds()
         }
         scheduleNextAutomaticBackup()
