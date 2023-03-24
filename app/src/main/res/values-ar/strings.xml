@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">السماح بتغيير المناطق الزمنية للحدث</string>
     <string name="manage_quick_filter_event_types">إدارة أنواع التصفية السريعة</string>
     <string name="allow_creating_tasks">السماح بإنشاء المهام</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">النسخ الاحتياطية</string>
+    <string name="enable_automatic_backups">تمكين النسخ الاحتياطي التلقائي</string>
+    <string name="manage_automatic_backups">إدارة النسخ الاحتياطية التلقائية</string>
+    <string name="date_time_pattern_info">يمكنك استخدام الأنماط التالية لتسمية الملف تلقائيا:
+\n
+\n%Y - السنة
+\n%M - الشهر
+\n%D - اليوم
+\n%h - ساعة
+\n%m - دقيقة
+\n%s - الثانية</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">اختر التقويمات للمزامنة</string>

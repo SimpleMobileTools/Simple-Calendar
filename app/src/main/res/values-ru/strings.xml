@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Разрешить изменение часового пояса событий</string>
     <string name="manage_quick_filter_event_types">Управление типами событий быстрого фильтра</string>
     <string name="allow_creating_tasks">Разрешить создание задач</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Резервные копии</string>
+    <string name="enable_automatic_backups">Использовать авторезервирование</string>
+    <string name="manage_automatic_backups">Управление авторезервированием</string>
+    <string name="date_time_pattern_info">Можно использовать следующие переменные для автоименования файла:
+\n
+\n%Y — год
+\n%M — месяц
+\n%D — день
+\n%h — час
+\n%m — минута
+\n%s — секунда</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Выберите календари для синхронизации</string>
