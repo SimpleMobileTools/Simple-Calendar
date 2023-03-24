@@ -73,6 +73,8 @@ const val YEAR = 31536000
 const val EVENT_PERIOD_TODAY = -1
 const val EVENT_PERIOD_CUSTOM = -2
 
+const val AUTO_BACKUP_INTERVAL_IN_DAYS = 1
+
 const val EVENT_LIST_PERIOD = "event_list_period"
 
 // Shared Preferences

@@ -192,7 +192,7 @@ fun Context.getAutomaticBackupIntent(): PendingIntent {
 
 fun Context.scheduleNextAutomaticBackup() {
     if (config.autoBackup) {
-        val backupAtMillis = DateTime.now().plusDays(1).withHourOfDay(6).millis
+        val backupAtMillis = DateTime.now().withHourOfDay(6).plusDays(AUTO_BACKUP_INTERVAL_IN_DAYS).millis
         val pendingIntent = getAutomaticBackupIntent()
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         try {
