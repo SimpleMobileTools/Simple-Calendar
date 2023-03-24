@@ -257,8 +257,8 @@ fun Context.backupEventsAndTasks() {
                 }
             )
             config.lastAutoBackupTime = getNowSeconds()
-            scheduleNextAutomaticBackup()
         }
+        scheduleNextAutomaticBackup()
     }
 }
 

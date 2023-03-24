@@ -839,34 +839,39 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupEnableAutomaticBackups() {
+        settings_backups_label.beVisibleIf(isRPlus())
+        settings_backups_divider.beVisibleIf(isRPlus())
+        settings_enable_automatic_backups_holder.beVisibleIf(isRPlus())
         settings_enable_automatic_backups.isChecked = config.autoBackup
         settings_enable_automatic_backups_holder.setOnClickListener {
-            settings_enable_automatic_backups.toggle()
-            if (!config.autoBackup) {
+            val wasBackupDisabled = !config.autoBackup
+            if (wasBackupDisabled) {
                 ManageAutomaticBackupsDialog(
                     activity = this,
-                    onSuccess = {
-                        scheduleNextAutomaticBackup()
-                    },
-                    onCancel = {
-                        config.autoBackup = false
-                        settings_enable_automatic_backups.isChecked = false
-                        settings_manage_automatic_backups_holder.beGone()
-                    }
+                    onSuccess = { scheduleNextAutomaticBackup() },
+                    onCancel = { enableOrDisableAutomaticBackups(false) }
                 )
+                enableOrDisableAutomaticBackups(true)
             } else {
                 cancelScheduledAutomaticBackup()
+                enableOrDisableAutomaticBackups(false)
             }
-            config.autoBackup = settings_enable_automatic_backups.isChecked
-            settings_manage_automatic_backups_holder.beVisibleIf(config.autoBackup)
         }
     }
 
     private fun setupManageAutomaticBackups() {
-        settings_manage_automatic_backups_holder.beVisibleIf(config.autoBackup)
+        settings_manage_automatic_backups_holder.beVisibleIf(isRPlus() && config.autoBackup)
         settings_manage_automatic_backups_holder.setOnClickListener {
-            ManageAutomaticBackupsDialog(this)
+            ManageAutomaticBackupsDialog(this, onSuccess = {
+                scheduleNextAutomaticBackup()
+            })
         }
+    }
+
+    private fun enableOrDisableAutomaticBackups(enable: Boolean) {
+        config.autoBackup = enable
+        settings_enable_automatic_backups.isChecked = enable
+        settings_manage_automatic_backups_holder.beVisibleIf(enable)
     }
 
     private fun setupExportSettings() {
