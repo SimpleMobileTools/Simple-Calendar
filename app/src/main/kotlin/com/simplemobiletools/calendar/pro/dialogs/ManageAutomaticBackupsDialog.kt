@@ -34,6 +34,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             backup_events_filename_hint.setEndIconOnClickListener {
                 DateTimePatternInfoDialog(activity)
             }
+
             backup_events_filename_hint.setEndIconOnLongClickListener {
                 DateTimePatternInfoDialog(activity)
                 true
@@ -43,10 +44,12 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             backup_events_checkbox_holder.setOnClickListener {
                 backup_events_checkbox.toggle()
             }
+
             backup_tasks_checkbox.isChecked = config.autoBackupTasks
             backup_tasks_checkbox_holder.setOnClickListener {
                 backup_tasks_checkbox.toggle()
             }
+
             backup_past_events_checkbox.isChecked = config.autoBackupPastEntries
             backup_past_events_checkbox_holder.setOnClickListener {
                 backup_past_events_checkbox.toggle()
