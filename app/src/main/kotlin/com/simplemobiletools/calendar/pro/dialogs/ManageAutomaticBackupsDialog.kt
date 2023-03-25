@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
-import android.os.Environment
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
@@ -14,10 +13,7 @@ import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
 class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: () -> Unit) {
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
     private val config = activity.config
-    private var backupFolder = config.autoBackupFolder.ifEmpty {
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
-    }
-
+    private var backupFolder = config.autoBackupFolder
     private var selectedEventTypes = config.autoBackupEventTypes.ifEmpty { config.displayEventTypes }
 
     init {

@@ -3,6 +3,8 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.content.Context
 import android.media.AudioManager
 import android.media.RingtoneManager
+import android.os.Environment
+import android.os.Environment.DIRECTORY_DOWNLOADS
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
@@ -264,7 +266,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(enableAutomaticBackups) = prefs.edit().putBoolean(AUTO_BACKUP, enableAutomaticBackups).apply()
 
     var autoBackupFolder: String
-        get() = prefs.getString(AUTO_BACKUP_FOLDER, "")!!
+        get() = prefs.getString(AUTO_BACKUP_FOLDER, Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS).absolutePath)!!
         set(autoBackupPath) = prefs.edit().putString(AUTO_BACKUP_FOLDER, autoBackupPath).apply()
 
     var autoBackupFilename: String
