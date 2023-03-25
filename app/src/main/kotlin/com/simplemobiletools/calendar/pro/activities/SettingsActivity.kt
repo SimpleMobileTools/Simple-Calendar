@@ -848,8 +848,12 @@ class SettingsActivity : SimpleActivity() {
             if (wasBackupDisabled) {
                 ManageAutomaticBackupsDialog(
                     activity = this,
-                    onSuccess = { scheduleNextAutomaticBackup() },
-                    onCancel = { enableOrDisableAutomaticBackups(false) }
+                    onSuccess = {
+                        scheduleNextAutomaticBackup()
+                    },
+                    onCancel = {
+                        enableOrDisableAutomaticBackups(false)
+                    }
                 )
                 enableOrDisableAutomaticBackups(true)
             } else {
