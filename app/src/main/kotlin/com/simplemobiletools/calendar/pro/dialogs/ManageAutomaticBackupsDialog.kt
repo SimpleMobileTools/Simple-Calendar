@@ -10,7 +10,7 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
 
-class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: (() -> Unit)? = null, onCancel: (() -> Unit)? = null) {
+class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: () -> Unit) {
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
     private val config = activity.config
     private var backupFolder = config.autoBackupFolder
@@ -100,17 +100,15 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                                         }
                                     }
 
-                                    onSuccess?.invoke()
+                                    activity.runOnUiThread {
+                                        onSuccess()
+                                    }
+
                                     dialog.dismiss()
                                 }
                             }
                             else -> activity.toast(R.string.invalid_name)
                         }
-                    }
-
-                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
-                        onCancel?.invoke()
-                        dialog.dismiss()
                     }
                 }
             }

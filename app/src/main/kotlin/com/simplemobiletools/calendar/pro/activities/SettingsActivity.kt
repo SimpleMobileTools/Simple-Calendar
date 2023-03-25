@@ -847,13 +847,10 @@ class SettingsActivity : SimpleActivity() {
                 ManageAutomaticBackupsDialog(
                     activity = this,
                     onSuccess = {
+                        enableOrDisableAutomaticBackups(true)
                         scheduleNextAutomaticBackup()
-                    },
-                    onCancel = {
-                        enableOrDisableAutomaticBackups(false)
                     }
                 )
-                enableOrDisableAutomaticBackups(true)
             } else {
                 cancelScheduledAutomaticBackup()
                 enableOrDisableAutomaticBackups(false)
@@ -864,9 +861,12 @@ class SettingsActivity : SimpleActivity() {
     private fun setupManageAutomaticBackups() {
         settings_manage_automatic_backups_holder.beVisibleIf(isRPlus() && config.autoBackup)
         settings_manage_automatic_backups_holder.setOnClickListener {
-            ManageAutomaticBackupsDialog(this, onSuccess = {
-                scheduleNextAutomaticBackup()
-            })
+            ManageAutomaticBackupsDialog(
+                activity = this,
+                onSuccess = {
+                    scheduleNextAutomaticBackup()
+                }
+            )
         }
     }
 
