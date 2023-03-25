@@ -19,7 +19,7 @@
             android:layout_marginStart="@dimen/activity_margin"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/activity_margin"
-            android:hint="@string/select_folder">
+            android:hint="@string/folder">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/backup_events_folder"

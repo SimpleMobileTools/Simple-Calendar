@@ -276,15 +276,15 @@ class Config(context: Context) : BaseConfig(context) {
         set(autoBackupEventTypes) = prefs.edit().remove(AUTO_BACKUP_EVENT_TYPES).putStringSet(AUTO_BACKUP_EVENT_TYPES, autoBackupEventTypes).apply()
 
     var autoBackupEvents: Boolean
-        get() = prefs.getBoolean(AUTO_BACKUP_EVENTS, false)
+        get() = prefs.getBoolean(AUTO_BACKUP_EVENTS, true)
         set(autoBackupEvents) = prefs.edit().putBoolean(AUTO_BACKUP_EVENTS, autoBackupEvents).apply()
 
     var autoBackupTasks: Boolean
-        get() = prefs.getBoolean(AUTO_BACKUP_TASKS, false)
+        get() = prefs.getBoolean(AUTO_BACKUP_TASKS, true)
         set(autoBackupTasks) = prefs.edit().putBoolean(AUTO_BACKUP_TASKS, autoBackupTasks).apply()
 
     var autoBackupPastEntries: Boolean
-        get() = prefs.getBoolean(AUTO_BACKUP_PAST_ENTRIES, false)
+        get() = prefs.getBoolean(AUTO_BACKUP_PAST_ENTRIES, true)
         set(autoBackupPastEntries) = prefs.edit().putBoolean(AUTO_BACKUP_PAST_ENTRIES, autoBackupPastEntries).apply()
 
     var lastAutoBackupTime: Long
