@@ -252,7 +252,11 @@ fun Context.backupEventsAndTasks() {
             .replace("%m", minutes, false)
             .replace("%s", seconds, false)
 
-        val exportPath = File(config.autoBackupFolder, "$filename.ics")
+        val outputFolder = File(config.autoBackupFolder).apply {
+            mkdirs()
+        }
+
+        val exportPath = File(outputFolder, "$filename.ics")
         val outputStream = try {
             exportPath.outputStream()
         } catch (e: Exception) {

@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
+import android.os.Environment
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
@@ -9,23 +10,23 @@ import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
+import java.io.File
 
 class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: () -> Unit) {
+    private val EVENTS_DIR = "Events"
+
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
     private val config = activity.config
-    private var backupFolder = config.autoBackupFolder
+    private var backupFolder = config.autoBackupFolder.ifEmpty {
+        val downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        File(downloadDir, EVENTS_DIR).absolutePath
+    }
+
     private var selectedEventTypes = config.autoBackupEventTypes.ifEmpty { config.displayEventTypes }
 
     init {
         view.apply {
-            backup_events_folder.setText(
-                if (backupFolder.isEmpty()) {
-                    activity.getString(R.string.select_folder)
-                } else {
-                    activity.humanizePath(backupFolder)
-                }
-            )
-
+            backup_events_folder.setText(activity.humanizePath(backupFolder))
             val filename = config.autoBackupFilename.ifEmpty {
                 "${activity.getString(R.string.events)}_%Y%M%D_%h%m%s"
             }
@@ -71,12 +72,6 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             .apply {
                 activity.setupDialogStuff(view, this, R.string.manage_automatic_backups) { dialog ->
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                        if (backupFolder.isEmpty()) {
-                            activity.toast(R.string.select_folder)
-                            selectBackupFolder()
-                            return@setOnClickListener
-                        }
-
                         val filename = view.backup_events_filename.value
                         when {
                             filename.isEmpty() -> activity.toast(R.string.empty_name)
@@ -116,9 +111,8 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
 
     private fun selectBackupFolder() {
         activity.hideKeyboard(view.backup_events_filename)
-        FilePickerDialog(activity, backupFolder, false, showFAB = true) {
-            val path = it
-            activity.handleSAFDialog(it) { grantedSAF ->
+        FilePickerDialog(activity, backupFolder, false, showFAB = true) { path ->
+            activity.handleSAFDialog(path) { grantedSAF ->
                 if (!grantedSAF) {
                     return@handleSAFDialog
                 }
