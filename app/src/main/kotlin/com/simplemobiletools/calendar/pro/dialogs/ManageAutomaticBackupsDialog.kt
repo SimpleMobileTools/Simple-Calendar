@@ -29,6 +29,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             val filename = config.autoBackupFilename.ifEmpty {
                 "${activity.getString(R.string.events)}_%Y%M%D_%h%m%s"
             }
+
             backup_events_filename.setText(filename)
             backup_events_filename_hint.setEndIconOnClickListener {
                 DateTimePatternInfoDialog(activity)

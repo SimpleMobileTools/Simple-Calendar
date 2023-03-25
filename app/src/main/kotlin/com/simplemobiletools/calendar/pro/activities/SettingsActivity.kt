@@ -339,9 +339,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun showQuickFilterPicker() {
         SelectEventTypesDialog(this, config.quickFilterEventTypes) {
-            if (config.quickFilterEventTypes != it) {
-                config.quickFilterEventTypes = it
-            }
+            config.quickFilterEventTypes = it
         }
     }
 

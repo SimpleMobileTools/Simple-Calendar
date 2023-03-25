@@ -529,11 +529,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         SelectEventTypesDialog(this, config.displayEventTypes) {
             if (config.displayEventTypes != it) {
                 config.displayEventTypes = it
-            }
 
-            refreshViewPager()
-            setupQuickFilter()
-            updateWidgets()
+                refreshViewPager()
+                setupQuickFilter()
+                updateWidgets()
+            }
         }
     }
 
