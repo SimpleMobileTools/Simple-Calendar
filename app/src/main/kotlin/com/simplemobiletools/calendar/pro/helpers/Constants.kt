@@ -3,6 +3,7 @@ package com.simplemobiletools.calendar.pro.helpers
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
+import org.joda.time.DateTime
 import java.util.*
 
 const val STORED_LOCALLY_ONLY = 0
@@ -274,4 +275,20 @@ fun getActivityToOpen(isTask: Boolean) = if (isTask) {
 
 fun generateImportId(): String {
     return UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+}
+
+// 6 am is the hardcoded automatic backup time, intervals shorter than 1 day are not yet supported.
+fun getNextAutoBackupTime(): DateTime {
+    val now = DateTime.now()
+    val sixHour = now.withHourOfDay(6)
+    return if (now.millis < sixHour.millis) {
+        sixHour
+    } else {
+        sixHour.plusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
+    }
+}
+
+fun getPreviousAutoBackupTime(): DateTime {
+    val nextBackupTime = getNextAutoBackupTime()
+    return nextBackupTime.minusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
 }

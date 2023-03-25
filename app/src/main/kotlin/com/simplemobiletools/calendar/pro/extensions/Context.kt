@@ -192,7 +192,7 @@ fun Context.getAutomaticBackupIntent(): PendingIntent {
 
 fun Context.scheduleNextAutomaticBackup() {
     if (config.autoBackup) {
-        val backupAtMillis = DateTime.now().withHourOfDay(6).plusDays(AUTO_BACKUP_INTERVAL_IN_DAYS).millis
+        val backupAtMillis = getNextAutoBackupTime().millis
         val pendingIntent = getAutomaticBackupIntent()
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         try {
@@ -209,11 +209,14 @@ fun Context.cancelScheduledAutomaticBackup() {
 }
 
 fun Context.checkAndBackupEventsOnBoot() {
-    val now = getNowSeconds()
-    val intervalInSeconds = AUTO_BACKUP_INTERVAL_IN_DAYS * DAY
-    if (config.autoBackup && config.lastAutoBackupTime !in (now - intervalInSeconds)..now) {
-        // device was probably off at the scheduled time so backup now
-        backupEventsAndTasks()
+    if (config.autoBackup) {
+        val previousRealBackupTime = config.lastAutoBackupTime
+        val previousScheduledBackupTime = getPreviousAutoBackupTime().seconds()
+        val missedPreviousBackup = previousRealBackupTime < previousScheduledBackupTime
+        if (missedPreviousBackup) {
+            // device was probably off at the scheduled time so backup now
+            backupEventsAndTasks()
+        }
     }
 }
 
