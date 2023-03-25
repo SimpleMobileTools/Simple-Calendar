@@ -10,16 +10,12 @@ import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
-import java.io.File
 
 class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: () -> Unit) {
-    private val EVENTS_DIR = "Events"
-
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
     private val config = activity.config
     private var backupFolder = config.autoBackupFolder.ifEmpty {
-        val downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        File(downloadDir, EVENTS_DIR).absolutePath
+        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
     }
 
     private var selectedEventTypes = config.autoBackupEventTypes.ifEmpty { config.displayEventTypes }
