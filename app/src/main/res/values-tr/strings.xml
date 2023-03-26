@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Etkinlik saat dilimlerini değiştirmeye izin ver</string>
     <string name="manage_quick_filter_event_types">Hızlı filtre etkinlik türlerini yönet</string>
     <string name="allow_creating_tasks">Görev oluşturmaya izin ver</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Yedeklemeler</string>
+    <string name="enable_automatic_backups">Otomatik yedeklemeleri etkinleştir</string>
+    <string name="manage_automatic_backups">Otomatik yedeklemeleri yönet</string>
+    <string name="date_time_pattern_info">Dosyanızı otomatik olarak adlandırmak için aşağıdaki desenleri kullanabilirsiniz:
+\n
+\n%Y - yıl
+\n%M - ay
+\n%D - gün
+\n%h - saat
+\n%m - dakika
+\n%s - saniye</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Eşzamanlanacak takvimleri seç</string>

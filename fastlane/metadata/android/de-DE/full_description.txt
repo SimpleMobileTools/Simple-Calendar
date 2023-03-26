@@ -3,12 +3,12 @@ Schlichter Kalender ist ein vollständig anpassbarer Offline-Kalender, der Andro
 ➕ Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
 
 Tagesplaner: Die volle Kontrolle
-Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Schlichter Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das KalenderWidget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
+Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Schlichter Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das Kalender-Widget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
 
 Terminplaner: Plane deinen Tag
 Tagesplaner und Familienorganisator in einem – verschaffe dir den perfekten Überblick, wenn es um Verabredungen, geschäftliche Meetings, Events und Termine geht. Dank Erinnerungen bist du immer pünktlich und top informiert. Dabei ist das 2023 Kalender Widget unglaublich einfach zu bedienen.
 
-Schlichter Kalender - Funktionen
+Schlichter Kalender – Funktionen
 
 ✔️ Das beste Benutzererlebnis
 ➕ Keine Werbung oder Popups für ein besseres Benutzererlebnis!
@@ -33,7 +33,7 @@ Schlichter Kalender - Funktionen
 ➕ Plane deinen Tag – mit diesem Android-Terminplaner verpasst du keine Termine mehr
 
 
-✔️ Nr.1 Kalender App
+✔️ Nr. 1 Kalender-App
 ➕ Feiertage, Geburtstage und Jahrestage von Kontakten einfach importieren: Dein persönlicher Geburtstagskalender, Urlaubsplaner und Arbeitskalender
 ➕ Aktivitäten- und Kalender Planer
 ➕ Erinnerungs-Widget mit praktischer Schlummeroption
