@@ -256,9 +256,9 @@ fun Context.backupEventsAndTasks() {
             mkdirs()
         }
 
-        val exportPath = File(outputFolder, "$filename.ics")
+        val exportFile = File(outputFolder, "$filename.ics")
         val outputStream = try {
-            exportPath.outputStream()
+            exportFile.outputStream()
         } catch (e: Exception) {
             showErrorToast(e)
             null
@@ -270,6 +270,7 @@ fun Context.backupEventsAndTasks() {
                 IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
                 else -> {}
             }
+            rescanPath(exportFile.absolutePath)
             config.lastAutoBackupTime = getNowSeconds()
         }
         scheduleNextAutomaticBackup()
