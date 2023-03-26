@@ -9,6 +9,7 @@ import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.dialog_manage_automatic_backups.view.*
+import java.io.File
 
 class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSuccess: () -> Unit) {
     private val view = (activity.layoutInflater.inflate(R.layout.dialog_manage_automatic_backups, null) as ViewGroup)
@@ -68,6 +69,12 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                         when {
                             filename.isEmpty() -> activity.toast(R.string.empty_name)
                             filename.isAValidFilename() -> {
+                                val file = File(backupFolder, "$filename.ics")
+                                if (file.exists() && !file.canWrite()) {
+                                    activity.toast(R.string.name_taken)
+                                    return@setOnClickListener
+                                }
+
                                 val backupEventsChecked = view.backup_events_checkbox.isChecked
                                 val backupTasksChecked = view.backup_tasks_checkbox.isChecked
                                 if (!backupEventsChecked && !backupTasksChecked || selectedEventTypes.isEmpty()) {
