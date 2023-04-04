@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Měsíční + denní</string>
     <string name="yearly_view">Roční</string>
     <string name="simple_event_list">Jednoduchý seznam</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Žádné nadcházející události.</string>
     <string name="go_to_today">Přejít na dnešní datum</string>
     <string name="go_to_date">Přejít na datum</string>
     <!-- Widget titles -->
@@ -30,7 +30,7 @@
     <string name="please_fill_location">Prosím, zadejte polohu, která má být zobrazena na mapě</string>
     <string name="public_event_notification_text">Blíží se událost</string>
     <string name="saving_filtered_out">Ukládání… Ale vybraný typ události je odfiltrován v horním menu – Filtr</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Odfiltrovali jste všechny typy událostí</string>
     <!-- Tasks -->
     <string name="task">Úkol</string>
     <string name="tasks">Úkoly</string>
@@ -128,8 +128,8 @@
     <string name="export_events_to_ics">Exportovat události do souboru .ics</string>
     <string name="default_event_type">Přednastavený typ události</string>
     <string name="export_past_events_too">Exportovat i dřívější události</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Exportovat úkoly</string>
+    <string name="export_past_entries">Exportovat i historické položky</string>
     <string name="include_event_types">Zahrnout typy událostí</string>
     <string name="filename_without_ics">Název souboru (bez .ics)</string>
     <string name="ignore_event_types">Ignorovat typy událostí v souboru, vždy použít výchozí</string>
@@ -178,8 +178,8 @@
     <string name="replace_description_with_location">Nahradit popis události místem</string>
     <string name="display_description_or_location">Zobrazit popis nebo místo</string>
     <string name="delete_all_events">Smazat všechny události</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události\? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
+    <string name="delete_all_events_and_tasks">Smazat všechny události a úkoly</string>
+    <string name="delete_all_events_confirmation">Opravdu chcete smazat všechny události a úkoly\? Typy událostí a ostatní nastavení zůstanou nedotčeny.</string>
     <string name="show_a_grid">Zobrazovat mřížku</string>
     <string name="loop_reminders">Opakovat připomínky až do zamítnutí</string>
     <string name="dim_past_events">Utlumit minulé události</string>
@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Povolit změny časových pásem událostí</string>
     <string name="manage_quick_filter_event_types">Spravovat rychlý filtr typu událostí</string>
     <string name="allow_creating_tasks">Umožnit vytváření úkolů</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Zálohy</string>
+    <string name="enable_automatic_backups">Povolit automatické zálohování</string>
+    <string name="manage_automatic_backups">Spravovat automatické zálohování</string>
+    <string name="date_time_pattern_info">K automatickému pojmenování souboru můžete použít následující vzory:
+\n
+\n%Y – rok
+\n%M – měsíc
+\n%D – den
+\n%h – hodiny
+\n%m – minuta
+\n%s – sekunda</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Vybrat kalendáře k synchronizaci</string>
