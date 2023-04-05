@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Afspraak</string>
     <string name="edit_event">Afspraak bewerken</string>
+    <string name="ro_event">Afspraak</string>
     <string name="new_event">Nieuwe afspraak</string>
     <string name="create_new_event">Een nieuwe afspraak maken</string>
     <string name="duplicate_event">Afspraak namaken</string>

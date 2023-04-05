@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">ইভেন্ট</string>
     <string name="edit_event">ইভেন্ট পরিবর্তন</string>
+    <string name="ro_event">ইভেন্ট</string>
     <string name="new_event">নতুন ইভেন্ট</string>
     <string name="create_new_event">নতুন ইভেন্ট তৈরি করুন</string>
     <string name="duplicate_event">ডুপ্লিকেট ইভেন্ট</string>

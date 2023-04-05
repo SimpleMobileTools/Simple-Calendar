@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Eveniment</string>
     <string name="edit_event">Modifică evenimentul</string>
+    <string name="ro_event">Eveniment</string>
     <string name="new_event">Eveniment nou</string>
     <string name="create_new_event">Creează un nou eveniment</string>
     <string name="duplicate_event">Duplică evenimentul</string>

@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Händelse</string>
     <string name="edit_event">Redigera händelse</string>
+    <string name="ro_event">Händelse</string>
     <string name="new_event">Ny händelse</string>
     <string name="create_new_event">Skapa en ny händelse</string>
     <string name="duplicate_event">Duplicera händelse</string>
@@ -183,7 +184,7 @@
     <string name="show_a_grid">Visa ett rutnät</string>
     <string name="loop_reminders">Upprepa påminnelser tills de tas bort</string>
     <string name="dim_past_events">Tona ned tidigare händelser</string>
-    <string name="dim_completed_tasks">Tona ned slutförda uppgifter</string>
+    <string name="dim_completed_tasks">Dämpa färdiga uppgifter</string>
     <string name="events">Händelser</string>
     <string name="reminder_stream">Ljudström för påminnelser</string>
     <string name="system_stream">System</string>
@@ -208,17 +209,10 @@
     <string name="allow_changing_time_zones">Tillåt ändring av tidszoner för händelser</string>
     <string name="manage_quick_filter_event_types">Hantera typer av händelser med snabbfilter</string>
     <string name="allow_creating_tasks">Tillåt att skapa uppgifter</string>
-    <string name="backups">Säkerhetskopieringar</string>
-    <string name="enable_automatic_backups">Aktivera automatiska säkerhetskopieringar</string>
-    <string name="manage_automatic_backups">Hantera automatiska säkerhetskopieringar</string>
-    <string name="date_time_pattern_info">Du kan använda följande mönster för att namnge filen automatiskt:
-\n
-\n%Y - år
-\n%M - månad
-\n%D - dag
-\n%h - timme
-\n%m - minut
-\n%s - sekund</string>
+    <string name="backups">Backups</string>
+    <string name="enable_automatic_backups">Enable automatic backups</string>
+    <string name="manage_automatic_backups">Manage automatic backups</string>
+    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Välj de kalendrar som du vill synkronisera</string>
@@ -257,7 +251,7 @@
     <string name="sample_title_5">Kaffedags</string>
     <!-- List widget config -->
     <string name="show_events_happening">Visa händelser som äger rum:</string>
-    <string name="within_the_next_one_year">Inom det närmaste året</string>
+    <string name="within_the_next_one_year">Inom det närmaste 1 året</string>
     <string name="today_only">Bara idag</string>
     <string name="within_the_next">Inom nästa…</string>
     <plurals name="within_the_next_days">

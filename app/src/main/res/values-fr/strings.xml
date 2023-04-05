@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Évènement</string>
     <string name="edit_event">Modifier l\'évènement</string>
+    <string name="ro_event">Évènement</string>
     <string name="new_event">Nouvel évènement</string>
     <string name="create_new_event">Créer un nouvel évènement</string>
     <string name="duplicate_event">Dupliquer l\'évènement</string>
@@ -208,17 +209,10 @@
     <string name="allow_changing_time_zones">Autoriser la modification des fuseaux horaires des évènements</string>
     <string name="manage_quick_filter_event_types">Gérer les filtres selon le type d\'évènement</string>
     <string name="allow_creating_tasks">Autoriser la création de tâches</string>
-    <string name="backups">Sauvegardes</string>
-    <string name="enable_automatic_backups">Activer les sauvegardes automatiques</string>
-    <string name="manage_automatic_backups">Gérer les sauvegardes automatiques</string>
-    <string name="date_time_pattern_info">Vous pouvez utiliser les modèles suivants pour nommer votre fichier automatiquement :
-\n
-\n%Y - année
-\n%M - mois
-\n%D - jour
-\n%h - heure
-\n%m - minute
-\n%s - seconde</string>
+    <string name="backups">Backups</string>
+    <string name="enable_automatic_backups">Enable automatic backups</string>
+    <string name="manage_automatic_backups">Manage automatic backups</string>
+    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>

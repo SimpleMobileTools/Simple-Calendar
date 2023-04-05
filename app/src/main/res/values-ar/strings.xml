@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">حدث</string>
     <string name="edit_event">تعديل حدث</string>
+    <string name="ro_event">حدث</string>
     <string name="new_event">حدث جديد</string>
     <string name="create_new_event">إضافة حدث جديد</string>
     <string name="duplicate_event">تكرار حدث</string>

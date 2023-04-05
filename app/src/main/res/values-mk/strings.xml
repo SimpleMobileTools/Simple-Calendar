@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Настан</string>
     <string name="edit_event">Уредување на настанот</string>
+    <string name="ro_event">настан</string>
     <string name="new_event">Нов настан</string>
     <string name="create_new_event">Создадете нов настан</string>
     <string name="duplicate_event">Дупликатен настан</string>

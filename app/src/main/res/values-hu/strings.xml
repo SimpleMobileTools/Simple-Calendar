@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Esemény</string>
     <string name="edit_event">Esemény szerkesztése</string>
+    <string name="ro_event">Esemény</string>
     <string name="new_event">Új esemény</string>
     <string name="create_new_event">Új esemény létrehozása</string>
     <string name="duplicate_event">Esemény megkettőzése</string>

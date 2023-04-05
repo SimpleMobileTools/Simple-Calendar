@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Sündmus</string>
     <string name="edit_event">Muuda sündmust</string>
+    <string name="ro_event">Sündmus</string>
     <string name="new_event">Uus sündmus</string>
     <string name="create_new_event">Loo uus sündmus</string>
     <string name="duplicate_event">Kopeeri sündmus</string>

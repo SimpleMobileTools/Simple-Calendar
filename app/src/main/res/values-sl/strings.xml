@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Dogodek</string>
     <string name="edit_event">Urejanje dogodka</string>
+    <string name="ro_event">Dogodek</string>
     <string name="new_event">Nov dogodek</string>
     <string name="create_new_event">Ustvarjanje novega dogodka</string>
     <string name="duplicate_event">Podvojen dogodek</string>

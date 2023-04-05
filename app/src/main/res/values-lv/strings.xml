@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Notikums</string>
     <string name="edit_event">Rediģēt notikumu</string>
+    <string name="ro_event">Notikums</string>
     <string name="new_event">Jauns notikums</string>
     <string name="create_new_event">Izveidot jaunu notikumu</string>
     <string name="duplicate_event">Notikuma dublikāts</string>

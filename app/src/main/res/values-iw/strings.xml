@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">אירוע</string>
     <string name="edit_event">ערוך אירוע</string>
+    <string name="ro_event">אירוע</string>
     <string name="new_event">אירוע חדש</string>
     <string name="create_new_event">צור אירוע חדש</string>
     <string name="duplicate_event">שכפל אירוע</string>

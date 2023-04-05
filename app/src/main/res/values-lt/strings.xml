@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Įvykis</string>
     <string name="edit_event">Taisyti įvykį</string>
+    <string name="ro_event">įvykis</string>
     <string name="new_event">Naujas įvykis</string>
     <string name="create_new_event">Sukurti naują įvykį</string>
     <string name="duplicate_event">Dubliuoti įvykį</string>

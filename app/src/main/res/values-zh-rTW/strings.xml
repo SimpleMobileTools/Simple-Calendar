@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">活動</string>
     <string name="edit_event">編輯活動</string>
+    <string name="ro_event">活動</string>
     <string name="new_event">新活動</string>
     <string name="create_new_event">建立一個新活動</string>
     <string name="duplicate_event">重複的活動</string>

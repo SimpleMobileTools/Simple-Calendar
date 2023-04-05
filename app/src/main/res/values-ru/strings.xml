@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Событие</string>
     <string name="edit_event">Редактировать событие</string>
+    <string name="ro_event">событие</string>
     <string name="new_event">Новое событие</string>
     <string name="create_new_event">Создать новое событие</string>
     <string name="duplicate_event">Дублировать событие</string>

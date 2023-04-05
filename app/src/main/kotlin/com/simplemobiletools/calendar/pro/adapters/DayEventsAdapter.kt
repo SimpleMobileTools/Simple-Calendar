@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.adapters
 
+import android.content.Context
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,7 @@ import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.event_list_item.view.*
 
-class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode: String, itemClick: (Any) -> Unit) :
+class DayEventsAdapter(var context: Context?, activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode: String, itemClick: (Any) -> Unit) :
     MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private val allDayString = resources.getString(R.string.all_day)
@@ -37,7 +38,9 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun getActionMenuId() = R.menu.cab_day
 
-    override fun prepareActionMode(menu: Menu) {}
+    override fun prepareActionMode(menu: Menu) {
+        menu.findItem(R.id.cab_delete).setVisible(isWholeSelectionRemoveable());
+    }
 
     override fun actionItemPressed(id: Int) {
         when (id) {
@@ -160,5 +163,16 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 }
             }
         }
+    }
+
+    public fun isWholeSelectionRemoveable(): Boolean {
+        val eventIds = selectedKeys.map { it.toLong() }.toMutableList()
+        val eventsToDelete = events.filter { selectedKeys.contains(it.id?.toInt()) }
+        val calendarsAltered =  HashSet<Int>()
+        eventsToDelete.forEach({
+            calendarsAltered.add(it.getCalDAVCalendarId())
+        })
+        var readonlyCalendars = context!!.calDAVHelper.getCalDAVCalendars("", true).filter { calendarsAltered.contains(it.id) && !it.canWrite() }
+        return readonlyCalendars.isEmpty()
     }
 }

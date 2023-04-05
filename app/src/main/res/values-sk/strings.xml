@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Udalosť</string>
     <string name="edit_event">Upraviť udalosť</string>
+    <string name="ro_event">Udalosť</string>
     <string name="new_event">Nová udalosť</string>
     <string name="create_new_event">Vytvoriť novú udalosť</string>
     <string name="duplicate_event">Duplikovať udalosť</string>

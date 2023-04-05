@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Tapahtuma</string>
     <string name="edit_event">Muokkaa Tapahtumaa</string>
+    <string name="ro_event">Tapahtuma</string>
     <string name="new_event">Uusi Tapahtuma</string>
     <string name="create_new_event">Luo uusi tapahtuma</string>
     <string name="duplicate_event">Kopio tapahtuma</string>

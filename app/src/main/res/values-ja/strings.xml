@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">予定</string>
     <string name="edit_event">予定を編集</string>
+    <string name="ro_event">予定</string>
     <string name="new_event">新しい予定</string>
     <string name="create_new_event">新しい予定を作成</string>
     <string name="duplicate_event">予定を複製</string>

@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Gertaera</string>
     <string name="edit_event">Editatu gertaera</string>
+    <string name="ro_event">Gertaera</string>
     <string name="new_event">Gertaera berria</string>
     <string name="create_new_event">Sortu gertaera berria</string>
     <string name="duplicate_event">Bikoiztu gertaera</string>

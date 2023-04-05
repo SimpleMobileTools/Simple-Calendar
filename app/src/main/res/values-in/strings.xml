@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Acara</string>
     <string name="edit_event">Sunting Acara</string>
+    <string name="ro_event">Acara</string>
     <string name="new_event">Acara Baru</string>
     <string name="create_new_event">Buat acara baru</string>
     <string name="duplicate_event">Duplikat acara</string>

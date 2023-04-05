@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Durum</string>
     <string name="edit_event">Etkinliği Düzenle</string>
+    <string name="ro_event">Etkinlik</string>
     <string name="new_event">Yeni Etkinlik</string>
     <string name="create_new_event">Yeni etkinlik oluştur</string>
     <string name="duplicate_event">Tekrarlanan etkinlik</string>

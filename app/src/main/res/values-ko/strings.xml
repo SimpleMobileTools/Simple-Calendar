@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">일정</string>
     <string name="edit_event">일정 수정</string>
+    <string name="ro_event">일정</string>
     <string name="new_event">새 일정</string>
     <string name="create_new_event">새 일정 생성</string>
     <string name="duplicate_event">중복 일정 생성</string>

@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Begivenhed</string>
     <string name="edit_event">Rediger begivenhed</string>
+    <string name="ro_event">Begivenhed</string>
     <string name="new_event">Ny begivenhed</string>
     <string name="create_new_event">Opret en ny begivenhed</string>
     <string name="duplicate_event">Kopier begivenhed</string>

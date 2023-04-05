@@ -87,6 +87,7 @@ class EventActivity : SimpleActivity() {
         setContentView(R.layout.activity_event)
         setupOptionsMenu()
         refreshMenuItems()
+        updateEditability()
 
         if (checkAppSideloading()) {
             return
@@ -339,12 +340,61 @@ class EventActivity : SimpleActivity() {
         updateIconColors()
         refreshMenuItems()
         showOrHideTimeZone()
+        updateActionBarTitle()
+        updateEditability()
+    }
+
+    private fun updateEditability() {
+        var editable = mIsNewEvent || mEventCalendarId == mEvent.getCalDAVCalendarId();
+        event_all_day.setEnabled(editable)
+        event_all_day_holder.setEnabled(editable)
+        event_attendees_divider.setEnabled(editable)
+        event_attendees_holder.setEnabled(editable)
+        event_attendees_image.setEnabled(editable)
+        event_availability_divider.setEnabled(editable)
+        event_availability.setEnabled(editable)
+        event_availability_image.setEnabled(editable)
+        event_caldav_calendar_color.setEnabled(editable)
+        event_caldav_calendar_divider.setEnabled(editable)
+        event_caldav_calendar_email.setEnabled(editable)
+        event_caldav_calendar_holder.setEnabled(editable)
+        event_caldav_calendar_image.setEnabled(editable)
+        event_caldav_calendar_name.setEnabled(editable)
+        event_description.setEnabled(editable)
+        event_end_date.setEnabled(editable)
+        event_end_time.setEnabled(editable)
+        event_location.setEnabled(editable)
+        event_reminder_1.setEnabled(editable)
+        event_reminder_1_type.setEnabled(editable)
+        event_reminder_2.setEnabled(editable)
+        event_reminder_2_type.setEnabled(editable)
+        event_reminder_3.setEnabled(editable)
+        event_reminder_3_type.setEnabled(editable)
+        event_repetition.setEnabled(editable)
+        event_repetition_image.setEnabled(editable)
+        event_repetition_limit.setEnabled(editable)
+        event_repetition_limit_holder.setEnabled(editable)
+        event_repetition_limit_label.setEnabled(editable)
+        event_repetition_rule.setEnabled(editable)
+        event_repetition_rule_holder.setEnabled(editable)
+        event_repetition_rule_label.setEnabled(editable)
+        event_start_date.setEnabled(editable)
+        event_start_time.setEnabled(editable)
+        event_time_zone_divider.setEnabled(editable)
+        event_time_zone.setEnabled(editable)
+        event_time_zone_image.setEnabled(editable)
+        event_title.setEnabled(editable)
+        event_type_color.setEnabled(editable)
+        event_type.setEnabled(editable)
+        event_type_holder.setEnabled(editable)
+        event_type_image.setEnabled(editable)
     }
 
     private fun refreshMenuItems() {
         if (::mEvent.isInitialized) {
             event_toolbar.menu.apply {
-                findItem(R.id.delete).isVisible = mEvent.id != null
+                findItem(R.id.save).isVisible = mEvent.id != null && mEvent.getCalDAVCalendarId() == mEventCalendarId
+                findItem(R.id.delete).isVisible = mEvent.id != null && mEvent.getCalDAVCalendarId() == mEventCalendarId
                 findItem(R.id.share).isVisible = mEvent.id != null
                 findItem(R.id.duplicate).isVisible = mEvent.id != null
             }
@@ -1800,8 +1850,11 @@ class EventActivity : SimpleActivity() {
     private fun updateActionBarTitle() {
         event_toolbar.title = if (mIsNewEvent) {
             getString(R.string.new_event)
-        } else {
+        } else if(mEventCalendarId == mEvent.getCalDAVCalendarId()){
             getString(R.string.edit_event)
+        }
+        else {
+            getString(R.string.ro_event)
         }
     }
 }

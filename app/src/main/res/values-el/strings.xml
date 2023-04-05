@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Εκδηλώσεις</string>
     <string name="edit_event">Επεξεργασία εκδηλώσεων</string>
+    <string name="ro_event">εκδήλωση</string>
     <string name="new_event">Νέα εκδήλωση</string>
     <string name="create_new_event">Δημιουργία νέας εκδήλωσης</string>
     <string name="duplicate_event">Διπλότυπες εκδηλώσεις</string>

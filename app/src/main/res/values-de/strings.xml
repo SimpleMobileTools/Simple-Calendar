@@ -19,6 +19,7 @@
     <!-- Event -->
     <string name="event">Termin</string>
     <string name="edit_event">Termin bearbeiten</string>
+    <string name="ro_event">Termin</string>
     <string name="new_event">Neuer Termin</string>
     <string name="create_new_event">Neuen Termin erstellen</string>
     <string name="duplicate_event">Termin duplizieren</string>
