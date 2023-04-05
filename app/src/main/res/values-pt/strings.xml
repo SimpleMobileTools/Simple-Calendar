@@ -209,9 +209,16 @@
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
     <string name="allow_creating_tasks">Permitir criação de tarefas</string>
     <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="enable_automatic_backups">Ativar backups automáticos</string>
+    <string name="manage_automatic_backups">Gerir backups automáticos</string>
+    <string name="date_time_pattern_info">Pode utilizar os seguintes padrões para nomear automaticamente os seus ficheiros:
+\n
+\n%Y - ano
+\n%M - mês
+\n%D - dia
+\n%h - hora
+\n%m - minutos
+\n%s - segundos</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>
