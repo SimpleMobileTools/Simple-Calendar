@@ -13,6 +13,7 @@ import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.media.AudioAttributes
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -270,7 +271,12 @@ fun Context.backupEventsAndTasks() {
                 IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
                 else -> {}
             }
-            rescanPath(exportFile.absolutePath)
+            MediaScannerConnection.scanFile(
+                this,
+                arrayOf(exportFile.absolutePath),
+                arrayOf(exportFile.getMimeType())
+            ) { _, _ -> }
+
             config.lastAutoBackupTime = getNowSeconds()
         }
         scheduleNextAutomaticBackup()
