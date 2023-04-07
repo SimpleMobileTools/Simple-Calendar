@@ -11,9 +11,10 @@ import android.widget.Toast
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.dialogs.ManageAutomaticBackupsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
-import com.simplemobiletools.calendar.pro.dialogs.SelectQuickFilterEventTypesDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -99,6 +100,8 @@ class SettingsActivity : SimpleActivity() {
         setupAllowChangingTimeZones()
         updateTextColors(settings_holder)
         checkPrimaryColor()
+        setupEnableAutomaticBackups()
+        setupManageAutomaticBackups()
         setupExportSettings()
         setupImportSettings()
 
@@ -114,6 +117,7 @@ class SettingsActivity : SimpleActivity() {
             settings_widgets_label,
             settings_events_label,
             settings_tasks_label,
+            settings_backups_label,
             settings_migrating_label
         ).forEach {
             it.setTextColor(getProperPrimaryColor())
@@ -334,7 +338,9 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun showQuickFilterPicker() {
-        SelectQuickFilterEventTypesDialog(this)
+        SelectEventTypesDialog(this, config.quickFilterEventTypes) {
+            config.quickFilterEventTypes = it
+        }
     }
 
     private fun setupSundayFirst() {
@@ -828,6 +834,46 @@ class SettingsActivity : SimpleActivity() {
                 }
             }
         }
+    }
+
+    private fun setupEnableAutomaticBackups() {
+        settings_backups_label.beVisibleIf(isRPlus())
+        settings_backups_divider.beVisibleIf(isRPlus())
+        settings_enable_automatic_backups_holder.beVisibleIf(isRPlus())
+        settings_enable_automatic_backups.isChecked = config.autoBackup
+        settings_enable_automatic_backups_holder.setOnClickListener {
+            val wasBackupDisabled = !config.autoBackup
+            if (wasBackupDisabled) {
+                ManageAutomaticBackupsDialog(
+                    activity = this,
+                    onSuccess = {
+                        enableOrDisableAutomaticBackups(true)
+                        scheduleNextAutomaticBackup()
+                    }
+                )
+            } else {
+                cancelScheduledAutomaticBackup()
+                enableOrDisableAutomaticBackups(false)
+            }
+        }
+    }
+
+    private fun setupManageAutomaticBackups() {
+        settings_manage_automatic_backups_holder.beVisibleIf(isRPlus() && config.autoBackup)
+        settings_manage_automatic_backups_holder.setOnClickListener {
+            ManageAutomaticBackupsDialog(
+                activity = this,
+                onSuccess = {
+                    scheduleNextAutomaticBackup()
+                }
+            )
+        }
+    }
+
+    private fun enableOrDisableAutomaticBackups(enable: Boolean) {
+        config.autoBackup = enable
+        settings_enable_automatic_backups.isChecked = enable
+        settings_manage_automatic_backups_holder.beVisibleIf(enable)
     }
 
     private fun setupExportSettings() {

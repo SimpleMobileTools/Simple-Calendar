@@ -922,6 +922,47 @@
                 layout="@layout/divider" />
 
             <TextView
+                android:id="@+id/settings_backups_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/backups" />
+
+            <RelativeLayout
+                android:id="@+id/settings_enable_automatic_backups_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_enable_automatic_backups"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_automatic_backups" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_manage_automatic_backups_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/settings_manage_automatic_backups"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_automatic_backups" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_backups_divider"
+                layout="@layout/divider" />
+
+            <TextView
                 android:id="@+id/settings_migrating_label"
                 style="@style/SettingsSectionLabelStyle"
                 android:layout_width="match_parent"

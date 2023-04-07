@@ -3,6 +3,8 @@ package com.simplemobiletools.calendar.pro.helpers
 import android.content.Context
 import android.media.AudioManager
 import android.media.RingtoneManager
+import android.os.Environment
+import android.os.Environment.DIRECTORY_DOWNLOADS
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.scheduleCalDAVSync
@@ -258,4 +260,36 @@ class Config(context: Context) : BaseConfig(context) {
     var wasFilteredOutWarningShown: Boolean
         get() = prefs.getBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, false)
         set(wasFilteredOutWarningShown) = prefs.edit().putBoolean(WAS_FILTERED_OUT_WARNING_SHOWN, wasFilteredOutWarningShown).apply()
+
+    var autoBackup: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP, false)
+        set(enableAutomaticBackups) = prefs.edit().putBoolean(AUTO_BACKUP, enableAutomaticBackups).apply()
+
+    var autoBackupFolder: String
+        get() = prefs.getString(AUTO_BACKUP_FOLDER, Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS).absolutePath)!!
+        set(autoBackupPath) = prefs.edit().putString(AUTO_BACKUP_FOLDER, autoBackupPath).apply()
+
+    var autoBackupFilename: String
+        get() = prefs.getString(AUTO_BACKUP_FILENAME, "")!!
+        set(autoBackupFilename) = prefs.edit().putString(AUTO_BACKUP_FILENAME, autoBackupFilename).apply()
+
+    var autoBackupEventTypes: Set<String>
+        get() = prefs.getStringSet(AUTO_BACKUP_EVENT_TYPES, HashSet())!!
+        set(autoBackupEventTypes) = prefs.edit().remove(AUTO_BACKUP_EVENT_TYPES).putStringSet(AUTO_BACKUP_EVENT_TYPES, autoBackupEventTypes).apply()
+
+    var autoBackupEvents: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_EVENTS, true)
+        set(autoBackupEvents) = prefs.edit().putBoolean(AUTO_BACKUP_EVENTS, autoBackupEvents).apply()
+
+    var autoBackupTasks: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_TASKS, true)
+        set(autoBackupTasks) = prefs.edit().putBoolean(AUTO_BACKUP_TASKS, autoBackupTasks).apply()
+
+    var autoBackupPastEntries: Boolean
+        get() = prefs.getBoolean(AUTO_BACKUP_PAST_ENTRIES, true)
+        set(autoBackupPastEntries) = prefs.edit().putBoolean(AUTO_BACKUP_PAST_ENTRIES, autoBackupPastEntries).apply()
+
+    var lastAutoBackupTime: Long
+        get() = prefs.getLong(LAST_AUTO_BACKUP_TIME, 0L)
+        set(lastAutoBackupTime) = prefs.edit().putLong(LAST_AUTO_BACKUP_TIME, lastAutoBackupTime).apply()
 }

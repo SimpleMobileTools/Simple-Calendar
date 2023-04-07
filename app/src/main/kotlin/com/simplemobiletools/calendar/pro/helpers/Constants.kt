@@ -3,12 +3,14 @@ package com.simplemobiletools.calendar.pro.helpers
 import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
+import org.joda.time.DateTime
 import java.util.*
 
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
 const val COLUMN_COUNT = 7
 const val SCHEDULE_CALDAV_REQUEST_CODE = 10000
+const val AUTOMATIC_BACKUP_REQUEST_CODE = 10001
 const val FETCH_INTERVAL = 3 * MONTH_SECONDS
 const val MAX_SEARCH_YEAR = 2051218800L  // 2035, limit search results for events repeating indefinitely
 
@@ -72,6 +74,8 @@ const val YEAR = 31536000
 const val EVENT_PERIOD_TODAY = -1
 const val EVENT_PERIOD_CUSTOM = -2
 
+const val AUTO_BACKUP_INTERVAL_IN_DAYS = 1
+
 const val EVENT_LIST_PERIOD = "event_list_period"
 
 // Shared Preferences
@@ -129,6 +133,14 @@ const val HIGHLIGHT_WEEKENDS_COLOR = "highlight_weekends_color"
 const val LAST_USED_EVENT_SPAN = "last_used_event_span"
 const val ALLOW_CREATING_TASKS = "allow_creating_tasks"
 const val WAS_FILTERED_OUT_WARNING_SHOWN = "was_filtered_out_warning_shown"
+const val AUTO_BACKUP = "auto_backup"
+const val AUTO_BACKUP_FOLDER = "auto_backup_folder"
+const val AUTO_BACKUP_FILENAME = "auto_backup_filename"
+const val AUTO_BACKUP_EVENT_TYPES = "auto_backup_event_types"
+const val AUTO_BACKUP_EVENTS = "auto_backup_events"
+const val AUTO_BACKUP_TASKS = "auto_backup_tasks"
+const val AUTO_BACKUP_PAST_ENTRIES = "auto_backup_past_entries"
+const val LAST_AUTO_BACKUP_TIME = "last_auto_backup_time"
 
 // repeat_rule for monthly and yearly repetition
 const val REPEAT_SAME_DAY = 1                           // i.e. 25th every month, or 3rd june (if yearly repetition)
@@ -263,4 +275,20 @@ fun getActivityToOpen(isTask: Boolean) = if (isTask) {
 
 fun generateImportId(): String {
     return UUID.randomUUID().toString().replace("-", "") + System.currentTimeMillis().toString()
+}
+
+// 6 am is the hardcoded automatic backup time, intervals shorter than 1 day are not yet supported.
+fun getNextAutoBackupTime(): DateTime {
+    val now = DateTime.now()
+    val sixHour = now.withHourOfDay(6)
+    return if (now.millis < sixHour.millis) {
+        sixHour
+    } else {
+        sixHour.plusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
+    }
+}
+
+fun getPreviousAutoBackupTime(): DateTime {
+    val nextBackupTime = getNextAutoBackupTime()
+    return nextBackupTime.minusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
 }

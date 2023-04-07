@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
+import android.content.Context
 import android.provider.CalendarContract.Events
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
@@ -9,7 +10,6 @@ import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.EXPOR
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.EXPORT_PARTIAL
 import com.simplemobiletools.calendar.pro.models.CalDAVCalendar
 import com.simplemobiletools.calendar.pro.models.Event
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.writeLn
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
@@ -17,7 +17,7 @@ import java.io.BufferedWriter
 import java.io.OutputStream
 import java.io.OutputStreamWriter
 
-class IcsExporter(private val activity: BaseSimpleActivity) {
+class IcsExporter(private val context: Context) {
     enum class ExportResult {
         EXPORT_FAIL, EXPORT_OK, EXPORT_PARTIAL
     }
@@ -26,7 +26,7 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
     private var eventsExported = 0
     private var eventsFailed = 0
     private var calendars = ArrayList<CalDAVCalendar>()
-    private val reminderLabel = activity.getString(R.string.reminder)
+    private val reminderLabel = context.getString(R.string.reminder)
     private val exportTime = Formatter.getExportedTime(System.currentTimeMillis())
 
     fun exportEvents(
@@ -41,9 +41,9 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
         }
 
         ensureBackgroundThread {
-            calendars = activity.calDAVHelper.getCalDAVCalendars("", false)
+            calendars = context.calDAVHelper.getCalDAVCalendars("", false)
             if (showExportingToast) {
-                activity.toast(R.string.exporting)
+                context.toast(R.string.exporting)
             }
 
             object : BufferedWriter(OutputStreamWriter(outputStream, Charsets.UTF_8)) {
@@ -133,8 +133,8 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
             writeLn(BEGIN_EVENT)
             event.title.replace("\n", "\\n").let { if (it.isNotEmpty()) writeLn("$SUMMARY:$it") }
             event.importId.let { if (it.isNotEmpty()) writeLn("$UID$it") }
-            writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(event.eventType)?.color}")
-            writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(event.eventType)?.title}")
+            writeLn("$CATEGORY_COLOR${context.eventTypesDB.getEventTypeWithId(event.eventType)?.color}")
+            writeLn("$CATEGORIES${context.eventTypesDB.getEventTypeWithId(event.eventType)?.title}")
             writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(event.lastUpdated)}")
             writeLn("$TRANSP${if (event.availability == Events.AVAILABILITY_FREE) TRANSPARENT else OPAQUE}")
             event.location.let { if (it.isNotEmpty()) writeLn("$LOCATION:$it") }
@@ -166,8 +166,8 @@ class IcsExporter(private val activity: BaseSimpleActivity) {
             writeLn(BEGIN_TASK)
             task.title.replace("\n", "\\n").let { if (it.isNotEmpty()) writeLn("$SUMMARY:$it") }
             task.importId.let { if (it.isNotEmpty()) writeLn("$UID$it") }
-            writeLn("$CATEGORY_COLOR${activity.eventTypesDB.getEventTypeWithId(task.eventType)?.color}")
-            writeLn("$CATEGORIES${activity.eventTypesDB.getEventTypeWithId(task.eventType)?.title}")
+            writeLn("$CATEGORY_COLOR${context.eventTypesDB.getEventTypeWithId(task.eventType)?.color}")
+            writeLn("$CATEGORIES${context.eventTypesDB.getEventTypeWithId(task.eventType)?.title}")
             writeLn("$LAST_MODIFIED:${Formatter.getExportedTime(task.lastUpdated)}")
             task.location.let { if (it.isNotEmpty()) writeLn("$LOCATION:$it") }
 

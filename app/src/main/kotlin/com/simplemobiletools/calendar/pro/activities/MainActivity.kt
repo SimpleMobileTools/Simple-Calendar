@@ -22,8 +22,8 @@ import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.adapters.QuickFilterEventTypeAdapter
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
-import com.simplemobiletools.calendar.pro.dialogs.FilterEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.SetRemindersDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.fragments.*
@@ -526,10 +526,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun showFilterDialog() {
-        FilterEventTypesDialog(this) {
-            refreshViewPager()
-            setupQuickFilter()
-            updateWidgets()
+        SelectEventTypesDialog(this, config.displayEventTypes) {
+            if (config.displayEventTypes != it) {
+                config.displayEventTypes = it
+
+                refreshViewPager()
+                setupQuickFilter()
+                updateWidgets()
+            }
         }
     }
 
@@ -1149,7 +1153,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun exportEventsTo(eventTypes: ArrayList<Long>, outputStream: OutputStream?) {
         ensureBackgroundThread {
-            val events = eventsHelper.getEventsToExport(eventTypes)
+            val events = eventsHelper.getEventsToExport(eventTypes, config.exportEvents, config.exportTasks, config.exportPastEntries)
             if (events.isEmpty()) {
                 toast(R.string.no_entries_for_exporting)
             } else {

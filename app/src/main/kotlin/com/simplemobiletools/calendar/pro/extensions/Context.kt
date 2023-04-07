@@ -13,6 +13,7 @@ import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.media.AudioAttributes
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -37,6 +38,7 @@ import com.simplemobiletools.calendar.pro.interfaces.EventsDao
 import com.simplemobiletools.calendar.pro.interfaces.TasksDao
 import com.simplemobiletools.calendar.pro.interfaces.WidgetsDao
 import com.simplemobiletools.calendar.pro.models.*
+import com.simplemobiletools.calendar.pro.receivers.AutomaticBackupReceiver
 import com.simplemobiletools.calendar.pro.receivers.CalDAVSyncReceiver
 import com.simplemobiletools.calendar.pro.receivers.NotificationReceiver
 import com.simplemobiletools.calendar.pro.services.MarkCompletedService
@@ -47,6 +49,7 @@ import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
+import java.io.File
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -181,6 +184,103 @@ fun Context.getNotificationIntent(event: Event): PendingIntent {
 fun Context.cancelPendingIntent(id: Long) {
     val intent = Intent(this, NotificationReceiver::class.java)
     PendingIntent.getBroadcast(this, id.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE).cancel()
+}
+
+fun Context.getAutomaticBackupIntent(): PendingIntent {
+    val intent = Intent(this, AutomaticBackupReceiver::class.java)
+    return PendingIntent.getBroadcast(this, AUTOMATIC_BACKUP_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+}
+
+fun Context.scheduleNextAutomaticBackup() {
+    if (config.autoBackup) {
+        val backupAtMillis = getNextAutoBackupTime().millis
+        val pendingIntent = getAutomaticBackupIntent()
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        try {
+            AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, backupAtMillis, pendingIntent)
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
+    }
+}
+
+fun Context.cancelScheduledAutomaticBackup() {
+    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    alarmManager.cancel(getAutomaticBackupIntent())
+}
+
+fun Context.checkAndBackupEventsOnBoot() {
+    if (config.autoBackup) {
+        val previousRealBackupTime = config.lastAutoBackupTime
+        val previousScheduledBackupTime = getPreviousAutoBackupTime().seconds()
+        val missedPreviousBackup = previousRealBackupTime < previousScheduledBackupTime
+        if (missedPreviousBackup) {
+            // device was probably off at the scheduled time so backup now
+            backupEventsAndTasks()
+        }
+    }
+}
+
+fun Context.backupEventsAndTasks() {
+    ensureBackgroundThread {
+        val config = config
+        val events = eventsHelper.getEventsToExport(
+            eventTypes = config.autoBackupEventTypes.map { it.toLong() } as ArrayList<Long>,
+            exportEvents = config.autoBackupEvents,
+            exportTasks = config.autoBackupTasks,
+            exportPastEntries = config.autoBackupPastEntries
+        )
+        if (events.isEmpty()) {
+            toast(R.string.no_entries_for_exporting)
+            config.lastAutoBackupTime = getNowSeconds()
+            scheduleNextAutomaticBackup()
+            return@ensureBackgroundThread
+        }
+
+        val now = DateTime.now()
+        val year = now.year.toString()
+        val month = now.monthOfYear.ensureTwoDigits()
+        val day = now.dayOfMonth.ensureTwoDigits()
+        val hours = now.hourOfDay.ensureTwoDigits()
+        val minutes = now.minuteOfHour.ensureTwoDigits()
+        val seconds = now.secondOfMinute.ensureTwoDigits()
+
+        val filename = config.autoBackupFilename
+            .replace("%Y", year, false)
+            .replace("%M", month, false)
+            .replace("%D", day, false)
+            .replace("%h", hours, false)
+            .replace("%m", minutes, false)
+            .replace("%s", seconds, false)
+
+        val outputFolder = File(config.autoBackupFolder).apply {
+            mkdirs()
+        }
+
+        val exportFile = File(outputFolder, "$filename.ics")
+        val outputStream = try {
+            exportFile.outputStream()
+        } catch (e: Exception) {
+            showErrorToast(e)
+            null
+        }
+
+        IcsExporter(this).exportEvents(outputStream, events, showExportingToast = false) { result ->
+            when (result) {
+                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(R.string.exporting_some_entries_failed)
+                IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
+                else -> {}
+            }
+            MediaScannerConnection.scanFile(
+                this,
+                arrayOf(exportFile.absolutePath),
+                arrayOf(exportFile.getMimeType())
+            ) { _, _ -> }
+
+            config.lastAutoBackupTime = getNowSeconds()
+        }
+        scheduleNextAutomaticBackup()
+    }
 }
 
 fun Context.getRepetitionText(seconds: Int) = when (seconds) {
