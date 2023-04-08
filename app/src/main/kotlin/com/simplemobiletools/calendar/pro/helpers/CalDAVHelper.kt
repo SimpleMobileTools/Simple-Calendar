@@ -133,7 +133,7 @@ class CalDAVHelper(val context: Context) {
         }
 
         return colors.toSortedMap().entries
-            .associate { (k, v) -> v to k }
+            .associate { (key, color) -> color to key }
     }
 
     @SuppressLint("MissingPermission")
