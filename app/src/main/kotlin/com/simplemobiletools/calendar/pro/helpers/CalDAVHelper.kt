@@ -394,11 +394,11 @@ class CalDAVHelper(val context: Context) {
             put(Events.STATUS, Events.STATUS_CONFIRMED)
             put(Events.AVAILABILITY, event.availability)
 
-            val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId)!!
-            val colors = getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_EVENT)
             if (event.color == 0) {
                 put(Events.EVENT_COLOR_KEY, "")
             } else {
+                val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId)!!
+                val colors = getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_EVENT)
                 put(Events.EVENT_COLOR_KEY, colors[event.color])
             }
 
