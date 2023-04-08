@@ -835,9 +835,16 @@ class EventActivity : SimpleActivity() {
         ensureBackgroundThread {
             val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
             runOnUiThread {
-                SelectEventColorDialog(activity = this, eventType = eventType, selectedColor = mEvent.color) { color ->
-                    mEventColor = color
-                    updateEventColorInfo(eventType.color)
+                val selectedColor = if (mEventColor == 0) {
+                    eventType.color
+                } else {
+                    mEventColor
+                }
+                SelectEventColorDialog(activity = this, eventType = eventType, selectedColor = selectedColor) { color ->
+                    if (color != eventType.color) {
+                        mEventColor = color
+                        updateEventColorInfo(eventType.color)
+                    }
                 }
             }
         }
