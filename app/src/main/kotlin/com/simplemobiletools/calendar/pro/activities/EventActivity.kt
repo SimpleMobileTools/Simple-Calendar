@@ -76,6 +76,7 @@ class EventActivity : SimpleActivity() {
     private var mOriginalStartTS = 0L
     private var mOriginalEndTS = 0L
     private var mIsNewEvent = true
+    private var mEventColor = 0
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -164,6 +165,7 @@ class EventActivity : SimpleActivity() {
             putString(ATTENDEES, getAllAttendees(false))
 
             putInt(AVAILABILITY, mAvailability)
+            putInt(EVENT_COLOR, mEventColor)
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -196,6 +198,7 @@ class EventActivity : SimpleActivity() {
             mReminder3Type = getInt(REMINDER_3_TYPE)
 
             mAvailability = getInt(AVAILABILITY)
+            mEventColor = getInt(EVENT_COLOR)
 
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
@@ -429,6 +432,7 @@ class EventActivity : SimpleActivity() {
             mEventTypeId != mEvent.eventType ||
             mWasCalendarChanged ||
             mIsAllDayEvent != mEvent.getIsAllDay() ||
+            mEventColor != mEvent.color ||
             hasTimeChanged
         ) {
             return true
@@ -488,6 +492,7 @@ class EventActivity : SimpleActivity() {
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
         mAvailability = mEvent.availability
+        mEventColor = mEvent.color
 
         val token = object : TypeToken<List<Attendee>>() {}.type
         mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, token) ?: ArrayList()
@@ -831,7 +836,7 @@ class EventActivity : SimpleActivity() {
             val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
             runOnUiThread {
                 SelectEventColorDialog(activity = this, eventType = eventType, selectedColor = mEvent.color) { color ->
-                    mEvent.color = color
+                    mEventColor = color
                     updateEventColorInfo(eventType.color)
                 }
             }
@@ -1029,10 +1034,10 @@ class EventActivity : SimpleActivity() {
     }
 
     private fun updateEventColorInfo(defaultColor: Int) {
-        val eventColor = if (mEvent.color == 0) {
+        val eventColor = if (mEventColor == 0) {
             defaultColor
         } else {
-            mEvent.color
+            mEventColor
         }
         event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
     }
@@ -1225,6 +1230,7 @@ class EventActivity : SimpleActivity() {
             source = newSource
             location = event_location.value
             availability = mAvailability
+            color = mEventColor
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
