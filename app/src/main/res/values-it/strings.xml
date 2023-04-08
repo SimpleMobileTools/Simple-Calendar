@@ -178,7 +178,7 @@
     <string name="replace_description_with_location">Sostituisci la descrizione con la posizione</string>
     <string name="display_description_or_location">Visualizza la descrizione o la posizione</string>
     <string name="delete_all_events">Cancella tutti gli eventi</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_and_tasks">Elimina tutti gli eventi e le attività</string>
     <string name="delete_all_events_confirmation">Sei sicuro/sicura di voler eliminare tutti gli eventi e le attività\? In questo modo i tipi di eventi e le altre impostazioni rimarranno intatti.</string>
     <string name="show_a_grid">Mostra una griglia</string>
     <string name="loop_reminders">Manda in loop i promemoria finchè non vengono rimossi</string>
@@ -208,10 +208,17 @@
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
     <string name="manage_quick_filter_event_types">Gestisci i tipi di eventi con filtro rapido</string>
     <string name="allow_creating_tasks">Permetti la creazione di compiti</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Backup</string>
+    <string name="enable_automatic_backups">Abilita i backup automatici</string>
+    <string name="manage_automatic_backups">Gestisci i backup automatici</string>
+    <string name="date_time_pattern_info">È possibile utilizzare i seguenti schemi per assegnare automaticamente un nome al file:
+\n
+\n%Y - anno
+\n%M - mese
+\n%D - giorno
+\n%h - ora
+\n%m - minuto
+\n%s - secondo</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>
