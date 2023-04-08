@@ -337,7 +337,10 @@ class EventsHelper(val context: Context) {
                     }
                 }
             }
-            it.color = eventTypeColors.get(it.eventType) ?: context.getProperPrimaryColor()
+
+            if (it.color == 0) {
+                it.color = eventTypeColors.get(it.eventType) ?: context.getProperPrimaryColor()
+            }
         }
 
         callback(events)

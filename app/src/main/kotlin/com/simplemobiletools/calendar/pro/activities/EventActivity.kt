@@ -10,6 +10,7 @@ import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract.Attendees
+import android.provider.CalendarContract.Colors
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
@@ -825,6 +826,19 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun showEventColorDialog() {
+        hideKeyboard()
+        ensureBackgroundThread {
+            val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
+            runOnUiThread {
+                SelectEventTypeColorDialog(activity = this, eventType = eventType, selectedColor = mEvent.color, colorType = Colors.TYPE_EVENT) { color ->
+                    mEvent.color = color
+                    event_caldav_color.setFillWithStroke(color, getProperBackgroundColor())
+                }
+            }
+        }
+    }
+
     private fun checkReminderTexts() {
         updateReminder1Text()
         updateReminder2Text()
@@ -936,6 +950,9 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_image.beVisible()
             event_caldav_calendar_holder.beVisible()
             event_caldav_calendar_divider.beVisible()
+            event_caldav_color_image.beVisible()
+            event_caldav_color_holder.beVisible()
+            event_caldav_color_divider.beVisible()
 
             val calendars = calDAVHelper.getCalDAVCalendars("", true).filter {
                 it.canWrite() && config.getSyncedCalendarIdsAsList().contains(it.id)
@@ -959,6 +976,7 @@ class EventActivity : SimpleActivity() {
                     updateAvailabilityImage()
                 }
             }
+            event_caldav_color_holder.setOnClickListener { showEventColorDialog() }
         } else {
             updateCurrentCalendarInfo(null)
         }
@@ -974,6 +992,9 @@ class EventActivity : SimpleActivity() {
         event_caldav_calendar_divider.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
         event_caldav_calendar_color.beGoneIf(currentCalendar == null)
+        event_caldav_color_image.beGoneIf(currentCalendar == null)
+        event_caldav_color_holder.beGoneIf(currentCalendar == null)
+        event_caldav_color_divider.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
             mEventCalendarId = STORED_LOCALLY_ONLY
@@ -1002,6 +1023,13 @@ class EventActivity : SimpleActivity() {
                     event_caldav_calendar_holder.apply {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
+
+                    val eventColor = if (mEvent.color == 0) {
+                        calendarColor
+                    } else {
+                        mEvent.color
+                    }
+                    event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
                 }
             }
         }
@@ -1791,7 +1819,7 @@ class EventActivity : SimpleActivity() {
         val textColor = getProperTextColor()
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_caldav_color_image
         ).forEach {
             it.applyColorFilter(textColor)
         }

@@ -557,9 +557,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
                     val dayColumn = dayColumns[dayOfWeek]
                     (inflater.inflate(R.layout.week_event_marker, null, false) as ConstraintLayout).apply {
-                        var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+                        var backgroundColor = if (event.color == 0) {
+                            eventTypeColors.get(event.eventType, primaryColor)
+                        } else {
+                            event.color
+                        }
                         var textColor = backgroundColor.getContrastColor()
-                        val currentEventWeeklyView = eventTimeRanges[currentDayCode]!!.get(event.id)
+                        val currentEventWeeklyView = eventTimeRanges[currentDayCode]!![event.id]
 
                         val adjustAlpha = if (event.isTask()) {
                             dimCompletedTasks && event.isTaskCompleted()
