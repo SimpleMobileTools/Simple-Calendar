@@ -87,7 +87,7 @@ class IcsExporter(private val context: Context) {
             val reminder = it
             out.apply {
                 writeLn(BEGIN_ALARM)
-                writeLn("$DESCRIPTION$reminderLabel")
+                writeLn("$DESCRIPTION_EXPORT$reminderLabel")
                 if (reminder.type == REMINDER_NOTIFICATION) {
                     writeLn("$ACTION$DISPLAY")
                 } else {
@@ -118,7 +118,7 @@ class IcsExporter(private val context: Context) {
         while (index < description.length) {
             val substring = description.substring(index, Math.min(index + MAX_LINE_LENGTH, description.length))
             if (isFirstLine) {
-                out.writeLn("$DESCRIPTION$substring")
+                out.writeLn("$DESCRIPTION_EXPORT$substring")
             } else {
                 out.writeLn("\t$substring")
             }

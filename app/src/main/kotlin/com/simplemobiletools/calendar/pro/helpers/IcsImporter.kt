@@ -115,7 +115,10 @@ class IcsImporter(val activity: SimpleActivity) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = getTitle(curTitle).replace("\\n", "\n").replace("\\,", ",")
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
-                        curDescription = line.substring(DESCRIPTION.length).replace("\\n", "\n").replace("\\,", ",")
+                        val match = DESCRIPTION_REGEX.matchEntire(line)
+                        if (match != null) {
+                            curDescription = match.groups[1]!!.value.replace("\\n", "\n").replace("\\,", ",") ?: ""
+                        }
                         if (curDescription.trim().isEmpty()) {
                             curDescription = ""
                         }
