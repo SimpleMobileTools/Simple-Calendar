@@ -63,8 +63,9 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     }
 
     private fun viewClicked(color: Int) {
-        if (!wasInit)
+        if (!wasInit) {
             return
+        }
 
         callback(color)
         dialog?.dismiss()
