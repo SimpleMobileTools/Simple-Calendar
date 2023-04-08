@@ -1002,7 +1002,6 @@ class EventActivity : SimpleActivity() {
         event_type_holder.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_divider.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
-        event_caldav_calendar_color.beGoneIf(currentCalendar == null)
         event_caldav_color_image.beGoneIf(currentCalendar == null)
         event_caldav_color_holder.beGoneIf(currentCalendar == null)
         event_caldav_color_divider.beGoneIf(currentCalendar == null)
@@ -1025,7 +1024,6 @@ class EventActivity : SimpleActivity() {
                 val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, getProperBackgroundColor())
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())

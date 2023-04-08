@@ -586,7 +586,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small_margin"
-                    android:layout_toStartOf="@+id/event_caldav_calendar_color"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:paddingTop="@dimen/medium_margin"
@@ -601,22 +600,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/event_caldav_calendar_name"
                     android:layout_marginStart="@dimen/small_margin"
-                    android:layout_toStartOf="@+id/event_caldav_calendar_color"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:paddingEnd="@dimen/medium_margin"
                     android:paddingBottom="@dimen/medium_margin"
                     android:textSize="@dimen/meta_text_size"
                     tools:text="hello@simplemobiletools.com" />
-
-                <ImageView
-                    android:id="@+id/event_caldav_calendar_color"
-                    android:layout_width="@dimen/color_sample_size"
-                    android:layout_height="@dimen/color_sample_size"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_margin"
-                    android:clickable="false" />
 
             </RelativeLayout>
 
