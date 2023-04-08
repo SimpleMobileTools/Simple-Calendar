@@ -32,7 +32,7 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                         }
                     }
                 } else {
-                    SelectEventTypeColorDialog(activity, eventType!!, eventType!!.color) {
+                    SelectEventTypeColorDialog(activity, eventType!!) {
                         eventType!!.color = it
                         setupColor(type_color)
                     }

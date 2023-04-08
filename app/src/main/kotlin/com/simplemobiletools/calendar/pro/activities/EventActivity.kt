@@ -10,7 +10,6 @@ import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract.Attendees
-import android.provider.CalendarContract.Colors
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
@@ -831,9 +830,9 @@ class EventActivity : SimpleActivity() {
         ensureBackgroundThread {
             val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
             runOnUiThread {
-                SelectEventTypeColorDialog(activity = this, eventType = eventType, selectedColor = mEvent.color, colorType = Colors.TYPE_EVENT) { color ->
+                SelectEventColorDialog(activity = this, eventType = eventType, selectedColor = mEvent.color) { color ->
                     mEvent.color = color
-                    event_caldav_color.setFillWithStroke(color, getProperBackgroundColor())
+                    updateEventColorInfo(eventType.color)
                 }
             }
         }
@@ -1023,16 +1022,19 @@ class EventActivity : SimpleActivity() {
                     event_caldav_calendar_holder.apply {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
-
-                    val eventColor = if (mEvent.color == 0) {
-                        calendarColor
-                    } else {
-                        mEvent.color
-                    }
-                    event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
+                    updateEventColorInfo(calendarColor)
                 }
             }
         }
+    }
+
+    private fun updateEventColorInfo(defaultColor: Int) {
+        val eventColor = if (mEvent.color == 0) {
+            defaultColor
+        } else {
+            mEvent.color
+        }
+        event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
     }
 
     private fun resetTime() {
