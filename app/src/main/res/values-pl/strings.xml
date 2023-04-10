@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
     <string name="saving_filtered_out">Zapisywanie… Jednak wybrany typ wydarzenia jest odfiltrowywany w Menu -&gt; Filtruj…</string>
     <string name="everything_filtered_out">Odfiltrowałeś(-aś) wszystkie typy wydarzeń.</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Kolor wydarzenia</string>
+    <string name="default_calendar_color">Domyślny kolor kalendarza</string>
     <!-- Tasks -->
     <string name="task">Zadanie</string>
     <string name="tasks">Zadania</string>
