@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">Предстоящее событие</string>
     <string name="saving_filtered_out">Сохранение… Однако выбранный тип события исключён в разделе \"Фильтр\" верхнего меню</string>
     <string name="everything_filtered_out">Вы отфильтровали все типы событий</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Цвет события</string>
+    <string name="default_calendar_color">Цвет календаря по умолчанию</string>
     <!-- Tasks -->
     <string name="task">Задача</string>
     <string name="tasks">Задачи</string>
