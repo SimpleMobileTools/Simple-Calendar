@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">En hendelse er forestående</string>
     <string name="saving_filtered_out">Lagrer… Men den valgte hendelsestypen er filtrert ut i Meny - Filtrer</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Oppgave</string>
     <string name="tasks">Oppgaver</string>

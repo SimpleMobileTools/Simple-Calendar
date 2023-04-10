@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
     <string name="everything_filtered_out">Du har filtreret alle typer begivenheder fra</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Opgave</string>
     <string name="tasks">Opgaver</string>
