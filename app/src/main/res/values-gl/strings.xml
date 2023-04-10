@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">Hai un evento próximo</string>
     <string name="saving_filtered_out">Gardando… Pero o tipo de evento seleccionado foi ocultado desde a opción de filtro no menú superior</string>
     <string name="everything_filtered_out">Filtraches todoslos tipos de eventos</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Tarefa</string>
     <string name="tasks">Tarefas</string>

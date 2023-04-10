@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">S\'acosta un esdeveniment</string>
     <string name="saving_filtered_out">S\'està desant… Però el tipus d\'esdeveniment seleccionat està filtrat al Menú superior - Filtre</string>
     <string name="everything_filtered_out">Heu filtrat tots els tipus d\'esdeveniments</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Tasca</string>
     <string name="tasks">Tasques</string>
