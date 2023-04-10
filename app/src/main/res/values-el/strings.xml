@@ -55,7 +55,7 @@
     <string name="repeat_till">Επανάληψη μέχρι</string>
     <string name="forever">Για πάντα</string>
     <string name="event_is_repeatable">Η εκδήλωση είναι επαναλαμβανόμενη</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Η εργασία είναι επαναλαμβανόμενη</string>
     <string name="selection_contains_repetition">Η επιλογή περιέχει επαναλαμβανόμενες εκδηλώσεις</string>
     <string name="delete_one_only">Διαγράψτε μόνο το επιλεγμένο περιστατικό</string>
     <string name="delete_future_occurrences">Διαγράψτε αυτό και όλα τα μελλοντικά συμβάντα</string>
@@ -192,11 +192,11 @@
     <string name="alarm_stream">Αφύπνιση</string>
     <string name="notification_stream">Ειδοποίηση</string>
     <string name="ring_stream">Κουδούνισμα</string>
-    <string name="use_last_event_reminders">Χρήση υπενθυμίσεων τελευταίων συμβάντων ως προεπιλογή για νέο</string>
+    <string name="use_last_event_reminders">Χρήση υπενθυμίσεων τελευταίων συμβάντων ως προεπιλογή για νέες</string>
     <string name="default_reminder_1">Προεπιλογή υπενθύμισης 1</string>
     <string name="default_reminder_2">Προεπιλογή υπενθύμισης 2</string>
     <string name="default_reminder_3">Προεπιλογή υπενθύμισης 3</string>
-    <string name="view_to_open_from_widget">Προβολή για άνοιγμα από το widget λίστας συμβάντων</string>
+    <string name="view_to_open_from_widget">Προβολή για άνοιγμα από το widget της λίστας συμβάντων</string>
     <string name="last_view">Τελευταία προβολή</string>
     <string name="new_events">Νέα γεγονότα</string>
     <string name="default_start_time">Προεπιλεγμένη ώρα έναρξης</string>
@@ -210,10 +210,10 @@
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
     <string name="allow_creating_tasks">Αποδοχή δημιουργίας εργασιών</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
+    <string name="backups">Αντίγραφα ασφαλείας</string>
+    <string name="enable_automatic_backups">Ενεργοποίηση αυτόματων αντιγράφων</string>
+    <string name="manage_automatic_backups">Διαχείριση αυτόματων αντιγράφων</string>
+    <string name="date_time_pattern_info">Μπορείτε να χρησιμοποιήσετε τα ακόλουθα μοτίβα για να ονομάσετε αυτόματα το αρχείο σας:\n\n%Y - έτος\n%M - μήνα\n%D - ημέρα\n%h - ώρα\n%m - λεπτό\n%s - δευτ.</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Επιλέξτε ημερολόγια για συγχρονισμό</string>
