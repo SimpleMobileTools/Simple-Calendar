@@ -21,7 +21,7 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
     private var dialog: AlertDialog? = null
     private val radioGroup: RadioGroup
     private var wasInit = false
-    private val colors = activity.calDAVHelper.getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_CALENDAR)
+    private val colors = activity.calDAVHelper.getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_CALENDAR).keys
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_type_color, null) as ViewGroup
@@ -30,8 +30,8 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
             showCustomColorPicker()
         }
 
-        colors.forEach { (color, key) ->
-            addRadioButton(key.toInt(), color)
+        colors.forEachIndexed { index, color ->
+            addRadioButton(index, color)
         }
 
         wasInit = true
@@ -47,12 +47,12 @@ class SelectEventTypeColorDialog(val activity: Activity, val eventType: EventTyp
             }
     }
 
-    private fun addRadioButton(colorKey: Int, color: Int) {
+    private fun addRadioButton(index: Int, color: Int) {
         val view = activity.layoutInflater.inflate(R.layout.radio_button_with_color, null)
         (view.dialog_radio_button as RadioButton).apply {
             text = if (color == 0) activity.getString(R.string.transparent) else String.format("#%06X", 0xFFFFFF and color)
             isChecked = color == eventType.color
-            id = colorKey
+            id = index
         }
 
         view.dialog_radio_color.setFillWithStroke(color, activity.getProperBackgroundColor())

@@ -10,6 +10,7 @@ import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract.Attendees
+import android.provider.CalendarContract.Colors
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
@@ -834,16 +835,18 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         ensureBackgroundThread {
             val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
+            val eventColorsMap = calDAVHelper.getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_EVENT)
+            val eventColors = eventColorsMap.keys.toIntArray()
             runOnUiThread {
-                val selectedColor = if (mEventColor == 0) {
+                val currentColor = if (mEventColor == 0) {
                     eventType.color
                 } else {
                     mEventColor
                 }
-                SelectEventColorDialog(activity = this, eventType = eventType, selectedColor = selectedColor) { color ->
-                    if (color != eventType.color) {
-                        mEventColor = color
-                        updateEventColorInfo(eventType.color)
+                SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
+                    if (newColor != currentColor) {
+                        mEventColor = newColor
+                        updateEventColorInfo(defaultColor = eventType.color)
                     }
                 }
             }

@@ -536,7 +536,7 @@
                     android:layout_toStartOf="@+id/event_caldav_color"
                     android:paddingTop="@dimen/normal_margin"
                     android:paddingBottom="@dimen/normal_margin"
-                    android:text="@string/change_color"
+                    android:text="@string/event_color"
                     android:textSize="@dimen/day_text_size" />
 
                 <ImageView
