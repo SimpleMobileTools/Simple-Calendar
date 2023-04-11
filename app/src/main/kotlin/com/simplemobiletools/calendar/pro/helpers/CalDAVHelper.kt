@@ -85,9 +85,8 @@ class CalDAVHelper(val context: Context) {
             val accountType = cursor.getStringValue(Calendars.ACCOUNT_TYPE)
             val ownerName = cursor.getStringValue(Calendars.OWNER_ACCOUNT) ?: ""
             val color = cursor.getIntValue(Calendars.CALENDAR_COLOR)
-            val displayColor = getDisplayColorFromColor(color)
             val accessLevel = cursor.getIntValue(Calendars.CALENDAR_ACCESS_LEVEL)
-            val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, displayColor, accessLevel)
+            val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, color, accessLevel)
             calendars.add(calendar)
         }
 
@@ -141,7 +140,11 @@ class CalDAVHelper(val context: Context) {
         context.queryCursor(uri, projection, selection, selectionArgs) { cursor ->
             val colorKey = cursor.getStringValue(Colors.COLOR_KEY)
             val color = cursor.getIntValue(Colors.COLOR)
-            val displayColor = getDisplayColorFromColor(color)
+            val displayColor = if (colorType == Colors.TYPE_CALENDAR) {
+                color
+            } else {
+                getDisplayColorFromColor(color)
+            }
             colors[displayColor] = colorKey
         }
         return colors.toSortedMap(HsvColorComparator())
