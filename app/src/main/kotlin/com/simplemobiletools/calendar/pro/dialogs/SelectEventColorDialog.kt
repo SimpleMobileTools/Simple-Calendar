@@ -15,10 +15,9 @@ class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var c
         val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_color, null) as ViewGroup
         val colorAdapter = CheckableColorAdapter(activity, colors, currentColor)
         view.color_grid.apply {
-            layoutManager = AutoGridLayoutManager(
-                context = activity,
-                itemWidth = activity.resources.getDimensionPixelSize(R.dimen.smaller_icon_size)
-            )
+            val width = activity.resources.getDimensionPixelSize(R.dimen.smaller_icon_size)
+            val spacing = activity.resources.getDimensionPixelSize(R.dimen.small_margin) * 2
+            layoutManager = AutoGridLayoutManager(context = activity, itemWidth = width + spacing)
             adapter = colorAdapter
         }
 

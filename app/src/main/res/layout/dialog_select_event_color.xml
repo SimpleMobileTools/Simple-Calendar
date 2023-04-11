@@ -5,7 +5,7 @@
     android:id="@+id/color_grid_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/activity_margin"
+    android:paddingHorizontal="@dimen/normal_margin"
     android:paddingTop="@dimen/big_margin"
     android:paddingBottom="@dimen/medium_margin">
 
