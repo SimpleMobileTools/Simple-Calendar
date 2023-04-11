@@ -4,6 +4,7 @@ import android.app.Activity
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.OTHER_EVENT
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -32,7 +33,9 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                         }
                     }
                 } else {
-                    SelectEventTypeColorDialog(activity, eventType!!) {
+                    val currentColor = eventType!!.color
+                    val colors = activity.calDAVHelper.getAvailableCalDAVCalendarColors(eventType!!).keys.toIntArray()
+                    SelectEventTypeColorDialog(activity, colors = colors, currentColor = currentColor) {
                         eventType!!.color = it
                         setupColor(type_color)
                     }

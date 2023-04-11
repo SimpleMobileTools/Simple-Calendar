@@ -10,6 +10,7 @@ import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract.Attendees
+import android.provider.CalendarContract.Colors
 import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
@@ -76,6 +77,7 @@ class EventActivity : SimpleActivity() {
     private var mOriginalStartTS = 0L
     private var mOriginalEndTS = 0L
     private var mIsNewEvent = true
+    private var mEventColor = 0
 
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
@@ -164,6 +166,7 @@ class EventActivity : SimpleActivity() {
             putString(ATTENDEES, getAllAttendees(false))
 
             putInt(AVAILABILITY, mAvailability)
+            putInt(EVENT_COLOR, mEventColor)
 
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putInt(EVENT_CALENDAR_ID, mEventCalendarId)
@@ -196,6 +199,7 @@ class EventActivity : SimpleActivity() {
             mReminder3Type = getInt(REMINDER_3_TYPE)
 
             mAvailability = getInt(AVAILABILITY)
+            mEventColor = getInt(EVENT_COLOR)
 
             mRepeatInterval = getInt(REPEAT_INTERVAL)
             mRepeatRule = getInt(REPEAT_RULE)
@@ -429,6 +433,7 @@ class EventActivity : SimpleActivity() {
             mEventTypeId != mEvent.eventType ||
             mWasCalendarChanged ||
             mIsAllDayEvent != mEvent.getIsAllDay() ||
+            mEventColor != mEvent.color ||
             hasTimeChanged
         ) {
             return true
@@ -488,6 +493,7 @@ class EventActivity : SimpleActivity() {
         mEventTypeId = mEvent.eventType
         mEventCalendarId = mEvent.getCalDAVCalendarId()
         mAvailability = mEvent.availability
+        mEventColor = mEvent.color
 
         val token = object : TypeToken<List<Attendee>>() {}.type
         mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, token) ?: ArrayList()
@@ -825,6 +831,28 @@ class EventActivity : SimpleActivity() {
         }
     }
 
+    private fun showEventColorDialog() {
+        hideKeyboard()
+        ensureBackgroundThread {
+            val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
+            val eventColors = getEventColors(eventType)
+            runOnUiThread {
+                val currentColor = if (mEventColor == 0) {
+                    eventType.color
+                } else {
+                    mEventColor
+                }
+
+                SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
+                    if (newColor != currentColor) {
+                        mEventColor = newColor
+                        updateEventColorInfo(defaultColor = eventType.color)
+                    }
+                }
+            }
+        }
+    }
+
     private fun checkReminderTexts() {
         updateReminder1Text()
         updateReminder2Text()
@@ -959,6 +987,10 @@ class EventActivity : SimpleActivity() {
                     updateAvailabilityImage()
                 }
             }
+
+            event_caldav_color_holder.setOnClickListener {
+                showEventColorDialog()
+            }
         } else {
             updateCurrentCalendarInfo(null)
         }
@@ -973,7 +1005,6 @@ class EventActivity : SimpleActivity() {
         event_type_holder.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_divider.beVisibleIf(currentCalendar == null)
         event_caldav_calendar_email.beGoneIf(currentCalendar == null)
-        event_caldav_calendar_color.beGoneIf(currentCalendar == null)
 
         if (currentCalendar == null) {
             mEventCalendarId = STORED_LOCALLY_ONLY
@@ -986,14 +1017,23 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.apply {
                 setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
+
+            event_caldav_color_image.beGone()
+            event_caldav_color_holder.beGone()
+            event_caldav_color_divider.beGone()
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
             ensureBackgroundThread {
-                val calendarColor = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)?.color ?: currentCalendar.color
+                val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(currentCalendar.id)
+                val calendarColor = eventType?.color ?: currentCalendar.color
+                val canCustomizeColors = if (eventType != null) {
+                    getEventColors(eventType).isNotEmpty()
+                } else {
+                    false
+                }
 
                 runOnUiThread {
-                    event_caldav_calendar_color.setFillWithStroke(calendarColor, getProperBackgroundColor())
                     event_caldav_calendar_name.apply {
                         text = currentCalendar.displayName
                         setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
@@ -1002,9 +1042,29 @@ class EventActivity : SimpleActivity() {
                     event_caldav_calendar_holder.apply {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
+
+                    event_caldav_color_image.beVisibleIf(canCustomizeColors)
+                    event_caldav_color_holder.beVisibleIf(canCustomizeColors)
+                    event_caldav_color_divider.beVisibleIf(canCustomizeColors)
+                    if (canCustomizeColors) {
+                        updateEventColorInfo(calendarColor)
+                    }
                 }
             }
         }
+    }
+
+    private fun updateEventColorInfo(defaultColor: Int) {
+        val eventColor = if (mEventColor == 0) {
+            defaultColor
+        } else {
+            mEventColor
+        }
+        event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
+    }
+
+    private fun getEventColors(eventType: EventType): IntArray {
+        return calDAVHelper.getAvailableCalDAVCalendarColors(eventType, Colors.TYPE_EVENT).keys.toIntArray()
     }
 
     private fun resetTime() {
@@ -1195,6 +1255,7 @@ class EventActivity : SimpleActivity() {
             source = newSource
             location = event_location.value
             availability = mAvailability
+            color = mEventColor
         }
 
         // recreate the event if it was moved in a different CalDAV calendar
@@ -1791,7 +1852,7 @@ class EventActivity : SimpleActivity() {
         val textColor = getProperTextColor()
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_caldav_color_image
         ).forEach {
             it.applyColorFilter(textColor)
         }

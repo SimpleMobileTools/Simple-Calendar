@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/small_margin">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/checkable_color_button"
+        android:layout_width="@dimen/smaller_icon_size"
+        android:layout_height="@dimen/smaller_icon_size"
+        android:background="@drawable/button_background_rounded"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/medium_margin"
+        tools:src="@drawable/ic_check_vector" />
+
+</FrameLayout>
+

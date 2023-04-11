@@ -6,12 +6,11 @@ import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.CheckableColorAdapter
 import com.simplemobiletools.calendar.pro.views.AutoGridLayoutManager
-import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_select_color.view.*
 
-class SelectEventTypeColorDialog(val activity: Activity, val colors: IntArray, var currentColor: Int, val callback: (color: Int) -> Unit) {
+class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var currentColor: Int, val callback: (color: Int) -> Unit) {
     private var dialog: AlertDialog? = null
 
     init {
@@ -29,25 +28,15 @@ class SelectEventTypeColorDialog(val activity: Activity, val colors: IntArray, v
         }
 
         activity.getAlertDialogBuilder()
-            .setNegativeButton(R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.color) {
+                setNeutralButton(R.string.default_calendar_color) { dialog, _ ->
+                    callback(0)
+                    dialog?.dismiss()
+                }
+
+                activity.setupDialogStuff(view, this, R.string.event_color) {
                     dialog = it
                 }
-
-                if (colors.isEmpty()) {
-                    showCustomColorPicker()
-                }
             }
-    }
-
-    private fun showCustomColorPicker() {
-        ColorPickerDialog(activity, currentColor) { wasPositivePressed, color ->
-            if (wasPositivePressed) {
-                callback(color)
-            }
-
-            dialog?.dismiss()
-        }
     }
 }
