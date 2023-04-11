@@ -15,8 +15,7 @@ class CheckableColorAdapter(private val activity: Activity, private val colors: 
     RecyclerView.Adapter<CheckableColorAdapter.CheckableColorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CheckableColorViewHolder {
-        val itemView = LayoutInflater.from(activity)
-            .inflate(R.layout.checkable_color_button, parent, false)
+        val itemView = LayoutInflater.from(activity).inflate(R.layout.checkable_color_button, parent, false)
         return CheckableColorViewHolder(itemView)
     }
 
