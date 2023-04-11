@@ -8,13 +8,13 @@ import com.simplemobiletools.calendar.pro.adapters.CheckableColorAdapter
 import com.simplemobiletools.calendar.pro.views.AutoGridLayoutManager
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import kotlinx.android.synthetic.main.dialog_select_event_color.view.*
+import kotlinx.android.synthetic.main.dialog_select_color.view.*
 
 class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var currentColor: Int, val callback: (color: Int) -> Unit) {
     private var dialog: AlertDialog? = null
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_select_event_color, null) as ViewGroup
+        val view = activity.layoutInflater.inflate(R.layout.dialog_select_color, null) as ViewGroup
         val colorAdapter = CheckableColorAdapter(activity, colors, currentColor) { color ->
             callback(color)
             dialog?.dismiss()

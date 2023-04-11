@@ -85,8 +85,9 @@ class CalDAVHelper(val context: Context) {
             val accountType = cursor.getStringValue(Calendars.ACCOUNT_TYPE)
             val ownerName = cursor.getStringValue(Calendars.OWNER_ACCOUNT) ?: ""
             val color = cursor.getIntValue(Calendars.CALENDAR_COLOR)
+            val displayColor = getDisplayColorFromColor(color)
             val accessLevel = cursor.getIntValue(Calendars.CALENDAR_ACCESS_LEVEL)
-            val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, color, accessLevel)
+            val calendar = CalDAVCalendar(id, displayName, accountName, accountType, ownerName, displayColor, accessLevel)
             calendars.add(calendar)
         }
 
