@@ -842,6 +842,7 @@ class EventActivity : SimpleActivity() {
                 } else {
                     mEventColor
                 }
+
                 SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
                     if (newColor != currentColor) {
                         mEventColor = newColor
@@ -986,7 +987,10 @@ class EventActivity : SimpleActivity() {
                     updateAvailabilityImage()
                 }
             }
-            event_caldav_color_holder.setOnClickListener { showEventColorDialog() }
+
+            event_caldav_color_holder.setOnClickListener {
+                showEventColorDialog()
+            }
         } else {
             updateCurrentCalendarInfo(null)
         }
@@ -1013,6 +1017,7 @@ class EventActivity : SimpleActivity() {
             event_caldav_calendar_holder.apply {
                 setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
+
             event_caldav_color_image.beGone()
             event_caldav_color_holder.beGone()
             event_caldav_color_divider.beGone()
