@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">Egy esemény következik</string>
     <string name="saving_filtered_out">Mentés… De a kiválasztott eseménytípus ki van szűrve fent: Menü – Szűrő</string>
     <string name="everything_filtered_out">Kiszűrte az összes eseménytípust</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Feladat</string>
     <string name="tasks">Feladatok</string>

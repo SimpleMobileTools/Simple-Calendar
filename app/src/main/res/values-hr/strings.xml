@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">Jedan događaj nadolazi</string>
     <string name="saving_filtered_out">Spremanje … Odabrana vrsta događaja je međutim filtrirana u gornjem izborniku – Filtar</string>
     <string name="everything_filtered_out">Izdvojene su sve vrste događaja</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Zadatak</string>
     <string name="tasks">Zadaci</string>

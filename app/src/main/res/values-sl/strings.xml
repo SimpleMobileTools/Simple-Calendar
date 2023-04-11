@@ -31,6 +31,8 @@
     <string name="public_event_notification_text">Prihaja dogodek</string>
     <string name="saving_filtered_out">Shranjevanje… Toda izbrana vrsta dogodka je filtrirana v zgornjem meniju - Filter</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="event_color">Event color</string>
+    <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
     <string name="task">Naloga</string>
     <string name="tasks">Naloge</string>
