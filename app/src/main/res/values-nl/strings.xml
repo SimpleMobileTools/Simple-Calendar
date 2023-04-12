@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">Afspraak aanstaande</string>
     <string name="saving_filtered_out">Opslaan… Pas op: het gekozen afspraaktype is weggefilterd via Menu - Filteren</string>
     <string name="everything_filtered_out">Alle afspraaktypes zijn weggefilterd</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Kleur voor afspraak</string>
+    <string name="default_calendar_color">Standaardkleur</string>
     <!-- Tasks -->
     <string name="task">Taak</string>
     <string name="tasks">Taken</string>
