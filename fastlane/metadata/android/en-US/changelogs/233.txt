@@ -1,0 +1,3 @@
+ * Allow backing up events with an automated periodic background export
+ * Allow changing colors of CalDAV synced events on a per-event basis
+ * Added some translation, stability and UX improvements

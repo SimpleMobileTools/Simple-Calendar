@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.21.7 *(2023-04-12)*
+----------------------------
+
+ * Allow backing up events with an automated periodic background export
+ * Allow changing colors of CalDAV synced events on a per-event basis
+ * Added some translation, stability and UX improvements
+
 Version 6.21.6 *(2023-03-07)*
 ----------------------------
 
