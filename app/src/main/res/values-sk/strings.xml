@@ -210,10 +210,6 @@
     <string name="allow_changing_time_zones">Povoliť zmenu časových pásem udalostí</string>
     <string name="manage_quick_filter_event_types">Spravovať typy udalostí v rýchlom filtrovaní</string>
     <string name="allow_creating_tasks">Povoliť vytváranie úloh</string>
-    <string name="backups">Zálohy</string>
-    <string name="enable_automatic_backups">Povoliť automatické zálohy</string>
-    <string name="manage_automatic_backups">Spravovať automatické zálohy</string>
-    <string name="date_time_pattern_info">Na pomenúvanie vašich súborov môžete použiť nasledovné vzory:\n\n%Y - rok\n%M - mesiac\n%D - deň\n%h - hodina\n%m - minúta\n%s - sekunda</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Zvoľte kalendáre pre synchronizáciu</string>

@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Permitir alteração do fuso horário dos eventos</string>
     <string name="manage_quick_filter_event_types">Gerir tipos de evento no filtro rápido</string>
     <string name="allow_creating_tasks">Permitir criação de tarefas</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Ativar backups automáticos</string>
-    <string name="manage_automatic_backups">Gerir backups automáticos</string>
-    <string name="date_time_pattern_info">Pode utilizar os seguintes padrões para nomear automaticamente os seus ficheiros:
-\n
-\n%Y - ano
-\n%M - mês
-\n%D - dia
-\n%h - hora
-\n%m - minutos
-\n%s - segundos</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Selecione os calendários a sincronizar</string>

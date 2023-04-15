@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Abilita il cambio del fuso orario negli eventi</string>
     <string name="manage_quick_filter_event_types">Gestisci i tipi di eventi con filtro rapido</string>
     <string name="allow_creating_tasks">Permetti la creazione di compiti</string>
-    <string name="backups">Backup</string>
-    <string name="enable_automatic_backups">Abilita i backup automatici</string>
-    <string name="manage_automatic_backups">Gestisci i backup automatici</string>
-    <string name="date_time_pattern_info">È possibile utilizzare i seguenti schemi per assegnare automaticamente un nome al file:
-\n
-\n%Y - anno
-\n%M - mese
-\n%D - giorno
-\n%h - ora
-\n%m - minuto
-\n%s - secondo</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleziona un calendario da sincronizzare</string>

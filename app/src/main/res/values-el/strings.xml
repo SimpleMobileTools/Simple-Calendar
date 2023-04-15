@@ -210,10 +210,6 @@
     <string name="allow_changing_time_zones">Να επιτρέπεται η αλλαγή ζωνών ώρας συμβάντος</string>
     <string name="manage_quick_filter_event_types">Διαχείριση γρήγορου φίλτρου τύπων συμβάντων</string>
     <string name="allow_creating_tasks">Αποδοχή δημιουργίας εργασιών</string>
-    <string name="backups">Αντίγραφα ασφαλείας</string>
-    <string name="enable_automatic_backups">Ενεργοποίηση αυτόματων αντιγράφων</string>
-    <string name="manage_automatic_backups">Διαχείριση αυτόματων αντιγράφων</string>
-    <string name="date_time_pattern_info">Μπορείτε να χρησιμοποιήσετε τα ακόλουθα μοτίβα για να ονομάσετε αυτόματα το αρχείο σας:\n\n%Y - έτος\n%M - μήνα\n%D - ημέρα\n%h - ώρα\n%m - λεπτό\n%s - δευτ.</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Επιλέξτε ημερολόγια για συγχρονισμό</string>

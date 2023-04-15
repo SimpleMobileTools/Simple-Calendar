@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Permitir cambiar la zona horaria del evento</string>
     <string name="manage_quick_filter_event_types">Administrar tipos de evento de filtro rápido</string>
     <string name="allow_creating_tasks">Permitir crear tareas</string>
-    <string name="backups">Copias de seguridad</string>
-    <string name="enable_automatic_backups">Habilitar las copias de seguridad automáticas</string>
-    <string name="manage_automatic_backups">Gestionar las copias de seguridad automáticas</string>
-    <string name="date_time_pattern_info">Puede utilizar los siguientes patrones para nombrar su archivo automáticamente:
-\n
-\n%Y - año
-\n%M - mes
-\n%D - día
-\n%h - hora
-\n%m - minuto
-\n%s - segundo</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Seleccionar los calendarios que se van a sincronizar</string>

@@ -210,10 +210,6 @@
     <string name="allow_changing_time_zones">Дазволіць змяняць часавыя паясы падзеі</string>
     <string name="manage_quick_filter_event_types">Кіруйце тыпамі падзей хуткага фільтра</string>
     <string name="allow_creating_tasks">Дазволіць ствараць задачы</string>
-    <string name="backups">Backups</string>
-    <string name="enable_automatic_backups">Enable automatic backups</string>
-    <string name="manage_automatic_backups">Manage automatic backups</string>
-    <string name="date_time_pattern_info">You can use the following patterns to name your file automatically:\n\n%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Выберыце календары для сінхранізацыі</string>

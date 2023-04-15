@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Zeitzone des Termins kann geändert werden</string>
     <string name="manage_quick_filter_event_types">Termintypen zur schnellen Filterung verwalten</string>
     <string name="allow_creating_tasks">Aufgabenerstellung zulassen</string>
-    <string name="backups">Sicherungen</string>
-    <string name="enable_automatic_backups">Automatische Sicherungen aktivieren</string>
-    <string name="manage_automatic_backups">Automatische Sicherungen verwalten</string>
-    <string name="date_time_pattern_info">Du kannst die folgenden Muster verwenden, um deine Datei automatisch zu benennen:
-\n
-\n%Y – Jahr
-\n%M – Monat
-\n%D – Tag
-\n%h – Stunde
-\n%m – Minute
-\n%s – Sekunde</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Kalender zur Synchronisierung auswählen</string>

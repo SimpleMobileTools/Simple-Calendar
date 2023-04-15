@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Дозволити змінювати часові пояси подій</string>
     <string name="manage_quick_filter_event_types">Керування типами подій швидкого фільтра</string>
     <string name="allow_creating_tasks">Дозволити створення завдань</string>
-    <string name="backups">Резервні копії</string>
-    <string name="enable_automatic_backups">Увімкнути автоматичне резервне копіювання</string>
-    <string name="manage_automatic_backups">Керувати автоматичними резервними копіями</string>
-    <string name="date_time_pattern_info">Ви можете використовувати наведені нижче шаблони для автоматичного присвоєння імені файлу:
-\n
-\n%Y - рік
-\n%M - місяць
-\n%D - день
-\n%h - година
-\n%m - хвилина
-\n%s - секунда</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Оберіть календарі для синхронізації</string>

@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">允许更改活动时区</string>
     <string name="manage_quick_filter_event_types">管理快速过滤活动类型</string>
     <string name="allow_creating_tasks">允许创建任务</string>
-    <string name="backups">备份</string>
-    <string name="enable_automatic_backups">启用自动备份</string>
-    <string name="manage_automatic_backups">管理自动备份</string>
-    <string name="date_time_pattern_info">你可以使用下列模式自动命名你的文件：
-\n
-\n%Y - 年份
-\n%M - 月份
-\n%D - 天
-\n%h - 小时
-\n%m - 分钟
-\n%s - 秒</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV 同步</string>
     <string name="select_caldav_calendars">选择日历来同步</string>

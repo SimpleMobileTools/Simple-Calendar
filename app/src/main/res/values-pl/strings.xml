@@ -210,17 +210,6 @@
     <string name="allow_changing_time_zones">Zezwalaj na zmienianie stref czasowych wydarzeń</string>
     <string name="manage_quick_filter_event_types">Zarządzaj szybkim filtrowaniem typów wydarzeń</string>
     <string name="allow_creating_tasks">Zezwalaj na tworzenie zadań</string>
-    <string name="backups">Kopie zapasowe</string>
-    <string name="enable_automatic_backups">Włącz automatyczne kopie zapasowe</string>
-    <string name="manage_automatic_backups">Zarządzaj automatycznymi kopiami zapasowymi</string>
-    <string name="date_time_pattern_info">Możesz użyć następujących wzorców, aby automatycznie nazywać swój plik:
-\n
-\n%Y — rok
-\n%M — miesiąc
-\n%D — dzień
-\n%h — godzina
-\n%m — minuta
-\n%s — sekunda</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Wybierz kalendarze do synchronizacji</string>
