@@ -502,7 +502,6 @@ class CalDAVHelper(val context: Context) {
             put(Events.ORIGINAL_ID, event.getCalDAVEventId())
             put(Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
             put(Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
-            put(Events.EXDATE, Formatter.getDayCodeFromTS(occurrenceTS))
         }
     }
 
