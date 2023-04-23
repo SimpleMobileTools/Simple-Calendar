@@ -259,8 +259,8 @@ fun Context.backupEventsAndTasks() {
             mkdirs()
         }
 
-        val exportFile = File(outputFolder, "$filename.ics")
-        val exportFilePath = exportFile.absolutePath
+        var exportFile = File(outputFolder, "$filename.ics")
+        var exportFilePath = exportFile.absolutePath
         val outputStream = try {
             if (hasProperStoredFirstParentUri(exportFilePath)) {
                 val exportFileUri = createDocumentUriUsingFirstParentTreeUri(exportFilePath)
@@ -269,6 +269,12 @@ fun Context.backupEventsAndTasks() {
                 }
                 applicationContext.contentResolver.openOutputStream(exportFileUri, "wt") ?: FileOutputStream(exportFile)
             } else {
+                var num = 0
+                while (getDoesFilePathExist(exportFilePath) && !exportFile.canWrite()) {
+                    num++
+                    exportFile = File(outputFolder, "${filename}_${num}.ics")
+                    exportFilePath = exportFile.absolutePath
+                }
                 FileOutputStream(exportFile)
             }
         } catch (e: Exception) {
