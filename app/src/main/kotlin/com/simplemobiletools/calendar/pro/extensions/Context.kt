@@ -50,6 +50,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -222,6 +223,7 @@ fun Context.checkAndBackupEventsOnBoot() {
 }
 
 fun Context.backupEventsAndTasks() {
+    require(isRPlus())
     ensureBackgroundThread {
         val config = config
         val events = eventsHelper.getEventsToExport(
@@ -258,8 +260,17 @@ fun Context.backupEventsAndTasks() {
         }
 
         val exportFile = File(outputFolder, "$filename.ics")
+        val exportFilePath = exportFile.absolutePath
         val outputStream = try {
-            exportFile.outputStream()
+            if (hasProperStoredFirstParentUri(exportFilePath)) {
+                val exportFileUri = createDocumentUriUsingFirstParentTreeUri(exportFilePath)
+                if (!getDoesFilePathExist(exportFilePath)) {
+                    createSAFFileSdk30(exportFilePath)
+                }
+                applicationContext.contentResolver.openOutputStream(exportFileUri, "wt") ?: FileOutputStream(exportFile)
+            } else {
+                FileOutputStream(exportFile)
+            }
         } catch (e: Exception) {
             showErrorToast(e)
             null
@@ -273,8 +284,8 @@ fun Context.backupEventsAndTasks() {
             }
             MediaScannerConnection.scanFile(
                 this,
-                arrayOf(exportFile.absolutePath),
-                arrayOf(exportFile.getMimeType())
+                arrayOf(exportFilePath),
+                arrayOf(exportFilePath.getMimeType())
             ) { _, _ -> }
 
             config.lastAutoBackupTime = getNowSeconds()
@@ -522,6 +533,7 @@ fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Bool
             val currMinutes = calendar.get(Calendar.MINUTE)
             dateTime.withMinuteOfHour(currMinutes).seconds()
         }
+
         DEFAULT_START_TIME_NEXT_FULL_HOUR -> newDateTime.seconds()
         else -> {
             val hours = defaultStartTime / 60
@@ -682,11 +694,13 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
                 eventsHelper.addEventRepetitionException(value, timestamps[index], true)
             }
         }
+
         DELETE_FUTURE_OCCURRENCES -> {
             eventIds.forEachIndexed { index, value ->
                 eventsHelper.addEventRepeatLimit(value, timestamps[index])
             }
         }
+
         DELETE_ALL_OCCURRENCES -> {
             eventsHelper.deleteEvents(eventIds.toMutableList(), true)
         }
