@@ -539,7 +539,6 @@ fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Bool
             val currMinutes = calendar.get(Calendar.MINUTE)
             dateTime.withMinuteOfHour(currMinutes).seconds()
         }
-
         DEFAULT_START_TIME_NEXT_FULL_HOUR -> newDateTime.seconds()
         else -> {
             val hours = defaultStartTime / 60
@@ -700,13 +699,11 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
                 eventsHelper.addEventRepetitionException(value, timestamps[index], true)
             }
         }
-
         DELETE_FUTURE_OCCURRENCES -> {
             eventIds.forEachIndexed { index, value ->
                 eventsHelper.addEventRepeatLimit(value, timestamps[index])
             }
         }
-
         DELETE_ALL_OCCURRENCES -> {
             eventsHelper.deleteEvents(eventIds.toMutableList(), true)
         }
