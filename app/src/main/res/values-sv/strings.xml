@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">Du har en kommande händelse</string>
     <string name="saving_filtered_out">Sparar... Men den valda händelsetypen filtreras bort i den översta menyn - Filter</string>
     <string name="everything_filtered_out">Du har filtrerat bort alla händelsetyper</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Händelsens färg</string>
+    <string name="default_calendar_color">Kalenderns standardfärg</string>
     <!-- Tasks -->
     <string name="task">Uppgift</string>
     <string name="tasks">Uppgifter</string>
@@ -266,7 +266,7 @@
     <!-- FAQ -->
     <string name="faq_1_title">Hur kan jag ta bort helgdagar som importerats via knappen \"Lägg till helgdagar\"\?</string>
     <string name="faq_1_text">Helgdagar som skapas på detta sätt läggs in i en ny händelsetyp som kallas \"Helgdagar\". Du kan gå till Inställningar -&gt; Hantera händelsetyper, trycka länge på den aktuella händelsetypen och ta bort den genom att välja papperskorgen.</string>
-    <string name="faq_2_title">Kan jag synkronisera mina evenemang via Google Calendar eller en annan tjänst som stöder CalDAV\?</string>
+    <string name="faq_2_title">Kan jag synkronisera mina händelser via Google Kalender eller en annan tjänst som stöder CalDAV\?</string>
     <string name="faq_2_title_extra">Kanske även dela kalendrar med andra\?</string>
     <string name="faq_2_text">Ja, det är bara att slå på \"CalDAV-synkronisering\" i appens inställningar och välja de kalendrar du vill synkronisera. Du behöver dock någon tredjepartsapp som hanterar synkroniseringen mellan enheten och servrarna. Om du vill synkronisera en Google-kalender kan deras officiella kalenderapp göra jobbet. För andra kalendrar behöver du en tredjepartssynkroniseringsadapter, till exempel DAVx5.</string>
     <string name="faq_3_title">Jag ser de visuella påminnelserna, men hör inget ljud. Vad kan jag göra\?</string>
