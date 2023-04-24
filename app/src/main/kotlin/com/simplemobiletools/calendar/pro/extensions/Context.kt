@@ -50,6 +50,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -222,6 +223,7 @@ fun Context.checkAndBackupEventsOnBoot() {
 }
 
 fun Context.backupEventsAndTasks() {
+    require(isRPlus())
     ensureBackgroundThread {
         val config = config
         val events = eventsHelper.getEventsToExport(
@@ -257,9 +259,24 @@ fun Context.backupEventsAndTasks() {
             mkdirs()
         }
 
-        val exportFile = File(outputFolder, "$filename.ics")
+        var exportFile = File(outputFolder, "$filename.ics")
+        var exportFilePath = exportFile.absolutePath
         val outputStream = try {
-            exportFile.outputStream()
+            if (hasProperStoredFirstParentUri(exportFilePath)) {
+                val exportFileUri = createDocumentUriUsingFirstParentTreeUri(exportFilePath)
+                if (!getDoesFilePathExist(exportFilePath)) {
+                    createSAFFileSdk30(exportFilePath)
+                }
+                applicationContext.contentResolver.openOutputStream(exportFileUri, "wt") ?: FileOutputStream(exportFile)
+            } else {
+                var num = 0
+                while (getDoesFilePathExist(exportFilePath) && !exportFile.canWrite()) {
+                    num++
+                    exportFile = File(outputFolder, "${filename}_${num}.ics")
+                    exportFilePath = exportFile.absolutePath
+                }
+                FileOutputStream(exportFile)
+            }
         } catch (e: Exception) {
             showErrorToast(e)
             null
@@ -273,8 +290,8 @@ fun Context.backupEventsAndTasks() {
             }
             MediaScannerConnection.scanFile(
                 this,
-                arrayOf(exportFile.absolutePath),
-                arrayOf(exportFile.getMimeType())
+                arrayOf(exportFilePath),
+                arrayOf(exportFilePath.getMimeType())
             ) { _, _ -> }
 
             config.lastAutoBackupTime = getNowSeconds()
