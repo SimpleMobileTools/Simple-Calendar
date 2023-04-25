@@ -132,6 +132,7 @@
             android:name=".activities.EventActivity"
             android:exported="true"
             android:label="@string/new_event"
+            android:windowSoftInputMode="adjustResize"
             android:launchMode="singleTask"
             android:parentActivityName=".activities.MainActivity">
 
