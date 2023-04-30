@@ -42,6 +42,7 @@
     <string name="duplicate_task">Dubliuoti užduotį</string>
     <string name="mark_completed">Žymėti kaip įvykdytą</string>
     <string name="mark_incomplete">Žymėti kaip neįvykdytą</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Pasikartojimas</string>
     <string name="no_repetition">Be pasikartojimo</string>

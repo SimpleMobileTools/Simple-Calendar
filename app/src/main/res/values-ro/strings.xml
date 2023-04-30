@@ -42,6 +42,7 @@
     <string name="duplicate_task">Duplicați sarcina</string>
     <string name="mark_completed">Marcare finalizată</string>
     <string name="mark_incomplete">Marcare incompletă</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetiție</string>
     <string name="no_repetition">Fără repetiție</string>

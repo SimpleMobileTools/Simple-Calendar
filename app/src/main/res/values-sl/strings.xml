@@ -42,6 +42,7 @@
     <string name="duplicate_task">Podvojeno opravilo</string>
     <string name="mark_completed">Označi dokončano</string>
     <string name="mark_incomplete">Označi nepopolno</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Ponavljanje</string>
     <string name="no_repetition">Brez ponavljanja</string>
