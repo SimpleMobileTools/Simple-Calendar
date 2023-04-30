@@ -645,19 +645,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_toStartOf="@+id/event_type_color"
                     android:paddingTop="@dimen/normal_margin"
                     android:paddingBottom="@dimen/normal_margin"
                     android:textSize="@dimen/day_text_size" />
-
-                <ImageView
-                    android:id="@+id/event_type_color"
-                    android:layout_width="@dimen/color_sample_size"
-                    android:layout_height="@dimen/color_sample_size"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_margin"
-                    android:clickable="false" />
 
             </RelativeLayout>
 
