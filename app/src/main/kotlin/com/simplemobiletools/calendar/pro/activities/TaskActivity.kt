@@ -13,7 +13,6 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
@@ -24,7 +23,7 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_task.*
 import org.joda.time.DateTime
-import java.util.*
+import java.util.Calendar
 import kotlin.math.pow
 
 class TaskActivity : SimpleActivity() {
@@ -46,6 +45,7 @@ class TaskActivity : SimpleActivity() {
     private var mTaskCompleted = false
     private var mLastSavePromptTS = 0L
     private var mIsNewTask = true
+    private var mEventColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
@@ -130,6 +130,7 @@ class TaskActivity : SimpleActivity() {
             mRepeatInterval != mTask.repeatInterval ||
             mRepeatRule != mTask.repeatRule ||
             mEventTypeId != mTask.eventType ||
+            mEventColor != mTask.color ||
             hasTimeChanged
         ) {
             return true
@@ -175,6 +176,7 @@ class TaskActivity : SimpleActivity() {
             putLong(EVENT_TYPE_ID, mEventTypeId)
             putBoolean(IS_NEW_EVENT, mIsNewTask)
             putLong(ORIGINAL_START_TS, mOriginalStartTS)
+            putInt(EVENT_COLOR, mEventColor)
         }
     }
 
@@ -201,6 +203,7 @@ class TaskActivity : SimpleActivity() {
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mIsNewTask = getBoolean(IS_NEW_EVENT)
             mOriginalStartTS = getLong(ORIGINAL_START_TS)
+            mEventColor = getInt(EVENT_COLOR)
         }
 
         updateEventType()
@@ -270,6 +273,7 @@ class TaskActivity : SimpleActivity() {
 
         task_reminder_2.setOnClickListener { showReminder2Dialog() }
         task_reminder_3.setOnClickListener { showReminder3Dialog() }
+        task_color_holder.setOnClickListener { showTaskColorDialog() }
         refreshMenuItems()
         setupMarkCompleteButton()
 
@@ -297,6 +301,7 @@ class TaskActivity : SimpleActivity() {
         mRepeatInterval = mTask.repeatInterval
         mRepeatLimit = mTask.repeatLimit
         mRepeatRule = mTask.repeatRule
+        mEventColor = mTask.color
 
         task_title.setText(mTask.title)
         task_description.setText(mTask.description)
@@ -416,6 +421,7 @@ class TaskActivity : SimpleActivity() {
             repeatInterval = mRepeatInterval
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
+            color = mEventColor
         }
 
         if (mTask.getReminders().isNotEmpty()) {
@@ -762,10 +768,45 @@ class TaskActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     task_type.text = eventType.title
-                    task_type_color.setFillWithStroke(eventType.color, getProperBackgroundColor())
+                    updateTaskColorInfo(eventType.color)
+                }
+            }
+            task_color_image.beVisibleIf(eventType != null)
+            task_color_holder.beVisibleIf(eventType != null)
+            task_color_divider.beVisibleIf(eventType != null)
+        }
+    }
+
+    private fun showTaskColorDialog() {
+        hideKeyboard()
+        ensureBackgroundThread {
+            val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)!!
+            val currentColor = if (mEventColor == 0) {
+                eventType.color
+            } else {
+                mEventColor
+            }
+
+            runOnUiThread {
+                ColorPickerDialog(activity = this, color = currentColor) { wasPositivePressed, newColor ->
+                    if (wasPositivePressed) {
+                        if (newColor != currentColor) {
+                            mEventColor = newColor
+                            updateTaskColorInfo(defaultColor = eventType.color)
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private fun updateTaskColorInfo(defaultColor: Int) {
+        val taskColor = if (mEventColor == 0) {
+            defaultColor
+        } else {
+            mEventColor
+        }
+        task_color.setFillWithStroke(taskColor, getProperBackgroundColor())
     }
 
     private fun updateColors() {
