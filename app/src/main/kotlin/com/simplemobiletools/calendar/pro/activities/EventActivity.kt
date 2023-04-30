@@ -1018,7 +1018,7 @@ class EventActivity : SimpleActivity() {
                 }
             }
 
-            event_caldav_color_holder.setOnClickListener {
+            event_color_holder.setOnClickListener {
                 showEventColorDialog()
             }
         } else {
@@ -1052,9 +1052,9 @@ class EventActivity : SimpleActivity() {
                 val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
                 if (eventType != null) {
                     runOnUiThread {
-                        event_caldav_color_image.beVisible()
-                        event_caldav_color_holder.beVisible()
-                        event_caldav_color_divider.beVisible()
+                        event_color_image.beVisible()
+                        event_color_holder.beVisible()
+                        event_color_divider.beVisible()
                         updateEventColorInfo(eventType.color)
                     }
                 }
@@ -1081,9 +1081,9 @@ class EventActivity : SimpleActivity() {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
 
-                    event_caldav_color_image.beVisibleIf(canCustomizeColors)
-                    event_caldav_color_holder.beVisibleIf(canCustomizeColors)
-                    event_caldav_color_divider.beVisibleIf(canCustomizeColors)
+                    event_color_image.beVisibleIf(canCustomizeColors)
+                    event_color_holder.beVisibleIf(canCustomizeColors)
+                    event_color_divider.beVisibleIf(canCustomizeColors)
                     if (canCustomizeColors) {
                         updateEventColorInfo(calendarColor)
                     }
@@ -1098,7 +1098,7 @@ class EventActivity : SimpleActivity() {
         } else {
             mEventColor
         }
-        event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
+        event_color.setFillWithStroke(eventColor, getProperBackgroundColor())
     }
 
     private fun getEventColors(eventType: EventType): IntArray {
@@ -1891,7 +1891,7 @@ class EventActivity : SimpleActivity() {
         val textColor = getProperTextColor()
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_caldav_color_image
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_color_image
         ).forEach {
             it.applyColorFilter(textColor)
         }

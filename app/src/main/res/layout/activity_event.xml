@@ -507,24 +507,24 @@
                 android:importantForAccessibility="no" />
 
             <ImageView
-                android:id="@+id/event_caldav_color_image"
+                android:id="@+id/event_color_image"
                 android:layout_width="@dimen/smaller_icon_size"
                 android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/event_availability_divider"
-                android:layout_alignTop="@+id/event_caldav_color_holder"
-                android:layout_alignBottom="@+id/event_caldav_color_holder"
+                android:layout_alignTop="@+id/event_color_holder"
+                android:layout_alignBottom="@+id/event_color_holder"
                 android:layout_marginStart="@dimen/normal_margin"
                 android:padding="@dimen/medium_margin"
                 android:src="@drawable/ic_color_vector" />
 
             <RelativeLayout
-                android:id="@+id/event_caldav_color_holder"
+                android:id="@+id/event_color_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event_availability_divider"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
-                android:layout_toEndOf="@+id/event_caldav_color_image"
+                android:layout_toEndOf="@+id/event_color_image"
                 android:background="?attr/selectableItemBackground">
 
                 <com.simplemobiletools.commons.views.MyTextView
@@ -533,14 +533,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_toStartOf="@+id/event_caldav_color"
+                    android:layout_toStartOf="@+id/event_color"
                     android:paddingTop="@dimen/normal_margin"
                     android:paddingBottom="@dimen/normal_margin"
                     android:text="@string/event_color"
                     android:textSize="@dimen/day_text_size" />
 
                 <ImageView
-                    android:id="@+id/event_caldav_color"
+                    android:id="@+id/event_color"
                     android:layout_width="@dimen/color_sample_size"
                     android:layout_height="@dimen/color_sample_size"
                     android:layout_alignParentEnd="true"
@@ -551,10 +551,10 @@
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/event_caldav_color_divider"
+                android:id="@+id/event_color_divider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_height"
-                android:layout_below="@+id/event_caldav_color_image"
+                android:layout_below="@+id/event_color_image"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:background="@color/divider_grey"
                 android:importantForAccessibility="no" />
@@ -563,7 +563,7 @@
                 android:id="@+id/event_caldav_calendar_image"
                 android:layout_width="@dimen/smaller_icon_size"
                 android:layout_height="@dimen/smaller_icon_size"
-                android:layout_below="@+id/event_caldav_color_divider"
+                android:layout_below="@+id/event_color_divider"
                 android:layout_alignTop="@+id/event_caldav_calendar_holder"
                 android:layout_alignEnd="@+id/event_time_image"
                 android:layout_alignBottom="@+id/event_caldav_calendar_holder"
@@ -576,7 +576,7 @@
                 android:id="@+id/event_caldav_calendar_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/event_caldav_color_divider"
+                android:layout_below="@+id/event_color_divider"
                 android:layout_toEndOf="@+id/event_caldav_calendar_image"
                 android:background="?attr/selectableItemBackground"
                 android:visibility="gone">
