@@ -31,7 +31,6 @@ import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -40,11 +39,13 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_2
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
@@ -834,22 +835,52 @@ class EventActivity : SimpleActivity() {
     private fun showEventColorDialog() {
         hideKeyboard()
         ensureBackgroundThread {
-            val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
-            val eventColors = getEventColors(eventType)
-            runOnUiThread {
-                val currentColor = if (mEventColor == 0) {
-                    eventType.color
-                } else {
-                    mEventColor
-                }
+            val isLocalEvent = mEventCalendarId == STORED_LOCALLY_ONLY
+            if (isLocalEvent) {
+                showCustomEventColorDialog()
+            } else {
+                showCalDAVEventColorDialog()
+            }
+        }
+    }
 
-                SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
-                    if (newColor != currentColor) {
-                        mEventColor = newColor
-                        updateEventColorInfo(defaultColor = eventType.color)
-                    }
+    private fun showCustomEventColorDialog() {
+        val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)!!
+        val currentColor = if (mEventColor == 0) {
+            eventType.color
+        } else {
+            mEventColor
+        }
+
+        runOnUiThread {
+            ColorPickerDialog(activity = this, color = currentColor) { wasPositivePressed, newColor ->
+                if (wasPositivePressed) {
+                    gotNewEventColor(newColor, currentColor, eventType.color)
                 }
             }
+        }
+    }
+
+    private fun showCalDAVEventColorDialog() {
+        val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
+        val eventColors = getEventColors(eventType)
+        val currentColor = if (mEventColor == 0) {
+            eventType.color
+        } else {
+            mEventColor
+        }
+
+        runOnUiThread {
+            SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
+                gotNewEventColor(newColor, currentColor, eventType.color)
+            }
+        }
+    }
+
+    private fun gotNewEventColor(newColor: Int, currentColor: Int, defaultColor: Int) {
+        if (newColor != currentColor) {
+            mEventColor = newColor
+            updateEventColorInfo(defaultColor = defaultColor)
         }
     }
 
@@ -1018,9 +1049,17 @@ class EventActivity : SimpleActivity() {
                 setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
 
-            event_caldav_color_image.beGone()
-            event_caldav_color_holder.beGone()
-            event_caldav_color_divider.beGone()
+            ensureBackgroundThread {
+                val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
+                if (eventType != null) {
+                    runOnUiThread {
+                        event_caldav_color_image.beVisible()
+                        event_caldav_color_holder.beVisible()
+                        event_caldav_color_divider.beVisible()
+                        updateEventColorInfo(eventType.color)
+                    }
+                }
+            }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
@@ -1326,6 +1365,7 @@ class EventActivity : SimpleActivity() {
                         }
                     }
                 }
+
                 1 -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
