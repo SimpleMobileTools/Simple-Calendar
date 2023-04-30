@@ -813,7 +813,7 @@ class TaskActivity : SimpleActivity() {
         updateTextColors(task_nested_scrollview)
         val textColor = getProperTextColor()
         arrayOf(
-            task_time_image, task_reminder_image, task_type_image, task_repetition_image
+            task_time_image, task_reminder_image, task_type_image, task_repetition_image, task_color_image
         ).forEach {
             it.applyColorFilter(textColor)
         }
