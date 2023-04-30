@@ -627,7 +627,7 @@
                 android:layout_alignBottom="@+id/event_type_holder"
                 android:layout_marginStart="@dimen/normal_margin"
                 android:padding="@dimen/medium_margin"
-                android:src="@drawable/ic_color_vector" />
+                android:src="@drawable/ic_category_vector" />
 
             <RelativeLayout
                 android:id="@+id/event_type_holder"
