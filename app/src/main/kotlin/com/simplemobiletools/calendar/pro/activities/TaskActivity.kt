@@ -16,6 +16,7 @@ import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
+import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
@@ -788,7 +789,7 @@ class TaskActivity : SimpleActivity() {
             }
 
             runOnUiThread {
-                ColorPickerDialog(activity = this, color = currentColor) { wasPositivePressed, newColor ->
+                ColorPickerDialog(activity = this, color = currentColor, addDefaultColorButton = true) { wasPositivePressed, newColor ->
                     if (wasPositivePressed) {
                         if (newColor != currentColor) {
                             mEventColor = newColor
