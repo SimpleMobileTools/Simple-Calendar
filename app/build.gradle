@@ -70,13 +70,13 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.SimpleMobileTools:Simple-Commons:a98c3fa30f'
+    implementation 'com.github.SimpleMobileTools:Simple-Commons:5d5e4e1ac5'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.print:print:1.0.0"
 
-    kapt 'androidx.room:room-compiler:2.5.0'
-    implementation 'androidx.room:room-runtime:2.5.0'
-    annotationProcessor 'androidx.room:room-compiler:2.5.0'
+    kapt 'androidx.room:room-compiler:2.5.1'
+    implementation 'androidx.room:room-runtime:2.5.1'
+    annotationProcessor 'androidx.room:room-compiler:2.5.1'
 }
