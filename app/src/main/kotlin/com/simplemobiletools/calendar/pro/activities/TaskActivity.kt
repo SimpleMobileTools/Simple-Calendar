@@ -18,6 +18,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -425,7 +426,9 @@ class TaskActivity : SimpleActivity() {
                         storeTask(wasRepeatable)
                     }
                 } else {
-                    toast(R.string.no_post_notifications_permissions)
+                    PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
+                        openNotificationSettings()
+                    }
                 }
             }
         } else {
