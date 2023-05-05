@@ -8,6 +8,7 @@ import com.simplemobiletools.calendar.pro.helpers.ANNIVERSARY_EVENT
 import com.simplemobiletools.calendar.pro.helpers.BIRTHDAY_EVENT
 import com.simplemobiletools.calendar.pro.helpers.OTHER_EVENT
 import com.simplemobiletools.calendar.pro.helpers.REMINDER_OFF
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_set_reminders.view.*
 
@@ -35,7 +36,9 @@ class SetRemindersDialog(val activity: SimpleActivity, val eventType: Int, val c
                             }
                         }
                     } else {
-                        activity.toast(R.string.no_post_notifications_permissions)
+                        PermissionRequiredDialog(activity, messageId = R.string.no_post_notifications_permissions) {
+                            activity.openNotificationSettings()
+                        }
                     }
                 }
             }

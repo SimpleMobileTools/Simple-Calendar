@@ -31,20 +31,22 @@ import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_2
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
@@ -1271,7 +1273,9 @@ class EventActivity : SimpleActivity() {
                         storeEvent(wasRepeatable)
                     }
                 } else {
-                    toast(R.string.no_post_notifications_permissions)
+                    PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
+                        openNotificationSettings()
+                    }
                 }
             }
         } else {

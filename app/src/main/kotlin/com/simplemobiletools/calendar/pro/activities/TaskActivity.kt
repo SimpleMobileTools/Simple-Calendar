@@ -13,18 +13,18 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.calendar.pro.models.Reminder
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_task.*
 import org.joda.time.DateTime
-import java.util.*
+import java.util.Calendar
 import kotlin.math.pow
 
 class TaskActivity : SimpleActivity() {
@@ -425,7 +425,9 @@ class TaskActivity : SimpleActivity() {
                         storeTask(wasRepeatable)
                     }
                 } else {
-                    toast(R.string.no_post_notifications_permissions)
+                    PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
+                        openNotificationSettings()
+                    }
                 }
             }
         } else {

@@ -38,6 +38,7 @@ import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -1066,7 +1067,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         }
                     }
                 } else {
-                    toast(R.string.no_post_notifications_permissions)
+                    PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
+                        openNotificationSettings()
+                    }
                 }
             }
         } else {
