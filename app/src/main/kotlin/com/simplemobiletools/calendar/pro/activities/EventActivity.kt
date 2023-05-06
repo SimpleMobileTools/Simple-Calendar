@@ -342,6 +342,10 @@ class EventActivity : SimpleActivity() {
             event_all_day.toggle()
         }
 
+        event_color_holder.setOnClickListener {
+            showEventColorDialog()
+        }
+
         updateTextColors(event_nested_scrollview)
         updateIconColors()
         refreshMenuItems()
@@ -649,11 +653,13 @@ class EventActivity : SimpleActivity() {
                 event_repetition_limit_label.text = getString(R.string.repeat)
                 resources.getString(R.string.forever)
             }
+
             mRepeatLimit > 0 -> {
                 event_repetition_limit_label.text = getString(R.string.repeat_till)
                 val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
                 Formatter.getFullDate(this, repeatLimitDateTime)
             }
+
             else -> {
                 event_repetition_limit_label.text = getString(R.string.repeat)
                 "${-mRepeatLimit} ${getString(R.string.times)}"
@@ -667,12 +673,14 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval.isXWeeklyRepetition() -> RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
+
             mRepeatInterval.isXMonthlyRepetition() -> {
                 val items = getAvailableMonthlyRepetitionRules()
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
             }
+
             mRepeatInterval.isXYearlyRepetition() -> {
                 val items = getAvailableYearlyRepetitionRules()
                 RadioGroupDialog(this, items, mRepeatRule) {
@@ -789,6 +797,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval.isXWeeklyRepetition() -> {
                 event_repetition_rule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getSelectedDaysString(mRepeatRule)
             }
+
             mRepeatInterval.isXMonthlyRepetition() -> {
                 val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
                     R.string.repeat else R.string.repeat_on
@@ -796,6 +805,7 @@ class EventActivity : SimpleActivity() {
                 event_repetition_rule_label.text = getString(repeatString)
                 event_repetition_rule.text = getMonthlyRepetitionRuleText()
             }
+
             mRepeatInterval.isXYearlyRepetition() -> {
                 val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
                     R.string.repeat else R.string.repeat_on
@@ -1018,10 +1028,6 @@ class EventActivity : SimpleActivity() {
                     updateAvailabilityText()
                     updateAvailabilityImage()
                 }
-            }
-
-            event_color_holder.setOnClickListener {
-                showEventColorDialog()
             }
         } else {
             updateCurrentCalendarInfo(null)
