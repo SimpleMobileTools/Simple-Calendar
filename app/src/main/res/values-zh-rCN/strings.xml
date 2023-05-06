@@ -42,6 +42,7 @@
     <string name="duplicate_task">重复任务</string>
     <string name="mark_completed">标记已完成</string>
     <string name="mark_incomplete">标记未完成</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">重复</string>
     <string name="no_repetition">不重复</string>

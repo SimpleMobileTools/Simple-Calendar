@@ -316,21 +316,74 @@
                 android:importantForAccessibility="no" />
 
             <ImageView
-                android:id="@+id/task_type_image"
+                android:id="@+id/task_color_image"
                 android:layout_width="@dimen/smaller_icon_size"
                 android:layout_height="@dimen/smaller_icon_size"
                 android:layout_below="@+id/task_repetition_divider"
-                android:layout_alignTop="@+id/task_type_holder"
-                android:layout_alignBottom="@+id/task_type_holder"
+                android:layout_alignTop="@+id/task_color_holder"
+                android:layout_alignBottom="@+id/task_color_holder"
                 android:layout_marginStart="@dimen/normal_margin"
                 android:padding="@dimen/medium_margin"
                 android:src="@drawable/ic_color_vector" />
 
             <RelativeLayout
-                android:id="@+id/task_type_holder"
+                android:id="@+id/task_color_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/task_repetition_divider"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:layout_toEndOf="@+id/task_color_image"
+                android:background="?attr/selectableItemBackground">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/task_color_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_toStartOf="@+id/task_color"
+                    android:paddingTop="@dimen/normal_margin"
+                    android:paddingBottom="@dimen/normal_margin"
+                    android:text="@string/task_color"
+                    android:textSize="@dimen/day_text_size" />
+
+                <ImageView
+                    android:id="@+id/task_color"
+                    android:layout_width="@dimen/color_sample_size"
+                    android:layout_height="@dimen/color_sample_size"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/activity_margin"
+                    android:clickable="false" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/task_color_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_below="@+id/task_color_image"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:background="@color/divider_grey"
+                android:importantForAccessibility="no" />
+
+            <ImageView
+                android:id="@+id/task_type_image"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
+                android:layout_below="@+id/task_color_divider"
+                android:layout_alignTop="@+id/task_type_holder"
+                android:layout_alignBottom="@+id/task_type_holder"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_category_vector" />
+
+            <RelativeLayout
+                android:id="@+id/task_type_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_color_divider"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
                 android:layout_toEndOf="@+id/task_type_image"
@@ -342,19 +395,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_toStartOf="@+id/task_type_color"
                     android:paddingTop="@dimen/normal_margin"
                     android:paddingBottom="@dimen/normal_margin"
                     android:textSize="@dimen/day_text_size" />
-
-                <ImageView
-                    android:id="@+id/task_type_color"
-                    android:layout_width="@dimen/color_sample_size"
-                    android:layout_height="@dimen/color_sample_size"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_margin"
-                    android:clickable="false" />
 
             </RelativeLayout>
 

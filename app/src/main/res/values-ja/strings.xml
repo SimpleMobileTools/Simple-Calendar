@@ -42,6 +42,7 @@
     <string name="duplicate_task">タスクのコピー</string>
     <string name="mark_completed">完了にする</string>
     <string name="mark_incomplete">未完了にする</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">繰り返し</string>
     <string name="no_repetition">繰り返さない</string>

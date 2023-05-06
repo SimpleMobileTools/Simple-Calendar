@@ -42,6 +42,7 @@
     <string name="duplicate_task">Gandakan tugas</string>
     <string name="mark_completed">Tandai sebagai selesai</string>
     <string name="mark_incomplete">Tandai sebagai belum selesai</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Perulangan</string>
     <string name="no_repetition">Tidak ada perulangan</string>

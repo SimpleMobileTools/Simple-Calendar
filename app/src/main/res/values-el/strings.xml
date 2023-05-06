@@ -42,6 +42,7 @@
     <string name="duplicate_task">Διπλή εργασία</string>
     <string name="mark_completed">Σήμανση ολοκλ/μένη</string>
     <string name="mark_incomplete">Σήμανση μη ολοκλ/μένη</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Επανάληψη</string>
     <string name="no_repetition">Χωρίς Επανάληψη</string>

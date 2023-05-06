@@ -31,8 +31,8 @@ import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
+import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -41,11 +41,13 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_2
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
@@ -338,6 +340,10 @@ class EventActivity : SimpleActivity() {
 
         event_all_day_holder.setOnClickListener {
             event_all_day.toggle()
+        }
+
+        event_color_holder.setOnClickListener {
+            showEventColorDialog()
         }
 
         updateTextColors(event_nested_scrollview)
@@ -647,11 +653,13 @@ class EventActivity : SimpleActivity() {
                 event_repetition_limit_label.text = getString(R.string.repeat)
                 resources.getString(R.string.forever)
             }
+
             mRepeatLimit > 0 -> {
                 event_repetition_limit_label.text = getString(R.string.repeat_till)
                 val repeatLimitDateTime = Formatter.getDateTimeFromTS(mRepeatLimit)
                 Formatter.getFullDate(this, repeatLimitDateTime)
             }
+
             else -> {
                 event_repetition_limit_label.text = getString(R.string.repeat)
                 "${-mRepeatLimit} ${getString(R.string.times)}"
@@ -665,12 +673,14 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval.isXWeeklyRepetition() -> RepeatRuleWeeklyDialog(this, mRepeatRule) {
                 setRepeatRule(it)
             }
+
             mRepeatInterval.isXMonthlyRepetition() -> {
                 val items = getAvailableMonthlyRepetitionRules()
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
             }
+
             mRepeatInterval.isXYearlyRepetition() -> {
                 val items = getAvailableYearlyRepetitionRules()
                 RadioGroupDialog(this, items, mRepeatRule) {
@@ -787,6 +797,7 @@ class EventActivity : SimpleActivity() {
             mRepeatInterval.isXWeeklyRepetition() -> {
                 event_repetition_rule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getSelectedDaysString(mRepeatRule)
             }
+
             mRepeatInterval.isXMonthlyRepetition() -> {
                 val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
                     R.string.repeat else R.string.repeat_on
@@ -794,6 +805,7 @@ class EventActivity : SimpleActivity() {
                 event_repetition_rule_label.text = getString(repeatString)
                 event_repetition_rule.text = getMonthlyRepetitionRuleText()
             }
+
             mRepeatInterval.isXYearlyRepetition() -> {
                 val repeatString = if (mRepeatRule == REPEAT_ORDER_WEEKDAY_USE_LAST || mRepeatRule == REPEAT_ORDER_WEEKDAY)
                     R.string.repeat else R.string.repeat_on
@@ -835,22 +847,52 @@ class EventActivity : SimpleActivity() {
     private fun showEventColorDialog() {
         hideKeyboard()
         ensureBackgroundThread {
-            val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
-            val eventColors = getEventColors(eventType)
-            runOnUiThread {
-                val currentColor = if (mEventColor == 0) {
-                    eventType.color
-                } else {
-                    mEventColor
-                }
+            val isLocalEvent = mEventCalendarId == STORED_LOCALLY_ONLY
+            if (isLocalEvent) {
+                showCustomEventColorDialog()
+            } else {
+                showCalDAVEventColorDialog()
+            }
+        }
+    }
 
-                SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
-                    if (newColor != currentColor) {
-                        mEventColor = newColor
-                        updateEventColorInfo(defaultColor = eventType.color)
-                    }
+    private fun showCustomEventColorDialog() {
+        val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)!!
+        val currentColor = if (mEventColor == 0) {
+            eventType.color
+        } else {
+            mEventColor
+        }
+
+        runOnUiThread {
+            ColorPickerDialog(activity = this, color = currentColor, addDefaultColorButton = true) { wasPositivePressed, newColor ->
+                if (wasPositivePressed) {
+                    gotNewEventColor(newColor, currentColor, eventType.color)
                 }
             }
+        }
+    }
+
+    private fun showCalDAVEventColorDialog() {
+        val eventType = eventsHelper.getEventTypeWithCalDAVCalendarId(calendarId = mEventCalendarId)!!
+        val eventColors = getEventColors(eventType)
+        val currentColor = if (mEventColor == 0) {
+            eventType.color
+        } else {
+            mEventColor
+        }
+
+        runOnUiThread {
+            SelectEventColorDialog(activity = this, colors = eventColors, currentColor = currentColor) { newColor ->
+                gotNewEventColor(newColor, currentColor, eventType.color)
+            }
+        }
+    }
+
+    private fun gotNewEventColor(newColor: Int, currentColor: Int, defaultColor: Int) {
+        if (newColor != currentColor) {
+            mEventColor = newColor
+            updateEventColorInfo(defaultColor = defaultColor)
         }
     }
 
@@ -954,7 +996,6 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
-                    event_type_color.setFillWithStroke(eventType.color, getProperBackgroundColor())
                 }
             }
         }
@@ -988,10 +1029,6 @@ class EventActivity : SimpleActivity() {
                     updateAvailabilityImage()
                 }
             }
-
-            event_caldav_color_holder.setOnClickListener {
-                showEventColorDialog()
-            }
         } else {
             updateCurrentCalendarInfo(null)
         }
@@ -1019,9 +1056,17 @@ class EventActivity : SimpleActivity() {
                 setPadding(paddingLeft, mediumMargin, paddingRight, mediumMargin)
             }
 
-            event_caldav_color_image.beGone()
-            event_caldav_color_holder.beGone()
-            event_caldav_color_divider.beGone()
+            ensureBackgroundThread {
+                val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
+                event_color_image.beVisibleIf(eventType != null)
+                event_color_holder.beVisibleIf(eventType != null)
+                event_color_divider.beVisibleIf(eventType != null)
+                if (eventType != null) {
+                    runOnUiThread {
+                        updateEventColorInfo(eventType.color)
+                    }
+                }
+            }
         } else {
             event_caldav_calendar_email.text = currentCalendar.accountName
 
@@ -1044,9 +1089,9 @@ class EventActivity : SimpleActivity() {
                         setPadding(paddingLeft, 0, paddingRight, 0)
                     }
 
-                    event_caldav_color_image.beVisibleIf(canCustomizeColors)
-                    event_caldav_color_holder.beVisibleIf(canCustomizeColors)
-                    event_caldav_color_divider.beVisibleIf(canCustomizeColors)
+                    event_color_image.beVisibleIf(canCustomizeColors)
+                    event_color_holder.beVisibleIf(canCustomizeColors)
+                    event_color_divider.beVisibleIf(canCustomizeColors)
                     if (canCustomizeColors) {
                         updateEventColorInfo(calendarColor)
                     }
@@ -1061,7 +1106,7 @@ class EventActivity : SimpleActivity() {
         } else {
             mEventColor
         }
-        event_caldav_color.setFillWithStroke(eventColor, getProperBackgroundColor())
+        event_color.setFillWithStroke(eventColor, getProperBackgroundColor())
     }
 
     private fun getEventColors(eventType: EventType): IntArray {
@@ -1329,6 +1374,7 @@ class EventActivity : SimpleActivity() {
                         }
                     }
                 }
+
                 1 -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
@@ -1855,7 +1901,7 @@ class EventActivity : SimpleActivity() {
         val textColor = getProperTextColor()
         arrayOf(
             event_time_image, event_time_zone_image, event_repetition_image, event_reminder_image, event_type_image, event_caldav_calendar_image,
-            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_caldav_color_image
+            event_reminder_1_type, event_reminder_2_type, event_reminder_3_type, event_attendees_image, event_availability_image, event_color_image
         ).forEach {
             it.applyColorFilter(textColor)
         }

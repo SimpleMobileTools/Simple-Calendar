@@ -42,6 +42,7 @@
     <string name="duplicate_task">Taak dupliceren</string>
     <string name="mark_completed">Als voltooid markeren</string>
     <string name="mark_incomplete">Als onvoltooid markeren</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Herhaling</string>
     <string name="no_repetition">Niet herhalen</string>
