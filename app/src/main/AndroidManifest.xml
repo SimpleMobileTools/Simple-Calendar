@@ -133,7 +133,8 @@
             android:exported="true"
             android:label="@string/new_event"
             android:launchMode="singleTask"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName=".activities.MainActivity"
+            android:windowSoftInputMode="adjustResize">
 
             <intent-filter>
                 <action android:name="android.intent.action.EDIT" />
@@ -157,7 +158,8 @@
             android:exported="false"
             android:label="@string/new_task"
             android:launchMode="singleTask"
-            android:parentActivityName=".activities.MainActivity" />
+            android:parentActivityName=".activities.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".activities.SelectTimeZoneActivity"
