@@ -157,12 +157,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         addBirthdaysAnniversariesAtStart()
 
         if (isPackageInstalled("com.simplemobiletools.calendar")) {
-            ConfirmationDialog(this, "", R.string.upgraded_to_pro_calendar, R.string.ok, 0, false) {}
+            ConfirmationDialog(this, "", R.string.upgraded_from_free_calendar, R.string.ok, 0, false) {}
         }
 
         addImportIdsToTasks {
             refreshViewPager()
         }
+
+        PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
     }
 
     override fun onResume() {
@@ -1067,9 +1069,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         }
                     }
                 } else {
-                    PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
-                        openNotificationSettings()
-                    }
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
                 }
             }
         } else {

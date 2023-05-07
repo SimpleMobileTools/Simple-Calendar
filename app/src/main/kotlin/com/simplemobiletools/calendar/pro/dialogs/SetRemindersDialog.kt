@@ -36,9 +36,7 @@ class SetRemindersDialog(val activity: SimpleActivity, val eventType: Int, val c
                             }
                         }
                     } else {
-                        PermissionRequiredDialog(activity, messageId = R.string.no_post_notifications_permissions) {
-                            activity.openNotificationSettings()
-                        }
+                        PermissionRequiredDialog(activity, R.string.allow_notifications_reminders)
                     }
                 }
             }

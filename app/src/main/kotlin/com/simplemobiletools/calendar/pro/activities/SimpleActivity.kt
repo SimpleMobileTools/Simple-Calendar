@@ -85,9 +85,7 @@ open class SimpleActivity : BaseSimpleActivity() {
                     }
                 }
             } else {
-                PermissionRequiredDialog(this, messageId = R.string.no_post_notifications_permissions) {
-                    openNotificationSettings()
-                }
+                PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
             }
         }
     }
