@@ -163,8 +163,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         addImportIdsToTasks {
             refreshViewPager()
         }
-
-        PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
     }
 
     override fun onResume() {
