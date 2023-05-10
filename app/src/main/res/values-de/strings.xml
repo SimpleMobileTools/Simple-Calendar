@@ -42,7 +42,7 @@
     <string name="duplicate_task">Aufgabe duplizieren</string>
     <string name="mark_completed">Als abgeschlossen markieren</string>
     <string name="mark_incomplete">Als unvollständig markieren</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Aufgabenfarbe</string>
     <!-- Event Repetition -->
     <string name="repetition">Wiederholung</string>
     <string name="no_repetition">Keine Wiederholung</string>
