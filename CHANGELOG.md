@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.21.8 *(2023-05-11)*
+----------------------------
+
+ * Allow customizing individual event colors stored locally
+ * Fix a glitch with scheduled backups
+ * Added some translation, stability and UX improvements
+
 Version 6.21.7 *(2023-04-12)*
 ----------------------------
 
