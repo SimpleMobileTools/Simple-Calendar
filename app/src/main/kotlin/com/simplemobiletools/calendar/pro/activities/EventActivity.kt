@@ -995,6 +995,7 @@ class EventActivity : SimpleActivity() {
             if (eventType != null) {
                 runOnUiThread {
                     event_type.text = eventType.title
+                    updateEventColorInfo(eventType.color)
                 }
             }
         }
