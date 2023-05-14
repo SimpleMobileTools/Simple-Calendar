@@ -765,19 +765,20 @@ fun Context.editEvent(event: ListEvent) {
 }
 
 fun Context.getDatesWeekDateTime(date: DateTime): String {
-    return if (!config.startWeekWithCurrentDay) {
-        val currentOffsetHours = TimeZone.getDefault().rawOffset / 1000 / 60 / 60
-
-        // not great, not terrible
-        val useHours = if (currentOffsetHours >= 10) 8 else 12
-        var thisweek = date.withZone(DateTimeZone.UTC).withDayOfWeek(1).withHourOfDay(useHours).minusDays(if (config.isSundayFirst) 1 else 0)
-        if (date.minusDays(7).seconds() > thisweek.seconds()) {
-            thisweek = thisweek.plusDays(7)
+    var startOfWeek = date.withZoneRetainFields(DateTimeZone.UTC).withTimeAtStartOfDay()
+    if (!config.startWeekWithCurrentDay) {
+        startOfWeek = if (config.isSundayFirst) {
+            // a workaround for Joda-time's Monday-as-first-day-of-the-week
+            if (startOfWeek.dayOfWeek == 7) {
+                startOfWeek
+            } else {
+                startOfWeek.minusWeeks(1).withDayOfWeek(7)
+            }
+        } else {
+            startOfWeek.withDayOfWeek(1)
         }
-        thisweek.toString()
-    } else {
-        date.withZone(DateTimeZone.UTC).toString()
     }
+    return startOfWeek.toString()
 }
 
 fun Context.isTaskCompleted(event: Event): Boolean {
