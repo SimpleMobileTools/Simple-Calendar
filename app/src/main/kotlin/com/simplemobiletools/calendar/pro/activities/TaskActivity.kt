@@ -472,7 +472,7 @@ class TaskActivity : SimpleActivity() {
         EditRepeatingEventDialog(this, isTask = true) {
             hideKeyboard()
             when (it) {
-                0 -> {
+                EDIT_SELECTED_OCCURRENCE -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, addToCalDAV = false)
                         mTask.apply {
@@ -488,7 +488,7 @@ class TaskActivity : SimpleActivity() {
                         }
                     }
                 }
-                1 -> {
+                EDIT_FUTURE_OCCURRENCES -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
                         mTask.apply {
@@ -500,7 +500,7 @@ class TaskActivity : SimpleActivity() {
                         }
                     }
                 }
-                2 -> {
+                EDIT_ALL_OCCURRENCES -> {
                     ensureBackgroundThread {
                         eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
                         eventsHelper.updateEvent(mTask, updateAtCalDAV = false, showToasts = true) {
