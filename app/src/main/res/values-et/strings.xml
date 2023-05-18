@@ -42,7 +42,7 @@
     <string name="duplicate_task">Tee ülesandest koopia</string>
     <string name="mark_completed">Märgi tehtuks</string>
     <string name="mark_incomplete">Märgi poolikuks</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Ülesande värv</string>
     <!-- Event Repetition -->
     <string name="repetition">Kordus</string>
     <string name="no_repetition">Ära korda</string>

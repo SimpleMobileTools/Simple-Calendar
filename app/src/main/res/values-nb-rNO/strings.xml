@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Måneds og dagvisning</string>
     <string name="yearly_view">Årsvisning</string>
     <string name="simple_event_list">Enkel hendelsesliste</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Ingen kommende hendelser.</string>
     <string name="go_to_today">Gå til idag</string>
     <string name="go_to_date">Gå til dato</string>
     <!-- Widget titles -->
@@ -30,9 +30,9 @@
     <string name="please_fill_location">Oppfør et sted som skal vises på et kart</string>
     <string name="public_event_notification_text">En hendelse er forestående</string>
     <string name="saving_filtered_out">Lagrer… Men den valgte hendelsestypen er filtrert ut i Meny - Filtrer</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="everything_filtered_out">Du har filtrert bort alle hendelsestyper</string>
+    <string name="event_color">Hendelsesfarge</string>
+    <string name="default_calendar_color">Standard kalenderfarge</string>
     <!-- Tasks -->
     <string name="task">Oppgave</string>
     <string name="tasks">Oppgaver</string>
@@ -42,7 +42,7 @@
     <string name="duplicate_task">Dupliser oppgave</string>
     <string name="mark_completed">Marker som fullført</string>
     <string name="mark_incomplete">Marker som ufullstendig</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Oppgavefarge</string>
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
     <string name="no_repetition">Ingen gjentagelse</string>
@@ -130,9 +130,9 @@
     <string name="import_events_from_ics_pro">Importer hendelser fra en .ics-fil (Pro)</string>
     <string name="export_events_to_ics">Eksporter hendelser til en .ics-fil</string>
     <string name="default_event_type">Standard hendelsestype</string>
-    <string name="export_past_events_too">Eksporter fortidige hendelser også</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_past_events_too">Eksporter tidligere hendelser også</string>
+    <string name="export_tasks">Eksporter oppgaver</string>
+    <string name="export_past_entries">Eksporter tidligere oppføringer også</string>
     <string name="include_event_types">Inkluder hendelsestyper</string>
     <string name="filename_without_ics">Filnavn (uten .ics)</string>
     <string name="ignore_event_types">Ignorer hendelsestyper i filen, bruk alltid standardtypen</string>
@@ -181,8 +181,8 @@
     <string name="replace_description_with_location">Erstatt hendelsesbeskrivelse med sted</string>
     <string name="display_description_or_location">Vis beskrivelse eller sted</string>
     <string name="delete_all_events">Slett alle hendelser</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser\? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
+    <string name="delete_all_events_and_tasks">Slett alle hendelser og oppgaver</string>
+    <string name="delete_all_events_confirmation">Er du sikker på at du vil slette alle hendelser og oppgaver\? Dine hendelsestyper og andre innstillinger blir beholdt.</string>
     <string name="show_a_grid">Vis rutenett</string>
     <string name="loop_reminders">Gjenta påminnelser inntil avvist</string>
     <string name="dim_past_events">Dim tidligere hendelser</string>
