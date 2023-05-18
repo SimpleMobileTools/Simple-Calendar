@@ -42,6 +42,7 @@
     <string name="duplicate_task">Dupliser oppgave</string>
     <string name="mark_completed">Marker som fullført</string>
     <string name="mark_incomplete">Marker som ufullstendig</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Gjentagelse</string>
     <string name="no_repetition">Ingen gjentagelse</string>

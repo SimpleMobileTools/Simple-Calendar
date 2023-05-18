@@ -42,6 +42,7 @@
     <string name="duplicate_task">تكرار المهمة</string>
     <string name="mark_completed">وضع علامة \"مكتمل\"</string>
     <string name="mark_incomplete">وضع علامة غير مكتملة</string>
+    <string name="task_color">لون المهمة</string>
     <!-- Event Repetition -->
     <string name="repetition">تكرار</string>
     <string name="no_repetition">بدون تكرار</string>

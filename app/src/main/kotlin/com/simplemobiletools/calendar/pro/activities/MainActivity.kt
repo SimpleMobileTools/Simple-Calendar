@@ -38,6 +38,7 @@ import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -156,7 +157,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         addBirthdaysAnniversariesAtStart()
 
         if (isPackageInstalled("com.simplemobiletools.calendar")) {
-            ConfirmationDialog(this, "", R.string.upgraded_to_pro_calendar, R.string.ok, 0, false) {}
+            ConfirmationDialog(this, "", R.string.upgraded_from_free_calendar, R.string.ok, 0, false) {}
         }
 
         addImportIdsToTasks {
@@ -1066,7 +1067,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         }
                     }
                 } else {
-                    toast(R.string.no_post_notifications_permissions)
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
                 }
             }
         } else {

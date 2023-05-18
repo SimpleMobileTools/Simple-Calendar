@@ -713,7 +713,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     @SuppressLint("NewApi")
     private fun addAllDayEvent(event: Event) {
         (inflater.inflate(R.layout.week_all_day_event_marker, null, false) as ConstraintLayout).apply {
-            var backgroundColor = eventTypeColors.get(event.eventType, primaryColor)
+            var backgroundColor = if (event.color == 0) {
+                eventTypeColors.get(event.eventType, primaryColor)
+            } else {
+                event.color
+            }
             var textColor = backgroundColor.getContrastColor()
 
             val adjustAlpha = if (event.isTask()) {

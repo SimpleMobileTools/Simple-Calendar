@@ -10,7 +10,8 @@ import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.refreshCalDAVCalendars
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.toast
+import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
+import com.simplemobiletools.commons.extensions.openNotificationSettings
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 open class SimpleActivity : BaseSimpleActivity() {
@@ -84,7 +85,7 @@ open class SimpleActivity : BaseSimpleActivity() {
                     }
                 }
             } else {
-                toast(R.string.no_post_notifications_permissions)
+                PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
             }
         }
     }

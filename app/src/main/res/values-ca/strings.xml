@@ -42,6 +42,7 @@
     <string name="duplicate_task">Duplica la tasca</string>
     <string name="mark_completed">Marca com a completada</string>
     <string name="mark_incomplete">Marca com a no completada</string>
+    <string name="task_color">Color de la tasca</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetició</string>
     <string name="no_repetition">Sense repetició</string>

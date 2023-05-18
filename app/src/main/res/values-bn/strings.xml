@@ -42,6 +42,7 @@
     <string name="duplicate_task">Duplicate task</string>
     <string name="mark_completed">Mark completed</string>
     <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">পুনরাবৃত্তি</string>
     <string name="no_repetition">পুনরাবৃত্তি নেই</string>

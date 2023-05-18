@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">En begivenhed er forestående</string>
     <string name="saving_filtered_out">Gemmer - men den valgte begivenhedstype er filtreret fra under Menu - Filter</string>
     <string name="everything_filtered_out">Du har filtreret alle typer begivenheder fra</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Farve på begivenhed</string>
+    <string name="default_calendar_color">Kalenderens standardfarve</string>
     <!-- Tasks -->
     <string name="task">Opgave</string>
     <string name="tasks">Opgaver</string>
@@ -42,6 +42,7 @@
     <string name="duplicate_task">Kopier opgave</string>
     <string name="mark_completed">Marker som afsluttet</string>
     <string name="mark_incomplete">Marker som uafsluttet</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Gentagelse</string>
     <string name="no_repetition">Gentages ikke</string>

@@ -42,6 +42,7 @@
     <string name="duplicate_task">Görevi çoğalt</string>
     <string name="mark_completed">Tamamlandı olarak işaretle</string>
     <string name="mark_incomplete">Tamamlanmadı olarak işaretle</string>
+    <string name="task_color">Görev rengi</string>
     <!-- Event Repetition -->
     <string name="repetition">Tekrarla</string>
     <string name="no_repetition">Tekrarlama yok</string>

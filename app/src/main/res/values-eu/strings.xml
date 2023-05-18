@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Hilabeteko + eguneko ikuspegia</string>
     <string name="yearly_view">Urteko ikuspegia</string>
     <string name="simple_event_list">Gertaera-zerrenda sinplea</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Ez dago hurbileko gertaerarik.</string>
     <string name="go_to_today">Joan gaurko egunera</string>
     <string name="go_to_date">Joan data zehatz batera</string>
     <!-- Widget titles -->
@@ -29,19 +29,20 @@
     <string name="filter_events_by_type">Iragazi gertaerak motaren arabera</string>
     <string name="please_fill_location">Bete kokalekua mapan erakusteko</string>
     <string name="public_event_notification_text">Gertaera bat dator</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="saving_filtered_out">Gordetzen… Baina hautatutako gertaera mota goiko menuko - Iragazkia-ren bidez iragazten da</string>
+    <string name="everything_filtered_out">Gertaera mota guztiak iragazi dituzu</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
-    <string name="mark_completed">Mark completed</string>
-    <string name="mark_incomplete">Mark incomplete</string>
+    <string name="task">Zeregina</string>
+    <string name="tasks">Zereginak</string>
+    <string name="edit_task">Editatu zeregina</string>
+    <string name="new_task">Zeregin berria</string>
+    <string name="create_new_task">Sortu zeregin berri bat</string>
+    <string name="duplicate_task">Bikoiztu zeregina</string>
+    <string name="mark_completed">Burutu gisa markatu</string>
+    <string name="mark_incomplete">Markatu burutu gabeko gisa</string>
+    <string name="task_color">Task color</string>
     <!-- Event Repetition -->
     <string name="repetition">Errepikapena</string>
     <string name="no_repetition">Errepikapenik ez</string>
@@ -55,7 +56,7 @@
     <string name="repeat_till">Noiz arte errepikatu</string>
     <string name="forever">Betiko</string>
     <string name="event_is_repeatable">Gertaera errepikagarria da</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">Zeregina errepika daiteke</string>
     <string name="selection_contains_repetition">Hautaketak errepikatzen diren gertaerak ditu</string>
     <string name="delete_one_only">Ezabatu hautatutako gertaera soilik</string>
     <string name="delete_future_occurrences">Ezabatu gertaera hau eta datozen guztiak</string>
@@ -68,7 +69,7 @@
     <string name="repeat_forever">Errepikatu betiko</string>
     <string name="times">aldiz</string>
     <string name="repeat">Errepikatu</string>
-    <string name="repeat_on">Errepikatu egun hauetan:</string>
+    <string name="repeat_on">Errepikatu egun hauetan</string>
     <string name="selected_days">Hautatutako egunetan</string>
     <string name="the_same_day">Egun bera</string>
     <string name="the_last_day">Azken eguna</string>
@@ -76,7 +77,7 @@
     <string name="repeat_on_the_last_day_monthly">Errepikatu hilabeteko azken egunean</string>
     <string name="repeat_on_the_same_day_yearly">Errepikatu urtero egun berean</string>
     <string name="repeat_every_m">Errepikatze-maiztasuna</string>
-    <string name="every_m">Maiztasuna:</string>
+    <string name="every_m">Maiztasuna</string>
     <string name="first_m">lehenengo</string>
     <string name="second_m">bigarren</string>
     <string name="third_m">hirugarren</string>
@@ -85,8 +86,8 @@
     <string name="last_m">azken</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every first Sunday" -->
-    <string name="repeat_every_f">Erepikatze-maiztasuna:</string>
-    <string name="every_f">Maiztasuna:</string>
+    <string name="repeat_every_f">Errepikatze-maiztasuna</string>
+    <string name="every_f">Maiztasuna</string>
     <string name="first_f">lehenengo</string>
     <string name="second_f">bigarren</string>
     <string name="third_f">hirugarren</string>
@@ -99,20 +100,20 @@
     <string name="no_birthdays">Urtebetetzerik ez da aurkitu</string>
     <string name="no_new_birthdays">Urtebetetze berririk ez da aurkitu</string>
     <string name="birthdays_added">Urtebetetzeak ondo gehitu dira</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">Gehitu urtebetetze berriak automatikoki</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Urteurrenak</string>
     <string name="add_anniversaries">Gehitu kontaktuen urteurrenak</string>
     <string name="no_anniversaries">Urteurrenik ez da aurkitu</string>
     <string name="no_new_anniversaries">Urteurren berririk ez da aurkitu</string>
     <string name="anniversaries_added">Urteurrenak ondo gehitu dira</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">Gehitu urtebetetze berriak automatikoki</string>
     <!-- Event Reminders -->
     <string name="reminder">Abisua</string>
-    <string name="before">hau baino lehen:</string>
+    <string name="before">hau baino lehen</string>
     <string name="add_another_reminder">Gehitu beste abisu bat</string>
     <string name="event_reminders">Gertaera-abisua</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">Oroigarriak</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">Gehitu beste parte-hartzaile bat</string>
     <string name="my_status">Nire egoera:</string>
@@ -130,18 +131,18 @@
     <string name="export_events_to_ics">Esportatu gertaerak .ics fitxategi batetik</string>
     <string name="default_event_type">Lehenetsitako gertaera mota</string>
     <string name="export_past_events_too">Esportatu iraganeko gertaerak ere bai</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Esportatu zereginak</string>
+    <string name="export_past_entries">Esportatu iraganeko sarrerak ere</string>
     <string name="include_event_types">Gehitu gertaera motak</string>
     <string name="filename_without_ics">Fitxategi-izena (.ics gabe)</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">Ez ikusi gertaera motak fitxategian, erabili beti lehenetsitakoa</string>
     <!-- Event details -->
     <string name="location">Kokalekua</string>
     <string name="description">Deskripzioa</string>
     <string name="all_day">Egun osokoa</string>
     <!-- Weekly view -->
     <string name="week">Astea</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">Hasi astea uneko egunarekin</string>
     <!-- Event types -->
     <string name="event_types">Gertaera motak</string>
     <string name="add_new_type">Gehitu mota berria</string>
@@ -178,14 +179,14 @@
     <string name="event_lists">Gertaera-zerrendak</string>
     <string name="display_past_events">Bistaratu iraganeko gertaerak</string>
     <string name="replace_description_with_location">Ordeztu gertaeraren deskripzioa kokalekuarekin</string>
-    <string name="display_description_or_location">Display description or location</string>
+    <string name="display_description_or_location">Bistaratu deskribapena edo kokapena</string>
     <string name="delete_all_events">Ezabatu gertaera guztiak</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_and_tasks">Ezabatu gertaera eta zeregin guztiak</string>
     <string name="delete_all_events_confirmation">Ziur zaude gertaera guztiak ezabatu nahi dituzula\? Honek gertaera motak eta bestelako ezarpenak berdin utziko ditu.</string>
     <string name="show_a_grid">Erakutsi sareta</string>
     <string name="loop_reminders">Errepikatu abisuak baztertu arte</string>
     <string name="dim_past_events">Lausotu iraganeko gertaerak</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">Indargabetu burututako zereginak</string>
     <string name="events">Gertaerak</string>
     <string name="reminder_stream">Abisuek erabilitako audio-transmisioa</string>
     <string name="system_stream">Sistema</string>
@@ -206,10 +207,10 @@
     <string name="last_used_one">Erabilitako azkena</string>
     <string name="other_time">Bestelako denbora</string>
     <string name="highlight_weekends">Nabarmendu asteburuak ikuspegi batzuetan</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">Nabarmendutako asteburuen kolorea</string>
     <string name="allow_changing_time_zones">Baimendu gertaeren ordu-zonak aldatzea</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">Kudeatu iragazki bizkorreko gertaera motak</string>
+    <string name="allow_creating_tasks">Baimendu zereginak sortzea</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">Hautatu sinkronizatu nahi dituzun egutegiak</string>
@@ -226,8 +227,8 @@
     <string name="caldav_event_not_found">Gertaera ez da aurkitu. Gaitu egutegi aproposerako CalDAV sinkronizazioa aplikazioaren ezarpenetan.</string>
     <string name="no_synchronized_calendars">Sinkronizatu daitekeen egutegirik ez da aurkitu</string>
     <string name="status_free">Free</string>
-    <string name="status_busy">Busy</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="status_busy">Lanpetuta</string>
+    <string name="fetching_event_failed">%s gertaera eskuratzeak huts egin du</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">astelehenean</string>
@@ -247,36 +248,36 @@
     <string name="sample_description_4">Garraxi</string>
     <string name="sample_title_5">Kafea hartu</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">Erakutsi gertatzen ari diren gertaerak:</string>
+    <string name="within_the_next_one_year">Hurrengo urtean</string>
+    <string name="today_only">Gaur bakarrik</string>
+    <string name="within_the_next">Hurrengo zeraren barruan…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">Hurrengo %d egunean</item>
+        <item quantity="other">Hurrengo %d egunetan</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">Hurrengo %d astean</item>
+        <item quantity="other">Hurrengo %d astetan</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one">Hurrengo %d hilabetean</item>
+        <item quantity="other">Hurrengo %d hilabetetan</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Nola kendu ditzaket \"Gehitu jaiegunak\" botoiarekin inportatutako jaiegunak\?</string>
     <string name="faq_1_text">Modu horretan sortutako jaiegunak \"Jaiegunak\" deituriko gertaera mota berrian sartzen dira. Joan Ezarpenak -&gt; Kudeatu gertaera motak atalera, sakatu luze gertaera mota hori eta ezabatu zakarrontzia hautatuz.</string>
     <string name="faq_2_title">Gertaerak Google Calendar bidez sinkronizatu ditzaket, edo CalDAV onartzen duen bestelako zerbitzurik\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Agian egutegiak beste pertsona batzuekin partekatu ere\?</string>
     <string name="faq_2_text">Bai, aldatu \"CalDAVekin sinkronizatu\" aplikazioaren ezarpenetan eta hautatu sinkronizatu nahi dituzun egutegiak. Hala ere, gailuaren eta zerbitzarien arteko sinkronizazioa maneiatzen duen hirugarrenen aplikazioren bat beharko duzu. Googlen egutegiren bat sinkronizatu nahi izanez gero, beren egutegiaren aplikazio ofizialak egingo du lana. Bestelako egutegientzat sinkronizazio-moldagailua duen hirugarrenen aplikazio bat beharko duzu, DAVx5, esate baterako.</string>
     <string name="faq_3_title">Abisu bisualak ikusten ditut, baina audiorik ez dut entzuten. Zer egin dezaket\?</string>
     <string name="faq_3_text">Abisua bistaratzeari eta audioa erreproduzitzeari sistemak eragiten dio. Soinurik ez baduzu entzuten, saiatu aplikazioaren ezarpenetara joaten, \"Abisuek erabilitako audio-transmisioa\" aukera sakatu eta balio ezberdina jarri. Oraindik ez badabil, egiaztatu soinu-ezarpenak, transmisio jakina mututua ez badago.</string>
     <string name="faq_4_title">Aplikazioak ordu-zonak onartzen ditu\?</string>
     <string name="faq_4_text">Bai, onartzen ditu. Gertaera guztiak zure ordu-zonaren arabera sortzen dira modu lehenetsian. Gertaera baten ordu-zona aldatu nahi baduzu, lehenengo ordu-zonaren hautatzailea gaitu behar duzu aplikazioaren ezarpenetan eta, ondoren, Gartaeraren xehetasunen pantailan aldatu. Modu lehenetsian desgaituta dago, jende gehienak ez duelako behar.</string>
-    <string name="faq_5_title">The app shows no notifications, why is that\?</string>
-    <string name="faq_5_text">Check your device battery and notification settings, if there is nothing blocking the reminders, or killing the app in the background. You might also want to take a look at &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, it has some useful tips.</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_5_title">Aplikazioak ez du jakinarazpenik erakusten, zergatik\?</string>
+    <string name="faq_5_text">Egiaztatu gailuaren bateria eta jakinarazpenen ezarpenak, egiaztatu abisuak ez daudela blokeatuta edo aplikazioa bigarren planoan exekutatzea galarazten duen ezer ez dagoela. Baliteke &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt; helbidera ere begiratu nahi izatea, aholku erabilgarriak ditu.</string>
+    <string name="faq_6_title">Nola aldatu edo ezabatu dezaket lehendik dagoen gertaera mota bat\?</string>
+    <string name="faq_6_text">Gauza biak egin ditzakezu Ezarpenak - Kudeatu gertaera motak aplikazioan. Egin klik nahi duzun elementuan etiketa eta kolorea aldatzeko, edo hautatu nahi duzuna luze sakatuz eta erabili goiko menuko zakarrontzia ezabatzeko.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
