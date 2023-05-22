@@ -264,9 +264,6 @@ class CalDAVHelper(val context: Context) {
                     parentEvent.addRepetitionException(originalDayCode)
                     eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false)
 
-                    event.parentId = parentEvent.id!!
-                    event.addRepetitionException(originalDayCode)
-                    eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
                     return@queryCursorInlined
                 }
             }
