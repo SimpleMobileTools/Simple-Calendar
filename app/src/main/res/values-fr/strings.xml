@@ -31,8 +31,8 @@
     <string name="public_event_notification_text">Un évènement est à venir</string>
     <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <string name="everything_filtered_out">Vous avez filtré tous les types d\'évènements</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Couleur de l\'évènement</string>
+    <string name="default_calendar_color">Couleur de l\'agenda par défaut</string>
     <!-- Tasks -->
     <string name="task">Tâche</string>
     <string name="tasks">Tâches</string>
