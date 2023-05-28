@@ -502,7 +502,16 @@ class TaskActivity : SimpleActivity() {
                 }
                 EDIT_ALL_OCCURRENCES -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
+                        // Shift the start and end times of the first (original) event based on the changes made
+                        val originalEvent = eventsDB.getTaskWithId(mTask.id!!) ?: return@ensureBackgroundThread
+                        val originalStartTS = originalEvent.startTS
+                        val oldStartTS = mOriginalStartTS
+
+                        mTask.apply {
+                            val startTSDelta = oldStartTS - startTS
+                            startTS = originalStartTS - startTSDelta
+                            endTS = startTS
+                        }
                         eventsHelper.updateEvent(mTask, updateAtCalDAV = false, showToasts = true) {
                             finish()
                         }
