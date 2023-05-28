@@ -216,9 +216,9 @@
     <string name="select_caldav_calendars">Odaberi kalendare za sinkronizaciju</string>
     <string name="manage_synced_calendars">Upravljanje sinkroniziranim kalendarima</string>
     <string name="store_locally_only">Spremi samo lokalno</string>
-    <string name="refresh_caldav_calendars">Osvježi CalDAV kalendare</string>
-    <string name="refreshing">Osvježavanje…</string>
-    <string name="refreshing_complete">Osvježavanje završeno</string>
+    <string name="refresh_caldav_calendars">Aktualiziraj CalDAV kalendare</string>
+    <string name="refreshing">Aktualiziranje …</string>
+    <string name="refreshing_complete">Aktualiziranje je završeno</string>
     <string name="editing_calendar_failed">Uređivanje kalendara nije uspjelo</string>
     <string name="syncing">Sinkronizacija …</string>
     <string name="synchronization_completed">Sinkronizacija završena</string>
