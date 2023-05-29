@@ -1306,6 +1306,9 @@ class EventActivity : SimpleActivity() {
 
         // recreate the event if it was moved in a different CalDAV calendar
         if (mEvent.id != null && oldSource != newSource && oldSource != SOURCE_IMPORTED_ICS) {
+            if (mRepeatInterval > 0 && wasRepeatable) {
+                applyOriginalStartEndTimes()
+            }
             eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
         }
@@ -1386,25 +1389,29 @@ class EventActivity : SimpleActivity() {
                 }
                 EDIT_ALL_OCCURRENCES -> {
                     ensureBackgroundThread {
-                        // Shift the start and end times of the first (original) event based on the changes made
-                        val originalEvent = eventsDB.getEventWithId(mEvent.id!!) ?: return@ensureBackgroundThread
-                        val originalStartTS = originalEvent.startTS
-                        val originalEndTS = originalEvent.endTS
-                        val oldStartTS = mOriginalStartTS
-                        val oldEndTS = mOriginalEndTS
-
-                        mEvent.apply {
-                            val startTSDelta = oldStartTS - startTS
-                            val endTSDelta = oldEndTS - endTS
-                            startTS = originalStartTS - startTSDelta
-                            endTS = originalEndTS - endTSDelta
-                        }
+                        applyOriginalStartEndTimes()
                         eventsHelper.updateEvent(mEvent, updateAtCalDAV = true, showToasts = true) {
                             finish()
                         }
                     }
                 }
             }
+        }
+    }
+
+    private fun applyOriginalStartEndTimes() {
+        // Shift the start and end times of the first (original) event based on the changes made
+        val originalEvent = eventsDB.getEventWithId(mEvent.id!!) ?: return
+        val originalStartTS = originalEvent.startTS
+        val originalEndTS = originalEvent.endTS
+        val oldStartTS = mOriginalStartTS
+        val oldEndTS = mOriginalEndTS
+
+        mEvent.apply {
+            val startTSDelta = oldStartTS - startTS
+            val endTSDelta = oldEndTS - endTS
+            startTS = originalStartTS - startTSDelta
+            endTS = originalEndTS - endTSDelta
         }
     }
 
