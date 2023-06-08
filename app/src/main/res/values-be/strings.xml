@@ -182,7 +182,7 @@
     <string name="display_description_or_location">Паказаць апісанне або месцазнаходжанне</string>
     <string name="delete_all_events">Выдаліць усе падзеі</string>
     <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Вы ўпэўнены, што хочаце выдаліць усе падзеі\? Пры гэтым тыпы падзей і іншыя налады застануцца некранутымі.</string>
+    <string name="delete_all_events_confirmation">Вы ўпэўнены, што хочаце выдаліць усе падзеі і задачы\? Пры гэтым тыпы падзей і іншыя налады застануцца некранутымі.</string>
     <string name="show_a_grid">Паказаць сетку</string>
     <string name="loop_reminders">Паўторныя напаміны да адхілення</string>
     <string name="dim_past_events">Цьмяныя мінулыя падзеі</string>
