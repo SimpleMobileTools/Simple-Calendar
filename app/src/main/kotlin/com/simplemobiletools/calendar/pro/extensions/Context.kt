@@ -696,7 +696,7 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
     when (action) {
         DELETE_SELECTED_OCCURRENCE -> {
             eventIds.forEachIndexed { index, value ->
-                eventsHelper.addEventRepetitionException(value, timestamps[index], true)
+                eventsHelper.deleteRepeatingEventOccurrence(value, timestamps[index], true)
             }
         }
         DELETE_FUTURE_OCCURRENCES -> {

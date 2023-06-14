@@ -185,6 +185,7 @@ class CalDAVHelper(val context: Context) {
             Events.CALENDAR_TIME_ZONE,
             Events.DELETED,
             Events.AVAILABILITY,
+            Events.STATUS,
             Events.EVENT_COLOR
         )
 
@@ -214,6 +215,7 @@ class CalDAVHelper(val context: Context) {
             val reminders = getCalDAVEventReminders(id)
             val attendees = Gson().toJson(getCalDAVEventAttendees(id))
             val availability = cursor.getIntValue(Events.AVAILABILITY)
+            val status = cursor.getIntValue(Events.STATUS)
             val color = cursor.getIntValueOrNull(Events.EVENT_COLOR)
             val displayColor = if (color != null) {
                 getDisplayColorFromColor(color)
@@ -255,14 +257,22 @@ class CalDAVHelper(val context: Context) {
                 val parentImportId = "$source-$originalId"
                 val parentEvent = context.eventsDB.getEventWithImportId(parentImportId)
                 val originalDayCode = Formatter.getDayCodeFromTS(originalInstanceTime / 1000L)
-                if (parentEvent != null && !parentEvent.repetitionExceptions.contains(originalDayCode)) {
-                    val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
-                    if (storedEventId != null) {
-                        event.id = storedEventId
+                if (parentEvent != null) {
+                    // add this event to the parent event's list of exceptions
+                    if (!parentEvent.repetitionExceptions.contains(originalDayCode)) {
+                        parentEvent.addRepetitionException(originalDayCode)
+                        eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false)
                     }
-                    event.parentId = parentEvent.id!!
-                    parentEvent.addRepetitionException(originalDayCode)
-                    eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false)
+
+                    // store the event in the local db only if it is an occurrence that has been modified and not deleted
+                    if (status != Events.STATUS_CANCELED) {
+                        val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
+                        if (storedEventId != null) {
+                            event.id = storedEventId
+                        }
+                        event.parentId = parentEvent.id!!
+                        eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
+                    }
 
                     return@queryCursorInlined
                 }
@@ -430,6 +440,18 @@ class CalDAVHelper(val context: Context) {
                 put(Events.ALL_DAY, 1)
             } else {
                 put(Events.ALL_DAY, 0)
+            }
+
+            val parentEventId = event.parentId
+            if (parentEventId != 0L) {
+                val parentEvent = context.eventsDB.getEventWithId(parentEventId) ?: return@apply
+                put(Events.ORIGINAL_ID, parentEvent.getCalDAVEventId())
+                put(Events.ORIGINAL_INSTANCE_TIME, event.startTS * 1000L)
+                if (parentEvent.getIsAllDay()) {
+                    put(Events.ORIGINAL_ALL_DAY, 1)
+                } else {
+                    put(Events.ORIGINAL_ALL_DAY, 0)
+                }
             }
 
             put(Events.DTSTART, event.startTS * 1000L)

@@ -474,7 +474,6 @@ class TaskActivity : SimpleActivity() {
             when (it) {
                 EDIT_SELECTED_OCCURRENCE -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, addToCalDAV = false)
                         mTask.apply {
                             parentId = id!!.toLong()
                             id = null
@@ -533,9 +532,9 @@ class TaskActivity : SimpleActivity() {
         DeleteEventDialog(this, arrayListOf(mTask.id!!), mTask.repeatInterval > 0, isTask = true) {
             ensureBackgroundThread {
                 when (it) {
-                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.addEventRepetitionException(mTask.id!!, mTaskOccurrenceTS, true)
+                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.deleteRepeatingEventOccurrence(mTask.id!!, mTaskOccurrenceTS, false)
                     DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
-                    DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mTask.id!!, true)
+                    DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mTask.id!!, false)
                 }
 
                 runOnUiThread {
