@@ -435,6 +435,13 @@ class CalDAVHelper(val context: Context) {
                 put(Events.RRULE, repeatRule)
             }
 
+            if (event.getIsAllDay()) {
+                event.toUtcAllDayEvent()
+                put(Events.ALL_DAY, 1)
+            } else {
+                put(Events.ALL_DAY, 0)
+            }
+
             val parentEventId = event.parentId
             if (parentEventId != 0L) {
                 val parentEvent = context.eventsDB.getEventWithId(parentEventId) ?: return@apply
@@ -452,13 +459,6 @@ class CalDAVHelper(val context: Context) {
                 } else {
                     put(Events.ORIGINAL_ALL_DAY, 0)
                 }
-            }
-
-            if (event.getIsAllDay()) {
-                event.toUtcAllDayEvent()
-                put(Events.ALL_DAY, 1)
-            } else {
-                put(Events.ALL_DAY, 0)
             }
 
             put(Events.DTSTART, event.startTS * 1000L)
