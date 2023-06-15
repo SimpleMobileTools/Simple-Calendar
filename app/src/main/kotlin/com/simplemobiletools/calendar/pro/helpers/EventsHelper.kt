@@ -116,14 +116,7 @@ class EventsHelper(val context: Context) {
             return
         }
 
-        val parentEventId = event.parentId
-        if (parentEventId != 0L) {
-            val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return
-            val startDayCode = Formatter.getDayCodeFromTS(event.startTS)
-            parentEvent.addRepetitionException(startDayCode)
-            eventsDB.updateEventRepetitionExceptions(parentEvent.repetitionExceptions.toString(), parentEventId)
-        }
-
+        maybeUpdateParentExceptions(event)
         event.id = eventsDB.insertOrUpdate(event)
 
         context.updateWidgets()
@@ -137,18 +130,22 @@ class EventsHelper(val context: Context) {
     }
 
     fun insertTask(task: Event, showToasts: Boolean, callback: () -> Unit) {
-        val parentEventId = task.parentId
-        if (parentEventId != 0L) {
-            val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return
-            val startDayCode = Formatter.getDayCodeFromTS(task.startTS)
-            parentEvent.addRepetitionException(startDayCode)
-            eventsDB.updateEventRepetitionExceptions(parentEvent.repetitionExceptions.toString(), parentEventId)
-        }
-
+        maybeUpdateParentExceptions(task)
         task.id = eventsDB.insertOrUpdate(task)
         context.updateWidgets()
         context.scheduleNextEventReminder(task, showToasts)
         callback()
+    }
+
+    private fun maybeUpdateParentExceptions(event: Event) {
+        // if the event is an exception from another event, update the parent event's exceptions list
+        val parentEventId = event.parentId
+        if (parentEventId != 0L) {
+            val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return
+            val startDayCode = Formatter.getDayCodeFromTS(event.startTS)
+            parentEvent.addRepetitionException(startDayCode)
+            eventsDB.updateEventRepetitionExceptions(parentEvent.repetitionExceptions.toString(), parentEventId)
+        }
     }
 
     fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
@@ -251,11 +248,9 @@ class EventsHelper(val context: Context) {
     fun deleteRepeatingEventOccurrence(parentEventId: Long, occurrenceTS: Long, addToCalDAV: Boolean) {
         ensureBackgroundThread {
             val parentEvent = eventsDB.getEventOrTaskWithId(parentEventId) ?: return@ensureBackgroundThread
-            var repetitionExceptions = parentEvent.repetitionExceptions
-            repetitionExceptions.add(Formatter.getDayCodeFromTS(occurrenceTS))
-            repetitionExceptions = repetitionExceptions.distinct().toMutableList() as ArrayList<String>
-
-            eventsDB.updateEventRepetitionExceptions(repetitionExceptions.toString(), parentEventId)
+            val occurrenceDayCode = Formatter.getDayCodeFromTS(occurrenceTS)
+            parentEvent.addRepetitionException(occurrenceDayCode)
+            eventsDB.updateEventRepetitionExceptions(parentEvent.repetitionExceptions.toString(), parentEventId)
             context.scheduleNextEventReminder(parentEvent, false)
 
             if (addToCalDAV && config.caldavSync) {
