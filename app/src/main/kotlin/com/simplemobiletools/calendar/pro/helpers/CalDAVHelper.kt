@@ -265,7 +265,7 @@ class CalDAVHelper(val context: Context) {
                     }
 
                     // store the event in the local db only if it is an occurrence that has been modified and not deleted
-                    if (status != Events.STATUS_CANCELED) {
+                    if (status != Events.STATUS_CANCELED && title.isNotEmpty()) {
                         val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
                         if (storedEventId != null) {
                             event.id = storedEventId
