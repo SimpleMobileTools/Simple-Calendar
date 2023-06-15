@@ -493,7 +493,7 @@ class CalDAVHelper(val context: Context) {
 
     private fun fillEventRepeatExceptionValues(parentEvent: Event, occurrenceTS: Long): ContentValues {
         val isAllDay = parentEvent.getIsAllDay()
-        val startTSMillis = if (isAllDay) {
+        val startMillis = if (isAllDay) {
             // original instance time must be in UTC since the parent event is an all-day event thus everything is handled in UTC
             Formatter.getShiftedUtcTS(occurrenceTS) * 1000L
         } else {
@@ -502,11 +502,11 @@ class CalDAVHelper(val context: Context) {
         val durationMillis = (parentEvent.endTS - parentEvent.startTS) * 1000L
         return ContentValues().apply {
             put(Events.CALENDAR_ID, parentEvent.getCalDAVCalendarId())
-            put(Events.DTSTART, startTSMillis)
-            put(Events.DTEND, startTSMillis + durationMillis)
+            put(Events.DTSTART, startMillis)
+            put(Events.DTEND, startMillis + durationMillis)
             put(Events.EVENT_TIMEZONE, parentEvent.getTimeZoneString())
             put(Events.ORIGINAL_ID, parentEvent.getCalDAVEventId())
-            put(Events.ORIGINAL_INSTANCE_TIME, startTSMillis)
+            put(Events.ORIGINAL_INSTANCE_TIME, startMillis)
             put(Events.STATUS, Events.STATUS_CANCELED)
             if (isAllDay) {
                 put(Events.ORIGINAL_ALL_DAY, 1)
