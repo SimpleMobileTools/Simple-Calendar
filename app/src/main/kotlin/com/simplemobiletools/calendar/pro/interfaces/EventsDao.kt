@@ -103,7 +103,7 @@ interface EventsDao {
     @Query("SELECT id FROM events WHERE event_type IN (:eventTypeIds) AND type = $TYPE_EVENT")
     fun getEventIdsByEventType(eventTypeIds: List<Long>): List<Long>
 
-    @Query("SELECT id FROM events WHERE parent_id IN (:parentIds) AND type = $TYPE_EVENT")
+    @Query("SELECT id FROM events WHERE parent_id IN (:parentIds)")
     fun getEventIdsWithParentIds(parentIds: List<Long>): List<Long>
 
     @Query("SELECT id FROM events WHERE source = :source AND import_id != \"\" AND type = $TYPE_EVENT")
