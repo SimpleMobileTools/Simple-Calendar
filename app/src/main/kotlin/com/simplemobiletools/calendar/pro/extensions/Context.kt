@@ -334,7 +334,8 @@ fun Context.notifyEvent(originalEvent: Event) {
         val events = eventsHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id!!)
         for (currEvent in events) {
             eventStartTS = if (currEvent.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(currEvent.startTS)) else currEvent.startTS
-            if (eventStartTS - currEvent.reminder1Minutes * 60 > currentSeconds) {
+            val firstReminderMinutes = arrayOf(currEvent.reminder3Minutes, currEvent.reminder2Minutes, currEvent.reminder1Minutes).filter { it != REMINDER_OFF }.max()
+            if (eventStartTS - firstReminderMinutes * 60 > currentSeconds) {
                 break
             }
 
