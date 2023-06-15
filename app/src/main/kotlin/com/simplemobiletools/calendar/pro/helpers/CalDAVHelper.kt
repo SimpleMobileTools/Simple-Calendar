@@ -435,23 +435,30 @@ class CalDAVHelper(val context: Context) {
                 put(Events.RRULE, repeatRule)
             }
 
+            val parentEventId = event.parentId
+            if (parentEventId != 0L) {
+                val parentEvent = context.eventsDB.getEventWithId(parentEventId) ?: return@apply
+                val isParentAllDay = parentEvent.getIsAllDay()
+                // original instance time must be in UTC when the parent is an all-day event
+                val originalInstanceTS = if (isParentAllDay && !event.getIsAllDay()) {
+                    Formatter.getShiftedUtcTS(event.startTS)
+                } else {
+                    event.startTS
+                }
+                put(Events.ORIGINAL_ID, parentEvent.getCalDAVEventId())
+                put(Events.ORIGINAL_INSTANCE_TIME, originalInstanceTS * 1000L)
+                if (isParentAllDay) {
+                    put(Events.ORIGINAL_ALL_DAY, 1)
+                } else {
+                    put(Events.ORIGINAL_ALL_DAY, 0)
+                }
+            }
+
             if (event.getIsAllDay()) {
                 event.toUtcAllDayEvent()
                 put(Events.ALL_DAY, 1)
             } else {
                 put(Events.ALL_DAY, 0)
-            }
-
-            val parentEventId = event.parentId
-            if (parentEventId != 0L) {
-                val parentEvent = context.eventsDB.getEventWithId(parentEventId) ?: return@apply
-                put(Events.ORIGINAL_ID, parentEvent.getCalDAVEventId())
-                put(Events.ORIGINAL_INSTANCE_TIME, event.startTS * 1000L)
-                if (parentEvent.getIsAllDay()) {
-                    put(Events.ORIGINAL_ALL_DAY, 1)
-                } else {
-                    put(Events.ORIGINAL_ALL_DAY, 0)
-                }
             }
 
             put(Events.DTSTART, event.startTS * 1000L)
