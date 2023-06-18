@@ -480,25 +480,39 @@ class CalDAVHelper(val context: Context) {
         refreshCalDAVCalendar(event)
     }
 
-    fun insertEventRepeatException(event: Event, occurrenceTS: Long) {
+    fun insertEventRepeatException(parentEvent: Event, occurrenceTS: Long) {
         val uri = Events.CONTENT_URI
-        val values = fillEventRepeatExceptionValues(event, occurrenceTS)
+        val values = fillEventRepeatExceptionValues(parentEvent, occurrenceTS)
         try {
             context.contentResolver.insert(uri, values)
-            refreshCalDAVCalendar(event)
+            refreshCalDAVCalendar(parentEvent)
         } catch (e: Exception) {
             context.showErrorToast(e)
         }
     }
 
-    private fun fillEventRepeatExceptionValues(event: Event, occurrenceTS: Long): ContentValues {
+    private fun fillEventRepeatExceptionValues(parentEvent: Event, occurrenceTS: Long): ContentValues {
+        val isAllDay = parentEvent.getIsAllDay()
+        val startMillis = if (isAllDay) {
+            // original instance time must be in UTC since the parent event is an all-day event thus everything is handled in UTC
+            Formatter.getShiftedUtcTS(occurrenceTS) * 1000L
+        } else {
+            occurrenceTS * 1000L
+        }
+        val durationMillis = (parentEvent.endTS - parentEvent.startTS) * 1000L
         return ContentValues().apply {
-            put(Events.CALENDAR_ID, event.getCalDAVCalendarId())
-            put(Events.DTSTART, occurrenceTS)
-            put(Events.DTEND, occurrenceTS + (event.endTS - event.startTS))
-            put(Events.ORIGINAL_ID, event.getCalDAVEventId())
-            put(Events.EVENT_TIMEZONE, TimeZone.getDefault().id.toString())
-            put(Events.ORIGINAL_INSTANCE_TIME, occurrenceTS * 1000L)
+            put(Events.CALENDAR_ID, parentEvent.getCalDAVCalendarId())
+            put(Events.DTSTART, startMillis)
+            put(Events.DTEND, startMillis + durationMillis)
+            put(Events.EVENT_TIMEZONE, parentEvent.getTimeZoneString())
+            put(Events.ORIGINAL_ID, parentEvent.getCalDAVEventId())
+            put(Events.ORIGINAL_INSTANCE_TIME, startMillis)
+            put(Events.STATUS, Events.STATUS_CANCELED)
+            if (isAllDay) {
+                put(Events.ORIGINAL_ALL_DAY, 1)
+            } else {
+                put(Events.ORIGINAL_ALL_DAY, 0)
+            }
         }
     }
 
