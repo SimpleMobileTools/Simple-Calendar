@@ -272,6 +272,12 @@ class CalDAVHelper(val context: Context) {
                         }
                         event.parentId = parentEvent.id!!
                         eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
+                    } else {
+                        // delete the deleted exception event from local db
+                        val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
+                        if (storedEventId != null) {
+                            eventsHelper.deleteEvent(storedEventId, false)
+                        }
                     }
 
                     return@queryCursorInlined
