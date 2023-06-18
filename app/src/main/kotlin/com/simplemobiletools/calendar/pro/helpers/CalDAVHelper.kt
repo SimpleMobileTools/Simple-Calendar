@@ -276,7 +276,7 @@ class CalDAVHelper(val context: Context) {
                         // delete the deleted exception event from local db
                         val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
                         if (storedEventId != null) {
-                            eventsHelper.deleteEvent(storedEventId, false)
+                            eventsHelper.deleteEvent(storedEventId, true)
                         }
                     }
 
