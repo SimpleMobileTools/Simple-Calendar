@@ -1155,7 +1155,7 @@ class EventActivity : SimpleActivity() {
         DeleteEventDialog(this, arrayListOf(mEvent.id!!), mEvent.repeatInterval > 0) {
             ensureBackgroundThread {
                 when (it) {
-                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
+                    DELETE_SELECTED_OCCURRENCE -> eventsHelper.deleteRepeatingEventOccurrence(mEvent.id!!, mEventOccurrenceTS, true)
                     DELETE_FUTURE_OCCURRENCES -> eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
                     DELETE_ALL_OCCURRENCES -> eventsHelper.deleteEvent(mEvent.id!!, true)
                 }
@@ -1361,7 +1361,6 @@ class EventActivity : SimpleActivity() {
             when (it) {
                 EDIT_SELECTED_OCCURRENCE -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepetitionException(mEvent.id!!, mEventOccurrenceTS, true)
                         mEvent.apply {
                             parentId = id!!.toLong()
                             id = null
@@ -1370,7 +1369,7 @@ class EventActivity : SimpleActivity() {
                             repeatLimit = 0
                         }
 
-                        eventsHelper.insertEvent(mEvent, true, true) {
+                        eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
                             finish()
                         }
                     }
