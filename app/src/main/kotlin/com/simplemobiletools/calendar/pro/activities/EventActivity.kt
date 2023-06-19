@@ -1376,13 +1376,22 @@ class EventActivity : SimpleActivity() {
                 }
                 EDIT_FUTURE_OCCURRENCES -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepeatLimit(mEvent.id!!, mEventOccurrenceTS)
-                        mEvent.apply {
-                            id = null
+                        val eventId = mEvent.id!!
+                        val originalEvent = eventsDB.getEventWithId(eventId) ?: return@ensureBackgroundThread
+                        val hasFixedRepeatCount = originalEvent.repeatLimit < 0 && mEvent.repeatLimit < 0
+                        val repeatLimitUnchanged = originalEvent.repeatLimit == mEvent.repeatLimit
+                        if (hasFixedRepeatCount && repeatLimitUnchanged) {
+                            val daysSinceStart = (mEventOccurrenceTS - originalEvent.startTS) / DAY
+                            val newRepeatLimit = mEvent.repeatLimit + daysSinceStart
+                            mEvent.repeatLimit = newRepeatLimit
                         }
 
-                        eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
-                            finish()
+                        mEvent.id = null
+                        eventsHelper.apply {
+                            addEventRepeatLimit(eventId, mEventOccurrenceTS)
+                            insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
+                                finish()
+                            }
                         }
                     }
                 }
