@@ -793,6 +793,9 @@ fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
         event.flags = event.flags or FLAG_TASK_COMPLETED
         val task = Task(null, event.id!!, event.startTS, event.flags)
         completedTasksDB.insertOrUpdate(task)
+        val pendingIntent = getNotificationIntent(event)
+        pendingIntent.cancel()
+        (getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingIntent);
     } else {
         event.flags = event.flags.removeBit(FLAG_TASK_COMPLETED)
         completedTasksDB.deleteTaskWithIdAndTs(event.id!!, event.startTS)
