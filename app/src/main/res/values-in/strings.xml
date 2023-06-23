@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Tampilan tahun</string>
     <string name="simple_event_list">Daftar acara</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Tidak ada acara mendatang.</string>
     <string name="go_to_today">Buka hari ini</string>
     <string name="go_to_date">Buka tanggal</string>
     <!-- Widget titles -->
@@ -42,7 +42,7 @@
     <string name="duplicate_task">Gandakan tugas</string>
     <string name="mark_completed">Tandai sebagai selesai</string>
     <string name="mark_incomplete">Tandai sebagai belum selesai</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Warna tugas</string>
     <!-- Event Repetition -->
     <string name="repetition">Perulangan</string>
     <string name="no_repetition">Tidak ada perulangan</string>
@@ -181,7 +181,7 @@
     <string name="replace_description_with_location">Ganti deskripsi acara dengan lokasi</string>
     <string name="display_description_or_location">Tampilkan deskripsi atau lokasi</string>
     <string name="delete_all_events">Hapus semua acara</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_and_tasks">Hapus semua acara dan catatan</string>
     <string name="delete_all_events_confirmation">Apakah Anda yakin ingin menghapus semua acara dan tugas\? Tindakan ini tidak akan menghapus kategori dan pengaturan lainnya.</string>
     <string name="show_a_grid">Tampilkan grid</string>
     <string name="loop_reminders">Ulangi pengingat sampai dihentikan</string>
