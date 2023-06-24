@@ -145,7 +145,14 @@ class Parser {
     private fun getRepeatLimitString(event: Event) = when {
         event.repeatLimit == 0L -> ""
         event.repeatLimit < 0 -> ";$COUNT=${-event.repeatLimit}"
-        else -> ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
+        else -> if (event.getIsAllDay()) {
+            ";$UNTIL=${Formatter.getDayCodeFromTS(event.repeatLimit)}"
+        } else {
+            val dateTime = Formatter.getUTCDateTimeFromTS(event.repeatLimit)
+            val dayCode = dateTime.toString(Formatter.DAYCODE_PATTERN)
+            val timeCode = dateTime.toString(Formatter.TIME_PATTERN)
+            ";$UNTIL=${dayCode}T${timeCode}Z"
+        }
     }
 
     private fun getByMonth(event: Event) = when {

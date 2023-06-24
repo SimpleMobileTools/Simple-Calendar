@@ -225,9 +225,17 @@ class EventsHelper(val context: Context) {
         deleteEvents(eventIds, true)
     }
 
-    fun addEventRepeatLimit(eventId: Long, limitTS: Long) {
-        val time = Formatter.getDateTimeFromTS(limitTS)
-        eventsDB.updateEventRepetitionLimit(limitTS - time.hourOfDay, eventId)
+    fun addEventRepeatLimit(eventId: Long, occurrenceTS: Long) {
+        val event = eventsDB.getEventWithId(eventId) ?: return
+        val previousOccurrenceTS = occurrenceTS - event.repeatInterval // always update repeat limit of the occurrence preceding the one being edited
+        val repeatLimitDateTime = Formatter.getDateTimeFromTS(previousOccurrenceTS).withTimeAtStartOfDay()
+        val repeatLimitTS = if (event.getIsAllDay()) {
+            repeatLimitDateTime.seconds()
+        } else {
+            repeatLimitDateTime.withTime(23, 59, 59, 0).seconds()
+        }
+
+        eventsDB.updateEventRepetitionLimit(repeatLimitTS, eventId)
         context.cancelNotification(eventId)
         context.cancelPendingIntent(eventId)
         if (config.caldavSync) {
