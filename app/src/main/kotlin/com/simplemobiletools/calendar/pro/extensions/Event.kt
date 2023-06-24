@@ -29,3 +29,13 @@ fun Event.toUtcAllDayEvent() {
     startTS = Formatter.getShiftedUtcTS(startTS)
     endTS = Formatter.getShiftedUtcTS(endTS)
 }
+
+fun Event.maybeAdjustRepeatLimitCount(original: Event, occurrenceTS: Long) {
+    val hasFixedRepeatCount = original.repeatLimit < 0 && repeatLimit < 0
+    val repeatLimitUnchanged = original.repeatLimit == repeatLimit
+    if (hasFixedRepeatCount && repeatLimitUnchanged) {
+        val occurrencesSinceStart = (occurrenceTS - original.startTS) / original.repeatInterval
+        val newRepeatLimit = repeatLimit + occurrencesSinceStart
+        this.repeatLimit = newRepeatLimit
+    }
+}

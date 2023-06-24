@@ -226,7 +226,7 @@ class EventsHelper(val context: Context) {
     }
 
     fun addEventRepeatLimit(eventId: Long, occurrenceTS: Long) {
-        val event = eventsDB.getEventWithId(eventId) ?: return
+        val event = eventsDB.getEventOrTaskWithId(eventId) ?: return
         val previousOccurrenceTS = occurrenceTS - event.repeatInterval // always update repeat limit of the occurrence preceding the one being edited
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(previousOccurrenceTS).withTimeAtStartOfDay()
         val repeatLimitTS = if (event.getIsAllDay()) {

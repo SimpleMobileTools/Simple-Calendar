@@ -1378,14 +1378,7 @@ class EventActivity : SimpleActivity() {
                     ensureBackgroundThread {
                         val eventId = mEvent.id!!
                         val originalEvent = eventsDB.getEventWithId(eventId) ?: return@ensureBackgroundThread
-                        val hasFixedRepeatCount = originalEvent.repeatLimit < 0 && mEvent.repeatLimit < 0
-                        val repeatLimitUnchanged = originalEvent.repeatLimit == mEvent.repeatLimit
-                        if (hasFixedRepeatCount && repeatLimitUnchanged) {
-                            val occurrencesSinceStart = (mEventOccurrenceTS - originalEvent.startTS) / originalEvent.repeatInterval
-                            val newRepeatLimit = mEvent.repeatLimit + occurrencesSinceStart
-                            mEvent.repeatLimit = newRepeatLimit
-                        }
-
+                        mEvent.maybeAdjustRepeatLimitCount(originalEvent, mEventOccurrenceTS)
                         mEvent.id = null
                         eventsHelper.apply {
                             addEventRepeatLimit(eventId, mEventOccurrenceTS)
