@@ -30,6 +30,7 @@ fun Event.toUtcAllDayEvent() {
     endTS = Formatter.getShiftedUtcTS(endTS)
 }
 
+// this is to make sure the repetition ends on the date set when creating the original event
 fun Event.maybeAdjustRepeatLimitCount(original: Event, occurrenceTS: Long) {
     val hasFixedRepeatCount = original.repeatLimit < 0 && repeatLimit < 0
     val repeatLimitUnchanged = original.repeatLimit == repeatLimit
