@@ -1381,8 +1381,8 @@ class EventActivity : SimpleActivity() {
                         val hasFixedRepeatCount = originalEvent.repeatLimit < 0 && mEvent.repeatLimit < 0
                         val repeatLimitUnchanged = originalEvent.repeatLimit == mEvent.repeatLimit
                         if (hasFixedRepeatCount && repeatLimitUnchanged) {
-                            val daysSinceStart = (mEventOccurrenceTS - originalEvent.startTS) / DAY
-                            val newRepeatLimit = mEvent.repeatLimit + daysSinceStart
+                            val occurrencesSinceStart = (mEventOccurrenceTS - originalEvent.startTS) / originalEvent.repeatInterval
+                            val newRepeatLimit = mEvent.repeatLimit + occurrencesSinceStart
                             mEvent.repeatLimit = newRepeatLimit
                         }
 
