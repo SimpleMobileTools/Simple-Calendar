@@ -1382,6 +1382,10 @@ class EventActivity : SimpleActivity() {
                         mEvent.id = null
                         eventsHelper.apply {
                             addEventRepeatLimit(eventId, mEventOccurrenceTS)
+                            if (mEventOccurrenceTS == originalEvent.startTS) {
+                                deleteEvent(eventId, true)
+                            }
+
                             insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
                                 finish()
                             }

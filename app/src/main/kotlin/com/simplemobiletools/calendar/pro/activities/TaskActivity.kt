@@ -495,6 +495,10 @@ class TaskActivity : SimpleActivity() {
                         mTask.id = null
                         eventsHelper.apply {
                             addEventRepeatLimit(taskId, mTaskOccurrenceTS)
+                            if (mTaskOccurrenceTS == originalTask.startTS) {
+                                deleteEvent(taskId, true)
+                            }
+
                             insertTask(mTask, showToasts = true) {
                                 finish()
                             }
