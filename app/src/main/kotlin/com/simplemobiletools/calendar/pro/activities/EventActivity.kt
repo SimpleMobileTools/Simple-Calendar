@@ -1058,11 +1058,11 @@ class EventActivity : SimpleActivity() {
 
             ensureBackgroundThread {
                 val eventType = eventTypesDB.getEventTypeWithId(mEventTypeId)
-                event_color_image.beVisibleIf(eventType != null)
-                event_color_holder.beVisibleIf(eventType != null)
-                event_color_divider.beVisibleIf(eventType != null)
-                if (eventType != null) {
-                    runOnUiThread {
+                runOnUiThread {
+                    event_color_image.beVisibleIf(eventType != null)
+                    event_color_holder.beVisibleIf(eventType != null)
+                    event_color_divider.beVisibleIf(eventType != null)
+                    if (eventType != null) {
                         updateEventColorInfo(eventType.color)
                     }
                 }
