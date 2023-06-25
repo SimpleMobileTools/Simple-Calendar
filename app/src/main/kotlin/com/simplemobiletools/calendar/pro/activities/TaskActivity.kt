@@ -489,13 +489,19 @@ class TaskActivity : SimpleActivity() {
                 }
                 EDIT_FUTURE_OCCURRENCES -> {
                     ensureBackgroundThread {
-                        eventsHelper.addEventRepeatLimit(mTask.id!!, mTaskOccurrenceTS)
-                        mTask.apply {
-                            id = null
-                        }
+                        val taskId = mTask.id!!
+                        val originalTask = eventsDB.getTaskWithId(taskId) ?: return@ensureBackgroundThread
+                        mTask.maybeAdjustRepeatLimitCount(originalTask, mTaskOccurrenceTS)
+                        mTask.id = null
+                        eventsHelper.apply {
+                            addEventRepeatLimit(taskId, mTaskOccurrenceTS)
+                            if (mTaskOccurrenceTS == originalTask.startTS) {
+                                deleteEvent(taskId, true)
+                            }
 
-                        eventsHelper.insertTask(mTask, showToasts = true) {
-                            finish()
+                            insertTask(mTask, showToasts = true) {
+                                finish()
+                            }
                         }
                     }
                 }
