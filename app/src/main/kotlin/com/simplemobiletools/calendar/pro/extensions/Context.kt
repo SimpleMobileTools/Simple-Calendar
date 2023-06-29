@@ -47,6 +47,7 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeConstants
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.io.File
@@ -765,18 +766,18 @@ fun Context.editEvent(event: ListEvent) {
     }
 }
 
-fun Context.getDatesWeekDateTime(date: DateTime): String {
+fun Context.getFirstDayOfWeek(date: DateTime): String {
     var startOfWeek = date.withZoneRetainFields(DateTimeZone.UTC).withTimeAtStartOfDay()
     if (!config.startWeekWithCurrentDay) {
         startOfWeek = if (config.isSundayFirst) {
             // a workaround for Joda-time's Monday-as-first-day-of-the-week
-            if (startOfWeek.dayOfWeek == 7) {
+            if (startOfWeek.dayOfWeek == DateTimeConstants.SUNDAY) {
                 startOfWeek
             } else {
-                startOfWeek.minusWeeks(1).withDayOfWeek(7)
+                startOfWeek.minusWeeks(1).withDayOfWeek(DateTimeConstants.SUNDAY)
             }
         } else {
-            startOfWeek.withDayOfWeek(1)
+            startOfWeek.withDayOfWeek(DateTimeConstants.MONDAY)
         }
     }
     return startOfWeek.toString()

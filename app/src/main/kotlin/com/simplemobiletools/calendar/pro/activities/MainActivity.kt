@@ -899,7 +899,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun getDateCodeFormatForView(view: Int, date: DateTime): String {
         return when (view) {
-            WEEKLY_VIEW -> getDatesWeekDateTime(date)
+            WEEKLY_VIEW -> getFirstDayOfWeek(date)
             YEARLY_VIEW -> date.toString()
             else -> Formatter.getDayCodeFromDateTime(date)
         }
@@ -922,7 +922,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         when (config.storedView) {
             DAILY_VIEW -> bundle.putString(DAY_CODE, fixedDayCode ?: Formatter.getTodayCode())
-            WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, fixedDayCode ?: getDatesWeekDateTime(DateTime()))
+            WEEKLY_VIEW -> bundle.putString(WEEK_START_DATE_TIME, fixedDayCode ?: getFirstDayOfWeek(DateTime()))
             MONTHLY_VIEW, MONTHLY_DAILY_VIEW -> bundle.putString(DAY_CODE, fixedDayCode ?: Formatter.getTodayCode())
             YEARLY_VIEW -> bundle.putString(YEAR_TO_OPEN, fixedDayCode)
         }
@@ -933,7 +933,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
-        config.storedView == WEEKLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> getDatesWeekDateTime(Formatter.getDateTimeFromCode(dayCode))
+        config.storedView == WEEKLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> getFirstDayOfWeek(Formatter.getDateTimeFromCode(dayCode))
         config.storedView == YEARLY_VIEW && (dayCode?.length == Formatter.DAYCODE_PATTERN.length) -> Formatter.getYearFromDayCode(dayCode)
         else -> dayCode
     }
