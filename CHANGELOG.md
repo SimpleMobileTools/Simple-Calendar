@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.22.0 *(2023-06-29)*
+----------------------------
+
+ * Fixed some repetition issues
+ * Added some translation, stability and UX improvements
+
 Version 6.21.9 *(2023-05-11)*
 ----------------------------
 
