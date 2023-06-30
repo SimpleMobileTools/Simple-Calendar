@@ -114,11 +114,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
     if (validReminders.isEmpty()) {
         if (showToasts) {
-            if (config.displayEventTypes.contains(event.eventType.toString())) {
-                toast(R.string.saving)
-            } else {
-                toast(R.string.saving_filtered_out, Toast.LENGTH_LONG)
-            }
+            toast(R.string.saving)
         }
         return
     }
@@ -153,13 +149,9 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
 
     val newNotifTS = notifTS + 1000
     if (showToasts) {
-        if (config.displayEventTypes.contains(event.eventType.toString())) {
-            val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
-            val msg = String.format(getString(R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
-            toast(msg)
-        } else {
-            toast(R.string.saving_filtered_out, Toast.LENGTH_LONG)
-        }
+        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
+        val msg = String.format(getString(R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
+        toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(event)

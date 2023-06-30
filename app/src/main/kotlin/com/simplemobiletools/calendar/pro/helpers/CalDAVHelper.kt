@@ -261,7 +261,7 @@ class CalDAVHelper(val context: Context) {
                     // add this event to the parent event's list of exceptions
                     if (!parentEvent.repetitionExceptions.contains(originalDayCode)) {
                         parentEvent.addRepetitionException(originalDayCode)
-                        eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false)
+                        eventsHelper.insertEvent(parentEvent, addToCalDAV = false, showToasts = false, enableEventType = false)
                     }
 
                     // store the event in the local db only if it is an occurrence that has been modified and not deleted
@@ -271,7 +271,7 @@ class CalDAVHelper(val context: Context) {
                             event.id = storedEventId
                         }
                         event.parentId = parentEvent.id!!
-                        eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
+                        eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false, enableEventType = false)
                     } else {
                         // delete the deleted exception event from local db
                         val storedEventId = context.eventsDB.getEventIdWithImportId(importId)
@@ -321,12 +321,12 @@ class CalDAVHelper(val context: Context) {
 
                 if (existingEvent.hashCode() != event.hashCode() && title.isNotEmpty()) {
                     event.id = originalEventId
-                    eventsHelper.updateEvent(event, updateAtCalDAV = false, showToasts = false)
+                    eventsHelper.updateEvent(event, updateAtCalDAV = false, showToasts = false, enableEventType = false)
                 }
             } else {
                 if (title.isNotEmpty()) {
                     importIdsMap[event.importId] = event
-                    eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false)
+                    eventsHelper.insertEvent(event, addToCalDAV = false, showToasts = false, enableEventType = false)
                 }
             }
         }
