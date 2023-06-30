@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filter acara menurut kategori</string>
     <string name="please_fill_location">Silakan isi lokasi untuk ditampilkan pada peta</string>
     <string name="public_event_notification_text">Aacara yang akan datang</string>
-    <string name="saving_filtered_out">Menyimpan… Tetapi jenis peristiwa yang dipilih disaring di Menu atas - Filter</string>
     <string name="everything_filtered_out">Anda telah menyaring semua jenis peristiwa</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Филтрирање догађаја по типу</string>
     <string name="please_fill_location">Попуните локацију која ће бити приказана на мапи</string>
     <string name="public_event_notification_text">Догађај се одржава</string>
-    <string name="saving_filtered_out">Чување… Али изабрани тип догађаја је филтриран у горњем менију - филтер</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

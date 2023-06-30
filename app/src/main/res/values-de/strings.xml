@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Termine nach Typ filtern</string>
     <string name="please_fill_location">Bitte trage einen Ort ein, der auf einer Karte angezeigt werden soll</string>
     <string name="public_event_notification_text">Ein Termin steht an</string>
-    <string name="saving_filtered_out">Speichern … Aber der ausgewählte Termintyp wird im oberen Menü – Filter herausgefiltert</string>
     <string name="everything_filtered_out">Du hast alle Termintypen herausgefiltert</string>
     <string name="event_color">Terminfarbe</string>
     <string name="default_calendar_color">Standardkalenderfarbe</string>

@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">依类型筛选活动</string>
     <string name="please_fill_location">请填入要显示在地图上的地点</string>
     <string name="public_event_notification_text">一个活动即将到来</string>
-    <string name="saving_filtered_out">正在保存…但所选择的活动类型在顶部菜单的“筛选”中被过滤掉</string>
     <string name="everything_filtered_out">你过滤掉了所有活动类型</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtruoti įvykius pagal tipą</string>
     <string name="please_fill_location">Įveskite vietą, kuri bus rodoma žemėlapyje</string>
     <string name="public_event_notification_text">Artėjantis įvykis</string>
-    <string name="saving_filtered_out">Įrašoma… Bet pasirinktas įvykių tipas yra išfiltruojamas viršutiniame Meniu – Filtras</string>
     <string name="everything_filtered_out">Jūs išfiltravote visus įvykių tipus</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

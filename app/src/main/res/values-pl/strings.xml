@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtruj wydarzenia według typu</string>
     <string name="please_fill_location">Wpisz lokalizację, która ma zostać pokazana na mapie</string>
     <string name="public_event_notification_text">Nadchodzi wydarzenie</string>
-    <string name="saving_filtered_out">Zapisywanie… Jednak wybrany typ wydarzenia jest odfiltrowywany w Menu -&gt; Filtruj…</string>
     <string name="everything_filtered_out">Odfiltrowałeś(-aś) wszystkie typy wydarzeń.</string>
     <string name="event_color">Kolor wydarzenia</string>
     <string name="default_calendar_color">Domyślny kolor kalendarza</string>

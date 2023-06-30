@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">依類型篩選活動</string>
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
     <string name="public_event_notification_text">一個活動即將到來</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>
