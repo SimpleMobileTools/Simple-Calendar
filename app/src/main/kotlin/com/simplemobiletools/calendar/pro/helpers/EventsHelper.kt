@@ -149,16 +149,6 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    private fun ensureEventTypeVisibility(event: Event, enableEventType: Boolean) {
-        if (enableEventType) {
-            val eventType = event.eventType.toString()
-            val displayEventTypes = config.displayEventTypes
-            if (!displayEventTypes.contains(eventType)) {
-                config.displayEventTypes = displayEventTypes.plus(eventType)
-            }
-        }
-    }
-
     fun insertEvents(events: ArrayList<Event>, addToCalDAV: Boolean) {
         try {
             for (event in events) {
@@ -168,7 +158,7 @@ class EventsHelper(val context: Context) {
                 }
 
                 event.id = eventsDB.insertOrUpdate(event)
-
+                ensureEventTypeVisibility(event, true)
                 context.scheduleNextEventReminder(event, false)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     context.calDAVHelper.insertCalDAVEvent(event)
@@ -188,6 +178,16 @@ class EventsHelper(val context: Context) {
             context.calDAVHelper.updateCalDAVEvent(event)
         }
         callback?.invoke()
+    }
+
+    private fun ensureEventTypeVisibility(event: Event, enableEventType: Boolean) {
+        if (enableEventType) {
+            val eventType = event.eventType.toString()
+            val displayEventTypes = config.displayEventTypes
+            if (!displayEventTypes.contains(eventType)) {
+                config.displayEventTypes = displayEventTypes.plus(eventType)
+            }
+        }
     }
 
     fun deleteAllEvents() {
