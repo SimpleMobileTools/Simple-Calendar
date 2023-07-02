@@ -29,7 +29,7 @@
     <string name="filter_events_by_type">種類による予定のフィルタリング</string>
     <string name="please_fill_location">地図上に表示する場所を入力してください</string>
     <string name="public_event_notification_text">近日中の予定</string>
-    <string name="saving_filtered_out">保存していますが、選択した予定の種類は上部メニューのフィルターで除外されています</string>v
+    v
     <string name="everything_filtered_out">すべての予定の種類を除外しました</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

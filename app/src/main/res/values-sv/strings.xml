@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtrera händelser efter typ</string>
     <string name="please_fill_location">Du måste ange en plats som kan visas på en karta</string>
     <string name="public_event_notification_text">Du har en kommande händelse</string>
-    <string name="saving_filtered_out">Sparar... Men den valda händelsetypen filtreras bort i den översta menyn - Filter</string>
     <string name="everything_filtered_out">Du har filtrerat bort alla händelsetyper</string>
     <string name="event_color">Händelsens färg</string>
     <string name="default_calendar_color">Kalenderns standardfärg</string>

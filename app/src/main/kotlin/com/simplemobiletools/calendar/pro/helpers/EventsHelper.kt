@@ -110,7 +110,7 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun insertEvent(event: Event, addToCalDAV: Boolean, showToasts: Boolean, callback: ((id: Long) -> Unit)? = null) {
+    fun insertEvent(event: Event, addToCalDAV: Boolean, showToasts: Boolean, enableEventType: Boolean = true, callback: ((id: Long) -> Unit)? = null) {
         if (event.startTS > event.endTS) {
             callback?.invoke(0)
             return
@@ -118,7 +118,7 @@ class EventsHelper(val context: Context) {
 
         maybeUpdateParentExceptions(event)
         event.id = eventsDB.insertOrUpdate(event)
-
+        ensureEventTypeVisibility(event, enableEventType)
         context.updateWidgets()
         context.scheduleNextEventReminder(event, showToasts)
 
@@ -129,9 +129,10 @@ class EventsHelper(val context: Context) {
         callback?.invoke(event.id!!)
     }
 
-    fun insertTask(task: Event, showToasts: Boolean, callback: () -> Unit) {
+    fun insertTask(task: Event, showToasts: Boolean, enableEventType: Boolean = true, callback: () -> Unit) {
         maybeUpdateParentExceptions(task)
         task.id = eventsDB.insertOrUpdate(task)
+        ensureEventTypeVisibility(task, enableEventType)
         context.updateWidgets()
         context.scheduleNextEventReminder(task, showToasts)
         callback()
@@ -157,7 +158,7 @@ class EventsHelper(val context: Context) {
                 }
 
                 event.id = eventsDB.insertOrUpdate(event)
-
+                ensureEventTypeVisibility(event, true)
                 context.scheduleNextEventReminder(event, false)
                 if (addToCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && event.source != SOURCE_IMPORTED_ICS && config.caldavSync) {
                     context.calDAVHelper.insertCalDAVEvent(event)
@@ -168,15 +169,25 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun updateEvent(event: Event, updateAtCalDAV: Boolean, showToasts: Boolean, callback: (() -> Unit)? = null) {
+    fun updateEvent(event: Event, updateAtCalDAV: Boolean, showToasts: Boolean, enableEventType: Boolean = true, callback: (() -> Unit)? = null) {
         eventsDB.insertOrUpdate(event)
-
+        ensureEventTypeVisibility(event, enableEventType)
         context.updateWidgets()
         context.scheduleNextEventReminder(event, showToasts)
         if (updateAtCalDAV && event.source != SOURCE_SIMPLE_CALENDAR && config.caldavSync) {
             context.calDAVHelper.updateCalDAVEvent(event)
         }
         callback?.invoke()
+    }
+
+    private fun ensureEventTypeVisibility(event: Event, enableEventType: Boolean) {
+        if (enableEventType) {
+            val eventType = event.eventType.toString()
+            val displayEventTypes = config.displayEventTypes
+            if (!displayEventTypes.contains(eventType)) {
+                config.displayEventTypes = displayEventTypes.plus(eventType)
+            }
+        }
     }
 
     fun deleteAllEvents() {

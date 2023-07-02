@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Фильтровать события по типу</string>
     <string name="please_fill_location">Укажите место, которое будет показано на карте</string>
     <string name="public_event_notification_text">Предстоящее событие</string>
-    <string name="saving_filtered_out">Сохранение… Однако выбранный тип события исключён в разделе \"Фильтр\" верхнего меню</string>
     <string name="everything_filtered_out">Вы отфильтровали все типы событий</string>
     <string name="event_color">Цвет события</string>
     <string name="default_calendar_color">Цвет календаря по умолчанию</string>

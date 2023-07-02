@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">টাইপের মত করে ইভেন্টগুলো ফিল্টার করুন</string>
     <string name="please_fill_location">ম্যাপে দেখানোর জন্য লোকেশন পূরণ করুন</string>
     <string name="public_event_notification_text">একটি ইভেন্ট আসছে</string>
-    <string name="saving_filtered_out">Saving… But the selected event type is filtered out in the top Menu - Filter</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

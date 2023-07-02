@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Фільтраваць падзеі па тыпу</string>
     <string name="please_fill_location">Калі ласка, увядзіце месцазнаходжанне, якое будзе паказана на карце</string>
     <string name="public_event_notification_text">Набліжаецца падзея</string>
-    <string name="saving_filtered_out">Захаванне... Але абраны тып падзеі адфільтраваны ў верхнім меню - Фільтр</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

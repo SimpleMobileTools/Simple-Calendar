@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Филтрирајте ги настаните по тип</string>
     <string name="please_fill_location">Ве молиме пополнете локација која ќе биде прикажана на мапа</string>
     <string name="public_event_notification_text">Настанот е претстоен</string>
-    <string name="saving_filtered_out">Спасување… Но, избраниот тип на настани се филтрира во топ Мени - Филтер</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

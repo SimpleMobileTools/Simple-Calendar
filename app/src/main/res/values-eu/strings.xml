@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Iragazi gertaerak motaren arabera</string>
     <string name="please_fill_location">Bete kokalekua mapan erakusteko</string>
     <string name="public_event_notification_text">Gertaera bat dator</string>
-    <string name="saving_filtered_out">Gordetzen… Baina hautatutako gertaera mota goiko menuko - Iragazkia-ren bidez iragazten da</string>
     <string name="everything_filtered_out">Gertaera mota guztiak iragazi dituzu</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

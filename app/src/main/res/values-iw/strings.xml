@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">סנן אירועים לפי סוג</string>
     <string name="please_fill_location">אנא הזן מיקום להצגה במפה</string>
     <string name="public_event_notification_text">יש אירוע בקרוב</string>
-    <string name="saving_filtered_out">שומר... אבל סוג האירוע שנבחר מסונן בתפריט העליון - מסנן</string>
     <string name="everything_filtered_out">You have filtered out all event types</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>

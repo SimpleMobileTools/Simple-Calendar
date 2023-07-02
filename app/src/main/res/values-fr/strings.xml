@@ -29,7 +29,6 @@
     <string name="filter_events_by_type">Filtrer les évènements</string>
     <string name="please_fill_location">Veuillez renseigner un lieu pour le visualiser sur une carte</string>
     <string name="public_event_notification_text">Un évènement est à venir</string>
-    <string name="saving_filtered_out">Sauvegarde… Mais le type d\'événement sélectionné est filtré dans le Menu supérieur - Filtre</string>
     <string name="everything_filtered_out">Vous avez filtré tous les types d\'évènements</string>
     <string name="event_color">Couleur de l\'évènement</string>
     <string name="default_calendar_color">Couleur de l\'agenda par défaut</string>
