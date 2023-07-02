@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.22.1 *(2023-07-02)*
+----------------------------
+
+ * Flipped type and color fields at event and task creation screens
+ * Fixed some repetition issues
+ * Added some translation, stability and UX improvements
+
 Version 6.22.0 *(2023-06-29)*
 ----------------------------
 
