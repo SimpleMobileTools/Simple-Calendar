@@ -252,16 +252,16 @@
     <string name="today_only">僅今天</string>
     <string name="within_the_next">在接下來的…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">在接下來的 % d 天內</item>
-        <item quantity="other">在接下來的 % d 天內</item>
+        <item quantity="one">在接下來的 %d 天內</item>
+        <item quantity="other">在接下來的 %d 天內</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">在接下來的 % d 週內</item>
-        <item quantity="other">在接下來的 % d 週內</item>
+        <item quantity="one">在接下來的 %d 週內</item>
+        <item quantity="other">在接下來的 %d 週內</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one"> 在接下來的 % d 個月內</item>
-        <item quantity="other">在接下來的 % d 個月內</item>
+        <item quantity="one"> 在接下來的 %d 個月內</item>
+        <item quantity="other">在接下來的 %d 個月內</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日\?</string>
