@@ -6,10 +6,10 @@
     <string name="daily_view">日曆</string>
     <string name="weekly_view">週曆</string>
     <string name="monthly_view">月曆</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">月曆 + 日曆模式</string>
     <string name="yearly_view">年曆</string>
     <string name="simple_event_list">簡易活動列表</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">目前沒有即將發生的事件。</string>
     <string name="go_to_today">前往今天</string>
     <string name="go_to_date">前往日期</string>
     <!-- Widget titles -->
@@ -29,19 +29,19 @@
     <string name="filter_events_by_type">依類型篩選活動</string>
     <string name="please_fill_location">請填入要顯示在地圖上的地點</string>
     <string name="public_event_notification_text">一個活動即將到來</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="everything_filtered_out">您已篩選掉所有事件類型</string>
+    <string name="event_color">事件顏色</string>
+    <string name="default_calendar_color">預設日曆顏色</string>
     <!-- Tasks -->
-    <string name="task">Task</string>
-    <string name="tasks">Tasks</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="new_task">New Task</string>
-    <string name="create_new_task">Create a new task</string>
-    <string name="duplicate_task">Duplicate task</string>
+    <string name="task">任務</string>
+    <string name="tasks">任務</string>
+    <string name="edit_task">編輯任務</string>
+    <string name="new_task">新增任務</string>
+    <string name="create_new_task">建立新任務</string>
+    <string name="duplicate_task">複製任務</string>
     <string name="mark_completed">標為已完成</string>
     <string name="mark_incomplete">標為未完成</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">任務顏色</string>
     <!-- Event Repetition -->
     <string name="repetition">重複</string>
     <string name="no_repetition">不重複</string>
@@ -55,13 +55,13 @@
     <string name="repeat_till">重複直到</string>
     <string name="forever">永遠</string>
     <string name="event_is_repeatable">這是個重複活動</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="task_is_repeatable">任務可重複執行</string>
     <string name="selection_contains_repetition">選擇的項目含有重複活動</string>
     <string name="delete_one_only">只刪除選擇的事件</string>
     <string name="delete_future_occurrences">刪除這個及全部未來的事件</string>
     <string name="delete_all_occurrences">刪除全部事件</string>
     <string name="update_one_only">只更新選擇的事件</string>
-    <string name="update_this_and_future_occurrences">Update this and all future occurrences</string>
+    <string name="update_this_and_future_occurrences">更新此次和所有未來的發生</string>
     <string name="update_all_occurrences">更新全部事件</string>
     <string name="repeat_till_date">重複直到某日</string>
     <string name="stop_repeating_after_x">經過 x 次後停止重複</string>
@@ -99,20 +99,20 @@
     <string name="no_birthdays">未發現生日</string>
     <string name="no_new_birthdays">未發現新的生日</string>
     <string name="birthdays_added">生日添加成功</string>
-    <string name="add_birthdays_automatically">Add new birthdays automatically</string>
+    <string name="add_birthdays_automatically">自動新增生日</string>
     <!-- Anniversaries -->
     <string name="anniversaries">紀念日</string>
     <string name="add_anniversaries">添加聯絡人紀念日</string>
     <string name="no_anniversaries">未發現紀念日</string>
     <string name="no_new_anniversaries">未發現新的紀念日</string>
     <string name="anniversaries_added">紀念日添加成功</string>
-    <string name="add_anniversaries_automatically">Add new anniversaries automatically</string>
+    <string name="add_anniversaries_automatically">自動新增週年紀念日</string>
     <!-- Event Reminders -->
     <string name="reminder">提醒</string>
     <string name="before">前</string>
     <string name="add_another_reminder">新增另一個提醒</string>
     <string name="event_reminders">活動提醒</string>
-    <string name="reminders">Reminders</string>
+    <string name="reminders">提醒</string>
     <!-- Event attendees -->
     <string name="add_another_attendee">新增另一位出席者</string>
     <string name="my_status">我的狀態:</string>
@@ -130,18 +130,18 @@
     <string name="export_events_to_ics">匯出活動成 .ics 檔案</string>
     <string name="default_event_type">預設活動類型</string>
     <string name="export_past_events_too">也匯出過去的活動</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">匯出任務</string>
+    <string name="export_past_entries">也匯出過去的項目</string>
     <string name="include_event_types">包含活動類型</string>
     <string name="filename_without_ics">檔案名稱 (不含 .ics )</string>
-    <string name="ignore_event_types">Ignore event types in the file, always use the default one</string>
+    <string name="ignore_event_types">忽略文件中的事件類型，始終使用預設事件類型</string>
     <!-- Event details -->
     <string name="location">地點</string>
     <string name="description">描述</string>
     <string name="all_day">全天</string>
     <!-- Weekly view -->
     <string name="week">週數</string>
-    <string name="start_week_with_current_day">Start week with the current day</string>
+    <string name="start_week_with_current_day">以當天開始週期</string>
     <!-- Event types -->
     <string name="event_types">活動類型</string>
     <string name="add_new_type">添加新類型</string>
@@ -166,8 +166,8 @@
     <string name="manage_event_types">管理活動類型</string>
     <string name="start_day_at">每日開始於</string>
     <string name="end_day_at">每日結束於</string>
-    <string name="midnight_spanning">Show events spanning across midnight at the top bar</string>
-    <string name="allow_customizing_day_count">Allow customizing day count</string>
+    <string name="midnight_spanning">在頂部條上顯示跨越午夜的事件</string>
+    <string name="allow_customizing_day_count">允許自訂天數</string>
     <string name="week_numbers">顯示第幾週</string>
     <string name="vibrate">提醒通知時震動</string>
     <string name="reminder_sound">提醒音效</string>
@@ -180,12 +180,12 @@
     <string name="replace_description_with_location">活動描述改成地點</string>
     <string name="display_description_or_location">顯示說明或地點</string>
     <string name="delete_all_events">刪除全部活動</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
+    <string name="delete_all_events_and_tasks">刪除所有事件和任務</string>
     <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎\?會完整留下你的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>
     <string name="dim_past_events">淡化過去的活動</string>
-    <string name="dim_completed_tasks">Dim completed tasks</string>
+    <string name="dim_completed_tasks">淡化已完成的任務</string>
     <string name="events">活動</string>
     <string name="reminder_stream">用於提醒的音源串流</string>
     <string name="system_stream">系統</string>
@@ -206,10 +206,10 @@
     <string name="last_used_one">最後使用</string>
     <string name="other_time">其他時間</string>
     <string name="highlight_weekends">在檢視畫面突顯假日</string>
-    <string name="highlight_weekends_color">Color of highlighted weekends</string>
+    <string name="highlight_weekends_color">週末突顯顏色</string>
     <string name="allow_changing_time_zones">允許改變活動的時區</string>
-    <string name="manage_quick_filter_event_types">Manage quick filter event types</string>
-    <string name="allow_creating_tasks">Allow creating tasks</string>
+    <string name="manage_quick_filter_event_types">管理快速篩選事件類型</string>
+    <string name="allow_creating_tasks">允許建立任務</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
     <string name="select_caldav_calendars">選擇行事曆來同步</string>
@@ -224,10 +224,10 @@
     <string name="select_a_different_caldav_color">選擇不同的顏色 (只能被添加於本機端)</string>
     <string name="insufficient_permissions">你不被允許對選擇的行事曆寫入</string>
     <string name="caldav_event_not_found">未發現活動。請在程式設定中為合適的行事曆啟用CalDAV同步。</string>
-    <string name="no_synchronized_calendars">No synchronizable calendars have been found</string>
+    <string name="no_synchronized_calendars">找不到可同步的日曆</string>
     <string name="status_free">空閒</string>
     <string name="status_busy">繁忙</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">無法取得事件 %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">星期一</string>
@@ -247,27 +247,27 @@
     <string name="sample_description_4">在購物商場</string>
     <string name="sample_title_5">休息時間</string>
     <!-- List widget config -->
-    <string name="show_events_happening">Show events happening:</string>
-    <string name="within_the_next_one_year">Within the next 1 year</string>
-    <string name="today_only">Today only</string>
-    <string name="within_the_next">Within the next…</string>
+    <string name="show_events_happening">顯示正在發生的事件：</string>
+    <string name="within_the_next_one_year">在接下來的 1 年內</string>
+    <string name="today_only">僅今天</string>
+    <string name="within_the_next">在接下來的…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Within the next %d day</item>
-        <item quantity="other">Within the next %d days</item>
+        <item quantity="one">在接下來的 %d 天內</item>
+        <item quantity="other">在接下來的 %d 天內</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Within the next %d week</item>
-        <item quantity="other">Within the next %d weeks</item>
+        <item quantity="one">在接下來的 %d 週內</item>
+        <item quantity="other">在接下來的 %d 週內</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Within the next %d month</item>
-        <item quantity="other">Within the next %d months</item>
+        <item quantity="one"> 在接下來的 %d 個月內</item>
+        <item quantity="other">在接下來的 %d 個月內</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">我如何移除用「添加節日」按鈕所匯入的節日\?</string>
     <string name="faq_1_text">以這方式建立的節日，會被加進一個叫做「節日」的新活動類型。 你可以到[設定] -&gt; [管理活動類型]，長按特定的活動類型，然後選擇垃圾桶來刪除。</string>
     <string name="faq_2_title">我可以透過 Google 日曆或其它支援 CalDAV 的服務來同步我的活動嗎\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">甚至可以與其他人共享日曆嗎\？</string>
     <string name="faq_2_text">行的，只要打開程式設定內的「CalDAV 同步」，然後選擇你要同步的行事曆。然而你需要一些第三方應用程式來處理裝置和伺服器之間的同步。 如果你要同步 Google 日曆，他們官方的行事曆程式就能做到了。而其它行事曆，你需要有第三方同步工具才行，像是 DAVx5。</string>
     <string name="faq_3_title">我看到了視覺的提醒，但沒聽到音效。我能怎麼辦\?</string>
     <string name="faq_3_text">不只是顯示實際的提醒，播放音效也受到系統極大的影響。如果你聽不到任何聲音，試著到應用程式設定， 按\"用於提醒的音源串流\"選項，然後更改成不同數值。如果還是沒有用，檢查你的音量設定，指定串流是不是靜音的。</string>
@@ -275,8 +275,8 @@
     <string name="faq_4_text">是的，辦得到。預設全部的活動建立於你目前的時區。如果你要改變活動的時區， 首先必須在程式設定中啟用時區選擇，然後到「活動詳細資訊」畫面去改變。由於大部分的人不需要，預設是停用的。</string>
     <string name="faq_5_title">這個 app 都不會跳通知欸，為什麼啊？</string>
     <string name="faq_5_text">請檢查裝置的電池設定與通知設定，確定沒有封鎖提醒、或是阻止本 app 在背景執行。您也可以看看 &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;，上面有一些實用的小秘訣。</string>
-    <string name="faq_6_title">How can I modify or delete an existing event type\?</string>
-    <string name="faq_6_text">You can do both of those in the app Settings - Manage event types. Just click on the wanted one for changing the label and color, or select the wanted one by long pressing it and use the trashbin at the top menu for deleting.</string>
+    <string name="faq_6_title">如何修改或刪除現有的事件類型\？</string>
+    <string name="faq_6_text">您可以在應用程式設定中的「管理事件類型」中進行這兩個操作。只需點擊所需的事件類型以更改標籤和顏色，或長按所需的事件類型並使用頂部菜單中的垃圾桶進行刪除。</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
