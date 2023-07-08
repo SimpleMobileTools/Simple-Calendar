@@ -41,7 +41,7 @@
     <string name="duplicate_task">Дублювати завдання</string>
     <string name="mark_completed">Позначити завершеним</string>
     <string name="mark_incomplete">Позначити незавершеним</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Колір завдання</string>
     <!-- Event Repetition -->
     <string name="repetition">Повторювати</string>
     <string name="no_repetition">Без повторень</string>
