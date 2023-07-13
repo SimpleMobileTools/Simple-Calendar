@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Месечен и дневен изглед</string>
     <string name="yearly_view">Годишен изглед</string>
     <string name="simple_event_list">Списък със събития</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Няма предстоящи събития.</string>
     <string name="go_to_today">Отидете на днес</string>
     <string name="go_to_date">Отиди на дата</string>
     <!-- Widget titles -->
@@ -29,9 +29,9 @@
     <string name="filter_events_by_type">Филтриране на събитията по тип</string>
     <string name="please_fill_location">Моля попълнете местоположение за показване на картата</string>
     <string name="public_event_notification_text">Предстоящо събитие</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="everything_filtered_out">Вие филтрирахте всички типове събития</string>
+    <string name="event_color">Цвят на събитието</string>
+    <string name="default_calendar_color">Цвят на календара по подразбиране</string>
     <!-- Tasks -->
     <string name="task">Задача</string>
     <string name="tasks">Задачи</string>
@@ -41,7 +41,7 @@
     <string name="duplicate_task">Дублиране на задача</string>
     <string name="mark_completed">Означете като завършено</string>
     <string name="mark_incomplete">Означете като незавършено</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Цвят на задачата</string>
     <!-- Event Repetition -->
     <string name="repetition">Повторение</string>
     <string name="no_repetition">Без повторение</string>
@@ -54,8 +54,8 @@
     <string name="years_raw">години</string>
     <string name="repeat_till">Повтаряй до</string>
     <string name="forever">Завинаги</string>
-    <string name="event_is_repeatable">Събитието се повтаря</string>
-    <string name="task_is_repeatable">The task is repeatable</string>
+    <string name="event_is_repeatable">Събитието e повтаряемо</string>
+    <string name="task_is_repeatable">Задачата e повтаряема</string>
     <string name="selection_contains_repetition">Изборът съдържа само повтарящи се събития</string>
     <string name="delete_one_only">Изтрийте само избраното събитие</string>
     <string name="delete_future_occurrences">Изтрийте това събитие и всички бъдещи събития</string>
@@ -130,8 +130,8 @@
     <string name="export_events_to_ics">Експортиране на събития в .ics файл</string>
     <string name="default_event_type">Тип събитие по подразбиране</string>
     <string name="export_past_events_too">Експортиране и на минали събития</string>
-    <string name="export_tasks">Export tasks</string>
-    <string name="export_past_entries">Export past entries too</string>
+    <string name="export_tasks">Експортиране на задачи</string>
+    <string name="export_past_entries">Експортиране и на минали записи</string>
     <string name="include_event_types">Включване на типа събития</string>
     <string name="filename_without_ics">Име на файла (без .ics)</string>
     <string name="ignore_event_types">Игнорирайте типовете събития във файла, винаги използвайте този по подразбиране</string>
@@ -180,8 +180,8 @@
     <string name="replace_description_with_location">Смяна на описанието на събитието с местоположение</string>
     <string name="display_description_or_location">Показване на описание или местоположение</string>
     <string name="delete_all_events">Изтриване на всички събития</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Сигурни ли сте, че искате да изтриете всички събития\? Това ще остави типовете събития и другите ви настройки непокътнати.</string>
+    <string name="delete_all_events_and_tasks">Изтриване на всички събития и задачи</string>
+    <string name="delete_all_events_confirmation">Сигурни ли сте, че искате да изтриете всички събития и задачи\? Това ще остави типовете събития и другите ви настройки непокътнати.</string>
     <string name="show_a_grid">Показване на решетка</string>
     <string name="loop_reminders">Циклично напомняне до отхвърляне</string>
     <string name="dim_past_events">Затъмняване на минали събития</string>
@@ -227,7 +227,7 @@
     <string name="no_synchronized_calendars">Не са намерени календари, които да могат да се синхронизират</string>
     <string name="status_free">Свободно</string>
     <string name="status_busy">Заето</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">Изтегляне на събитие %s е неуспешно</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Понеделник</string>
@@ -267,7 +267,7 @@
     <string name="faq_1_title">Как мога да премахна празниците, импортирани чрез бутона \"Добавяне на празници\"\?</string>
     <string name="faq_1_text">Създадените по този начин празници се вмъкват в нов тип събитие, наречен \"Празници\". Можете да отидете в Настройки -&gt; Управление на типове събития, да натиснете продължително дадения тип събитие и да го изтриете, като изберете кошчето за боклук.</string>
     <string name="faq_2_title">Мога ли да си синхронизирам своите събития с Google Calendar или друга услуга, поддържаща CalDAV\?</string>
-    <string name="faq_2_title_extra">Maybe even share calendars with other people?</string>
+    <string name="faq_2_title_extra">Може дори да споделяте календари с други хора\?</string>
     <string name="faq_2_text">Да, просто превключете \"Синхронизация с CalDAV\" в настройките на приложението и изберете календарите, които искате да синхронизирате. Ще ви е необходимо обаче приложение на трета страна, което да обработва синхронизацията между устройството и сървърите. В случай че искате да синхронизирате календар на Google, тяхното официално приложение \"Календар\" ще свърши тази работа. За други календари ще ви е необходим адаптер за синхронизиране от трета страна, например DAVx5.</string>
     <string name="faq_3_title">Виждам напомняния но не чувам звук. Какво мога да направя\?</string>
     <string name="faq_3_text">Системата оказва огромно влияние не само върху показването на действителното напомняне, но и върху възпроизвеждането на звука. Ако не можете да чуете никакъв звук, опитайте да влезете в настройките на приложението, да натиснете опцията \"Аудио поток, използван от напомнянията\" и да я промените на друга стойност. Ако все още не работи, проверете настройките на звука, дали конкретният поток не е заглушен.</string>
