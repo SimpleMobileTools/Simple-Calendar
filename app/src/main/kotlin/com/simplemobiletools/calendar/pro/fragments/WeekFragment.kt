@@ -552,7 +552,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 do {
                     val dayOfWeek = dayColumns.indexOfFirst { it.tag == currentDayCode }
                     if (dayOfWeek == -1 || dayOfWeek >= config.weeklyViewDays) {
-                        continue@dayevents
+                        if (startDayCode != endDayCode) {
+                            currentDateTime = currentDateTime.plusDays(1)
+                            currentDayCode = Formatter.getDayCodeFromDateTime(currentDateTime)
+                            continue
+                        } else {
+                            continue@dayevents
+                        }
                     }
 
                     val dayColumn = dayColumns[dayOfWeek]
