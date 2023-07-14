@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/month_day_calendar_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/medium_margin">
+
+    <com.simplemobiletools.calendar.pro.views.MonthViewWrapper
+        android:id="@+id/month_day_view_wrapper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/month_day_list_holder"
+        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <RelativeLayout
+        android:id="@+id/month_day_list_holder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.55"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_day_view_wrapper">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/month_day_selected_day_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/small_margin"
+            android:textSize="22sp"
+            tools:text="November 19" />
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/month_day_no_events_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/month_day_selected_day_label"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:paddingStart="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:text="@string/no_items_found"
+            android:textSize="@dimen/bigger_text_size"
+            android:textStyle="italic"
+            android:visibility="gone" />
+
+        <com.simplemobiletools.commons.views.MyRecyclerView
+            android:id="@+id/month_day_events_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/month_day_selected_day_label"
+            android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_animation"
+            android:scrollbars="vertical"
+            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
