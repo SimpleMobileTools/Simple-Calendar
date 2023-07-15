@@ -311,7 +311,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun getCurrentDate(): DateTime? {
         return if (currentWeekTS != 0L) {
-            Formatter.getUTCDateTimeFromTS(currentWeekTS)
+            Formatter.getDateTimeFromTS(currentWeekTS)
         } else {
             null
         }

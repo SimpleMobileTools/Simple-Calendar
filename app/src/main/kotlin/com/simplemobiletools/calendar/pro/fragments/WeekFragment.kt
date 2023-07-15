@@ -196,14 +196,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         mView.week_events_columns_holder.removeAllViews()
         (0 until config.weeklyViewDays).forEach {
             val column = inflater.inflate(R.layout.weekly_view_day_column, mView.week_events_columns_holder, false) as RelativeLayout
-            column.tag = Formatter.getUTCDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
+            column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
             mView.week_events_columns_holder.addView(column)
             dayColumns.add(column)
         }
     }
 
     private fun setupDayLabels() {
-        var curDay = Formatter.getUTCDateTimeFromTS(weekTimestamp)
+        var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         val screenWidth = context?.usableScreenSize?.x ?: return
         val dayWidth = screenWidth / config.weeklyViewDays
