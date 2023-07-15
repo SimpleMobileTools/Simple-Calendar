@@ -758,6 +758,10 @@ fun Context.editEvent(event: ListEvent) {
 }
 
 fun Context.getFirstDayOfWeek(date: DateTime): String {
+    return getFirstDayOfWeekDt(date).toString()
+}
+
+fun Context.getFirstDayOfWeekDt(date: DateTime): DateTime {
     var startOfWeek = date.withTimeAtStartOfDay()
     if (!config.startWeekWithCurrentDay) {
         startOfWeek = if (config.isSundayFirst) {
@@ -771,7 +775,7 @@ fun Context.getFirstDayOfWeek(date: DateTime): String {
             startOfWeek.withDayOfWeek(DateTimeConstants.MONDAY)
         }
     }
-    return startOfWeek.toString()
+    return startOfWeek
 }
 
 fun Context.isTaskCompleted(event: Event): Boolean {
