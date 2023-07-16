@@ -191,6 +191,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     fun updateCalendar() {
         if (context != null) {
+            currentlyDraggedView = null
             WeeklyCalendarImpl(this, requireContext()).updateWeeklyCalendar(weekTimestamp)
         }
     }
@@ -299,9 +300,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                                     activity.hideKeyboard()
                                                     when (it) {
                                                         null -> {
-                                                            // force update by removing hash
-                                                            lastHash = 0
-                                                            updateCalendar()
+                                                            revertDraggedEvent()
                                                         }
                                                         EDIT_SELECTED_OCCURRENCE -> {
                                                             context?.eventsHelper?.editSelectedOccurrence(newEvent, false) {
@@ -323,8 +322,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                                 }
                                             }
                                         } else {
-                                            context?.eventsHelper?.updateEvent(newEvent, updateAtCalDAV = true, showToasts = false) {
-                                                updateCalendar()
+                                            if (event.startTS == newEvent.startTS && event.endTS == newEvent.endTS) {
+                                                revertDraggedEvent()
+                                            } else {
+                                                context?.eventsHelper?.updateEvent(newEvent, updateAtCalDAV = true, showToasts = false) {
+                                                    updateCalendar()
+                                                }
                                             }
                                         }
                                     }
@@ -338,6 +341,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
             }
+    }
+
+    private fun revertDraggedEvent() {
+        activity?.runOnUiThread {
+            currentlyDraggedView?.beVisible()
+            currentlyDraggedView = null
+        }
     }
 
     private fun getViewGestureDetector(view: ViewGroup, index: Int): GestureDetector {
@@ -932,7 +942,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     if (!dragEvent.result) {
                         view.beVisible()
                     }
-                    currentlyDraggedView = null
                     true
                 }
                 else -> false
