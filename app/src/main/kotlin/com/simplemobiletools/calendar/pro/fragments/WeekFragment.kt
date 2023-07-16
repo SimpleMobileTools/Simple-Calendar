@@ -16,6 +16,9 @@ import androidx.collection.LongSparseArray
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.activities.MainActivity
+import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.dialogs.EditRepeatingEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -188,6 +191,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     fun updateCalendar() {
         if (context != null) {
+            currentlyDraggedView = null
             WeeklyCalendarImpl(this, requireContext()).updateWeeklyCalendar(weekTimestamp)
         }
     }
@@ -269,12 +273,12 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         DragEvent.ACTION_DRAG_ENDED -> true
                         DragEvent.ACTION_DROP -> {
                             try {
-                                val eventId = dragEvent.clipData.getItemAt(0).text.toString().toLong()
+                                val (eventId, originalStartTS, originalEndTS) = dragEvent.clipData.getItemAt(0).text.toString().split(";").map { it.toLong() }
                                 val startHour = (dragEvent.y / rowHeight).toInt()
                                 ensureBackgroundThread {
                                     val event = context?.eventsDB?.getEventOrTaskWithId(eventId)
-                                    event?.let {
-                                        val currentStartTime = Formatter.getDateTimeFromTS(it.startTS)
+                                    event?.let { event ->
+                                        val currentStartTime = Formatter.getDateTimeFromTS(event.startTS)
                                         val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
                                             .withTime(
                                                 startHour,
@@ -284,14 +288,47 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                             ).seconds()
                                         val currentEventDuration = event.endTS - event.startTS
                                         val endTime = startTime + currentEventDuration
-                                        context?.eventsHelper?.updateEvent(
-                                            it.copy(
-                                                startTS = startTime,
-                                                endTS = endTime,
-                                                flags = it.flags.removeBit(FLAG_ALL_DAY)
-                                            ), updateAtCalDAV = true, showToasts = false
-                                        ) {
-                                            updateCalendar()
+                                        val newEvent = event.copy(
+                                            startTS = startTime,
+                                            endTS = endTime,
+                                            flags = event.flags.removeBit(FLAG_ALL_DAY)
+                                        )
+                                        if (event.repeatInterval > 0) {
+                                            val activity = this.activity as SimpleActivity
+                                            activity.runOnUiThread {
+                                                EditRepeatingEventDialog(activity) {
+                                                    activity.hideKeyboard()
+                                                    when (it) {
+                                                        null -> {
+                                                            revertDraggedEvent()
+                                                        }
+                                                        EDIT_SELECTED_OCCURRENCE -> {
+                                                            context?.eventsHelper?.editSelectedOccurrence(newEvent, false) {
+                                                                updateCalendar()
+                                                            }
+                                                        }
+                                                        EDIT_FUTURE_OCCURRENCES -> {
+                                                            context?.eventsHelper?.editFutureOccurrences(newEvent, originalStartTS, false) {
+                                                                // we need to refresh all fragments because they can contain future occurrences
+                                                                (activity as MainActivity).refreshItems()
+                                                            }
+                                                        }
+                                                        EDIT_ALL_OCCURRENCES -> {
+                                                            context?.eventsHelper?.editAllOccurrences(newEvent, originalStartTS, originalEndTS, false) {
+                                                                (activity as MainActivity).refreshItems()
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if (event.startTS == newEvent.startTS && event.endTS == newEvent.endTS) {
+                                                revertDraggedEvent()
+                                            } else {
+                                                context?.eventsHelper?.updateEvent(newEvent, updateAtCalDAV = true, showToasts = false) {
+                                                    updateCalendar()
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -304,6 +341,13 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     }
                 }
             }
+    }
+
+    private fun revertDraggedEvent() {
+        activity?.runOnUiThread {
+            currentlyDraggedView?.beVisible()
+            currentlyDraggedView = null
+        }
     }
 
     private fun getViewGestureDetector(view: ViewGroup, index: Int): GestureDetector {
@@ -634,7 +678,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                         setOnLongClickListener { view ->
                             currentlyDraggedView = view
                             val shadowBuilder = View.DragShadowBuilder(view)
-                            val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, event.id.toString())
+                            val clipData = ClipData.newPlainText(WEEKLY_EVENT_ID_LABEL, "${event.id};${event.startTS};${event.endTS}")
                             if (isNougatPlus()) {
                                 view.startDragAndDrop(clipData, shadowBuilder, null, 0)
                             } else {
@@ -898,7 +942,6 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     if (!dragEvent.result) {
                         view.beVisible()
                     }
-                    currentlyDraggedView = null
                     true
                 }
                 else -> false
