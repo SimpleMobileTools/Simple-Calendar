@@ -433,7 +433,7 @@ class TaskActivity : SimpleActivity() {
                         storeTask(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
