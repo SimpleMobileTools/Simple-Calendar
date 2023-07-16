@@ -20,7 +20,6 @@ import android.provider.CalendarContract
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
@@ -48,7 +47,6 @@ import com.simplemobiletools.commons.helpers.*
 import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
-import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import java.io.File
 import java.io.FileOutputStream
@@ -327,7 +325,8 @@ fun Context.notifyEvent(originalEvent: Event) {
         val events = eventsHelper.getRepeatableEventsFor(currentSeconds - WEEK_SECONDS, currentSeconds + YEAR_SECONDS, event.id!!)
         for (currEvent in events) {
             eventStartTS = if (currEvent.getIsAllDay()) Formatter.getDayStartTS(Formatter.getDayCodeFromTS(currEvent.startTS)) else currEvent.startTS
-            val firstReminderMinutes = arrayOf(currEvent.reminder3Minutes, currEvent.reminder2Minutes, currEvent.reminder1Minutes).filter { it != REMINDER_OFF }.max()
+            val firstReminderMinutes =
+                arrayOf(currEvent.reminder3Minutes, currEvent.reminder2Minutes, currEvent.reminder1Minutes).filter { it != REMINDER_OFF }.max()
             if (eventStartTS - firstReminderMinutes * 60 > currentSeconds) {
                 break
             }
@@ -759,7 +758,11 @@ fun Context.editEvent(event: ListEvent) {
 }
 
 fun Context.getFirstDayOfWeek(date: DateTime): String {
-    var startOfWeek = date.withZoneRetainFields(DateTimeZone.UTC).withTimeAtStartOfDay()
+    return getFirstDayOfWeekDt(date).toString()
+}
+
+fun Context.getFirstDayOfWeekDt(date: DateTime): DateTime {
+    var startOfWeek = date.withTimeAtStartOfDay()
     if (!config.startWeekWithCurrentDay) {
         startOfWeek = if (config.isSundayFirst) {
             // a workaround for Joda-time's Monday-as-first-day-of-the-week
@@ -772,7 +775,7 @@ fun Context.getFirstDayOfWeek(date: DateTime): String {
             startOfWeek.withDayOfWeek(DateTimeConstants.MONDAY)
         }
     }
-    return startOfWeek.toString()
+    return startOfWeek
 }
 
 fun Context.isTaskCompleted(event: Event): Boolean {
