@@ -189,22 +189,11 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     private fun dateSelected(dateTime: DateTime, datePicker: DatePicker) {
-        val isSundayFirst = requireContext().config.isSundayFirst
         val month = datePicker.month + 1
         val year = datePicker.year
         val day = datePicker.dayOfMonth
-        var newDateTime = dateTime.withDate(year, month, day)
-
-        if (isSundayFirst) {
-            newDateTime = newDateTime.plusDays(1)
-        }
-
-        var selectedWeek = newDateTime.withDayOfWeek(1).withTimeAtStartOfDay().minusDays(if (isSundayFirst) 1 else 0)
-        if (newDateTime.minusDays(7).seconds() > selectedWeek.seconds()) {
-            selectedWeek = selectedWeek.plusDays(7)
-        }
-
-        currentWeekTS = selectedWeek.seconds()
+        val newDateTime = dateTime.withDate(year, month, day)
+        currentWeekTS = requireContext().getFirstDayOfWeekDt(newDateTime).seconds()
         setupFragment()
     }
 
@@ -311,7 +300,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     override fun getCurrentDate(): DateTime? {
         return if (currentWeekTS != 0L) {
-            Formatter.getUTCDateTimeFromTS(currentWeekTS)
+            Formatter.getDateTimeFromTS(currentWeekTS)
         } else {
             null
         }
