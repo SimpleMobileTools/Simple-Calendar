@@ -181,7 +181,7 @@
     <string name="display_description_or_location">顯示說明或地點</string>
     <string name="delete_all_events">刪除全部活動</string>
     <string name="delete_all_events_and_tasks">刪除所有事件和任務</string>
-    <string name="delete_all_events_confirmation">你確定要刪除全部活動嗎\?會完整留下你的活動類型和其他設定。</string>
+    <string name="delete_all_events_confirmation">您確定要刪除所有的活動和任務嗎？這將保留您的活動類型和其他設定。</string>
     <string name="show_a_grid">顯示網格</string>
     <string name="loop_reminders">不斷重複提醒直到解除</string>
     <string name="dim_past_events">淡化過去的活動</string>
