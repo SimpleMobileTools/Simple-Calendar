@@ -19,8 +19,8 @@ android {
         applicationId "com.simplemobiletools.calendar.pro"
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode 237
-        versionName "6.22.1"
+        versionCode 238
+        versionName "6.22.2"
         multiDexEnabled true
         setProperty("archivesBaseName", "calendar")
         vectorDrawables.useSupportLibrary = true
@@ -72,13 +72,13 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.SimpleMobileTools:Simple-Commons:7176c52fd8'
+    implementation 'com.github.SimpleMobileTools:Simple-Commons:71d66584bd'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.print:print:1.0.0"
 
-    kapt 'androidx.room:room-compiler:2.5.1'
-    implementation 'androidx.room:room-runtime:2.5.1'
-    annotationProcessor 'androidx.room:room-compiler:2.5.1'
+    kapt 'androidx.room:room-compiler:2.5.2'
+    implementation 'androidx.room:room-runtime:2.5.2'
+    annotationProcessor 'androidx.room:room-compiler:2.5.2'
 }

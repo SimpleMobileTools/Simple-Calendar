@@ -1,0 +1,2 @@
+ * Fixed a couple weekly view related glitches
+ * Added some translation, stability and UX improvements

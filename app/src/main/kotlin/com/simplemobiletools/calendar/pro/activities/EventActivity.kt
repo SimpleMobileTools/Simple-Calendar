@@ -31,7 +31,6 @@ import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
@@ -42,11 +41,13 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_2
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
@@ -1307,7 +1308,7 @@ class EventActivity : SimpleActivity() {
         // recreate the event if it was moved in a different CalDAV calendar
         if (mEvent.id != null && oldSource != newSource && oldSource != SOURCE_IMPORTED_ICS) {
             if (mRepeatInterval > 0 && wasRepeatable) {
-                applyOriginalStartEndTimes()
+                eventsHelper.applyOriginalStartEndTimes(mEvent, mOriginalStartTS, mOriginalEndTS)
             }
             eventsHelper.deleteEvent(mEvent.id!!, true)
             mEvent.id = null
@@ -1320,7 +1321,7 @@ class EventActivity : SimpleActivity() {
                         storeEvent(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
@@ -1358,65 +1359,28 @@ class EventActivity : SimpleActivity() {
     private fun showEditRepeatingEventDialog() {
         EditRepeatingEventDialog(this) {
             hideKeyboard()
+            if (it == null) {
+                return@EditRepeatingEventDialog
+            }
             when (it) {
                 EDIT_SELECTED_OCCURRENCE -> {
-                    ensureBackgroundThread {
-                        mEvent.apply {
-                            parentId = id!!.toLong()
-                            id = null
-                            repeatRule = 0
-                            repeatInterval = 0
-                            repeatLimit = 0
-                        }
-
-                        eventsHelper.insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
-                            finish()
-                        }
+                    eventsHelper.editSelectedOccurrence(mEvent, true) {
+                        finish()
                     }
                 }
+
                 EDIT_FUTURE_OCCURRENCES -> {
-                    ensureBackgroundThread {
-                        val eventId = mEvent.id!!
-                        val originalEvent = eventsDB.getEventWithId(eventId) ?: return@ensureBackgroundThread
-                        mEvent.maybeAdjustRepeatLimitCount(originalEvent, mEventOccurrenceTS)
-                        mEvent.id = null
-                        eventsHelper.apply {
-                            addEventRepeatLimit(eventId, mEventOccurrenceTS)
-                            if (mEventOccurrenceTS == originalEvent.startTS) {
-                                deleteEvent(eventId, true)
-                            }
-
-                            insertEvent(mEvent, addToCalDAV = true, showToasts = true) {
-                                finish()
-                            }
-                        }
+                    eventsHelper.editFutureOccurrences(mEvent, mEventOccurrenceTS, true) {
+                        finish()
                     }
                 }
+
                 EDIT_ALL_OCCURRENCES -> {
-                    ensureBackgroundThread {
-                        applyOriginalStartEndTimes()
-                        eventsHelper.updateEvent(mEvent, updateAtCalDAV = true, showToasts = true) {
-                            finish()
-                        }
+                    eventsHelper.editAllOccurrences(mEvent, mOriginalStartTS, mOriginalEndTS, true) {
+                        finish()
                     }
                 }
             }
-        }
-    }
-
-    private fun applyOriginalStartEndTimes() {
-        // Shift the start and end times of the first (original) event based on the changes made
-        val originalEvent = eventsDB.getEventWithId(mEvent.id!!) ?: return
-        val originalStartTS = originalEvent.startTS
-        val originalEndTS = originalEvent.endTS
-        val oldStartTS = mOriginalStartTS
-        val oldEndTS = mOriginalEndTS
-
-        mEvent.apply {
-            val startTSDelta = oldStartTS - startTS
-            val endTSDelta = oldEndTS - endTS
-            startTS = originalStartTS - startTSDelta
-            endTS = originalEndTS - endTSDelta
         }
     }
 

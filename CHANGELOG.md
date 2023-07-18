@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.22.2 *(2023-07-16)*
+----------------------------
+
+ * Fixed a couple weekly view related glitches
+ * Added some translation, stability and UX improvements
+
 Version 6.22.1 *(2023-07-02)*
 ----------------------------
 
