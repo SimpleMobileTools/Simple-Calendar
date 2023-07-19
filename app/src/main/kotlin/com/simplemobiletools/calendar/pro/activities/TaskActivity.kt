@@ -433,15 +433,7 @@ class TaskActivity : SimpleActivity() {
                         storeTask(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(
-                        this,
-                        R.string.allow_notifications_reminders,
-                        positiveActionCallback = {
-                            handleNotificationPermission {
-                                openNotificationSettings()
-                            }
-                        }
-                    )
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
@@ -479,55 +471,23 @@ class TaskActivity : SimpleActivity() {
     private fun showEditRepeatingTaskDialog() {
         EditRepeatingEventDialog(this, isTask = true) {
             hideKeyboard()
+            if (it == null) {
+                return@EditRepeatingEventDialog
+            }
             when (it) {
                 EDIT_SELECTED_OCCURRENCE -> {
-                    ensureBackgroundThread {
-                        mTask.apply {
-                            parentId = id!!.toLong()
-                            id = null
-                            repeatRule = 0
-                            repeatInterval = 0
-                            repeatLimit = 0
-                        }
-
-                        eventsHelper.insertTask(mTask, showToasts = true) {
-                            finish()
-                        }
+                    eventsHelper.editSelectedOccurrence(mTask, true) {
+                        finish()
                     }
                 }
                 EDIT_FUTURE_OCCURRENCES -> {
-                    ensureBackgroundThread {
-                        val taskId = mTask.id!!
-                        val originalTask = eventsDB.getTaskWithId(taskId) ?: return@ensureBackgroundThread
-                        mTask.maybeAdjustRepeatLimitCount(originalTask, mTaskOccurrenceTS)
-                        mTask.id = null
-                        eventsHelper.apply {
-                            addEventRepeatLimit(taskId, mTaskOccurrenceTS)
-                            if (mTaskOccurrenceTS == originalTask.startTS) {
-                                deleteEvent(taskId, true)
-                            }
-
-                            insertTask(mTask, showToasts = true) {
-                                finish()
-                            }
-                        }
+                    eventsHelper.editFutureOccurrences(mTask, mTaskOccurrenceTS, true) {
+                        finish()
                     }
                 }
                 EDIT_ALL_OCCURRENCES -> {
-                    ensureBackgroundThread {
-                        // Shift the start and end times of the first (original) event based on the changes made
-                        val originalEvent = eventsDB.getTaskWithId(mTask.id!!) ?: return@ensureBackgroundThread
-                        val originalStartTS = originalEvent.startTS
-                        val oldStartTS = mOriginalStartTS
-
-                        mTask.apply {
-                            val startTSDelta = oldStartTS - startTS
-                            startTS = originalStartTS - startTSDelta
-                            endTS = startTS
-                        }
-                        eventsHelper.updateEvent(mTask, updateAtCalDAV = false, showToasts = true) {
-                            finish()
-                        }
+                    eventsHelper.editAllOccurrences(mTask, mOriginalStartTS, showToasts = true) {
+                        finish()
                     }
                 }
             }

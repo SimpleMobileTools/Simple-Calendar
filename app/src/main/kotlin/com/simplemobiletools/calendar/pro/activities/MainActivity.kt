@@ -618,6 +618,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                         updateViewPager()
                                         setupQuickFilter()
                                     }
+
                                     it == -1 -> toast(R.string.no_new_birthdays)
                                     else -> toast(R.string.no_birthdays)
                                 }
@@ -648,6 +649,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                                         updateViewPager()
                                         setupQuickFilter()
                                     }
+
                                     it == -1 -> toast(R.string.no_new_anniversaries)
                                     else -> toast(R.string.no_anniversaries)
                                 }
@@ -1067,15 +1069,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         }
                     }
                 } else {
-                    PermissionRequiredDialog(
-                        this,
-                        R.string.allow_notifications_reminders,
-                        positiveActionCallback = {
-                            handleNotificationPermission {
-                                openNotificationSettings()
-                            }
-                        }
-                    )
+                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
@@ -1112,6 +1106,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     showErrorToast(e)
                 }
             }
+
             else -> toast(R.string.invalid_file_format)
         }
     }

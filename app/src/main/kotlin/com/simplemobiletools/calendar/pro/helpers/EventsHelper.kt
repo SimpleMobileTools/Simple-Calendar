@@ -180,6 +180,66 @@ class EventsHelper(val context: Context) {
         callback?.invoke()
     }
 
+    fun applyOriginalStartEndTimes(event: Event, oldStartTS: Long, oldEndTS: Long) {
+        val originalEvent = eventsDB.getEventOrTaskWithId(event.id!!) ?: return
+        val originalStartTS = originalEvent.startTS
+        val originalEndTS = originalEvent.endTS
+
+        event.apply {
+            val startTSDelta = oldStartTS - startTS
+            val endTSDelta = oldEndTS - endTS
+            startTS = originalStartTS - startTSDelta
+            endTS = if (isTask()) startTS else originalEndTS - endTSDelta
+        }
+    }
+
+    fun editSelectedOccurrence(event: Event, showToasts: Boolean, callback: () -> Unit) {
+        ensureBackgroundThread {
+            event.apply {
+                parentId = id!!.toLong()
+                id = null
+                repeatRule = 0
+                repeatInterval = 0
+                repeatLimit = 0
+            }
+            if (event.isTask()) {
+                insertTask(event, showToasts = showToasts, callback = callback)
+            } else {
+                insertEvent(event, addToCalDAV = true, showToasts = showToasts) {
+                    callback()
+                }
+            }
+        }
+    }
+
+    fun editFutureOccurrences(event: Event, eventOccurrenceTS: Long, showToasts: Boolean, callback: () -> Unit) {
+        ensureBackgroundThread {
+            val eventId = event.id!!
+            val originalEvent = eventsDB.getEventOrTaskWithId(event.id!!) ?: return@ensureBackgroundThread
+            event.maybeAdjustRepeatLimitCount(originalEvent, eventOccurrenceTS)
+            event.id = null
+            addEventRepeatLimit(eventId, eventOccurrenceTS)
+            if (eventOccurrenceTS == originalEvent.startTS) {
+                deleteEvent(eventId, true)
+            }
+
+            if (event.isTask()) {
+                insertTask(event, showToasts = showToasts, callback = callback)
+            } else {
+                insertEvent(event, addToCalDAV = true, showToasts = showToasts) {
+                    callback()
+                }
+            }
+        }
+    }
+
+    fun editAllOccurrences(event: Event, originalStartTS: Long, originalEndTS: Long = 0, showToasts: Boolean, callback: () -> Unit) {
+        ensureBackgroundThread {
+            applyOriginalStartEndTimes(event, originalStartTS, originalEndTS)
+            updateEvent(event, updateAtCalDAV = !event.isTask(), showToasts = showToasts, callback = callback)
+        }
+    }
+
     private fun ensureEventTypeVisibility(event: Event, enableEventType: Boolean) {
         if (enableEventType) {
             val eventType = event.eventType.toString()

@@ -12,7 +12,7 @@ import com.simplemobiletools.commons.extensions.hideKeyboard
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_edit_repeating_event.view.*
 
-class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean = false, val callback: (allOccurrences: Int) -> Unit) {
+class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean = false, val callback: (allOccurrences: Int?) -> Unit) {
     private var dialog: AlertDialog? = null
 
     init {
@@ -33,12 +33,15 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean
                 activity.setupDialogStuff(view, this) { alertDialog ->
                     dialog = alertDialog
                     alertDialog.hideKeyboard()
+                    alertDialog.setOnDismissListener { sendResult(null) }
                 }
             }
     }
 
-    private fun sendResult(allOccurrences: Int) {
+    private fun sendResult(allOccurrences: Int?) {
         callback(allOccurrences)
-        dialog?.dismiss()
+        if (allOccurrences != null) {
+            dialog?.dismiss()
+        }
     }
 }
