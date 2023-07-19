@@ -31,7 +31,6 @@ import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
@@ -42,11 +41,13 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_2
+import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
@@ -1320,7 +1321,15 @@ class EventActivity : SimpleActivity() {
                         storeEvent(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
+                    PermissionRequiredDialog(
+                        this,
+                        R.string.allow_notifications_reminders,
+                        positiveActionCallback = {
+                            handleNotificationPermission {
+                                openNotificationSettings()
+                            }
+                        }
+                    )
                 }
             }
         } else {
@@ -1374,6 +1383,7 @@ class EventActivity : SimpleActivity() {
                         }
                     }
                 }
+
                 EDIT_FUTURE_OCCURRENCES -> {
                     ensureBackgroundThread {
                         val eventId = mEvent.id!!
@@ -1392,6 +1402,7 @@ class EventActivity : SimpleActivity() {
                         }
                     }
                 }
+
                 EDIT_ALL_OCCURRENCES -> {
                     ensureBackgroundThread {
                         applyOriginalStartEndTimes()

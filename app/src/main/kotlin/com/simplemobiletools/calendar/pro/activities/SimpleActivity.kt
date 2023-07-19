@@ -85,7 +85,15 @@ open class SimpleActivity : BaseSimpleActivity() {
                     }
                 }
             } else {
-                PermissionRequiredDialog(this, R.string.allow_notifications_reminders)
+                PermissionRequiredDialog(
+                    this,
+                    R.string.allow_notifications_reminders,
+                    positiveActionCallback = {
+                        handleNotificationPermission {
+                            openNotificationSettings()
+                        }
+                    }
+                )
             }
         }
     }
