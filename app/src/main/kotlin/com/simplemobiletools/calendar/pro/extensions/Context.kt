@@ -816,7 +816,7 @@ fun Context.getShortDaysFromBitmask(bitMask: Int): String {
 
 fun <T> Context.withFirstDayOfWeekToFront(weekItems: Collection<T>): ArrayList<T> {
     val firstDayOfWeek = config.firstDayOfWeek
-    if (firstDayOfWeek != DateTimeConstants.MONDAY) {
+    if (firstDayOfWeek == DateTimeConstants.MONDAY) {
         return weekItems.toMutableList() as ArrayList<T>
     }
 
