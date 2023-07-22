@@ -16,18 +16,21 @@ import android.widget.TextView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.addDayEvents
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
 import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetMonthlyProvider
-import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import kotlinx.android.synthetic.main.day_monthly_number_view.view.*
-import kotlinx.android.synthetic.main.first_row.*
-import kotlinx.android.synthetic.main.top_navigation.*
+import kotlinx.android.synthetic.main.day_monthly_number_view.view.day_monthly_number_background
+import kotlinx.android.synthetic.main.day_monthly_number_view.view.day_monthly_number_id
+import kotlinx.android.synthetic.main.first_row.week_num
+import kotlinx.android.synthetic.main.top_navigation.top_left_arrow
+import kotlinx.android.synthetic.main.top_navigation.top_right_arrow
+import kotlinx.android.synthetic.main.top_navigation.top_value
 import kotlinx.android.synthetic.main.widget_config_monthly.*
 import org.joda.time.DateTime
 
@@ -217,7 +220,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         val weekendsTextColor = config.highlightWeekendsColor
         for (i in 0..6) {
             findViewById<TextView>(resources.getIdentifier("label_$i", "id", packageName)).apply {
-                val textColor = if (config.highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+                val textColor = if (config.highlightWeekends && context.isWeekendIndex(i)) {
                     weekendsTextColor
                 } else {
                     mTextColor

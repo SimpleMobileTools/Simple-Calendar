@@ -1,8 +1,9 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
-import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
+import com.simplemobiletools.calendar.pro.extensions.getProperDayIndexInWeek
+import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
@@ -34,13 +35,10 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
 
     fun getDays(markDaysWithEvents: Boolean) {
         val days = ArrayList<DayMonthly>(DAYS_CNT)
-        val currMonthDays = mTargetDate.dayOfMonth().maximumValue
-        var firstDayIndex = mTargetDate.withDayOfMonth(1).dayOfWeek
-        val isSundayFirst = context.config.isSundayFirst
-        if (!isSundayFirst) {
-            firstDayIndex -= 1
-        }
+        val firstDayOfMonth = mTargetDate.withDayOfMonth(1)
+        val firstDayIndex = context.getProperDayIndexInWeek(firstDayOfMonth)
 
+        val currMonthDays = mTargetDate.dayOfMonth().maximumValue
         val prevMonthDays = mTargetDate.minusMonths(1).dayOfMonth().maximumValue
 
         var isThisMonth = false
@@ -70,7 +68,7 @@ class MonthlyCalendarImpl(val callback: MonthlyCalendar, val context: Context) {
 
             val newDay = curDay.withDayOfMonth(value)
             val dayCode = Formatter.getDayCodeFromDateTime(newDay)
-            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList(), i, isWeekend(i % 7, isSundayFirst))
+            val day = DayMonthly(value, isThisMonth, isToday, dayCode, newDay.weekOfWeekyear, ArrayList(), i, context.isWeekendIndex(i))
             days.add(day)
             value++
         }

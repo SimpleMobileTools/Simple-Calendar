@@ -5,7 +5,8 @@ import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
-import java.util.*
+import java.util.Calendar
+import java.util.UUID
 
 const val STORED_LOCALLY_ONLY = 0
 const val ROW_COUNT = 6
@@ -268,12 +269,9 @@ const val ACTION_MARK_COMPLETED = "ACTION_MARK_COMPLETED"
 
 fun getNowSeconds() = System.currentTimeMillis() / 1000L
 
-fun isWeekend(i: Int, isSundayFirst: Boolean): Boolean {
-    return if (isSundayFirst) {
-        i == 0 || i == 6 || i == 7 || i == 13
-    } else {
-        i == 5 || i == 6 || i == 12 || i == 13
-    }
+fun isWeekend(dayOfWeek: Int): Boolean {
+    val weekendDays = listOf(DateTimeConstants.SATURDAY, DateTimeConstants.SUNDAY)
+    return dayOfWeek in weekendDays
 }
 
 fun getActivityToOpen(isTask: Boolean) = if (isTask) {
@@ -300,20 +298,6 @@ fun getNextAutoBackupTime(): DateTime {
 fun getPreviousAutoBackupTime(): DateTime {
     val nextBackupTime = getNextAutoBackupTime()
     return nextBackupTime.minusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
-}
-
-fun getDefaultFirstDayOfWeekJoda(): Int {
-    val calendar = Calendar.getInstance(Locale.getDefault())
-    return when (calendar.firstDayOfWeek) {
-        Calendar.SUNDAY -> DateTimeConstants.SUNDAY
-        Calendar.MONDAY -> DateTimeConstants.MONDAY
-        Calendar.TUESDAY -> DateTimeConstants.TUESDAY
-        Calendar.WEDNESDAY -> DateTimeConstants.WEDNESDAY
-        Calendar.THURSDAY -> DateTimeConstants.THURSDAY
-        Calendar.FRIDAY -> DateTimeConstants.FRIDAY
-        Calendar.SATURDAY -> DateTimeConstants.SATURDAY
-        else -> DateTimeConstants.SUNDAY
-    }
 }
 
 fun getJodaDayOfWeekFromJava(dayOfWeek: Int): Int {

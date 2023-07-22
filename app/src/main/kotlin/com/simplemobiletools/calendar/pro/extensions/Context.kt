@@ -799,6 +799,56 @@ fun Context.getDayOfWeekString(dayOfWeek: Int): String {
     return getString(dayOfWeekResId)
 }
 
+// format day bits to strings like "Mon, Tue, Wed"
+fun Context.getShortDaysFromBitmask(bitMask: Int): String {
+    val dayBits = withFirstDayOfWeekToFront(listOf(MONDAY_BIT, TUESDAY_BIT, WEDNESDAY_BIT, THURSDAY_BIT, FRIDAY_BIT, SATURDAY_BIT, SUNDAY_BIT))
+    val weekDays = withFirstDayOfWeekToFront(resources.getStringArray(R.array.week_days_short).toList())
+
+    var days = ""
+    dayBits.forEachIndexed { index, bit ->
+        if (bitMask and bit != 0) {
+            days += "${weekDays[index]}, "
+        }
+    }
+
+    return days.trim().trimEnd(',')
+}
+
+fun <T> Context.withFirstDayOfWeekToFront(weekItems: Collection<T>): ArrayList<T> {
+    val firstDayOfWeek = config.firstDayOfWeek
+    if (firstDayOfWeek != DateTimeConstants.MONDAY) {
+        return weekItems.toMutableList() as ArrayList<T>
+    }
+
+    val firstDayOfWeekIndex = config.firstDayOfWeek - 1
+    val rotatedWeekItems = weekItems.drop(firstDayOfWeekIndex) + weekItems.take(firstDayOfWeekIndex)
+    return rotatedWeekItems as ArrayList<T>
+}
+
+fun Context.getProperDayIndexInWeek(date: DateTime): Int {
+    val firstDayOfWeek = config.firstDayOfWeek
+    val dayOfWeek = date.dayOfWeek
+    val dayIndex = if (dayOfWeek >= firstDayOfWeek) {
+        dayOfWeek - firstDayOfWeek
+    } else {
+        dayOfWeek + (7 - firstDayOfWeek)
+    }
+
+    return dayIndex
+}
+
+fun Context.isWeekendIndex(dayIndex: Int): Boolean {
+    val firstDayOfWeek = config.firstDayOfWeek
+    val shiftedIndex = (dayIndex + firstDayOfWeek) % 7
+    val dayOfWeek = if (shiftedIndex == 0) {
+        DateTimeConstants.SUNDAY
+    } else {
+        shiftedIndex
+    }
+
+    return isWeekend(dayOfWeek)
+}
+
 fun Context.isTaskCompleted(event: Event): Boolean {
     if (event.id == null) return false
     val originalEvent = eventsDB.getTaskWithId(event.id!!)

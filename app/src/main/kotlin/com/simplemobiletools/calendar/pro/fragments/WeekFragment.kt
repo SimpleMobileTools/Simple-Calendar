@@ -229,7 +229,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 resources.getColor(R.color.theme_light_text_color)
             } else if (todayCode == dayCode) {
                 primaryColor
-            } else if (highlightWeekends && isWeekend(curDay.dayOfWeek, true)) {
+            } else if (highlightWeekends && isWeekend(curDay.dayOfWeek)) {
                 config.highlightWeekendsColor
             } else {
                 requireContext().getProperTextColor()

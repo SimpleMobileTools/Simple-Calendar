@@ -9,11 +9,12 @@ import android.util.SparseIntArray
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
 import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.withFirstDayOfWeekToFront
 import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
-import com.simplemobiletools.calendar.pro.helpers.isWeekend
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.calendar.pro.models.MonthViewEvent
@@ -231,7 +232,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             var weekDayLetterPaint = textPaint
             if (i == currDayOfWeek && !isPrintVersion) {
                 weekDayLetterPaint = getColoredPaint(primaryColor)
-            } else if (highlightWeekends && isWeekend(i, config.isSundayFirst)) {
+            } else if (highlightWeekends && context.isWeekendIndex(i)) {
                 weekDayLetterPaint = getColoredPaint(weekendsTextColor)
             }
             canvas.drawText(dayLetters[i], xPos, weekDaysLetterHeight * 0.7f, weekDayLetterPaint)
@@ -393,10 +394,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun initWeekDayLetters() {
-        dayLetters = context.resources.getStringArray(R.array.week_day_letters).toMutableList() as ArrayList<String>
-        if (config.isSundayFirst) {
-            dayLetters.moveLastItemToFront()
-        }
+        dayLetters = context.withFirstDayOfWeekToFront(context.resources.getStringArray(R.array.week_day_letters).toList())
     }
 
     private fun setupCurrentDayOfWeekIndex() {
