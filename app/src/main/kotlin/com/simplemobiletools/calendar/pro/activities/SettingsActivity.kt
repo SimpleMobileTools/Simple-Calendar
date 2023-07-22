@@ -933,7 +933,7 @@ class SettingsActivity : SimpleActivity() {
                 put(USE_SAME_SNOOZE, config.useSameSnooze)
                 put(SNOOZE_TIME, config.snoozeTime)
                 put(USE_24_HOUR_FORMAT, config.use24HourFormat)
-                put(SUNDAY_FIRST, config.isSundayFirst)
+                put(FIRST_DAY_OF_WEEK, config.firstDayOfWeek)
                 put(HIGHLIGHT_WEEKENDS, config.highlightWeekends)
                 put(HIGHLIGHT_WEEKENDS_COLOR, config.highlightWeekendsColor)
                 put(ALLOW_CREATING_TASKS, config.allowCreatingTasks)
@@ -1042,7 +1042,8 @@ class SettingsActivity : SimpleActivity() {
                 USE_SAME_SNOOZE -> config.useSameSnooze = value.toBoolean()
                 SNOOZE_TIME -> config.snoozeTime = value.toInt()
                 USE_24_HOUR_FORMAT -> config.use24HourFormat = value.toBoolean()
-                SUNDAY_FIRST -> config.isSundayFirst = value.toBoolean()
+                SUNDAY_FIRST -> config.firstDayOfWeek = DateTimeConstants.SUNDAY
+                FIRST_DAY_OF_WEEK -> config.firstDayOfWeek = value.toInt()
                 HIGHLIGHT_WEEKENDS -> config.highlightWeekends = value.toBoolean()
                 HIGHLIGHT_WEEKENDS_COLOR -> config.highlightWeekendsColor = value.toInt()
                 ALLOW_CREATING_TASKS -> config.allowCreatingTasks = value.toBoolean()
