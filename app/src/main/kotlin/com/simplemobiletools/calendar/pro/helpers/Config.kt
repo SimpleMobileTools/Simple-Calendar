@@ -30,7 +30,10 @@ class Config(context: Context) : BaseConfig(context) {
         set(startWeekWithCurrentDay) = prefs.edit().putBoolean(START_WEEK_WITH_CURRENT_DAY, startWeekWithCurrentDay).apply()
 
     var firstDayOfWeek: Int
-        get() = prefs.getInt(FIRST_DAY_OF_WEEK, getDefaultFirstDayOfWeekJoda())
+        get() {
+            val defaultFirstDayOfWeek = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek
+            return prefs.getInt(FIRST_DAY_OF_WEEK, getJodaDayOfWeekFromJava(defaultFirstDayOfWeek))
+        }
         set(firstDayOfWeek) = prefs.edit().putInt(FIRST_DAY_OF_WEEK, firstDayOfWeek).apply()
 
     var showMidnightSpanningEventsAtTop: Boolean

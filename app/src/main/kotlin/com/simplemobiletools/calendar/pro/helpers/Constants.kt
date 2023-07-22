@@ -315,3 +315,29 @@ fun getDefaultFirstDayOfWeekJoda(): Int {
         else -> DateTimeConstants.SUNDAY
     }
 }
+
+fun getJodaDayOfWeekFromJava(dayOfWeek: Int): Int {
+    return when (dayOfWeek) {
+        Calendar.SUNDAY -> DateTimeConstants.SUNDAY
+        Calendar.MONDAY -> DateTimeConstants.MONDAY
+        Calendar.TUESDAY -> DateTimeConstants.TUESDAY
+        Calendar.WEDNESDAY -> DateTimeConstants.WEDNESDAY
+        Calendar.THURSDAY -> DateTimeConstants.THURSDAY
+        Calendar.FRIDAY -> DateTimeConstants.FRIDAY
+        Calendar.SATURDAY -> DateTimeConstants.SATURDAY
+        else -> throw IllegalArgumentException("Invalid day: $dayOfWeek")
+    }
+}
+
+fun getJavaDayOfWeekFromJoda(dayOfWeek: Int): Int {
+    return when (dayOfWeek) {
+        DateTimeConstants.SUNDAY -> Calendar.SUNDAY
+        DateTimeConstants.MONDAY -> Calendar.MONDAY
+        DateTimeConstants.TUESDAY -> Calendar.TUESDAY
+        DateTimeConstants.WEDNESDAY -> Calendar.WEDNESDAY
+        DateTimeConstants.THURSDAY -> Calendar.THURSDAY
+        DateTimeConstants.FRIDAY -> Calendar.FRIDAY
+        DateTimeConstants.SATURDAY -> Calendar.SATURDAY
+        else -> throw IllegalArgumentException("Invalid day: $dayOfWeek")
+    }
+}

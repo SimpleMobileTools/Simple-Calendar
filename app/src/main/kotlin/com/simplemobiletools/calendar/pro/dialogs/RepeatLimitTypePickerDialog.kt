@@ -8,11 +8,11 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import com.simplemobiletools.calendar.pro.helpers.Formatter
+import com.simplemobiletools.calendar.pro.helpers.getJavaDayOfWeekFromJoda
 import com.simplemobiletools.calendar.pro.helpers.getNowSeconds
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_repeat_limit_type_picker.view.*
 import org.joda.time.DateTime
-import java.util.*
 
 class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long, val startTS: Long, val callback: (repeatLimit: Long) -> Unit) {
     private var dialog: AlertDialog? = null
@@ -88,13 +88,13 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
 
     private fun showRepetitionLimitDialog() {
         val repeatLimitDateTime = Formatter.getDateTimeFromTS(if (repeatLimit != 0L) repeatLimit else getNowSeconds())
-        val datepicker = DatePickerDialog(
+        val datePicker = DatePickerDialog(
             activity, activity.getDatePickerDialogTheme(), repetitionLimitDateSetListener, repeatLimitDateTime.year,
             repeatLimitDateTime.monthOfYear - 1, repeatLimitDateTime.dayOfMonth
         )
 
-        datepicker.datePicker.firstDayOfWeek = if (activity.config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        datepicker.show()
+        datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromJoda(activity.config.firstDayOfWeek)
+        datePicker.show()
     }
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { v, year, monthOfYear, dayOfMonth ->

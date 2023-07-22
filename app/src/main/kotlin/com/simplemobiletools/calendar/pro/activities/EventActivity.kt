@@ -46,7 +46,6 @@ import kotlinx.android.synthetic.main.activity_event.view.event_reminder_3
 import kotlinx.android.synthetic.main.item_attendee.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.util.Calendar
 import java.util.TimeZone
 import java.util.regex.Pattern
 
@@ -1449,13 +1448,13 @@ class EventActivity : SimpleActivity() {
 
     private fun setupStartDate() {
         hideKeyboard()
-        val datepicker = DatePickerDialog(
+        val datePicker = DatePickerDialog(
             this, getDatePickerDialogTheme(), startDateSetListener, mEventStartDateTime.year, mEventStartDateTime.monthOfYear - 1,
             mEventStartDateTime.dayOfMonth
         )
 
-        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        datepicker.show()
+        datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromJoda(config.firstDayOfWeek)
+        datePicker.show()
     }
 
     private fun setupStartTime() {
@@ -1493,13 +1492,13 @@ class EventActivity : SimpleActivity() {
 
     private fun setupEndDate() {
         hideKeyboard()
-        val datepicker = DatePickerDialog(
+        val datePicker = DatePickerDialog(
             this, getDatePickerDialogTheme(), endDateSetListener, mEventEndDateTime.year, mEventEndDateTime.monthOfYear - 1,
             mEventEndDateTime.dayOfMonth
         )
 
-        datepicker.datePicker.firstDayOfWeek = if (config.isSundayFirst) Calendar.SUNDAY else Calendar.MONDAY
-        datepicker.show()
+        datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromJoda(config.firstDayOfWeek)
+        datePicker.show()
     }
 
     private fun setupEndTime() {
