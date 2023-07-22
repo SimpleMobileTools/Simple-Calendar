@@ -532,6 +532,7 @@ fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Bool
             val currMinutes = calendar.get(Calendar.MINUTE)
             dateTime.withMinuteOfHour(currMinutes).seconds()
         }
+
         DEFAULT_START_TIME_NEXT_FULL_HOUR -> newDateTime.seconds()
         else -> {
             val hours = defaultStartTime / 60
@@ -692,11 +693,13 @@ fun Context.handleEventDeleting(eventIds: List<Long>, timestamps: List<Long>, ac
                 eventsHelper.deleteRepeatingEventOccurrence(value, timestamps[index], true)
             }
         }
+
         DELETE_FUTURE_OCCURRENCES -> {
             eventIds.forEachIndexed { index, value ->
                 eventsHelper.addEventRepeatLimit(value, timestamps[index])
             }
         }
+
         DELETE_ALL_OCCURRENCES -> {
             eventsHelper.deleteEvents(eventIds.toMutableList(), true)
         }
@@ -762,20 +765,38 @@ fun Context.getFirstDayOfWeek(date: DateTime): String {
 }
 
 fun Context.getFirstDayOfWeekDt(date: DateTime): DateTime {
-    var startOfWeek = date.withTimeAtStartOfDay()
-    if (!config.startWeekWithCurrentDay) {
-        startOfWeek = if (config.isSundayFirst) {
-            // a workaround for Joda-time's Monday-as-first-day-of-the-week
-            if (startOfWeek.dayOfWeek == DateTimeConstants.SUNDAY) {
-                startOfWeek
-            } else {
-                startOfWeek.minusWeeks(1).withDayOfWeek(DateTimeConstants.SUNDAY)
-            }
+    val currentDate = date.withTimeAtStartOfDay()
+    if (config.startWeekWithCurrentDay) {
+        return currentDate
+    } else {
+        val firstDayOfWeek = config.firstDayOfWeek
+        val currentDayOfWeek = currentDate.dayOfWeek
+        return if (currentDayOfWeek == firstDayOfWeek) {
+            currentDate
         } else {
-            startOfWeek.withDayOfWeek(DateTimeConstants.MONDAY)
+            // Joda-time's weeks always starts on Monday but user preferred firstDayOfWeek could be any week day
+            if (firstDayOfWeek < currentDayOfWeek) {
+                currentDate.withDayOfWeek(firstDayOfWeek)
+            } else {
+                currentDate.minusWeeks(1).withDayOfWeek(firstDayOfWeek)
+            }
         }
     }
-    return startOfWeek
+}
+
+fun Context.getDayOfWeekString(dayOfWeek: Int): String {
+    val dayOfWeekResId = when (dayOfWeek) {
+        DateTimeConstants.MONDAY -> R.string.monday
+        DateTimeConstants.TUESDAY -> R.string.tuesday
+        DateTimeConstants.WEDNESDAY -> R.string.wednesday
+        DateTimeConstants.THURSDAY -> R.string.thursday
+        DateTimeConstants.FRIDAY -> R.string.friday
+        DateTimeConstants.SATURDAY -> R.string.saturday
+        DateTimeConstants.SUNDAY -> R.string.sunday
+        else -> throw IllegalArgumentException("Invalid day: $dayOfWeek")
+    }
+
+    return getString(dayOfWeekResId)
 }
 
 fun Context.isTaskCompleted(event: Event): Boolean {

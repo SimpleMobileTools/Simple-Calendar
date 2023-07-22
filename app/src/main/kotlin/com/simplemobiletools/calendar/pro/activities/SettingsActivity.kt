@@ -26,6 +26,7 @@ import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
+import org.joda.time.DateTimeConstants
 import java.io.File
 import java.io.InputStream
 import java.text.SimpleDateFormat
@@ -63,7 +64,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageQuickFilterEventTypes()
         setupHourFormat()
         setupAllowCreatingTasks()
-        setupSundayFirst()
+        setupStartWeekOn()
         setupHighlightWeekends()
         setupHighlightWeekendsColor()
         setupDeleteAllEvents()
@@ -343,11 +344,24 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupSundayFirst() {
-        settings_sunday_first.isChecked = config.isSundayFirst
-        settings_sunday_first_holder.setOnClickListener {
-            settings_sunday_first.toggle()
-            config.isSundayFirst = settings_sunday_first.isChecked
+    private fun setupStartWeekOn() {
+        val items = arrayListOf(
+            RadioItem(DateTimeConstants.SUNDAY, getString(R.string.sunday)),
+            RadioItem(DateTimeConstants.MONDAY, getString(R.string.monday)),
+            RadioItem(DateTimeConstants.TUESDAY, getString(R.string.tuesday)),
+            RadioItem(DateTimeConstants.WEDNESDAY, getString(R.string.wednesday)),
+            RadioItem(DateTimeConstants.THURSDAY, getString(R.string.thursday)),
+            RadioItem(DateTimeConstants.FRIDAY, getString(R.string.friday)),
+            RadioItem(DateTimeConstants.SATURDAY, getString(R.string.saturday)),
+        )
+
+        settings_start_week_on.text = getDayOfWeekString(config.firstDayOfWeek)
+        settings_start_week_on_holder.setOnClickListener {
+            RadioGroupDialog(this, items, config.firstDayOfWeek) { any ->
+                val firstDayOfWeek = any as Int
+                config.firstDayOfWeek = firstDayOfWeek
+                settings_start_week_on.text = getDayOfWeekString(config.firstDayOfWeek)
+            }
         }
     }
 

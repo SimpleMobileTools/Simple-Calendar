@@ -4,6 +4,7 @@ import com.simplemobiletools.calendar.pro.activities.EventActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
 import org.joda.time.DateTime
+import org.joda.time.DateTimeConstants
 import java.util.*
 
 const val STORED_LOCALLY_ONLY = 0
@@ -82,6 +83,7 @@ const val EVENT_LIST_PERIOD = "event_list_period"
 const val WEEK_NUMBERS = "week_numbers"
 const val START_WEEKLY_AT = "start_weekly_at"
 const val START_WEEK_WITH_CURRENT_DAY = "start_week_with_current_day"
+const val FIRST_DAY_OF_WEEK = "start_week_on"
 const val SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP = "show_midnight_spanning_events_at_top"
 const val ALLOW_CUSTOMIZE_DAY_COUNT = "allow_customise_day_count"
 const val VIBRATE = "vibrate"
@@ -298,4 +300,18 @@ fun getNextAutoBackupTime(): DateTime {
 fun getPreviousAutoBackupTime(): DateTime {
     val nextBackupTime = getNextAutoBackupTime()
     return nextBackupTime.minusDays(AUTO_BACKUP_INTERVAL_IN_DAYS)
+}
+
+fun getDefaultFirstDayOfWeekJoda(): Int {
+    val calendar = Calendar.getInstance(Locale.getDefault())
+    return when (calendar.firstDayOfWeek) {
+        Calendar.SUNDAY -> DateTimeConstants.SUNDAY
+        Calendar.MONDAY -> DateTimeConstants.MONDAY
+        Calendar.TUESDAY -> DateTimeConstants.TUESDAY
+        Calendar.WEDNESDAY -> DateTimeConstants.WEDNESDAY
+        Calendar.THURSDAY -> DateTimeConstants.THURSDAY
+        Calendar.FRIDAY -> DateTimeConstants.FRIDAY
+        Calendar.SATURDAY -> DateTimeConstants.SATURDAY
+        else -> DateTimeConstants.SUNDAY
+    }
 }
