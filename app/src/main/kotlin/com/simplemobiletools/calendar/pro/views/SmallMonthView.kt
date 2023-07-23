@@ -25,7 +25,6 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var days = 31
     private var isLandscape = false
     private var highlightWeekends = false
-    private var isSundayFirst = false
     private var isPrintVersion = false
     private var mEvents: ArrayList<DayYearly>? = null
 
@@ -61,7 +60,6 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
         weekendsTextColor = context.config.highlightWeekendsColor.adjustAlpha(MEDIUM_ALPHA)
         highlightWeekends = context.config.highlightWeekends
-        isSundayFirst = context.config.isSundayFirst
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
