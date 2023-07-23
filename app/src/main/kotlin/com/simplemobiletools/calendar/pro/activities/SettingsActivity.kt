@@ -360,7 +360,7 @@ class SettingsActivity : SimpleActivity() {
             RadioGroupDialog(this, items, config.firstDayOfWeek) { any ->
                 val firstDayOfWeek = any as Int
                 config.firstDayOfWeek = firstDayOfWeek
-                settings_start_week_on.text = getDayOfWeekString(config.firstDayOfWeek)
+                settings_start_week_on.text = getDayOfWeekString(firstDayOfWeek)
             }
         }
     }
