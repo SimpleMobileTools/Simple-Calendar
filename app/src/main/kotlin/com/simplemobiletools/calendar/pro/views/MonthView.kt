@@ -8,10 +8,7 @@ import android.util.AttributeSet
 import android.util.SparseIntArray
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
-import com.simplemobiletools.calendar.pro.extensions.seconds
-import com.simplemobiletools.calendar.pro.extensions.withFirstDayOfWeekToFront
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
@@ -403,12 +400,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             return
         }
 
-        currDayOfWeek = DateTime().dayOfWeek
-        if (config.isSundayFirst) {
-            currDayOfWeek %= 7
-        } else {
-            currDayOfWeek--
-        }
+        currDayOfWeek = context.getProperDayIndexInWeek(DateTime())
     }
 
     // take into account cases when an event starts on the previous screen, subtract those days
