@@ -31,7 +31,13 @@ class Config(context: Context) : BaseConfig(context) {
 
     var firstDayOfWeek: Int
         get() {
-            val defaultFirstDayOfWeek = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek
+            val calendar = Calendar.getInstance(Locale.getDefault())
+            val firstDayOfWeek = calendar.firstDayOfWeek
+            val defaultFirstDayOfWeek = if (isSundayFirst && firstDayOfWeek == Calendar.SUNDAY) {
+                calendar.firstDayOfWeek
+            }  else {
+                Calendar.MONDAY
+            }
             return prefs.getInt(FIRST_DAY_OF_WEEK, getJodaDayOfWeekFromJava(defaultFirstDayOfWeek))
         }
         set(firstDayOfWeek) = prefs.edit().putInt(FIRST_DAY_OF_WEEK, firstDayOfWeek).apply()
