@@ -14,6 +14,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
+import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
 import com.simplemobiletools.calendar.pro.extensions.launchNewEventOrTaskActivity
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
@@ -21,6 +22,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import org.joda.time.DateTime
+import org.joda.time.DateTimeConstants
 
 class MyWidgetMonthlyProvider : AppWidgetProvider() {
     private val PREV = "prev"
@@ -233,14 +235,14 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
 
     private fun updateDayLabels(context: Context, views: RemoteViews, resources: Resources, textColor: Int) {
         val config = context.config
-        val sundayFirst = config.isSundayFirst
+        val firstDayOfWeek = config.firstDayOfWeek
         val smallerFontSize = context.getWidgetFontSize()
         val packageName = context.packageName
         val letters = context.resources.getStringArray(R.array.week_day_letters)
 
         for (i in 0..6) {
             val id = resources.getIdentifier("label_$i", "id", packageName)
-            val dayTextColor = if (context.config.highlightWeekends && isWeekend(i, sundayFirst)) {
+            val dayTextColor = if (context.config.highlightWeekends && context.isWeekendIndex(i)) {
                 context.config.highlightWeekendsColor
             } else {
                 textColor
@@ -250,8 +252,8 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
             views.setTextSize(id, smallerFontSize)
 
             var index = i
-            if (sundayFirst) {
-                index = (index + 6) % letters.size
+            if (firstDayOfWeek != DateTimeConstants.MONDAY) {
+                index = (index + firstDayOfWeek - 1) % 7
             }
 
             views.setText(id, letters[index])

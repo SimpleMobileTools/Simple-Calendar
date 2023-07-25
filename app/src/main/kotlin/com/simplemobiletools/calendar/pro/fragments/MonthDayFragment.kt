@@ -27,12 +27,11 @@ import com.simplemobiletools.commons.extensions.areSystemAnimationsEnabled
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
-import kotlinx.android.synthetic.main.fragment_month_day.*
+import kotlinx.android.synthetic.main.fragment_month_day.month_day_events_list
 import kotlinx.android.synthetic.main.fragment_month_day.view.*
 import org.joda.time.DateTime
 
 class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListener {
-    private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
     private var mSelectedDayCode = ""
@@ -91,7 +90,6 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
 
     private fun storeStateVariables() {
         mConfig.apply {
-            mSundayFirst = isSundayFirst
             mShowWeekNumbers = showWeekNumbers
         }
     }

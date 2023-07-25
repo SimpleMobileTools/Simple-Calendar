@@ -24,13 +24,15 @@ import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisible
 import com.simplemobiletools.commons.extensions.getProperTextColor
-import kotlinx.android.synthetic.main.fragment_month.view.*
-import kotlinx.android.synthetic.main.top_navigation.view.*
+import kotlinx.android.synthetic.main.fragment_month.view.month_calendar_holder
+import kotlinx.android.synthetic.main.fragment_month.view.month_view_wrapper
+import kotlinx.android.synthetic.main.top_navigation.view.top_left_arrow
+import kotlinx.android.synthetic.main.top_navigation.view.top_right_arrow
+import kotlinx.android.synthetic.main.top_navigation.view.top_value
 import org.joda.time.DateTime
 
 class MonthFragment : Fragment(), MonthlyCalendar {
     private var mTextColor = 0
-    private var mSundayFirst = false
     private var mShowWeekNumbers = false
     private var mDayCode = ""
     private var mPackageName = ""
@@ -80,7 +82,6 @@ class MonthFragment : Fragment(), MonthlyCalendar {
 
     private fun storeStateVariables() {
         mConfig.apply {
-            mSundayFirst = isSundayFirst
             mShowWeekNumbers = showWeekNumbers
         }
     }

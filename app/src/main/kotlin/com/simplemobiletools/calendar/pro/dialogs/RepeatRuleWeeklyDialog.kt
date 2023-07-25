@@ -2,18 +2,18 @@ package com.simplemobiletools.calendar.pro.dialogs
 
 import android.app.Activity
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.withFirstDayOfWeekToFront
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
-import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.*
+import kotlinx.android.synthetic.main.dialog_vertical_linear_layout.view.dialog_vertical_linear_layout
 
 class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val callback: (repeatRule: Int) -> Unit) {
     private val view = activity.layoutInflater.inflate(R.layout.dialog_vertical_linear_layout, null)
 
     init {
         val days = activity.resources.getStringArray(R.array.week_days)
-        val checkboxes = ArrayList<MyAppCompatCheckbox>(7)
+        var checkboxes = ArrayList<MyAppCompatCheckbox>(7)
         for (i in 0..6) {
             val pow = Math.pow(2.0, i.toDouble()).toInt()
             (activity.layoutInflater.inflate(R.layout.my_checkbox, null) as MyAppCompatCheckbox).apply {
@@ -24,10 +24,7 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
             }
         }
 
-        if (activity.config.isSundayFirst) {
-            checkboxes.add(0, checkboxes.removeAt(6))
-        }
-
+        checkboxes = activity.withFirstDayOfWeekToFront(checkboxes)
         checkboxes.forEach {
             view.dialog_vertical_linear_layout.addView(it)
         }

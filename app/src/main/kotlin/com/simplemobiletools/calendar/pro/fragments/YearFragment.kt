@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.extensions.config
+import com.simplemobiletools.calendar.pro.extensions.getProperDayIndexInWeek
 import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
 import com.simplemobiletools.calendar.pro.extensions.printBitmap
 import com.simplemobiletools.calendar.pro.helpers.YEAR_LABEL
@@ -22,13 +23,16 @@ import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.extensions.updateTextColors
-import kotlinx.android.synthetic.main.fragment_year.view.*
-import kotlinx.android.synthetic.main.top_navigation.view.*
+import kotlinx.android.synthetic.main.fragment_year.view.calendar_wrapper
+import kotlinx.android.synthetic.main.fragment_year.view.month_2
+import kotlinx.android.synthetic.main.top_navigation.view.top_left_arrow
+import kotlinx.android.synthetic.main.top_navigation.view.top_right_arrow
+import kotlinx.android.synthetic.main.top_navigation.view.top_value
 import org.joda.time.DateTime
 
 class YearFragment : Fragment(), YearlyCalendar {
     private var mYear = 0
-    private var mSundayFirst = false
+    private var mFirstDayOfWeek = 0
     private var isPrintVersion = false
     private var lastHash = 0
     private var mCalendar: YearlyCalendarImpl? = null
@@ -50,14 +54,14 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     override fun onPause() {
         super.onPause()
-        mSundayFirst = requireContext().config.isSundayFirst
+        mFirstDayOfWeek = requireContext().config.firstDayOfWeek
     }
 
     override fun onResume() {
         super.onResume()
-        val sundayFirst = requireContext().config.isSundayFirst
-        if (sundayFirst != mSundayFirst) {
-            mSundayFirst = sundayFirst
+        val firstDayOfWeek = requireContext().config.firstDayOfWeek
+        if (firstDayOfWeek != mFirstDayOfWeek) {
+            mFirstDayOfWeek = firstDayOfWeek
             setupMonths()
         }
         updateCalendar()
@@ -76,11 +80,7 @@ class YearFragment : Fragment(), YearlyCalendar {
 
         for (i in 1..12) {
             val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
-            var dayOfWeek = dateTime.withMonthOfYear(i).dayOfWeek().get()
-            if (!mSundayFirst) {
-                dayOfWeek--
-            }
-
+            val dayOfWeek = requireContext().getProperDayIndexInWeek(dateTime.withMonthOfYear(i))
             val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", requireContext().packageName))
             val curTextColor = when {
                 isPrintVersion -> resources.getColor(R.color.theme_light_text_color)

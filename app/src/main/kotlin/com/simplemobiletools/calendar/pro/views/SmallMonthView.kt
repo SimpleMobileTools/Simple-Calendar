@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.helpers.isWeekend
+import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
 import com.simplemobiletools.calendar.pro.models.DayYearly
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
@@ -25,7 +25,6 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     private var days = 31
     private var isLandscape = false
     private var highlightWeekends = false
-    private var isSundayFirst = false
     private var isPrintVersion = false
     private var mEvents: ArrayList<DayYearly>? = null
 
@@ -61,7 +60,6 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
         textColor = baseColor.adjustAlpha(MEDIUM_ALPHA)
         weekendsTextColor = context.config.highlightWeekendsColor.adjustAlpha(MEDIUM_ALPHA)
         highlightWeekends = context.config.highlightWeekends
-        isSundayFirst = context.config.isSundayFirst
 
         paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
@@ -107,7 +105,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
             val curPaint = Paint(paint)
             curPaint.color = colors.first()
             return curPaint
-        } else if (highlightWeekends && isWeekend(weekDay - 1, isSundayFirst)) {
+        } else if (highlightWeekends && context.isWeekendIndex(weekDay - 1)) {
             val curPaint = Paint(paint)
             curPaint.color = weekendsTextColor
             return curPaint

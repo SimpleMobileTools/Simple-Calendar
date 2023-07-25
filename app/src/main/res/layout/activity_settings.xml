@@ -149,6 +149,29 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/settings_start_week_on_holder"
+                style="@style/SettingsHolderTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/settings_start_week_on_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_week_on" />
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/settings_start_week_on"
+                    style="@style/SettingsTextValueStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_start_week_on_label"
+                    tools:text="@string/monday" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/settings_hour_format_holder"
                 style="@style/SettingsHolderCheckboxStyle"
                 android:layout_width="match_parent"
@@ -160,21 +183,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/use_24_hour_time_format" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/settings_sunday_first_holder"
-                style="@style/SettingsHolderCheckboxStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
-                    android:id="@+id/settings_sunday_first"
-                    style="@style/SettingsCheckboxStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sunday_first" />
 
             </RelativeLayout>
 
