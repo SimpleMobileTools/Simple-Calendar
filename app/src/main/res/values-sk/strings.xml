@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Mesačný + denný</string>
     <string name="yearly_view">Ročný</string>
     <string name="simple_event_list">Jednoduchý zoznam</string>
-    <string name="no_upcoming_events">Nemáte žiadne naplánované udalosti.</string>
+    <string name="no_upcoming_events">Žiadne nadchádzajúce udalosti.</string>
     <string name="go_to_today">Prejsť na dnešok</string>
     <string name="go_to_date">Prejsť na dátum</string>
     <!-- Widget titles -->
