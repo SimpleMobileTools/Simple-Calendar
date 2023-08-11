@@ -22,6 +22,7 @@ import com.simplemobiletools.commons.extensions.getLaunchIntent
 import com.simplemobiletools.commons.extensions.setTextSize
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import org.joda.time.DateTime
+import java.util.Locale
 
 class MyWidgetListProvider : AppWidgetProvider() {
     private val NEW_EVENT = "new_event"
@@ -48,6 +49,10 @@ class MyWidgetListProvider : AppWidgetProvider() {
                     setTextColor(R.id.widget_event_list_today, textColor)
                     setTextSize(R.id.widget_event_list_today, fontSize)
                 }
+
+                val loc_pattern = android.text.format.DateFormat.getBestDateTimePattern(Locale.getDefault(), "MMM d yyyy (EEEE)")
+                views.setCharSequence(R.id.widget_event_list_today, "setFormat24Hour", loc_pattern);
+                views.setCharSequence(R.id.widget_event_list_today, "setFormat12Hour", loc_pattern);
 
                 views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
                 setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)

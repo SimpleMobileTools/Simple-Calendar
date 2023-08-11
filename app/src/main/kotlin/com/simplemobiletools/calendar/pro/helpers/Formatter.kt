@@ -4,10 +4,15 @@ import android.content.Context
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.commons.extensions.substringTo
 import org.joda.time.DateTime
+import org.joda.time.DateTimeFieldType
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object Formatter {
     const val DAYCODE_PATTERN = "YYYYMMdd"
@@ -23,28 +28,20 @@ object Formatter {
     private const val PATTERN_HOURS_12 = "h a"
     private const val PATTERN_HOURS_24 = "HH"
 
-    fun getDateFromCode(context: Context, dayCode: String, shortMonth: Boolean = false): String {
+    fun getDateFromCode(dayCode: String, shortMonth: Boolean = false): String {
         val dateTime = getDateTimeFromCode(dayCode)
-        val day = dateTime.toString(DAY_PATTERN)
-        val year = dateTime.toString(YEAR_PATTERN)
-        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
-        var month = getMonthName(context, monthIndex)
-        if (shortMonth) {
-            month = month.substring(0, Math.min(month.length, 3))
+        var pattern = if (shortMonth) "MMMd" else "MMMMd";
+        if (dateTime.get(DateTimeFieldType.year()) != DateTime().get(DateTimeFieldType.year())) {
+            pattern = pattern + YEAR_PATTERN
         }
-
-        var date = "$month $day"
-        if (year != DateTime().toString(YEAR_PATTERN)) {
-            date += " $year"
-        }
-
-        return date
+        val loc_pattern = android.text.format.DateFormat.getBestDateTimePattern(Locale.getDefault(), pattern)
+        return SimpleDateFormat(loc_pattern, Locale.getDefault()).format(dateTime.toDate())
     }
 
     fun getDayTitle(context: Context, dayCode: String, addDayOfWeek: Boolean = true): String {
-        val date = getDateFromCode(context, dayCode)
+        val date = getDateFromCode(dayCode)
         val dateTime = getDateTimeFromCode(dayCode)
-        val day = dateTime.toString(DAY_OF_WEEK_PATTERN)
+        val day = SimpleDateFormat("E", Locale.getDefault()).format(dateTime.toDate())
         return if (addDayOfWeek)
             "$date ($day)"
         else
@@ -53,13 +50,13 @@ object Formatter {
 
     fun getDateDayTitle(dayCode: String): String {
         val dateTime = getDateTimeFromCode(dayCode)
-        return dateTime.toString(DATE_DAY_PATTERN)
+        val loc_pattern = android.text.format.DateFormat.getBestDateTimePattern(Locale.getDefault(), DATE_DAY_PATTERN)
+        return SimpleDateFormat(loc_pattern, Locale.getDefault()).format(dateTime.toDate())
     }
 
     fun getLongMonthYear(context: Context, dayCode: String): String {
         val dateTime = getDateTimeFromCode(dayCode)
-        val monthIndex = Integer.valueOf(dayCode.substring(4, 6))
-        val month = getMonthName(context, monthIndex)
+        val month = SimpleDateFormat("MMMM", Locale.getDefault()).format(dateTime.toDate())
         val year = dateTime.toString(YEAR_PATTERN)
         var date = month
 
@@ -73,11 +70,7 @@ object Formatter {
     fun getDate(context: Context, dateTime: DateTime, addDayOfWeek: Boolean = true) = getDayTitle(context, getDayCodeFromDateTime(dateTime), addDayOfWeek)
 
     fun getFullDate(context: Context, dateTime: DateTime): String {
-        val day = dateTime.toString(DAY_PATTERN)
-        val year = dateTime.toString(YEAR_PATTERN)
-        val monthIndex = dateTime.monthOfYear
-        val month = getMonthName(context, monthIndex)
-        return "$month $day $year"
+        return DateFormat.getDateInstance(1).format(dateTime.toDate())
     }
 
     fun getTodayCode() = getDayCodeFromTS(getNowSeconds())
