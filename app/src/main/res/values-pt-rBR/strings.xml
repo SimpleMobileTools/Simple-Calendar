@@ -41,7 +41,7 @@
     <string name="duplicate_task">Duplicar tarefa</string>
     <string name="mark_completed">Marcar como concluída</string>
     <string name="mark_incomplete">Marcar como incompleta</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Cor da tarefa</string>
     <!-- Event Repetition -->
     <string name="repetition">Repetição</string>
     <string name="no_repetition">Sem repetição</string>
@@ -180,8 +180,8 @@
     <string name="replace_description_with_location">Substituir descrição do evento por localização</string>
     <string name="display_description_or_location">Exibir descrição ou localização</string>
     <string name="delete_all_events">Deletar todos os eventos</string>
-    <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
-    <string name="delete_all_events_confirmation">Tem certeza de que deseja excluir todos os eventos\? Isso deixará seus tipos de eventos e outras configurações intactas.</string>
+    <string name="delete_all_events_and_tasks">Excluir todos os eventos e tarefas</string>
+    <string name="delete_all_events_confirmation">Tem certeza de que deseja excluir todos os eventos e tarefas\? Isso deixará seus tipos de evento e outras configurações intactas.</string>
     <string name="show_a_grid">Mostrar uma grid</string>
     <string name="loop_reminders">Lembretes de loop até que seja dispensado</string>
     <string name="dim_past_events">Escurecer eventos passados</string>
@@ -227,7 +227,7 @@
     <string name="no_synchronized_calendars">Nenhum calendário encontrado para a sincronização</string>
     <string name="status_free">Livre</string>
     <string name="status_busy">Ocupado</string>
-    <string name="fetching_event_failed">Fetching event %s failed</string>
+    <string name="fetching_event_failed">A busca do evento %s falhou</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
     <!-- used in repetition, like "Every last Sunday" -->
     <string name="monday_alt">Segunda</string>
@@ -252,16 +252,19 @@
     <string name="today_only">Apenas hoje</string>
     <string name="within_the_next">Dentro de…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Dentro do próximo %d dia</item>
-        <item quantity="other">Dentro dos próximos %d dias</item>
+        <item quantity="one">No próximo %d dia</item>
+        <item quantity="many">Nos próximos %d dias</item>
+        <item quantity="other">Nos próximos %d dias</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Dentro de %d semana</item>
-        <item quantity="other">Dentro das próximas %d semanas</item>
+        <item quantity="one">Na próxima %d semana</item>
+        <item quantity="many">Nas próximas %d semanas</item>
+        <item quantity="other">Nas próximas %d semanas</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Dentro do próximo %d mês</item>
-        <item quantity="other">Dentro dos próximos %d meses</item>
+        <item quantity="one">No próximo %d mês</item>
+        <item quantity="many">Nos próximos %d meses</item>
+        <item quantity="other">Nos próximos %d meses</item>
     </plurals>
     <!-- FAQ -->
     <string name="faq_1_title">Como posso remover os feriados importados por meio do botão \"Adicionar feriados\"\?</string>

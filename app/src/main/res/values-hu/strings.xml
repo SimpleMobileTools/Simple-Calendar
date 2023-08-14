@@ -41,7 +41,7 @@
     <string name="duplicate_task">Feladat kettőzése</string>
     <string name="mark_completed">Megjelölés befejezettként</string>
     <string name="mark_incomplete">Megjelölés nem befejezettként</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Tevékenység színe</string>
     <!-- Event Repetition -->
     <string name="repetition">Ismétlés</string>
     <string name="no_repetition">Nincs ismétlés</string>
