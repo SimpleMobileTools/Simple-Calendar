@@ -199,7 +199,7 @@
     <string name="delete_all_events_and_tasks">Delete all events and tasks</string>
     <string name="delete_all_events_confirmation">Are you sure you want to delete all events and tasks? This will leave your event types and other settings intact.</string>
     <string name="show_a_grid">Show a grid</string>
-    <string name="loop_reminders">Loop reminders until dismissed</string>
+    <string name="loop_reminders">Remind until manually closed</string>
     <string name="dim_past_events">Dim past events</string>
     <string name="dim_completed_tasks">Dim completed tasks</string>
     <string name="events">Events</string>
