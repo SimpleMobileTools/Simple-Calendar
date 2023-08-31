@@ -9,13 +9,13 @@
     <string name="monthly_daily_view">Monthly + daily view</string>
     <string name="yearly_view">Gada skats</string>
     <string name="simple_event_list">Vienkāršs notikumu saraksts</string>
-    <string name="no_upcoming_events">No upcoming events.</string>
+    <string name="no_upcoming_events">Nav gaidāmo notikumu.</string>
     <string name="go_to_today">Iet uz šodienu</string>
     <string name="go_to_date">Iet uz datumu</string>
     <!-- Widget titles -->
     <string name="widget_monthly">Mēneša kalendārs</string>
     <string name="widget_list">Kalendāra notikumu saraksts</string>
-    <string name="widget_todays_date">Calendar today\'s date</string>
+    <string name="widget_todays_date">Kalendārs šodienai</string>
     <!-- Event -->
     <string name="event">Notikums</string>
     <string name="edit_event">Rediģēt notikumu</string>
@@ -29,7 +29,7 @@
     <string name="filter_events_by_type">Filtrējiet notikumus pēc tipa</string>
     <string name="please_fill_location">Lūdzu, ievadiet/norādiet atrašanās vietu, kuru parādīt kartē</string>
     <string name="public_event_notification_text">Gaidāms/Priekšāstāvošs notikums</string>
-    <string name="everything_filtered_out">You have filtered out all event types</string>
+    <string name="everything_filtered_out">Jūs nofiltrējāt visus notikumus</string>
     <string name="event_color">Event color</string>
     <string name="default_calendar_color">Default calendar color</string>
     <!-- Tasks -->
