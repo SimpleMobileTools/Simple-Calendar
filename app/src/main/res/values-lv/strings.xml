@@ -216,10 +216,10 @@
     <string name="manage_synced_calendars">Pārvaldiet sinhronizējamos kalendārus</string>
     <string name="store_locally_only">Glabāt tikai vietēji</string>
     <string name="refresh_caldav_calendars">Aktualizēt kalendārus no CalDAV</string>
-    <string name="refreshing">Notiek aktualizēšana ...</string>
+    <string name="refreshing">Atsvaidzināšana…</string>
     <string name="refreshing_complete">Aktualizācija pabeigta</string>
     <string name="editing_calendar_failed">Kalendāra rediģēšana neizdevās</string>
-    <string name="syncing">Notiek sinhronizēšana ...</string>
+    <string name="syncing">Notiek sinhronizācija…</string>
     <string name="synchronization_completed">Sinhronizācija pabeigta</string>
     <string name="select_a_different_caldav_color">Izvēlieties citu krāsu (var tikt izmantota tikai lokāli)</string>
     <string name="insufficient_permissions">Jums izvēlētajā kalendārā rakstīt nav ļauts</string>
