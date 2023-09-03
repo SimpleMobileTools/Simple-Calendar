@@ -1,8 +1,8 @@
 [versions]
 #jetbrains
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 #KSP
-ksp = "1.9.0-1.0.12"
+ksp = "1.9.10-1.0.13"
 #Androidx
 multidex = "2.0.1"
 print = "1.0.0"
