@@ -4,6 +4,7 @@ import android.view.*
 import android.widget.PopupMenu
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.ItemEventTypeBinding
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
@@ -14,12 +15,14 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyRecyclerView
-import kotlinx.android.synthetic.main.item_event_type.view.*
 
 class ManageEventTypesAdapter(
     activity: SimpleActivity, val eventTypes: ArrayList<EventType>, val listener: DeleteEventTypesListener?, recyclerView: MyRecyclerView,
     itemClick: (Any) -> Unit
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
+    private val MOVE_EVENTS = 0
+    private val DELETE_EVENTS = 1
+
     init {
         setupDragListener(true)
     }
@@ -55,11 +58,15 @@ class ManageEventTypesAdapter(
 
     override fun onActionModeDestroyed() {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_event_type, parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return createViewHolder(
+            view = ItemEventTypeBinding.inflate(activity.layoutInflater, parent, false).root
+        )
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val eventType = eventTypes[position]
-        holder.bindView(eventType, true, true) { itemView, layoutPosition ->
+        holder.bindView(eventType, allowSingleClick = true, allowLongClick = true) { itemView, _ ->
             setupView(itemView, eventType)
         }
         bindViewHolder(holder)
@@ -72,19 +79,19 @@ class ManageEventTypesAdapter(
     private fun getSelectedItems() = eventTypes.filter { selectedKeys.contains(it.id?.toInt()) } as ArrayList<EventType>
 
     private fun setupView(view: View, eventType: EventType) {
-        view.apply {
-            event_item_frame.isSelected = selectedKeys.contains(eventType.id?.toInt())
-            event_type_title.text = eventType.getDisplayTitle()
-            event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
-            event_type_title.setTextColor(textColor)
+        ItemEventTypeBinding.bind(view).apply {
+            eventItemFrame.isSelected = selectedKeys.contains(eventType.id?.toInt())
+            eventTypeTitle.text = eventType.getDisplayTitle()
+            eventTypeColor.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
+            eventTypeTitle.setTextColor(textColor)
 
-            overflow_menu_icon.drawable.apply {
+            overflowMenuIcon.drawable.apply {
                 mutate()
                 setTint(activity.getProperTextColor())
             }
 
-            overflow_menu_icon.setOnClickListener {
-                showPopupMenu(overflow_menu_anchor, eventType)
+            overflowMenuIcon.setOnClickListener {
+                showPopupMenu(overflowMenuAnchor, eventType)
             }
         }
     }
@@ -104,6 +111,7 @@ class ManageEventTypesAdapter(
                             itemClick(eventType)
                         }
                     }
+
                     R.id.cab_delete -> {
                         executeItemMenuOperation(eventTypeId) {
                             askConfirmDelete()
@@ -133,8 +141,6 @@ class ManageEventTypesAdapter(
         activity.eventsHelper.doEventTypesContainEvents(eventTypes) {
             activity.runOnUiThread {
                 if (it) {
-                    val MOVE_EVENTS = 0
-                    val DELETE_EVENTS = 1
                     val res = activity.resources
                     val items = ArrayList<RadioItem>().apply {
                         add(RadioItem(MOVE_EVENTS, res.getString(R.string.move_events_into_default)))

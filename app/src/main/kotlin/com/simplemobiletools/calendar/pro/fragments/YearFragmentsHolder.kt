@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
+import com.simplemobiletools.calendar.pro.databinding.FragmentYearsHolderBinding
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.YEARLY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.YEAR_TO_OPEN
@@ -20,13 +21,12 @@ import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyViewPager
-import kotlinx.android.synthetic.main.fragment_years_holder.view.*
 import org.joda.time.DateTime
 
 class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_YEARS = 61
 
-    private var viewPager: MyViewPager? = null
+    private lateinit var viewPager: MyViewPager
     private var defaultYearlyPage = 0
     private var todayYear = 0
     private var currentYear = 0
@@ -41,13 +41,13 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
         todayYear = DateTime().toString(Formatter.YEAR_PATTERN).toInt()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_years_holder, container, false)
-        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
-        viewPager = view.fragment_years_viewpager
-        viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentYearsHolderBinding.inflate(inflater, container, false)
+        binding.root.background = ColorDrawable(requireContext().getProperBackgroundColor())
+        viewPager = binding.fragmentYearsViewpager
+        viewPager.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
-        return view
+        return binding.root
     }
 
     private fun setupFragment() {
@@ -55,7 +55,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val yearlyAdapter = MyYearPagerAdapter(requireActivity().supportFragmentManager, years, this)
         defaultYearlyPage = years.size / 2
 
-        viewPager?.apply {
+        viewPager.apply {
             adapter = yearlyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}
@@ -82,11 +82,11 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun goLeft() {
-        viewPager!!.currentItem = viewPager!!.currentItem - 1
+        viewPager.currentItem = viewPager.currentItem - 1
     }
 
     override fun goRight() {
-        viewPager!!.currentItem = viewPager!!.currentItem + 1
+        viewPager.currentItem = viewPager.currentItem + 1
     }
 
     override fun goToDateTime(dateTime: DateTime) {}
@@ -101,8 +101,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
             return
         }
 
-        val view = layoutInflater.inflate(getDatePickerDialogStyle(), null)
-        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+        val datePicker = getDatePickerView()
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("month", "id", "android")).beGone()
 
@@ -111,9 +110,9 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
         activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok) { dialog, which -> datePicked(datePicker) }
+            .setPositiveButton(R.string.ok) { _, _ -> datePicked(datePicker) }
             .apply {
-                activity?.setupDialogStuff(view, this)
+                activity?.setupDialogStuff(datePicker, this)
             }
     }
 
@@ -126,7 +125,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        (viewPager?.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
+        (viewPager.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear
@@ -134,7 +133,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun getNewEventDayCode() = Formatter.getTodayCode()
 
     override fun printView() {
-        (viewPager?.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+        (viewPager.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager.currentItem)
     }
 
     override fun getCurrentDate() = null

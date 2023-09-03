@@ -1,24 +1,23 @@
 package com.simplemobiletools.calendar.pro.adapters
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.ItemSelectTimeZoneBinding
 import com.simplemobiletools.calendar.pro.models.MyTimeZone
 import com.simplemobiletools.commons.extensions.getProperTextColor
-import kotlinx.android.synthetic.main.item_select_time_zone.view.*
 
 class SelectTimeZoneAdapter(val activity: SimpleActivity, var timeZones: ArrayList<MyTimeZone>, val itemClick: (Any) -> Unit) :
-    RecyclerView.Adapter<SelectTimeZoneAdapter.ViewHolder>() {
+    RecyclerView.Adapter<SelectTimeZoneAdapter.TimeZoneViewHolder>() {
     val textColor = activity.getProperTextColor()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = activity.layoutInflater.inflate(R.layout.item_select_time_zone, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeZoneViewHolder {
+        return TimeZoneViewHolder(
+            binding = ItemSelectTimeZoneBinding.inflate(activity.layoutInflater, parent, false)
+        )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimeZoneViewHolder, position: Int) {
         val timeZone = timeZones[position]
         holder.bindView(timeZone)
     }
@@ -30,21 +29,19 @@ class SelectTimeZoneAdapter(val activity: SimpleActivity, var timeZones: ArrayLi
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindView(timeZone: MyTimeZone): View {
-            itemView.apply {
-                item_time_zone_title.text = timeZone.zoneName
-                item_time_zone_shift.text = timeZone.title
+    inner class TimeZoneViewHolder(val binding: ItemSelectTimeZoneBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindView(timeZone: MyTimeZone) {
+            binding.apply {
+                itemTimeZoneTitle.text = timeZone.zoneName
+                itemTimeZoneShift.text = timeZone.title
 
-                item_time_zone_title.setTextColor(textColor)
-                item_time_zone_shift.setTextColor(textColor)
+                itemTimeZoneTitle.setTextColor(textColor)
+                itemTimeZoneShift.setTextColor(textColor)
 
-                item_select_time_zone_holder.setOnClickListener {
+                itemSelectTimeZoneHolder.setOnClickListener {
                     itemClick(timeZone)
                 }
             }
-
-            return itemView
         }
     }
 }

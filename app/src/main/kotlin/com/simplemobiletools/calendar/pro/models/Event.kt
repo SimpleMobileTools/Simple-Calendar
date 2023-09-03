@@ -29,7 +29,7 @@ data class Event(
     @ColumnInfo(name = "repeat_interval") var repeatInterval: Int = 0,
     @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
     @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
-    @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: ArrayList<String> = ArrayList(),
+    @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: List<String> = emptyList(),
     @ColumnInfo(name = "attendees") var attendees: String = "",
     @ColumnInfo(name = "import_id") var importId: String = "",
     @ColumnInfo(name = "time_zone") var timeZone: String = "",
@@ -58,16 +58,19 @@ data class Event(
                         REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(oldStart, original, true)
                         else -> addYearsWithSameDay(oldStart)
                     }
+
                     repeatInterval % MONTH == 0 -> when (repeatRule) {
                         REPEAT_SAME_DAY -> addMonthsWithSameDay(oldStart, original)
                         REPEAT_ORDER_WEEKDAY -> addXthDayInterval(oldStart, original, false)
                         REPEAT_ORDER_WEEKDAY_USE_LAST -> addXthDayInterval(oldStart, original, true)
                         else -> oldStart.plusMonths(repeatInterval / MONTH).dayOfMonth().withMaximumValue()
                     }
+
                     repeatInterval % WEEK == 0 -> {
                         // step through weekly repetition by days too, as events can trigger multiple times a week
                         oldStart.plusDays(1)
                     }
+
                     else -> oldStart.plusSeconds(repeatInterval)
                 }
             }
@@ -186,9 +189,9 @@ data class Event(
         isPastEvent = endTSToCheck < getNowSeconds()
     }
 
-    fun addRepetitionException(daycode: String) {
-        var newRepetitionExceptions = repetitionExceptions
-        newRepetitionExceptions.add(daycode)
+    fun addRepetitionException(dayCode: String) {
+        var newRepetitionExceptions = repetitionExceptions.toMutableList()
+        newRepetitionExceptions.add(dayCode)
         newRepetitionExceptions = newRepetitionExceptions.distinct().toMutableList() as ArrayList<String>
         repetitionExceptions = newRepetitionExceptions
     }

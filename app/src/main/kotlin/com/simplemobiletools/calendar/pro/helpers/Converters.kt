@@ -9,7 +9,7 @@ class Converters {
     private val stringType = object : TypeToken<List<String>>() {}.type
 
     @TypeConverter
-    fun jsonToStringList(value: String): ArrayList<String> {
+    fun jsonToStringList(value: String): List<String> {
         val newValue = if (value.isNotEmpty() && !value.startsWith("[")) {
             "[$value]"
         } else {
@@ -19,10 +19,10 @@ class Converters {
         return try {
             gson.fromJson(newValue, stringType)
         } catch (e: Exception) {
-            ArrayList()
+            emptyList()
         }
     }
 
     @TypeConverter
-    fun stringListToJson(list: ArrayList<String>) = gson.toJson(list)
+    fun stringListToJson(list: List<String>) = gson.toJson(list)
 }

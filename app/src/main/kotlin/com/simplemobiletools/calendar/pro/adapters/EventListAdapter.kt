@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.EventListItemBinding
+import com.simplemobiletools.calendar.pro.databinding.EventListSectionDayBinding
+import com.simplemobiletools.calendar.pro.databinding.EventListSectionMonthBinding
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -22,8 +25,6 @@ import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.interfaces.RefreshRecyclerViewListener
 import com.simplemobiletools.commons.views.MyRecyclerView
-import kotlinx.android.synthetic.main.event_list_item.view.*
-import kotlinx.android.synthetic.main.event_list_section_day.view.*
 
 class EventListAdapter(
     activity: SimpleActivity, var listItems: ArrayList<ListItem>, val allowLongClick: Boolean, val listener: RefreshRecyclerViewListener?,
@@ -75,17 +76,19 @@ class EventListAdapter(
     override fun onActionModeDestroyed() {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewAdapter.ViewHolder {
-        val layoutId = when (viewType) {
-            ITEM_SECTION_DAY -> R.layout.event_list_section_day
-            ITEM_SECTION_MONTH -> R.layout.event_list_section_month
-            else -> R.layout.event_list_item
+        val layoutInflater = activity.layoutInflater
+        val binding = when (viewType) {
+            ITEM_SECTION_DAY -> EventListSectionDayBinding.inflate(layoutInflater, parent, false)
+            ITEM_SECTION_MONTH -> EventListSectionMonthBinding.inflate(layoutInflater, parent, false)
+            else -> EventListItemBinding.inflate(layoutInflater, parent, false)
         }
-        return createViewHolder(layoutId, parent)
+
+        return createViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: MyRecyclerViewAdapter.ViewHolder, position: Int) {
         val listItem = listItems[position]
-        holder.bindView(listItem, true, allowLongClick && listItem is ListEvent) { itemView, layoutPosition ->
+        holder.bindView(listItem, allowSingleClick = true, allowLongClick = allowLongClick && listItem is ListEvent) { itemView, _ ->
             when (listItem) {
                 is ListSectionDay -> setupListSectionDay(itemView, listItem)
                 is ListEvent -> setupListEvent(itemView, listItem)
@@ -129,27 +132,27 @@ class EventListAdapter(
     }
 
     private fun setupListEvent(view: View, listEvent: ListEvent) {
-        view.apply {
-            event_item_holder.isSelected = selectedKeys.contains(listEvent.hashCode())
-            event_item_holder.background.applyColorFilter(textColor)
-            event_item_title.text = listEvent.title
-            event_item_title.checkViewStrikeThrough(listEvent.isTaskCompleted)
-            event_item_time.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(context, listEvent.startTS)
+        EventListItemBinding.bind(view).apply {
+            eventItemHolder.isSelected = selectedKeys.contains(listEvent.hashCode())
+            eventItemHolder.background.applyColorFilter(textColor)
+            eventItemTitle.text = listEvent.title
+            eventItemTitle.checkViewStrikeThrough(listEvent.isTaskCompleted)
+            eventItemTime.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(activity, listEvent.startTS)
             if (listEvent.startTS != listEvent.endTS) {
                 if (!listEvent.isAllDay) {
-                    event_item_time.text = "${event_item_time.text} - ${Formatter.getTimeFromTS(context, listEvent.endTS)}"
+                    eventItemTime.text = "${eventItemTime.text} - ${Formatter.getTimeFromTS(activity, listEvent.endTS)}"
                 }
 
                 val startCode = Formatter.getDayCodeFromTS(listEvent.startTS)
                 val endCode = Formatter.getDayCodeFromTS(listEvent.endTS)
                 if (startCode != endCode) {
-                    event_item_time.text = "${event_item_time.text} (${Formatter.getDateDayTitle(endCode)})"
+                    eventItemTime.text = "${eventItemTime.text} (${Formatter.getDateDayTitle(endCode)})"
                 }
             }
 
-            event_item_description.text = if (replaceDescription) listEvent.location else listEvent.description.replace("\n", " ")
-            event_item_description.beVisibleIf(displayDescription && event_item_description.text.isNotEmpty())
-            event_item_color_bar.background.applyColorFilter(listEvent.color)
+            eventItemDescription.text = if (replaceDescription) listEvent.location else listEvent.description.replace("\n", " ")
+            eventItemDescription.beVisibleIf(displayDescription && eventItemDescription.text.isNotEmpty())
+            eventItemColorBar.background.applyColorFilter(listEvent.color)
 
             var newTextColor = textColor
             if (listEvent.isAllDay || listEvent.startTS <= now && listEvent.endTS <= now) {
@@ -169,23 +172,24 @@ class EventListAdapter(
                 newTextColor = properPrimaryColor
             }
 
-            event_item_time.setTextColor(newTextColor)
-            event_item_title.setTextColor(newTextColor)
-            event_item_description.setTextColor(newTextColor)
-            event_item_task_image.applyColorFilter(newTextColor)
-            event_item_task_image.beVisibleIf(listEvent.isTask)
+            eventItemTime.setTextColor(newTextColor)
+            eventItemTitle.setTextColor(newTextColor)
+            eventItemDescription.setTextColor(newTextColor)
+            eventItemTaskImage.applyColorFilter(newTextColor)
+            eventItemTaskImage.beVisibleIf(listEvent.isTask)
 
             val startMargin = if (listEvent.isTask) {
                 0
             } else {
                 mediumMargin
             }
-            (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
+
+            (eventItemTitle.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
 
     private fun setupListSectionDay(view: View, listSectionDay: ListSectionDay) {
-        view.event_section_title.apply {
+        EventListSectionDayBinding.bind(view).eventSectionTitle.apply {
             text = listSectionDay.title
             val dayColor = if (listSectionDay.isToday) properPrimaryColor else textColor
             setTextColor(dayColor)
@@ -193,7 +197,7 @@ class EventListAdapter(
     }
 
     private fun setupListSectionMonth(view: View, listSectionMonth: ListSectionMonth) {
-        view.event_section_title.apply {
+        EventListSectionMonthBinding.bind(view).eventSectionTitle.apply {
             text = listSectionMonth.title
             setTextColor(properPrimaryColor)
         }
@@ -214,7 +218,7 @@ class EventListAdapter(
             listItems.removeAll(eventsToDelete)
 
             ensureBackgroundThread {
-                val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.mapNotNull { it.id }.toMutableList()
+                val nonRepeatingEventIDs = eventsToDelete.filter { !it.isRepeatable }.map { it.id }.toMutableList()
                 activity.eventsHelper.deleteEvents(nonRepeatingEventIDs, true)
 
                 val repeatingEventIDs = eventsToDelete.filter { it.isRepeatable }.map { it.id }

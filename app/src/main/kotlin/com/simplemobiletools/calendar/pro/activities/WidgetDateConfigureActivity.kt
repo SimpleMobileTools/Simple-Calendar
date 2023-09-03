@@ -7,13 +7,13 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.databinding.WidgetConfigDateBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.MyWidgetDateProvider
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
-import kotlinx.android.synthetic.main.widget_config_date.*
 
 class WidgetDateConfigureActivity : SimpleActivity() {
     private var mBgAlpha = 0f
@@ -22,11 +22,13 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     private var mBgColor = 0
     private var mTextColor = 0
 
+    private val binding by viewBinding(WidgetConfigDateBinding::inflate)
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
-        setContentView(R.layout.widget_config_date)
+        setContentView(binding.root)
         initVariables()
 
         val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
@@ -37,12 +39,14 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         }
 
         val primaryColor = getProperPrimaryColor()
-        config_save.setOnClickListener { saveConfig() }
-        config_bg_color.setOnClickListener { pickBackgroundColor() }
-        config_text_color.setOnClickListener { pickTextColor() }
-        config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
-        widget_date_label.text = Formatter.getTodayDayNumber()
-        widget_month_label.text = Formatter.getCurrentMonthShort()
+        binding.apply {
+            configSave.setOnClickListener { saveConfig() }
+            configBgColor.setOnClickListener { pickBackgroundColor() }
+            configTextColor.setOnClickListener { pickTextColor() }
+            configBgSeekbar.setColors(mTextColor, primaryColor, primaryColor)
+            widgetDateLabel.text = Formatter.getTodayDayNumber()
+            widgetMonthLabel.text = Formatter.getCurrentMonthShort()
+        }
     }
 
     private fun initVariables() {
@@ -50,7 +54,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         mBgAlpha = Color.alpha(mBgColor) / 255f
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.apply {
+        binding.configBgSeekbar.apply {
             progress = (mBgAlpha * 100).toInt()
 
             onSeekBarChangeListener { progress ->
@@ -112,16 +116,20 @@ class WidgetDateConfigureActivity : SimpleActivity() {
     }
 
     private fun updateTextColor() {
-        config_text_color.setFillWithStroke(mTextColor, mTextColor)
-        widget_date_label.setTextColor(mTextColor)
-        widget_month_label.setTextColor(mTextColor)
-        config_save.setTextColor(getProperPrimaryColor().getContrastColor())
+        binding.apply {
+            configTextColor.setFillWithStroke(mTextColor, mTextColor)
+            widgetDateLabel.setTextColor(mTextColor)
+            widgetMonthLabel.setTextColor(mTextColor)
+            configSave.setTextColor(getProperPrimaryColor().getContrastColor())
+        }
     }
 
     private fun updateBackgroundColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_date_time_wrapper.background.applyColorFilter(mBgColor)
-        config_bg_color.setFillWithStroke(mBgColor, mBgColor)
-        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
+        binding.apply {
+            configDateTimeWrapper.background.applyColorFilter(mBgColor)
+            configBgColor.setFillWithStroke(mBgColor, mBgColor)
+            configSave.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
+        }
     }
 }

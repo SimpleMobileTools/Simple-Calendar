@@ -1,42 +1,46 @@
 package com.simplemobiletools.calendar.pro.adapters
 
 import android.graphics.drawable.BitmapDrawable
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.ItemAutocompleteEmailNameBinding
 import com.simplemobiletools.calendar.pro.models.Attendee
+import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.normalizeString
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import kotlinx.android.synthetic.main.item_autocomplete_email_name.view.*
 
-class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, contacts) {
+class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val attendees: ArrayList<Attendee>) : ArrayAdapter<Attendee>(activity, 0, attendees) {
     var resultList = ArrayList<Attendee>()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val contact = resultList[position]
+        val attendee = resultList[position]
+        val attendeeHasName = attendee.name.isNotEmpty()
         var listItem = convertView
-        if (listItem == null || listItem.tag != contact.name.isNotEmpty()) {
-            val layout = if (contact.name.isNotEmpty()) R.layout.item_autocomplete_email_name else R.layout.item_autocomplete_email
-            listItem = LayoutInflater.from(activity).inflate(layout, parent, false)
+        if (listItem == null || listItem.tag != attendeeHasName) {
+            listItem = ItemAutocompleteEmailNameBinding.inflate(activity.layoutInflater, parent, false).root
         }
 
         val nameToUse = when {
-            contact.name.isNotEmpty() -> contact.name
-            contact.email.isNotEmpty() -> contact.email
+            attendee.name.isNotEmpty() -> attendee.name
+            attendee.email.isNotEmpty() -> attendee.email
             else -> "A"
         }
 
         val placeholder = BitmapDrawable(activity.resources, SimpleContactsHelper(context).getContactLetterIcon(nameToUse))
-        listItem!!.apply {
-            tag = contact.name.isNotEmpty()
-            item_autocomplete_name?.text = contact.name
-            item_autocomplete_email?.text = contact.email
+        listItem.tag = attendeeHasName
+        ItemAutocompleteEmailNameBinding.bind(listItem).apply {
+            itemAutocompleteTitle.text = if (attendeeHasName) {
+                attendee.name
+            } else {
+                attendee.email
+            }
 
-            contact.updateImage(context, item_autocomplete_image, placeholder)
+            itemAutocompleteSubtitle.text = attendee.email
+            itemAutocompleteSubtitle.beVisibleIf(attendeeHasName)
+            attendee.updateImage(context, itemAutocompleteImage, placeholder)
         }
 
         return listItem
@@ -44,31 +48,35 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: Ar
 
     override fun getFilter() = object : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val filterResults = Filter.FilterResults()
+            val filterResults = FilterResults()
             if (constraint != null) {
-                resultList.clear()
+                val results = mutableListOf<Attendee>()
                 val searchString = constraint.toString().normalizeString()
-                contacts.forEach {
+                attendees.forEach {
                     if (it.email.contains(searchString, true) || it.name.contains(searchString, true)) {
-                        resultList.add(it)
+                        results.add(it)
                     }
                 }
 
-                resultList.sortWith(compareBy<Attendee>
+                results.sortWith(compareBy<Attendee>
                 { it.name.startsWith(searchString, true) }.thenBy
                 { it.email.startsWith(searchString, true) }.thenBy
                 { it.name.contains(searchString, true) }.thenBy
                 { it.email.contains(searchString, true) })
-                resultList.reverse()
+                results.reverse()
 
-                filterResults.values = resultList
-                filterResults.count = resultList.size
+                filterResults.values = results
+                filterResults.count = results.size
             }
+
             return filterResults
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            if (results?.count ?: -1 > 0) {
+            resultList.clear()
+            if (results != null && results.count > 0) {
+                @Suppress("UNCHECKED_CAST")
+                resultList.addAll(results.values as List<Attendee>)
                 notifyDataSetChanged()
             } else {
                 notifyDataSetInvalidated()

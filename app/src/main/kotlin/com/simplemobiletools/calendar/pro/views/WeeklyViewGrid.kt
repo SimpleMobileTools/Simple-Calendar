@@ -12,7 +12,7 @@ import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : View(context, attrs, defStyle) {
     private val ROWS_CNT = 24
     private var paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    var daysCount = context.config.weeklyViewDays
+    private var daysCount = context.config.weeklyViewDays
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 

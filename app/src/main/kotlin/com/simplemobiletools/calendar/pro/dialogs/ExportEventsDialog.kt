@@ -1,16 +1,15 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.FilterEventTypeAdapter
+import com.simplemobiletools.calendar.pro.databinding.DialogExportEventsBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.dialog_export_events.view.*
 import java.io.File
 
 class ExportEventsDialog(
@@ -19,33 +18,34 @@ class ExportEventsDialog(
 ) {
     private var realPath = path.ifEmpty { activity.internalStoragePath }
     private val config = activity.config
+    private val binding by activity.viewBinding(DialogExportEventsBinding::inflate)
 
     init {
-        val view = (activity.layoutInflater.inflate(R.layout.dialog_export_events, null) as ViewGroup).apply {
-            export_events_folder.setText(activity.humanizePath(realPath))
-            export_events_filename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
+        binding.apply {
+            exportEventsFolder.setText(activity.humanizePath(realPath))
+            exportEventsFilename.setText("${activity.getString(R.string.events)}_${activity.getCurrentFormattedDateTime()}")
 
-            export_events_checkbox.isChecked = config.exportEvents
-            export_events_checkbox_holder.setOnClickListener {
-                export_events_checkbox.toggle()
+            exportEventsCheckbox.isChecked = config.exportEvents
+            exportEventsCheckboxHolder.setOnClickListener {
+                exportEventsCheckbox.toggle()
             }
-            export_tasks_checkbox.isChecked = config.exportTasks
-            export_tasks_checkbox_holder.setOnClickListener {
-                export_tasks_checkbox.toggle()
+            exportTasksCheckbox.isChecked = config.exportTasks
+            exportTasksCheckboxHolder.setOnClickListener {
+                exportTasksCheckbox.toggle()
             }
-            export_past_events_checkbox.isChecked = config.exportPastEntries
-            export_past_events_checkbox_holder.setOnClickListener {
-                export_past_events_checkbox.toggle()
+            exportPastEventsCheckbox.isChecked = config.exportPastEntries
+            exportPastEventsCheckboxHolder.setOnClickListener {
+                exportPastEventsCheckbox.toggle()
             }
 
             if (hidePath) {
-                export_events_folder_hint.beGone()
-                export_events_folder.beGone()
+                exportEventsFolderHint.beGone()
+                exportEventsFolder.beGone()
             } else {
-                export_events_folder.setOnClickListener {
-                    activity.hideKeyboard(export_events_filename)
+                exportEventsFolder.setOnClickListener {
+                    activity.hideKeyboard(exportEventsFilename)
                     FilePickerDialog(activity, realPath, false, showFAB = true) {
-                        export_events_folder.setText(activity.humanizePath(it))
+                        exportEventsFolder.setText(activity.humanizePath(it))
                         realPath = it
                     }
                 }
@@ -55,9 +55,9 @@ class ExportEventsDialog(
                 val eventTypes = HashSet<String>()
                 it.mapTo(eventTypes) { it.id.toString() }
 
-                export_events_types_list.adapter = FilterEventTypeAdapter(activity, it, eventTypes)
+                exportEventsTypesList.adapter = FilterEventTypeAdapter(activity, it, eventTypes)
                 if (it.size > 1) {
-                    export_events_pick_types.beVisible()
+                    exportEventsPickTypes.beVisible()
                 }
             }
         }
@@ -66,9 +66,9 @@ class ExportEventsDialog(
             .setPositiveButton(R.string.ok, null)
             .setNegativeButton(R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.export_events) { alertDialog ->
+                activity.setupDialogStuff(binding.root, this, R.string.export_events) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                        val filename = view.export_events_filename.value
+                        val filename = binding.exportEventsFilename.value
                         when {
                             filename.isEmpty() -> activity.toast(R.string.empty_name)
                             filename.isAValidFilename() -> {
@@ -78,8 +78,8 @@ class ExportEventsDialog(
                                     return@setOnClickListener
                                 }
 
-                                val exportEventsChecked = view.export_events_checkbox.isChecked
-                                val exportTasksChecked = view.export_tasks_checkbox.isChecked
+                                val exportEventsChecked = binding.exportEventsCheckbox.isChecked
+                                val exportTasksChecked = binding.exportTasksCheckbox.isChecked
                                 if (!exportEventsChecked && !exportTasksChecked) {
                                     activity.toast(R.string.no_entries_for_exporting)
                                     return@setOnClickListener
@@ -90,14 +90,15 @@ class ExportEventsDialog(
                                         lastExportPath = file.absolutePath.getParentPath()
                                         exportEvents = exportEventsChecked
                                         exportTasks = exportTasksChecked
-                                        exportPastEntries = view.export_past_events_checkbox.isChecked
+                                        exportPastEntries = binding.exportPastEventsCheckbox.isChecked
                                     }
 
-                                    val eventTypes = (view.export_events_types_list.adapter as FilterEventTypeAdapter).getSelectedItemsList()
+                                    val eventTypes = (binding.exportEventsTypesList.adapter as FilterEventTypeAdapter).getSelectedItemsList()
                                     callback(file, eventTypes)
                                     alertDialog.dismiss()
                                 }
                             }
+
                             else -> activity.toast(R.string.invalid_name)
                         }
                     }

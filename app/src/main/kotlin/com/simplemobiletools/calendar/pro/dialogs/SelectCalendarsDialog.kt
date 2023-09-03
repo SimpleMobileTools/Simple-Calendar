@@ -1,30 +1,30 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
 import android.text.TextUtils
-import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.CalendarItemAccountBinding
+import com.simplemobiletools.calendar.pro.databinding.CalendarItemCalendarBinding
+import com.simplemobiletools.calendar.pro.databinding.DialogSelectCalendarsBinding
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.viewBinding
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
-import kotlinx.android.synthetic.main.calendar_item_account.view.*
-import kotlinx.android.synthetic.main.calendar_item_calendar.view.*
-import kotlinx.android.synthetic.main.dialog_select_calendars.view.*
 
 class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Unit) {
     private var prevAccount = ""
-    private var view = (activity.layoutInflater.inflate(R.layout.dialog_select_calendars, null) as ViewGroup)
+    private val binding by activity.viewBinding(DialogSelectCalendarsBinding::inflate)
 
     init {
         val ids = activity.config.getSyncedCalendarIdsAsList()
         val calendars = activity.calDAVHelper.getCalDAVCalendars("", true)
-        view.apply {
-            dialog_select_calendars_placeholder.beVisibleIf(calendars.isEmpty())
-            dialog_select_calendars_holder.beVisibleIf(calendars.isNotEmpty())
+        binding.apply {
+            dialogSelectCalendarsPlaceholder.beVisibleIf(calendars.isEmpty())
+            dialogSelectCalendarsHolder.beVisibleIf(calendars.isNotEmpty())
         }
 
         val sorted = calendars.sortedWith(compareBy({ it.accountName }, { it.displayName }))
@@ -38,38 +38,37 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmSelection() }
+            .setPositiveButton(R.string.ok) { _, _ -> confirmSelection() }
             .setNegativeButton(R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.select_caldav_calendars)
+                activity.setupDialogStuff(binding.root, this, R.string.select_caldav_calendars)
             }
     }
 
     private fun addCalendarItem(isEvent: Boolean, text: String, tag: Int = 0, shouldCheck: Boolean = false) {
-        val layout = if (isEvent) R.layout.calendar_item_calendar else R.layout.calendar_item_account
-        val calendarItem = activity.layoutInflater.inflate(layout, view.dialog_select_calendars_holder, false)
-
-        if (isEvent) {
-            calendarItem.calendar_item_calendar_switch.apply {
-                this.tag = tag
-                this.text = text
-                isChecked = shouldCheck
-                calendarItem.setOnClickListener {
-                    toggle()
+        val itemBinding = if (isEvent) {
+            CalendarItemCalendarBinding.inflate(activity.layoutInflater, binding.dialogSelectCalendarsHolder, false).apply {
+                calendarItemCalendarSwitch.tag = tag
+                calendarItemCalendarSwitch.text = text
+                calendarItemCalendarSwitch.isChecked = shouldCheck
+                root.setOnClickListener {
+                    calendarItemCalendarSwitch.toggle()
                 }
             }
         } else {
-            calendarItem.calendar_item_account.text = text
+            CalendarItemAccountBinding.inflate(activity.layoutInflater, binding.dialogSelectCalendarsHolder, false).apply {
+                calendarItemAccount.text = text
+            }
         }
 
-        view.dialog_select_calendars_holder.addView(calendarItem)
+        binding.dialogSelectCalendarsHolder.addView(itemBinding.root)
     }
 
     private fun confirmSelection() {
         val calendarIds = ArrayList<Int>()
-        val childCnt = view.dialog_select_calendars_holder.childCount
+        val childCnt = binding.dialogSelectCalendarsHolder.childCount
         for (i in 0..childCnt) {
-            val child = view.dialog_select_calendars_holder.getChildAt(i)
+            val child = binding.dialogSelectCalendarsHolder.getChildAt(i)
             if (child is RelativeLayout) {
                 val check = child.getChildAt(0)
                 if (check is MyAppCompatCheckbox && check.isChecked) {

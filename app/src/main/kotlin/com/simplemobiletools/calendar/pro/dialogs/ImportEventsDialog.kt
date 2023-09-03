@@ -1,9 +1,9 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.DialogImportEventsBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
@@ -15,12 +15,12 @@ import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult.IMPOR
 import com.simplemobiletools.calendar.pro.helpers.REGULAR_EVENT_TYPE_ID
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.dialog_import_events.view.*
 
 class ImportEventsDialog(val activity: SimpleActivity, val path: String, val callback: (refreshView: Boolean) -> Unit) {
     private var currEventTypeId = REGULAR_EVENT_TYPE_ID
     private var currEventTypeCalDAVCalendarId = 0
     private val config = activity.config
+    private val binding by activity.viewBinding(DialogImportEventsBinding::inflate)
 
     init {
         ensureBackgroundThread {
@@ -48,10 +48,18 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     }
 
     private fun initDialog() {
-        val view = (activity.layoutInflater.inflate(R.layout.dialog_import_events, null) as ViewGroup).apply {
+        binding.apply {
             updateEventType(this)
-            import_event_type_title.setOnClickListener {
-                SelectEventTypeDialog(activity, currEventTypeId, true, true, false, true, false) {
+            importEventTypeTitle.setOnClickListener {
+                SelectEventTypeDialog(
+                    activity = activity,
+                    currEventType = currEventTypeId,
+                    showCalDAVCalendars = true,
+                    showNewEventTypeOption = true,
+                    addLastUsedOneAsFirstOption = false,
+                    showOnlyWritable = true,
+                    showManageEventTypes = false
+                ) {
                     currEventTypeId = it.id!!
                     currEventTypeCalDAVCalendarId = it.caldavCalendarId
 
@@ -62,8 +70,8 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                 }
             }
 
-            import_events_checkbox_holder.setOnClickListener {
-                import_events_checkbox.toggle()
+            importEventsCheckboxHolder.setOnClickListener {
+                importEventsCheckbox.toggle()
             }
         }
 
@@ -71,12 +79,12 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             .setPositiveButton(R.string.ok, null)
             .setNegativeButton(R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.import_events) { alertDialog ->
+                activity.setupDialogStuff(binding.root, this, R.string.import_events) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(null)
                         activity.toast(R.string.importing)
                         ensureBackgroundThread {
-                            val overrideFileEventTypes = view.import_events_checkbox.isChecked
+                            val overrideFileEventTypes = binding.importEventsCheckbox.isChecked
                             val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId, overrideFileEventTypes)
                             handleParseResult(result)
                             alertDialog.dismiss()
@@ -86,12 +94,12 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             }
     }
 
-    private fun updateEventType(view: ViewGroup) {
+    private fun updateEventType(binding: DialogImportEventsBinding) {
         ensureBackgroundThread {
             val eventType = activity.eventTypesDB.getEventTypeWithId(currEventTypeId)
             activity.runOnUiThread {
-                view.import_event_type_title.setText(eventType!!.getDisplayTitle())
-                view.import_event_type_color.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
+                binding.importEventTypeTitle.setText(eventType!!.getDisplayTitle())
+                binding.importEventTypeColor.setFillWithStroke(eventType.color, activity.getProperBackgroundColor())
             }
         }
     }

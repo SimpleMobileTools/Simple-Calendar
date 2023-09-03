@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyMonthDayPagerAdapter
+import com.simplemobiletools.calendar.pro.databinding.FragmentMonthsDaysHolderBinding
 import com.simplemobiletools.calendar.pro.extensions.getMonthCode
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -21,13 +22,12 @@ import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyViewPager
-import kotlinx.android.synthetic.main.fragment_months_days_holder.view.*
 import org.joda.time.DateTime
 
 class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_MONTHS = 251
 
-    private var viewPager: MyViewPager? = null
+    private lateinit var viewPager: MyViewPager
     private var defaultMonthlyPage = 0
     private var todayDayCode = ""
     private var currentDayCode = ""
@@ -41,13 +41,13 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         todayDayCode = Formatter.getTodayCode()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_months_days_holder, container, false)
-        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
-        viewPager = view.fragment_months_days_viewpager
-        viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentMonthsDaysHolderBinding.inflate(inflater, container, false)
+        binding.root.background = ColorDrawable(requireContext().getProperBackgroundColor())
+        viewPager = binding.fragmentMonthsDaysViewpager
+        viewPager.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
-        return view
+        return binding.root
     }
 
     private fun setupFragment() {
@@ -55,14 +55,12 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val monthlyDailyAdapter = MyMonthDayPagerAdapter(requireActivity().supportFragmentManager, codes, this)
         defaultMonthlyPage = codes.size / 2
 
-        viewPager!!.apply {
+        viewPager.apply {
             adapter = monthlyDailyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
-                }
+                override fun onPageScrollStateChanged(state: Int) {}
 
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                }
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
                 override fun onPageSelected(position: Int) {
                     currentDayCode = codes[position]
@@ -88,11 +86,11 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun goLeft() {
-        viewPager!!.currentItem = viewPager!!.currentItem - 1
+        viewPager.currentItem = viewPager.currentItem - 1
     }
 
     override fun goRight() {
-        viewPager!!.currentItem = viewPager!!.currentItem + 1
+        viewPager.currentItem = viewPager.currentItem + 1
     }
 
     override fun goToDateTime(dateTime: DateTime) {
@@ -110,8 +108,7 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
             return
         }
 
-        val view = layoutInflater.inflate(getDatePickerDialogStyle(), null)
-        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
+        val datePicker = getDatePickerView()
         datePicker.findViewById<View>(Resources.getSystem().getIdentifier("day", "id", "android")).beGone()
 
         val dateTime = getCurrentDate()!!
@@ -119,9 +116,9 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
         activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok) { dialog, which -> datePicked(dateTime, datePicker) }
+            .setPositiveButton(R.string.ok) { _, _ -> datePicked(dateTime, datePicker) }
             .apply {
-                activity?.setupDialogStuff(view, this)
+                activity?.setupDialogStuff(datePicker, this)
             }
     }
 
@@ -133,12 +130,12 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        (viewPager?.adapter as? MyMonthDayPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
+        (viewPager.adapter as? MyMonthDayPagerAdapter)?.updateCalendars(viewPager.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentDayCode.getMonthCode() != todayDayCode.getMonthCode()
 
-    override fun getNewEventDayCode() = (viewPager?.adapter as? MyMonthDayPagerAdapter)?.getNewEventDayCode(viewPager?.currentItem ?: 0)
+    override fun getNewEventDayCode() = (viewPager.adapter as? MyMonthDayPagerAdapter)?.getNewEventDayCode(viewPager.currentItem)
         ?: if (shouldGoToTodayBeVisible()) {
             currentDayCode
         } else {

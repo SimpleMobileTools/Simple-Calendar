@@ -21,6 +21,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.adapters.QuickFilterEventTypeAdapter
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
+import com.simplemobiletools.calendar.pro.databinding.ActivityMainBinding
 import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
@@ -49,7 +50,6 @@ import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
 import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.io.FileOutputStream
@@ -88,19 +88,21 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var searchResultEvents = ArrayList<Event>()
     private var bottomItemAtRefresh: ListItem? = null
 
+    private val binding by viewBinding(ActivityMainBinding::inflate)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
-        updateMaterialActivityViews(main_coordinator, main_holder, useTransparentNavigation = false, useTopSearchMenu = true)
+        updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)
 
         checkWhatsNewDialog()
-        calendar_fab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
-        calendar_fab.setOnClickListener {
+        binding.calendarFab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
+        binding.calendarFab.setOnClickListener {
             if (config.allowCreatingTasks) {
-                if (fab_extended_overlay.isVisible()) {
+                if (binding.fabExtendedOverlay.isVisible()) {
                     openNewEvent()
 
                     Handler().postDelayed({
@@ -113,14 +115,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 openNewEvent()
             }
         }
-        fab_event_label.setOnClickListener { openNewEvent() }
-        fab_task_label.setOnClickListener { openNewTask() }
+        binding.fabEventLabel.setOnClickListener { openNewEvent() }
+        binding.fabTaskLabel.setOnClickListener { openNewTask() }
 
-        fab_extended_overlay.setOnClickListener {
+        binding.fabExtendedOverlay.setOnClickListener {
             hideExtendedFab()
         }
 
-        fab_task_icon.setOnClickListener {
+        binding.fabTaskIcon.setOnClickListener {
             openNewTask()
 
             Handler().postDelayed({
@@ -138,7 +140,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshCalDAVCalendars(false)
         }
 
-        swipe_refresh_layout.setOnRefreshListener {
+        binding.swipeRefreshLayout.setOnRefreshListener {
             refreshCalDAVCalendars(true)
         }
 
@@ -191,23 +193,25 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
 
         updateStatusbarColor(getProperBackgroundColor())
-        main_menu.updateColors()
-        storeStateVariables()
-        updateWidgets()
-        updateTextColors(calendar_coordinator)
-        fab_extended_overlay.background = ColorDrawable(getProperBackgroundColor().adjustAlpha(0.8f))
-        fab_event_label.setTextColor(getProperTextColor())
-        fab_task_label.setTextColor(getProperTextColor())
+        binding.apply {
+            mainMenu.updateColors()
+            storeStateVariables()
+            updateWidgets()
+            updateTextColors(calendarCoordinator)
+            fabExtendedOverlay.background = ColorDrawable(getProperBackgroundColor().adjustAlpha(0.8f))
+            fabEventLabel.setTextColor(getProperTextColor())
+            fabTaskLabel.setTextColor(getProperTextColor())
 
-        fab_task_icon.drawable.applyColorFilter(mStoredPrimaryColor.getContrastColor())
-        fab_task_icon.background.applyColorFilter(mStoredPrimaryColor)
+            fabTaskIcon.drawable.applyColorFilter(mStoredPrimaryColor.getContrastColor())
+            fabTaskIcon.background.applyColorFilter(mStoredPrimaryColor)
 
-        search_holder.background = ColorDrawable(getProperBackgroundColor())
-        checkSwipeRefreshAvailability()
-        checkShortcuts()
+            searchHolder.background = ColorDrawable(getProperBackgroundColor())
+            checkSwipeRefreshAvailability()
+            checkShortcuts()
 
-        if (!main_menu.isSearchOpen) {
-            refreshMenuItems()
+            if (!mainMenu.isSearchOpen) {
+                refreshMenuItems()
+            }
         }
 
         setupQuickFilter()
@@ -231,33 +235,33 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     fun refreshMenuItems() {
-        if (fab_extended_overlay.isVisible()) {
+        if (binding.fabExtendedOverlay.isVisible()) {
             hideExtendedFab()
         }
 
         shouldGoToTodayBeVisible = currentFragments.lastOrNull()?.shouldGoToTodayBeVisible() ?: false
-        main_menu.getToolbar().menu.apply {
+        binding.mainMenu.getToolbar().menu.apply {
             goToTodayButton = findItem(R.id.go_to_today)
             findItem(R.id.print).isVisible = config.storedView != MONTHLY_DAILY_VIEW
             findItem(R.id.filter).isVisible = mShouldFilterBeVisible
-            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !main_menu.isSearchOpen
+            findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !binding.mainMenu.isSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
             findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(R.bool.hide_google_relations)
         }
     }
 
-    private fun setupOptionsMenu() {
-        main_menu.getToolbar().inflateMenu(R.menu.menu_main)
-        main_menu.toggleHideOnScroll(false)
-        main_menu.setupMenu()
+    private fun setupOptionsMenu() = binding.apply {
+        mainMenu.getToolbar().inflateMenu(R.menu.menu_main)
+        mainMenu.toggleHideOnScroll(false)
+        mainMenu.setupMenu()
 
-        main_menu.onSearchTextChangedListener = { text ->
+        mainMenu.onSearchTextChangedListener = { text ->
             searchQueryChanged(text)
         }
 
-        main_menu.getToolbar().setOnMenuItemClickListener { menuItem ->
-            if (fab_extended_overlay.isVisible()) {
+        mainMenu.getToolbar().setOnMenuItemClickListener { menuItem ->
+            if (fabExtendedOverlay.isVisible()) {
                 hideExtendedFab()
             }
 
@@ -283,13 +287,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     override fun onBackPressed() {
-        if (main_menu.isSearchOpen) {
+        if (binding.mainMenu.isSearchOpen) {
             closeSearch()
         } else {
-            swipe_refresh_layout.isRefreshing = false
+            binding.swipeRefreshLayout.isRefreshing = false
             checkSwipeRefreshAvailability()
             when {
-                fab_extended_overlay.isVisible() -> hideExtendedFab()
+                binding.fabExtendedOverlay.isVisible() -> hideExtendedFab()
                 currentFragments.size > 1 -> removeTopFragment()
                 else -> super.onBackPressed()
             }
@@ -333,7 +337,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun setupQuickFilter() {
         eventsHelper.getEventTypes(this, false) {
             val quickFilterEventTypes = config.quickFilterEventTypes
-            quick_event_type_filter.adapter = QuickFilterEventTypeAdapter(this, it, quickFilterEventTypes) {
+            binding.quickEventTypeFilter.adapter = QuickFilterEventTypeAdapter(this, it, quickFilterEventTypes) {
                 if (config.displayEventTypes.isEmpty() && !config.wasFilteredOutWarningShown) {
                     toast(R.string.everything_filtered_out, Toast.LENGTH_LONG)
                     config.wasFilteredOutWarningShown = true
@@ -346,7 +350,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun closeSearch() {
-        main_menu.closeSearch()
+        binding.mainMenu.closeSearch()
         minFetchedSearchTS = 0L
         maxFetchedSearchTS = 0L
         searchResultEvents.clear()
@@ -403,7 +407,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val newEventIntent = Intent(this, SplashActivity::class.java)
         newEventIntent.action = SHORTCUT_NEW_EVENT
-        return ShortcutInfo.Builder(this, "new_event")
+        return ShortcutInfo.Builder(this, "newEvent")
             .setShortLabel(newEvent)
             .setLongLabel(newEvent)
             .setIcon(Icon.createWithBitmap(newEventBitmap))
@@ -419,7 +423,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val newTaskBitmap = newTaskDrawable.convertToBitmap()
         val newTaskIntent = Intent(this, SplashActivity::class.java)
         newTaskIntent.action = SHORTCUT_NEW_TASK
-        return ShortcutInfo.Builder(this, "new_task")
+        return ShortcutInfo.Builder(this, "newTask")
             .setShortLabel(newTask)
             .setLongLabel(newTask)
             .setIcon(Icon.createWithBitmap(newTaskBitmap))
@@ -433,7 +437,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         intent.removeExtra(VIEW_TO_OPEN)
         intent.removeExtra(DAY_CODE)
         if (dayCodeToOpen.isNotEmpty()) {
-            calendar_fab.beVisible()
+            binding.calendarFab.beVisible()
             if (viewToOpen != LAST_VIEW) {
                 config.storedView = viewToOpen
             }
@@ -523,7 +527,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun resetActionBarTitle() {
-        main_menu.updateHintText(getString(R.string.search))
+        binding.mainMenu.updateHintText(getString(R.string.search))
     }
 
     private fun showFilterDialog() {
@@ -572,7 +576,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             toast(R.string.refreshing_complete)
         }
         runOnUiThread {
-            swipe_refresh_layout.isRefreshing = false
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -869,7 +873,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun updateView(view: Int) {
-        calendar_fab.beVisibleIf(view != YEARLY_VIEW && view != WEEKLY_VIEW)
+        binding.calendarFab.beVisibleIf(view != YEARLY_VIEW && view != WEEKLY_VIEW)
         val dateCode = getDateCodeToDisplay(view)
         config.storedView = view
         checkSwipeRefreshAvailability()
@@ -931,7 +935,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
-        main_menu.toggleForceArrowBackIcon(false)
+        binding.mainMenu.toggleForceArrowBackIcon(false)
     }
 
     private fun fixDayCode(dayCode: String? = null): String? = when {
@@ -942,15 +946,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun showExtendedFab() {
         animateFabIcon(false)
-        arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
-            it.fadeIn()
+        binding.apply {
+            arrayOf(fabEventLabel, fabExtendedOverlay, fabTaskIcon, fabTaskLabel).forEach {
+                it.fadeIn()
+            }
         }
     }
 
     private fun hideExtendedFab() {
         animateFabIcon(true)
-        arrayOf(fab_event_label, fab_extended_overlay, fab_task_icon, fab_task_label).forEach {
-            it.fadeOut()
+        binding.apply {
+            arrayOf(fabEventLabel, fabExtendedOverlay, fabTaskIcon, fabTaskLabel).forEach {
+                it.fadeOut()
+            }
         }
     }
 
@@ -961,7 +969,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.drawable.ic_today_vector
         }
         val newDrawable = resources.getColoredDrawableWithColor(newDrawableId, getProperPrimaryColor())
-        calendar_fab.setImageDrawable(newDrawable)
+        binding.calendarFab.setImageDrawable(newDrawable)
     }
 
     private fun openNewEvent() {
@@ -990,7 +998,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         fragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.fragments_holder, fragment).commitNow()
         resetActionBarTitle()
-        calendar_fab.beVisible()
+        binding.calendarFab.beVisible()
         showBackNavigationArrow()
     }
 
@@ -1028,17 +1036,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshEvents()
         }
 
-        calendar_fab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
+        binding.calendarFab.beGoneIf(currentFragments.size == 1 && config.storedView == YEARLY_VIEW)
         if (currentFragments.size > 1) {
             showBackNavigationArrow()
         } else {
-            main_menu.toggleForceArrowBackIcon(false)
+            binding.mainMenu.toggleForceArrowBackIcon(false)
         }
     }
 
     private fun showBackNavigationArrow() {
-        main_menu.toggleForceArrowBackIcon(true)
-        main_menu.onNavigateBackClickListener = {
+        binding.mainMenu.toggleForceArrowBackIcon(true)
+        binding.mainMenu.onNavigateBackClickListener = {
             onBackPressed()
         }
     }
@@ -1088,9 +1096,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun tryImportEventsFromFile(uri: Uri) {
-        when {
-            uri.scheme == "file" -> showImportEventsDialog(uri.path!!)
-            uri.scheme == "content" -> {
+        when (uri.scheme) {
+            "file" -> showImportEventsDialog(uri.path!!)
+            "content" -> {
                 val tempFile = getTempFile()
                 if (tempFile == null) {
                     toast(R.string.unknown_error_occurred)
@@ -1206,11 +1214,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun searchQueryChanged(text: String) {
         mLatestSearchQuery = text
 
-        if (text.isNotEmpty() && search_holder.isGone()) {
-            search_holder.fadeIn()
+        if (text.isNotEmpty() && binding.searchHolder.isGone()) {
+            binding.searchHolder.fadeIn()
         } else if (text.isEmpty()) {
-            search_holder.fadeOut()
-            search_results_list.adapter = null
+            binding.searchHolder.fadeOut()
+            binding.searchResultsList.adapter = null
         }
 
         val placeholderTextId = if (config.displayEventTypes.isEmpty()) {
@@ -1219,10 +1227,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             R.string.no_items_found
         }
 
-        search_placeholder.setText(placeholderTextId)
-        search_placeholder_2.beVisibleIf(text.length == 1)
+        binding.searchPlaceholder.setText(placeholderTextId)
+        binding.searchPlaceholder2.beVisibleIf(text.length == 1)
         if (text.length >= 2) {
-            if (search_results_list.adapter == null) {
+            if (binding.searchResultsList.adapter == null) {
                 minFetchedSearchTS = DateTime().minusYears(2).seconds()
                 maxFetchedSearchTS = DateTime().plusYears(2).seconds()
             }
@@ -1252,13 +1260,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             }
         } else if (text.length == 1) {
-            search_placeholder.beVisible()
-            search_results_list.beGone()
+            binding.searchPlaceholder.beVisible()
+            binding.searchResultsList.beGone()
         }
     }
 
     private fun showSearchResultEvents(events: ArrayList<Event>, updateStatus: Int) {
-        val currentSearchQuery = main_menu.getCurrentQuery()
+        val currentSearchQuery = binding.mainMenu.getCurrentQuery()
         val filtered = try {
             events.filter {
                 it.title.contains(currentSearchQuery, true) || it.location.contains(currentSearchQuery, true) || it.description.contains(
@@ -1272,12 +1280,12 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         searchResultEvents = filtered.toMutableList() as ArrayList<Event>
         runOnUiThread {
-            search_results_list.beVisibleIf(filtered.isNotEmpty())
-            search_placeholder.beVisibleIf(filtered.isEmpty())
+            binding.searchResultsList.beVisibleIf(filtered.isNotEmpty())
+            binding.searchPlaceholder.beVisibleIf(filtered.isEmpty())
             val listItems = getEventListItems(filtered)
-            val currAdapter = search_results_list.adapter
+            val currAdapter = binding.searchResultsList.adapter
             if (currAdapter == null) {
-                val eventsAdapter = EventListAdapter(this, listItems, true, this, search_results_list) {
+                val eventsAdapter = EventListAdapter(this, listItems, true, this, binding.searchResultsList) {
                     hideKeyboard()
                     if (it is ListEvent) {
                         Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
@@ -1287,9 +1295,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
 
-                search_results_list.adapter = eventsAdapter
+                binding.searchResultsList.adapter = eventsAdapter
 
-                search_results_list.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
+                binding.searchResultsList.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
                     override fun updateTop() {
                         fetchPreviousPeriod()
                     }
@@ -1303,14 +1311,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 if (updateStatus == UPDATE_TOP) {
                     val item = listItems.indexOfFirst { it == bottomItemAtRefresh }
                     if (item != -1) {
-                        search_results_list.scrollToPosition(item)
+                        binding.searchResultsList.scrollToPosition(item)
                     }
                 } else if (updateStatus == UPDATE_BOTTOM) {
-                    search_results_list.smoothScrollBy(0, resources.getDimension(R.dimen.endless_scroll_move_height).toInt())
+                    binding.searchResultsList.smoothScrollBy(0, resources.getDimension(R.dimen.endless_scroll_move_height).toInt())
                 } else {
                     val firstNonPastSectionIndex = listItems.indexOfFirst { it is ListSectionDay && !it.isPastSection }
                     if (firstNonPastSectionIndex != -1) {
-                        search_results_list.scrollToPosition(firstNonPastSectionIndex)
+                        binding.searchResultsList.scrollToPosition(firstNonPastSectionIndex)
                     }
                 }
             }
@@ -1322,8 +1330,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             return
         }
 
-        val lastPosition = (search_results_list.layoutManager as MyLinearLayoutManager).findLastVisibleItemPosition()
-        bottomItemAtRefresh = (search_results_list.adapter as EventListAdapter).listItems[lastPosition]
+        val lastPosition = (binding.searchResultsList.layoutManager as MyLinearLayoutManager).findLastVisibleItemPosition()
+        bottomItemAtRefresh = (binding.searchResultsList.adapter as EventListAdapter).listItems[lastPosition]
 
         val oldMinFetchedTS = minFetchedSearchTS - 1
         minFetchedSearchTS -= FETCH_INTERVAL
@@ -1363,9 +1371,9 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun checkSwipeRefreshAvailability() {
-        swipe_refresh_layout.isEnabled = config.caldavSync && config.pullToRefresh && config.storedView != WEEKLY_VIEW
-        if (!swipe_refresh_layout.isEnabled) {
-            swipe_refresh_layout.isRefreshing = false
+        binding.swipeRefreshLayout.isEnabled = config.caldavSync && config.pullToRefresh && config.storedView != WEEKLY_VIEW
+        if (!binding.swipeRefreshLayout.isEnabled) {
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -1375,13 +1383,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun openDayAt(timestamp: Long) {
         val dayCode = Formatter.getDayCodeFromTS(timestamp / 1000L)
-        calendar_fab.beVisible()
+        binding.calendarFab.beVisible()
         config.storedView = DAILY_VIEW
         updateViewPager(dayCode)
     }
 
     // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays and
-    // https://holidays.kayaposoft.com/public_holidays.php?year=2021
+    // https://holidays.kayaposoft.com/publicHolidays.php?year=2021
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
         val items = ArrayList<RadioItem>()
 

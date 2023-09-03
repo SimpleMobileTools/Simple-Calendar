@@ -6,8 +6,6 @@ import android.graphics.Paint
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.R.id.event_item_holder
-import com.simplemobiletools.calendar.pro.R.id.event_section_title
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
@@ -131,7 +129,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
             Intent().apply {
                 putExtra(EVENT_ID, item.id)
                 putExtra(EVENT_OCCURRENCE_TS, item.startTS)
-                setOnClickFillInIntent(event_item_holder, this)
+                setOnClickFillInIntent(R.id.event_item_holder, this)
             }
         }
     }
@@ -143,14 +141,14 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
         }
 
         remoteView.apply {
-            setTextColor(event_section_title, curTextColor)
-            setTextSize(event_section_title, mediumFontSize - 3f)
-            setText(event_section_title, item.title)
+            setTextColor(R.id.event_section_title, curTextColor)
+            setTextSize(R.id.event_section_title, mediumFontSize - 3f)
+            setText(R.id.event_section_title, item.title)
 
             Intent().apply {
                 putExtra(DAY_CODE, item.code)
                 putExtra(VIEW_TO_OPEN, context.config.listWidgetViewToOpen)
-                setOnClickFillInIntent(event_section_title, this)
+                setOnClickFillInIntent(R.id.event_section_title, this)
             }
         }
     }
@@ -158,9 +156,9 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     private fun setupListSectionMonth(remoteView: RemoteViews, item: ListSectionMonth) {
         val curTextColor = textColor
         remoteView.apply {
-            setTextColor(event_section_title, curTextColor)
-            setTextSize(event_section_title, mediumFontSize)
-            setText(event_section_title, item.title)
+            setTextColor(R.id.event_section_title, curTextColor)
+            setTextSize(R.id.event_section_title, mediumFontSize)
+            setText(R.id.event_section_title, item.title)
         }
     }
 

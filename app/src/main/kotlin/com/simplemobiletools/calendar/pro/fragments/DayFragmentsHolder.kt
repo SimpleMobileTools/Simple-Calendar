@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyDayPagerAdapter
+import com.simplemobiletools.calendar.pro.databinding.FragmentDaysHolderBinding
 import com.simplemobiletools.calendar.pro.helpers.DAILY_VIEW
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -18,13 +19,12 @@ import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.views.MyViewPager
-import kotlinx.android.synthetic.main.fragment_days_holder.view.*
 import org.joda.time.DateTime
 
 class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_DAYS = 251
 
-    private var viewPager: MyViewPager? = null
+    private lateinit var viewPager: MyViewPager
     private var defaultDailyPage = 0
     private var todayDayCode = ""
     private var currentDayCode = ""
@@ -38,13 +38,13 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         todayDayCode = Formatter.getTodayCode()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_days_holder, container, false)
-        view.background = ColorDrawable(requireContext().getProperBackgroundColor())
-        viewPager = view.fragment_days_viewpager
-        viewPager!!.id = (System.currentTimeMillis() % 100000).toInt()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentDaysHolderBinding.inflate(inflater, container, false)
+        binding.root.background = ColorDrawable(requireContext().getProperBackgroundColor())
+        viewPager = binding.fragmentDaysViewpager
+        viewPager.id = (System.currentTimeMillis() % 100000).toInt()
         setupFragment()
-        return view
+        return binding.root
     }
 
     private fun setupFragment() {
@@ -52,8 +52,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         val dailyAdapter = MyDayPagerAdapter(requireActivity().supportFragmentManager, codes, this)
         defaultDailyPage = codes.size / 2
 
-
-        viewPager!!.apply {
+        viewPager.apply {
             adapter = dailyAdapter
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {
@@ -85,11 +84,11 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun goLeft() {
-        viewPager!!.currentItem = viewPager!!.currentItem - 1
+        viewPager.currentItem = viewPager.currentItem - 1
     }
 
     override fun goRight() {
-        viewPager!!.currentItem = viewPager!!.currentItem + 1
+        viewPager.currentItem = viewPager.currentItem + 1
     }
 
     override fun goToDateTime(dateTime: DateTime) {
@@ -107,17 +106,15 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
             return
         }
 
-        val view = layoutInflater.inflate(getDatePickerDialogStyle(), null)
-        val datePicker = view.findViewById<DatePicker>(R.id.date_picker)
-
+        val datePicker = getDatePickerView()
         val dateTime = getCurrentDate()!!
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         activity?.getAlertDialogBuilder()!!
             .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok) { dialog, which -> dateSelected(dateTime, datePicker) }
+            .setPositiveButton(R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
             .apply {
-                activity?.setupDialogStuff(view, this)
+                activity?.setupDialogStuff(datePicker, this)
             }
     }
 
@@ -130,7 +127,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        (viewPager?.adapter as? MyDayPagerAdapter)?.updateCalendars(viewPager?.currentItem ?: 0)
+        (viewPager.adapter as? MyDayPagerAdapter)?.updateCalendars(viewPager.currentItem)
     }
 
     override fun shouldGoToTodayBeVisible() = currentDayCode != todayDayCode
@@ -138,7 +135,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun getNewEventDayCode() = currentDayCode
 
     override fun printView() {
-        (viewPager?.adapter as? MyDayPagerAdapter)?.printCurrentView(viewPager?.currentItem ?: 0)
+        (viewPager.adapter as? MyDayPagerAdapter)?.printCurrentView(viewPager.currentItem)
     }
 
     override fun getCurrentDate(): DateTime? {

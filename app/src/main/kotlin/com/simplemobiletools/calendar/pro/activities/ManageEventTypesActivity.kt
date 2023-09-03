@@ -3,34 +3,42 @@ package com.simplemobiletools.calendar.pro.activities
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.ManageEventTypesAdapter
+import com.simplemobiletools.calendar.pro.databinding.ActivityManageEventTypesBinding
 import com.simplemobiletools.calendar.pro.dialogs.EditEventTypeDialog
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.interfaces.DeleteEventTypesListener
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.updateTextColors
+import com.simplemobiletools.commons.extensions.viewBinding
 import com.simplemobiletools.commons.helpers.NavigationIcon
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.activity_manage_event_types.*
 
 class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
+
+    private val binding by viewBinding(ActivityManageEventTypesBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_manage_event_types)
+        setContentView(binding.root)
         setupOptionsMenu()
 
-        updateMaterialActivityViews(manage_event_types_coordinator, manage_event_types_list, useTransparentNavigation = true, useTopSearchMenu = false)
-        setupMaterialScrollListener(manage_event_types_list, manage_event_types_toolbar)
+        updateMaterialActivityViews(
+            binding.manageEventTypesCoordinator,
+            binding.manageEventTypesList,
+            useTransparentNavigation = true,
+            useTopSearchMenu = false
+        )
+        setupMaterialScrollListener(binding.manageEventTypesList, binding.manageEventTypesToolbar)
 
         getEventTypes()
-        updateTextColors(manage_event_types_list)
+        updateTextColors(binding.manageEventTypesList)
     }
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(manage_event_types_toolbar, NavigationIcon.Arrow)
+        setupToolbar(binding.manageEventTypesToolbar, NavigationIcon.Arrow)
     }
 
     private fun showEventTypeDialog(eventType: EventType? = null) {
@@ -41,15 +49,15 @@ class ManageEventTypesActivity : SimpleActivity(), DeleteEventTypesListener {
 
     private fun getEventTypes() {
         eventsHelper.getEventTypes(this, false) {
-            val adapter = ManageEventTypesAdapter(this, it, this, manage_event_types_list) {
+            val adapter = ManageEventTypesAdapter(this, it, this, binding.manageEventTypesList) {
                 showEventTypeDialog(it as EventType)
             }
-            manage_event_types_list.adapter = adapter
+            binding.manageEventTypesList.adapter = adapter
         }
     }
 
     private fun setupOptionsMenu() {
-        manage_event_types_toolbar.setOnMenuItemClickListener { menuItem ->
+        binding.manageEventTypesToolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.add_event_type -> showEventTypeDialog()
                 else -> return@setOnMenuItemClickListener false

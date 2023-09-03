@@ -298,11 +298,11 @@ class CalDAVHelper(val context: Context) {
                             val offset = DateTimeZone.getDefault().getOffset(System.currentTimeMillis())
                             val dt = formatter.parseDateTime(it).plusMillis(offset)
                             val dayCode = Formatter.getDayCodeFromDateTime(dt)
-                            event.repetitionExceptions.add(dayCode)
+                            event.addRepetitionException(dayCode)
                         } else {
                             val potentialTS = it.substring(0, 8)
                             if (potentialTS.areDigitsOnly()) {
-                                event.repetitionExceptions.add(potentialTS)
+                                event.addRepetitionException(potentialTS)
                             }
                         }
                     }

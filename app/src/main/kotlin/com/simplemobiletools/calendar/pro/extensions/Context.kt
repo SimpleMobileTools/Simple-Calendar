@@ -17,10 +17,9 @@ import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
@@ -30,6 +29,7 @@ import com.simplemobiletools.calendar.pro.activities.EventTypePickerActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
+import com.simplemobiletools.calendar.pro.databinding.DayMonthlyEventViewBinding
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
@@ -44,7 +44,6 @@ import com.simplemobiletools.calendar.pro.services.MarkCompletedService
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
 import org.joda.time.LocalDate
@@ -603,21 +602,21 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             textColor = textColor.adjustAlpha(0.25f)
         }
 
-        (View.inflate(applicationContext, R.layout.day_monthly_event_view, null) as ConstraintLayout).apply {
-            background = backgroundDrawable
-            layoutParams = eventLayoutParams
-            linearLayout.addView(this)
+        DayMonthlyEventViewBinding.inflate(LayoutInflater.from(this)).apply {
+            root.background = backgroundDrawable
+            root.layoutParams = eventLayoutParams
+            linearLayout.addView(root)
 
-            day_monthly_event_id.apply {
+            dayMonthlyEventId.apply {
                 setTextColor(textColor)
                 text = it.title.replace(" ", "\u00A0")  // allow word break by char
                 checkViewStrikeThrough(it.isTaskCompleted())
                 contentDescription = it.title
             }
 
-            day_monthly_task_image.beVisibleIf(it.isTask())
+            dayMonthlyTaskImage.beVisibleIf(it.isTask())
             if (it.isTask()) {
-                day_monthly_task_image.applyColorFilter(textColor)
+                dayMonthlyTaskImage.applyColorFilter(textColor)
             }
         }
     }
@@ -717,7 +716,7 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
     Bundle().apply {
         putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
         if (showToasts) {
-            // Assume this is a manual synchronisation when we showToasts to the user (swipe_refresh, MainMenu->refresh_caldav_calendars, ...)
+            // Assume this is a manual synchronisation when we showToasts to the user (swipe refresh, MainMenu-> refresh caldav calendars, ...)
             putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
         }
         accounts.forEach {
