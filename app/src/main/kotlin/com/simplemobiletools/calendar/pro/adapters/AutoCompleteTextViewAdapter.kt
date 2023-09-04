@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.databinding.ItemAutocompleteEmailNameBinding
+import com.simplemobiletools.calendar.pro.databinding.ItemAutocompleteTitleSubtitleBinding
 import com.simplemobiletools.calendar.pro.models.Attendee
 import com.simplemobiletools.commons.extensions.beVisibleIf
 import com.simplemobiletools.commons.extensions.normalizeString
@@ -20,7 +20,7 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val attendees: A
         val attendeeHasName = attendee.name.isNotEmpty()
         var listItem = convertView
         if (listItem == null || listItem.tag != attendeeHasName) {
-            listItem = ItemAutocompleteEmailNameBinding.inflate(activity.layoutInflater, parent, false).root
+            listItem = ItemAutocompleteTitleSubtitleBinding.inflate(activity.layoutInflater, parent, false).root
         }
 
         val nameToUse = when {
@@ -31,7 +31,7 @@ class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val attendees: A
 
         val placeholder = BitmapDrawable(activity.resources, SimpleContactsHelper(context).getContactLetterIcon(nameToUse))
         listItem.tag = attendeeHasName
-        ItemAutocompleteEmailNameBinding.bind(listItem).apply {
+        ItemAutocompleteTitleSubtitleBinding.bind(listItem).apply {
             itemAutocompleteTitle.text = if (attendeeHasName) {
                 attendee.name
             } else {
