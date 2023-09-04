@@ -24,7 +24,6 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-
 import org.joda.time.DateTime
 import kotlin.math.pow
 
