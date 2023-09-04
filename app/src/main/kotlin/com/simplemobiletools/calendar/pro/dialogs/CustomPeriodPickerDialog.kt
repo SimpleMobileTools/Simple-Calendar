@@ -17,8 +17,8 @@ class CustomPeriodPickerDialog(val activity: Activity, val callback: (value: Int
         binding.dialogCustomPeriodValue.setText("")
         binding.dialogRadioView.check(R.id.dialog_radio_days)
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> confirmReminder() }
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> confirmReminder() }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog

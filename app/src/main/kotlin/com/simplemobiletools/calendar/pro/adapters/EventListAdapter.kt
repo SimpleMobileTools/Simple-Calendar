@@ -40,7 +40,7 @@ class EventListAdapter(
     private var use24HourFormat = activity.config.use24HourFormat
     private var currentItemsHash = listItems.hashCode()
     private var isPrintVersion = false
-    private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
+    private val mediumMargin = activity.resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin).toInt()
 
     init {
         setupDragListener(true)
@@ -124,7 +124,7 @@ class EventListAdapter(
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
-            resources.getColor(R.color.theme_light_text_color)
+            resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         } else {
             activity.getProperTextColor()
         }

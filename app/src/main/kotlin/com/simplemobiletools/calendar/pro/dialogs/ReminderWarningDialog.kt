@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.DialogReminderWarningBinding
 import com.simplemobiletools.commons.extensions.*
 
@@ -15,10 +14,10 @@ class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
 
     init {
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> dialogConfirmed() }
-            .setNeutralButton(R.string.settings, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dialogConfirmed() }
+            .setNeutralButton(com.simplemobiletools.commons.R.string.settings, null)
             .apply {
-                activity.setupDialogStuff(binding.root, this, R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
+                activity.setupDialogStuff(binding.root, this, com.simplemobiletools.commons.R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
                         redirectToSettings()
                     }

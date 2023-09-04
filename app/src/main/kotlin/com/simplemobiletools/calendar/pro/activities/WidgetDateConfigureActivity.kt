@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.WidgetConfigDateBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -65,8 +64,8 @@ class WidgetDateConfigureActivity : SimpleActivity() {
         updateBackgroundColor()
 
         mTextColor = config.widgetTextColor
-        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
-            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        if (mTextColor == resources.getColor(com.simplemobiletools.commons.R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(com.simplemobiletools.commons.R.color.you_primary_color, theme)
         }
 
         updateTextColor()

@@ -42,8 +42,8 @@ class DeleteEventDialog(
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.yes) { _, _ -> dialogConfirmed(binding) }
-            .setNegativeButton(R.string.no, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.yes) { _, _ -> dialogConfirmed(binding) }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.no, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog

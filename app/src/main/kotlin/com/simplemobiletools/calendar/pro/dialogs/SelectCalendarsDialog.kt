@@ -38,8 +38,8 @@ class SelectCalendarsDialog(val activity: SimpleActivity, val callback: () -> Un
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> confirmSelection() }
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> confirmSelection() }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.select_caldav_calendars)
             }

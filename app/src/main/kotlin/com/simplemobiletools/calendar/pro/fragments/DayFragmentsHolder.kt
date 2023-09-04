@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.viewpager.widget.ViewPager
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyDayPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentDaysHolderBinding
@@ -111,8 +110,8 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         activity?.getAlertDialogBuilder()!!
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
             .apply {
                 activity?.setupDialogStuff(datePicker, this)
             }

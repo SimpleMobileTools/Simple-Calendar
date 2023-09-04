@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.adapters.DayEventsAdapter
@@ -54,7 +53,7 @@ class DayFragment : Fragment() {
                 mListener?.goLeft()
             }
 
-            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -66,7 +65,7 @@ class DayFragment : Fragment() {
                 mListener?.goRight()
             }
 
-            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }
@@ -135,7 +134,7 @@ class DayFragment : Fragment() {
         topNavigationBinding.apply {
             topLeftArrow.beGone()
             topRightArrow.beGone()
-            topValue.setTextColor(resources.getColor(R.color.theme_light_text_color))
+            topValue.setTextColor(resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color))
             (binding.dayEvents.adapter as? DayEventsAdapter)?.togglePrintMode()
 
             Handler().postDelayed({

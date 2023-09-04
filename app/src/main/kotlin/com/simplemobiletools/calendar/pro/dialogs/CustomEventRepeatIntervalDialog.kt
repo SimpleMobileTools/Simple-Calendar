@@ -18,8 +18,8 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
         binding.dialogRadioView.check(R.id.dialog_radio_days)
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> confirmRepeatInterval() }
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> confirmRepeatInterval() }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog

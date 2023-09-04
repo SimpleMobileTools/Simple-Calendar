@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.pro.dialogs
 
 import android.app.Activity
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.DialogVerticalLinearLayoutBinding
 import com.simplemobiletools.calendar.pro.databinding.MyCheckboxBinding
 import com.simplemobiletools.calendar.pro.extensions.withFirstDayOfWeekToFront
@@ -14,7 +13,7 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
     private val binding by activity.viewBinding(DialogVerticalLinearLayoutBinding::inflate)
 
     init {
-        val days = activity.resources.getStringArray(R.array.week_days)
+        val days = activity.resources.getStringArray(com.simplemobiletools.commons.R.array.week_days)
         var checkboxes = ArrayList<MyAppCompatCheckbox>(7)
         for (i in 0..6) {
             val pow = Math.pow(2.0, i.toDouble()).toInt()
@@ -32,8 +31,8 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> callback(getRepeatRuleSum()) }
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> callback(getRepeatRuleSum()) }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this)
             }

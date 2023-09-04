@@ -76,13 +76,13 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok, null)
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.import_events) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(null)
-                        activity.toast(R.string.importing)
+                        activity.toast(com.simplemobiletools.commons.R.string.importing)
                         ensureBackgroundThread {
                             val overrideFileEventTypes = binding.importEventsCheckbox.isChecked
                             val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId, overrideFileEventTypes)
@@ -107,10 +107,10 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
     private fun handleParseResult(result: IcsImporter.ImportResult) {
         activity.toast(
             when (result) {
-                IMPORT_NOTHING_NEW -> R.string.no_new_items
-                IMPORT_OK -> R.string.importing_successful
-                IMPORT_PARTIAL -> R.string.importing_some_entries_failed
-                else -> R.string.no_items_found
+                IMPORT_NOTHING_NEW -> com.simplemobiletools.commons.R.string.no_new_items
+                IMPORT_OK -> com.simplemobiletools.commons.R.string.importing_successful
+                IMPORT_PARTIAL -> com.simplemobiletools.commons.R.string.importing_some_entries_failed
+                else -> com.simplemobiletools.commons.R.string.no_items_found
             }
         )
         callback(result != IMPORT_FAIL)

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.databinding.FragmentYearBinding
 import com.simplemobiletools.calendar.pro.databinding.SmallMonthViewHolderBinding
@@ -39,9 +38,19 @@ class YearFragment : Fragment(), YearlyCalendar {
     private lateinit var topNavigationBinding: TopNavigationBinding
     private lateinit var monthHolders: List<SmallMonthViewHolderBinding>
 
-    private val monthIds = arrayOf(
-        R.string.january, R.string.february, R.string.march, R.string.april, R.string.may, R.string.june,
-        R.string.july, R.string.august, R.string.september, R.string.october, R.string.november, R.string.december
+    private val monthResIds = arrayOf(
+        com.simplemobiletools.commons.R.string.january,
+        com.simplemobiletools.commons.R.string.february,
+        com.simplemobiletools.commons.R.string.march,
+        com.simplemobiletools.commons.R.string.april,
+        com.simplemobiletools.commons.R.string.may,
+        com.simplemobiletools.commons.R.string.june,
+        com.simplemobiletools.commons.R.string.july,
+        com.simplemobiletools.commons.R.string.august,
+        com.simplemobiletools.commons.R.string.september,
+        com.simplemobiletools.commons.R.string.october,
+        com.simplemobiletools.commons.R.string.november,
+        com.simplemobiletools.commons.R.string.december
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -52,7 +61,7 @@ class YearFragment : Fragment(), YearlyCalendar {
             binding.month7Holder, binding.month8Holder, binding.month9Holder, binding.month10Holder, binding.month11Holder, binding.month12Holder
         ).apply {
             forEachIndexed { index, it ->
-                it.monthLabel.text = getString(monthIds[index])
+                it.monthLabel.text = getString(monthResIds[index])
             }
         }
 
@@ -90,7 +99,7 @@ class YearFragment : Fragment(), YearlyCalendar {
             val monthOfYear = index + 1
             val monthView = monthHolder.smallMonthView
             val curTextColor = when {
-                isPrintVersion -> resources.getColor(R.color.theme_light_text_color)
+                isPrintVersion -> resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
                 else -> requireContext().getProperTextColor()
             }
 
@@ -118,7 +127,7 @@ class YearFragment : Fragment(), YearlyCalendar {
                 listener?.goLeft()
             }
 
-            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
@@ -130,7 +139,7 @@ class YearFragment : Fragment(), YearlyCalendar {
                 listener?.goRight()
             }
 
-            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }

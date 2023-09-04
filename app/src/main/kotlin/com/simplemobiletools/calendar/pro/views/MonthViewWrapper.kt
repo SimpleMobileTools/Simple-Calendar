@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.MonthViewBackgroundBinding
 import com.simplemobiletools.calendar.pro.databinding.MonthViewBinding
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -29,7 +28,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
-        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
+        val normalTextSize = resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.normal_text_size).toFloat()
         weekDaysLetterHeight = 2 * normalTextSize.toInt()
 
         inflater = LayoutInflater.from(context)
@@ -99,7 +98,11 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun setupHorizontalOffset() {
-        horizontalOffset = if (context.config.showWeekNumbers) resources.getDimensionPixelSize(R.dimen.smaller_text_size) * 2 else 0
+        horizontalOffset = if (context.config.showWeekNumbers) {
+            resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.smaller_text_size) * 2
+        } else {
+            0
+        }
     }
 
     private fun measureSizes() {

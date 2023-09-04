@@ -59,25 +59,25 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             }
         }
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok, null)
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(binding.root, this, R.string.manage_automatic_backups) { dialog ->
+                activity.setupDialogStuff(binding.root, this, com.simplemobiletools.commons.R.string.manage_automatic_backups) { dialog ->
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         val filename = binding.backupEventsFilename.value
                         when {
-                            filename.isEmpty() -> activity.toast(R.string.empty_name)
+                            filename.isEmpty() -> activity.toast(com.simplemobiletools.commons.R.string.empty_name)
                             filename.isAValidFilename() -> {
                                 val file = File(backupFolder, "$filename.ics")
                                 if (file.exists() && !file.canWrite()) {
-                                    activity.toast(R.string.name_taken)
+                                    activity.toast(com.simplemobiletools.commons.R.string.name_taken)
                                     return@setOnClickListener
                                 }
 
                                 val backupEventsChecked = binding.backupEventsCheckbox.isChecked
                                 val backupTasksChecked = binding.backupTasksCheckbox.isChecked
                                 if (!backupEventsChecked && !backupTasksChecked || selectedEventTypes.isEmpty()) {
-                                    activity.toast(R.string.no_entries_for_exporting)
+                                    activity.toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
                                     return@setOnClickListener
                                 }
 
@@ -101,7 +101,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                                 }
                             }
 
-                            else -> activity.toast(R.string.invalid_name)
+                            else -> activity.toast(com.simplemobiletools.commons.R.string.invalid_name)
                         }
                     }
                 }

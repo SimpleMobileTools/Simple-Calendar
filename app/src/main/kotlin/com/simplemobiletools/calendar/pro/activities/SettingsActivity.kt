@@ -348,13 +348,13 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupStartWeekOn() = binding.apply {
         val items = arrayListOf(
-            RadioItem(DateTimeConstants.SUNDAY, getString(R.string.sunday)),
-            RadioItem(DateTimeConstants.MONDAY, getString(R.string.monday)),
-            RadioItem(DateTimeConstants.TUESDAY, getString(R.string.tuesday)),
-            RadioItem(DateTimeConstants.WEDNESDAY, getString(R.string.wednesday)),
-            RadioItem(DateTimeConstants.THURSDAY, getString(R.string.thursday)),
-            RadioItem(DateTimeConstants.FRIDAY, getString(R.string.friday)),
-            RadioItem(DateTimeConstants.SATURDAY, getString(R.string.saturday)),
+            RadioItem(DateTimeConstants.SUNDAY, getString(com.simplemobiletools.commons.R.string.sunday)),
+            RadioItem(DateTimeConstants.MONDAY, getString(com.simplemobiletools.commons.R.string.monday)),
+            RadioItem(DateTimeConstants.TUESDAY, getString(com.simplemobiletools.commons.R.string.tuesday)),
+            RadioItem(DateTimeConstants.WEDNESDAY, getString(com.simplemobiletools.commons.R.string.wednesday)),
+            RadioItem(DateTimeConstants.THURSDAY, getString(com.simplemobiletools.commons.R.string.thursday)),
+            RadioItem(DateTimeConstants.FRIDAY, getString(com.simplemobiletools.commons.R.string.friday)),
+            RadioItem(DateTimeConstants.SATURDAY, getString(com.simplemobiletools.commons.R.string.saturday)),
         )
 
         settingsStartWeekOn.text = getDayOfWeekString(config.firstDayOfWeek)
@@ -642,7 +642,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun getDisplayPastEventsText(displayPastEvents: Int): String {
         return if (displayPastEvents == 0) {
-            getString(R.string.never)
+            getString(com.simplemobiletools.commons.R.string.never)
         } else {
             getFormattedMinutes(displayPastEvents, false)
         }
@@ -652,10 +652,10 @@ class SettingsActivity : SimpleActivity() {
         settingsFontSize.text = getFontSizeText()
         settingsFontSizeHolder.setOnClickListener {
             val items = arrayListOf(
-                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
-                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
-                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
-                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
+                RadioItem(FONT_SIZE_SMALL, getString(com.simplemobiletools.commons.R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(com.simplemobiletools.commons.R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(com.simplemobiletools.commons.R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(com.simplemobiletools.commons.R.string.extra_large))
             )
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
@@ -820,7 +820,7 @@ class SettingsActivity : SimpleActivity() {
     private fun updateDefaultDurationText() {
         val duration = config.defaultDuration
         binding.settingsDefaultDuration.text = if (duration == 0) {
-            "0 ${getString(R.string.minutes_raw)}"
+            "0 ${getString(com.simplemobiletools.commons.R.string.minutes_raw)}"
         } else {
             getFormattedMinutes(duration, false)
         }
@@ -961,7 +961,7 @@ class SettingsActivity : SimpleActivity() {
                     try {
                         startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
                     } catch (e: ActivityNotFoundException) {
-                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
                         showErrorToast(e)
                     }
@@ -982,7 +982,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun parseFile(inputStream: InputStream?) {
         if (inputStream == null) {
-            toast(R.string.unknown_error_occurred)
+            toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
             return
         }
 
@@ -1060,7 +1060,12 @@ class SettingsActivity : SimpleActivity() {
         }
 
         runOnUiThread {
-            val msg = if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing
+            val msg = if (configValues.size > 0) {
+                com.simplemobiletools.commons.R.string.settings_imported_successfully
+            } else {
+                com.simplemobiletools.commons.R.string.no_entries_for_importing
+            }
+
             toast(msg)
 
             setupSettingItems()

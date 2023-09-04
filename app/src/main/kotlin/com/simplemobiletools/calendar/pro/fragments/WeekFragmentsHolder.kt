@@ -11,7 +11,6 @@ import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentWeekHolderBinding
@@ -162,7 +161,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val month = Formatter.getShortMonthName(requireContext(), startDateTime.monthOfYear)
         binding.weekViewMonthLabel.text = month
         val weekNumber = startDateTime.plusDays(3).weekOfWeekyear
-        binding.weekViewWeekNumber.text = "${getString(R.string.week_number_short)} $weekNumber"
+        binding.weekViewWeekNumber.text = "${getString(com.simplemobiletools.commons.R.string.week_number_short)} $weekNumber"
     }
 
     override fun goToToday() {
@@ -180,8 +179,8 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         datePicker.init(dateTime.year, dateTime.monthOfYear - 1, dateTime.dayOfMonth, null)
 
         activity?.getAlertDialogBuilder()!!
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
             .apply {
                 activity?.setupDialogStuff(datePicker, this)
             }
@@ -219,7 +218,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     private fun updateDaysCount(cnt: Int) {
-        binding.weekViewDaysCount.text = requireContext().resources.getQuantityString(R.plurals.days, cnt, cnt)
+        binding.weekViewDaysCount.text = requireContext().resources.getQuantityString(com.simplemobiletools.commons.R.plurals.days, cnt, cnt)
     }
 
     override fun refreshEvents() {
@@ -269,7 +268,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         binding.weekViewHolder.height - binding.weekViewSeekbar.height - binding.weekViewDaysCountDivider.height
 
     override fun printView() {
-        val lightTextColor = resources.getColor(R.color.theme_light_text_color)
+        val lightTextColor = resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         binding.apply {
             weekViewDaysCountDivider.beGone()
             weekViewSeekbar.beGone()

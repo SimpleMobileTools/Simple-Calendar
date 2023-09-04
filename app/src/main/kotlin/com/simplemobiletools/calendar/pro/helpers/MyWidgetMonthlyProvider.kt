@@ -199,16 +199,16 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                 views.setTextColor(R.id.top_value, textColor)
                 views.setTextSize(R.id.top_value, largerFontSize)
 
-                var bmp = resources.getColoredBitmap(R.drawable.ic_chevron_left_vector, textColor)
+                var bmp = resources.getColoredBitmap(com.simplemobiletools.commons.R.drawable.ic_chevron_left_vector, textColor)
                 views.setImageViewBitmap(R.id.top_left_arrow, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_chevron_right_vector, textColor)
+                bmp = resources.getColoredBitmap(com.simplemobiletools.commons.R.drawable.ic_chevron_right_vector, textColor)
                 views.setImageViewBitmap(R.id.top_right_arrow, bmp)
 
                 bmp = resources.getColoredBitmap(R.drawable.ic_today_vector, textColor)
                 views.setImageViewBitmap(R.id.top_go_to_today, bmp)
 
-                bmp = resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor)
+                bmp = resources.getColoredBitmap(com.simplemobiletools.commons.R.drawable.ic_plus_vector, textColor)
                 views.setImageViewBitmap(R.id.top_new_event, bmp)
 
                 val shouldGoToTodayBeVisible = currTargetDate.withTime(0, 0, 0, 0) != DateTime.now().withDayOfMonth(1).withTime(0, 0, 0, 0)
@@ -238,7 +238,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
         val firstDayOfWeek = config.firstDayOfWeek
         val smallerFontSize = context.getWidgetFontSize()
         val packageName = context.packageName
-        val letters = context.resources.getStringArray(R.array.week_day_letters)
+        val letters = context.resources.getStringArray(com.simplemobiletools.commons.R.array.week_day_letters)
 
         for (i in 0..6) {
             val id = resources.getIdentifier("label_$i", "id", packageName)

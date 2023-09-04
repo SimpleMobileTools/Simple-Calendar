@@ -145,7 +145,13 @@ class TaskActivity : SimpleActivity() {
     override fun onBackPressed() {
         if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isTaskChanged()) {
             mLastSavePromptTS = System.currentTimeMillis()
-            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
+            ConfirmationAdvancedDialog(
+                activity = this,
+                message = "",
+                messageId = com.simplemobiletools.commons.R.string.save_before_closing,
+                positive = com.simplemobiletools.commons.R.string.save,
+                negative = com.simplemobiletools.commons.R.string.discard
+            ) {
                 if (it) {
                     saveCurrentTask()
                 } else {
@@ -437,7 +443,7 @@ class TaskActivity : SimpleActivity() {
                         storeTask(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
+                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
@@ -647,7 +653,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateTaskCompletedButton() {
         if (mTaskCompleted) {
-            binding.toggleMarkComplete.background = ContextCompat.getDrawable(this, R.drawable.button_background_stroke)
+            binding.toggleMarkComplete.background = ContextCompat.getDrawable(this, com.simplemobiletools.commons.R.drawable.button_background_stroke)
             binding.toggleMarkComplete.setText(R.string.mark_incomplete)
             binding.toggleMarkComplete.setTextColor(getProperTextColor())
         } else {
@@ -983,7 +989,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun getRepeatXthDayInMonthString(includeBase: Boolean, repeatRule: Int): String {
         val weekDayString = getRepeatXthDayString(includeBase, repeatRule)
-        val monthString = resources.getStringArray(R.array.in_months)[mTaskDateTime.monthOfYear - 1]
+        val monthString = resources.getStringArray(com.simplemobiletools.commons.R.array.in_months)[mTaskDateTime.monthOfYear - 1]
         return "$weekDayString $monthString"
     }
 
@@ -998,7 +1004,11 @@ class TaskActivity : SimpleActivity() {
     private fun checkRepetitionRuleText() {
         when {
             mRepeatInterval.isXWeeklyRepetition() -> {
-                binding.taskRepetitionRule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getShortDaysFromBitmask(mRepeatRule)
+                binding.taskRepetitionRule.text = if (mRepeatRule == EVERY_DAY_BIT) {
+                    getString(com.simplemobiletools.commons.R.string.every_day)
+                } else {
+                    getShortDaysFromBitmask(mRepeatRule)
+                }
             }
 
             mRepeatInterval.isXMonthlyRepetition() -> {

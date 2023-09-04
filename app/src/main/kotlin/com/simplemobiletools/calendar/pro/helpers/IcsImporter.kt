@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import android.provider.CalendarContract.Events
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.extensions.eventsDB
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
@@ -117,7 +116,7 @@ class IcsImporter(val activity: SimpleActivity) {
                     } else if (line.startsWith(DESCRIPTION) && !isNotificationDescription) {
                         val match = DESCRIPTION_REGEX.matchEntire(line)
                         if (match != null) {
-                            curDescription = match.groups[1]!!.value.replace("\\n", "\n").replace("\\,", ",") ?: ""
+                            curDescription = match.groups[1]!!.value.replace("\\n", "\n").replace("\\,", ",")
                         }
                         if (curDescription.trim().isEmpty()) {
                             curDescription = ""
@@ -330,6 +329,7 @@ class IcsImporter(val activity: SimpleActivity) {
                     IMPORT_FAIL
                 }
             }
+
             eventsFailed > 0 -> IMPORT_PARTIAL
             else -> IMPORT_OK
         }
@@ -348,6 +348,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
                     Parser().parseDateTimeValue(value)
                 }
+
                 fullString.startsWith(":") -> Parser().parseDateTimeValue(fullString.substring(1).trim())
                 else -> Parser().parseDateTimeValue(fullString)
             }
@@ -375,7 +376,12 @@ class IcsImporter(val activity: SimpleActivity) {
 
         val eventId = eventsHelper.getEventTypeIdWithTitle(eventTypeTitle)
         curEventTypeId = if (eventId == -1L) {
-            val newTypeColor = if (curCategoryColor == -2) activity.resources.getColor(R.color.color_primary) else curCategoryColor
+            val newTypeColor = if (curCategoryColor == -2) {
+                activity.resources.getColor(com.simplemobiletools.commons.R.color.color_primary)
+            } else {
+                curCategoryColor
+            }
+
             val eventType = EventType(null, eventTypeTitle, newTypeColor)
             eventsHelper.insertOrUpdateEventTypeSync(eventType)
         } else {

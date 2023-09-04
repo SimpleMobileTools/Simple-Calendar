@@ -235,7 +235,7 @@ class EventListFragment : MyFragmentHolder(), RefreshRecyclerViewListener {
     override fun printView() {
         binding.apply {
             if (calendarEventsList.isGone()) {
-                context?.toast(R.string.no_items_found)
+                context?.toast(com.simplemobiletools.commons.R.string.no_items_found)
                 return@apply
             }
 

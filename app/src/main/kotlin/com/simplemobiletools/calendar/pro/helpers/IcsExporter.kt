@@ -43,7 +43,7 @@ class IcsExporter(private val context: Context) {
         ensureBackgroundThread {
             calendars = context.calDAVHelper.getCalDAVCalendars("", false)
             if (showExportingToast) {
-                context.toast(R.string.exporting)
+                context.toast(com.simplemobiletools.commons.R.string.exporting)
             }
 
             object : BufferedWriter(OutputStreamWriter(outputStream, Charsets.UTF_8)) {

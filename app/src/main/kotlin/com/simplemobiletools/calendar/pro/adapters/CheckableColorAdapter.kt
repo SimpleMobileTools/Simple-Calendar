@@ -5,7 +5,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.CheckableColorButtonBinding
 import com.simplemobiletools.commons.extensions.applyColorFilter
 
@@ -40,7 +39,7 @@ class CheckableColorAdapter(private val activity: Activity, private val colors: 
                 }
 
                 if (checked) {
-                    setImageResource(R.drawable.ic_check_vector)
+                    setImageResource(com.simplemobiletools.commons.R.drawable.ic_check_vector)
                     applyColorFilter(Color.WHITE)
                 } else {
                     setImageDrawable(null)

@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
 import org.joda.time.DateTime
@@ -108,9 +107,9 @@ object Formatter {
     fun getUTCDateTimeFromTS(ts: Long) = DateTime(ts * 1000L, DateTimeZone.UTC)
 
     // use manually translated month names, as DateFormat and Joda have issues with a lot of languages
-    fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months)[id - 1]
+    fun getMonthName(context: Context, id: Int) = context.resources.getStringArray(com.simplemobiletools.commons.R.array.months)[id - 1]
 
-    fun getShortMonthName(context: Context, id: Int) = context.resources.getStringArray(R.array.months_short)[id - 1]
+    fun getShortMonthName(context: Context, id: Int) = context.resources.getStringArray(com.simplemobiletools.commons.R.array.months_short)[id - 1]
 
     fun getHourPattern(context: Context) = if (context.config.use24HourFormat) PATTERN_HOURS_24 else PATTERN_HOURS_12
 

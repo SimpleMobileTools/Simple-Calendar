@@ -111,7 +111,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
     if (validReminders.isEmpty()) {
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
         return
     }
@@ -131,7 +131,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
         }
 
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
     }
 }
@@ -139,7 +139,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
 fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
     if (notifTS < System.currentTimeMillis()) {
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
         return
     }
@@ -147,7 +147,7 @@ fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
     val newNotifTS = notifTS + 1000
     if (showToasts) {
         val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
-        val msg = String.format(getString(R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
+        val msg = String.format(getString(com.simplemobiletools.commons.R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
         toast(msg)
     }
 
@@ -223,7 +223,7 @@ fun Context.backupEventsAndTasks() {
             exportPastEntries = config.autoBackupPastEntries
         )
         if (events.isEmpty()) {
-            toast(R.string.no_entries_for_exporting)
+            toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
             config.lastAutoBackupTime = getNowSeconds()
             scheduleNextAutomaticBackup()
             return@ensureBackgroundThread
@@ -274,8 +274,8 @@ fun Context.backupEventsAndTasks() {
 
         IcsExporter(this).exportEvents(outputStream, events, showExportingToast = false) { result ->
             when (result) {
-                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(R.string.exporting_some_entries_failed)
-                IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
+                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(com.simplemobiletools.commons.R.string.exporting_some_entries_failed)
+                IcsExporter.ExportResult.EXPORT_FAIL -> toast(com.simplemobiletools.commons.R.string.exporting_failed)
                 else -> {}
             }
             MediaScannerConnection.scanFile(
@@ -298,10 +298,10 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     YEAR -> getString(R.string.yearly)
     else -> {
         when {
-            seconds % YEAR == 0 -> resources.getQuantityString(R.plurals.years, seconds / YEAR, seconds / YEAR)
-            seconds % MONTH == 0 -> resources.getQuantityString(R.plurals.months, seconds / MONTH, seconds / MONTH)
-            seconds % WEEK == 0 -> resources.getQuantityString(R.plurals.weeks, seconds / WEEK, seconds / WEEK)
-            else -> resources.getQuantityString(R.plurals.days, seconds / DAY, seconds / DAY)
+            seconds % YEAR == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.years, seconds / YEAR, seconds / YEAR)
+            seconds % MONTH == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.months, seconds / MONTH, seconds / MONTH)
+            seconds % WEEK == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.weeks, seconds / WEEK, seconds / WEEK)
+            else -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.days, seconds / DAY, seconds / DAY)
         }
     }
 }
@@ -341,7 +341,7 @@ fun Context.notifyEvent(originalEvent: Event) {
 
     val displayedStartDate = when (startDate) {
         LocalDate.now() -> ""
-        LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)
+        LocalDate.now().plusDays(1) -> getString(com.simplemobiletools.commons.R.string.tomorrow)
         else -> "${Formatter.getDateFromCode(this, Formatter.getDayCodeFromTS(event.startTS))},"
     }
 
@@ -430,7 +430,11 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             if (event.isTask() && !event.isTaskCompleted()) {
                 addAction(R.drawable.ic_task_vector, getString(R.string.mark_completed), getMarkCompletedPendingIntent(this@getNotification, event))
             }
-            addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this@getNotification, event))
+            addAction(
+                com.simplemobiletools.commons.R.drawable.ic_snooze_vector,
+                getString(com.simplemobiletools.commons.R.string.snooze),
+                getSnoozePendingIntent(this@getNotification, event)
+            )
         }
 
     if (config.vibrateOnReminder) {
@@ -785,13 +789,13 @@ fun Context.getFirstDayOfWeekDt(date: DateTime): DateTime {
 
 fun Context.getDayOfWeekString(dayOfWeek: Int): String {
     val dayOfWeekResId = when (dayOfWeek) {
-        DateTimeConstants.MONDAY -> R.string.monday
-        DateTimeConstants.TUESDAY -> R.string.tuesday
-        DateTimeConstants.WEDNESDAY -> R.string.wednesday
-        DateTimeConstants.THURSDAY -> R.string.thursday
-        DateTimeConstants.FRIDAY -> R.string.friday
-        DateTimeConstants.SATURDAY -> R.string.saturday
-        DateTimeConstants.SUNDAY -> R.string.sunday
+        DateTimeConstants.MONDAY -> com.simplemobiletools.commons.R.string.monday
+        DateTimeConstants.TUESDAY -> com.simplemobiletools.commons.R.string.tuesday
+        DateTimeConstants.WEDNESDAY -> com.simplemobiletools.commons.R.string.wednesday
+        DateTimeConstants.THURSDAY -> com.simplemobiletools.commons.R.string.thursday
+        DateTimeConstants.FRIDAY -> com.simplemobiletools.commons.R.string.friday
+        DateTimeConstants.SATURDAY -> com.simplemobiletools.commons.R.string.saturday
+        DateTimeConstants.SUNDAY -> com.simplemobiletools.commons.R.string.sunday
         else -> throw IllegalArgumentException("Invalid day: $dayOfWeek")
     }
 
@@ -801,7 +805,7 @@ fun Context.getDayOfWeekString(dayOfWeek: Int): String {
 // format day bits to strings like "Mon, Tue, Wed"
 fun Context.getShortDaysFromBitmask(bitMask: Int): String {
     val dayBits = withFirstDayOfWeekToFront(listOf(MONDAY_BIT, TUESDAY_BIT, WEDNESDAY_BIT, THURSDAY_BIT, FRIDAY_BIT, SATURDAY_BIT, SUNDAY_BIT))
-    val weekDays = withFirstDayOfWeekToFront(resources.getStringArray(R.array.week_days_short).toList())
+    val weekDays = withFirstDayOfWeekToFront(resources.getStringArray(com.simplemobiletools.commons.R.array.week_days_short).toList())
 
     var days = ""
     dayBits.forEachIndexed { index, bit ->

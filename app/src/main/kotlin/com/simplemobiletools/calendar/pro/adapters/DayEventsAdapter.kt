@@ -29,7 +29,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val dimPastEvents = activity.config.dimPastEvents
     private val dimCompletedTasks = activity.config.dimCompletedTasks
     private var isPrintVersion = false
-    private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
+    private val mediumMargin = activity.resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin).toInt()
 
     init {
         setupDragListener(true)
@@ -77,7 +77,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
-            resources.getColor(R.color.theme_light_text_color)
+            resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         } else {
             activity.getProperTextColor()
         }

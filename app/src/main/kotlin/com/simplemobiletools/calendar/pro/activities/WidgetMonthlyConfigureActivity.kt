@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.DayMonthlyNumberViewBinding
 import com.simplemobiletools.calendar.pro.databinding.TopNavigationBinding
 import com.simplemobiletools.calendar.pro.databinding.WidgetConfigMonthlyBinding
@@ -79,8 +78,8 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
         updateBackgroundColor()
 
         mTextColor = config.widgetTextColor
-        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
-            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        if (mTextColor == resources.getColor(com.simplemobiletools.commons.R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(com.simplemobiletools.commons.R.color.you_primary_color, theme)
         }
 
         updateTextColor()

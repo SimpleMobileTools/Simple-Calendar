@@ -38,7 +38,11 @@ class SetRemindersDialog(val activity: SimpleActivity, val eventType: Int, val c
                             }
                         }
                     } else {
-                        PermissionRequiredDialog(activity, R.string.allow_notifications_reminders, { activity.openNotificationSettings() })
+                        PermissionRequiredDialog(
+                            activity = activity,
+                            textId = com.simplemobiletools.commons.R.string.allow_notifications_reminders,
+                            positiveActionCallback = { activity.openNotificationSettings() }
+                        )
                     }
                 }
             }
@@ -78,8 +82,8 @@ class SetRemindersDialog(val activity: SimpleActivity, val eventType: Int, val c
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { _, _ -> dialogConfirmed() }
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dialogConfirmed() }
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.event_reminders)
             }

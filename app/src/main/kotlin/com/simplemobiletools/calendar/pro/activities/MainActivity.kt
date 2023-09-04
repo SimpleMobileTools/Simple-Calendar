@@ -159,7 +159,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         addBirthdaysAnniversariesAtStart()
 
         if (isPackageInstalled("com.simplemobiletools.calendar")) {
-            ConfirmationDialog(this, "", R.string.upgraded_from_free_calendar, R.string.ok, 0, false) {}
+            ConfirmationDialog(
+                activity = this,
+                message = "",
+                messageId = com.simplemobiletools.commons.R.string.upgraded_from_free_calendar,
+                positive = com.simplemobiletools.commons.R.string.ok,
+                negative = 0,
+                cancelOnTouchOutside = false
+            ) {}
         }
 
         addImportIdsToTasks {
@@ -247,7 +254,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             findItem(R.id.go_to_today).isVisible = shouldGoToTodayBeVisible && !binding.mainMenu.isSearchOpen
             findItem(R.id.go_to_date).isVisible = config.storedView != EVENTS_LIST_VIEW
             findItem(R.id.refresh_caldav_calendars).isVisible = config.caldavSync
-            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(R.bool.hide_google_relations)
+            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)
         }
     }
 
@@ -527,7 +534,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     private fun resetActionBarTitle() {
-        binding.mainMenu.updateHintText(getString(R.string.search))
+        binding.mainMenu.updateHintText(getString(com.simplemobiletools.commons.R.string.search))
     }
 
     private fun showFilterDialog() {
@@ -585,7 +592,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         RadioGroupDialog(this, items) { selectedHoliday ->
             SetRemindersDialog(this, OTHER_EVENT) {
                 val reminders = it
-                toast(R.string.importing)
+                toast(com.simplemobiletools.commons.R.string.importing)
                 ensureBackgroundThread {
                     val holidays = getString(R.string.holidays)
                     var eventTypeId = eventsHelper.getEventTypeIdWithClass(HOLIDAY_EVENT)
@@ -631,7 +638,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
             } else {
-                toast(R.string.no_contacts_permission)
+                toast(com.simplemobiletools.commons.R.string.no_contacts_permission)
             }
         }
     }
@@ -662,7 +669,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
             } else {
-                toast(R.string.no_contacts_permission)
+                toast(com.simplemobiletools.commons.R.string.no_contacts_permission)
             }
         }
     }
@@ -705,7 +712,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun handleParseResult(result: ImportResult) {
         toast(
             when (result) {
-                ImportResult.IMPORT_NOTHING_NEW -> R.string.no_new_items
+                ImportResult.IMPORT_NOTHING_NEW -> com.simplemobiletools.commons.R.string.no_new_items
                 ImportResult.IMPORT_OK -> R.string.holidays_imported_successfully
                 ImportResult.IMPORT_PARTIAL -> R.string.importing_some_holidays_failed
                 else -> R.string.importing_holidays_failed
@@ -964,7 +971,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private fun animateFabIcon(showPlus: Boolean) {
         val newDrawableId = if (showPlus) {
-            R.drawable.ic_plus_vector
+            com.simplemobiletools.commons.R.drawable.ic_plus_vector
         } else {
             R.drawable.ic_today_vector
         }
@@ -1071,13 +1078,13 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                         try {
                             startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
                         } catch (e: ActivityNotFoundException) {
-                            toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                            toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                         } catch (e: Exception) {
                             showErrorToast(e)
                         }
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
+                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {
@@ -1101,7 +1108,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             "content" -> {
                 val tempFile = getTempFile()
                 if (tempFile == null) {
-                    toast(R.string.unknown_error_occurred)
+                    toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
                     return
                 }
 
@@ -1115,7 +1122,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 }
             }
 
-            else -> toast(R.string.invalid_file_format)
+            else -> toast(com.simplemobiletools.commons.R.string.invalid_file_format)
         }
     }
 
@@ -1144,7 +1151,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     try {
                         startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
                     } catch (e: ActivityNotFoundException) {
-                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
                         showErrorToast(e)
                     }
@@ -1167,14 +1174,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         ensureBackgroundThread {
             val events = eventsHelper.getEventsToExport(eventTypes, config.exportEvents, config.exportTasks, config.exportPastEntries)
             if (events.isEmpty()) {
-                toast(R.string.no_entries_for_exporting)
+                toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
             } else {
                 IcsExporter(this).exportEvents(outputStream, events, true) { result ->
                     toast(
                         when (result) {
-                            ExportResult.EXPORT_OK -> R.string.exporting_successful
-                            ExportResult.EXPORT_PARTIAL -> R.string.exporting_some_entries_failed
-                            else -> R.string.exporting_failed
+                            ExportResult.EXPORT_OK -> com.simplemobiletools.commons.R.string.exporting_successful
+                            ExportResult.EXPORT_PARTIAL -> com.simplemobiletools.commons.R.string.exporting_some_entries_failed
+                            else -> com.simplemobiletools.commons.R.string.exporting_failed
                         }
                     )
                 }
@@ -1196,16 +1203,15 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
             FAQItem(R.string.faq_6_title, R.string.faq_6_text),
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
-            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
-            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons),
+            FAQItem(com.simplemobiletools.commons.R.string.faq_1_title_commons, com.simplemobiletools.commons.R.string.faq_1_text_commons),
+            FAQItem(com.simplemobiletools.commons.R.string.faq_4_title_commons, com.simplemobiletools.commons.R.string.faq_4_text_commons),
             FAQItem(R.string.faq_4_title, R.string.faq_4_text)
         )
 
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
-            faqItems.add(FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons))
-
+        if (!resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)) {
+            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_2_title_commons, com.simplemobiletools.commons.R.string.faq_2_text_commons))
+            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_6_title_commons, com.simplemobiletools.commons.R.string.faq_6_text_commons))
+            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_7_title_commons, com.simplemobiletools.commons.R.string.faq_7_text_commons))
         }
 
         startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
@@ -1224,7 +1230,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val placeholderTextId = if (config.displayEventTypes.isEmpty()) {
             R.string.everything_filtered_out
         } else {
-            R.string.no_items_found
+            com.simplemobiletools.commons.R.string.no_items_found
         }
 
         binding.searchPlaceholder.setText(placeholderTextId)

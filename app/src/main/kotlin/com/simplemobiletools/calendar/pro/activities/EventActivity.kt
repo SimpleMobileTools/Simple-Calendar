@@ -129,7 +129,13 @@ class EventActivity : SimpleActivity() {
     override fun onBackPressed() {
         if (System.currentTimeMillis() - mLastSavePromptTS > SAVE_DISCARD_PROMPT_INTERVAL && isEventChanged()) {
             mLastSavePromptTS = System.currentTimeMillis()
-            ConfirmationAdvancedDialog(this, "", R.string.save_before_closing, R.string.save, R.string.discard) {
+            ConfirmationAdvancedDialog(
+                activity = this,
+                message = "",
+                messageId = com.simplemobiletools.commons.R.string.save_before_closing,
+                positive = com.simplemobiletools.commons.R.string.save,
+                negative = com.simplemobiletools.commons.R.string.discard
+            ) {
                 if (it) {
                     saveCurrentEvent()
                 } else {
@@ -779,7 +785,7 @@ class EventActivity : SimpleActivity() {
 
     private fun getRepeatXthDayInMonthString(includeBase: Boolean, repeatRule: Int): String {
         val weekDayString = getRepeatXthDayString(includeBase, repeatRule)
-        val monthString = resources.getStringArray(R.array.in_months)[mEventStartDateTime.monthOfYear - 1]
+        val monthString = resources.getStringArray(com.simplemobiletools.commons.R.array.in_months)[mEventStartDateTime.monthOfYear - 1]
         return "$weekDayString $monthString"
     }
 
@@ -794,7 +800,11 @@ class EventActivity : SimpleActivity() {
     private fun checkRepetitionRuleText() {
         when {
             mRepeatInterval.isXWeeklyRepetition() -> {
-                binding.eventRepetitionRule.text = if (mRepeatRule == EVERY_DAY_BIT) getString(R.string.every_day) else getShortDaysFromBitmask(mRepeatRule)
+                binding.eventRepetitionRule.text = if (mRepeatRule == EVERY_DAY_BIT) {
+                    getString(com.simplemobiletools.commons.R.string.every_day)
+                } else {
+                    getShortDaysFromBitmask(mRepeatRule)
+                }
             }
 
             mRepeatInterval.isXMonthlyRepetition() -> {
@@ -934,8 +944,8 @@ class EventActivity : SimpleActivity() {
 
     private fun showReminderTypePicker(currentValue: Int, callback: (Int) -> Unit) {
         val items = arrayListOf(
-            RadioItem(REMINDER_NOTIFICATION, getString(R.string.notification)),
-            RadioItem(REMINDER_EMAIL, getString(R.string.email))
+            RadioItem(REMINDER_NOTIFICATION, getString(com.simplemobiletools.commons.R.string.notification)),
+            RadioItem(REMINDER_EMAIL, getString(com.simplemobiletools.commons.R.string.email))
         )
         RadioGroupDialog(this, items, currentValue) {
             callback(it as Int)
@@ -970,7 +980,12 @@ class EventActivity : SimpleActivity() {
 
     private fun updateReminderTypeImage(view: ImageView, reminder: Reminder) {
         view.beVisibleIf(reminder.minutes != REMINDER_OFF && mEventCalendarId != STORED_LOCALLY_ONLY)
-        val drawable = if (reminder.type == REMINDER_NOTIFICATION) R.drawable.ic_bell_vector else R.drawable.ic_mail_vector
+        val drawable = if (reminder.type == REMINDER_NOTIFICATION) {
+            com.simplemobiletools.commons.R.drawable.ic_bell_vector
+        } else {
+            com.simplemobiletools.commons.R.drawable.ic_mail_vector
+        }
+
         val icon = resources.getColoredDrawableWithColor(drawable, getProperTextColor())
         view.setImageDrawable(icon)
     }
@@ -1046,7 +1061,7 @@ class EventActivity : SimpleActivity() {
 
         if (currentCalendar == null) {
             mEventCalendarId = STORED_LOCALLY_ONLY
-            val mediumMargin = resources.getDimension(R.dimen.medium_margin).toInt()
+            val mediumMargin = resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin).toInt()
             eventCaldavCalendarName.apply {
                 text = getString(R.string.store_locally_only)
                 setPadding(paddingLeft, paddingTop, paddingRight, mediumMargin)
@@ -1082,7 +1097,7 @@ class EventActivity : SimpleActivity() {
                 runOnUiThread {
                     eventCaldavCalendarName.apply {
                         text = currentCalendar.displayName
-                        setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(R.dimen.tiny_margin).toInt())
+                        setPadding(paddingLeft, paddingTop, paddingRight, resources.getDimension(com.simplemobiletools.commons.R.dimen.tiny_margin).toInt())
                     }
 
                     eventCaldavCalendarHolder.apply {
@@ -1320,7 +1335,7 @@ class EventActivity : SimpleActivity() {
                         storeEvent(wasRepeatable)
                     }
                 } else {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
+                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
             }
         } else {

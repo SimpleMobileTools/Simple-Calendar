@@ -128,7 +128,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
         scrollView.onGlobalLayout {
             if (fullHeight < scrollView.height) {
-                scrollView.layoutParams.height = fullHeight - res.getDimension(R.dimen.one_dp).toInt()
+                scrollView.layoutParams.height = fullHeight - res.getDimension(com.simplemobiletools.commons.R.dimen.one_dp).toInt()
             }
 
             val initialScrollY = (rowHeight * config.startWeeklyAt).toInt()
@@ -210,16 +210,16 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         for (i in 0 until config.weeklyViewDays) {
             val dayCode = Formatter.getDayCodeFromDateTime(curDay)
             val labelIDs = if (useLongerDayLabels) {
-                R.array.week_days_short
+                com.simplemobiletools.commons.R.array.week_days_short
             } else {
-                R.array.week_day_letters
+                com.simplemobiletools.commons.R.array.week_day_letters
             }
 
             val dayLetters = res.getStringArray(labelIDs).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
             val textColor = if (isPrintVersion) {
-                resources.getColor(R.color.theme_light_text_color)
+                resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
             } else if (todayCode == dayCode) {
                 primaryColor
             } else if (highlightWeekends && isWeekend(curDay.dayOfWeek)) {
@@ -467,7 +467,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun updateViewScale() {
         rowHeight = context?.getWeeklyViewItemHeight() ?: return
 
-        val oneDp = res.getDimension(R.dimen.one_dp).toInt()
+        val oneDp = res.getDimension(com.simplemobiletools.commons.R.dimen.one_dp).toInt()
         val fullHeight = max(rowHeight.toInt() * 24, scrollView.height + oneDp)
         scrollView.layoutParams.height = fullHeight - oneDp
         binding.weekHorizontalGridHolder.layoutParams.height = fullHeight
@@ -725,7 +725,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             currentTimeView = WeekNowMarkerBinding.inflate(layoutInflater).root.apply {
                 applyColorFilter(primaryColor)
                 binding.weekEventsHolder.addView(this, 0)
-                val extraWidth = res.getDimension(R.dimen.activity_margin).toInt()
+                val extraWidth = res.getDimension(com.simplemobiletools.commons.R.dimen.activity_margin).toInt()
                 val markerHeight = res.getDimension(R.dimen.weekly_view_now_height).toInt()
                 val minuteHeight = rowHeight / 60
                 (layoutParams as RelativeLayout.LayoutParams).apply {

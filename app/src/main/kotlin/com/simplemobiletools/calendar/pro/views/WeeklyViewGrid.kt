@@ -5,7 +5,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getWeeklyViewItemHeight
 
@@ -17,7 +16,7 @@ class WeeklyViewGrid(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
-        paint.color = context.resources.getColor(R.color.divider_grey)
+        paint.color = context.resources.getColor(com.simplemobiletools.commons.R.color.divider_grey)
     }
 
     override fun onDraw(canvas: Canvas) {

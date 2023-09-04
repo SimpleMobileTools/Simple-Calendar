@@ -22,7 +22,7 @@ class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var c
 
         binding.colorGrid.apply {
             val width = activity.resources.getDimensionPixelSize(R.dimen.smaller_icon_size)
-            val spacing = activity.resources.getDimensionPixelSize(R.dimen.small_margin) * 2
+            val spacing = activity.resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.small_margin) * 2
             layoutManager = AutoGridLayoutManager(context = activity, itemWidth = width + spacing)
             adapter = colorAdapter
         }

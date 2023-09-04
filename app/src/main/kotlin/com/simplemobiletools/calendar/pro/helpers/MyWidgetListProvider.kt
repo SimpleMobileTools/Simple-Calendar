@@ -49,7 +49,12 @@ class MyWidgetListProvider : AppWidgetProvider() {
                     setTextSize(R.id.widget_event_list_today, fontSize)
                 }
 
-                views.setImageViewBitmap(R.id.widget_event_new_event, context.resources.getColoredBitmap(R.drawable.ic_plus_vector, textColor))
+                views.setImageViewBitmap(
+                    R.id.widget_event_new_event, context.resources.getColoredBitmap(
+                        resourceId = com.simplemobiletools.commons.R.drawable.ic_plus_vector,
+                        newColor = textColor
+                    )
+                )
                 setupIntent(context, views, NEW_EVENT, R.id.widget_event_new_event)
                 setupIntent(context, views, LAUNCH_CAL, R.id.widget_event_list_today)
 

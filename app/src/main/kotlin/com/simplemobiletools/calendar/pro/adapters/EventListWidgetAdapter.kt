@@ -30,8 +30,8 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
     private var dimPastEvents = context.config.dimPastEvents
     private var dimCompletedTasks = context.config.dimCompletedTasks
     private var mediumFontSize = context.getWidgetFontSize()
-    private var smallMargin = context.resources.getDimension(R.dimen.small_margin).toInt()
-    private var normalMargin = context.resources.getDimension(R.dimen.normal_margin).toInt()
+    private var smallMargin = context.resources.getDimension(com.simplemobiletools.commons.R.dimen.small_margin).toInt()
+    private var normalMargin = context.resources.getDimension(com.simplemobiletools.commons.R.dimen.normal_margin).toInt()
 
     init {
         initConfigValues()
