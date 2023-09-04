@@ -5,15 +5,16 @@ import com.simplemobiletools.calendar.pro.databinding.DatetimePatternInfoLayoutB
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.simplemobiletools.commons.extensions.viewBinding
 
 class DateTimePatternInfoDialog(activity: BaseSimpleActivity) {
+    val binding by activity.viewBinding(DatetimePatternInfoLayoutBinding::inflate)
 
     init {
-        val view = DatetimePatternInfoLayoutBinding.inflate(activity.layoutInflater).root
         activity.getAlertDialogBuilder()
             .setPositiveButton(R.string.ok) { _, _ -> { } }
             .apply {
-                activity.setupDialogStuff(view, this)
+                activity.setupDialogStuff(binding.root, this)
             }
     }
 }
