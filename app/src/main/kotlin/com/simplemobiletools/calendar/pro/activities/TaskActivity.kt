@@ -681,7 +681,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateReminder2Text() {
         binding.taskReminder2.apply {
-            beGoneIf(binding.taskReminder2.isGone() && mReminder1Minutes == REMINDER_OFF)
+            beGoneIf(isGone() && mReminder1Minutes == REMINDER_OFF)
             if (mReminder2Minutes == REMINDER_OFF) {
                 text = resources.getString(R.string.add_another_reminder)
                 alpha = 0.4f
@@ -694,7 +694,7 @@ class TaskActivity : SimpleActivity() {
 
     private fun updateReminder3Text() {
         binding.taskReminder3.apply {
-            beGoneIf(binding.taskReminder3.isGone() && (mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF))
+            beGoneIf(isGone() && (mReminder2Minutes == REMINDER_OFF || mReminder1Minutes == REMINDER_OFF))
             if (mReminder3Minutes == REMINDER_OFF) {
                 text = resources.getString(R.string.add_another_reminder)
                 alpha = 0.4f
