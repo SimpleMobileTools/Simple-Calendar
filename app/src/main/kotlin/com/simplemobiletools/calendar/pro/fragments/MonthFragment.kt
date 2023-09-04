@@ -21,7 +21,6 @@ import com.simplemobiletools.calendar.pro.helpers.MonthlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.models.DayMonthly
-import com.simplemobiletools.calendar.pro.views.MonthViewWrapper
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.beVisible
@@ -42,12 +41,10 @@ class MonthFragment : Fragment(), MonthlyCalendar {
     private lateinit var mConfig: Config
     private lateinit var binding: FragmentMonthBinding
     private lateinit var topNavigationBinding: TopNavigationBinding
-    private lateinit var monthView: MonthViewWrapper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMonthBinding.inflate(inflater, container, false)
         topNavigationBinding = TopNavigationBinding.bind(binding.root)
-        monthView = binding.monthViewWrapper
         mRes = resources
         mPackageName = requireActivity().packageName
         mDayCode = requireArguments().getString(DAY_CODE)!!
