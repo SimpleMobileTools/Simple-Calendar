@@ -15,7 +15,7 @@ class FilterEventTypeAdapter(val activity: SimpleActivity, val eventTypes: List<
     private val selectedKeys = HashSet<Long>()
 
     init {
-        eventTypes.forEachIndexed { _, eventType ->
+        eventTypes.forEach { eventType ->
             if (displayEventTypes.contains(eventType.id.toString())) {
                 selectedKeys.add(eventType.id!!)
             }
