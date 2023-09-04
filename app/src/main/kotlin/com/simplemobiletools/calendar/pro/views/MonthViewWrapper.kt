@@ -130,7 +130,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         val xPos = viewX * dayWidth + horizontalOffset
         val yPos = viewY * dayHeight + weekDaysLetterHeight
 
-        MonthViewBackgroundBinding.inflate(inflater, this, false).apply {
+        MonthViewBackgroundBinding.inflate(inflater, this, false).root.apply {
             if (isMonthDayView) {
                 background = null
             }
@@ -146,7 +146,8 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
                     binding.monthView.updateCurrentlySelectedDay(viewX, viewY)
                 }
             }
-            addView(root)
+
+            addView(this)
         }
     }
 
