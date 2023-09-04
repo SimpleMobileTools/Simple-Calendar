@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.databinding.MonthViewBackgroundBinding
 import com.simplemobiletools.calendar.pro.databinding.MonthViewBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
@@ -126,7 +127,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         val xPos = viewX * dayWidth + horizontalOffset
         val yPos = viewY * dayHeight + weekDaysLetterHeight
 
-        inflater.inflate(R.layout.month_view_background, this, false).apply {
+        MonthViewBackgroundBinding.inflate(inflater, this, false).apply {
             if (isMonthDayView) {
                 background = null
             }
@@ -142,7 +143,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
                     binding.monthView.updateCurrentlySelectedDay(viewX, viewY)
                 }
             }
-            addView(this)
+            addView(root)
         }
     }
 

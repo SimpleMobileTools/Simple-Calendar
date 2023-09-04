@@ -15,6 +15,7 @@ import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentWeekHolderBinding
+import com.simplemobiletools.calendar.pro.databinding.WeeklyViewHourTextviewBinding
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.helpers.WEEKLY_VIEW
@@ -135,7 +136,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         val hourDateTime = DateTime().withDate(2000, 1, 1).withTime(0, 0, 0, 0)
         for (i in 1..23) {
             val formattedHours = Formatter.getTime(requireContext(), hourDateTime.withHourOfDay(i))
-            (layoutInflater.inflate(R.layout.weekly_view_hour_textview, null, false) as TextView).apply {
+            WeeklyViewHourTextviewBinding.inflate(layoutInflater).root.apply {
                 text = formattedHours
                 setTextColor(textColor)
                 height = itemHeight

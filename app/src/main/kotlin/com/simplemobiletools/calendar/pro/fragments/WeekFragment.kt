@@ -17,10 +17,7 @@ import androidx.fragment.app.Fragment
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
-import com.simplemobiletools.calendar.pro.databinding.AllDayEventsHolderLineBinding
-import com.simplemobiletools.calendar.pro.databinding.FragmentWeekBinding
-import com.simplemobiletools.calendar.pro.databinding.WeekAllDayEventMarkerBinding
-import com.simplemobiletools.calendar.pro.databinding.WeekEventMarkerBinding
+import com.simplemobiletools.calendar.pro.databinding.*
 import com.simplemobiletools.calendar.pro.dialogs.EditRepeatingEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -34,7 +31,6 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.views.MyTextView
 import org.joda.time.DateTime
 import org.joda.time.Days
 import java.util.*
@@ -196,7 +192,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
     private fun addDayColumns() {
         binding.weekEventsColumnsHolder.removeAllViews()
         (0 until config.weeklyViewDays).forEach {
-            val column = layoutInflater.inflate(R.layout.weekly_view_day_column, binding.weekEventsColumnsHolder, false) as RelativeLayout
+            val column = WeeklyViewDayColumnBinding.inflate(layoutInflater, binding.weekEventsColumnsHolder, false).root
             column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
             binding.weekEventsColumnsHolder.addView(column)
             dayColumns.add(column)
@@ -232,7 +228,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 requireContext().getProperTextColor()
             }
 
-            val label = layoutInflater.inflate(R.layout.weekly_view_day_letter, binding.weekLettersHolder, false) as MyTextView
+            val label = WeeklyViewDayLetterBinding.inflate(layoutInflater, binding.weekLettersHolder, false).root
             label.text = "$dayLetter\n${curDay.dayOfMonth}"
             label.setTextColor(textColor)
             if (todayCode == dayCode) {
@@ -359,7 +355,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 selectedGrid?.beGone()
 
                 val hour = (event.y / rowHeight).toInt()
-                selectedGrid = (layoutInflater.inflate(R.layout.week_grid_item, null, false) as ImageView).apply {
+                selectedGrid = WeekGridItemBinding.inflate(layoutInflater).root.apply {
                     view.addView(this)
                     background = ColorDrawable(primaryColor)
                     layoutParams.width = view.width
@@ -726,7 +722,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             }
 
             val weeklyViewDays = config.weeklyViewDays
-            currentTimeView = (layoutInflater.inflate(R.layout.week_now_marker, null, false) as ImageView).apply {
+            currentTimeView = WeekNowMarkerBinding.inflate(layoutInflater).root.apply {
                 applyColorFilter(primaryColor)
                 binding.weekEventsHolder.addView(this, 0)
                 val extraWidth = res.getDimension(R.dimen.activity_margin).toInt()
