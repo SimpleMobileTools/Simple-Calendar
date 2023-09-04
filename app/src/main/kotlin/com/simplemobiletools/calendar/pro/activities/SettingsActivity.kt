@@ -793,15 +793,15 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun updateDefaultStartTimeText() = binding.apply {
-        when (config.defaultStartTime) {
-            DEFAULT_START_TIME_CURRENT_TIME -> settingsDefaultStartTime.text = getString(R.string.current_time)
-            DEFAULT_START_TIME_NEXT_FULL_HOUR -> settingsDefaultStartTime.text = getString(R.string.next_full_hour)
+    private fun updateDefaultStartTimeText() {
+        binding.settingsDefaultStartTime.text = when (config.defaultStartTime) {
+            DEFAULT_START_TIME_CURRENT_TIME -> getString(R.string.current_time)
+            DEFAULT_START_TIME_NEXT_FULL_HOUR -> getString(R.string.next_full_hour)
             else -> {
                 val hours = config.defaultStartTime / 60
                 val minutes = config.defaultStartTime % 60
                 val dateTime = DateTime.now().withHourOfDay(hours).withMinuteOfHour(minutes)
-                settingsDefaultStartTime.text = Formatter.getTime(this@SettingsActivity, dateTime)
+                Formatter.getTime(this, dateTime)
             }
         }
     }
