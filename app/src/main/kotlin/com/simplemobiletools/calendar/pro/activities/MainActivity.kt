@@ -407,7 +407,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         val newEventIntent = Intent(this, SplashActivity::class.java)
         newEventIntent.action = SHORTCUT_NEW_EVENT
-        return ShortcutInfo.Builder(this, "newEvent")
+        return ShortcutInfo.Builder(this, "new_event")
             .setShortLabel(newEvent)
             .setLongLabel(newEvent)
             .setIcon(Icon.createWithBitmap(newEventBitmap))
@@ -423,7 +423,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         val newTaskBitmap = newTaskDrawable.convertToBitmap()
         val newTaskIntent = Intent(this, SplashActivity::class.java)
         newTaskIntent.action = SHORTCUT_NEW_TASK
-        return ShortcutInfo.Builder(this, "newTask")
+        return ShortcutInfo.Builder(this, "new_task")
             .setShortLabel(newTask)
             .setLongLabel(newTask)
             .setIcon(Icon.createWithBitmap(newTaskBitmap))
@@ -1389,7 +1389,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     }
 
     // events fetched from Thunderbird, https://www.thunderbird.net/en-US/calendar/holidays and
-    // https://holidays.kayaposoft.com/publicHolidays.php?year=2021
+    // https://holidays.kayaposoft.com/public_holidays.php?year=2021
     private fun getHolidayRadioItems(): ArrayList<RadioItem> {
         val items = ArrayList<RadioItem>()
 

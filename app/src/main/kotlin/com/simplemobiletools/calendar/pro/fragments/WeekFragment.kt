@@ -39,7 +39,7 @@ import kotlin.math.min
 import kotlin.math.roundToInt
 
 class WeekFragment : Fragment(), WeeklyCalendar {
-    private val WEEKLY_EVENT_ID_LABEL = "eventIdLabel"
+    private val WEEKLY_EVENT_ID_LABEL = "event_id_label"
     private val PLUS_FADEOUT_DELAY = 5000L
     private val MIN_SCALE_FACTOR = 0.3f
     private val MAX_SCALE_FACTOR = 5f
