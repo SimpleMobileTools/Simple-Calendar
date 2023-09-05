@@ -209,6 +209,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         }
 
         updateDaysCount(context?.config?.weeklyViewDays ?: 7)
+        binding.weekViewDaysCount.setTextColor(requireContext().getProperTextColor())
     }
 
     private fun updateWeeklyViewDays(days: Int) {
