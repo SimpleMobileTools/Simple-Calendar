@@ -6,7 +6,7 @@
     <string name="daily_view">День</string>
     <string name="weekly_view">Тиждень</string>
     <string name="monthly_view">Місяць</string>
-    <string name="monthly_daily_view">Monthly + daily view</string>
+    <string name="monthly_daily_view">Місяць та день</string>
     <string name="yearly_view">Рік</string>
     <string name="simple_event_list">Список подій</string>
     <string name="no_upcoming_events">Немає майбутніх подій.</string>
@@ -30,8 +30,8 @@
     <string name="please_fill_location">Будь ласка, вкажіть місце, що буде показано на карті</string>
     <string name="public_event_notification_text">Наближається подія</string>
     <string name="everything_filtered_out">Відфільтровано всі типи подій</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Колір події</string>
+    <string name="default_calendar_color">Колір календаря за умовчанням</string>
     <!-- Tasks -->
     <string name="task">Завдання</string>
     <string name="tasks">Завдання</string>
@@ -225,7 +225,7 @@
     <string name="insufficient_permissions">Ви не можете редагувати обраний календар</string>
     <string name="caldav_event_not_found">Подію не знайдено. Будь ласка, увімкніть синхронізацію згідно CalDAV для відповідного календаря у налаштуваннях додатка.</string>
     <string name="no_synchronized_calendars">Не знайдено календарів для синхронізації</string>
-    <string name="status_free">Free</string>
+    <string name="status_free">Вільний</string>
     <string name="status_busy">Зайнятий</string>
     <string name="fetching_event_failed">Не вдалося отримати подію %s</string>
     <!-- alternative versions for some languages, use the same translations if you are not sure what this means -->
