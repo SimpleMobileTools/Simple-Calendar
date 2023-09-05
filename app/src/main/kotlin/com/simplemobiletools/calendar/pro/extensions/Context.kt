@@ -20,7 +20,6 @@ import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
@@ -136,28 +135,24 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     }
 }
 
-fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
-    if (notifTS < System.currentTimeMillis()) {
+fun Context.scheduleEventIn(notifyAtMillis: Long, event: Event, showToasts: Boolean) {
+    val now = System.currentTimeMillis()
+    if (notifyAtMillis < now) {
         if (showToasts) {
             toast(com.simplemobiletools.commons.R.string.saving)
         }
         return
     }
 
-    val newNotifTS = notifTS + 1000
+    val newNotifyAtMillis = notifyAtMillis + 1000
     if (showToasts) {
-        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
+        val secondsTillNotification = (newNotifyAtMillis - now) / 1000
         val msg = String.format(getString(com.simplemobiletools.commons.R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
         toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(event)
-    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    try {
-        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
-    } catch (e: Exception) {
-        showErrorToast(e)
-    }
+    setExactAlarm(newNotifyAtMillis, pendingIntent)
 }
 
 // hide the actual notification from the top bar
@@ -186,19 +181,11 @@ fun Context.scheduleNextAutomaticBackup() {
     if (config.autoBackup) {
         val backupAtMillis = getNextAutoBackupTime().millis
         val pendingIntent = getAutomaticBackupIntent()
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        try {
-            AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, backupAtMillis, pendingIntent)
-        } catch (e: Exception) {
-            showErrorToast(e)
-        }
+        setExactAlarm(backupAtMillis, pendingIntent)
     }
 }
 
-fun Context.cancelScheduledAutomaticBackup() {
-    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarmManager.cancel(getAutomaticBackupIntent())
-}
+fun Context.cancelScheduledAutomaticBackup() = getAlarmManager().cancel(getAutomaticBackupIntent())
 
 fun Context.checkAndBackupEventsOnBoot() {
     if (config.autoBackup) {
@@ -568,13 +555,13 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
         syncIntent,
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
-    val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarm.cancel(pendingIntent)
+    val alarmManager = getAlarmManager()
+    alarmManager.cancel(pendingIntent)
 
     if (activate) {
         val syncCheckInterval = 2 * AlarmManager.INTERVAL_HOUR
         try {
-            alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
         } catch (ignored: Exception) {
         }
     }
@@ -915,5 +902,20 @@ fun Context.addImportIdsToTasks(callback: () -> Unit) {
         if (count > 0) {
             callback()
         }
+    }
+}
+
+fun Context.getAlarmManager() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+fun Context.setExactAlarm(triggerAtMillis: Long, operation: PendingIntent, type: Int = AlarmManager.RTC_WAKEUP) {
+    val alarmManager = getAlarmManager()
+    try {
+        if (isSPlus() && alarmManager.canScheduleExactAlarms() || !isSPlus()) {
+            alarmManager.setExactAndAllowWhileIdle(type, triggerAtMillis, operation)
+        } else {
+            alarmManager.setAndAllowWhileIdle(type, triggerAtMillis, operation)
+        }
+    } catch (e: Exception) {
+        showErrorToast(e)
     }
 }
