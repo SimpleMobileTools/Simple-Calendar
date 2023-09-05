@@ -117,7 +117,7 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
-            resources.getColor(R.color.theme_light_text_color)
+            resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         } else {
             context.getProperTextColor().adjustAlpha(MEDIUM_ALPHA)
         }

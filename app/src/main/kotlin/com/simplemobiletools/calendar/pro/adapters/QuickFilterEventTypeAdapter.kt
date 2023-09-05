@@ -1,24 +1,23 @@
 package com.simplemobiletools.calendar.pro.adapters
 
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.QuickFilterEventTypeViewBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.extensions.adjustAlpha
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import kotlinx.android.synthetic.main.quick_filter_event_type_view.view.*
 
 class QuickFilterEventTypeAdapter(
     val activity: SimpleActivity,
     private val allEventTypes: List<EventType>,
     private val quickFilterEventTypeIds: Set<String>,
     val callback: () -> Unit
-) :
-    RecyclerView.Adapter<QuickFilterEventTypeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<QuickFilterEventTypeAdapter.QuickFilterViewHolder>() {
     private val activeKeys = HashSet<Long>()
     private val quickFilterEventTypes = ArrayList<EventType>()
     private val displayEventTypes = activity.config.displayEventTypes
@@ -52,36 +51,42 @@ class QuickFilterEventTypeAdapter(
         notifyItemChanged(pos)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuickFilterViewHolder {
         val parentWidth = parent.measuredWidth
-        val nrOfItems = quickFilterEventTypes.size
-        val view = activity.layoutInflater.inflate(R.layout.quick_filter_event_type_view, parent, false)
-        if (nrOfItems * minItemWidth > parentWidth) view.layoutParams.width = minItemWidth
-        else view.layoutParams.width = parentWidth / nrOfItems
-        return ViewHolder(view)
+        val numberOfItems = quickFilterEventTypes.size
+        val binding = QuickFilterEventTypeViewBinding.inflate(activity.layoutInflater, parent, false)
+        binding.root.updateLayoutParams<RecyclerView.LayoutParams> {
+            width = if (numberOfItems * minItemWidth > parentWidth) {
+                minItemWidth
+            } else {
+                parentWidth / numberOfItems
+            }
+        }
+
+        return QuickFilterViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: QuickFilterViewHolder, position: Int) {
         val eventType = quickFilterEventTypes[position]
         holder.bindView(eventType)
     }
 
     override fun getItemCount() = quickFilterEventTypes.size
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindView(eventType: EventType): View {
+    inner class QuickFilterViewHolder(val binding: QuickFilterEventTypeViewBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindView(eventType: EventType) {
             val isSelected = activeKeys.contains(eventType.id)
-            itemView.apply {
-                quick_filter_event_type.text = eventType.title
+            binding.apply {
+                quickFilterEventType.text = eventType.title
                 val textColor = if (isSelected) textColorActive else textColorInactive
-                quick_filter_event_type.setTextColor(textColor)
+                quickFilterEventType.setTextColor(textColor)
 
                 val indicatorHeightRes = if (isSelected) R.dimen.quick_filter_active_line_size else R.dimen.quick_filter_inactive_line_size
-                quick_filter_event_type_color.layoutParams.height = resources.getDimensionPixelSize(indicatorHeightRes)
-                quick_filter_event_type_color.setBackgroundColor(eventType.color)
+                quickFilterEventTypeColor.layoutParams.height = root.resources.getDimensionPixelSize(indicatorHeightRes)
+                quickFilterEventTypeColor.setBackgroundColor(eventType.color)
 
                 // avoid too quick clicks, could cause glitches
-                quick_filter_event_type.setOnClickListener {
+                quickFilterEventType.setOnClickListener {
                     if (System.currentTimeMillis() - lastClickTS > 300) {
                         lastClickTS = System.currentTimeMillis()
                         viewClicked(!isSelected, eventType)
@@ -89,8 +94,6 @@ class QuickFilterEventTypeAdapter(
                     }
                 }
             }
-
-            return itemView
         }
 
         private fun viewClicked(select: Boolean, eventType: EventType) {

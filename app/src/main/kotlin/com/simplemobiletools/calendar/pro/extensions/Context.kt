@@ -17,11 +17,9 @@ import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
@@ -30,6 +28,7 @@ import com.simplemobiletools.calendar.pro.activities.EventTypePickerActivity
 import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
 import com.simplemobiletools.calendar.pro.activities.TaskActivity
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
+import com.simplemobiletools.calendar.pro.databinding.DayMonthlyEventViewBinding
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.interfaces.EventTypesDao
@@ -44,7 +43,6 @@ import com.simplemobiletools.calendar.pro.services.MarkCompletedService
 import com.simplemobiletools.calendar.pro.services.SnoozeService
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import kotlinx.android.synthetic.main.day_monthly_event_view.view.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
 import org.joda.time.LocalDate
@@ -112,7 +110,7 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
     val validReminders = event.getReminders().filter { it.type == REMINDER_NOTIFICATION }
     if (validReminders.isEmpty()) {
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
         return
     }
@@ -132,33 +130,29 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
         }
 
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
     }
 }
 
-fun Context.scheduleEventIn(notifTS: Long, event: Event, showToasts: Boolean) {
-    if (notifTS < System.currentTimeMillis()) {
+fun Context.scheduleEventIn(notifyAtMillis: Long, event: Event, showToasts: Boolean) {
+    val now = System.currentTimeMillis()
+    if (notifyAtMillis < now) {
         if (showToasts) {
-            toast(R.string.saving)
+            toast(com.simplemobiletools.commons.R.string.saving)
         }
         return
     }
 
-    val newNotifTS = notifTS + 1000
+    val newNotifyAtMillis = notifyAtMillis + 1000
     if (showToasts) {
-        val secondsTillNotification = (newNotifTS - System.currentTimeMillis()) / 1000
-        val msg = String.format(getString(R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
+        val secondsTillNotification = (newNotifyAtMillis - now) / 1000
+        val msg = String.format(getString(com.simplemobiletools.commons.R.string.time_remaining), formatSecondsToTimeString(secondsTillNotification.toInt()))
         toast(msg)
     }
 
     val pendingIntent = getNotificationIntent(event)
-    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    try {
-        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, newNotifTS, pendingIntent)
-    } catch (e: Exception) {
-        showErrorToast(e)
-    }
+    setExactAlarm(newNotifyAtMillis, pendingIntent)
 }
 
 // hide the actual notification from the top bar
@@ -187,19 +181,11 @@ fun Context.scheduleNextAutomaticBackup() {
     if (config.autoBackup) {
         val backupAtMillis = getNextAutoBackupTime().millis
         val pendingIntent = getAutomaticBackupIntent()
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        try {
-            AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager, AlarmManager.RTC_WAKEUP, backupAtMillis, pendingIntent)
-        } catch (e: Exception) {
-            showErrorToast(e)
-        }
+        setExactAlarm(backupAtMillis, pendingIntent)
     }
 }
 
-fun Context.cancelScheduledAutomaticBackup() {
-    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarmManager.cancel(getAutomaticBackupIntent())
-}
+fun Context.cancelScheduledAutomaticBackup() = getAlarmManager().cancel(getAutomaticBackupIntent())
 
 fun Context.checkAndBackupEventsOnBoot() {
     if (config.autoBackup) {
@@ -224,7 +210,7 @@ fun Context.backupEventsAndTasks() {
             exportPastEntries = config.autoBackupPastEntries
         )
         if (events.isEmpty()) {
-            toast(R.string.no_entries_for_exporting)
+            toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
             config.lastAutoBackupTime = getNowSeconds()
             scheduleNextAutomaticBackup()
             return@ensureBackgroundThread
@@ -275,8 +261,8 @@ fun Context.backupEventsAndTasks() {
 
         IcsExporter(this).exportEvents(outputStream, events, showExportingToast = false) { result ->
             when (result) {
-                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(R.string.exporting_some_entries_failed)
-                IcsExporter.ExportResult.EXPORT_FAIL -> toast(R.string.exporting_failed)
+                IcsExporter.ExportResult.EXPORT_PARTIAL -> toast(com.simplemobiletools.commons.R.string.exporting_some_entries_failed)
+                IcsExporter.ExportResult.EXPORT_FAIL -> toast(com.simplemobiletools.commons.R.string.exporting_failed)
                 else -> {}
             }
             MediaScannerConnection.scanFile(
@@ -299,10 +285,10 @@ fun Context.getRepetitionText(seconds: Int) = when (seconds) {
     YEAR -> getString(R.string.yearly)
     else -> {
         when {
-            seconds % YEAR == 0 -> resources.getQuantityString(R.plurals.years, seconds / YEAR, seconds / YEAR)
-            seconds % MONTH == 0 -> resources.getQuantityString(R.plurals.months, seconds / MONTH, seconds / MONTH)
-            seconds % WEEK == 0 -> resources.getQuantityString(R.plurals.weeks, seconds / WEEK, seconds / WEEK)
-            else -> resources.getQuantityString(R.plurals.days, seconds / DAY, seconds / DAY)
+            seconds % YEAR == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.years, seconds / YEAR, seconds / YEAR)
+            seconds % MONTH == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.months, seconds / MONTH, seconds / MONTH)
+            seconds % WEEK == 0 -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.weeks, seconds / WEEK, seconds / WEEK)
+            else -> resources.getQuantityString(com.simplemobiletools.commons.R.plurals.days, seconds / DAY, seconds / DAY)
         }
     }
 }
@@ -342,7 +328,7 @@ fun Context.notifyEvent(originalEvent: Event) {
 
     val displayedStartDate = when (startDate) {
         LocalDate.now() -> ""
-        LocalDate.now().plusDays(1) -> getString(R.string.tomorrow)
+        LocalDate.now().plusDays(1) -> getString(com.simplemobiletools.commons.R.string.tomorrow)
         else -> "${Formatter.getDateFromCode(this, Formatter.getDayCodeFromTS(event.startTS))},"
     }
 
@@ -431,7 +417,11 @@ fun Context.getNotification(pendingIntent: PendingIntent, event: Event, content:
             if (event.isTask() && !event.isTaskCompleted()) {
                 addAction(R.drawable.ic_task_vector, getString(R.string.mark_completed), getMarkCompletedPendingIntent(this@getNotification, event))
             }
-            addAction(R.drawable.ic_snooze_vector, getString(R.string.snooze), getSnoozePendingIntent(this@getNotification, event))
+            addAction(
+                com.simplemobiletools.commons.R.drawable.ic_snooze_vector,
+                getString(com.simplemobiletools.commons.R.string.snooze),
+                getSnoozePendingIntent(this@getNotification, event)
+            )
         }
 
     if (config.vibrateOnReminder) {
@@ -565,13 +555,13 @@ fun Context.scheduleCalDAVSync(activate: Boolean) {
         syncIntent,
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
-    val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarm.cancel(pendingIntent)
+    val alarmManager = getAlarmManager()
+    alarmManager.cancel(pendingIntent)
 
     if (activate) {
         val syncCheckInterval = 2 * AlarmManager.INTERVAL_HOUR
         try {
-            alarm.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + syncCheckInterval, syncCheckInterval, pendingIntent)
         } catch (ignored: Exception) {
         }
     }
@@ -603,21 +593,21 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             textColor = textColor.adjustAlpha(0.25f)
         }
 
-        (View.inflate(applicationContext, R.layout.day_monthly_event_view, null) as ConstraintLayout).apply {
-            background = backgroundDrawable
-            layoutParams = eventLayoutParams
-            linearLayout.addView(this)
+        DayMonthlyEventViewBinding.inflate(LayoutInflater.from(this)).apply {
+            root.background = backgroundDrawable
+            root.layoutParams = eventLayoutParams
+            linearLayout.addView(root)
 
-            day_monthly_event_id.apply {
+            dayMonthlyEventId.apply {
                 setTextColor(textColor)
                 text = it.title.replace(" ", "\u00A0")  // allow word break by char
                 checkViewStrikeThrough(it.isTaskCompleted())
                 contentDescription = it.title
             }
 
-            day_monthly_task_image.beVisibleIf(it.isTask())
+            dayMonthlyTaskImage.beVisibleIf(it.isTask())
             if (it.isTask()) {
-                day_monthly_task_image.applyColorFilter(textColor)
+                dayMonthlyTaskImage.applyColorFilter(textColor)
             }
         }
     }
@@ -717,7 +707,7 @@ fun Context.refreshCalDAVCalendars(ids: String, showToasts: Boolean) {
     Bundle().apply {
         putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true)
         if (showToasts) {
-            // Assume this is a manual synchronisation when we showToasts to the user (swipe_refresh, MainMenu->refresh_caldav_calendars, ...)
+            // Assume this is a manual synchronisation when we showToasts to the user (swipe refresh, MainMenu-> refresh caldav calendars, ...)
             putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true)
         }
         accounts.forEach {
@@ -786,13 +776,13 @@ fun Context.getFirstDayOfWeekDt(date: DateTime): DateTime {
 
 fun Context.getDayOfWeekString(dayOfWeek: Int): String {
     val dayOfWeekResId = when (dayOfWeek) {
-        DateTimeConstants.MONDAY -> R.string.monday
-        DateTimeConstants.TUESDAY -> R.string.tuesday
-        DateTimeConstants.WEDNESDAY -> R.string.wednesday
-        DateTimeConstants.THURSDAY -> R.string.thursday
-        DateTimeConstants.FRIDAY -> R.string.friday
-        DateTimeConstants.SATURDAY -> R.string.saturday
-        DateTimeConstants.SUNDAY -> R.string.sunday
+        DateTimeConstants.MONDAY -> com.simplemobiletools.commons.R.string.monday
+        DateTimeConstants.TUESDAY -> com.simplemobiletools.commons.R.string.tuesday
+        DateTimeConstants.WEDNESDAY -> com.simplemobiletools.commons.R.string.wednesday
+        DateTimeConstants.THURSDAY -> com.simplemobiletools.commons.R.string.thursday
+        DateTimeConstants.FRIDAY -> com.simplemobiletools.commons.R.string.friday
+        DateTimeConstants.SATURDAY -> com.simplemobiletools.commons.R.string.saturday
+        DateTimeConstants.SUNDAY -> com.simplemobiletools.commons.R.string.sunday
         else -> throw IllegalArgumentException("Invalid day: $dayOfWeek")
     }
 
@@ -802,7 +792,7 @@ fun Context.getDayOfWeekString(dayOfWeek: Int): String {
 // format day bits to strings like "Mon, Tue, Wed"
 fun Context.getShortDaysFromBitmask(bitMask: Int): String {
     val dayBits = withFirstDayOfWeekToFront(listOf(MONDAY_BIT, TUESDAY_BIT, WEDNESDAY_BIT, THURSDAY_BIT, FRIDAY_BIT, SATURDAY_BIT, SUNDAY_BIT))
-    val weekDays = withFirstDayOfWeekToFront(resources.getStringArray(R.array.week_days_short).toList())
+    val weekDays = withFirstDayOfWeekToFront(resources.getStringArray(com.simplemobiletools.commons.R.array.week_days_short).toList())
 
     var days = ""
     dayBits.forEachIndexed { index, bit ->
@@ -912,5 +902,20 @@ fun Context.addImportIdsToTasks(callback: () -> Unit) {
         if (count > 0) {
             callback()
         }
+    }
+}
+
+fun Context.getAlarmManager() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+fun Context.setExactAlarm(triggerAtMillis: Long, operation: PendingIntent, type: Int = AlarmManager.RTC_WAKEUP) {
+    val alarmManager = getAlarmManager()
+    try {
+        if (isSPlus() && alarmManager.canScheduleExactAlarms() || !isSPlus()) {
+            alarmManager.setExactAndAllowWhileIdle(type, triggerAtMillis, operation)
+        } else {
+            alarmManager.setAndAllowWhileIdle(type, triggerAtMillis, operation)
+        }
+    } catch (e: Exception) {
+        showErrorToast(e)
     }
 }

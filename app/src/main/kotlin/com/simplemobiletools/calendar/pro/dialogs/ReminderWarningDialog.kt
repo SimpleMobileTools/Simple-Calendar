@@ -5,23 +5,19 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
-import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.hideKeyboard
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.extensions.showErrorToast
+import com.simplemobiletools.calendar.pro.databinding.DialogReminderWarningBinding
+import com.simplemobiletools.commons.extensions.*
 
 class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
     private var dialog: AlertDialog? = null
+    private val binding by activity.viewBinding(DialogReminderWarningBinding::inflate)
 
     init {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_reminder_warning, null)
-
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
-            .setNeutralButton(R.string.settings, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dialogConfirmed() }
+            .setNeutralButton(com.simplemobiletools.commons.R.string.settings, null)
             .apply {
-                activity.setupDialogStuff(view, this, R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
+                activity.setupDialogStuff(binding.root, this, com.simplemobiletools.commons.R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
                         redirectToSettings()
                     }

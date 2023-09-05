@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
+import com.simplemobiletools.calendar.pro.databinding.EventListItemBinding
 import com.simplemobiletools.calendar.pro.dialogs.DeleteEventDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
@@ -18,7 +19,6 @@ import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.helpers.MEDIUM_ALPHA
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.views.MyRecyclerView
-import kotlinx.android.synthetic.main.event_list_item.view.*
 
 class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, recyclerView: MyRecyclerView, var dayCode: String, itemClick: (Any) -> Unit) :
     MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
@@ -29,7 +29,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     private val dimPastEvents = activity.config.dimPastEvents
     private val dimCompletedTasks = activity.config.dimCompletedTasks
     private var isPrintVersion = false
-    private val mediumMargin = activity.resources.getDimension(R.dimen.medium_margin).toInt()
+    private val mediumMargin = activity.resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin).toInt()
 
     init {
         setupDragListener(true)
@@ -58,11 +58,15 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
 
     override fun onActionModeDestroyed() {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.event_list_item, parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return createViewHolder(
+            view = EventListItemBinding.inflate(activity.layoutInflater, parent, false).root
+        )
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = events[position]
-        holder.bindView(event, true, true) { itemView, layoutPosition ->
+        holder.bindView(event, allowSingleClick = true, allowLongClick = true) { itemView, _ ->
             setupView(itemView, event)
         }
         bindViewHolder(holder)
@@ -73,7 +77,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
-            resources.getColor(R.color.theme_light_text_color)
+            resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         } else {
             activity.getProperTextColor()
         }
@@ -82,12 +86,12 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
     }
 
     private fun setupView(view: View, event: Event) {
-        view.apply {
-            event_item_holder.isSelected = selectedKeys.contains(event.id?.toInt())
-            event_item_holder.background.applyColorFilter(textColor)
-            event_item_title.text = event.title
-            event_item_title.checkViewStrikeThrough(event.isTaskCompleted())
-            event_item_time.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(context, event.startTS)
+        EventListItemBinding.bind(view).apply {
+            eventItemHolder.isSelected = selectedKeys.contains(event.id?.toInt())
+            eventItemHolder.background.applyColorFilter(textColor)
+            eventItemTitle.text = event.title
+            eventItemTitle.checkViewStrikeThrough(event.isTaskCompleted())
+            eventItemTime.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(activity, event.startTS)
             if (event.startTS != event.endTS) {
                 val startDayCode = Formatter.getDayCodeFromTS(event.startTS)
                 val endDayCode = Formatter.getDayCodeFromTS(event.endTS)
@@ -95,19 +99,18 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 val endDate = Formatter.getDayTitle(activity, endDayCode, false)
                 val startDayString = if (startDayCode != dayCode) " ($startDate)" else ""
                 if (!event.getIsAllDay()) {
-                    val endTimeString = Formatter.getTimeFromTS(context, event.endTS)
+                    val endTimeString = Formatter.getTimeFromTS(activity, event.endTS)
                     val endDayString = if (endDayCode != dayCode) " ($endDate)" else ""
-                    event_item_time.text = "${event_item_time.text}$startDayString - $endTimeString$endDayString"
-                }
-                else {
+                    eventItemTime.text = "${eventItemTime.text}$startDayString - $endTimeString$endDayString"
+                } else {
                     val endDayString = if (endDayCode != dayCode) " - ($endDate)" else ""
-                    event_item_time.text = "${event_item_time.text}$startDayString$endDayString"
+                    eventItemTime.text = "${eventItemTime.text}$startDayString$endDayString"
                 }
             }
 
-            event_item_description.text = if (replaceDescriptionWithLocation) event.location else event.description.replace("\n", " ")
-            event_item_description.beVisibleIf(displayDescription && event_item_description.text.isNotEmpty())
-            event_item_color_bar.background.applyColorFilter(event.color)
+            eventItemDescription.text = if (replaceDescriptionWithLocation) event.location else event.description.replace("\n", " ")
+            eventItemDescription.beVisibleIf(displayDescription && eventItemDescription.text.isNotEmpty())
+            eventItemColorBar.background.applyColorFilter(event.color)
 
             var newTextColor = textColor
 
@@ -121,11 +124,11 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 newTextColor = newTextColor.adjustAlpha(MEDIUM_ALPHA)
             }
 
-            event_item_time.setTextColor(newTextColor)
-            event_item_title.setTextColor(newTextColor)
-            event_item_description?.setTextColor(newTextColor)
-            event_item_task_image.applyColorFilter(newTextColor)
-            event_item_task_image.beVisibleIf(event.isTask())
+            eventItemTime.setTextColor(newTextColor)
+            eventItemTitle.setTextColor(newTextColor)
+            eventItemDescription.setTextColor(newTextColor)
+            eventItemTaskImage.applyColorFilter(newTextColor)
+            eventItemTaskImage.beVisibleIf(event.isTask())
 
             val startMargin = if (event.isTask()) {
                 0
@@ -133,7 +136,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
                 mediumMargin
             }
 
-            (event_item_title.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
+            (eventItemTitle.layoutParams as ConstraintLayout.LayoutParams).marginStart = startMargin
         }
     }
 

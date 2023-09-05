@@ -5,10 +5,11 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.MainActivity
+import com.simplemobiletools.calendar.pro.databinding.FragmentYearBinding
+import com.simplemobiletools.calendar.pro.databinding.SmallMonthViewHolderBinding
+import com.simplemobiletools.calendar.pro.databinding.TopNavigationBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.getProperDayIndexInWeek
 import com.simplemobiletools.calendar.pro.extensions.getViewBitmap
@@ -18,16 +19,10 @@ import com.simplemobiletools.calendar.pro.helpers.YearlyCalendarImpl
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 import com.simplemobiletools.calendar.pro.interfaces.YearlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayYearly
-import com.simplemobiletools.calendar.pro.views.SmallMonthView
 import com.simplemobiletools.commons.extensions.applyColorFilter
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.getProperTextColor
 import com.simplemobiletools.commons.extensions.updateTextColors
-import kotlinx.android.synthetic.main.fragment_year.view.calendar_wrapper
-import kotlinx.android.synthetic.main.fragment_year.view.month_2
-import kotlinx.android.synthetic.main.top_navigation.view.top_left_arrow
-import kotlinx.android.synthetic.main.top_navigation.view.top_right_arrow
-import kotlinx.android.synthetic.main.top_navigation.view.top_value
 import org.joda.time.DateTime
 
 class YearFragment : Fragment(), YearlyCalendar {
@@ -39,17 +34,44 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     var listener: NavigationListener? = null
 
-    lateinit var mView: View
+    private lateinit var binding: FragmentYearBinding
+    private lateinit var topNavigationBinding: TopNavigationBinding
+    private lateinit var monthHolders: List<SmallMonthViewHolderBinding>
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater.inflate(R.layout.fragment_year, container, false)
+    private val monthResIds = arrayOf(
+        com.simplemobiletools.commons.R.string.january,
+        com.simplemobiletools.commons.R.string.february,
+        com.simplemobiletools.commons.R.string.march,
+        com.simplemobiletools.commons.R.string.april,
+        com.simplemobiletools.commons.R.string.may,
+        com.simplemobiletools.commons.R.string.june,
+        com.simplemobiletools.commons.R.string.july,
+        com.simplemobiletools.commons.R.string.august,
+        com.simplemobiletools.commons.R.string.september,
+        com.simplemobiletools.commons.R.string.october,
+        com.simplemobiletools.commons.R.string.november,
+        com.simplemobiletools.commons.R.string.december
+    )
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentYearBinding.inflate(inflater, container, false)
+        topNavigationBinding = TopNavigationBinding.bind(binding.root)
+        monthHolders = arrayListOf(
+            binding.month1Holder, binding.month2Holder, binding.month3Holder, binding.month4Holder, binding.month5Holder, binding.month6Holder,
+            binding.month7Holder, binding.month8Holder, binding.month9Holder, binding.month10Holder, binding.month11Holder, binding.month12Holder
+        ).apply {
+            forEachIndexed { index, it ->
+                it.monthLabel.text = getString(monthResIds[index])
+            }
+        }
+
         mYear = requireArguments().getInt(YEAR_LABEL)
-        requireContext().updateTextColors(mView.calendar_wrapper)
+        requireContext().updateTextColors(binding.calendarWrapper)
         setupMonths()
         setupButtons()
 
         mCalendar = YearlyCalendarImpl(this, requireContext(), mYear)
-        return mView
+        return binding.root
     }
 
     override fun onPause() {
@@ -72,61 +94,57 @@ class YearFragment : Fragment(), YearlyCalendar {
     }
 
     private fun setupMonths() {
-        val dateTime = DateTime().withDate(mYear, 2, 1).withHourOfDay(12)
-        val days = dateTime.dayOfMonth().maximumValue
-        mView.month_2.setDays(days)
-
-        val now = DateTime()
-
-        for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
-            val dayOfWeek = requireContext().getProperDayIndexInWeek(dateTime.withMonthOfYear(i))
-            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${i}_label", "id", requireContext().packageName))
+        val dateTime = DateTime().withYear(mYear).withHourOfDay(12)
+        monthHolders.forEachIndexed { index, monthHolder ->
+            val monthOfYear = index + 1
+            val monthView = monthHolder.smallMonthView
             val curTextColor = when {
-                isPrintVersion -> resources.getColor(R.color.theme_light_text_color)
+                isPrintVersion -> resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
                 else -> requireContext().getProperTextColor()
             }
 
-            monthLabel.setTextColor(curTextColor)
-
-            monthView.firstDay = dayOfWeek
+            monthHolder.monthLabel.setTextColor(curTextColor)
+            monthView.firstDay = requireContext().getProperDayIndexInWeek(dateTime.withMonthOfYear(monthOfYear))
+            val numberOfDays = dateTime.withMonthOfYear(monthOfYear).dayOfMonth().maximumValue
+            monthView.setDays(numberOfDays)
             monthView.setOnClickListener {
-                (activity as MainActivity).openMonthFromYearly(DateTime().withDate(mYear, i, 1))
+                (activity as MainActivity).openMonthFromYearly(DateTime().withDate(mYear, monthOfYear, 1))
             }
         }
 
         if (!isPrintVersion) {
+            val now = DateTime()
             markCurrentMonth(now)
         }
     }
 
     private fun setupButtons() {
         val textColor = requireContext().getProperTextColor()
-        mView.top_left_arrow.apply {
+        topNavigationBinding.topLeftArrow.apply {
             applyColorFilter(textColor)
             background = null
             setOnClickListener {
                 listener?.goLeft()
             }
 
-            val pointerLeft = requireContext().getDrawable(R.drawable.ic_chevron_left_vector)
+            val pointerLeft = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_left_vector)
             pointerLeft?.isAutoMirrored = true
             setImageDrawable(pointerLeft)
         }
 
-        mView.top_right_arrow.apply {
+        topNavigationBinding.topRightArrow.apply {
             applyColorFilter(textColor)
             background = null
             setOnClickListener {
                 listener?.goRight()
             }
 
-            val pointerRight = requireContext().getDrawable(R.drawable.ic_chevron_right_vector)
+            val pointerRight = requireContext().getDrawable(com.simplemobiletools.commons.R.drawable.ic_chevron_right_vector)
             pointerRight?.isAutoMirrored = true
             setImageDrawable(pointerRight)
         }
 
-        mView.top_value.apply {
+        topNavigationBinding.topValue.apply {
             setTextColor(requireContext().getProperTextColor())
             setOnClickListener {
                 (activity as MainActivity).showGoToDateDialog()
@@ -136,11 +154,10 @@ class YearFragment : Fragment(), YearlyCalendar {
 
     private fun markCurrentMonth(now: DateTime) {
         if (now.year == mYear) {
-            val monthLabel = mView.findViewById<TextView>(resources.getIdentifier("month_${now.monthOfYear}_label", "id", requireContext().packageName))
-            monthLabel.setTextColor(requireContext().getProperPrimaryColor())
-
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_${now.monthOfYear}", "id", requireContext().packageName))
-            monthView.todaysId = now.dayOfMonth
+            val monthOfYear = now.monthOfYear
+            val monthHolder = monthHolders[monthOfYear - 1]
+            monthHolder.monthLabel.setTextColor(requireContext().getProperPrimaryColor())
+            monthHolder.smallMonthView.todaysId = now.dayOfMonth
         }
     }
 
@@ -154,13 +171,14 @@ class YearFragment : Fragment(), YearlyCalendar {
         }
 
         lastHash = hashCode
-        for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
-            monthView.setEvents(events.get(i))
+        monthHolders.forEachIndexed { index, monthHolder ->
+            val monthView = monthHolder.smallMonthView
+            val monthOfYear = index + 1
+            monthView.setEvents(events.get(monthOfYear))
         }
 
-        mView.top_value.post {
-            mView.top_value.text = mYear.toString()
+        topNavigationBinding.topValue.post {
+            topNavigationBinding.topValue.text = mYear.toString()
         }
     }
 
@@ -169,7 +187,7 @@ class YearFragment : Fragment(), YearlyCalendar {
         setupMonths()
         toggleSmallMonthPrintModes()
 
-        requireContext().printBitmap(mView.calendar_wrapper.getViewBitmap())
+        requireContext().printBitmap(binding.calendarWrapper.getViewBitmap())
 
         isPrintVersion = false
         setupMonths()
@@ -177,9 +195,8 @@ class YearFragment : Fragment(), YearlyCalendar {
     }
 
     private fun toggleSmallMonthPrintModes() {
-        for (i in 1..12) {
-            val monthView = mView.findViewById<SmallMonthView>(resources.getIdentifier("month_$i", "id", requireContext().packageName))
-            monthView.togglePrintMode()
+        monthHolders.forEach {
+            it.smallMonthView.togglePrintMode()
         }
     }
 }

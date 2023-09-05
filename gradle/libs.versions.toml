@@ -1,0 +1,48 @@
+[versions]
+#jetbrains
+kotlin = "1.9.10"
+#KSP
+ksp = "1.9.10-1.0.13"
+#Androidx
+multidex = "2.0.1"
+print = "1.0.0"
+constraintlayout = "2.1.4"
+swiperefreshlayout = "1.1.0"
+#Room
+room = "2.5.2"
+#Simple tools
+simple-commons = "7c1e5b5777"
+#Gradle
+gradlePlugins-agp = "8.1.1"
+#build
+app-build-compileSDKVersion = "34"
+app-build-targetSDK = "34"
+app-build-minimumSDK = "23"
+app-build-javaVersion = "VERSION_17"
+app-build-kotlinJVMTarget = "17"
+#versioning
+app-version-appId = "com.simplemobiletools.calendar.pro"
+app-version-versionCode = "238"
+app-version-versionName = "6.22.2"
+[libraries]
+#Android X
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+androidx-print = { module = "androidx.print:print", version.ref = "print" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+#Room
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+#Simple Mobile Tools
+simple-mobile-tools-commons = { module = "com.github.SimpleMobileTools:Simple-Commons", version.ref = "simple-commons" }
+[bundles]
+room = [
+    "androidx-room-ktx",
+    "androidx-room-runtime",
+]
+[plugins]
+android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+

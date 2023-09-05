@@ -80,12 +80,17 @@ open class SimpleActivity : BaseSimpleActivity() {
                 if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
                     callback()
                 } else {
-                    ConfirmationDialog(this, messageId = R.string.notifications_disabled, positive = R.string.ok, negative = 0) {
+                    ConfirmationDialog(
+                        activity = this,
+                        messageId = com.simplemobiletools.commons.R.string.notifications_disabled,
+                        positive = com.simplemobiletools.commons.R.string.ok,
+                        negative = 0
+                    ) {
                         callback()
                     }
                 }
             } else {
-                PermissionRequiredDialog(this, R.string.allow_notifications_reminders, { openNotificationSettings() })
+                PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
             }
         }
     }

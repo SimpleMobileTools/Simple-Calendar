@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/yearly_padding_full"
+    android:layout_weight="1">
+
+    <TextView
+        android:id="@+id/month_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/january"
+        android:textAllCaps="true"
+        android:textSize="@dimen/normal_text_size" />
+
+    <com.simplemobiletools.calendar.pro.views.SmallMonthView
+        android:id="@+id/small_month_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/month_label"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

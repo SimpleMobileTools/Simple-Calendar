@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
+import com.simplemobiletools.calendar.pro.databinding.WidgetConfigListBinding
 import com.simplemobiletools.calendar.pro.dialogs.CustomPeriodPickerDialog
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.extensions.seconds
@@ -26,9 +27,8 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-import kotlinx.android.synthetic.main.widget_config_list.*
 import org.joda.time.DateTime
-import java.util.*
+import java.util.TreeSet
 
 class WidgetListConfigureActivity : SimpleActivity() {
     private var mBgAlpha = 0f
@@ -38,11 +38,13 @@ class WidgetListConfigureActivity : SimpleActivity() {
     private var mTextColor = 0
     private var mSelectedPeriodOption = 0
 
+    private val binding by viewBinding(WidgetConfigListBinding::inflate)
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         useDynamicTheme = false
         super.onCreate(savedInstanceState)
         setResult(Activity.RESULT_CANCELED)
-        setContentView(R.layout.widget_config_list)
+        setContentView(binding.root)
         initVariables()
 
         val isCustomizingColors = intent.extras?.getBoolean(IS_CUSTOMIZING_COLORS) ?: false
@@ -52,22 +54,24 @@ class WidgetListConfigureActivity : SimpleActivity() {
             finish()
         }
 
-        EventListAdapter(this, getListItems(), false, null, config_events_list) {}.apply {
-            updateTextColor(mTextColor)
-            config_events_list.adapter = this
+        binding.apply {
+            EventListAdapter(this@WidgetListConfigureActivity, getListItems(), false, null, configEventsList) {}.apply {
+                updateTextColor(mTextColor)
+                configEventsList.adapter = this
+            }
+
+            periodPickerHolder.background = ColorDrawable(getProperBackgroundColor())
+            periodPickerValue.setOnClickListener { showPeriodSelector() }
+
+            configSave.setOnClickListener { saveConfig() }
+            configBgColor.setOnClickListener { pickBackgroundColor() }
+            configTextColor.setOnClickListener { pickTextColor() }
+
+            periodPickerHolder.beGoneIf(isCustomizingColors)
+
+            val primaryColor = getProperPrimaryColor()
+            configBgSeekbar.setColors(mTextColor, primaryColor, primaryColor)
         }
-
-        period_picker_holder.background = ColorDrawable(getProperBackgroundColor())
-        period_picker_value.setOnClickListener { showPeriodSelector() }
-
-        config_save.setOnClickListener { saveConfig() }
-        config_bg_color.setOnClickListener { pickBackgroundColor() }
-        config_text_color.setOnClickListener { pickTextColor() }
-
-        period_picker_holder.beGoneIf(isCustomizingColors)
-
-        val primaryColor = getProperPrimaryColor()
-        config_bg_seekbar.setColors(mTextColor, primaryColor, primaryColor)
 
         updateSelectedPeriod(config.lastUsedEventSpan)
     }
@@ -77,7 +81,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
         mBgAlpha = Color.alpha(mBgColor) / 255f
 
         mBgColorWithoutTransparency = Color.rgb(Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor))
-        config_bg_seekbar.apply {
+        binding.configBgSeekbar.apply {
             progress = (mBgAlpha * 100).toInt()
 
             onSeekBarChangeListener { progress ->
@@ -88,8 +92,8 @@ class WidgetListConfigureActivity : SimpleActivity() {
         updateBackgroundColor()
 
         mTextColor = config.widgetTextColor
-        if (mTextColor == resources.getColor(R.color.default_widget_text_color) && config.isUsingSystemTheme) {
-            mTextColor = resources.getColor(R.color.you_primary_color, theme)
+        if (mTextColor == resources.getColor(com.simplemobiletools.commons.R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(com.simplemobiletools.commons.R.color.you_primary_color, theme)
         }
 
         updateTextColor()
@@ -155,10 +159,11 @@ class WidgetListConfigureActivity : SimpleActivity() {
         when (selectedPeriod) {
             0 -> {
                 mSelectedPeriodOption = YEAR_SECONDS
-                period_picker_value.setText(R.string.within_the_next_one_year)
+                binding.periodPickerValue.setText(R.string.within_the_next_one_year)
             }
-            EVENT_PERIOD_TODAY -> period_picker_value.setText(R.string.today_only)
-            else -> period_picker_value.text = getFormattedSeconds(mSelectedPeriodOption)
+
+            EVENT_PERIOD_TODAY -> binding.periodPickerValue.setText(R.string.today_only)
+            else -> binding.periodPickerValue.text = getFormattedSeconds(mSelectedPeriodOption)
         }
     }
 
@@ -206,16 +211,16 @@ class WidgetListConfigureActivity : SimpleActivity() {
     }
 
     private fun updateTextColor() {
-        (config_events_list.adapter as? EventListAdapter)?.updateTextColor(mTextColor)
-        config_text_color.setFillWithStroke(mTextColor, mTextColor)
-        config_save.setTextColor(getProperPrimaryColor().getContrastColor())
+        (binding.configEventsList.adapter as? EventListAdapter)?.updateTextColor(mTextColor)
+        binding.configTextColor.setFillWithStroke(mTextColor, mTextColor)
+        binding.configSave.setTextColor(getProperPrimaryColor().getContrastColor())
     }
 
     private fun updateBackgroundColor() {
         mBgColor = mBgColorWithoutTransparency.adjustAlpha(mBgAlpha)
-        config_events_list.background.applyColorFilter(mBgColor)
-        config_bg_color.setFillWithStroke(mBgColor, mBgColor)
-        config_save.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
+        binding.configEventsList.background.applyColorFilter(mBgColor)
+        binding.configBgColor.setFillWithStroke(mBgColor, mBgColor)
+        binding.configSave.backgroundTintList = ColorStateList.valueOf(getProperPrimaryColor())
     }
 
     private fun getListItems(): ArrayList<ListItem> {

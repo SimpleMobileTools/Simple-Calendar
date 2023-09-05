@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
 data class Attendee(val contactId: Int, var name: String, val email: String, var status: Int, var photoUri: String, var isMe: Boolean, var relationship: Int) {
-    fun getPublicName() = if (name.isNotEmpty()) name else email
+    fun getPublicName() = name.ifEmpty { email }
 
     fun updateImage(context: Context, imageView: ImageView, placeholder: Drawable) {
         if (photoUri.isEmpty()) {

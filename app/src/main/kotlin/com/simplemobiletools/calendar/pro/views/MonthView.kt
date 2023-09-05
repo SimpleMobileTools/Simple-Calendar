@@ -70,7 +70,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
         highlightWeekends = config.highlightWeekends
 
         smallPadding = resources.displayMetrics.density.toInt()
-        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size)
+        val normalTextSize = resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.normal_text_size)
         weekDaysLetterHeight = normalTextSize * 2
 
         textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -89,7 +89,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             color = primaryColor
         }
 
-        val smallerTextSize = resources.getDimensionPixelSize(R.dimen.smaller_text_size)
+        val smallerTextSize = resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.smaller_text_size)
         eventTitleHeight = smallerTextSize
         eventTitlePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
             color = textColor
@@ -391,7 +391,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     }
 
     private fun initWeekDayLetters() {
-        dayLetters = context.withFirstDayOfWeekToFront(context.resources.getStringArray(R.array.week_day_letters).toList())
+        dayLetters = context.withFirstDayOfWeekToFront(context.resources.getStringArray(com.simplemobiletools.commons.R.array.week_day_letters).toList())
     }
 
     private fun setupCurrentDayOfWeekIndex() {
@@ -430,7 +430,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
     fun togglePrintMode() {
         isPrintVersion = !isPrintVersion
         textColor = if (isPrintVersion) {
-            resources.getColor(R.color.theme_light_text_color)
+            resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
         } else {
             context.getProperTextColor()
         }

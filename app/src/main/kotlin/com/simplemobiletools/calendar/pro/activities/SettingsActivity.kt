@@ -11,26 +11,26 @@ import android.widget.Toast
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.databinding.ActivitySettingsBinding
 import com.simplemobiletools.calendar.pro.dialogs.ManageAutomaticBackupsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
-import com.simplemobiletools.calendar.pro.helpers.Formatter
 import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.*
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
-import kotlinx.android.synthetic.main.activity_settings.*
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
 import java.io.File
 import java.io.InputStream
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 import kotlin.system.exitProcess
 
 class SettingsActivity : SimpleActivity() {
@@ -39,19 +39,21 @@ class SettingsActivity : SimpleActivity() {
 
     private var mStoredPrimaryColor = 0
 
+    private val binding by viewBinding(ActivitySettingsBinding::inflate)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(binding.root)
         mStoredPrimaryColor = getProperPrimaryColor()
 
-        updateMaterialActivityViews(settings_coordinator, settings_holder, useTransparentNavigation = true, useTopSearchMenu = false)
-        setupMaterialScrollListener(settings_nested_scrollview, settings_toolbar)
+        updateMaterialActivityViews(binding.settingsCoordinator, binding.settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)
+        setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsToolbar)
     }
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(settings_toolbar, NavigationIcon.Arrow)
+        setupToolbar(binding.settingsToolbar, NavigationIcon.Arrow)
         setupSettingItems()
     }
 
@@ -99,7 +101,7 @@ class SettingsActivity : SimpleActivity() {
         setupDimEvents()
         setupDimCompletedTasks()
         setupAllowChangingTimeZones()
-        updateTextColors(settings_holder)
+        updateTextColors(binding.settingsHolder)
         checkPrimaryColor()
         setupEnableAutomaticBackups()
         setupManageAutomaticBackups()
@@ -107,19 +109,19 @@ class SettingsActivity : SimpleActivity() {
         setupImportSettings()
 
         arrayOf(
-            settings_color_customization_section_label,
-            settings_general_settings_label,
-            settings_reminders_label,
-            settings_caldav_label,
-            settings_new_events_label,
-            settings_weekly_view_label,
-            settings_monthly_view_label,
-            settings_event_lists_label,
-            settings_widgets_label,
-            settings_events_label,
-            settings_tasks_label,
-            settings_backups_label,
-            settings_migrating_label
+            binding.settingsColorCustomizationSectionLabel,
+            binding.settingsGeneralSettingsLabel,
+            binding.settingsRemindersLabel,
+            binding.settingsCaldavLabel,
+            binding.settingsNewEventsLabel,
+            binding.settingsWeeklyViewLabel,
+            binding.settingsMonthlyViewLabel,
+            binding.settingsEventListsLabel,
+            binding.settingsWidgetsLabel,
+            binding.settingsEventsLabel,
+            binding.settingsTasksLabel,
+            binding.settingsBackupsLabel,
+            binding.settingsMigratingLabel
         ).forEach {
             it.setTextColor(getProperPrimaryColor())
         }
@@ -163,71 +165,71 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupCustomizeColors() {
-        settings_color_customization_holder.setOnClickListener {
+        binding.settingsColorCustomizationHolder.setOnClickListener {
             startCustomizationActivity()
         }
     }
 
     private fun setupCustomizeNotifications() {
-        settings_customize_notifications_holder.beVisibleIf(isOreoPlus())
-        settings_customize_notifications_holder.setOnClickListener {
+        binding.settingsCustomizeNotificationsHolder.beVisibleIf(isOreoPlus())
+        binding.settingsCustomizeNotificationsHolder.setOnClickListener {
             launchCustomizeNotificationsIntent()
         }
     }
 
-    private fun setupUseEnglish() {
-        settings_use_english_holder.beVisibleIf((config.wasUseEnglishToggled || Locale.getDefault().language != "en") && !isTiramisuPlus())
-        settings_use_english.isChecked = config.useEnglish
-        settings_use_english_holder.setOnClickListener {
-            settings_use_english.toggle()
-            config.useEnglish = settings_use_english.isChecked
+    private fun setupUseEnglish() = binding.apply {
+        settingsUseEnglishHolder.beVisibleIf((config.wasUseEnglishToggled || Locale.getDefault().language != "en") && !isTiramisuPlus())
+        settingsUseEnglish.isChecked = config.useEnglish
+        settingsUseEnglishHolder.setOnClickListener {
+            settingsUseEnglish.toggle()
+            config.useEnglish = settingsUseEnglish.isChecked
             exitProcess(0)
         }
     }
 
-    private fun setupLanguage() {
-        settings_language.text = Locale.getDefault().displayLanguage
-        settings_language_holder.beVisibleIf(isTiramisuPlus())
-        settings_language_holder.setOnClickListener {
+    private fun setupLanguage() = binding.apply {
+        settingsLanguage.text = Locale.getDefault().displayLanguage
+        settingsLanguageHolder.beVisibleIf(isTiramisuPlus())
+        settingsLanguageHolder.setOnClickListener {
             launchChangeAppLanguageIntent()
         }
     }
 
     private fun setupManageEventTypes() {
-        settings_manage_event_types_holder.setOnClickListener {
+        binding.settingsManageEventTypesHolder.setOnClickListener {
             startActivity(Intent(this, ManageEventTypesActivity::class.java))
         }
     }
 
-    private fun setupManageQuickFilterEventTypes() {
-        settings_manage_quick_filter_event_types_holder.setOnClickListener {
+    private fun setupManageQuickFilterEventTypes() = binding.apply {
+        settingsManageQuickFilterEventTypesHolder.setOnClickListener {
             showQuickFilterPicker()
         }
 
-        eventsHelper.getEventTypes(this, false) {
-            settings_manage_quick_filter_event_types_holder.beGoneIf(it.size < 2)
+        eventsHelper.getEventTypes(this@SettingsActivity, false) {
+            settingsManageQuickFilterEventTypesHolder.beGoneIf(it.size < 2)
         }
     }
 
-    private fun setupHourFormat() {
-        settings_hour_format.isChecked = config.use24HourFormat
-        settings_hour_format_holder.setOnClickListener {
-            settings_hour_format.toggle()
-            config.use24HourFormat = settings_hour_format.isChecked
+    private fun setupHourFormat() = binding.apply {
+        settingsHourFormat.isChecked = config.use24HourFormat
+        settingsHourFormatHolder.setOnClickListener {
+            settingsHourFormat.toggle()
+            config.use24HourFormat = settingsHourFormat.isChecked
         }
     }
 
-    private fun setupAllowCreatingTasks() {
-        settings_allow_creating_tasks.isChecked = config.allowCreatingTasks
-        settings_allow_creating_tasks_holder.setOnClickListener {
-            settings_allow_creating_tasks.toggle()
-            config.allowCreatingTasks = settings_allow_creating_tasks.isChecked
+    private fun setupAllowCreatingTasks() = binding.apply {
+        settingsAllowCreatingTasks.isChecked = config.allowCreatingTasks
+        settingsAllowCreatingTasksHolder.setOnClickListener {
+            settingsAllowCreatingTasks.toggle()
+            config.allowCreatingTasks = settingsAllowCreatingTasks.isChecked
         }
     }
 
-    private fun setupCaldavSync() {
-        settings_caldav_sync.isChecked = config.caldavSync
-        settings_caldav_sync_holder.setOnClickListener {
+    private fun setupCaldavSync() = binding.apply {
+        settingsCaldavSync.isChecked = config.caldavSync
+        settingsCaldavSyncHolder.setOnClickListener {
             if (config.caldavSync) {
                 toggleCaldavSync(false)
             } else {
@@ -248,30 +250,30 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupPullToRefresh() {
-        settings_caldav_pull_to_refresh_holder.beVisibleIf(config.caldavSync)
-        settings_caldav_pull_to_refresh.isChecked = config.pullToRefresh
-        settings_caldav_pull_to_refresh_holder.setOnClickListener {
-            settings_caldav_pull_to_refresh.toggle()
-            config.pullToRefresh = settings_caldav_pull_to_refresh.isChecked
+    private fun setupPullToRefresh() = binding.apply {
+        settingsCaldavPullToRefreshHolder.beVisibleIf(config.caldavSync)
+        settingsCaldavPullToRefresh.isChecked = config.pullToRefresh
+        settingsCaldavPullToRefreshHolder.setOnClickListener {
+            settingsCaldavPullToRefresh.toggle()
+            config.pullToRefresh = settingsCaldavPullToRefresh.isChecked
         }
     }
 
-    private fun setupManageSyncedCalendars() {
-        settings_manage_synced_calendars_holder.beVisibleIf(config.caldavSync)
-        settings_manage_synced_calendars_holder.setOnClickListener {
+    private fun setupManageSyncedCalendars() = binding.apply {
+        settingsManageSyncedCalendarsHolder.beVisibleIf(config.caldavSync)
+        settingsManageSyncedCalendarsHolder.setOnClickListener {
             showCalendarPicker()
         }
     }
 
-    private fun toggleCaldavSync(enable: Boolean) {
+    private fun toggleCaldavSync(enable: Boolean) = binding.apply {
         if (enable) {
             showCalendarPicker()
         } else {
-            settings_caldav_sync.isChecked = false
+            settingsCaldavSync.isChecked = false
             config.caldavSync = false
-            settings_manage_synced_calendars_holder.beGone()
-            settings_caldav_pull_to_refresh_holder.beGone()
+            settingsManageSyncedCalendarsHolder.beGone()
+            settingsCaldavPullToRefreshHolder.beGone()
 
             ensureBackgroundThread {
                 config.getSyncedCalendarIdsAsList().forEach {
@@ -283,20 +285,20 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun showCalendarPicker() {
+    private fun showCalendarPicker() = binding.apply {
         val oldCalendarIds = config.getSyncedCalendarIdsAsList()
 
-        SelectCalendarsDialog(this) {
+        SelectCalendarsDialog(this@SettingsActivity) {
             val newCalendarIds = config.getSyncedCalendarIdsAsList()
             if (newCalendarIds.isEmpty() && !config.caldavSync) {
                 return@SelectCalendarsDialog
             }
 
-            settings_manage_synced_calendars_holder.beVisibleIf(newCalendarIds.isNotEmpty())
-            settings_caldav_pull_to_refresh_holder.beVisibleIf(newCalendarIds.isNotEmpty())
-            settings_caldav_sync.isChecked = newCalendarIds.isNotEmpty()
+            settingsManageSyncedCalendarsHolder.beVisibleIf(newCalendarIds.isNotEmpty())
+            settingsCaldavPullToRefreshHolder.beVisibleIf(newCalendarIds.isNotEmpty())
+            settingsCaldavSync.isChecked = newCalendarIds.isNotEmpty()
             config.caldavSync = newCalendarIds.isNotEmpty()
-            if (settings_caldav_sync.isChecked) {
+            if (settingsCaldavSync.isChecked) {
                 toast(R.string.syncing)
             }
 
@@ -311,13 +313,13 @@ class SettingsActivity : SimpleActivity() {
                         if (!existingEventTypeNames.contains(calendarTitle.lowercase(Locale.getDefault()))) {
                             val eventType = EventType(null, it.displayName, it.color, it.id, it.displayName, it.accountName)
                             existingEventTypeNames.add(calendarTitle.lowercase(Locale.getDefault()))
-                            eventsHelper.insertOrUpdateEventType(this, eventType)
+                            eventsHelper.insertOrUpdateEventType(this@SettingsActivity, eventType)
                         }
                     }
 
                     syncCalDAVCalendars {
                         calDAVHelper.refreshCalendars(showToasts = true, scheduleNextSync = true) {
-                            if (settings_caldav_sync.isChecked) {
+                            if (settingsCaldavSync.isChecked) {
                                 toast(R.string.synchronization_completed)
                             }
                         }
@@ -344,139 +346,145 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupStartWeekOn() {
+    private fun setupStartWeekOn() = binding.apply {
         val items = arrayListOf(
-            RadioItem(DateTimeConstants.SUNDAY, getString(R.string.sunday)),
-            RadioItem(DateTimeConstants.MONDAY, getString(R.string.monday)),
-            RadioItem(DateTimeConstants.TUESDAY, getString(R.string.tuesday)),
-            RadioItem(DateTimeConstants.WEDNESDAY, getString(R.string.wednesday)),
-            RadioItem(DateTimeConstants.THURSDAY, getString(R.string.thursday)),
-            RadioItem(DateTimeConstants.FRIDAY, getString(R.string.friday)),
-            RadioItem(DateTimeConstants.SATURDAY, getString(R.string.saturday)),
+            RadioItem(DateTimeConstants.SUNDAY, getString(com.simplemobiletools.commons.R.string.sunday)),
+            RadioItem(DateTimeConstants.MONDAY, getString(com.simplemobiletools.commons.R.string.monday)),
+            RadioItem(DateTimeConstants.TUESDAY, getString(com.simplemobiletools.commons.R.string.tuesday)),
+            RadioItem(DateTimeConstants.WEDNESDAY, getString(com.simplemobiletools.commons.R.string.wednesday)),
+            RadioItem(DateTimeConstants.THURSDAY, getString(com.simplemobiletools.commons.R.string.thursday)),
+            RadioItem(DateTimeConstants.FRIDAY, getString(com.simplemobiletools.commons.R.string.friday)),
+            RadioItem(DateTimeConstants.SATURDAY, getString(com.simplemobiletools.commons.R.string.saturday)),
         )
 
-        settings_start_week_on.text = getDayOfWeekString(config.firstDayOfWeek)
-        settings_start_week_on_holder.setOnClickListener {
-            RadioGroupDialog(this, items, config.firstDayOfWeek) { any ->
+        settingsStartWeekOn.text = getDayOfWeekString(config.firstDayOfWeek)
+        settingsStartWeekOnHolder.setOnClickListener {
+            RadioGroupDialog(this@SettingsActivity, items, config.firstDayOfWeek) { any ->
                 val firstDayOfWeek = any as Int
                 config.firstDayOfWeek = firstDayOfWeek
-                settings_start_week_on.text = getDayOfWeekString(firstDayOfWeek)
+                settingsStartWeekOn.text = getDayOfWeekString(firstDayOfWeek)
             }
         }
     }
 
-    private fun setupHighlightWeekends() {
-        settings_highlight_weekends.isChecked = config.highlightWeekends
-        settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
-        settings_highlight_weekends_holder.setOnClickListener {
-            settings_highlight_weekends.toggle()
-            config.highlightWeekends = settings_highlight_weekends.isChecked
-            settings_highlight_weekends_color_holder.beVisibleIf(config.highlightWeekends)
+    private fun setupHighlightWeekends() = binding.apply {
+        settingsHighlightWeekends.isChecked = config.highlightWeekends
+        settingsHighlightWeekendsColorHolder.beVisibleIf(config.highlightWeekends)
+        settingsHighlightWeekendsHolder.setOnClickListener {
+            settingsHighlightWeekends.toggle()
+            config.highlightWeekends = settingsHighlightWeekends.isChecked
+            settingsHighlightWeekendsColorHolder.beVisibleIf(config.highlightWeekends)
         }
     }
 
-    private fun setupHighlightWeekendsColor() {
-        settings_highlight_weekends_color.setFillWithStroke(config.highlightWeekendsColor, getProperBackgroundColor())
-        settings_highlight_weekends_color_holder.setOnClickListener {
-            ColorPickerDialog(this, config.highlightWeekendsColor) { wasPositivePressed, color ->
+    private fun setupHighlightWeekendsColor() = binding.apply {
+        settingsHighlightWeekendsColor.setFillWithStroke(config.highlightWeekendsColor, getProperBackgroundColor())
+        settingsHighlightWeekendsColorHolder.setOnClickListener {
+            ColorPickerDialog(this@SettingsActivity, config.highlightWeekendsColor) { wasPositivePressed, color ->
                 if (wasPositivePressed) {
                     config.highlightWeekendsColor = color
-                    settings_highlight_weekends_color.setFillWithStroke(color, getProperBackgroundColor())
+                    settingsHighlightWeekendsColor.setFillWithStroke(color, getProperBackgroundColor())
                 }
             }
         }
     }
 
-    private fun setupDeleteAllEvents() {
-        settings_delete_all_events_holder.setOnClickListener {
-            ConfirmationDialog(this, messageId = R.string.delete_all_events_confirmation) {
+    private fun setupDeleteAllEvents() = binding.apply {
+        settingsDeleteAllEventsHolder.setOnClickListener {
+            ConfirmationDialog(this@SettingsActivity, messageId = R.string.delete_all_events_confirmation) {
                 eventsHelper.deleteAllEvents()
             }
         }
     }
 
-    private fun setupDisplayDescription() {
-        settings_display_description.isChecked = config.displayDescription
-        settings_replace_description_holder.beVisibleIf(config.displayDescription)
-        settings_display_description_holder.setOnClickListener {
-            settings_display_description.toggle()
-            config.displayDescription = settings_display_description.isChecked
-            settings_replace_description_holder.beVisibleIf(config.displayDescription)
+    private fun setupDisplayDescription() = binding.apply {
+        settingsDisplayDescription.isChecked = config.displayDescription
+        settingsReplaceDescriptionHolder.beVisibleIf(config.displayDescription)
+        settingsDisplayDescriptionHolder.setOnClickListener {
+            settingsDisplayDescription.toggle()
+            config.displayDescription = settingsDisplayDescription.isChecked
+            settingsReplaceDescriptionHolder.beVisibleIf(config.displayDescription)
         }
     }
 
-    private fun setupReplaceDescription() {
-        settings_replace_description.isChecked = config.replaceDescription
-        settings_replace_description_holder.setOnClickListener {
-            settings_replace_description.toggle()
-            config.replaceDescription = settings_replace_description.isChecked
+    private fun setupReplaceDescription() = binding.apply {
+        settingsReplaceDescription.isChecked = config.replaceDescription
+        settingsReplaceDescriptionHolder.setOnClickListener {
+            settingsReplaceDescription.toggle()
+            config.replaceDescription = settingsReplaceDescription.isChecked
         }
     }
 
-    private fun setupWeeklyStart() {
-        settings_start_weekly_at.text = getHoursString(config.startWeeklyAt)
-        settings_start_weekly_at_holder.setOnClickListener {
+    private fun setupWeeklyStart() = binding.apply {
+        settingsStartWeeklyAt.text = getHoursString(config.startWeeklyAt)
+        settingsStartWeeklyAtHolder.setOnClickListener {
             val items = ArrayList<RadioItem>()
             (0..16).mapTo(items) { RadioItem(it, getHoursString(it)) }
 
             RadioGroupDialog(this@SettingsActivity, items, config.startWeeklyAt) {
                 config.startWeeklyAt = it as Int
-                settings_start_weekly_at.text = getHoursString(it)
+                settingsStartWeeklyAt.text = getHoursString(it)
             }
         }
     }
 
-    private fun setupMidnightSpanEvents() {
-        settings_midnight_span_event.isChecked = config.showMidnightSpanningEventsAtTop
-        settings_midnight_span_events_holder.setOnClickListener {
-            settings_midnight_span_event.toggle()
-            config.showMidnightSpanningEventsAtTop = settings_midnight_span_event.isChecked
+    private fun setupMidnightSpanEvents() = binding.apply {
+        settingsMidnightSpanEvent.isChecked = config.showMidnightSpanningEventsAtTop
+        settingsMidnightSpanEventsHolder.setOnClickListener {
+            settingsMidnightSpanEvent.toggle()
+            config.showMidnightSpanningEventsAtTop = settingsMidnightSpanEvent.isChecked
         }
     }
 
-    private fun setupAllowCustomizeDayCount() {
-        settings_allow_customize_day_count.isChecked = config.allowCustomizeDayCount
-        settings_allow_customize_day_count_holder.setOnClickListener {
-            settings_allow_customize_day_count.toggle()
-            config.allowCustomizeDayCount = settings_allow_customize_day_count.isChecked
+    private fun setupAllowCustomizeDayCount() = binding.apply {
+        settingsAllowCustomizeDayCount.isChecked = config.allowCustomizeDayCount
+        settingsAllowCustomizeDayCountHolder.setOnClickListener {
+            settingsAllowCustomizeDayCount.toggle()
+            config.allowCustomizeDayCount = settingsAllowCustomizeDayCount.isChecked
         }
     }
 
-    private fun setupStartWeekWithCurrentDay() {
-        settings_start_week_with_current_day.isChecked = config.startWeekWithCurrentDay
-        settings_start_week_with_current_day_holder.setOnClickListener {
-            settings_start_week_with_current_day.toggle()
-            config.startWeekWithCurrentDay = settings_start_week_with_current_day.isChecked
+    private fun setupStartWeekWithCurrentDay() = binding.apply {
+        settingsStartWeekWithCurrentDay.isChecked = config.startWeekWithCurrentDay
+        settingsStartWeekWithCurrentDayHolder.setOnClickListener {
+            settingsStartWeekWithCurrentDay.toggle()
+            config.startWeekWithCurrentDay = settingsStartWeekWithCurrentDay.isChecked
         }
     }
 
-    private fun setupWeekNumbers() {
-        settings_week_numbers.isChecked = config.showWeekNumbers
-        settings_week_numbers_holder.setOnClickListener {
-            settings_week_numbers.toggle()
-            config.showWeekNumbers = settings_week_numbers.isChecked
+    private fun setupWeekNumbers() = binding.apply {
+        settingsWeekNumbers.isChecked = config.showWeekNumbers
+        settingsWeekNumbersHolder.setOnClickListener {
+            settingsWeekNumbers.toggle()
+            config.showWeekNumbers = settingsWeekNumbers.isChecked
         }
     }
 
-    private fun setupShowGrid() {
-        settings_show_grid.isChecked = config.showGrid
-        settings_show_grid_holder.setOnClickListener {
-            settings_show_grid.toggle()
-            config.showGrid = settings_show_grid.isChecked
+    private fun setupShowGrid() = binding.apply {
+        settingsShowGrid.isChecked = config.showGrid
+        settingsShowGridHolder.setOnClickListener {
+            settingsShowGrid.toggle()
+            config.showGrid = settingsShowGrid.isChecked
         }
     }
 
-    private fun setupReminderSound() {
-        settings_reminder_sound_holder.beGoneIf(isOreoPlus())
-        settings_reminder_sound.text = config.reminderSoundTitle
+    private fun setupReminderSound() = binding.apply {
+        settingsReminderSoundHolder.beGoneIf(isOreoPlus())
+        settingsReminderSound.text = config.reminderSoundTitle
 
-        settings_reminder_sound_holder.setOnClickListener {
-            SelectAlarmSoundDialog(this, config.reminderSoundUri, config.reminderAudioStream, GET_RINGTONE_URI, RingtoneManager.TYPE_NOTIFICATION, false,
+        settingsReminderSoundHolder.setOnClickListener {
+            SelectAlarmSoundDialog(this@SettingsActivity,
+                config.reminderSoundUri,
+                config.reminderAudioStream,
+                GET_RINGTONE_URI,
+                RingtoneManager.TYPE_NOTIFICATION,
+                false,
                 onAlarmPicked = {
                     if (it != null) {
                         updateReminderSound(it)
                     }
-                }, onAlarmSoundDeleted = {
+                },
+                onAlarmSoundDeleted = {
                     if (it.uri == config.reminderSoundUri) {
                         val defaultAlarm = getDefaultAlarmSound(RingtoneManager.TYPE_NOTIFICATION)
                         updateReminderSound(defaultAlarm)
@@ -488,12 +496,12 @@ class SettingsActivity : SimpleActivity() {
     private fun updateReminderSound(alarmSound: AlarmSound) {
         config.reminderSoundTitle = alarmSound.title
         config.reminderSoundUri = alarmSound.uri
-        settings_reminder_sound.text = alarmSound.title
+        binding.settingsReminderSound.text = alarmSound.title
     }
 
-    private fun setupReminderAudioStream() {
-        settings_reminder_audio_stream.text = getAudioStreamText()
-        settings_reminder_audio_stream_holder.setOnClickListener {
+    private fun setupReminderAudioStream() = binding.apply {
+        settingsReminderAudioStream.text = getAudioStreamText()
+        settingsReminderAudioStreamHolder.setOnClickListener {
             val items = arrayListOf(
                 RadioItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_stream)),
                 RadioItem(AudioManager.STREAM_SYSTEM, getString(R.string.system_stream)),
@@ -503,7 +511,7 @@ class SettingsActivity : SimpleActivity() {
 
             RadioGroupDialog(this@SettingsActivity, items, config.reminderAudioStream) {
                 config.reminderAudioStream = it as Int
-                settings_reminder_audio_stream.text = getAudioStreamText()
+                settingsReminderAudioStream.text = getAudioStreamText()
             }
         }
     }
@@ -517,35 +525,35 @@ class SettingsActivity : SimpleActivity() {
         }
     )
 
-    private fun setupVibrate() {
-        settings_vibrate.isChecked = config.vibrateOnReminder
-        settings_vibrate_holder.setOnClickListener {
-            settings_vibrate.toggle()
-            config.vibrateOnReminder = settings_vibrate.isChecked
+    private fun setupVibrate() = binding.apply {
+        settingsVibrate.isChecked = config.vibrateOnReminder
+        settingsVibrateHolder.setOnClickListener {
+            settingsVibrate.toggle()
+            config.vibrateOnReminder = settingsVibrate.isChecked
         }
     }
 
-    private fun setupLoopReminders() {
-        settings_loop_reminders.isChecked = config.loopReminders
-        settings_loop_reminders_holder.setOnClickListener {
-            settings_loop_reminders.toggle()
-            config.loopReminders = settings_loop_reminders.isChecked
+    private fun setupLoopReminders() = binding.apply {
+        settingsLoopReminders.isChecked = config.loopReminders
+        settingsLoopRemindersHolder.setOnClickListener {
+            settingsLoopReminders.toggle()
+            config.loopReminders = settingsLoopReminders.isChecked
         }
     }
 
-    private fun setupUseSameSnooze() {
-        settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
-        settings_use_same_snooze.isChecked = config.useSameSnooze
-        settings_use_same_snooze_holder.setOnClickListener {
-            settings_use_same_snooze.toggle()
-            config.useSameSnooze = settings_use_same_snooze.isChecked
-            settings_snooze_time_holder.beVisibleIf(config.useSameSnooze)
+    private fun setupUseSameSnooze() = binding.apply {
+        settingsSnoozeTimeHolder.beVisibleIf(config.useSameSnooze)
+        settingsUseSameSnooze.isChecked = config.useSameSnooze
+        settingsUseSameSnoozeHolder.setOnClickListener {
+            settingsUseSameSnooze.toggle()
+            config.useSameSnooze = settingsUseSameSnooze.isChecked
+            settingsSnoozeTimeHolder.beVisibleIf(config.useSameSnooze)
         }
     }
 
     private fun setupSnoozeTime() {
         updateSnoozeTime()
-        settings_snooze_time_holder.setOnClickListener {
+        binding.settingsSnoozeTimeHolder.setOnClickListener {
             showPickSecondsDialogHelper(config.snoozeTime, true) {
                 config.snoozeTime = it / 60
                 updateSnoozeTime()
@@ -554,51 +562,51 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateSnoozeTime() {
-        settings_snooze_time.text = formatMinutesToTimeString(config.snoozeTime)
+        binding.settingsSnoozeTime.text = formatMinutesToTimeString(config.snoozeTime)
     }
 
-    private fun setupDefaultReminder() {
-        settings_use_last_event_reminders.isChecked = config.usePreviousEventReminders
+    private fun setupDefaultReminder() = binding.apply {
+        settingsUseLastEventReminders.isChecked = config.usePreviousEventReminders
         toggleDefaultRemindersVisibility(!config.usePreviousEventReminders)
-        settings_use_last_event_reminders_holder.setOnClickListener {
-            settings_use_last_event_reminders.toggle()
-            config.usePreviousEventReminders = settings_use_last_event_reminders.isChecked
-            toggleDefaultRemindersVisibility(!settings_use_last_event_reminders.isChecked)
+        settingsUseLastEventRemindersHolder.setOnClickListener {
+            settingsUseLastEventReminders.toggle()
+            config.usePreviousEventReminders = settingsUseLastEventReminders.isChecked
+            toggleDefaultRemindersVisibility(!settingsUseLastEventReminders.isChecked)
         }
     }
 
-    private fun setupDefaultReminder1() {
-        settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
-        settings_default_reminder_1_holder.setOnClickListener {
+    private fun setupDefaultReminder1() = binding.apply {
+        settingsDefaultReminder1.text = getFormattedMinutes(config.defaultReminder1)
+        settingsDefaultReminder1Holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder1) {
                 config.defaultReminder1 = if (it == -1 || it == 0) it else it / 60
-                settings_default_reminder_1.text = getFormattedMinutes(config.defaultReminder1)
+                settingsDefaultReminder1.text = getFormattedMinutes(config.defaultReminder1)
             }
         }
     }
 
-    private fun setupDefaultReminder2() {
-        settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
-        settings_default_reminder_2_holder.setOnClickListener {
+    private fun setupDefaultReminder2() = binding.apply {
+        settingsDefaultReminder2.text = getFormattedMinutes(config.defaultReminder2)
+        settingsDefaultReminder2Holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder2) {
                 config.defaultReminder2 = if (it == -1 || it == 0) it else it / 60
-                settings_default_reminder_2.text = getFormattedMinutes(config.defaultReminder2)
+                settingsDefaultReminder2.text = getFormattedMinutes(config.defaultReminder2)
             }
         }
     }
 
-    private fun setupDefaultReminder3() {
-        settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
-        settings_default_reminder_3_holder.setOnClickListener {
+    private fun setupDefaultReminder3() = binding.apply {
+        settingsDefaultReminder3.text = getFormattedMinutes(config.defaultReminder3)
+        settingsDefaultReminder3Holder.setOnClickListener {
             showPickSecondsDialogHelper(config.defaultReminder3) {
                 config.defaultReminder3 = if (it == -1 || it == 0) it else it / 60
-                settings_default_reminder_3.text = getFormattedMinutes(config.defaultReminder3)
+                settingsDefaultReminder3.text = getFormattedMinutes(config.defaultReminder3)
             }
         }
     }
 
-    private fun toggleDefaultRemindersVisibility(show: Boolean) {
-        arrayOf(settings_default_reminder_1_holder, settings_default_reminder_2_holder, settings_default_reminder_3_holder).forEach {
+    private fun toggleDefaultRemindersVisibility(show: Boolean) = binding.apply {
+        arrayOf(settingsDefaultReminder1Holder, settingsDefaultReminder2Holder, settingsDefaultReminder3Holder).forEach {
             it.beVisibleIf(show)
         }
     }
@@ -618,7 +626,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDisplayPastEvents() {
         var displayPastEvents = config.displayPastEvents
         updatePastEventsText(displayPastEvents)
-        settings_display_past_events_holder.setOnClickListener {
+        binding.settingsDisplayPastEventsHolder.setOnClickListener {
             CustomIntervalPickerDialog(this, displayPastEvents * 60) {
                 val result = it / 60
                 displayPastEvents = result
@@ -629,37 +637,37 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updatePastEventsText(displayPastEvents: Int) {
-        settings_display_past_events.text = getDisplayPastEventsText(displayPastEvents)
+        binding.settingsDisplayPastEvents.text = getDisplayPastEventsText(displayPastEvents)
     }
 
     private fun getDisplayPastEventsText(displayPastEvents: Int): String {
         return if (displayPastEvents == 0) {
-            getString(R.string.never)
+            getString(com.simplemobiletools.commons.R.string.never)
         } else {
             getFormattedMinutes(displayPastEvents, false)
         }
     }
 
-    private fun setupFontSize() {
-        settings_font_size.text = getFontSizeText()
-        settings_font_size_holder.setOnClickListener {
+    private fun setupFontSize() = binding.apply {
+        settingsFontSize.text = getFontSizeText()
+        settingsFontSizeHolder.setOnClickListener {
             val items = arrayListOf(
-                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
-                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
-                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
-                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
+                RadioItem(FONT_SIZE_SMALL, getString(com.simplemobiletools.commons.R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(com.simplemobiletools.commons.R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(com.simplemobiletools.commons.R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(com.simplemobiletools.commons.R.string.extra_large))
             )
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
-                settings_font_size.text = getFontSizeText()
+                settingsFontSize.text = getFontSizeText()
                 updateWidgets()
             }
         }
     }
 
     private fun setupCustomizeWidgetColors() {
-        settings_widget_color_customization_holder.setOnClickListener {
+        binding.settingsWidgetColorCustomizationHolder.setOnClickListener {
             Intent(this, WidgetListConfigureActivity::class.java).apply {
                 putExtra(IS_CUSTOMIZING_COLORS, true)
                 startActivity(this)
@@ -667,9 +675,9 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupViewToOpenFromListWidget() {
-        settings_list_widget_view_to_open.text = getDefaultViewText()
-        settings_list_widget_view_to_open_holder.setOnClickListener {
+    private fun setupViewToOpenFromListWidget() = binding.apply {
+        settingsListWidgetViewToOpen.text = getDefaultViewText()
+        settingsListWidgetViewToOpenHolder.setOnClickListener {
             val items = arrayListOf(
                 RadioItem(DAILY_VIEW, getString(R.string.daily_view)),
                 RadioItem(WEEKLY_VIEW, getString(R.string.weekly_view)),
@@ -682,7 +690,7 @@ class SettingsActivity : SimpleActivity() {
 
             RadioGroupDialog(this@SettingsActivity, items, config.listWidgetViewToOpen) {
                 config.listWidgetViewToOpen = it as Int
-                settings_list_widget_view_to_open.text = getDefaultViewText()
+                settingsListWidgetViewToOpen.text = getDefaultViewText()
                 updateWidgets()
             }
         }
@@ -700,33 +708,33 @@ class SettingsActivity : SimpleActivity() {
         }
     )
 
-    private fun setupDimEvents() {
-        settings_dim_past_events.isChecked = config.dimPastEvents
-        settings_dim_past_events_holder.setOnClickListener {
-            settings_dim_past_events.toggle()
-            config.dimPastEvents = settings_dim_past_events.isChecked
+    private fun setupDimEvents() = binding.apply {
+        settingsDimPastEvents.isChecked = config.dimPastEvents
+        settingsDimPastEventsHolder.setOnClickListener {
+            settingsDimPastEvents.toggle()
+            config.dimPastEvents = settingsDimPastEvents.isChecked
         }
     }
 
-    private fun setupDimCompletedTasks() {
-        settings_dim_completed_tasks.isChecked = config.dimCompletedTasks
-        settings_dim_completed_tasks_holder.setOnClickListener {
-            settings_dim_completed_tasks.toggle()
-            config.dimCompletedTasks = settings_dim_completed_tasks.isChecked
+    private fun setupDimCompletedTasks() = binding.apply {
+        settingsDimCompletedTasks.isChecked = config.dimCompletedTasks
+        settingsDimCompletedTasksHolder.setOnClickListener {
+            settingsDimCompletedTasks.toggle()
+            config.dimCompletedTasks = settingsDimCompletedTasks.isChecked
         }
     }
 
-    private fun setupAllowChangingTimeZones() {
-        settings_allow_changing_time_zones.isChecked = config.allowChangingTimeZones
-        settings_allow_changing_time_zones_holder.setOnClickListener {
-            settings_allow_changing_time_zones.toggle()
-            config.allowChangingTimeZones = settings_allow_changing_time_zones.isChecked
+    private fun setupAllowChangingTimeZones() = binding.apply {
+        settingsAllowChangingTimeZones.isChecked = config.allowChangingTimeZones
+        settingsAllowChangingTimeZonesHolder.setOnClickListener {
+            settingsAllowChangingTimeZones.toggle()
+            config.allowChangingTimeZones = settingsAllowChangingTimeZones.isChecked
         }
     }
 
     private fun setupDefaultStartTime() {
         updateDefaultStartTimeText()
-        settings_default_start_time_holder.setOnClickListener {
+        binding.settingsDefaultStartTimeHolder.setOnClickListener {
             val currentDefaultTime = when (config.defaultStartTime) {
                 DEFAULT_START_TIME_NEXT_FULL_HOUR -> DEFAULT_START_TIME_NEXT_FULL_HOUR
                 DEFAULT_START_TIME_CURRENT_TIME -> DEFAULT_START_TIME_CURRENT_TIME
@@ -786,21 +794,21 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun updateDefaultStartTimeText() {
-        when (config.defaultStartTime) {
-            DEFAULT_START_TIME_CURRENT_TIME -> settings_default_start_time.text = getString(R.string.current_time)
-            DEFAULT_START_TIME_NEXT_FULL_HOUR -> settings_default_start_time.text = getString(R.string.next_full_hour)
+        binding.settingsDefaultStartTime.text = when (config.defaultStartTime) {
+            DEFAULT_START_TIME_CURRENT_TIME -> getString(R.string.current_time)
+            DEFAULT_START_TIME_NEXT_FULL_HOUR -> getString(R.string.next_full_hour)
             else -> {
                 val hours = config.defaultStartTime / 60
                 val minutes = config.defaultStartTime % 60
                 val dateTime = DateTime.now().withHourOfDay(hours).withMinuteOfHour(minutes)
-                settings_default_start_time.text = Formatter.getTime(this, dateTime)
+                Formatter.getTime(this, dateTime)
             }
         }
     }
 
     private fun setupDefaultDuration() {
         updateDefaultDurationText()
-        settings_default_duration_holder.setOnClickListener {
+        binding.settingsDefaultDurationHolder.setOnClickListener {
             CustomIntervalPickerDialog(this, config.defaultDuration * 60) {
                 val result = it / 60
                 config.defaultDuration = result
@@ -811,18 +819,18 @@ class SettingsActivity : SimpleActivity() {
 
     private fun updateDefaultDurationText() {
         val duration = config.defaultDuration
-        settings_default_duration.text = if (duration == 0) {
-            "0 ${getString(R.string.minutes_raw)}"
+        binding.settingsDefaultDuration.text = if (duration == 0) {
+            "0 ${getString(com.simplemobiletools.commons.R.string.minutes_raw)}"
         } else {
             getFormattedMinutes(duration, false)
         }
     }
 
-    private fun setupDefaultEventType() {
+    private fun setupDefaultEventType() = binding.apply {
         updateDefaultEventTypeText()
-        settings_default_event_type.text = getString(R.string.last_used_one)
-        settings_default_event_type_holder.setOnClickListener {
-            SelectEventTypeDialog(this, config.defaultEventTypeId, true, false, true, true, false) {
+        settingsDefaultEventType.text = getString(R.string.last_used_one)
+        settingsDefaultEventTypeHolder.setOnClickListener {
+            SelectEventTypeDialog(this@SettingsActivity, config.defaultEventTypeId, true, false, true, true, false) {
                 config.defaultEventTypeId = it.id!!
                 updateDefaultEventTypeText()
             }
@@ -832,7 +840,7 @@ class SettingsActivity : SimpleActivity() {
     private fun updateDefaultEventTypeText() {
         if (config.defaultEventTypeId == -1L) {
             runOnUiThread {
-                settings_default_event_type.text = getString(R.string.last_used_one)
+                binding.settingsDefaultEventType.text = getString(R.string.last_used_one)
             }
         } else {
             ensureBackgroundThread {
@@ -840,7 +848,7 @@ class SettingsActivity : SimpleActivity() {
                 if (eventType != null) {
                     config.lastUsedCaldavCalendarId = eventType.caldavCalendarId
                     runOnUiThread {
-                        settings_default_event_type.text = eventType.title
+                        binding.settingsDefaultEventType.text = eventType.title
                     }
                 } else {
                     config.defaultEventTypeId = -1
@@ -850,16 +858,16 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupEnableAutomaticBackups() {
-        settings_backups_label.beVisibleIf(isRPlus())
-        settings_backups_divider.beVisibleIf(isRPlus())
-        settings_enable_automatic_backups_holder.beVisibleIf(isRPlus())
-        settings_enable_automatic_backups.isChecked = config.autoBackup
-        settings_enable_automatic_backups_holder.setOnClickListener {
+    private fun setupEnableAutomaticBackups() = binding.apply {
+        settingsBackupsLabel.beVisibleIf(isRPlus())
+        settingsBackupsDivider.beVisibleIf(isRPlus())
+        settingsEnableAutomaticBackupsHolder.beVisibleIf(isRPlus())
+        settingsEnableAutomaticBackups.isChecked = config.autoBackup
+        settingsEnableAutomaticBackupsHolder.setOnClickListener {
             val wasBackupDisabled = !config.autoBackup
             if (wasBackupDisabled) {
                 ManageAutomaticBackupsDialog(
-                    activity = this,
+                    activity = this@SettingsActivity,
                     onSuccess = {
                         enableOrDisableAutomaticBackups(true)
                         scheduleNextAutomaticBackup()
@@ -872,11 +880,11 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupManageAutomaticBackups() {
-        settings_manage_automatic_backups_holder.beVisibleIf(isRPlus() && config.autoBackup)
-        settings_manage_automatic_backups_holder.setOnClickListener {
+    private fun setupManageAutomaticBackups() = binding.apply {
+        settingsManageAutomaticBackupsHolder.beVisibleIf(isRPlus() && config.autoBackup)
+        settingsManageAutomaticBackupsHolder.setOnClickListener {
             ManageAutomaticBackupsDialog(
-                activity = this,
+                activity = this@SettingsActivity,
                 onSuccess = {
                     scheduleNextAutomaticBackup()
                 }
@@ -884,14 +892,14 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun enableOrDisableAutomaticBackups(enable: Boolean) {
+    private fun enableOrDisableAutomaticBackups(enable: Boolean) = binding.apply {
         config.autoBackup = enable
-        settings_enable_automatic_backups.isChecked = enable
-        settings_manage_automatic_backups_holder.beVisibleIf(enable)
+        settingsEnableAutomaticBackups.isChecked = enable
+        settingsManageAutomaticBackupsHolder.beVisibleIf(enable)
     }
 
     private fun setupExportSettings() {
-        settings_export_holder.setOnClickListener {
+        binding.settingsExportHolder.setOnClickListener {
             val configItems = LinkedHashMap<String, Any>().apply {
                 put(IS_USING_SHARED_THEME, config.isUsingSharedTheme)
                 put(TEXT_COLOR, config.textColor)
@@ -944,7 +952,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupImportSettings() {
-        settings_import_holder.setOnClickListener {
+        binding.settingsImportHolder.setOnClickListener {
             if (isQPlus()) {
                 Intent(Intent.ACTION_GET_CONTENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
@@ -953,7 +961,7 @@ class SettingsActivity : SimpleActivity() {
                     try {
                         startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
                     } catch (e: ActivityNotFoundException) {
-                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
                         showErrorToast(e)
                     }
@@ -974,7 +982,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun parseFile(inputStream: InputStream?) {
         if (inputStream == null) {
-            toast(R.string.unknown_error_occurred)
+            toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
             return
         }
 
@@ -1008,6 +1016,7 @@ class SettingsActivity : SimpleActivity() {
                         checkAppIconColor()
                     }
                 }
+
                 USE_ENGLISH -> config.useEnglish = value.toBoolean()
                 WAS_USE_ENGLISH_TOGGLED -> config.wasUseEnglishToggled = value.toBoolean()
                 WIDGET_BG_COLOR -> config.widgetBgColor = value.toInt()
@@ -1051,7 +1060,12 @@ class SettingsActivity : SimpleActivity() {
         }
 
         runOnUiThread {
-            val msg = if (configValues.size > 0) R.string.settings_imported_successfully else R.string.no_entries_for_importing
+            val msg = if (configValues.size > 0) {
+                com.simplemobiletools.commons.R.string.settings_imported_successfully
+            } else {
+                com.simplemobiletools.commons.R.string.no_entries_for_importing
+            }
+
             toast(msg)
 
             setupSettingItems()

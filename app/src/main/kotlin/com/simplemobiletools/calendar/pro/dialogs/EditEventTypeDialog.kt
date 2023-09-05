@@ -4,6 +4,7 @@ import android.app.Activity
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.databinding.DialogEventTypeBinding
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.eventsHelper
 import com.simplemobiletools.calendar.pro.helpers.OTHER_EVENT
@@ -11,25 +12,25 @@ import com.simplemobiletools.calendar.pro.models.EventType
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.dialog_event_type.view.*
 
 class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = null, val callback: (eventType: EventType) -> Unit) {
     private var isNewEvent = eventType == null
+    private val binding by activity.viewBinding(DialogEventTypeBinding::inflate)
 
     init {
         if (eventType == null) {
             eventType = EventType(null, "", activity.getProperPrimaryColor())
         }
 
-        val view = activity.layoutInflater.inflate(R.layout.dialog_event_type, null).apply {
-            setupColor(type_color)
-            type_title.setText(eventType!!.title)
-            type_color.setOnClickListener {
+        binding.apply {
+            setupColor(typeColor)
+            typeTitle.setText(eventType!!.title)
+            typeColor.setOnClickListener {
                 if (eventType?.caldavCalendarId == 0) {
                     ColorPickerDialog(activity, eventType!!.color) { wasPositivePressed, color ->
                         if (wasPositivePressed) {
                             eventType!!.color = color
-                            setupColor(type_color)
+                            setupColor(typeColor)
                         }
                     }
                 } else {
@@ -37,21 +38,21 @@ class EditEventTypeDialog(val activity: Activity, var eventType: EventType? = nu
                     val colors = activity.calDAVHelper.getAvailableCalDAVCalendarColors(eventType!!).keys.toIntArray()
                     SelectEventTypeColorDialog(activity, colors = colors, currentColor = currentColor) {
                         eventType!!.color = it
-                        setupColor(type_color)
+                        setupColor(typeColor)
                     }
                 }
             }
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(R.string.ok, null)
-            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
+            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) { alertDialog ->
-                    alertDialog.showKeyboard(view.type_title)
+                activity.setupDialogStuff(binding.root, this, if (isNewEvent) R.string.add_new_type else R.string.edit_type) { alertDialog ->
+                    alertDialog.showKeyboard(binding.typeTitle)
                     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                         ensureBackgroundThread {
-                            eventTypeConfirmed(view.type_title.value, alertDialog)
+                            eventTypeConfirmed(binding.typeTitle.value, alertDialog)
                         }
                     }
                 }

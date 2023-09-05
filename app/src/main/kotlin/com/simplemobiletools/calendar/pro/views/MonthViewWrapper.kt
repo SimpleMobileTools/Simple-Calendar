@@ -4,13 +4,13 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.databinding.MonthViewBackgroundBinding
+import com.simplemobiletools.calendar.pro.databinding.MonthViewBinding
 import com.simplemobiletools.calendar.pro.extensions.config
 import com.simplemobiletools.calendar.pro.helpers.COLUMN_COUNT
 import com.simplemobiletools.calendar.pro.helpers.ROW_COUNT
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.commons.extensions.onGlobalLayout
-import kotlinx.android.synthetic.main.month_view.view.month_view
 
 // used in the Monthly view fragment, 1 view per screen
 class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : FrameLayout(context, attrs, defStyle) {
@@ -22,24 +22,24 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     private var isMonthDayView = true
     private var days = ArrayList<DayMonthly>()
     private var inflater: LayoutInflater
-    private var monthView: MonthView
+    private var binding: MonthViewBinding
     private var dayClickCallback: ((day: DayMonthly) -> Unit)? = null
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
-        val normalTextSize = resources.getDimensionPixelSize(R.dimen.normal_text_size).toFloat()
+        val normalTextSize = resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.normal_text_size).toFloat()
         weekDaysLetterHeight = 2 * normalTextSize.toInt()
 
         inflater = LayoutInflater.from(context)
-        monthView = inflater.inflate(R.layout.month_view, this).month_view
+        binding = MonthViewBinding.inflate(inflater, this, true)
         setupHorizontalOffset()
 
         onGlobalLayout {
             if (!wereViewsAdded && days.isNotEmpty()) {
                 measureSizes()
                 addClickableBackgrounds()
-                monthView.updateDays(days, isMonthDayView)
+                binding.monthView.updateDays(days, isMonthDayView)
             }
         }
     }
@@ -94,11 +94,15 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         }
 
         isMonthDayView = !addEvents
-        monthView.updateDays(days, isMonthDayView)
+        binding.monthView.updateDays(days, isMonthDayView)
     }
 
     private fun setupHorizontalOffset() {
-        horizontalOffset = if (context.config.showWeekNumbers) resources.getDimensionPixelSize(R.dimen.smaller_text_size) * 2 else 0
+        horizontalOffset = if (context.config.showWeekNumbers) {
+            resources.getDimensionPixelSize(com.simplemobiletools.commons.R.dimen.smaller_text_size) * 2
+        } else {
+            0
+        }
     }
 
     private fun measureSizes() {
@@ -108,7 +112,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
     private fun addClickableBackgrounds() {
         removeAllViews()
-        monthView = inflater.inflate(R.layout.month_view, this).month_view
+        binding = MonthViewBinding.inflate(inflater, this, true)
         wereViewsAdded = true
         var curId = 0
         for (y in 0 until ROW_COUNT) {
@@ -126,7 +130,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
         val xPos = viewX * dayWidth + horizontalOffset
         val yPos = viewY * dayHeight + weekDaysLetterHeight
 
-        inflater.inflate(R.layout.month_view_background, this, false).apply {
+        MonthViewBackgroundBinding.inflate(inflater, this, false).root.apply {
             if (isMonthDayView) {
                 background = null
             }
@@ -139,14 +143,15 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
                 dayClickCallback?.invoke(day)
 
                 if (isMonthDayView) {
-                    monthView.updateCurrentlySelectedDay(viewX, viewY)
+                    binding.monthView.updateCurrentlySelectedDay(viewX, viewY)
                 }
             }
+
             addView(this)
         }
     }
 
     fun togglePrintMode() {
-        monthView.togglePrintMode()
+        binding.monthView.togglePrintMode()
     }
 }
