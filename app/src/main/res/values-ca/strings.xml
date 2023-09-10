@@ -9,7 +9,7 @@
     <string name="monthly_daily_view">Vista mensual i diària</string>
     <string name="yearly_view">Vista anual</string>
     <string name="simple_event_list">Llista d\'esdeveniments senzilla</string>
-    <string name="no_upcoming_events">No hi ha esdeveniments propers.</string>
+    <string name="no_upcoming_events">No hi ha esdeveniments pròxims.</string>
     <string name="go_to_today">Ves a avui</string>
     <string name="go_to_date">Ves a la data</string>
     <!-- Widget titles -->
