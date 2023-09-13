@@ -6,6 +6,11 @@ plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+    base
+}
+
+base {
+    archivesName.set("calendar")
 }
 
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")
@@ -24,8 +29,10 @@ android {
         versionCode = project.libs.versions.app.version.versionCode.get().toInt()
         versionName = project.libs.versions.app.version.versionName.get()
         multiDexEnabled = true
-        setProperty("archivesBaseName", "calendar")
         vectorDrawables.useSupportLibrary = true
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     signingConfigs {
