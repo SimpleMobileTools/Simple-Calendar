@@ -1296,6 +1296,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     if (it is ListEvent) {
                         Intent(applicationContext, getActivityToOpen(it.isTask)).apply {
                             putExtra(EVENT_ID, it.id)
+                            putExtra(EVENT_OCCURRENCE_TS, it.startTS)
                             startActivity(this)
                         }
                     }
