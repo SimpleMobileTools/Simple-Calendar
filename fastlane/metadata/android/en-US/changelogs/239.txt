@@ -1,0 +1,2 @@
+ * Allow starting the week with any day
+ * Added some translation, stability and UX improvements

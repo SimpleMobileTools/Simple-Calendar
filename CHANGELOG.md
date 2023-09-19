@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 6.23.0 *(2023-09-19)*
+----------------------------
+
+ * Allow starting the week with any day
+ * Added some translation, stability and UX improvements
+
 Version 6.22.2 *(2023-07-16)*
 ----------------------------
 
