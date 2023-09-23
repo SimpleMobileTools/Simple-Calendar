@@ -41,7 +41,7 @@
     <string name="duplicate_task">Monista tehtävä</string>
     <string name="mark_completed">Merkkaa valmiiksi</string>
     <string name="mark_incomplete">Merkkaa keskeneräiseksi</string>
-    <string name="task_color">Task color</string>
+    <string name="task_color">Tehtävän väri</string>
     <!-- Event Repetition -->
     <string name="repetition">Toisto</string>
     <string name="no_repetition">Ei toistoa</string>
