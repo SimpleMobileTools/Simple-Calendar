@@ -49,16 +49,6 @@
         android:title="@string/add_anniversaries"
         app:showAsAction="never" />
     <item
-        android:id="@+id/import_events"
-        android:showAsAction="never"
-        android:title="@string/import_events_from_ics"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/export_events"
-        android:showAsAction="never"
-        android:title="@string/export_events_to_ics"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_cog_vector"
         android:title="@string/settings"

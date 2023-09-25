@@ -31,7 +31,7 @@ class IcsExporter(private val context: Context) {
 
     fun exportEvents(
         outputStream: OutputStream?,
-        events: ArrayList<Event>,
+        events: List<Event>,
         showExportingToast: Boolean,
         callback: (result: ExportResult) -> Unit
     ) {

@@ -612,10 +612,10 @@ class EventsHelper(val context: Context) {
         return events
     }
 
-    fun getEventsToExport(eventTypes: ArrayList<Long>, exportEvents: Boolean, exportTasks: Boolean, exportPastEntries: Boolean): ArrayList<Event> {
+    fun getEventsToExport(eventTypes: List<Long>, exportEvents: Boolean, exportTasks: Boolean, exportPastEntries: Boolean): MutableList<Event> {
         val currTS = getNowSeconds()
-        var events = ArrayList<Event>()
-        val tasks = ArrayList<Event>()
+        var events = mutableListOf<Event>()
+        val tasks = mutableListOf<Event>()
         if (exportPastEntries) {
             if (exportEvents) {
                 events.addAll(eventsDB.getAllEventsWithTypes(eventTypes))

@@ -1,8 +1,11 @@
 package com.simplemobiletools.calendar.pro.extensions
 
 import android.app.Activity
+import android.net.Uri
 import com.simplemobiletools.calendar.pro.BuildConfig
+import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.CustomEventRepeatIntervalDialog
+import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
@@ -11,6 +14,7 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.RadioItem
 import java.io.File
+import java.io.FileOutputStream
 import java.util.TreeSet
 
 fun BaseSimpleActivity.shareEvents(ids: List<Long>) {
@@ -82,4 +86,32 @@ fun Activity.showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: 
             callback(it as Int)
         }
     }
+}
+
+fun SimpleActivity.tryImportEventsFromFile(uri: Uri, callback: (Boolean) -> Unit = {}) {
+    when (uri.scheme) {
+        "file" -> showImportEventsDialog(uri.path!!, callback)
+        "content" -> {
+            val tempFile = getTempFile()
+            if (tempFile == null) {
+                toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
+                return
+            }
+
+            try {
+                val inputStream = contentResolver.openInputStream(uri)
+                val out = FileOutputStream(tempFile)
+                inputStream!!.copyTo(out)
+                showImportEventsDialog(tempFile.absolutePath, callback)
+            } catch (e: Exception) {
+                showErrorToast(e)
+            }
+        }
+
+        else -> toast(com.simplemobiletools.commons.R.string.invalid_file_format)
+    }
+}
+
+fun SimpleActivity.showImportEventsDialog(path: String, callback: (Boolean) -> Unit) {
+    ImportEventsDialog(this, path, callback)
 }
