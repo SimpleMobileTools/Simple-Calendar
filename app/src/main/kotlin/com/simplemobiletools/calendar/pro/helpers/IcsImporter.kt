@@ -249,7 +249,7 @@ class IcsImporter(val activity: SimpleActivity) {
                             curRepeatRule,
                             curRepeatLimit,
                             curRepeatExceptions,
-                            "",
+                            emptyList(),
                             curImportId,
                             DateTimeZone.getDefault().id,
                             curFlags,

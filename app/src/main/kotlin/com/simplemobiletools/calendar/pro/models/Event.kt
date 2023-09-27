@@ -30,7 +30,7 @@ data class Event(
     @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
     @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
     @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: List<String> = emptyList(),
-    @ColumnInfo(name = "attendees") var attendees: String = "",
+    @ColumnInfo(name = "attendees") var attendees: List<Attendee> = emptyList(),
     @ColumnInfo(name = "import_id") var importId: String = "",
     @ColumnInfo(name = "time_zone") var timeZone: String = "",
     @ColumnInfo(name = "flags") var flags: Int = 0,

@@ -2,14 +2,25 @@ package com.simplemobiletools.calendar.pro.models
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Parcelable
 import android.provider.CalendarContract
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import kotlinx.parcelize.Parcelize
 
-data class Attendee(val contactId: Int, var name: String, val email: String, var status: Int, var photoUri: String, var isMe: Boolean, var relationship: Int) {
+@Parcelize
+data class Attendee(
+    val contactId: Int,
+    var name: String,
+    val email: String,
+    var status: Int,
+    var photoUri: String,
+    var isMe: Boolean,
+    var relationship: Int
+) : Parcelable {
     fun getPublicName() = name.ifEmpty { email }
 
     fun updateImage(context: Context, imageView: ImageView, placeholder: Drawable) {
@@ -17,21 +28,21 @@ data class Attendee(val contactId: Int, var name: String, val email: String, var
             imageView.setImageDrawable(placeholder)
         } else {
             val options = RequestOptions()
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .error(placeholder)
-                    .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .error(placeholder)
+                .centerCrop()
 
             Glide.with(context)
-                    .load(photoUri)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(placeholder)
-                    .apply(options)
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(imageView)
+                .load(photoUri)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(placeholder)
+                .apply(options)
+                .apply(RequestOptions.circleCropTransform())
+                .into(imageView)
         }
     }
 
     fun showStatusImage() = status == CalendarContract.Attendees.ATTENDEE_STATUS_ACCEPTED ||
-            status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED ||
-            status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE
+        status == CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED ||
+        status == CalendarContract.Attendees.ATTENDEE_STATUS_TENTATIVE
 }

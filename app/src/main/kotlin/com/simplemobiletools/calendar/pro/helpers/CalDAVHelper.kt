@@ -7,8 +7,6 @@ import android.content.Context
 import android.graphics.Color
 import android.provider.CalendarContract.*
 import android.widget.Toast
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.models.*
@@ -213,7 +211,7 @@ class CalDAVHelper(val context: Context) {
             val originalId = cursor.getStringValue(Events.ORIGINAL_ID)
             val originalInstanceTime = cursor.getLongValue(Events.ORIGINAL_INSTANCE_TIME)
             val reminders = getCalDAVEventReminders(id)
-            val attendees = Gson().toJson(getCalDAVEventAttendees(id))
+            val attendees = getCalDAVEventAttendees(id)
             val availability = cursor.getIntValue(Events.AVAILABILITY)
             val status = cursor.getIntValue(Events.STATUS)
             val color = cursor.getIntValueOrNull(Events.EVENT_COLOR)
@@ -394,8 +392,7 @@ class CalDAVHelper(val context: Context) {
 
     private fun setupCalDAVEventAttendees(event: Event) {
         clearEventAttendees(event)
-        val attendees = Gson().fromJson<ArrayList<Attendee>>(event.attendees, object : TypeToken<List<Attendee>>() {}.type) ?: ArrayList()
-        attendees.forEach {
+        event.attendees.forEach {
             val contentValues = ContentValues().apply {
                 put(Attendees.ATTENDEE_NAME, it.name)
                 put(Attendees.ATTENDEE_EMAIL, it.email)
