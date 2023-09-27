@@ -1637,7 +1637,7 @@ class EventActivity : SimpleActivity() {
     private fun updateAttendees() {
         val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
         mAttendees.forEach {
-            it.isMe = it.email == currentCalendar?.accountName
+            it.isMe = it.email == currentCalendar?.ownerName
         }
 
         mAttendees.sortWith(compareBy<Attendee>
@@ -1827,8 +1827,8 @@ class EventActivity : SimpleActivity() {
 
         if (mEvent.id == null && isSavingEvent && attendees.isNotEmpty()) {
             val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
-            mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
-                attendees = attendees.filter { it.email != currentCalendar?.accountName }.toMutableList() as ArrayList<Attendee>
+            mAvailableContacts.firstOrNull { it.email == currentCalendar?.ownerName }?.apply {
+                attendees = attendees.filter { it.email != currentCalendar?.ownerName }.toMutableList() as ArrayList<Attendee>
                 status = Attendees.ATTENDEE_STATUS_ACCEPTED
                 relationship = Attendees.RELATIONSHIP_ORGANIZER
                 attendees.add(this)
