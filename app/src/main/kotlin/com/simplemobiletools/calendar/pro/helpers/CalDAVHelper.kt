@@ -44,7 +44,7 @@ class CalDAVHelper(val context: Context) {
                     }
                 }
 
-                fetchCalDAVCalendarEvents(calendar.id, localEventType.id!!, showToasts)
+                fetchCalDAVCalendarEvents(calendar, localEventType.id!!, showToasts)
             }
 
             if (scheduleNextSync) {
@@ -149,7 +149,9 @@ class CalDAVHelper(val context: Context) {
     }
 
     @SuppressLint("MissingPermission")
-    private fun fetchCalDAVCalendarEvents(calendarId: Int, eventTypeId: Long, showToasts: Boolean) {
+    private fun fetchCalDAVCalendarEvents(calendar: CalDAVCalendar, eventTypeId: Long, showToasts: Boolean) {
+        val calendarId = calendar.id
+
         val importIdsMap = HashMap<String, Event>()
         val fetchedEventIds = ArrayList<String>()
 
@@ -211,7 +213,7 @@ class CalDAVHelper(val context: Context) {
             val originalId = cursor.getStringValue(Events.ORIGINAL_ID)
             val originalInstanceTime = cursor.getLongValue(Events.ORIGINAL_INSTANCE_TIME)
             val reminders = getCalDAVEventReminders(id)
-            val attendees = getCalDAVEventAttendees(id)
+            val attendees = getCalDAVEventAttendees(id, calendar)
             val availability = cursor.getIntValue(Events.AVAILABILITY)
             val status = cursor.getIntValue(Events.STATUS)
             val color = cursor.getIntValueOrNull(Events.EVENT_COLOR)
@@ -570,7 +572,7 @@ class CalDAVHelper(val context: Context) {
         return reminders.sortedBy { it.minutes }
     }
 
-    private fun getCalDAVEventAttendees(eventId: Long): List<Attendee> {
+    private fun getCalDAVEventAttendees(eventId: Long, calendar: CalDAVCalendar): List<Attendee> {
         val attendees = ArrayList<Attendee>()
         val uri = Attendees.CONTENT_URI
         val projection = arrayOf(
@@ -585,7 +587,7 @@ class CalDAVHelper(val context: Context) {
             val email = cursor.getStringValue(Attendees.ATTENDEE_EMAIL) ?: ""
             val status = cursor.getIntValue(Attendees.ATTENDEE_STATUS)
             val relationship = cursor.getIntValue(Attendees.ATTENDEE_RELATIONSHIP)
-            val attendee = Attendee(0, name, email, status, "", false, relationship)
+            val attendee = Attendee(0, name, email, status, "", email == calendar.ownerName, relationship)
             attendees.add(attendee)
         }
 
