@@ -40,6 +40,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
             } else {
                 config.lastUsedLocalEventTypeId
             }
+            binding.importEventsCheckbox.isChecked = config.lastUsedIgnoreEventTypesState
 
             activity.runOnUiThread {
                 initDialog()
@@ -85,6 +86,7 @@ class ImportEventsDialog(val activity: SimpleActivity, val path: String, val cal
                         activity.toast(com.simplemobiletools.commons.R.string.importing)
                         ensureBackgroundThread {
                             val overrideFileEventTypes = binding.importEventsCheckbox.isChecked
+                            config.lastUsedIgnoreEventTypesState = overrideFileEventTypes
                             val result = IcsImporter(activity).importEvents(path, currEventTypeId, currEventTypeCalDAVCalendarId, overrideFileEventTypes)
                             handleParseResult(result)
                             alertDialog.dismiss()
