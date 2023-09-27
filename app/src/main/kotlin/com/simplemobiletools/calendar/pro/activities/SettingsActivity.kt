@@ -12,10 +12,7 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.ActivitySettingsBinding
-import com.simplemobiletools.calendar.pro.dialogs.ManageAutomaticBackupsDialog
-import com.simplemobiletools.calendar.pro.dialogs.SelectCalendarsDialog
-import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypeDialog
-import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
+import com.simplemobiletools.calendar.pro.dialogs.*
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.EventType
@@ -28,6 +25,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
 import java.io.File
 import java.io.InputStream
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -35,9 +33,13 @@ import kotlin.system.exitProcess
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
-    private val PICK_IMPORT_SOURCE_INTENT = 2
+    private val PICK_SETTINGS_IMPORT_SOURCE_INTENT = 2
+    private val PICK_EVENTS_IMPORT_SOURCE_INTENT = 3
+    private val PICK_EVENTS_EXPORT_FILE_INTENT = 4
 
     private var mStoredPrimaryColor = 0
+
+    private var eventTypesToExport = listOf<Long>()
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
@@ -105,6 +107,8 @@ class SettingsActivity : SimpleActivity() {
         checkPrimaryColor()
         setupEnableAutomaticBackups()
         setupManageAutomaticBackups()
+        setupExportEvents()
+        setupImportEvents()
         setupExportSettings()
         setupImportSettings()
 
@@ -145,9 +149,14 @@ class SettingsActivity : SimpleActivity() {
         if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
             val newAlarmSound = storeNewYourAlarmSound(resultData)
             updateReminderSound(newAlarmSound)
-        } else if (requestCode == PICK_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
+        } else if (requestCode == PICK_SETTINGS_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
             val inputStream = contentResolver.openInputStream(resultData.data!!)
             parseFile(inputStream)
+        } else if (requestCode == PICK_EVENTS_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
+            tryImportEventsFromFile(resultData.data!!)
+        } else if (requestCode == PICK_EVENTS_EXPORT_FILE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
+            val outputStream = contentResolver.openOutputStream(resultData.data!!)
+            exportEventsTo(eventTypesToExport, outputStream)
         }
     }
 
@@ -898,6 +907,18 @@ class SettingsActivity : SimpleActivity() {
         settingsManageAutomaticBackupsHolder.beVisibleIf(enable)
     }
 
+    private fun setupExportEvents() {
+        binding.eventsExportHolder.setOnClickListener {
+            tryExportEvents()
+        }
+    }
+
+    private fun setupImportEvents() {
+        binding.eventsImportHolder.setOnClickListener {
+            tryImportEvents()
+        }
+    }
+
     private fun setupExportSettings() {
         binding.settingsExportHolder.setOnClickListener {
             val configItems = LinkedHashMap<String, Any>().apply {
@@ -959,7 +980,7 @@ class SettingsActivity : SimpleActivity() {
                     type = "text/plain"
 
                     try {
-                        startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                        startActivityForResult(this, PICK_SETTINGS_IMPORT_SOURCE_INTENT)
                     } catch (e: ActivityNotFoundException) {
                         toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
@@ -1070,6 +1091,95 @@ class SettingsActivity : SimpleActivity() {
 
             setupSettingItems()
             updateWidgets()
+        }
+    }
+
+    private fun tryImportEvents() {
+        if (isQPlus()) {
+            handleNotificationPermission { granted ->
+                if (granted) {
+                    hideKeyboard()
+                    Intent(Intent.ACTION_GET_CONTENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE)
+                        type = "text/calendar"
+
+                        try {
+                            startActivityForResult(this, PICK_EVENTS_IMPORT_SOURCE_INTENT)
+                        } catch (e: ActivityNotFoundException) {
+                            toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        } catch (e: Exception) {
+                            showErrorToast(e)
+                        }
+                    }
+                } else {
+                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
+                }
+            }
+        } else {
+            handlePermission(PERMISSION_READ_STORAGE) {
+                if (it) {
+                    importEvents()
+                }
+            }
+        }
+    }
+
+    private fun importEvents() {
+        FilePickerDialog(this) {
+            showImportEventsDialog(it) {}
+        }
+    }
+
+
+    private fun tryExportEvents() {
+        if (isQPlus()) {
+            ExportEventsDialog(this, config.lastExportPath, true) { file, eventTypes ->
+                eventTypesToExport = eventTypes
+                hideKeyboard()
+
+                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                    type = "text/calendar"
+                    putExtra(Intent.EXTRA_TITLE, file.name)
+                    addCategory(Intent.CATEGORY_OPENABLE)
+
+                    try {
+                        startActivityForResult(this, PICK_EVENTS_EXPORT_FILE_INTENT)
+                    } catch (e: ActivityNotFoundException) {
+                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    } catch (e: Exception) {
+                        showErrorToast(e)
+                    }
+                }
+            }
+        } else {
+            handlePermission(PERMISSION_WRITE_STORAGE) { granted ->
+                if (granted) {
+                    ExportEventsDialog(this, config.lastExportPath, false) { file, eventTypes ->
+                        getFileOutputStream(file.toFileDirItem(this), true) {
+                            exportEventsTo(eventTypes, it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun exportEventsTo(eventTypes: List<Long>, outputStream: OutputStream?) {
+        ensureBackgroundThread {
+            val events = eventsHelper.getEventsToExport(eventTypes, config.exportEvents, config.exportTasks, config.exportPastEntries)
+            if (events.isEmpty()) {
+                toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
+            } else {
+                IcsExporter(this).exportEvents(outputStream, events, true) { result ->
+                    toast(
+                        when (result) {
+                            IcsExporter.ExportResult.EXPORT_OK -> com.simplemobiletools.commons.R.string.exporting_successful
+                            IcsExporter.ExportResult.EXPORT_PARTIAL -> com.simplemobiletools.commons.R.string.exporting_some_entries_failed
+                            else -> com.simplemobiletools.commons.R.string.exporting_failed
+                        }
+                    )
+                }
+            }
         }
     }
 }

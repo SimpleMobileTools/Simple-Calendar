@@ -1,14 +1,11 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract.CommonDataKinds
@@ -22,15 +19,12 @@ import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.adapters.QuickFilterEventTypeAdapter
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.databinding.ActivityMainBinding
-import com.simplemobiletools.calendar.pro.dialogs.ExportEventsDialog
-import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
 import com.simplemobiletools.calendar.pro.dialogs.SelectEventTypesDialog
 import com.simplemobiletools.calendar.pro.dialogs.SetRemindersDialog
 import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.fragments.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.helpers.Formatter
-import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult
 import com.simplemobiletools.calendar.pro.helpers.IcsImporter.ImportResult
 import com.simplemobiletools.calendar.pro.jobs.CalDAVUpdateListener
 import com.simplemobiletools.calendar.pro.models.Event
@@ -38,8 +32,6 @@ import com.simplemobiletools.calendar.pro.models.ListEvent
 import com.simplemobiletools.calendar.pro.models.ListItem
 import com.simplemobiletools.calendar.pro.models.ListSectionDay
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.dialogs.FilePickerDialog
-import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -52,14 +44,10 @@ import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import java.io.FileOutputStream
-import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
-    private val PICK_IMPORT_SOURCE_INTENT = 1
-    private val PICK_EXPORT_FILE_INTENT = 2
 
     private var showCalDAVRefreshToast = false
     private var mShouldFilterBeVisible = false
@@ -67,7 +55,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private var shouldGoToTodayBeVisible = false
     private var goToTodayButton: MenuItem? = null
     private var currentFragments = ArrayList<MyFragmentHolder>()
-    private var eventTypesToExport = ArrayList<Long>()
 
     private var mStoredTextColor = 0
     private var mStoredBackgroundColor = 0
@@ -282,8 +269,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.add_holidays -> addHolidays()
                 R.id.add_birthdays -> tryAddBirthdays()
                 R.id.add_anniversaries -> tryAddAnniversaries()
-                R.id.import_events -> tryImportEvents()
-                R.id.export_events -> tryExportEvents()
                 R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
@@ -312,16 +297,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         setIntent(intent)
         checkIsOpenIntent()
         checkIsViewIntent()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-        if (requestCode == PICK_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
-            tryImportEventsFromFile(resultData.data!!)
-        } else if (requestCode == PICK_EXPORT_FILE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
-            val outputStream = contentResolver.openOutputStream(resultData.data!!)
-            exportEventsTo(eventTypesToExport, outputStream)
-        }
     }
 
     private fun storeStateVariables() {
@@ -497,7 +472,14 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                     }
                 }
             } else {
-                tryImportEventsFromFile(uri!!)
+                tryImportEventsFromFile(uri!!) {
+                    if (it) {
+                        runOnUiThread {
+                            updateViewPager()
+                            setupQuickFilter()
+                        }
+                    }
+                }
             }
         }
     }
@@ -1062,129 +1044,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         runOnUiThread {
             if (!isDestroyed) {
                 currentFragments.last().refreshEvents()
-            }
-        }
-    }
-
-    private fun tryImportEvents() {
-        if (isQPlus()) {
-            handleNotificationPermission { granted ->
-                if (granted) {
-                    hideKeyboard()
-                    Intent(Intent.ACTION_GET_CONTENT).apply {
-                        addCategory(Intent.CATEGORY_OPENABLE)
-                        type = "text/calendar"
-
-                        try {
-                            startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
-                        } catch (e: ActivityNotFoundException) {
-                            toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
-                        } catch (e: Exception) {
-                            showErrorToast(e)
-                        }
-                    }
-                } else {
-                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
-                }
-            }
-        } else {
-            handlePermission(PERMISSION_READ_STORAGE) {
-                if (it) {
-                    importEvents()
-                }
-            }
-        }
-    }
-
-    private fun importEvents() {
-        FilePickerDialog(this) {
-            showImportEventsDialog(it)
-        }
-    }
-
-    private fun tryImportEventsFromFile(uri: Uri) {
-        when (uri.scheme) {
-            "file" -> showImportEventsDialog(uri.path!!)
-            "content" -> {
-                val tempFile = getTempFile()
-                if (tempFile == null) {
-                    toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
-                    return
-                }
-
-                try {
-                    val inputStream = contentResolver.openInputStream(uri)
-                    val out = FileOutputStream(tempFile)
-                    inputStream!!.copyTo(out)
-                    showImportEventsDialog(tempFile.absolutePath)
-                } catch (e: Exception) {
-                    showErrorToast(e)
-                }
-            }
-
-            else -> toast(com.simplemobiletools.commons.R.string.invalid_file_format)
-        }
-    }
-
-    private fun showImportEventsDialog(path: String) {
-        ImportEventsDialog(this, path) {
-            if (it) {
-                runOnUiThread {
-                    updateViewPager()
-                    setupQuickFilter()
-                }
-            }
-        }
-    }
-
-    private fun tryExportEvents() {
-        if (isQPlus()) {
-            ExportEventsDialog(this, config.lastExportPath, true) { file, eventTypes ->
-                eventTypesToExport = eventTypes
-                hideKeyboard()
-
-                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    type = "text/calendar"
-                    putExtra(Intent.EXTRA_TITLE, file.name)
-                    addCategory(Intent.CATEGORY_OPENABLE)
-
-                    try {
-                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
-                    } catch (e: ActivityNotFoundException) {
-                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
-                    } catch (e: Exception) {
-                        showErrorToast(e)
-                    }
-                }
-            }
-        } else {
-            handlePermission(PERMISSION_WRITE_STORAGE) { granted ->
-                if (granted) {
-                    ExportEventsDialog(this, config.lastExportPath, false) { file, eventTypes ->
-                        getFileOutputStream(file.toFileDirItem(this), true) {
-                            exportEventsTo(eventTypes, it)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun exportEventsTo(eventTypes: ArrayList<Long>, outputStream: OutputStream?) {
-        ensureBackgroundThread {
-            val events = eventsHelper.getEventsToExport(eventTypes, config.exportEvents, config.exportTasks, config.exportPastEntries)
-            if (events.isEmpty()) {
-                toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
-            } else {
-                IcsExporter(this).exportEvents(outputStream, events, true) { result ->
-                    toast(
-                        when (result) {
-                            ExportResult.EXPORT_OK -> com.simplemobiletools.commons.R.string.exporting_successful
-                            ExportResult.EXPORT_PARTIAL -> com.simplemobiletools.commons.R.string.exporting_some_entries_failed
-                            else -> com.simplemobiletools.commons.R.string.exporting_failed
-                        }
-                    )
-                }
             }
         }
     }
