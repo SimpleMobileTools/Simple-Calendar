@@ -1729,7 +1729,7 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
 
         attendeeHolder.apply {
-            root.beVisible()
+            eventContactAttendee.beVisible()
 
             val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
             (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background)
