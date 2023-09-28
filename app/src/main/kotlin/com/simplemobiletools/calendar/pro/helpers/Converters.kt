@@ -29,10 +29,14 @@ class Converters {
     fun stringListToJson(list: List<String>) = gson.toJson(list)
 
     @TypeConverter
-    fun attendeeListToJson(list: List<Attendee>) = gson.toJson(list)
+    fun attendeeListToJson(list: List<Attendee>): String = gson.toJson(list)
 
     @TypeConverter
     fun jsonToAttendeeList(value: String): List<Attendee> {
+        if (value.isEmpty()) {
+            return emptyList()
+        }
+
         return try {
             gson.fromJson<ArrayList<Attendee>>(value, attendeeType) ?: ArrayList()
         } catch (e: Exception) {
