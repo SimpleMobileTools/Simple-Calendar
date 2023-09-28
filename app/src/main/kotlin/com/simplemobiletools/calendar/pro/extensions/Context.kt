@@ -601,7 +601,7 @@ fun Context.addDayEvents(day: DayMonthly, linearLayout: LinearLayout, res: Resou
             dayMonthlyEventId.apply {
                 setTextColor(textColor)
                 text = it.title.replace(" ", "\u00A0")  // allow word break by char
-                checkViewStrikeThrough(it.isTaskCompleted())
+                checkViewStrikeThrough(it.shouldStrikeThrough())
                 contentDescription = it.title
             }
 
@@ -669,7 +669,8 @@ fun Context.getEventListItems(events: List<Event>, addSectionDays: Boolean = tru
                 it.isPastEvent,
                 it.repeatInterval > 0,
                 it.isTask(),
-                it.isTaskCompleted()
+                it.isTaskCompleted(),
+                it.isAttendeeInviteDeclined()
             )
         listItems.add(listEvent)
     }

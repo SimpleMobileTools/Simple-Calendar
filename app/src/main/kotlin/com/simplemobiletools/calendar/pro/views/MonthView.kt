@@ -130,8 +130,19 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     val daysCnt = getEventLastingDaysCount(event)
 
                     val monthViewEvent = MonthViewEvent(
-                        event.id!!, event.title, event.startTS, event.endTS, event.color, dayIndexOnMonthView,
-                        daysCnt, dayIndexOnMonthView, event.getIsAllDay(), event.isPastEvent, event.isTask(), event.isTaskCompleted()
+                        id = event.id!!,
+                        title = event.title,
+                        startTS = event.startTS,
+                        endTS = event.endTS,
+                        color = event.color,
+                        startDayIndex = dayIndexOnMonthView,
+                        daysCnt = daysCnt,
+                        originalStartDayIndex = dayIndexOnMonthView,
+                        isAllDay = event.getIsAllDay(),
+                        isPastEvent = event.isPastEvent,
+                        isTask = event.isTask(),
+                        isTaskCompleted = event.isTaskCompleted(),
+                        isAttendeeInviteDeclined = event.isAttendeeInviteDeclined()
                     )
                     allEvents.add(monthViewEvent)
                 }
@@ -370,7 +381,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
 
         val curPaint = Paint(eventTitlePaint)
         curPaint.color = paintColor
-        curPaint.isStrikeThruText = event.isTaskCompleted
+        curPaint.isStrikeThruText = event.shouldStrikeThrough()
         return curPaint
     }
 

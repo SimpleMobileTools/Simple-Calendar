@@ -136,7 +136,7 @@ class EventListAdapter(
             eventItemHolder.isSelected = selectedKeys.contains(listEvent.hashCode())
             eventItemHolder.background.applyColorFilter(textColor)
             eventItemTitle.text = listEvent.title
-            eventItemTitle.checkViewStrikeThrough(listEvent.isTaskCompleted)
+            eventItemTitle.checkViewStrikeThrough(listEvent.shouldStrikeThrough())
             eventItemTime.text = if (listEvent.isAllDay) allDayString else Formatter.getTimeFromTS(activity, listEvent.startTS)
             if (listEvent.startTS != listEvent.endTS) {
                 if (!listEvent.isAllDay) {

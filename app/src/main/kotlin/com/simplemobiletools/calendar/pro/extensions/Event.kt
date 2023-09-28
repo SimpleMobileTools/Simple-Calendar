@@ -40,3 +40,5 @@ fun Event.maybeAdjustRepeatLimitCount(original: Event, occurrenceTS: Long) {
         this.repeatLimit = newRepeatLimit
     }
 }
+
+fun Event.shouldStrikeThrough() = isTaskCompleted() || isAttendeeInviteDeclined()

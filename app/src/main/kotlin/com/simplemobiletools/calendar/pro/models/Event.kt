@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.models
 
+import android.provider.CalendarContract.Attendees
 import androidx.collection.LongSparseArray
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -208,5 +209,9 @@ data class Event(
         } else {
             DateTimeZone.getDefault().id
         }
+    }
+
+    fun isAttendeeInviteDeclined() = attendees.any {
+        it.isMe && it.status == Attendees.ATTENDEE_STATUS_DECLINED
     }
 }

@@ -6,10 +6,7 @@ import android.graphics.Paint
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.eventsHelper
-import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.seconds
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.*
 import com.simplemobiletools.commons.extensions.*
@@ -120,7 +117,7 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 setViewPadding(R.id.event_item_title, normalMargin, 0, smallMargin, 0)
             }
 
-            if (item.isTaskCompleted) {
+            if (item.shouldStrikeThrough()) {
                 setInt(R.id.event_item_title, "setPaintFlags", Paint.ANTI_ALIAS_FLAG or Paint.STRIKE_THRU_TEXT_FLAG)
             } else {
                 setInt(R.id.event_item_title, "setPaintFlags", Paint.ANTI_ALIAS_FLAG)
@@ -226,18 +223,19 @@ class EventListWidgetAdapter(val context: Context, val intent: Intent) : RemoteV
                 }
 
                 val listEvent = ListEvent(
-                    event.id!!,
-                    event.startTS,
-                    event.endTS,
-                    event.title,
-                    event.description,
-                    event.getIsAllDay(),
-                    event.color,
-                    event.location,
-                    event.isPastEvent,
-                    event.repeatInterval > 0,
-                    event.isTask(),
-                    event.isTaskCompleted()
+                    id = event.id!!,
+                    startTS = event.startTS,
+                    endTS = event.endTS,
+                    title = event.title,
+                    description = event.description,
+                    isAllDay = event.getIsAllDay(),
+                    color = event.color,
+                    location = event.location,
+                    isPastEvent = event.isPastEvent,
+                    isRepeatable = event.repeatInterval > 0,
+                    isTask = event.isTask(),
+                    isTaskCompleted = event.isTaskCompleted(),
+                    isAttendeeInviteDeclined = event.isAttendeeInviteDeclined()
                 )
                 listItems.add(listEvent)
             }
