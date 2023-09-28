@@ -1,59 +1,25 @@
-Calendrier simple est une application de calendrier hors ligne, hautement personnalisable, pour Android. Ayez un agenda dans votre poche, à l'ère du temps. Pas de fonctionnalités complexes, d'autorisations inutiles ou de publicités ! Il prend en charge la synchronisation des évènements via Google Calendar ou le protocole CalDAV.
+L'application horloge a plusieurs fonctions liées au chronométrage. Cette application peut être utilisée comme widget d'horloge ou comme réveil. Vous pouvez également changer le fond d'écran en direct dans cette application. Cette application est conçue pour vous aider à réguler votre vie quotidienne et à mieux dormir. Vous pouvez également utiliser le chronomètre de cette application pour compter votre temps lorsque vous courez pour un mode de vie sain ou à toute autre fin. Cette application peut également être placée sur votre écran d'accueil pour une navigation facile.
 
-Prenez le contrôle de votre temps :
-Que vous recherchiez un calendrier d'entreprise, un agenda personnel, un planificateur de rendez-vous, ou l'organisation et la planification d'évènements uniques et récurrents comme des anniversaires ou des rappels de rendez-vous, ce calendrier est fait pour vous. Le widget de calendrier propose une grande variété d'options de personnalisation : rappels d'évènements, apparence des notifications, widget de rappels de calendrier et apparence générale.
+En tant que widget d'horloge, vous pouvez activer l'affichage des heures d'autres fuseaux horaires ou utiliser le widget d'horloge simple, mais personnalisable et redimensionnable. La couleur du texte du widget horloge peut être personnalisée, ainsi que la couleur et l'alpha de l'arrière-plan. Vous pouvez également changer le fond d'écran en direct dans cette application. Vous pouvez également modifier la forme du widget d'horloge selon votre choix et l'afficher sur l'écran d'accueil.
 
-Planificateur d'horaire :
-Planificateur de rendez-vous, planificateur mensuel et organisateur familial tout en un ! Vérifiez votre agenda à venir, planifiez des réunions, des évènements, des rendez-vous. Les rappels vous maintiendront à jour et à l'heure. Simple d'utilisation, ce calendrier sera également visualisable sous la forme d'une liste d'évènements, afin de savoir exactement ce qui se passe dans votre vie.
+L'alarme contient toutes les fonctionnalités attendues comme la sélection du jour, le basculement des vibrations, la sélection de la sonnerie, la répétition ou l'ajout d'une étiquette personnalisée. Se réveiller sera un plaisir. Il prend en charge autant d'alarmes que vous le souhaitez, il n'y aura donc plus d'excuses pour ne pas se réveiller et mieux dormir :) L'augmentation progressive du volume est également prise en charge, activée par défaut. Un bouton « répétition » personnalisable est également disponible, au cas où vous auriez vraiment une bonne raison de l'utiliser. Le réveil fourni par cette application aussi simple que possible. Vous devez simplement ajouter le nombre de fois que vous voulez et les activer. Pendant ce temps, vous pouvez également demander l'aide d'un guide intégré à cette application de réveil pour vous aider à naviguer dans cette application pour mieux dormir. Vous pouvez mieux dormir afin que cette application puisse vous réveiller à l'heure définie sans perturber votre style de vie. Cette alarme peut être placée sur l'écran d'accueil pour vous permettre d'accéder facilement à l'alarme pendant que vous pouvez travailler sur d'autres choses sur votre appareil.
 
-Caractéristiques de Calendrier simple :
+Avec le chronomètre, vous pouvez facilement mesurer une période de temps plus longue ou des tours individuels. Vous pouvez trier les tours de différentes manières. Il contient également des vibrations facultatives sur les pressions sur les boutons, juste pour vous faire savoir que le bouton a été enfoncé au cas où vous ne pourriez pas regarder l'appareil pour une raison quelconque ou si vous êtes pressé. Ce chronomètre peut vous aider à vous mettre en forme si vous faites du yoga ou courez dans le parc. Vous pouvez mettre le chronomètre sur l'écran d'accueil pour pouvoir y accéder facilement et le modifier en fonction de vos besoins sans ouvrir le menu et le trouver.
 
-✔️ La meilleure expérience utilisateur :
-➕ Pas de publicités ni de fenêtres intempestives,
-➕ Aucun accès à Internet n'est nécessaire.
+Vous pouvez facilement configurer une minuterie pour être averti de certains événements. Vous pouvez à la fois changer sa sonnerie ou activer les vibrations. Vous ne brûlerez plus jamais cette pizza.
 
-✔️ Flexibilité pour votre productivité :
-➕ Le calendrier prend en charge l'exportation et l'importation d'évènements via des fichiers .ics,
-➕ Exportez les paramètres vers des fichiers .txt pour les importer sur un autre appareil,
-➕ Création d'évènements flexibles : horaires, durée, rappels, règles de répétition,
-➕ Prise en charge de CalDAV pour la synchronisation des évènements via les principaux services.
+Il est livré avec une conception matérielle et un thème sombre par défaut, offre une excellente expérience utilisateur pour une utilisation facile. Le manque d'accès à Internet vous donne plus de confidentialité, de sécurité et de stabilité que les autres applications. Le thème sombre dans ce widget horloge peut vous aider à régler votre réveil la nuit sans aveugler vos yeux avec la couleur vive de votre alarme mobile.
 
-✔️ Personnalisé :
-➕ Planificateur d'horaires : personnalisez et modifiez le son, la boucle, le flux audio, les vibrations,
-➕ Widget de calendrier : couleurs et thèmes personnalisables,
-➕ Calendrier codé en source libre, traduit dans plus de 45 langues,
-➕ Planifiez votre journée : partage d'évènements sur les réseaux sociaux, par courriel, etc,
-➕ Organisateur familial : duplication, organisation et gestion d'évènements.
+Ne contient aucune publicité ou autorisations inutiles. Il est entièrement open source, fournit des couleurs personnalisables et permet de choisir parmi différents fonds d'écran animés.
 
-✔️ Organisation et gestion du temps :
-➕ Organisez votre journée,
-➕ Planifiez votre emploi du temps chargé n'a jamais été aussi simple,
-➕ Gestionnaire d'itinéraires : calendrier professionnel partagé entre les équipes de travail,
-➕ Planificateur de rendez-vous : organisez et maintenez votre agenda en toute simplicité,
-➕ Application de planification : évènement personnel, rappel de rendez-vous et planificateur d'agenda faciles à utiliser,
-➕ Planifiez votre journée avec ce planificateur d'horaires Android, organisateur d'évènements et outil familial.
-
-✔️ Application de calendrier numéro 1 :
-➕ Importez les jours fériés, les dates de naissance et les anniversaires,
-➕ Filtrez les évènements personnels par type d’évènement,
-➕ Horaire et lieu de l’évènement, indiqué sur une carte,
-➕ Calendrier d’affaires ou agenda numérique personnel,
-➕ Passez rapidement entre la vue quotidienne, hebdomadaire, mensuelle, annuelle et la liste d'évènements.
-
-TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE : LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR HORS LIGNE SANS PUBLICITÉ !
-
-Il est livré par défaut avec la conception matérielle et un thème sombre, offre une grande expérience utilisateur. L'absence d’accès à Internet vous offre davantage de confidentialité, de sécurité et de stabilité, en comparaison à d'autres applications.
-
-Ne contient pas de publicités ou de permissions non nécessaires. Est entièrement codé en source libre et fournit des couleurs personnalisables.
-
-Découvrez la gamme complète d’outils simples à cette adresse web :
+Découvrez la suite complète des outils simples ici:
 https://www.simplemobiletools.com
 
-Lien Facebook :
+Facebook:
 https://www.facebook.com/simplemobiletools
 
-Lien Reddit :
+Reddit:
 https://www.reddit.com/r/SimpleMobileTools
 
-Lien Telegram :
+Telegram:
 https://t.me/SimpleMobileTools
