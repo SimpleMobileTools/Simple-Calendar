@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calendrier simple</string>
-    <string name="app_launcher_name">Calendrier</string>
+    <string name="app_name">Agenda simple</string>
+    <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Changer de vue</string>
     <string name="daily_view">Vue quotidienne</string>
     <string name="weekly_view">Vue hebdomadaire</string>
@@ -13,8 +13,8 @@
     <string name="go_to_today">Aller à aujourd\'hui</string>
     <string name="go_to_date">Aller à une date</string>
     <!-- Widget titles -->
-    <string name="widget_monthly">Calendrier mensuel</string>
-    <string name="widget_list">Liste des évènements du calendrier</string>
+    <string name="widget_monthly">Agenda mensuel</string>
+    <string name="widget_list">Liste des évènements de l\'agenda</string>
     <string name="widget_todays_date">Date du jour</string>
     <!-- Event -->
     <string name="event">Évènement</string>
@@ -31,7 +31,7 @@
     <string name="public_event_notification_text">Un évènement est à venir</string>
     <string name="everything_filtered_out">Vous avez filtré tous les types d\'évènements</string>
     <string name="event_color">Couleur de l\'évènement</string>
-    <string name="default_calendar_color">Couleur du calendrier par défaut</string>
+    <string name="default_calendar_color">Couleur de l\'agenda par défaut</string>
     <!-- Tasks -->
     <string name="task">Tâche</string>
     <string name="tasks">Tâches</string>
@@ -153,7 +153,7 @@
     <string name="select_event_type">Sélectionner un type d\'évènement</string>
     <string name="move_events_into_default">Déplacer les évènements concernés vers le type d\'évènement par défaut</string>
     <string name="remove_affected_events">Supprimer définitivement les évènements concernés</string>
-    <string name="unsync_caldav_calendar">Pour supprimer un calendrier CalDAV, vous devez le désynchroniser</string>
+    <string name="unsync_caldav_calendar">Pour supprimer un agenda CalDAV, vous devez le désynchroniser</string>
     <!-- Holidays -->
     <string name="holidays">Jours fériés</string>
     <string name="add_holidays">Ajouter des jours fériés</string>
@@ -212,19 +212,19 @@
     <string name="allow_creating_tasks">Autoriser la création de tâches</string>
     <!-- CalDAV sync -->
     <string name="caldav">CalDAV</string>
-    <string name="select_caldav_calendars">Sélectionner les calendriers à synchroniser</string>
-    <string name="manage_synced_calendars">Gérer les calendriers synchronisés</string>
+    <string name="select_caldav_calendars">Sélectionner les agendas à synchroniser</string>
+    <string name="manage_synced_calendars">Gérer les agendas synchronisés</string>
     <string name="store_locally_only">Stocker localement uniquement</string>
-    <string name="refresh_caldav_calendars">Actualiser les calendriers CalDAV</string>
+    <string name="refresh_caldav_calendars">Actualiser les agendas CalDAV</string>
     <string name="refreshing">Actualisation en cours…</string>
     <string name="refreshing_complete">L\'actualisation est terminée</string>
-    <string name="editing_calendar_failed">La modification du calendrier a échoué</string>
+    <string name="editing_calendar_failed">La modification de l\'agenda a échoué</string>
     <string name="syncing">Synchronisation…</string>
     <string name="synchronization_completed">Synchronisation terminée</string>
     <string name="select_a_different_caldav_color">Sélectionner une couleur différente (peut être appliquée localement uniquement)</string>
-    <string name="insufficient_permissions">Vous n\'avez pas le droit d\'écrire dans le calendrier sélectionné</string>
-    <string name="caldav_event_not_found">Évènement introuvable. Veuillez activer la synchronisation CalDAV pour le calendrier concerné dans les paramètres de l\'application.</string>
-    <string name="no_synchronized_calendars">Aucun calendrier synchronisable n\'a été trouvé</string>
+    <string name="insufficient_permissions">Vous n\'avez pas le droit d\'écrire dans l\'agenda sélectionné</string>
+    <string name="caldav_event_not_found">Évènement introuvable. Veuillez activer la synchronisation CalDAV pour l\'agenda concerné dans les paramètres de l\'application.</string>
+    <string name="no_synchronized_calendars">Aucun agenda synchronisable n\'a été trouvé</string>
     <string name="status_free">Disponible</string>
     <string name="status_busy">Occupé</string>
     <string name="fetching_event_failed">La récupération de l\'évènement %s a échoué</string>
@@ -270,8 +270,8 @@
     <string name="faq_1_title">Comment puis-je supprimer les jours fériés importés avec le bouton « Ajouter des jours fériés » \?</string>
     <string name="faq_1_text">Les jours fériés ainsi créés sont insérés dans un nouveau type d\'évènement appelé « Jours fériés ». Vous pouvez aller dans « Paramètres » -&gt; « Gérer les types d\'événements », et appuyer longuement sur le type d\'évènement concerné et le supprimer en sélectionnant la corbeille.</string>
     <string name="faq_2_title">Puis-je synchroniser mes évènements avec Google Agenda ou tout autre service proposant la synchronisation CalDAV \?</string>
-    <string name="faq_2_title_extra">Peut-être même partager des calendriers avec d\'autres personnes \?</string>
-    <string name="faq_2_text">Oui, activez simplement « Synchronisation CalDAV » dans les paramètres de l\'application et sélectionnez les calendriers que vous souhaitez synchroniser. Cependant, vous aurez besoin d\'une application tierce gérant la synchronisation entre l\'appareil et les serveurs. Si vous souhaitez synchroniser un calendrier Google, leur application de calendrier officielle fera le travail. Pour les autres types de calendriers, vous aurez besoin d\'un adaptateur de synchronisation tiers partie, par exemple « DAVx5 ».</string>
+    <string name="faq_2_title_extra">Peut-être même partager des agendas avec d\'autres personnes \?</string>
+    <string name="faq_2_text">Oui, activez simplement « Synchronisation CalDAV » dans les paramètres de l\'application et sélectionnez les agendas que vous souhaitez synchroniser. Cependant, vous aurez besoin d\'une application tierce gérant la synchronisation entre l\'appareil et les serveurs. Si vous souhaitez synchroniser un agenda Google, leur application d\'agenda officielle, « Google Calendar », fera le travail. Pour les autres types d\'agendas, vous aurez besoin d\'un adaptateur de synchronisation tiers partie, par exemple « DAVx5 ».</string>
     <string name="faq_3_title">Je vois les rappels visuels, mais je n\'entends aucun son. Que puis-je faire \?</string>
     <string name="faq_3_text">Le fait d\'afficher le rappel actuel, mais également de lire de l\'audio, est grandement affecté par le système. Si vous n\'entendez aucun son, essayez d\'aller dans les paramètres de l\'application, d\'appuyer sur l\'option « Flux audio utilisé pour les rappels » et de la remplacer par une valeur différente. Si cela ne fonctionne toujours pas, vérifiez vos paramètres sonores, si le flux en question n\'est pas coupé.</string>
     <string name="faq_4_title">L\'application prend-elle en charge les fuseaux horaires \?</string>
