@@ -12,5 +12,6 @@ data class MonthViewEvent(
     val isAllDay: Boolean,
     val isPastEvent: Boolean,
     val isTask: Boolean,
-    val isTaskCompleted: Boolean
+    val isTaskCompleted: Boolean,
+    val isAttendeeInviteDeclined: Boolean,
 )

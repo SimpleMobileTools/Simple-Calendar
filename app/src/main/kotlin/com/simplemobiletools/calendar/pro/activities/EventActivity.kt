@@ -24,8 +24,6 @@ import android.widget.RelativeLayout
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.databinding.ActivityEventBinding
@@ -171,7 +169,7 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
-            putString(ATTENDEES, getAllAttendees(false))
+            putParcelableArrayList(ATTENDEES, getAllAttendees(false))
 
             putInt(AVAILABILITY, mAvailability)
             putInt(EVENT_COLOR, mEventColor)
@@ -213,8 +211,7 @@ class EventActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
 
-            val token = object : TypeToken<List<Attendee>>() {}.type
-            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), token) ?: ArrayList()
+            mAttendees = getParcelableArrayList(ATTENDEES) ?: arrayListOf()
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
@@ -507,8 +504,7 @@ class EventActivity : SimpleActivity() {
         mAvailability = mEvent.availability
         mEventColor = mEvent.color
 
-        val token = object : TypeToken<List<Attendee>>() {}.type
-        mAttendees = Gson().fromJson<ArrayList<Attendee>>(mEvent.attendees, token) ?: ArrayList()
+        mAttendees = mEvent.attendees.toMutableList() as ArrayList<Attendee>
 
         checkRepeatTexts(mRepeatInterval)
         checkAttendees()
@@ -1310,7 +1306,7 @@ class EventActivity : SimpleActivity() {
             flags = mEvent.flags.addBitIf(binding.eventAllDay.isChecked, FLAG_ALL_DAY)
             repeatLimit = if (repeatInterval == 0) 0 else mRepeatLimit
             repeatRule = mRepeatRule
-            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) "" else getAllAttendees(true)
+            attendees = if (mEventCalendarId == STORED_LOCALLY_ONLY) emptyList() else getAllAttendees(true)
             eventType = newEventType
             lastUpdated = System.currentTimeMillis()
             source = newSource
@@ -1641,7 +1637,7 @@ class EventActivity : SimpleActivity() {
     private fun updateAttendees() {
         val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
         mAttendees.forEach {
-            it.isMe = it.email == currentCalendar?.accountName
+            it.isMe = it.email == currentCalendar?.ownerName
         }
 
         mAttendees.sortWith(compareBy<Attendee>
@@ -1729,7 +1725,7 @@ class EventActivity : SimpleActivity() {
         autoCompleteView.focusSearch(View.FOCUS_DOWN)?.requestFocus()
 
         attendeeHolder.apply {
-            root.beVisible()
+            eventContactAttendee.beVisible()
 
             val attendeeStatusBackground = resources.getDrawable(R.drawable.attendee_status_circular_background)
             (attendeeStatusBackground as LayerDrawable).findDrawableByLayerId(R.id.attendee_status_circular_background)
@@ -1817,7 +1813,7 @@ class EventActivity : SimpleActivity() {
         }
     }
 
-    private fun getAllAttendees(isSavingEvent: Boolean): String {
+    private fun getAllAttendees(isSavingEvent: Boolean): ArrayList<Attendee> {
         var attendees = ArrayList<Attendee>()
         mSelectedContacts.forEach {
             attendees.add(it)
@@ -1831,15 +1827,15 @@ class EventActivity : SimpleActivity() {
 
         if (mEvent.id == null && isSavingEvent && attendees.isNotEmpty()) {
             val currentCalendar = calDAVHelper.getCalDAVCalendars("", true).firstOrNull { it.id == mEventCalendarId }
-            mAvailableContacts.firstOrNull { it.email == currentCalendar?.accountName }?.apply {
-                attendees = attendees.filter { it.email != currentCalendar?.accountName }.toMutableList() as ArrayList<Attendee>
+            mAvailableContacts.firstOrNull { it.email == currentCalendar?.ownerName }?.apply {
+                attendees = attendees.filter { it.email != currentCalendar?.ownerName }.toMutableList() as ArrayList<Attendee>
                 status = Attendees.ATTENDEE_STATUS_ACCEPTED
                 relationship = Attendees.RELATIONSHIP_ORGANIZER
                 attendees.add(this)
             }
         }
 
-        return Gson().toJson(attendees)
+        return attendees
     }
 
     private fun getNames(): List<Attendee> {

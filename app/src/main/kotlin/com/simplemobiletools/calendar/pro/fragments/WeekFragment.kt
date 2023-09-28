@@ -645,7 +645,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             }
 
                             text = event.title
-                            checkViewStrikeThrough(event.isTaskCompleted())
+                            checkViewStrikeThrough(event.shouldStrikeThrough())
                             contentDescription = text
 
                             minHeight = if (event.startTS == event.endTS) {
@@ -785,7 +785,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                 setTextColor(textColor)
                 maxLines = if (event.isTask()) 1 else 2
                 text = event.title
-                checkViewStrikeThrough(event.isTaskCompleted())
+                checkViewStrikeThrough(event.shouldStrikeThrough())
                 contentDescription = text
             }
 

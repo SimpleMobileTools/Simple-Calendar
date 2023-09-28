@@ -90,7 +90,7 @@ class DayEventsAdapter(activity: SimpleActivity, val events: ArrayList<Event>, r
             eventItemHolder.isSelected = selectedKeys.contains(event.id?.toInt())
             eventItemHolder.background.applyColorFilter(textColor)
             eventItemTitle.text = event.title
-            eventItemTitle.checkViewStrikeThrough(event.isTaskCompleted())
+            eventItemTitle.checkViewStrikeThrough(event.shouldStrikeThrough())
             eventItemTime.text = if (event.getIsAllDay()) allDayString else Formatter.getTimeFromTS(activity, event.startTS)
             if (event.startTS != event.endTS) {
                 val startDayCode = Formatter.getDayCodeFromTS(event.startTS)

@@ -232,36 +232,24 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         var time = dateTime.withHourOfDay(7)
         listItems.add(
-            ListEvent(
-                1,
-                time.seconds(),
-                time.plusMinutes(30).seconds(),
-                getString(R.string.sample_title_1),
-                getString(R.string.sample_description_1),
-                false,
-                getProperPrimaryColor(),
-                "",
-                false,
-                false,
-                false,
-                false
+            ListEvent.empty.copy(
+                id = 1,
+                startTS = time.seconds(),
+                endTS = time.plusMinutes(30).seconds(),
+                title = getString(R.string.sample_title_1),
+                description = getString(R.string.sample_description_1),
+                color = getProperPrimaryColor(),
             )
         )
         time = dateTime.withHourOfDay(8)
         listItems.add(
-            ListEvent(
-                2,
-                time.seconds(),
-                time.plusHours(1).seconds(),
-                getString(R.string.sample_title_2),
-                getString(R.string.sample_description_2),
-                false,
-                getProperPrimaryColor(),
-                "",
-                false,
-                false,
-                false,
-                false
+            ListEvent.empty.copy(
+                id = 2,
+                startTS = time.seconds(),
+                endTS = time.plusHours(1).seconds(),
+                title = getString(R.string.sample_title_2),
+                description = getString(R.string.sample_description_2),
+                color = getProperPrimaryColor(),
             )
         )
 
@@ -272,53 +260,35 @@ class WidgetListConfigureActivity : SimpleActivity() {
 
         time = dateTime.withHourOfDay(8)
         listItems.add(
-            ListEvent(
-                3,
-                time.seconds(),
-                time.plusHours(1).seconds(),
-                getString(R.string.sample_title_3),
-                "",
-                false,
-                getProperPrimaryColor(),
-                "",
-                false,
-                false,
-                false,
-                false
+            ListEvent.empty.copy(
+                id = 3,
+                startTS = time.seconds(),
+                endTS = time.plusHours(1).seconds(),
+                title = getString(R.string.sample_title_3),
+                description = "",
+                color = getProperPrimaryColor(),
             )
         )
         time = dateTime.withHourOfDay(13)
         listItems.add(
-            ListEvent(
-                4,
-                time.seconds(),
-                time.plusHours(1).seconds(),
-                getString(R.string.sample_title_4),
-                getString(R.string.sample_description_4),
-                false,
-                getProperPrimaryColor(),
-                "",
-                false,
-                false,
-                false,
-                false
+            ListEvent.empty.copy(
+                id = 4,
+                startTS = time.seconds(),
+                endTS = time.plusHours(1).seconds(),
+                title = getString(R.string.sample_title_4),
+                description = getString(R.string.sample_description_4),
+                color = getProperPrimaryColor(),
             )
         )
         time = dateTime.withHourOfDay(18)
         listItems.add(
-            ListEvent(
-                5,
-                time.seconds(),
-                time.plusMinutes(10).seconds(),
-                getString(R.string.sample_title_5),
-                "",
-                false,
-                getProperPrimaryColor(),
-                "",
-                false,
-                false,
-                false,
-                false
+            ListEvent.empty.copy(
+                id = 5,
+                startTS = time.seconds(),
+                endTS = time.plusMinutes(10).seconds(),
+                title = getString(R.string.sample_title_5),
+                description = "",
+                color = getProperPrimaryColor(),
             )
         )
 

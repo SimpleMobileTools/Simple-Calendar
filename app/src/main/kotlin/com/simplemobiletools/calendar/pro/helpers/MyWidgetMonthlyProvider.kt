@@ -12,10 +12,7 @@ import android.view.View
 import android.widget.RemoteViews
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.activities.SplashActivity
-import com.simplemobiletools.calendar.pro.extensions.config
-import com.simplemobiletools.calendar.pro.extensions.getWidgetFontSize
-import com.simplemobiletools.calendar.pro.extensions.isWeekendIndex
-import com.simplemobiletools.calendar.pro.extensions.launchNewEventOrTaskActivity
+import com.simplemobiletools.calendar.pro.extensions.*
 import com.simplemobiletools.calendar.pro.interfaces.MonthlyCalendar
 import com.simplemobiletools.calendar.pro.models.DayMonthly
 import com.simplemobiletools.calendar.pro.models.Event
@@ -155,7 +152,7 @@ class MyWidgetMonthlyProvider : AppWidgetProvider() {
                     applyColorFilter(R.id.day_monthly_task_image, eventTextColor)
                     setInt(R.id.day_monthly_event_background, "setColorFilter", it.color)
 
-                    if (it.isTaskCompleted()) {
+                    if (it.shouldStrikeThrough()) {
                         setInt(R.id.day_monthly_event_id, "setPaintFlags", Paint.ANTI_ALIAS_FLAG or Paint.STRIKE_THRU_TEXT_FLAG)
                     } else {
                         setInt(R.id.day_monthly_event_id, "setPaintFlags", Paint.ANTI_ALIAS_FLAG)

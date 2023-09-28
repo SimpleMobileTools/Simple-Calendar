@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.models
 
+import android.provider.CalendarContract.Attendees
 import androidx.collection.LongSparseArray
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -30,7 +31,7 @@ data class Event(
     @ColumnInfo(name = "repeat_rule") var repeatRule: Int = 0,
     @ColumnInfo(name = "repeat_limit") var repeatLimit: Long = 0L,
     @ColumnInfo(name = "repetition_exceptions") var repetitionExceptions: List<String> = emptyList(),
-    @ColumnInfo(name = "attendees") var attendees: String = "",
+    @ColumnInfo(name = "attendees") var attendees: List<Attendee> = emptyList(),
     @ColumnInfo(name = "import_id") var importId: String = "",
     @ColumnInfo(name = "time_zone") var timeZone: String = "",
     @ColumnInfo(name = "flags") var flags: Int = 0,
@@ -208,5 +209,9 @@ data class Event(
         } else {
             DateTimeZone.getDefault().id
         }
+    }
+
+    fun isAttendeeInviteDeclined() = attendees.any {
+        it.isMe && it.status == Attendees.ATTENDEE_STATUS_DECLINED
     }
 }
