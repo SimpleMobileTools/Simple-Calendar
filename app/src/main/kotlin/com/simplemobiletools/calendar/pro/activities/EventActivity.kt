@@ -24,6 +24,8 @@ import android.widget.RelativeLayout
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.AutoCompleteTextViewAdapter
 import com.simplemobiletools.calendar.pro.databinding.ActivityEventBinding
@@ -169,7 +171,7 @@ class EventActivity : SimpleActivity() {
             putInt(REPEAT_RULE, mRepeatRule)
             putLong(REPEAT_LIMIT, mRepeatLimit)
 
-            putParcelableArrayList(ATTENDEES, getAllAttendees(false))
+            putString(ATTENDEES, Gson().toJson(getAllAttendees(false)))
 
             putInt(AVAILABILITY, mAvailability)
             putInt(EVENT_COLOR, mEventColor)
@@ -211,7 +213,8 @@ class EventActivity : SimpleActivity() {
             mRepeatRule = getInt(REPEAT_RULE)
             mRepeatLimit = getLong(REPEAT_LIMIT)
 
-            mAttendees = getParcelableArrayList(ATTENDEES) ?: arrayListOf()
+            val token = object : TypeToken<List<Attendee>>() {}.type
+            mAttendees = Gson().fromJson<ArrayList<Attendee>>(getString(ATTENDEES), token) ?: ArrayList()
 
             mEventTypeId = getLong(EVENT_TYPE_ID)
             mEventCalendarId = getInt(EVENT_CALENDAR_ID)
