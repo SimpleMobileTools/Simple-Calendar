@@ -1,54 +1,58 @@
-Simple Calendar 2023 est une application de calendrier mensuel hors ligne hautement personnalisable pour Android. Ayez un planificateur d’agenda dans votre poche, conçu pour faire exactement ce qu’un planificateur d’horaire personnel minuscule devrait faire en 2023. Pas de fonctionnalités compliquées, des autorisations inutiles, ou des annonces! Il prend en charge la synchronisation des événements via Google Calendar ou d’autres calendriers supportant le protocole CalDAV.
+« Agenda simple » 2023 est une application d'agenda mensuel, hors ligne, hautement personnalisable, pour Android. Ayez un agenda dans votre poche, dans l'ère du temps. Pas de fonctionnalités compliquées ni d'autorisations inutiles ou encore de publicités ! L'agenda prend en charge la synchronisation des évènements via « Google Calendar » ou via le protocole « CalDAV ».
 
-Prenez le contrôle de votre temps
-Que vous soyez à la recherche d’un calendrier de travail pour une entreprise, un planificateur de jour, un planificateur de rendez-vous, ou l’organisation et la planification d’événements uniques et récurrents comme les anniversaires, les rappels de rendez-vous, ou quoi que ce soit d’autre, Simple Calendar 2023 facilite l’organisation.
+Prenez le contrôle de votre temps :
+Que vous recherchiez un calendrier de travail pour votre entreprise, un agenda, un planificateur de rendez-vous, ou bien à organiser et à planifier des évènements uniques et récurrents, comme des anniversaires ou des rappels de rendez-vous, « Agenda simple » 2023 facilite votre organisation. Le widget d'agenda vous propose une grande variété d'options de personnalisation : rappels d'évènements, notifications, rappels et apparence générale.
 
-Planificateur d’horaire : Planifiez votre journée
-Planificateur de rendez-vous, planificateur mensuel et organisateur familial en un seul! Consultez votre agenda à venir, planifiez des réunions d’affaires et des événements et prenez rendez-vous facilement. Les rappels vous tiendront à l’heure et vous informeront sur votre application d’horaire quotidien. Ce widget de calendrier 2023 est remarquablement facile à utiliser.
+Planifiez votre journée :
+Planificateur de rendez-vous, planificateur mensuel et organisateur familial tout en un ! Vérifiez votre agenda à venir, planifiez des réunions d'affaires, des évènements et des rendez-vous. Les rappels vous aideront à affûter votre ponctualité et à vous informer sur votre organisation horaire. Ce widget d'agenda 2023 est simple à utiliser. Vous pouvez également le visualiser sous la forme d'une simple liste d'évènements, afin de savoir exactement ce qu'il se passe dans votre vie.
 
-Caractéristiques simples du calendrier 2023
+Caractéristiques :
 
-✔️ La meilleure expérience utilisateur
-➕ Pas d’annonces ou de popups ennuyeux, vraiment grande expérience utilisateur!
-➕ Aucun accès Internet n’est nécessaire, vous donnant plus d’intimité, de sécurité et de stabilité
+✔️ Meilleure expérience utilisateur ;
+➕ Pas de publicités ni de fenêtres intempestives ennuyeuses ;
+➕ Absence d'accès à Internet. Ce qui vous offre davantage de confidentialité, de sécurité et de stabilité.
 
-✔️ Flexibilité pour votre productivité
-➕ Calendar Widget prend en charge l’exportation et l’importation d’événements via les fichiers . ics
-➕ Exporter les paramètres vers des fichiers . txt à importer vers un autre périphérique
-➕ Création d’événement flexible – horaires, durée, rappels, règles de répétition puissantes
-➕ Prise en charge de CalDAV pour la synchronisation d’événements via Google Calendar, Microsoft Outlook, Nextcloud, Exchange, etc
+✔️ Flexibilité :
+➕ Le widget d'agenda prend en charge l'exportation et l'importation d'évènements via des fichiers « ICS » ;
+➕ Exportation des paramètres vers des fichiers « TXT » pour les importer sur un autre appareil ;
+➕ Création d'évènements : horaires, durée, rappels, règles de répétition ;
+➕ Prise en charge du protocole « CalDAV » pour la synchronisation des évènements.
 
-✔️ Personnalisé pour vous
-➕ Planificateur d’horaire - personnaliser et modifier le son, la boucle, le flux audio, les vibrations
-➕ Widget Calendrier - Calendriers colorés et thèmes personnalisables
-➕ Open source minuscule calendrier, traduit en 45+ langues
-➕ Family Organizer - avec duplication, organisation et gestion du temps
+✔️ Personnalisé :
+➕ Personnalisez et modifiez le son, les boucles, le flux audio, les vibrations ;
+➕ Agendas colorés et thèmes personnalisables ;
+➕ Agenda à code source ouvert, traduit dans plus de 45 langues ;
+➕ Organiseur familial : duplication, organisation et gestion du temps.
 
-✔️ Organisation et gestion du temps
-➕ Agenda - le agenda vous aidera à organiser votre journée
-➕ Planificateur hebdomadaire – Il n’a jamais été aussi facile de devancer votre horaire hebdomadaire chargé.
-➕ Responsable de l’itinéraire - calendrier des activités partagé entre les équipes au travail
-➕ Planificateur de rendez-vous - organiser et tenir à jour votre agenda avec facilité
-➕ Planifiez votre journée - gérez votre journée avec cet agenda android, organisateur d’événements et de familles
+✔️ Organisation et gestion du temps :
+➕ L'agenda vous aidera à organiser votre journée ;
+➕ Gardez une longueur d'avance sur votre emploi du temps hebdomadaire n'a jamais été aussi simple ;
+➕ Gestionnaire d'itinéraire : agenda professionnel partagé entre les équipes de travail ;
+➕ Organisez vos rendez-vous en toute simplicité ;
+➕ Application de planification : évènement personnel, rappel de rendez-vous et planificateur d'agenda ;
+➕ Gérez votre journée, organisez vos évènements et vos activités familiales.
 
-✔️ application de calendrier no 1
-➕ Importez les jours fériés, les anniversaires et les anniversaires facilement
-➕ Filtrer rapidement les événements personnels par type d’événement
-➕ Horaire quotidien et lieu de l’événement, indiqué sur une carte
-➕ Calendrier d’affaires rapide ou agenda numérique personnel
+✔️ Application de calendrier n°1 :
+➕ Importez facilement les jours fériés, les anniversaires de vos contacts et d'autres dates anniversaires ;
+➕ Filtrez rapidement les évènements personnels par type d'évènement ;
+➕ Lieu de l'évènement, affiché sur une carte ;
+➕ Agenda professionnel rapide ou agenda numérique personnel ;
+➕ Basculez rapidement entre les vues quotidiennes, hebdomadaires, mensuelles, annuelles et d'évènements.
 
-TÉLÉCHARGEZ LE PLANIFICATEUR DE CALENDRIER SIMPLE – LE PLANIFICATEUR D’HORAIRE ET D’ORDRE DU JOUR D’OAN FFLINE SANS PUBLICITÉ! PLANIFIEZ VOTRE CALENDRIER 2023!
+TÉLÉCHARGEZ UN PLANIFICATEUR D'AGENDA SIMPLE : AGENDA HORS LIGNE, SANS PUBLICITÉS !
 
-Il est livré avec la conception du matériel et da ark thème par défaut, offre une grande expérience utilisateur pour une utilisation facile. Le manque d’accès à Internet vous donne plus de confidentialité, de sécurité et de stabilité que les autres applications.
+Cet agenda est livré avec une conception matérielle et un thème sombre par défaut, vous offrant une excellente expérience utilisateur, pour une utilisation facile. L'absence d'accès à Internet vous offre davantage de confidentialité, de sécurité et de stabilité.
 
-Découvrez la gamme complète d’outils simples ici :
+Sans publicités ni autorisations inutiles, cet agenda est entièrement à code source ouvert et vous fournit des couleurs personnalisables.
+
+Découvrez la suite complète d’outils simples à cette adresse web :
 https://www.simplemobiletools.com
 
-Facebook :
+Lien Facebook :
 https://www.facebook.com/simplemobiletools
 
-Reddit :
+Lien Reddit :
 https://www.reddit.com/r/SimpleMobileTools
 
-Télégramme :
-https://t. me/SimpleMobileTools
+Lien Telegram :
+https://t.me/SimpleMobileTools
