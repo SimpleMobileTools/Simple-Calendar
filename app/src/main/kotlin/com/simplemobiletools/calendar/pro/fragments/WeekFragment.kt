@@ -48,6 +48,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
 
     var listener: WeekFragmentListener? = null
     private var weekTimestamp = 0L
+    private var weekDateTime = DateTime()
     private var rowHeight = 0f
     private var todayColumnIndex = -1
     private var primaryColor = 0
@@ -91,6 +92,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         rowHeight = requireContext().getWeeklyViewItemHeight()
         defaultRowHeight = res.getDimension(R.dimen.weekly_view_row_height)
         weekTimestamp = requireArguments().getLong(WEEK_START_TIMESTAMP)
+        weekDateTime = Formatter.getDateTimeFromTS(weekTimestamp)
         dimPastEvents = config.dimPastEvents
         dimCompletedTasks = config.dimCompletedTasks
         highlightWeekends = config.highlightWeekends
@@ -193,14 +195,14 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         binding.weekEventsColumnsHolder.removeAllViews()
         (0 until config.weeklyViewDays).forEach {
             val column = WeeklyViewDayColumnBinding.inflate(layoutInflater, binding.weekEventsColumnsHolder, false).root
-            column.tag = Formatter.getDayCodeFromTS(weekTimestamp + it * DAY_SECONDS)
+            column.tag = Formatter.getDayCodeFromDateTime(weekDateTime.plusDays(it))
             binding.weekEventsColumnsHolder.addView(column)
             dayColumns.add(column)
         }
     }
 
     private fun setupDayLabels() {
-        var curDay = Formatter.getDateTimeFromTS(weekTimestamp)
+        var curDay = weekDateTime
         val todayCode = Formatter.getDayCodeFromDateTime(DateTime())
         val screenWidth = context?.usableScreenSize?.x ?: return
         val dayWidth = screenWidth / config.weeklyViewDays
@@ -273,7 +275,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                     val event = context?.eventsDB?.getEventOrTaskWithId(eventId)
                                     event?.let {
                                         val currentStartTime = Formatter.getDateTimeFromTS(event.startTS)
-                                        val startTime = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS)
+                                        val startTime = weekDateTime.plusDays(index)
                                             .withTime(
                                                 startHour,
                                                 currentStartTime.minuteOfHour,
@@ -364,7 +366,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                     applyColorFilter(primaryColor.getContrastColor())
 
                     setOnClickListener {
-                        val timestamp = Formatter.getDateTimeFromTS(weekTimestamp + index * DAY_SECONDS).withTime(hour, 0, 0, 0).seconds()
+                        val timestamp = weekDateTime.plusDays(index).withTime(hour, 0, 0, 0).seconds()
                         if (config.allowCreatingTasks) {
                             val items = arrayListOf(
                                 RadioItem(TYPE_EVENT, getString(R.string.event)),
