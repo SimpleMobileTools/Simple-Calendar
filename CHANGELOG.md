@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 6.23.1 *(2023-10-03)*
+----------------------------
+
+ * Fixed a yearly view display issue
+ * Allow starting the week with any day
+ * Added some translation, stability and UX improvements
+
 Version 6.23.0 *(2023-09-19)*
 ----------------------------
 
