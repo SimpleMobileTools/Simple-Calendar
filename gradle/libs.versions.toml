@@ -22,8 +22,8 @@ app-build-javaVersion = "VERSION_17"
 app-build-kotlinJVMTarget = "17"
 #versioning
 app-version-appId = "com.simplemobiletools.calendar.pro"
-app-version-versionCode = "239"
-app-version-versionName = "6.23.0"
+app-version-versionCode = "240"
+app-version-versionName = "6.23.1"
 [libraries]
 #Android X
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
