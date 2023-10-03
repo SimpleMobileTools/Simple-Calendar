@@ -181,7 +181,7 @@
     <string name="display_description_or_location">Εμφάνιση περιγραφής ή θέσης</string>
     <string name="delete_all_events">Διαγραφή όλων των εκδηλώσεων</string>
     <string name="delete_all_events_and_tasks">Διαγραφή όλων των εκδηλώσεων και εργασιών</string>
-    <string name="delete_all_events_confirmation">Σίγουρα θέλετε να διαγράψετε όλες τις εκδηλώσεις; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
+    <string name="delete_all_events_confirmation">Σίγουρα θέλετε να διαγράψετε όλες τις εκδηλώσεις και εργασίες; Αυτό θα αφήσει τους τύπους και άλλες ρυθμίσεις ανέπαφες.</string>
     <string name="show_a_grid">Εμφάνιση πλέγματος</string>
     <string name="loop_reminders">Συνεχής επανάληψη μέχρι να απορριφθεί</string>
     <string name="dim_past_events">Μείωση των προηγούμενων</string>
