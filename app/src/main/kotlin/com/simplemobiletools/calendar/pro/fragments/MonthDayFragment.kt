@@ -156,6 +156,7 @@ class MonthDayFragment : Fragment(), MonthlyCalendar, RefreshRecyclerViewListene
                 } else {
                     (currAdapter as EventListAdapter).updateListItems(listItems)
                 }
+                updateCalendar()
             }
         }
     }
