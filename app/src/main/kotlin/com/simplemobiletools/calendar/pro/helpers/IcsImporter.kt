@@ -26,6 +26,7 @@ class IcsImporter(val activity: SimpleActivity) {
 
     private var curStart = -1L
     private var curEnd = -1L
+    private var duration = 0
     private var curTitle = ""
     private var curLocation = ""
     private var curDescription = ""
@@ -105,11 +106,17 @@ class IcsImporter(val activity: SimpleActivity) {
                                 parseRepeatRule()
                             }
                         }
+
+                        // if duration is come before DTSTART, DTEND must re-calculate.
+                        if (duration != 0) {
+                            curEnd = curStart + duration
+                        }
                     } else if (line.startsWith(DTEND)) {
                         curEnd = getTimestamp(line.substring(DTEND.length))
                     } else if (line.startsWith(DURATION)) {
-                        val duration = line.substring(DURATION.length)
-                        curEnd = curStart + Parser().parseDurationSeconds(duration)
+                        val durationString = line.substring(DURATION.length)
+                        this.duration = Parser().parseDurationSeconds(durationString)
+                        curEnd = curStart + duration
                     } else if (line.startsWith(SUMMARY) && !isNotificationDescription) {
                         curTitle = line.substring(SUMMARY.length)
                         curTitle = getTitle(curTitle).replace("\\n", "\n").replace("\\,", ",")
