@@ -117,9 +117,15 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
 
     val now = getNowSeconds()
     val reminderSeconds = validReminders.reversed().map { it.minutes * 60 }
+    val isTask = event.isTask()
     eventsHelper.getEvents(now, now + YEAR, event.id!!, false) { events ->
         if (events.isNotEmpty()) {
             for (curEvent in events) {
+                if (isTask && curEvent.isTaskCompleted()) {
+                    // skip scheduling reminders for completed tasks
+                    continue
+                }
+
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
                         scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, showToasts)
