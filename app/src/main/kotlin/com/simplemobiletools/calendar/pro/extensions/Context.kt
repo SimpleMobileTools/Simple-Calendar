@@ -856,6 +856,12 @@ fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
         event.flags = event.flags.removeBit(FLAG_TASK_COMPLETED)
         completedTasksDB.deleteTaskWithIdAndTs(event.id!!, event.startTS)
     }
+
+    // remove existing notification (if any) and schedule a new one if needed
+    cancelPendingIntent(event.id!!)
+    cancelNotification(event.id!!)
+    scheduleNextEventReminder(event, showToasts = false)
+
     // mark event as "incomplete" in the main events db
     eventsDB.updateTaskCompletion(event.id!!, event.flags.removeBit(FLAG_TASK_COMPLETED))
 }
