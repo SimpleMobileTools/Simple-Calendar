@@ -117,9 +117,15 @@ fun Context.scheduleNextEventReminder(event: Event, showToasts: Boolean) {
 
     val now = getNowSeconds()
     val reminderSeconds = validReminders.reversed().map { it.minutes * 60 }
+    val isTask = event.isTask()
     eventsHelper.getEvents(now, now + YEAR, event.id!!, false) { events ->
         if (events.isNotEmpty()) {
             for (curEvent in events) {
+                if (isTask && curEvent.isTaskCompleted()) {
+                    // skip scheduling reminders for completed tasks
+                    continue
+                }
+
                 for (curReminder in reminderSeconds) {
                     if (curEvent.getEventStartTS() - curReminder > now) {
                         scheduleEventIn((curEvent.getEventStartTS() - curReminder) * 1000L, curEvent, showToasts)
@@ -856,6 +862,12 @@ fun Context.updateTaskCompletion(event: Event, completed: Boolean) {
         event.flags = event.flags.removeBit(FLAG_TASK_COMPLETED)
         completedTasksDB.deleteTaskWithIdAndTs(event.id!!, event.startTS)
     }
+
+    // remove existing notification (if any) and schedule a new one if needed
+    cancelPendingIntent(event.id!!)
+    cancelNotification(event.id!!)
+    scheduleNextEventReminder(event, showToasts = false)
+
     // mark event as "incomplete" in the main events db
     eventsDB.updateTaskCompletion(event.id!!, event.flags.removeBit(FLAG_TASK_COMPLETED))
 }
