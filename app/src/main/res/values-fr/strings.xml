@@ -24,8 +24,8 @@
     <string name="duplicate_event">Dupliquer l\'évènement</string>
     <string name="title_empty">Le titre ne peut pas rester vide</string>
     <string name="end_before_start">L\'évènement ne peut pas se terminer avant qu\'il ne commence</string>
-    <string name="event_added">Évènement ajouté avec succès</string>
-    <string name="event_updated">Évènement mis à jour avec succès</string>
+    <string name="event_added">Ajout de l\'évènement réussi</string>
+    <string name="event_updated">Mise à jour de l\'évènement réussie</string>
     <string name="filter_events_by_type">Filtrer les évènements par type</string>
     <string name="please_fill_location">Veuillez renseigner un lieu à afficher sur une carte</string>
     <string name="public_event_notification_text">Un évènement est à venir</string>
@@ -98,14 +98,14 @@
     <string name="add_birthdays">Ajouter les anniversaires des contacts</string>
     <string name="no_birthdays">Aucun anniversaire n\'a été trouvé</string>
     <string name="no_new_birthdays">Aucun nouvel anniversaire n\'a été trouvé</string>
-    <string name="birthdays_added">Anniversaires ajoutés avec succès</string>
+    <string name="birthdays_added">Ajout des anniversaires réussi</string>
     <string name="add_birthdays_automatically">Ajouter automatiquement les nouveaux anniversaires</string>
     <!-- Anniversaries -->
     <string name="anniversaries">Dates anniversaires</string>
     <string name="add_anniversaries">Ajouter les dates anniversaires des contacts</string>
     <string name="no_anniversaries">Aucune date anniversaire n\'a été trouvée</string>
     <string name="no_new_anniversaries">Aucun nouvelle date anniversaire n\'a été trouvée</string>
-    <string name="anniversaries_added">Dates anniversaires ajoutées avec succès</string>
+    <string name="anniversaries_added">Ajout des dates anniversaires réussi</string>
     <string name="add_anniversaries_automatically">Ajouter automatiquement les nouvelles dates anniversaires</string>
     <!-- Event Reminders -->
     <string name="reminder">Rappel</string>
@@ -159,7 +159,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours fériés ont été importés avec succès dans le type d\'évènement « Jours fériés »</string>
+    <string name="holidays_imported_successfully">Les jours fériés ont été correctement importés dans le type d\'évènement « Jours fériés »</string>
     <string name="importing_some_holidays_failed">L\'importation de certains évènements a échoué</string>
     <string name="importing_holidays_failed">L\'importation des jours fériés a échoué</string>
     <!-- Settings -->
