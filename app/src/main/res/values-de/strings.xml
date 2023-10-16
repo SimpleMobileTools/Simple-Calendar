@@ -8,7 +8,7 @@
     <string name="monthly_view">Monatsansicht</string>
     <string name="monthly_daily_view">Monats- und Tagesansicht</string>
     <string name="yearly_view">Jahresansicht</string>
-    <string name="simple_event_list">Schlichte Terminliste</string>
+    <string name="simple_event_list">Einfache Terminliste</string>
     <string name="no_upcoming_events">Keine anstehenden Termine.</string>
     <string name="go_to_today">Zu heute springen</string>
     <string name="go_to_date">Zu Datum springen</string>
@@ -167,7 +167,7 @@
     <string name="start_day_at">Wochenansicht beginnt um</string>
     <string name="end_day_at">Wochenansicht endet um</string>
     <string name="midnight_spanning">Termine, die sich über Mitternacht erstrecken, in der oberen Leiste anzeigen</string>
-    <string name="allow_customizing_day_count">Anpassen der Anzahl der Tage zulassen</string>
+    <string name="allow_customizing_day_count">Anpassen der Tagesanzahl zulassen</string>
     <string name="week_numbers">Kalenderwoche anzeigen</string>
     <string name="vibrate">Vibration bei Erinnerung</string>
     <string name="reminder_sound">Erinnerungston</string>
@@ -185,7 +185,7 @@
     <string name="show_a_grid">Raster anzeigen</string>
     <string name="loop_reminders">Erinnerungen wiederholen bis sie verworfen werden</string>
     <string name="dim_past_events">Vergangene Termine ausgrauen</string>
-    <string name="dim_completed_tasks">Erledigte Aufgaben abblenden</string>
+    <string name="dim_completed_tasks">Erledigte Aufgaben ausgrauen</string>
     <string name="events">Termine</string>
     <string name="reminder_stream">Audioausgabekanal für Erinnerungen</string>
     <string name="system_stream">Medien</string>
@@ -203,11 +203,11 @@
     <string name="next_full_hour">Nächste volle Stunde</string>
     <string name="current_time">Aktuelle Zeit</string>
     <string name="default_duration">Standarddauer</string>
-    <string name="last_used_one">Zuletzt verwendete</string>
+    <string name="last_used_one">Zuletzt verwendeter</string>
     <string name="other_time">Andere Zeit</string>
     <string name="highlight_weekends">Wochenenden in einigen Ansichten hervorheben</string>
     <string name="highlight_weekends_color">Farbe der hervorgehobenen Wochenenden</string>
-    <string name="allow_changing_time_zones">Zeitzone des Termins kann geändert werden</string>
+    <string name="allow_changing_time_zones">Ändern der Zeitzonen für Termine zulassen</string>
     <string name="manage_quick_filter_event_types">Termintypen zur schnellen Filterung verwalten</string>
     <string name="allow_creating_tasks">Aufgabenerstellung zulassen</string>
     <!-- CalDAV sync -->
@@ -222,7 +222,7 @@
     <string name="syncing">Wird synchronisiert …</string>
     <string name="synchronization_completed">Synchronisierung erfolgreich</string>
     <string name="select_a_different_caldav_color">Wähle eine andere Farbe (wird möglicherweise nur lokal angewendet)</string>
-    <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des gewählten Kalenders</string>
+    <string name="insufficient_permissions">Dir fehlt die Berechtigung zum Ändern des ausgewählten Kalenders</string>
     <string name="caldav_event_not_found">Der Termin wurde nicht gefunden. Bitte aktiviere die Synchronisierung für den Kalender in den Einstellungen.</string>
     <string name="no_synchronized_calendars">Es wurden keine synchronisierbaren Kalender gefunden</string>
     <string name="status_free">Verfügbar</string>
