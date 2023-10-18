@@ -159,7 +159,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours fériés ont été correctement importés dans le type d\'évènement « Jours fériés »</string>
+    <string name="holidays_imported_successfully">Les jours fériés ont été correctement importés dans le type d'évènement \'Jours fériés\'</string>
     <string name="importing_some_holidays_failed">L\'importation de certains évènements a échoué</string>
     <string name="importing_holidays_failed">L\'importation des jours fériés a échoué</string>
     <!-- Settings -->
