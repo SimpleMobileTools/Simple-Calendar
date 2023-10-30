@@ -1,14 +1,14 @@
-Schlichter Kalender ist ein vollständig anpassbarer Offline-Kalender, der Android-Nutzern genau das bietet, was sie von einem mobilen Taschenkalender im Jahr 2023 erwarten. Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!
+Einfacher Kalender ist ein vollständig anpassbarer Offline-Kalender, der Android-Nutzern genau das bietet, was sie von einem mobilen Taschenkalender im Jahr 2023 erwarten. Keine umständlichen Funktionen, keine unnötigen Berechtigungen und keine Werbung!
 
-➕ Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
+➕ Unterstützung von CalDAV-Synchronisierung, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
 
 Tagesplaner: Die volle Kontrolle
-Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Schlichter Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das Kalender-Widget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
+Egal, ob du nach einer einfachen mobilen Terminerinnerung suchst oder einmalige und wiederkehrende Termine, Geburtstage oder Jahrestage in einem Wochenplaner organisieren willst – mit Einfacher Kalender ist es ein Kinderspiel, organisiert zu bleiben. Dabei bietet das Kalender-Widget eine unglaubliche Vielfalt an Anpassungsmöglichkeiten: Bestimme die Gestaltung von Terminerinnerungen, Benachrichtigungen, Erinnerungs-Widgets und der Kalender-App selbst. Egal ob für Feiertage, als Arbeitskalender, Urlaubsplaner oder Geburtstagskalender: Mit unserem Kalender Planer ist man gut versorgt!
 
 Terminplaner: Plane deinen Tag
 Tagesplaner und Familienorganisator in einem – verschaffe dir den perfekten Überblick, wenn es um Verabredungen, geschäftliche Meetings, Events und Termine geht. Dank Erinnerungen bist du immer pünktlich und top informiert. Dabei ist das 2023 Kalender Widget unglaublich einfach zu bedienen.
 
-Schlichter Kalender – Funktionen
+Einfacher Kalender – Funktionen
 
 ✔️ Das beste Benutzererlebnis
 ➕ Keine Werbung oder Popups für ein besseres Benutzererlebnis!
@@ -17,7 +17,7 @@ Schlichter Kalender – Funktionen
 ✔️ Flexibel und Produktiv
 ➕ Import/Export-Unterstützung im .ics-Format
 ➕ Anpassung von Terminen – Zeiten, Dauer, Erinnerungen, Wiederholungsregeln
-➕ Unterstützung von CalDAV Calendar Sync, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
+➕ Unterstützung von CalDAV-Synchronisierung, zur Synchronisation über Google Calendar, Microsoft Outlook, Nextcloud, Exchange usw.
 
 ✔️ Ein Kalender für dich
 ➕ Terminplaner – Anpassen von Tönen, Sound-Loops und Vibrationen
