@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Agenda simple</string>
     <string name="app_launcher_name">Agenda</string>
     <string name="change_view">Changer de vue</string>
@@ -159,7 +159,7 @@
     <string name="add_holidays">Ajouter des jours fériés</string>
     <string name="national_holidays">Jours fériés nationaux</string>
     <string name="religious_holidays">Jours fériés religieux</string>
-    <string name="holidays_imported_successfully">Les jours fériés ont été correctement importés dans le type d'évènement \'Jours fériés\'</string>
+    <string name="holidays_imported_successfully">Les jours fériés ont été correctement importés dans le type d\'évènement \'Jours fériés\'</string>
     <string name="importing_some_holidays_failed">L\'importation de certains évènements a échoué</string>
     <string name="importing_holidays_failed">L\'importation des jours fériés a échoué</string>
     <!-- Settings -->
@@ -252,17 +252,17 @@
     <string name="today_only">Aujourd\'hui seulement</string>
     <string name="within_the_next">Au cours du prochain…</string>
     <plurals name="within_the_next_days">
-        <item quantity="one">Au cours de la prochaine journée</item>
+        <item quantity="one" tools:ignore="ImpliedQuantity">Au cours de la prochaine journée</item>
         <item quantity="many">Au cours des %d prochains jours</item>
         <item quantity="other">Au cours des %d prochains jours</item>
     </plurals>
     <plurals name="within_the_next_weeks">
-        <item quantity="one">Au cours de la prochaine semaine</item>
+        <item quantity="one" tools:ignore="ImpliedQuantity">Au cours de la prochaine semaine</item>
         <item quantity="many">Au cours des %d prochaines semaines</item>
         <item quantity="other">Au cours des %d prochaines semaines</item>
     </plurals>
     <plurals name="within_the_next_months">
-        <item quantity="one">Au cours du prochain mois</item>
+        <item quantity="one" tools:ignore="ImpliedQuantity">Au cours du prochain mois</item>
         <item quantity="many">Au cours des %d prochains mois</item>
         <item quantity="other">Au cours des %d prochains mois</item>
     </plurals>
