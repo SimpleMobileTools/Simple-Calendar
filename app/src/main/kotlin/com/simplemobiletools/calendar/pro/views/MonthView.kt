@@ -276,7 +276,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             verticalOffset = max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
         }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
-        val yPos = (event.startDayIndex / 7) * dayHeight
+        val yPos = (event.startDayIndex / 10) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
 
         if (verticalOffset - eventTitleHeight * 2 > dayHeight) {

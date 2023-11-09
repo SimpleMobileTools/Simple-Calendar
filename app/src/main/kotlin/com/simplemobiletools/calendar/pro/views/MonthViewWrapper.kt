@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.simplemobiletools.calendar.pro.BuildConfig
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.databinding.MonthViewBackgroundBinding
 import com.simplemobiletools.calendar.pro.databinding.MonthViewBinding
 import com.simplemobiletools.calendar.pro.extensions.config
@@ -106,7 +108,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun measureSizes() {
-        dayWidth = (width - horizontalOffset) / 7f
+        dayWidth = (width ) / 7f
         dayHeight = (height - weekDaysLetterHeight) / 6f
     }
 
@@ -119,7 +121,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             for (x in 0 until COLUMN_COUNT) {
                 val day = days.getOrNull(curId)
                 if (day != null) {
-                    addViewBackground(x, y, day)
+                    addViewBackground(x, y/2, day)
                 }
                 curId++
             }
@@ -128,17 +130,22 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
 
     private fun addViewBackground(viewX: Int, viewY: Int, day: DayMonthly) {
         val xPos = viewX * dayWidth + horizontalOffset
-        val yPos = viewY * dayHeight + weekDaysLetterHeight
+        val yPos = viewY * dayHeight*10 + weekDaysLetterHeight
 
         MonthViewBackgroundBinding.inflate(inflater, this, false).root.apply {
             if (isMonthDayView) {
                 background = null
             }
 
-            layoutParams.width = dayWidth.toInt()
-            layoutParams.height = dayHeight.toInt()
-            x = xPos
-            y = yPos
+            // Supposons que vous vouliez que la zone cliquable soit 80% de la largeur et de la hauteur du jour
+            val clickableWidth = (dayWidth * 0.8).toInt()
+            val clickableHeight = (dayHeight * 0.8).toInt()
+
+            layoutParams = FrameLayout.LayoutParams(clickableWidth, clickableHeight).apply {
+                leftMargin = (xPos + ((dayWidth - clickableWidth) / 2).toInt()).toInt()
+                topMargin = (yPos + ((dayHeight - clickableHeight) /2 ).toInt()).toInt()
+            }
+
             setOnClickListener {
                 dayClickCallback?.invoke(day)
 
@@ -147,9 +154,17 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
                 }
             }
 
+            // Set the debug background if in debug mode
+            if (BuildConfig.DEBUG) {
+                this.setBackgroundResource(R.drawable.debug_day_border)
+            }
+
             addView(this)
         }
     }
+
+
+
 
     fun togglePrintMode() {
         binding.monthView.togglePrintMode()
