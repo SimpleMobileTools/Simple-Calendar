@@ -30,8 +30,8 @@
     <string name="please_fill_location">Ompliu una ubicació que es mostrarà en un mapa</string>
     <string name="public_event_notification_text">S\'acosta un esdeveniment</string>
     <string name="everything_filtered_out">Heu filtrat tots els tipus d\'esdeveniments</string>
-    <string name="event_color">Event color</string>
-    <string name="default_calendar_color">Default calendar color</string>
+    <string name="event_color">Color de l\'esdeveniment</string>
+    <string name="default_calendar_color">Color predeterminat del calendari</string>
     <!-- Tasks -->
     <string name="task">Tasca</string>
     <string name="tasks">Tasques</string>
@@ -153,7 +153,7 @@
     <string name="select_event_type">Seleccioneu un tipus d\'esdeveniment</string>
     <string name="move_events_into_default">Mou els esdeveniments afectats dins el tipus d\'esdeveniment predeterminat</string>
     <string name="remove_affected_events">Elimina permanentment els esdeveniments afectats</string>
-    <string name="unsync_caldav_calendar">Per eliminar un calendari CalDAV, cal dessincronitzar-lo</string>
+    <string name="unsync_caldav_calendar">Per a eliminar un calendari CalDAV, cal dessincronitzar-lo</string>
     <!-- Holidays -->
     <string name="holidays">Festius</string>
     <string name="add_holidays">Afegeix festius</string>
@@ -222,7 +222,7 @@
     <string name="syncing">S\'està sincronitzant…</string>
     <string name="synchronization_completed">S\'ha completat la sincronització</string>
     <string name="select_a_different_caldav_color">Seleccioneu un color diferent (només es pot aplicar localment)</string>
-    <string name="insufficient_permissions">No teniu permís per escriure al calendari seleccionat</string>
+    <string name="insufficient_permissions">No teniu permís per a escriure al calendari seleccionat</string>
     <string name="caldav_event_not_found">No s\'ha trobat l\'esdeveniment. Activeu la sincronització de CalDAV per al calendari adequat a la configuració de l\'aplicació.</string>
     <string name="no_synchronized_calendars">No s\'ha trobat cap calendari que es pugui sincronitzar</string>
     <string name="status_free">Lliure</string>
@@ -276,7 +276,7 @@
     <string name="faq_5_title">L\'aplicació no mostra cap notificació, per què és això\?</string>
     <string name="faq_5_text">Comproveu la bateria del dispositiu i la configuració de notificacions, si no hi ha res que bloquegi els recordatoris o que mati l\'aplicació en segon pla. També us recomanem que doneu una ullada a &lt;a href=https://dontkillmyapp.com&gt;https://dontkillmyapp.com&lt;/a&gt;, té alguns consells útils.</string>
     <string name="faq_6_title">Com puc modificar o suprimir un tipus d\'esdeveniment existent\?</string>
-    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el desitjat per canviar l\'etiqueta o el color, o el podeu seleccionar prement-lo prolongadament i utilitzeu la paperera del menú superior per suprimir-lo.</string>
+    <string name="faq_6_text">Podeu fer les dues coses a la Configuració de l\'aplicació - Gestiona els tipus d\'esdeveniments. Només cal fer clic en el desitjat per a canviar l\'etiqueta o el color, o el podeu seleccionar prement-lo prolongadament i utilitzeu la paperera del menú superior per a suprimir-lo.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
