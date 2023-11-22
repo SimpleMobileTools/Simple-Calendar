@@ -134,19 +134,19 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun addViewBackground(viewX: Int, viewY: Int, day: DayMonthly) {
-        // Utilisez dayWidth et dayHeight pour définir la taille visuelle totale du jour
+        // utilisation de dayWidth et dayHeight pour définir la taille visuelle totale du jour
         val totalDayWidth = dayWidth
         val totalDayHeight = dayHeight
 
-        // Définissez la zone cliquable à un pourcentage de la taille totale du jour
+        // la zone cliquable à un pourcentage de la taille totale du jour
         val clickableWidth = (totalDayWidth * 0.7).toInt()  // 70% de la largeur totale
         val clickableHeight = (totalDayHeight * 0.7).toInt() // 70% de la hauteur totale
 
-        // Calculez les positions x et y pour centrer la zone cliquable dans la cellule du jour
+        // Calcule les positions x et y pour centrer la zone cliquable dans la cellule du jour
         val xPos = viewX * totalDayWidth + (totalDayWidth - clickableWidth) / 2 + horizontalOffset
         val yPos = viewY * totalDayHeight + (totalDayHeight - clickableHeight) / 2 + weekDaysLetterHeight
 
-        // Créez les paramètres de disposition pour la vue cliquable
+        // Création des paramètres de disposition pour la vue cliquable
         val clickableLayoutParams = FrameLayout.LayoutParams(clickableWidth, clickableHeight)
         clickableLayoutParams.setMargins(xPos.toInt(), yPos.toInt(), 0, 0)
 
@@ -157,7 +157,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             }
 
             setOnClickListener {
-                // Gérez le clic sur la zone cliquable ici
+                // gestion de clic sur la zone cliquable
                 dayClickCallback?.invoke(day)
                 if (isMonthDayView) {
                     binding.monthView.updateCurrentlySelectedDay(viewX, viewY)
@@ -165,7 +165,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             }
         }
 
-        addView(dayView)  // Ajoutez la vue cliquable à la hiérarchie de la vue parente
+        addView(dayView)  // ajout de la vue cliquable à la hiérarchie de la vue parente
     }
 
 
