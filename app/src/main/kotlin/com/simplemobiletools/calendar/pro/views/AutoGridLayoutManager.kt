@@ -25,7 +25,7 @@ class AutoGridLayoutManager(
             val totalSpace = if (orientation == VERTICAL) {
                 width - paddingRight - paddingLeft
             } else {
-                height - paddingTop*20 - paddingBottom
+                height - paddingTop - paddingBottom
             }
             spanCount = max(1, totalSpace / itemWidth)
         }

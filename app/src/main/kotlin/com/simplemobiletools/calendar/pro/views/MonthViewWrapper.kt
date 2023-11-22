@@ -69,7 +69,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             val childLeft = x * dayWidth + horizontalOffset - child.translationX
             val childTop = y * dayHeight + weekDaysLetterHeight - child.translationY
             val childWidth = child.measuredWidth
-            val childHeight = child.measuredHeight
+            val childHeight = child.measuredHeight/2
             val childRight = childLeft + childWidth
             val childBottom = childTop + childHeight
 
@@ -108,9 +108,14 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun measureSizes() {
-        dayWidth = (width ) / 7f
-        dayHeight = (height - weekDaysLetterHeight) / 6f
+        // Supposons que vous avez 7 colonnes et 6 lignes
+        val columns = 7
+        val rows = 6
+
+        dayWidth = ((width - horizontalOffset) / columns).toFloat()
+        dayHeight = ((height - weekDaysLetterHeight) / rows).toFloat()
     }
+
 
     private fun addClickableBackgrounds() {
         removeAllViews()
@@ -129,39 +134,42 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
     }
 
     private fun addViewBackground(viewX: Int, viewY: Int, day: DayMonthly) {
-        val xPos = viewX * dayWidth + horizontalOffset
-        val yPos = viewY * dayHeight*10 + weekDaysLetterHeight
+        // Utilisez dayWidth et dayHeight pour définir la taille visuelle totale du jour
+        val totalDayWidth = dayWidth
+        val totalDayHeight = dayHeight
 
-        MonthViewBackgroundBinding.inflate(inflater, this, false).root.apply {
-            if (isMonthDayView) {
-                background = null
-            }
+        // Définissez la zone cliquable à un pourcentage de la taille totale du jour
+        val clickableWidth = (totalDayWidth * 0.7).toInt()  // 70% de la largeur totale
+        val clickableHeight = (totalDayHeight * 0.7).toInt() // 70% de la hauteur totale
 
-            // Supposons que vous vouliez que la zone cliquable soit 80% de la largeur et de la hauteur du jour
-            val clickableWidth = (dayWidth * 0.8).toInt()
-            val clickableHeight = (dayHeight * 0.8).toInt()
+        // Calculez les positions x et y pour centrer la zone cliquable dans la cellule du jour
+        val xPos = viewX * totalDayWidth + (totalDayWidth - clickableWidth) / 2 + horizontalOffset
+        val yPos = viewY * totalDayHeight + (totalDayHeight - clickableHeight) / 2 + weekDaysLetterHeight
 
-            layoutParams = FrameLayout.LayoutParams(clickableWidth, clickableHeight).apply {
-                leftMargin = (xPos + ((dayWidth - clickableWidth) / 2).toInt()).toInt()
-                topMargin = (yPos + ((dayHeight - clickableHeight) /2 ).toInt()).toInt()
+        // Créez les paramètres de disposition pour la vue cliquable
+        val clickableLayoutParams = FrameLayout.LayoutParams(clickableWidth, clickableHeight)
+        clickableLayoutParams.setMargins(xPos.toInt(), yPos.toInt(), 0, 0)
+
+        val dayView = MonthViewBackgroundBinding.inflate(inflater, this, false).root.apply {
+            this.layoutParams = clickableLayoutParams
+            if (BuildConfig.DEBUG) {
+                setBackgroundResource(R.drawable.debug_day_border) // Appliquez la bordure rouge si en mode débogage
             }
 
             setOnClickListener {
+                // Gérez le clic sur la zone cliquable ici
                 dayClickCallback?.invoke(day)
-
                 if (isMonthDayView) {
                     binding.monthView.updateCurrentlySelectedDay(viewX, viewY)
                 }
             }
-
-            // Set the debug background if in debug mode
-            if (BuildConfig.DEBUG) {
-                this.setBackgroundResource(R.drawable.debug_day_border)
-            }
-
-            addView(this)
         }
+
+        addView(dayView)  // Ajoutez la vue cliquable à la hiérarchie de la vue parente
     }
+
+
+
 
 
 
