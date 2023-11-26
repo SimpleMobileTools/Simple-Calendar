@@ -220,14 +220,11 @@ class WeekFragment : Fragment(), WeeklyCalendar {
             val dayLetters = res.getStringArray(labelIDs).toMutableList() as ArrayList<String>
             val dayLetter = dayLetters[curDay.dayOfWeek - 1]
 
-            val textColor = if (isPrintVersion) {
-                resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
-            } else if (todayCode == dayCode) {
-                primaryColor
-            } else if (highlightWeekends && isWeekend(curDay.dayOfWeek)) {
-                config.highlightWeekendsColor
-            } else {
-                requireContext().getProperTextColor()
+            val textColor = when {
+                !isPrintVersion && todayCode == dayCode -> primaryColor
+                highlightWeekends && isWeekend(curDay.dayOfWeek) -> config.highlightWeekendsColor
+                isPrintVersion -> resources.getColor(com.simplemobiletools.commons.R.color.theme_light_text_color)
+                else -> requireContext().getProperTextColor()
             }
 
             val label = WeeklyViewDayLetterBinding.inflate(layoutInflater, binding.weekLettersHolder, false).root
