@@ -884,6 +884,35 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/settings_delete_events_from_date_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/settings_delete_events_from_date"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete events and tasks from date" />
+
+                <Button
+                    android:id="@+id/selectDateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Date"
+                    android:layout_below="@id/settings_delete_events_from_date"
+                    android:layout_marginTop="8dp"
+                    android:layout_alignBaseline="@id/settings_delete_events_from_date"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="onSelectDateButtonClick" />
+
+            </RelativeLayout>
+
+
+
             <include
                 android:id="@+id/settings_events_divider"
                 layout="@layout/divider" />

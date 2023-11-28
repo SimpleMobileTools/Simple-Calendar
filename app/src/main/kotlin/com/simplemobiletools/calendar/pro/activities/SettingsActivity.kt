@@ -1,13 +1,20 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.icu.util.Calendar
 import android.media.AudioManager
 import android.media.RingtoneManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.DatePicker
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
@@ -27,7 +34,6 @@ import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
 import kotlin.system.exitProcess
 
@@ -43,6 +49,9 @@ class SettingsActivity : SimpleActivity() {
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
+    public var chosenDateTimestamp = 0L
+
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
         super.onCreate(savedInstanceState)
@@ -51,14 +60,56 @@ class SettingsActivity : SimpleActivity() {
 
         updateMaterialActivityViews(binding.settingsCoordinator, binding.settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)
         setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsToolbar)
+        val selectDateButton: Button = findViewById(R.id.selectDateButton)
+
+        selectDateButton.setOnClickListener {
+            showDatePickerDialog()
+
+
+        }
+
+
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun showDatePickerDialog() {
+        val currentDate = Calendar.getInstance()
+        val year = currentDate.get(Calendar.YEAR)
+        val month = currentDate.get(Calendar.MONTH)
+        val day = currentDate.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, day ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, month, day)
+                chosenDateTimestamp = selectedDate.timeInMillis
+
+                // You can display the selected date if needed
+                Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
+                Log.d("MyApp", "Toast displayed: ${selectedDate.toString()}")
+            },
+            year,
+            month,
+            day
+        )
+
+        datePickerDialog.show()
+
+        // Now, you can use chosenDateTimestamp in other parts of your code if needed.
+        setupDeleteEventsFromDate(chosenDateTimestamp)
+
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onResume() {
         super.onResume()
         setupToolbar(binding.settingsToolbar, NavigationIcon.Arrow)
         setupSettingItems()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setupSettingItems() {
         setupCustomizeColors()
         setupCustomizeNotifications()
@@ -72,6 +123,7 @@ class SettingsActivity : SimpleActivity() {
         setupHighlightWeekends()
         setupHighlightWeekendsColor()
         setupDeleteAllEvents()
+        setupDeleteEventsFromDate(chosenDateTimestamp)
         setupDisplayDescription()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -144,6 +196,7 @@ class SettingsActivity : SimpleActivity() {
         config.defaultReminder3 = reminders.getOrElse(2) { REMINDER_OFF }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (requestCode == GET_RINGTONE_URI && resultCode == RESULT_OK && resultData != null) {
@@ -402,8 +455,14 @@ class SettingsActivity : SimpleActivity() {
         settingsDeleteAllEventsHolder.setOnClickListener {
             ConfirmationDialog(this@SettingsActivity, messageId = R.string.delete_all_events_confirmation) {
                 eventsHelper.deleteAllEvents()
+
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun setupDeleteEventsFromDate(choosendateTimestamp: Long) = binding.apply {
+        eventsHelper.deleteEventsFromDate(choosendateTimestamp)
     }
 
     private fun setupDisplayDescription() = binding.apply {
@@ -424,6 +483,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setupWeeklyStart() = binding.apply {
         settingsStartWeeklyAt.text = getHoursString(config.startWeeklyAt)
         settingsStartWeeklyAtHolder.setOnClickListener {
@@ -620,6 +680,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun getHoursString(hours: Int): String {
         return if (config.use24HourFormat) {
             String.format("%02d:00", hours)
@@ -972,6 +1033,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setupImportSettings() {
         binding.settingsImportHolder.setOnClickListener {
             if (isQPlus()) {
@@ -1001,6 +1063,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun parseFile(inputStream: InputStream?) {
         if (inputStream == null) {
             toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
