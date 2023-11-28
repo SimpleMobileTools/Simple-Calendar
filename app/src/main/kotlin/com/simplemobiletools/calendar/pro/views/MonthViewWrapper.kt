@@ -69,7 +69,7 @@ class MonthViewWrapper(context: Context, attrs: AttributeSet, defStyle: Int) : F
             val childLeft = x * dayWidth + horizontalOffset - child.translationX
             val childTop = y * dayHeight + weekDaysLetterHeight - child.translationY
             val childWidth = child.measuredWidth
-            val childHeight = child.measuredHeight/2
+            val childHeight = child.measuredHeight/1.05F
             val childRight = childLeft + childWidth
             val childBottom = childTop + childHeight
 
