@@ -884,7 +884,6 @@
 
             </RelativeLayout>
 
-
             <include
                 android:id="@+id/settings_events_divider"
                 layout="@layout/divider" />

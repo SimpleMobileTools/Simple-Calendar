@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.activities
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.ActivityNotFoundException
@@ -37,10 +36,12 @@ class SettingsActivity : SimpleActivity() {
     private val PICK_SETTINGS_IMPORT_SOURCE_INTENT = 2
     private val PICK_EVENTS_IMPORT_SOURCE_INTENT = 3
     private val PICK_EVENTS_EXPORT_FILE_INTENT = 4
-    private var mStoredPrimaryColor = 0
-    private var eventTypesToExport = listOf<Long>()
-    private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
+    private var mStoredPrimaryColor = 0
+
+    private var eventTypesToExport = listOf<Long>()
+
+    private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
@@ -619,7 +620,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-
     private fun getHoursString(hours: Int): String {
         return if (config.use24HourFormat) {
             String.format("%02d:00", hours)
@@ -1000,7 +1000,6 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
-
 
     private fun parseFile(inputStream: InputStream?) {
         if (inputStream == null) {
