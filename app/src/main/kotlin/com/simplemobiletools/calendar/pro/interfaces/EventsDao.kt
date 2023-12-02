@@ -136,5 +136,4 @@ interface EventsDao {
 
     @Query("DELETE FROM events WHERE source = :source AND import_id = :importId")
     fun deleteBirthdayAnniversary(source: String, importId: String): Int
-
 }
