@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -11,8 +12,10 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.RelativeLayout
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -42,15 +45,11 @@ class SettingsActivity : SimpleActivity() {
     private val PICK_SETTINGS_IMPORT_SOURCE_INTENT = 2
     private val PICK_EVENTS_IMPORT_SOURCE_INTENT = 3
     private val PICK_EVENTS_EXPORT_FILE_INTENT = 4
-
     private var mStoredPrimaryColor = 0
-
     private var eventTypesToExport = listOf<Long>()
-
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
-    public var chosenDateTimestamp = 0L
-
+    @SuppressLint("WrongViewCast")
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         isMaterialActivity = true
@@ -60,12 +59,10 @@ class SettingsActivity : SimpleActivity() {
 
         updateMaterialActivityViews(binding.settingsCoordinator, binding.settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)
         setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsToolbar)
-        val selectDateButton: Button = findViewById(R.id.selectDateButton)
+        val settingsDeleteEventsFromDateHolder: RelativeLayout = findViewById(R.id.settings_delete_events_from_date_holder)
 
-        selectDateButton.setOnClickListener {
+        settingsDeleteEventsFromDateHolder.setOnClickListener {
             showDatePickerDialog()
-
-
         }
 
 
@@ -77,28 +74,20 @@ class SettingsActivity : SimpleActivity() {
         val year = currentDate.get(Calendar.YEAR)
         val month = currentDate.get(Calendar.MONTH)
         val day = currentDate.get(Calendar.DAY_OF_MONTH)
-
         val datePickerDialog = DatePickerDialog(
             this,
             { _, year, month, day ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, month, day)
-                chosenDateTimestamp = selectedDate.timeInMillis
+                val chosenDateTimestamp = selectedDate.timeInMillis
+                setupDeleteEventsFromDate(chosenDateTimestamp)
 
-                // You can display the selected date if needed
-                Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
-                Log.d("MyApp", "Toast displayed: ${selectedDate.toString()}")
             },
             year,
             month,
             day
         )
-
         datePickerDialog.show()
-
-        // Now, you can use chosenDateTimestamp in other parts of your code if needed.
-        setupDeleteEventsFromDate(chosenDateTimestamp)
-
     }
 
 
@@ -123,7 +112,6 @@ class SettingsActivity : SimpleActivity() {
         setupHighlightWeekends()
         setupHighlightWeekendsColor()
         setupDeleteAllEvents()
-        setupDeleteEventsFromDate(chosenDateTimestamp)
         setupDisplayDescription()
         setupReplaceDescription()
         setupWeekNumbers()
@@ -163,6 +151,7 @@ class SettingsActivity : SimpleActivity() {
         setupImportEvents()
         setupExportSettings()
         setupImportSettings()
+
 
         arrayOf(
             binding.settingsColorCustomizationSectionLabel,
@@ -461,8 +450,9 @@ class SettingsActivity : SimpleActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun setupDeleteEventsFromDate(choosendateTimestamp: Long) = binding.apply {
-        eventsHelper.deleteEventsFromDate(choosendateTimestamp)
+    private fun setupDeleteEventsFromDate(chosenDateTimestamp: Long) = binding.apply {
+        Log.d("MyApp", "Deleting events after timestamp: $chosenDateTimestamp")
+        eventsHelper.deleteEventsFromDate(chosenDateTimestamp)
     }
 
     private fun setupDisplayDescription() = binding.apply {

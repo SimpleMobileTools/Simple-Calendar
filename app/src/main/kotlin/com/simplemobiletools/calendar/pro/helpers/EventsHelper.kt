@@ -259,9 +259,9 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun deleteEventsFromDate(choosendateTimestamp: Long) {
+    fun deleteEventsFromDate(chosenDateTimestamp: Long) {
         ensureBackgroundThread {
-            val eventIds = eventsDB.getEventIdsWhereDate(choosendateTimestamp).toMutableList()
+            val eventIds = eventsDB.getEventIdsWhereDate(chosenDateTimestamp).toMutableList()
             deleteEvents(eventIds, true)
         }
     }
