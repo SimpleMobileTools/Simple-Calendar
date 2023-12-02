@@ -59,36 +59,9 @@ class SettingsActivity : SimpleActivity() {
 
         updateMaterialActivityViews(binding.settingsCoordinator, binding.settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)
         setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsToolbar)
-        val settingsDeleteEventsFromDateHolder: RelativeLayout = findViewById(R.id.settings_delete_events_from_date_holder)
-
-        settingsDeleteEventsFromDateHolder.setOnClickListener {
-            showDatePickerDialog()
-        }
-
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun showDatePickerDialog() {
-        val currentDate = Calendar.getInstance()
-        val year = currentDate.get(Calendar.YEAR)
-        val month = currentDate.get(Calendar.MONTH)
-        val day = currentDate.get(Calendar.DAY_OF_MONTH)
-        val datePickerDialog = DatePickerDialog(
-            this,
-            { _, year, month, day ->
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(year, month, day)
-                val chosenDateTimestamp = selectedDate.timeInMillis
-                setupDeleteEventsFromDate(chosenDateTimestamp)
-
-            },
-            year,
-            month,
-            day
-        )
-        datePickerDialog.show()
-    }
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -449,11 +422,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun setupDeleteEventsFromDate(chosenDateTimestamp: Long) = binding.apply {
-        Log.d("MyApp", "Deleting events after timestamp: $chosenDateTimestamp")
-        eventsHelper.deleteEventsFromDate(chosenDateTimestamp)
-    }
 
     private fun setupDisplayDescription() = binding.apply {
         settingsDisplayDescription.isChecked = config.displayDescription
