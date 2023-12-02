@@ -90,25 +90,8 @@ class SmallMonthView(context: Context, attrs: AttributeSet, defStyle: Int) : Vie
                     canvas.drawText(curId.toString(), x * dayWidth - (dayWidth / 4), y * dayWidth, paint)
 
                     if (curId == todaysId && !isPrintVersion) {
-                        val array_1_to_9= listOf(1, 2, 3, 4, 5,6,7,8,9)
-                        val array_10_to_19= listOf(10, 11, 12, 13, 14,15,16,17,18,19)
-
-                        if(todaysId in array_1_to_9){
-                            val dividerConstantX = if (isLandscape) 2.6f else 2.8f
-                            val dividerConstantY = if (isLandscape) 6.0f else 5.1f
-                            canvas.drawCircle(x * dayWidth - dayWidth / dividerConstantX, y * dayWidth - dayWidth / dividerConstantY, dayWidth * 0.41f, todayCirclePaint)
-                        }else if (todaysId in array_10_to_19){
-                            val dividerConstantX = if (isLandscape) 2.0f else 2.1f
-                            val dividerConstantY = if (isLandscape) 6.0f else 5.2f
-                            canvas.drawCircle(x * dayWidth - dayWidth / dividerConstantX, y * dayWidth - dayWidth / dividerConstantY, dayWidth * 0.41f, todayCirclePaint)
-
-                        }else {
-                            val dividerConstantX = if (isLandscape) 2.0f else 2.0f
-                            val dividerConstantY = if (isLandscape) 6.0f else 5.4f
-                            canvas.drawCircle(x * dayWidth - dayWidth / dividerConstantX, y * dayWidth - dayWidth / dividerConstantY, dayWidth * 0.41f, todayCirclePaint)
-                        }
-
-
+                        val dividerConstant = if (isLandscape) 6 else 4
+                        canvas.drawCircle(x * dayWidth - dayWidth / 2, y * dayWidth - dayWidth / dividerConstant, dayWidth * 0.41f, todayCirclePaint)
                     }
                 }
                 curId++
