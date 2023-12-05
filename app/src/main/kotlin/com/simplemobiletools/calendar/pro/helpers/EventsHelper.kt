@@ -259,13 +259,12 @@ class EventsHelper(val context: Context) {
         }
     }
 
-    fun deleteEventsFromDate(chosenDateTimestamp: Long) {
+    fun deleteEventsBeforeDate(chosenDateTimestamp: Long) {
         ensureBackgroundThread {
-            val eventIds = eventsDB.getEventIdsWhereDate(chosenDateTimestamp).toMutableList()
+            val eventIds = eventsDB.getEventIdsBeforeDate(chosenDateTimestamp).toMutableList()
             deleteEvents(eventIds, true)
         }
     }
-
 
     fun deleteEvent(id: Long, deleteFromCalDAV: Boolean) = deleteEvents(arrayListOf(id), deleteFromCalDAV)
 
