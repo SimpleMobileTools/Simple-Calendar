@@ -9,6 +9,11 @@
         android:title="@string/go_to_today"
         app:showAsAction="always" />
     <item
+        android:id="@+id/friends"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="@string/go_to_today"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/change_view"
         android:icon="@drawable/ic_change_view_vector"
         android:title="@string/change_view"

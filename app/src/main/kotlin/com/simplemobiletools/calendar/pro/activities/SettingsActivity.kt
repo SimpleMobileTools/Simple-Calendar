@@ -109,6 +109,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageAutomaticBackups()
         setupExportEvents()
         setupImportEvents()
+        setupSubscribe()
         setupExportSettings()
         setupImportSettings()
 
@@ -913,6 +914,11 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupSubscribe(){
+        binding.eventsSubscribeHolder.setOnClickListener {
+            trySubcribeEvents()
+        }
+    }
     private fun setupImportEvents() {
         binding.eventsImportHolder.setOnClickListener {
             tryImportEvents()
@@ -1124,12 +1130,38 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun trySubcribeEvents(){
+        if (isQPlus()) {
+            handleNotificationPermission { granted ->
+                if (granted) {
+                    hideKeyboard()
+                    Intent(Intent.ACTION_GET_CONTENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE)
+                        type = "text/calendar"
+                    }
+                } else {
+                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
+                }
+            }
+        } else {
+            handlePermission(PERMISSION_READ_STORAGE) {
+                if (it) {
+                    subscribeEvents()
+                }
+            }
+        }
+    }
+
     private fun importEvents() {
         FilePickerDialog(this) {
             showImportEventsDialog(it) {}
         }
     }
 
+
+    private fun subscribeEvents(){
+            showSubscribeEventsDialog()
+    }
 
     private fun tryExportEvents() {
         if (isQPlus()) {

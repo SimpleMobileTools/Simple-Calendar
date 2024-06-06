@@ -6,6 +6,7 @@ import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.activities.SimpleActivity
 import com.simplemobiletools.calendar.pro.dialogs.CustomEventRepeatIntervalDialog
 import com.simplemobiletools.calendar.pro.dialogs.ImportEventsDialog
+import com.simplemobiletools.calendar.pro.dialogs.SubscribeEventsDialog
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
@@ -114,4 +115,8 @@ fun SimpleActivity.tryImportEventsFromFile(uri: Uri, callback: (Boolean) -> Unit
 
 fun SimpleActivity.showImportEventsDialog(path: String, callback: (Boolean) -> Unit) {
     ImportEventsDialog(this, path, callback)
+}
+
+fun SimpleActivity.showSubscribeEventsDialog(){
+    SubscribeEventsDialog(this)
 }
