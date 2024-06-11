@@ -22,6 +22,15 @@ if (keystorePropertiesFile.exists()) {
 android {
     compileSdk = project.libs.versions.app.build.compileSDKVersion.get().toInt()
 
+    kotlinOptions {
+
+    buildFeatures {
+            compose = true
+    }
+
+        jvmTarget = "1.8"
+    }
+
     defaultConfig {
         applicationId = libs.versions.app.version.appId.get()
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
@@ -49,6 +58,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
     }
 
     buildTypes {
@@ -78,11 +88,6 @@ android {
         getByName("main").java.srcDirs("src/main/kotlin")
     }
 
-    compileOptions {
-        val currentJavaVersionFromLibs = JavaVersion.valueOf(libs.versions.app.build.javaVersion.get().toString())
-        sourceCompatibility = currentJavaVersionFromLibs
-        targetCompatibility = currentJavaVersionFromLibs
-    }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = project.libs.versions.app.build.kotlinJVMTarget.get()
@@ -94,6 +99,19 @@ android {
         checkReleaseBuilds = false
         abortOnError = false
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+kotlin {
+    jvmToolchain(17) // Set the desired Java version (17 in this case)
 }
 
 dependencies {
@@ -104,4 +122,11 @@ dependencies {
     implementation(libs.androidx.print)
     implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.google.code.gson:gson:2.8.7")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.compose.ui:ui:1.5.3")// Version de Compose UI
+    implementation("androidx.compose.material:material:1.5.3") // Version de Compose Material
+    implementation("androidx.compose.ui:ui-tooling:1.5.3") // Version de Compose Tooling
+    implementation("androidx.compose.runtime:runtime:1.5.3") // Version de Compose Runtime
 }

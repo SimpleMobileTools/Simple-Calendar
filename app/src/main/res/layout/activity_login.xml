@@ -6,33 +6,32 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/login_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginBottom="24dp"/>
+        android:id="@+id/errorConnexionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="error"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@ username or email"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:hint="📧 username or email"
+        android:inputType="textNoSuggestions"
+        android:padding="12dp" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
+        android:layout_marginBottom="16dp"
         android:drawableStart="@android:drawable/ic_menu_view"
+        android:hint="password"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        android:padding="12dp" />
 
     <TextView
         android:id="@+id/forget_password"
@@ -40,7 +39,6 @@
         android:layout_height="wrap_content"
         android:text="forget password?"
         android:textSize="14sp"
-        android:textColor="@color/material_on_surface_emphasis_medium"
         android:layout_gravity="end"
         android:layout_marginBottom="16dp"/>
 
@@ -96,7 +94,6 @@
         android:layout_height="wrap_content"
         android:text="create account? Register"
         android:textSize="14sp"
-        android:textColor="@color/material_on_surface_emphasis_medium"
         android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>

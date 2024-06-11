@@ -117,6 +117,7 @@ fun SimpleActivity.showImportEventsDialog(path: String, callback: (Boolean) -> U
     ImportEventsDialog(this, path, callback)
 }
 
+
 fun SimpleActivity.showSubscribeEventsDialog(){
     SubscribeEventsDialog(this)
 }

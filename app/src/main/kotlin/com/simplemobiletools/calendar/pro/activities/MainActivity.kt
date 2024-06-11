@@ -42,6 +42,7 @@ import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
 import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
+import com.simplemobiletools.calendar.pro.dialogs.LoginDialog
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
@@ -254,6 +255,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             searchQueryChanged(text)
         }
 
+
+
         mainMenu.getToolbar().setOnMenuItemClickListener { menuItem ->
             if (fabExtendedOverlay.isVisible()) {
                 hideExtendedFab()
@@ -264,6 +267,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.go_to_today -> goToToday()
                 R.id.go_to_date -> showGoToDateDialog()
                 R.id.print -> printView()
+                R.id.friends -> launchLogin()
                 R.id.filter -> showFilterDialog()
                 R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
                 R.id.add_holidays -> addHolidays()
@@ -1051,6 +1055,10 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun launchSettings() {
         hideKeyboard()
         startActivity(Intent(applicationContext, SettingsActivity::class.java))
+    }
+
+    private fun launchLogin() {
+        startActivity(Intent(applicationContext, LoginActivity::class.java))
     }
 
     private fun launchAbout() {

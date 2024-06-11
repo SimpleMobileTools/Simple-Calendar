@@ -40,4 +40,7 @@
     <dimen name="quick_filter_active_line_size">6dp</dimen>
     <dimen name="quick_filter_inactive_line_size">2dp</dimen>
     <dimen name="zero">0dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>
