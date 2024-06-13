@@ -176,7 +176,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
                     dayVerticalOffsets.put(day.indexOnMonthView, dayVerticalOffsets[day.indexOnMonthView] + weekDaysLetterHeight)
                     val verticalOffset = dayVerticalOffsets[day.indexOnMonthView]
                     val xPos = x * dayWidth + horizontalOffset
-                    val yPos = y * dayHeight + verticalOffset
+                    val yPos = y * dayHeight + verticalOffset*1.055f
                     val xPosCenter = xPos + dayWidth / 2
                     val dayNumber = day.value.toString()
 
@@ -276,7 +276,7 @@ class MonthView(context: Context, attrs: AttributeSet, defStyle: Int) : View(con
             verticalOffset = max(verticalOffset, dayVerticalOffsets[event.startDayIndex + i])
         }
         val xPos = event.startDayIndex % 7 * dayWidth + horizontalOffset
-        val yPos = (event.startDayIndex / 7) * dayHeight
+        val yPos = (event.startDayIndex / 10) * dayHeight
         val xPosCenter = xPos + dayWidth / 2
 
         if (verticalOffset - eventTitleHeight * 2 > dayHeight) {
