@@ -11,6 +11,7 @@
         android:layout_height="60dp"
         android:text="error"
         android:padding="12dp"
+        android:textSize="14sp"
         android:layout_marginBottom="16dp"
         android:visibility="gone"/>
 
@@ -20,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:hint="📧 username or email"
+        android:layout_marginTop="64dp"
         android:inputType="textNoSuggestions"
         android:padding="12dp" />
 
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:text="forget password?"
         android:textSize="14sp"
+        android:textColor="@color/material_on_surface_emphasis_medium"
         android:layout_gravity="end"
         android:layout_marginBottom="16dp"/>
 
@@ -46,8 +49,9 @@
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="?attr/colorAccent"
+        android:text="Login" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,6 +98,7 @@
         android:layout_height="wrap_content"
         android:text="create account? Register"
         android:textSize="14sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/dark_grey"/>
     </LinearLayout>
 </LinearLayout>

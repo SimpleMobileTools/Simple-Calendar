@@ -1,21 +1,49 @@
 package com.simplemobiletools.calendar.pro.activities
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import com.simplemobiletools.calendar.pro.R
+import com.simplemobiletools.calendar.pro.helpers.getJavaDayOfWeekFromJoda
 
-class CreateAccountActivity : AppCompatActivity() {
+class CreateAccountActivity : SimpleActivity() {
+
+    private var usernameEditText: EditText? = null
+    private var passwordEditText: EditText? = null
+    private var confirmPasswordEditText: EditText? = null
+    private var createBtn: Button? = null
+    private var loginBtn: TextView? = null
+    private var username: String? = null
+    private var createPassword: String? = null
+    private var confirmPassword: String? = null
+    private var password: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_create_account)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_create_account)
+
+            usernameEditText = findViewById(R.id.createUsername)
+            passwordEditText = findViewById(R.id.createPassword)
+            confirmPasswordEditText = findViewById(R.id.confirmPassword)
+            createBtn = findViewById(R.id.create_button)
+            loginBtn = findViewById(R.id.login_button)
+
+            createBtn?.setOnClickListener(View.OnClickListener {
+                username =  usernameEditText?.text.toString()
+                confirmPassword = confirmPasswordEditText?.text.toString()
+                createPassword = passwordEditText?.text.toString()
+                if (confirmPassword==createPassword) password = createPassword
+
+            })
+
+            loginBtn?.setOnClickListener(View.OnClickListener {
+                val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
+                startActivity(intent)
+            })
     }
+
 }
+
