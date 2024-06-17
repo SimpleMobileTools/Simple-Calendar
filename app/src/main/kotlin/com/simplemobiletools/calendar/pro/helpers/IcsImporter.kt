@@ -17,6 +17,7 @@ import com.simplemobiletools.commons.extensions.showErrorToast
 import com.simplemobiletools.commons.helpers.HOUR_SECONDS
 import org.joda.time.DateTimeZone
 import java.io.File
+import java.io.InputStream
 import kotlin.math.min
 
 class IcsImporter(val activity: SimpleActivity) {
@@ -63,18 +64,20 @@ class IcsImporter(val activity: SimpleActivity) {
         calDAVCalendarId: Int,
         overrideFileEventTypes: Boolean,
         eventReminders: ArrayList<Int>? = null,
+        input: InputStream? = null
     ): ImportResult {
         try {
+            val inputStream = input ?: if (path.contains("/")) {
+                File(path).inputStream()
+            } else {
+                activity.assets.open(path)
+            }
+
             val eventTypes = eventsHelper.getEventTypesSync()
             val existingEvents = activity.eventsDB.getEventsOrTasksWithImportIds().toMutableList() as ArrayList<Event>
             val eventsToInsert = ArrayList<Event>()
             var line = ""
 
-            val inputStream = if (path.contains("/")) {
-                File(path).inputStream()
-            } else {
-                activity.assets.open(path)
-            }
 
             inputStream.bufferedReader().use {
                 while (true) {

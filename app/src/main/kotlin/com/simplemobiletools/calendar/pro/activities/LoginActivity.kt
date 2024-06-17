@@ -7,14 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toast.makeText
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.simplemobiletools.calendar.pro.R
 import org.json.JSONObject
-import java.util.HashMap
 
 class LoginActivity : SimpleActivity() {
     private var errorConnectAccountTextView: TextView? = null
@@ -51,13 +48,13 @@ class LoginActivity : SimpleActivity() {
         var params: HashMap<String, String> = HashMap()
         params.put("user", this.username.toString())
         params.put("azerty", this.password.toString())
-        val json = JSONObject(params as Map<*, *>?)
+        val json = (params as Map<*, *>?)?.let { JSONObject(it) }
 
-        var jsonObjectRequest:JsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, json, Response.Listener {response ->
-            textView.text = Toast.makeText(getApplicationContext(), "OPERATION SUCCESSFUL", Toast.LENGTH_LONG).show()
+        var jsonObjectRequest:JsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, json, { _ ->
+            Toast.makeText(applicationContext, "OPERATION SUCCESSFUL", Toast.LENGTH_LONG).show()
 
-        }
-
+        }, {  })
+        Toast.makeText(applicationContext, "OPERATION NOT SUCCESSFUL", Toast.LENGTH_LONG).show()
         }
         fun onErrorResponse(error: VolleyError){
 

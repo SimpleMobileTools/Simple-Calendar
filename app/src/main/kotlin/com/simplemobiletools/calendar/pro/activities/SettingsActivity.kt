@@ -1,13 +1,19 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.content.ActivityNotFoundException
+import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioManager
 import android.media.RingtoneManager
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.simplemobiletools.calendar.pro.R
@@ -23,6 +29,7 @@ import com.simplemobiletools.commons.models.AlarmSound
 import com.simplemobiletools.commons.models.RadioItem
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
@@ -30,6 +37,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.system.exitProcess
+
 
 class SettingsActivity : SimpleActivity() {
     private val GET_RINGTONE_URI = 1
@@ -916,7 +924,24 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupSubscribe(){
         binding.eventsSubscribeHolder.setOnClickListener {
-            trySubcribeEvents()
+            val alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(it.context)
+
+            val et = EditText(it.context)
+
+
+            // set prompts.xml to alertdialog builder
+            alertDialogBuilder.setView(et)
+
+
+            // set dialog message https://www.kayaposoft.com/enrico/ics/v2.0?country=fra&fromDate=01-01-2024&toDate=31-12-2024&region=&holidayType=public_holiday&lang=fr
+            alertDialogBuilder.setCancelable(false).setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+                trySubscribeEvents(et.value)
+            })
+            // create alert dialog
+            val alertDialog: AlertDialog = alertDialogBuilder.create()
+
+            // show it
+            alertDialog.show()
         }
     }
     private fun setupImportEvents() {
@@ -1130,26 +1155,39 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun trySubcribeEvents(){
-        if (isQPlus()) {
-            handleNotificationPermission { granted ->
-                if (granted) {
-                    hideKeyboard()
-                    Intent(Intent.ACTION_GET_CONTENT).apply {
-                        addCategory(Intent.CATEGORY_OPENABLE)
-                        type = "text/calendar"
+    private fun trySubscribeEvents(url: String){
+        ensureBackgroundThread {
+            val queue = Volley.newRequestQueue(this)
+            val holidays = getString(R.string.holidays)
+            var eventTypeId = eventsHelper.getEventTypeIdWithClass(HOLIDAY_EVENT)
+            if (eventTypeId == -1L) {
+                eventTypeId = eventsHelper.createPredefinedEventType(holidays, R.color.default_holidays_color, HOLIDAY_EVENT, true)
+            }
+            queue.add(StringRequest(Request.Method.GET, url,  { response ->
+                ByteArrayInputStream(response.toByteArray(Charsets.UTF_8)).use {
+                    ensureBackgroundThread {
+                        val result = IcsImporter(this).importEvents("", eventTypeId, 0, false, null, it)
+                        handleParseResult(result)
                     }
-                } else {
-                    PermissionRequiredDialog(this, com.simplemobiletools.commons.R.string.allow_notifications_reminders, { openNotificationSettings() })
                 }
-            }
-        } else {
-            handlePermission(PERMISSION_READ_STORAGE) {
-                if (it) {
-                    subscribeEvents()
-                }
-            }
+
+        }, { error ->
+                Toast.makeText(applicationContext, "OPERATION ERROR: " + error, Toast.LENGTH_LONG).show()
+
+            }))
+
+
         }
+    }
+    private fun handleParseResult(result: IcsImporter.ImportResult) {
+        toast(
+            when (result) {
+                IcsImporter.ImportResult.IMPORT_NOTHING_NEW -> com.simplemobiletools.commons.R.string.no_new_items
+                IcsImporter.ImportResult.IMPORT_OK -> R.string.success_for_url_ics_import
+                IcsImporter.ImportResult.IMPORT_PARTIAL -> R.string.error_url_ics_import
+                else -> R.string.importing_holidays_failed
+            }, Toast.LENGTH_LONG
+        )
     }
 
     private fun importEvents() {

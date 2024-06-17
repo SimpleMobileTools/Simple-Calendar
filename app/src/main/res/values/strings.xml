@@ -182,6 +182,10 @@
     <string name="importing_some_holidays_failed">Importing some events failed</string>
     <string name="importing_holidays_failed">Importing holidays failed</string>
 
+    <!-- -->
+    <string name="success_for_url_ics_import" translatable="false">URL imported</string>
+    <string name="error_url_ics_import" translatable="false">URL non imported... error</string>
+
     <!-- Settings -->
     <string name="manage_event_types">Manage event types</string>
     <string name="start_day_at">Start day at</string>
@@ -316,6 +320,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="both_passwords_are_different">Both passwords are different</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
