@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/event_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/event_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"
+        app:menu="@menu/menu_event"
+        app:title="@string/app_launcher_name"
+        app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/event_nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/event_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.simplemobiletools.commons.views.MyEditText
+                android:id="@+id/event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:hint="@string/title"
+                android:inputType="textCapSentences"
+                android:maxLength="180"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/day_text_size" />
+
+            <com.simplemobiletools.commons.views.MyEditText
+                android:id="@+id/event_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_title"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_toStartOf="@+id/event_show_on_map"
+                android:hint="@string/location"
+                android:inputType="textCapWords"
+                android:maxLength="180"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/day_text_size" />
+
+            <ImageView
+                android:id="@+id/event_show_on_map"
+                android:layout_width="@dimen/smaller_icon_size"
+                android:layout_height="@dimen/smaller_icon_size"
+                android:layout_alignTop="@+id/event_location"
+                android:layout_alignBottom="@+id/event_location"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/small_margin"
+                android:src="@drawable/ic_place_vector" />
+
+            <com.simplemobiletools.commons.views.MyEditText
+                android:id="@+id/event_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_location"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:autoLink="all"
+                android:gravity="top"
+                android:hint="@string/description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:linksClickable="true"
+                android:minHeight="48dp"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/day_text_size" />
+
+            <Button
+                android:id="@+id/Friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_description"
+                android:layout_marginTop="0dp"
+                android:gravity="top"
+                android:hint="Friends"
+                android:minHeight="48dp"
+                android:minEms="20"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/day_text_size" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
