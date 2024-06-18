@@ -86,6 +86,34 @@
                 app:layout_constraintEnd_toStartOf="@+id/calendar_fab"
                 app:layout_constraintTop_toTopOf="@+id/fab_task_icon" />
 
+            <ImageView
+                android:id="@+id/fab_group_event_icon"
+                android:layout_width="@dimen/secondary_fab_size"
+                android:layout_height="@dimen/secondary_fab_size"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:alpha="0"
+                android:background="@drawable/circle_background"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_task_vector"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/calendar_fab"
+                app:layout_constraintEnd_toEndOf="@+id/calendar_fab"
+                app:layout_constraintStart_toStartOf="@+id/calendar_fab" />
+
+            <com.simplemobiletools.commons.views.MyTextView
+                android:id="@+id/fab_group_event_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:paddingVertical="@dimen/small_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:text="@string/task"
+                android:textSize="@dimen/big_text_size"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/fab_task_icon"
+                app:layout_constraintEnd_toStartOf="@+id/calendar_fab"
+                app:layout_constraintTop_toTopOf="@+id/fab_task_icon" />
+
             <com.simplemobiletools.commons.views.MyFloatingActionButton
                 android:id="@+id/calendar_fab"
                 android:layout_width="wrap_content"

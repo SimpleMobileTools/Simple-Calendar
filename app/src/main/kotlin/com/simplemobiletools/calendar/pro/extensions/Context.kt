@@ -23,10 +23,7 @@ import android.widget.LinearLayout
 import androidx.core.app.NotificationCompat
 import androidx.print.PrintHelper
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.activities.EventActivity
-import com.simplemobiletools.calendar.pro.activities.EventTypePickerActivity
-import com.simplemobiletools.calendar.pro.activities.SnoozeReminderActivity
-import com.simplemobiletools.calendar.pro.activities.TaskActivity
+import com.simplemobiletools.calendar.pro.activities.*
 import com.simplemobiletools.calendar.pro.databases.EventsDatabase
 import com.simplemobiletools.calendar.pro.databinding.DayMonthlyEventViewBinding
 import com.simplemobiletools.calendar.pro.helpers.*
@@ -502,6 +499,8 @@ fun Context.launchNewTaskIntent(dayCode: String = Formatter.getTodayCode(), allo
     }
 }
 
+
+
 fun Context.launchNewEventOrTaskActivity() {
     if (config.allowCreatingTasks) {
         Intent(this, EventTypePickerActivity::class.java).apply {
@@ -513,6 +512,12 @@ fun Context.launchNewEventOrTaskActivity() {
     }
 }
 
+fun Context.launchNewGroupEventIntent(dayCode: String = Formatter.getTodayCode(), allowChangingDay: Boolean = false) {
+    Intent(applicationContext, GroupEventActivity::class.java).apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(this)
+    }
+}
 fun Context.getNewEventTimestampFromCode(dayCode: String, allowChangingDay: Boolean = false): Long {
     val calendar = Calendar.getInstance()
     val defaultStartTime = config.defaultStartTime
