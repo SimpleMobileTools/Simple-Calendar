@@ -21,7 +21,7 @@
     <item
         android:id="@+id/addFriendButton"
         android:text="@string/add_friend"
-        android:title="Add friends"
+        android:title="Friends"
         app:showAsAction="never" />
     <item
         android:id="@+id/filter"

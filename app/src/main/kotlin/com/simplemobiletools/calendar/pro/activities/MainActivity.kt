@@ -44,7 +44,6 @@ import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.commons.models.SimpleContact
 import com.simplemobiletools.commons.views.MyLinearLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
-import com.simplemobiletools.calendar.pro.dialogs.LoginDialog
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat

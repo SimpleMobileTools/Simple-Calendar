@@ -476,7 +476,8 @@
             android:exported="false"
             android:theme="@style/Theme.Transparent" />
 
-        <activity android:name="MainActivityAmis"></activity>
+        <activity android:name=".activities.MainActivityAmis"></activity>
+        <activity android:name=".activities.AddFriendActivity"></activity>
         <receiver
             android:name=".helpers.MyWidgetMonthlyProvider"
             android:exported="true"
