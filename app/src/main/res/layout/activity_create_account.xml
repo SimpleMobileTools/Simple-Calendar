@@ -16,13 +16,13 @@
         android:visibility="gone"/>
 
     <EditText
-        android:id="@+id/createUsername"
+        android:id="@+id/createEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:hint="📧 username or email"
+        android:hint="📧 email"
         android:layout_marginTop="64dp"
-        android:inputType="textNoSuggestions"
+        android:inputType="textEmailAddress"
         android:padding="12dp" />
 
     <EditText

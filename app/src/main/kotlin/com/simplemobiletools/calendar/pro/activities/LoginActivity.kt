@@ -12,29 +12,46 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.simplemobiletools.calendar.pro.R
 import org.json.JSONObject
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : SimpleActivity() {
     private var errorConnectAccountTextView: TextView? = null
-    private var usernameEditText: EditText? = null
+    private var emailEditText: EditText? = null
     private var passwordEditText: EditText? = null
     private var connectBtn: Button? = null
     private var createAccountBtn: TextView? = null
-    private var username: String? = null
-    private var password: String? = null
+    private lateinit var firebaseAuth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         errorConnectAccountTextView = findViewById(R.id.errorConnexionTextView)
-        usernameEditText = findViewById(R.id.username)
+        emailEditText = findViewById(R.id.username)
         passwordEditText = findViewById(R.id.password)
         connectBtn = findViewById(R.id.login_button)
         createAccountBtn = findViewById(R.id.create_account)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         connectBtn?.setOnClickListener(View.OnClickListener {
-                username =  usernameEditText?.text.toString()
-                password = passwordEditText?.text.toString()
+                val email =  emailEditText?.text.toString()
+                val password = passwordEditText?.text.toString()
+
+                if (email.isNotEmpty() && password.isNotEmpty()){
+                    firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener{
+                        if(it.isSuccessful){
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(intent)
+                        }else{
+                            Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                }
+                else{
+                    Toast.makeText(this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show()
+                }
         })
 
         createAccountBtn?.setOnClickListener(View.OnClickListener {
@@ -42,24 +59,7 @@ class LoginActivity : SimpleActivity() {
             startActivity(intent)
         })
     }
-
-    public fun connectUser(){
-        var url:String = "http://10.0.2.2/apiOurgenda/actions/connexion.php"
-        var params: HashMap<String, String> = HashMap()
-        params.put("user", this.username.toString())
-        params.put("azerty", this.password.toString())
-        val json = (params as Map<*, *>?)?.let { JSONObject(it) }
-
-        var jsonObjectRequest:JsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, json, { _ ->
-            Toast.makeText(applicationContext, "OPERATION SUCCESSFUL", Toast.LENGTH_LONG).show()
-
-        }, {  })
-        Toast.makeText(applicationContext, "OPERATION NOT SUCCESSFUL", Toast.LENGTH_LONG).show()
-        }
-        fun onErrorResponse(error: VolleyError){
-
-        }
-    }
+}
 
 
 

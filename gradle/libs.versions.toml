@@ -34,6 +34,8 @@ activityComposeVersion = "1.9.0"
 composeBomVersion = "2023.08.00"
 activityVersion = "1.9.0"
 firebaseInappmessagingVersion = "21.0.0"
+googleGmsGoogleServicesVersion = "4.4.2"
+firebaseAuthVersion = "23.0.0"
 [libraries]
 #Android X
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
@@ -63,6 +65,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activityVersion" }
 firebase-inappmessaging = { group = "com.google.firebase", name = "firebase-inappmessaging", version.ref = "firebaseInappmessagingVersion" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthVersion" }
 [bundles]
 room = [
     "androidx-room-ktx",
@@ -72,4 +75,5 @@ room = [
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServicesVersion" }
 

@@ -7,27 +7,26 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.compose.ui.graphics.Color
+import com.google.firebase.auth.FirebaseAuth
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.helpers.getJavaDayOfWeekFromJoda
 
 class CreateAccountActivity : SimpleActivity() {
 
-    private var usernameEditText: EditText? = null
+    private var emailEditText: EditText? = null
     private var passwordEditText: EditText? = null
     private var confirmPasswordEditText: EditText? = null
     private var createBtn: Button? = null
     private var loginBtn: TextView? = null
-    private var username: String? = null
-    private var createPassword: String? = null
-    private var confirmPassword: String? = null
-    private var password: String? = null
     private var dialogBoxError: TextView? = null
+    private lateinit var firebaseAuth:FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
 
-        usernameEditText = findViewById(R.id.createUsername)
+        emailEditText = findViewById(R.id.createEmail)
         passwordEditText = findViewById(R.id.createPassword)
         confirmPasswordEditText = findViewById(R.id.confirmPassword)
         createBtn = findViewById(R.id.create_button)
@@ -36,14 +35,32 @@ class CreateAccountActivity : SimpleActivity() {
         val myDialog: TextView = dialogBoxError!!
         myDialog.setTextColor(getResources().getColor(com.andrognito.patternlockview.R.color.white))
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         createBtn?.setOnClickListener(View.OnClickListener {
-            username = usernameEditText?.text.toString()
-            confirmPassword = confirmPasswordEditText?.text.toString()
-            createPassword = passwordEditText?.text.toString()
-            if (confirmPassword == createPassword) {
-                password = createPassword
-            } else if (confirmPassword != createPassword) {
-                myDialog.setTextColor(getResources().getColor(R.color.red_text))
+            val email = emailEditText?.text.toString()
+            val confirmPassword = confirmPasswordEditText?.text.toString()
+            val password = passwordEditText?.text.toString()
+
+            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+                if(password == confirmPassword){
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
+                        if(it.isSuccessful){
+                            Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else{
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
 
 

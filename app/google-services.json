@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "477849048699",
+    "project_id": "ourgenda",
+    "storage_bucket": "ourgenda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477849048699:android:8afd1972f14871e55f34de",
+        "android_client_info": {
+          "package_name": "com.simplemobiletools.calendar.pro.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDHlFSoXJ7t0GkLn-f2PCibqzr7yeZtwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

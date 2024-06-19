@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.googleGmsGoogleServices)
     base
 }
 
@@ -26,6 +27,7 @@ android {
 
         buildFeatures {
             compose = true
+            viewBinding = true
         }
 
         jvmTarget = "1.8"
@@ -122,6 +124,7 @@ dependencies {
     implementation(libs.androidx.print)
     implementation(libs.bundles.room)
     implementation(libs.firebase.inappmessaging)
+    implementation(libs.firebase.auth)
     ksp(libs.androidx.room.compiler)
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.code.gson:gson:2.8.7")
