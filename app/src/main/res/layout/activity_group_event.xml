@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/event_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_primary"
-        app:menu="@menu/menu_event"
-        app:title="@string/app_launcher_name"
-        app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/event_nested_scrollview"
         android:layout_width="match_parent"

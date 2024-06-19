@@ -15,6 +15,7 @@ import android.provider.ContactsContract.Data
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
@@ -47,7 +48,7 @@ import com.simplemobiletools.commons.views.MyRecyclerView
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
@@ -79,13 +80,30 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
 
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
         updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        // Check if the user is authenticated
+        if (firebaseAuth.currentUser == null) {
+            // User is not logged in, redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // Close MainActivity
+        } else {
+            // User is logged in, you can access user information
+            val user = firebaseAuth.currentUser
+            Toast.makeText(this, "Welcome ${user?.email}", Toast.LENGTH_SHORT).show()
+        }
 
         checkWhatsNewDialog()
         binding.calendarFab.beVisibleIf(config.storedView != YEARLY_VIEW && config.storedView != WEEKLY_VIEW)
@@ -269,7 +287,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.go_to_today -> goToToday()
                 R.id.go_to_date -> showGoToDateDialog()
                 R.id.print -> printView()
-                R.id.friends -> launchLogin()
+                R.id.friends -> launchGroupEvent()
                 R.id.filter -> showFilterDialog()
                 R.id.refresh_caldav_calendars -> refreshCalDAVCalendars(true)
                 R.id.add_holidays -> addHolidays()
@@ -277,12 +295,19 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.add_anniversaries -> tryAddAnniversaries()
                 R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.settings -> launchSettings()
+                R.id.log_out -> logOut()
                 R.id.about -> launchAbout()
                 R.id.addFriendButton -> goAddFriend()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
         }
+    }
+    private fun logOut() {
+        firebaseAuth.signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onBackPressed() {
@@ -1085,8 +1110,8 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         startActivity(Intent(applicationContext, SettingsActivity::class.java))
     }
 
-    private fun launchLogin() {
-        startActivity(Intent(applicationContext, LoginActivity::class.java))
+    private fun launchGroupEvent() {
+        startActivity(Intent(applicationContext, GroupEventActivity::class.java))
     }
     private fun goAddFriend() {
         val intent = Intent(this, MainActivityAmis::class.java)

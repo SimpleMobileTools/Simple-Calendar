@@ -68,7 +68,10 @@ class LoginActivity : SimpleActivity() {
             startActivity(intent)
         }
     }
+
 }
+
+
 
 
 

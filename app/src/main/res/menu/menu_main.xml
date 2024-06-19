@@ -24,6 +24,11 @@
         android:title="Friends"
         app:showAsAction="never" />
     <item
+        android:id="@+id/log_out"
+        android:text="Log out"
+        android:title="Log out"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter_vector"
         android:title="@string/filter_events_by_type"
