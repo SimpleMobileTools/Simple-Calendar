@@ -321,6 +321,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
     <string name="both_passwords_are_different">Both passwords are different</string>
+    <string name="add_friend">Add Friend</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res

@@ -121,6 +121,7 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.print)
     implementation(libs.bundles.room)
+    implementation(libs.firebase.inappmessaging)
     ksp(libs.androidx.room.compiler)
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.code.gson:gson:2.8.7")

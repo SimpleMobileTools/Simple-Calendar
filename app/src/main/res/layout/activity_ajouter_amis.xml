@@ -1,0 +1,19 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/friend_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Friend's Name"/>
+
+    <Button
+        android:id="@+id/save_friend_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Friend"/>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.simplemobiletools.calendar.pro.activities
 
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ShortcutInfo
@@ -12,6 +13,7 @@ import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.Contacts
 import android.provider.ContactsContract.Data
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
@@ -162,6 +164,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         if (mStoredTextColor != getProperTextColor() || mStoredBackgroundColor != getProperBackgroundColor() || mStoredPrimaryColor != getProperPrimaryColor()
@@ -276,6 +279,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
+                R.id.addFriendButton -> goAddFriend()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -1085,7 +1089,11 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
     private fun launchLogin() {
         startActivity(Intent(applicationContext, LoginActivity::class.java))
     }
+    private fun goAddFriend() {
+        val intent = Intent(this, MainActivityAmis::class.java)
+        startActivity(intent)
 
+    }
     private fun launchAbout() {
         val licenses = LICENSE_JODA
 
@@ -1366,6 +1374,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
         return items
     }
+
 
     private fun checkWhatsNewDialog() {
         arrayListOf<Release>().apply {

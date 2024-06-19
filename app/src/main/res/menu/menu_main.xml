@@ -19,6 +19,11 @@
         android:title="@string/change_view"
         app:showAsAction="always" />
     <item
+        android:id="@+id/addFriendButton"
+        android:text="@string/add_friend"
+        android:title="Add friends"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter_vector"
         android:title="@string/filter_events_by_type"
@@ -53,6 +58,7 @@
         android:showAsAction="never"
         android:title="@string/add_anniversaries"
         app:showAsAction="never" />
+
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_cog_vector"
