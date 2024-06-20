@@ -2,6 +2,7 @@ package com.simplemobiletools.calendar.pro.helpers
 
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.collection.LongSparseArray
@@ -13,6 +14,7 @@ import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.CHOPPED_LIST_DEFAULT_SIZE
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import java.util.Calendar
 
 class EventsHelper(val context: Context) {
     private val config = context.config
@@ -253,6 +255,13 @@ class EventsHelper(val context: Context) {
     fun deleteAllEvents() {
         ensureBackgroundThread {
             val eventIds = eventsDB.getEventIds().toMutableList()
+            deleteEvents(eventIds, true)
+        }
+    }
+
+    fun deleteEventsBeforeDate(chosenDateTimestamp: Long) {
+        ensureBackgroundThread {
+            val eventIds = eventsDB.getEventIdsBeforeDate(chosenDateTimestamp).toMutableList()
             deleteEvents(eventIds, true)
         }
     }
