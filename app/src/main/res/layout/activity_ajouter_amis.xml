@@ -6,14 +6,21 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/friend_name"
+        android:id="@+id/friend_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Friend's Name"/>
+        android:layout_height="64dp"
+        android:hint="Friend's email"
+        android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/save_friend_button"
+        android:id="@+id/search_friend_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Friend"/>
+        android:text="Search Friend"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/users_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

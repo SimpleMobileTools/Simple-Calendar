@@ -125,6 +125,7 @@ dependencies {
     implementation(libs.bundles.room)
     implementation(libs.firebase.inappmessaging)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore.ktx)
     ksp(libs.androidx.room.compiler)
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.code.gson:gson:2.8.7")
@@ -133,4 +134,19 @@ dependencies {
     implementation("androidx.compose.material:material:1.5.3") // Version de Compose Material
     implementation("androidx.compose.ui:ui-tooling:1.5.3") // Version de Compose Tooling
     implementation("androidx.compose.runtime:runtime:1.5.3") // Version de Compose Runtime
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.10")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.firebase.firestore)
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 }
+
+apply(plugin = "com.google.gms.google-services")
+

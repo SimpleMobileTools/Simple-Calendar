@@ -1,17 +1,16 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.compose.ui.graphics.Color
 import com.google.firebase.auth.FirebaseAuth
 import com.simplemobiletools.calendar.pro.R
-import com.simplemobiletools.calendar.pro.helpers.getJavaDayOfWeekFromJoda
+import com.google.firebase.firestore.FirebaseFirestore
+import com.simplemobiletools.calendar.pro.databases.User
 
 class CreateAccountActivity : SimpleActivity() {
 
@@ -22,6 +21,8 @@ class CreateAccountActivity : SimpleActivity() {
     private var loginBtn: TextView? = null
     private var dialogBoxError: TextView? = null
     private lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
@@ -36,6 +37,7 @@ class CreateAccountActivity : SimpleActivity() {
         myDialog.setTextColor(getResources().getColor(com.andrognito.patternlockview.R.color.white))
 
         firebaseAuth = FirebaseAuth.getInstance()
+        firestore =  FirebaseFirestore.getInstance()
 
         createBtn?.setOnClickListener(View.OnClickListener {
             val email = emailEditText?.text.toString()
@@ -46,9 +48,15 @@ class CreateAccountActivity : SimpleActivity() {
                 if(password == confirmPassword){
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                         if(it.isSuccessful){
-                            Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
-                            startActivity(intent)
+                            val userId = firebaseAuth.currentUser?.uid ?: return@addOnCompleteListener
+                            val user = User(userId, email)
+                            firestore.collection("users").document(userId).set(user)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Compte créé avec succès", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
                         }
                         else{
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
