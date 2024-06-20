@@ -402,7 +402,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
             if (config.allowCreatingTasks) {
                 shortcuts.add(getNewTaskShortcut(appIconColor))
-                shortcuts.add(getNewGroupEventShortcut(appIconColor))
             }
 
             try {
@@ -444,22 +443,6 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             .setLongLabel(newTask)
             .setIcon(Icon.createWithBitmap(newTaskBitmap))
             .setIntent(newTaskIntent)
-            .build()
-    }
-
-    @SuppressLint("NewApi")
-    private fun getNewGroupEventShortcut(appIconColor: Int): ShortcutInfo {
-        val newGroupEvent = "Group Event"
-        val newTaskDrawable = resources.getDrawable(R.drawable.shortcut_event, theme)
-        (newTaskDrawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_task_background).applyColorFilter(appIconColor)
-        val newTaskBitmap = newTaskDrawable.convertToBitmap()
-        val newGroupEventIntent = Intent(this, SplashActivity::class.java)
-        newGroupEventIntent.action = SHORTCUT_NEW_TASK
-        return ShortcutInfo.Builder(this, "new_task")
-            .setShortLabel(newGroupEvent)
-            .setLongLabel(newGroupEvent)
-            .setIcon(Icon.createWithBitmap(newTaskBitmap))
-            .setIntent(newGroupEventIntent)
             .build()
     }
 
