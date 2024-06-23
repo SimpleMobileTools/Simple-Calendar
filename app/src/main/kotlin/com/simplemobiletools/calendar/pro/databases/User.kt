@@ -1,7 +1,6 @@
 package com.simplemobiletools.calendar.pro.databases
 
 data class User(
-    val id: String? = null,
-    val mail: String? = null
+    val id: String,
+    val mail: String
 )
-{constructor():this(null,null)}

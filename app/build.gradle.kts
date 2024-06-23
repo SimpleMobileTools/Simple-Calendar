@@ -127,6 +127,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore.ktx)
     ksp(libs.androidx.room.compiler)
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.code.gson:gson:2.8.7")
     implementation("androidx.cardview:cardview:1.0.0")
@@ -136,6 +137,8 @@ dependencies {
     implementation("androidx.compose.runtime:runtime:1.5.3") // Version de Compose Runtime
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.10")
     implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
