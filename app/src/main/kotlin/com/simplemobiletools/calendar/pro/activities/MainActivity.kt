@@ -3,10 +3,12 @@ package com.simplemobiletools.calendar.pro.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract.CommonDataKinds
@@ -16,8 +18,11 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.security.ProviderInstaller
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.simplemobiletools.calendar.pro.BuildConfig
 import com.simplemobiletools.calendar.pro.R
@@ -93,7 +98,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
         setupOptionsMenu()
         refreshMenuItems()
         updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)
-
+        FirebaseApp.initializeApp(this)
 
         firebaseAuth = FirebaseAuth.getInstance()
 

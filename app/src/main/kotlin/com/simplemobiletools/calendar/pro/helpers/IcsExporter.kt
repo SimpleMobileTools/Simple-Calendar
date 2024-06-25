@@ -1,10 +1,13 @@
 package com.simplemobiletools.calendar.pro.helpers
 
 import android.content.Context
+import android.net.Uri
 import android.provider.CalendarContract.Events
+import com.google.firebase.storage.FirebaseStorage
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.calDAVHelper
 import com.simplemobiletools.calendar.pro.extensions.eventTypesDB
+import com.simplemobiletools.calendar.pro.extensions.uploadFile
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.EXPORT_FAIL
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.EXPORT_OK
 import com.simplemobiletools.calendar.pro.helpers.IcsExporter.ExportResult.EXPORT_PARTIAL
@@ -13,9 +16,7 @@ import com.simplemobiletools.calendar.pro.models.Event
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.extensions.writeLn
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import java.io.BufferedWriter
-import java.io.OutputStream
-import java.io.OutputStreamWriter
+import java.io.*
 
 class IcsExporter(private val context: Context) {
     enum class ExportResult {
@@ -189,6 +190,31 @@ class IcsExporter(private val context: Context) {
 
             eventsExported++
             writeLn(END_TASK)
+        }
+    }
+    fun exportEventsToFirebase(
+        events: List<Event>,
+        showExportingToast: Boolean,
+        callback: (result: IcsExporter.ExportResult, downloadUrl: String?) -> Unit
+    ) {
+        val outputDir = context.cacheDir // Dossier temporaire pour stocker le fichier .ics
+        val outputFile = File(outputDir, "events_export.ics")
+
+        try {
+            FileOutputStream(outputFile).use { outputStream ->
+                exportEvents(outputStream, events, showExportingToast) { result ->
+                    if (result == ExportResult.EXPORT_OK || result == ExportResult.EXPORT_PARTIAL) {
+                        uploadFile(outputFile) { downloadUrl ->
+                            callback(result, downloadUrl)
+                        }
+                    } else {
+                        callback(result, null)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            callback(EXPORT_FAIL, null)
         }
     }
 }

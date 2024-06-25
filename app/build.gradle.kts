@@ -126,6 +126,7 @@ dependencies {
     implementation(libs.firebase.inappmessaging)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.storage.ktx)
     ksp(libs.androidx.room.compiler)
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("com.android.volley:volley:1.2.1")
@@ -149,6 +150,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("com.google.firebase:firebase-messaging:24.0.0")
 }
 
 apply(plugin = "com.google.gms.google-services")
