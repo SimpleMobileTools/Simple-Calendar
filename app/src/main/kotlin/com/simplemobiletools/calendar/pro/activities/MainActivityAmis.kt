@@ -15,7 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivityAmis : AppCompatActivity() {
+class MainActivityAmis : SimpleActivity() {
     private lateinit var adapter: ArrayAdapter<String>
     private lateinit var firestore: FirebaseFirestore
     private lateinit var firebaseAuth: FirebaseAuth
@@ -29,7 +29,7 @@ class MainActivityAmis : AppCompatActivity() {
         val listView: ListView = findViewById(R.id.friends_list)
         val addFriendButton: Button = findViewById(R.id.add_friend_button)
 
-        db = (this.application as App).getDatabase()
+        db = AppDatabase.getDatabase(this)
         friendDao = db.friendDao()
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mutableListOf())
         listView.adapter = adapter

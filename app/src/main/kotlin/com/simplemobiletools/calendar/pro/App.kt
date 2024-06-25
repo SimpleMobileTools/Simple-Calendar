@@ -21,5 +21,5 @@ class App : MultiDexApplication() {
             ).build()
     }
 
-    fun getDatabase(): AppDatabase = database!!
+    //fun getDatabase(): AppDatabase = database!!
 }

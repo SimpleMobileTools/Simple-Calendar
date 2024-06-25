@@ -38,6 +38,7 @@ firebaseInappmessagingVersion = "21.0.0"
 googleGmsGoogleServicesVersion = "4.4.2"
 firebaseAuthVersion = "23.0.0"
 firebaseFirestoreKtxVersion = "25.0.0"
+firebaseStorageKtxVersion = "21.0.0"
 [libraries]
 #Android X
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
@@ -70,6 +71,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 firebase-inappmessaging = { group = "com.google.firebase", name = "firebase-inappmessaging", version.ref = "firebaseInappmessagingVersion" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthVersion" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtxVersion" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtxVersion" }
 [bundles]
 room = [
     "androidx-room-ktx",
