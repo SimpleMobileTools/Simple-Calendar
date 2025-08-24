@@ -1,12 +1,26 @@
 package com.simplemobiletools.calendar.pro.activities
 
 import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.extensions.getNewEventTimestampFromCode
 import com.simplemobiletools.calendar.pro.helpers.*
 import com.simplemobiletools.commons.activities.BaseSplashActivity
 import org.joda.time.DateTime
 
 class SplashActivity : BaseSplashActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            initActivity()
+        }, 1500)
+    }
+
     override fun initActivity() {
         when {
             intent.extras?.containsKey(DAY_CODE) == true -> Intent(this, MainActivity::class.java).apply {
