@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/overshoot_interpolator">
+
+    <!-- Fade in -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="1000" />
+
+    <!-- Scale bounce -->
+    <scale
+        android:fromXScale="0.7"
+        android:fromYScale="0.7"
+        android:toXScale="1.0"
+        android:toYScale="1.0"
+        android:duration="1000"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+</set>

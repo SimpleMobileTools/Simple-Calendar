@@ -13,7 +13,8 @@ import android.provider.ContactsContract.Contacts
 import android.provider.ContactsContract.Data
 import android.view.MenuItem
 import android.widget.Toast
-import com.simplemobiletools.calendar.pro.BuildConfig
+import androidx.multidex.BuildConfig
+
 import com.simplemobiletools.calendar.pro.R
 import com.simplemobiletools.calendar.pro.adapters.EventListAdapter
 import com.simplemobiletools.calendar.pro.adapters.QuickFilterEventTypeAdapter
