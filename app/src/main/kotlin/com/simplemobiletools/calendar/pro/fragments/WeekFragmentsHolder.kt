@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyWeekPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentWeekHolderBinding
@@ -23,7 +23,6 @@ import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 import com.simplemobiletools.calendar.pro.views.MyScrollView
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.WEEK_SECONDS
-import com.simplemobiletools.commons.views.MyViewPager
 import org.joda.time.DateTime
 
 class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
@@ -31,7 +30,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     private val MAX_SEEKBAR_VALUE = 14
 
     private lateinit var binding: FragmentWeekHolderBinding
-    private lateinit var viewPager: MyViewPager
+    private lateinit var viewPager: ViewPager2
     private var defaultWeeklyPage = 0
     private var thisWeekTS = 0L
     private var currentWeekTS = 0L
@@ -96,17 +95,14 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
 
     private fun setupWeeklyViewPager() {
         val weekTSs = getWeekTimestamps(currentWeekTS)
-        val weeklyAdapter = MyWeekPagerAdapter(requireActivity().supportFragmentManager, weekTSs, this)
+        val weeklyAdapter = MyWeekPagerAdapter(this, weekTSs, this)
 
         defaultWeeklyPage = weekTSs.size / 2
 
         viewPager.apply {
             adapter = weeklyAdapter
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {}
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
+            offscreenPageLimit = 1
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     currentWeekTS = weekTSs[position]
                     val shouldGoToTodayBeVisible = shouldGoToTodayBeVisible()
@@ -118,13 +114,13 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                     setupWeeklyActionbarTitle(weekTSs[position])
                 }
             })
-            currentItem = defaultWeeklyPage
+            setCurrentItem(defaultWeeklyPage, false)
         }
 
         binding.weekViewHoursScrollview.setOnScrollviewListener(object : MyScrollView.ScrollViewListener {
             override fun onScrollChanged(scrollView: MyScrollView, x: Int, y: Int, oldx: Int, oldy: Int) {
                 weekScrollY = y
-                weeklyAdapter.updateScrollY(viewPager.currentItem, y)
+                weeklyAdapter.updateScrollY(viewPager.currentItem, y, this@WeekFragmentsHolder)
             }
         })
     }
@@ -223,7 +219,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
     }
 
     override fun refreshEvents() {
-        (viewPager.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager.currentItem)
+        (viewPager.adapter as? MyWeekPagerAdapter)?.updateCalendars(viewPager.currentItem, this)
     }
 
     override fun shouldGoToTodayBeVisible() = currentWeekTS != thisWeekTS
@@ -262,7 +258,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
         }
 
         binding.weekViewHoursHolder.setPadding(0, 0, 0, rowHeight)
-        (viewPager.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager.currentItem)
+        (viewPager.adapter as? MyWeekPagerAdapter)?.updateNotVisibleScaleLevel(viewPager.currentItem, this)
     }
 
     override fun getFullFragmentHeight() =
@@ -278,7 +274,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             weekViewWeekNumber.setTextColor(lightTextColor)
             weekViewMonthLabel.setTextColor(lightTextColor)
             root.background = ColorDrawable(Color.WHITE)
-            (viewPager.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager.currentItem)
+            (viewPager.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager.currentItem, this@WeekFragmentsHolder)
 
             Handler().postDelayed({
                 requireContext().printBitmap(binding.weekViewHolder.getViewBitmap())
@@ -291,7 +287,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
                     weekViewMonthLabel.setTextColor(requireContext().getProperTextColor())
                     addHours()
                     root.background = ColorDrawable(requireContext().getProperBackgroundColor())
-                    (viewPager.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager.currentItem)
+                    (viewPager.adapter as? MyWeekPagerAdapter)?.togglePrintMode(viewPager.currentItem, this@WeekFragmentsHolder)
                 }, 1000)
             }, 1000)
         }

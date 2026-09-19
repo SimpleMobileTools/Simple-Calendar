@@ -1,20 +1,18 @@
 package com.simplemobiletools.calendar.pro.adapters
 
 import android.os.Bundle
-import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.simplemobiletools.calendar.pro.fragments.MonthDayFragment
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 
-class MyMonthDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {
-    private val mFragments = SparseArray<MonthDayFragment>()
+class MyMonthDayPagerAdapter(fragment: Fragment, private val mCodes: List<String>, private val mListener: NavigationListener) :
+    FragmentStateAdapter(fragment) {
 
-    override fun getCount() = mCodes.size
+    override fun getItemCount() = mCodes.size
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         val bundle = Bundle()
         val code = mCodes[position]
         bundle.putString(DAY_CODE, code)
@@ -22,20 +20,23 @@ class MyMonthDayPagerAdapter(fm: FragmentManager, private val mCodes: List<Strin
         val fragment = MonthDayFragment()
         fragment.arguments = bundle
         fragment.listener = mListener
-
-        mFragments.put(position, fragment)
         return fragment
     }
 
-    fun updateCalendars(pos: Int) {
+    fun updateCalendars(pos: Int, fragment: Fragment) {
         for (i in -1..1) {
-            mFragments[pos + i]?.updateCalendar()
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? MonthDayFragment
+            f?.updateCalendar()
         }
     }
 
-    fun printCurrentView(pos: Int) {
-        mFragments[pos].printCurrentView()
+    fun printCurrentView(pos: Int, fragment: Fragment) {
+        val f = fragment.childFragmentManager.findFragmentByTag("f$pos") as? MonthDayFragment
+        f?.printCurrentView()
     }
 
-    fun getNewEventDayCode(pos: Int): String? = mFragments[pos].getNewEventDayCode()
+    fun getNewEventDayCode(pos: Int, fragment: Fragment): String? {
+        val f = fragment.childFragmentManager.findFragmentByTag("f$pos") as? MonthDayFragment
+        return f?.getNewEventDayCode()
+    }
 }

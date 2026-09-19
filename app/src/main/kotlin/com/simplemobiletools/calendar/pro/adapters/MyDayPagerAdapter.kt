@@ -1,21 +1,18 @@
 package com.simplemobiletools.calendar.pro.adapters
 
 import android.os.Bundle
-import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.simplemobiletools.calendar.pro.fragments.DayFragment
 import com.simplemobiletools.calendar.pro.helpers.DAY_CODE
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 
-class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) :
-        FragmentStatePagerAdapter(fm) {
-    private val mFragments = SparseArray<DayFragment>()
+class MyDayPagerAdapter(fragment: Fragment, private val mCodes: List<String>, private val mListener: NavigationListener) :
+    FragmentStateAdapter(fragment) {
 
-    override fun getCount() = mCodes.size
+    override fun getItemCount() = mCodes.size
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         val bundle = Bundle()
         val code = mCodes[position]
         bundle.putString(DAY_CODE, code)
@@ -23,18 +20,18 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
         val fragment = DayFragment()
         fragment.arguments = bundle
         fragment.mListener = mListener
-
-        mFragments.put(position, fragment)
         return fragment
     }
 
-    fun updateCalendars(pos: Int) {
+    fun updateCalendars(pos: Int, fragment: Fragment) {
         for (i in -1..1) {
-            mFragments[pos + i]?.updateCalendar()
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? DayFragment
+            f?.updateCalendar()
         }
     }
 
-    fun printCurrentView(pos: Int) {
-        mFragments[pos].printCurrentView()
+    fun printCurrentView(pos: Int, fragment: Fragment) {
+        val f = fragment.childFragmentManager.findFragmentByTag("f$pos") as? DayFragment
+        f?.printCurrentView()
     }
 }

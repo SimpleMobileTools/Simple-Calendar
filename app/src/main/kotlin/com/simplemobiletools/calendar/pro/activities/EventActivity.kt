@@ -1,6 +1,5 @@
 package com.simplemobiletools.calendar.pro.activities
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -8,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.CalendarContract.Attendees
 import android.provider.CalendarContract.Colors
@@ -21,6 +21,7 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
@@ -44,12 +45,12 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.views.MyAutoCompleteTextView
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import java.io.Serializable
 import java.util.TimeZone
 import java.util.regex.Pattern
 
 class EventActivity : SimpleActivity() {
     private val LAT_LON_PATTERN = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)([,;])\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\$"
-    private val SELECT_TIME_ZONE_INTENT = 1
 
     private var mIsAllDayEvent = false
     private var mReminder1Minutes = REMINDER_OFF
@@ -82,7 +83,14 @@ class EventActivity : SimpleActivity() {
     private lateinit var mEventStartDateTime: DateTime
     private lateinit var mEventEndDateTime: DateTime
     private lateinit var mEvent: Event
-
+    private val selectTimeZoneLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            result.data?.getSerializableExtraCompat<MyTimeZone>(TIME_ZONE)?.let { timeZone ->
+                mEvent.timeZone = timeZone.zoneName
+                updateTimeZoneText()
+            }
+        }
+    }
     private val binding by viewBinding(ActivityEventBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,11 +147,17 @@ class EventActivity : SimpleActivity() {
                 if (it) {
                     saveCurrentEvent()
                 } else {
-                    super.onBackPressed()
+                    //super.onBackPressed()
+                    // Source - https://stackoverflow.com/a/73934895
+                    // Posted by Jaydeep Khambhayta, modified by community. See post 'Timeline' for change history
+                    // Retrieved 2026-09-18, License - CC BY-SA 4.0
+                    onBackPressedDispatcher.onBackPressed()
+
                 }
             }
         } else {
-            super.onBackPressed()
+            // super.onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 
@@ -193,7 +207,7 @@ class EventActivity : SimpleActivity() {
         }
 
         savedInstanceState.apply {
-            mEvent = getSerializable(EVENT) as Event
+            getSerializableCompat<Event>(EVENT)?.let { mEvent = it }
             mEventStartDateTime = Formatter.getDateTimeFromTS(getLong(START_TS))
             mEventEndDateTime = Formatter.getDateTimeFromTS(getLong(END_TS))
             mEvent.timeZone = getString(TIME_ZONE) ?: TimeZone.getDefault().id
@@ -230,15 +244,6 @@ class EventActivity : SimpleActivity() {
         updateCalDAVCalendar()
         checkAttendees()
         updateActionBarTitle()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (requestCode == SELECT_TIME_ZONE_INTENT && resultCode == Activity.RESULT_OK && resultData?.hasExtra(TIME_ZONE) == true) {
-            val timeZone = resultData.getSerializableExtra(TIME_ZONE) as MyTimeZone
-            mEvent.timeZone = timeZone.zoneName
-            updateTimeZoneText()
-        }
-        super.onActivityResult(requestCode, resultCode, resultData)
     }
 
     private fun gotEvent(savedInstanceState: Bundle?, localEventType: EventType?, event: Event?) = binding.apply {
@@ -1600,7 +1605,7 @@ class EventActivity : SimpleActivity() {
         hideKeyboard()
         Intent(this, SelectTimeZoneActivity::class.java).apply {
             putExtra(CURRENT_TIME_ZONE, mEvent.getTimeZoneString())
-            startActivityForResult(this, SELECT_TIME_ZONE_INTENT)
+            selectTimeZoneLauncher.launch(this)
         }
     }
 

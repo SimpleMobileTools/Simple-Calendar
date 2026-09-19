@@ -1,21 +1,18 @@
 package com.simplemobiletools.calendar.pro.adapters
 
 import android.os.Bundle
-import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.simplemobiletools.calendar.pro.fragments.WeekFragment
 import com.simplemobiletools.calendar.pro.helpers.WEEK_START_TIMESTAMP
 import com.simplemobiletools.calendar.pro.interfaces.WeekFragmentListener
 
-class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<Long>, private val mListener: WeekFragmentListener) :
-    FragmentStatePagerAdapter(fm) {
-    private val mFragments = SparseArray<WeekFragment>()
+class MyWeekPagerAdapter(fragment: Fragment, private val mWeekTimestamps: List<Long>, private val mListener: WeekFragmentListener) :
+    FragmentStateAdapter(fragment) {
 
-    override fun getCount() = mWeekTimestamps.size
+    override fun getItemCount() = mWeekTimestamps.size
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         val bundle = Bundle()
         val weekTimestamp = mWeekTimestamps[position]
         bundle.putLong(WEEK_START_TIMESTAMP, weekTimestamp)
@@ -23,28 +20,34 @@ class MyWeekPagerAdapter(fm: FragmentManager, private val mWeekTimestamps: List<
         val fragment = WeekFragment()
         fragment.arguments = bundle
         fragment.listener = mListener
-
-        mFragments.put(position, fragment)
         return fragment
     }
 
-    fun updateScrollY(pos: Int, y: Int) {
-        mFragments[pos - 1]?.updateScrollY(y)
-        mFragments[pos + 1]?.updateScrollY(y)
-    }
-
-    fun updateCalendars(pos: Int) {
+    fun updateScrollY(pos: Int, y: Int, fragment: Fragment) {
         for (i in -1..1) {
-            mFragments[pos + i]?.updateCalendar()
+            if (i == 0) continue
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? WeekFragment
+            f?.updateScrollY(y)
         }
     }
 
-    fun updateNotVisibleScaleLevel(pos: Int) {
-        mFragments[pos - 1]?.updateNotVisibleViewScaleLevel()
-        mFragments[pos + 1]?.updateNotVisibleViewScaleLevel()
+    fun updateCalendars(pos: Int, fragment: Fragment) {
+        for (i in -1..1) {
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? WeekFragment
+            f?.updateCalendar()
+        }
     }
 
-    fun togglePrintMode(pos: Int) {
-        mFragments[pos].togglePrintMode()
+    fun updateNotVisibleScaleLevel(pos: Int, fragment: Fragment) {
+        for (i in -1..1) {
+            if (i == 0) continue
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? WeekFragment
+            f?.updateNotVisibleViewScaleLevel()
+        }
+    }
+
+    fun togglePrintMode(pos: Int, fragment: Fragment) {
+        val f = fragment.childFragmentManager.findFragmentByTag("f$pos") as? WeekFragment
+        f?.togglePrintMode()
     }
 }

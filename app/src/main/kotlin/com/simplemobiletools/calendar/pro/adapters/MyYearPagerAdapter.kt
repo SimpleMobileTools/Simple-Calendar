@@ -1,20 +1,18 @@
 package com.simplemobiletools.calendar.pro.adapters
 
 import android.os.Bundle
-import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.simplemobiletools.calendar.pro.fragments.YearFragment
 import com.simplemobiletools.calendar.pro.helpers.YEAR_LABEL
 import com.simplemobiletools.calendar.pro.interfaces.NavigationListener
 
-class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>, private val mListener: NavigationListener) : FragmentStatePagerAdapter(fm) {
-    private val mFragments = SparseArray<YearFragment>()
+class MyYearPagerAdapter(fragment: Fragment, val mYears: List<Int>, private val mListener: NavigationListener) :
+    FragmentStateAdapter(fragment) {
 
-    override fun getCount() = mYears.size
+    override fun getItemCount() = mYears.size
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         val bundle = Bundle()
         val year = mYears[position]
         bundle.putInt(YEAR_LABEL, year)
@@ -22,18 +20,18 @@ class MyYearPagerAdapter(fm: FragmentManager, val mYears: List<Int>, private val
         val fragment = YearFragment()
         fragment.arguments = bundle
         fragment.listener = mListener
-
-        mFragments.put(position, fragment)
         return fragment
     }
 
-    fun updateCalendars(pos: Int) {
+    fun updateCalendars(pos: Int, fragment: Fragment) {
         for (i in -1..1) {
-            mFragments[pos + i]?.updateCalendar()
+            val f = fragment.childFragmentManager.findFragmentByTag("f${pos + i}") as? YearFragment
+            f?.updateCalendar()
         }
     }
 
-    fun printCurrentView(pos: Int) {
-        mFragments[pos].printCurrentView()
+    fun printCurrentView(pos: Int, fragment: Fragment) {
+        val f = fragment.childFragmentManager.findFragmentByTag("f$pos") as? YearFragment
+        f?.printCurrentView()
     }
 }

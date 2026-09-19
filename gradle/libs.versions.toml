@@ -8,12 +8,13 @@ multidex = "2.0.1"
 print = "1.0.0"
 constraintlayout = "2.1.4"
 swiperefreshlayout = "1.1.0"
+viewpager2 = "1.1.0"
 #Room
 room = "2.5.2"
 #Simple tools
 simple-commons = "b7dd6ad428"
 #Gradle
-gradlePlugins-agp = "8.1.1"
+gradlePlugins-agp = "8.13.2"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
@@ -30,6 +31,7 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 androidx-print = { module = "androidx.print:print", version.ref = "print" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 #Room
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }

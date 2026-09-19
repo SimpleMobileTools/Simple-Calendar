@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyYearPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentYearsHolderBinding
@@ -19,13 +19,12 @@ import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.views.MyViewPager
 import org.joda.time.DateTime
 
 class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_YEARS = 61
 
-    private lateinit var viewPager: MyViewPager
+    private lateinit var viewPager: ViewPager2
     private var defaultYearlyPage = 0
     private var todayYear = 0
     private var currentYear = 0
@@ -51,16 +50,13 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     private fun setupFragment() {
         val years = getYears(currentYear)
-        val yearlyAdapter = MyYearPagerAdapter(requireActivity().supportFragmentManager, years, this)
+        val yearlyAdapter = MyYearPagerAdapter(this, years, this)
         defaultYearlyPage = years.size / 2
 
         viewPager.apply {
             adapter = yearlyAdapter
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {}
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
+            offscreenPageLimit = 1
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     currentYear = years[position]
                     val shouldGoToTodayBeVisible = shouldGoToTodayBeVisible()
@@ -70,7 +66,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
                     }
                 }
             })
-            currentItem = defaultYearlyPage
+            setCurrentItem(defaultYearlyPage, false)
         }
     }
 
@@ -124,7 +120,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        (viewPager.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager.currentItem)
+        (viewPager.adapter as? MyYearPagerAdapter)?.updateCalendars(viewPager.currentItem, this)
     }
 
     override fun shouldGoToTodayBeVisible() = currentYear != todayYear
@@ -132,7 +128,7 @@ class YearFragmentsHolder : MyFragmentHolder(), NavigationListener {
     override fun getNewEventDayCode() = Formatter.getTodayCode()
 
     override fun printView() {
-        (viewPager.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager.currentItem)
+        (viewPager.adapter as? MyYearPagerAdapter)?.printCurrentView(viewPager.currentItem, this)
     }
 
     override fun getCurrentDate() = null

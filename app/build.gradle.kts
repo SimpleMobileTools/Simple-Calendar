@@ -61,6 +61,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
             if (keystorePropertiesFile.exists()) {
                 signingConfig = signingConfigs.getByName("release")
             }
@@ -97,10 +98,13 @@ android {
 }
 
 dependencies {
-    implementation(libs.simple.mobile.tools.commons)
+    implementation(libs.simple.mobile.tools.commons) {
+        exclude(group = "com.github.duolingo", module = "rtl-viewpager")
+    }
     implementation(libs.androidx.multidex)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.print)
     implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)

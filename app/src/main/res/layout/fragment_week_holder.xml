@@ -60,7 +60,7 @@
 
     </com.simplemobiletools.calendar.pro.views.MyScrollView>
 
-    <com.simplemobiletools.commons.views.MyViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/week_view_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

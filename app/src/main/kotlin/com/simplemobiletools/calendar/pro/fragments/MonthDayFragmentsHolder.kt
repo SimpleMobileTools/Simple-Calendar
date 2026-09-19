@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.simplemobiletools.calendar.pro.activities.MainActivity
 import com.simplemobiletools.calendar.pro.adapters.MyMonthDayPagerAdapter
 import com.simplemobiletools.calendar.pro.databinding.FragmentMonthsDaysHolderBinding
@@ -20,13 +20,12 @@ import com.simplemobiletools.commons.extensions.beGone
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.getProperBackgroundColor
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.views.MyViewPager
 import org.joda.time.DateTime
 
 class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     private val PREFILLED_MONTHS = 251
 
-    private lateinit var viewPager: MyViewPager
+    private lateinit var viewPager: ViewPager2
     private var defaultMonthlyPage = 0
     private var todayDayCode = ""
     private var currentDayCode = ""
@@ -51,16 +50,13 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
 
     private fun setupFragment() {
         val codes = getMonths(currentDayCode)
-        val monthlyDailyAdapter = MyMonthDayPagerAdapter(requireActivity().supportFragmentManager, codes, this)
+        val monthlyDailyAdapter = MyMonthDayPagerAdapter(this, codes, this)
         defaultMonthlyPage = codes.size / 2
 
         viewPager.apply {
             adapter = monthlyDailyAdapter
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {}
-
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
+            offscreenPageLimit = 1
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     currentDayCode = codes[position]
                     val shouldGoToTodayBeVisible = shouldGoToTodayBeVisible()
@@ -70,7 +66,7 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
                     }
                 }
             })
-            currentItem = defaultMonthlyPage
+            setCurrentItem(defaultMonthlyPage, false)
         }
     }
 
@@ -129,12 +125,12 @@ class MonthDayFragmentsHolder : MyFragmentHolder(), NavigationListener {
     }
 
     override fun refreshEvents() {
-        (viewPager.adapter as? MyMonthDayPagerAdapter)?.updateCalendars(viewPager.currentItem)
+        (viewPager.adapter as? MyMonthDayPagerAdapter)?.updateCalendars(viewPager.currentItem, this)
     }
 
     override fun shouldGoToTodayBeVisible() = currentDayCode.getMonthCode() != todayDayCode.getMonthCode()
 
-    override fun getNewEventDayCode() = (viewPager.adapter as? MyMonthDayPagerAdapter)?.getNewEventDayCode(viewPager.currentItem)
+    override fun getNewEventDayCode() = (viewPager.adapter as? MyMonthDayPagerAdapter)?.getNewEventDayCode(viewPager.currentItem, this)
         ?: if (shouldGoToTodayBeVisible()) {
             currentDayCode
         } else {
